@@ -14,9 +14,9 @@ import {
 import { provideTransloco } from '@jsverse/transloco';
 
 import { routes } from './app.routes';
-import { CONFIG_TRANSLOCO } from './core/i18n/transloco-config';
-import { TranslocoHttpLoader } from './core/i18n/transloco-loader';
-import { linguaInterceptor } from './core/interceptors/lingua/lingua-interceptor';
+import { CONFIG_TRANSLOCO } from './core/services/lingua/transloco-config';
+import { TranslocoHttpLoader } from './core/services/lingua/transloco-loader';
+import { linguaInterceptor } from './core/services/lingua/lingua-interceptor';
 import { LinguaService } from './core/services/lingua/lingua-service';
 import { TemaService } from './core/services/tema/tema-service';
 

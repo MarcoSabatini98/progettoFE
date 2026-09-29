@@ -1,26 +1,33 @@
 import { TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { ArchivioService } from './archivio-service';
 
 describe('ArchivioService', () => {
-  let servizio: ArchivioService;
+  let service: ArchivioService;
 
   beforeEach(() => {
     localStorage.clear();
-    servizio = TestBed.inject(ArchivioService);
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ArchivioService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
   });
 
   it('legge un valore ammesso salvato in precedenza', () => {
-    servizio.scrivi('chiave', 'b');
-    expect(servizio.leggi('chiave', ['a', 'b'])).toBe('b');
+    service.scrivi('chiave', 'b');
+    expect(service.leggi('chiave', ['a', 'b'])).toBe('b');
   });
 
   it('ignora un valore non ammesso', () => {
+    // Simula un valore modificato a mano dal browser o rimasto da una versione precedente.
     localStorage.setItem('chiave', 'manomesso');
-    expect(servizio.leggi('chiave', ['a', 'b'])).toBeNull();
+    expect(service.leggi('chiave', ['a', 'b'])).toBeNull();
   });
 
   it('restituisce null se la chiave non esiste', () => {
-    expect(servizio.leggi('assente', ['a'])).toBeNull();
+    expect(service.leggi('assente', ['a'])).toBeNull();
   });
 });

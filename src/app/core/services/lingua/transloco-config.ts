@@ -1,7 +1,7 @@
 import { isDevMode } from '@angular/core';
 import { translocoConfig } from '@jsverse/transloco';
 
-import { LINGUA_PREDEFINITA, LINGUE } from '../costanti/lingue-costanti';
+import { LINGUA_PREDEFINITA, LINGUE } from './lingua-costanti';
 
 /** Configurazione unica di Transloco, condivisa tra app e test. */
 export const CONFIG_TRANSLOCO = translocoConfig({

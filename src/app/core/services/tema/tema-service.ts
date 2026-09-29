@@ -1,15 +1,13 @@
 import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
 
-import { CHIAVI_ARCHIVIO } from '../../costanti/archiviazione-costanti';
-import { ATTRIBUTO_TEMA, PREFERENZE_TEMA } from '../../costanti/tema-costanti';
-import type { PreferenzaTema } from '../../../shared/models/tema/tema-model';
+import { PreferenzaTema } from '../../../shared/models/tema/tema-model';
+import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
 import { ArchivioService } from '../archivio/archivio-service';
+import { ATTRIBUTO_TEMA, PREFERENZE_TEMA } from './tema-costanti';
 
-/**
- * Tema chiaro/scuro. Con "sistema" l'attributo viene tolto e decide il dispositivo
- * tramite color-scheme; altrimenti l'attributo forza la scelta (vedi styles/token.css).
- */
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class TemaService {
   private readonly archivio = inject(ArchivioService);
   private readonly radice = inject(DOCUMENT).documentElement;
@@ -17,20 +15,34 @@ export class TemaService {
     this.archivio.leggi(CHIAVI_ARCHIVIO.tema, PREFERENZE_TEMA) ?? 'sistema',
   );
 
+  /**
+   * Tema scelto. Priorità: localStorage → "sistema" (segue il dispositivo).
+   */
   readonly preferenza = this.preferenzaCorrente.asReadonly();
 
   constructor() {
     this.applica(this.preferenza());
   }
 
+  /**
+   * IMPOSTA
+   * Salva la scelta sul dispositivo e la applica subito.
+   */
   imposta(preferenza: PreferenzaTema): void {
     this.preferenzaCorrente.set(preferenza);
     this.archivio.scrivi(CHIAVI_ARCHIVIO.tema, preferenza);
     this.applica(preferenza);
   }
 
+  /**
+   * Con "sistema" l'attributo viene tolto e decide color-scheme del dispositivo;
+   * altrimenti l'attributo forza chiaro o scuro (vedi src/styles/token.css).
+   */
   private applica(preferenza: PreferenzaTema): void {
-    if (preferenza === 'sistema') this.radice.removeAttribute(ATTRIBUTO_TEMA);
-    else this.radice.setAttribute(ATTRIBUTO_TEMA, preferenza);
+    if (preferenza === 'sistema') {
+      this.radice.removeAttribute(ATTRIBUTO_TEMA);
+    } else {
+      this.radice.setAttribute(ATTRIBUTO_TEMA, preferenza);
+    }
   }
 }

@@ -1,31 +1,42 @@
 import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
-import { TranslocoService, type Translation } from '@jsverse/transloco';
-import type { Observable } from 'rxjs';
+import { Translation, TranslocoService } from '@jsverse/transloco';
+import { Observable } from 'rxjs';
 
-import { CHIAVI_ARCHIVIO } from '../../costanti/archiviazione-costanti';
-import { LINGUA_PREDEFINITA, LINGUE } from '../../costanti/lingue-costanti';
-import type { Lingua } from '../../../shared/models/lingua/lingua-model';
+import { Lingua } from '../../../shared/models/lingua/lingua-model';
+import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
 import { ArchivioService } from '../archivio/archivio-service';
+import { LINGUA_PREDEFINITA, LINGUE } from './lingua-costanti';
 
-/** Lingua del sito: scelta salvata, poi lingua del browser, poi italiano. */
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class LinguaService {
   private readonly transloco = inject(TranslocoService);
   private readonly archivio = inject(ArchivioService);
   private readonly documento = inject(DOCUMENT);
   private readonly linguaCorrente = signal<Lingua>(this.linguaIniziale());
 
+  /**
+   * Lingua del sito. Priorità: localStorage → lingua del browser → italiano.
+   */
   readonly attiva = this.linguaCorrente.asReadonly();
 
   constructor() {
     this.applica(this.attiva());
   }
 
-  /** Scarica le traduzioni della lingua attiva: usato all'avvio per evitare testi vuoti. */
+  /**
+   * CARICA
+   * Scarica le traduzioni della lingua attiva: usato all'avvio per evitare testi vuoti.
+   */
   carica(): Observable<Translation> {
     return this.transloco.load(this.attiva());
   }
 
+  /**
+   * IMPOSTA
+   * Salva la scelta sul dispositivo e la applica subito.
+   */
   imposta(lingua: Lingua): void {
     this.linguaCorrente.set(lingua);
     this.archivio.scrivi(CHIAVI_ARCHIVIO.lingua, lingua);
