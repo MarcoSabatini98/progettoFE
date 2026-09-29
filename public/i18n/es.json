@@ -1,0 +1,11 @@
+{
+  "lingua": {
+    "etichetta": "Idioma"
+  },
+  "tema": {
+    "etichetta": "Tema",
+    "sistema": "Automático",
+    "chiaro": "Claro",
+    "scuro": "Oscuro"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "lingua": {
+    "etichetta": "Sprache"
+  },
+  "tema": {
+    "etichetta": "Design",
+    "sistema": "Automatisch",
+    "chiaro": "Hell",
+    "scuro": "Dunkel"
+  }
+}

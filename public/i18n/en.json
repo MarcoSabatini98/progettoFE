@@ -1,0 +1,11 @@
+{
+  "lingua": {
+    "etichetta": "Language"
+  },
+  "tema": {
+    "etichetta": "Theme",
+    "sistema": "Automatic",
+    "chiaro": "Light",
+    "scuro": "Dark"
+  }
+}
