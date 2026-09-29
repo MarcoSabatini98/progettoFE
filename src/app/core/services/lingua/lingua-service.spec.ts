@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { TranslocoService, TranslocoTestingModule } from '@jsverse/transloco';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { CHIAVI_ARCHIVIO } from '../../costanti/archiviazione-costanti';
-import { LINGUE } from '../../costanti/lingue-costanti';
-import { CONFIG_TRANSLOCO } from '../../i18n/transloco-config';
+import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
+import { LINGUE } from './lingua-costanti';
 import { LinguaService } from './lingua-service';
+import { CONFIG_TRANSLOCO } from './transloco-config';
 
 describe('LinguaService', () => {
-  function crea(linguaBrowser = 'de-DE') {
+  // Crea il servizio simulando la lingua impostata nel browser.
+  function crea(linguaBrowser = 'de-DE'): LinguaService {
     vi.spyOn(navigator, 'language', 'get').mockReturnValue(linguaBrowser);
     TestBed.configureTestingModule({
       imports: [
@@ -22,6 +24,10 @@ describe('LinguaService', () => {
 
   beforeEach(() => localStorage.clear());
   afterEach(() => vi.restoreAllMocks());
+
+  it('should be created', () => {
+    expect(crea()).toBeTruthy();
+  });
 
   it('usa la lingua del browser se supportata', () => {
     expect(crea('de-DE').attiva()).toBe('de');
@@ -38,11 +44,11 @@ describe('LinguaService', () => {
   });
 
   it('imposta la lingua in Transloco, sul documento e in archivio', () => {
-    const servizio = crea();
+    const service = crea();
 
-    servizio.imposta('fr');
+    service.imposta('fr');
 
-    expect(servizio.attiva()).toBe('fr');
+    expect(service.attiva()).toBe('fr');
     expect(TestBed.inject(TranslocoService).getActiveLang()).toBe('fr');
     expect(document.documentElement.lang).toBe('fr');
     expect(localStorage.getItem(CHIAVI_ARCHIVIO.lingua)).toBe('fr');

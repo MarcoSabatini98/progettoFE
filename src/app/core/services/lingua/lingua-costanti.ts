@@ -1,4 +1,4 @@
-import type { Lingua } from '../../shared/models/lingua/lingua-model';
+import type { Lingua } from '../../../shared/models/lingua/lingua-model';
 
 /** Lingue del sito, nell'ordine in cui compaiono nel selettore. */
 export const LINGUE = ['it', 'en', 'fr', 'de', 'es'] as const;

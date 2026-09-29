@@ -28,11 +28,14 @@ Gli hook git eseguono lint-staged al commit e lint + test al push.
 ```
 src/
   app/
-    core/        costanti, i18n, interceptor e servizi applicativi
-    shared/      modelli (uno per file) e componenti condivisi
-  environments/  URL dell'API per sviluppo e produzione
-  styles/        token del design system e base CSS
-public/i18n/     traduzioni (it, en, fr, de, es)
+    core/services/<dominio>/  service, interceptor, guard e costanti del dominio
+    features/<area>/          pagine, un componente per cartella (ts, html, css, spec)
+    layout/                   intestazioni, menu e piè di pagina
+    shared/models/<nome>/     un modello per file, con il suo spec
+    shared/<componente>/      componenti riusabili
+  environments/             URL dell'API per sviluppo e produzione
+  styles/                   token del design system e base CSS
+public/i18n/                traduzioni (it, en, fr, de, es)
 ```
 
 ## Tema e personalizzazione

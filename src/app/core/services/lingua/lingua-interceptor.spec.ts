@@ -2,9 +2,10 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
-import { LinguaService } from '../../services/lingua/lingua-service';
+import { LinguaService } from './lingua-service';
 import { linguaInterceptor } from './lingua-interceptor';
 
 describe('linguaInterceptor', () => {

@@ -1,8 +1,10 @@
-import de from '../../../../public/i18n/de.json';
-import en from '../../../../public/i18n/en.json';
-import es from '../../../../public/i18n/es.json';
-import fr from '../../../../public/i18n/fr.json';
-import italiano from '../../../../public/i18n/it.json';
+import { describe, expect, it } from 'vitest';
+
+import de from '../../../../../public/i18n/de.json';
+import en from '../../../../../public/i18n/en.json';
+import es from '../../../../../public/i18n/es.json';
+import fr from '../../../../../public/i18n/fr.json';
+import italiano from '../../../../../public/i18n/it.json';
 
 /** Elenca le chiavi foglia di un file di traduzioni, es. "tema.scuro". */
 function chiavi(oggetto: object, prefisso = ''): string[] {
