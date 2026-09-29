@@ -1,59 +1,42 @@
-# ProgettoFE
+# progettoFE
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.3.
+Frontend Angular del gestionale per strutture ricettive: sito pubblico con prenotazione,
+portale cliente e area gestionale dello staff. Si appoggia all'API di progettoBE.
 
-## Development server
+## Requisiti
 
-To start a local development server, run:
+- Node 24
+- progettoBE avviato in locale (`npm run dev`, porta 3000)
 
-```bash
-ng serve
+## Comandi
+
+| Comando                  | Cosa fa                                      |
+| ------------------------ | -------------------------------------------- |
+| `npm start`              | Server di sviluppo su http://localhost:4200  |
+| `npm test`               | Test unitari (Vitest), una volta             |
+| `npm run test:watch`     | Test unitari in modalità watch               |
+| `npm run test:copertura` | Test con report di copertura                 |
+| `npm run lint`           | ESLint su TypeScript e template              |
+| `npm run format`         | Prettier su tutto il progetto                |
+| `npm run licenze`        | Blocca dipendenze con licenze non permissive |
+| `npm run build`          | Build di produzione in `dist/`               |
+
+Gli hook git eseguono lint-staged al commit e lint + test al push.
+
+## Struttura
+
+```
+src/
+  app/
+    core/        costanti, i18n, interceptor e servizi applicativi
+    shared/      modelli (uno per file) e componenti condivisi
+  environments/  URL dell'API per sviluppo e produzione
+  styles/        token del design system e base CSS
+public/i18n/     traduzioni (it, en, fr, de, es)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tema e personalizzazione
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Colori, font, raggi e spaziature sono token CSS `--bb-*` in `src/styles/token.css`,
+con valori chiaro/scuro tramite `light-dark()`. Per adattare lo stile a una struttura
+si sovrascrivono i token, non i componenti.
