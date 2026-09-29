@@ -38,6 +38,11 @@ src/
 public/i18n/                traduzioni (it, en, fr, de, es)
 ```
 
+I modelli ricalcano le risposte di progettoBE (campi snake_case, date come stringhe ISO,
+decimali come number). I valori ammessi (stati, tipi, canali...) stanno nei file
+`*-costanti.ts` con gli stessi valori del backend; i tipi dei modelli ne derivano, così
+un valore nuovo si aggiunge in un solo posto.
+
 ## Tema e personalizzazione
 
 Colori, font, raggi e spaziature sono token CSS `--bb-*` in `src/styles/token.css`,
