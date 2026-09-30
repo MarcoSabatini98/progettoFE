@@ -5,3 +5,6 @@ export interface RegolaChatInterface {
   ruolo_a: CodiceRuolo;
   ruolo_b: CodiceRuolo;
 }
+
+/** Due ruoli che possono scriversi, in qualunque ordine. */
+export type CoppiaRuoli = [CodiceRuolo, CodiceRuolo];

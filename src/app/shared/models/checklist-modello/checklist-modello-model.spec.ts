@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import { ChecklistModelloInterface } from './checklist-modello-model';
+import {
+  ChecklistModelloAggiornaPayload,
+  ChecklistModelloInterface,
+} from './checklist-modello-model';
 
 describe('ChecklistModelloInterface', () => {
   it('accetta una voce valida per ogni tipo di pulizia', () => {
@@ -13,5 +16,11 @@ describe('ChecklistModelloInterface', () => {
     };
 
     expect(voce.tipo_pulizia).toBeNull();
+  });
+
+  it('accetta la disattivazione di una voce', () => {
+    const modifica: ChecklistModelloAggiornaPayload = { attiva: false };
+
+    expect(modifica.attiva).toBe(false);
   });
 });

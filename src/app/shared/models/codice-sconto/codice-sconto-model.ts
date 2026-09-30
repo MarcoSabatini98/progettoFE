@@ -19,3 +19,34 @@ export interface CodiceScontoInterface {
   creato_il: string;
   aggiornato_il: string;
 }
+
+/** Cosa vale un codice per il sito: contatori e limiti restano interni. */
+export type CodiceScontoVerificatoInterface = Pick<
+  CodiceScontoInterface,
+  'codice' | 'descrizione' | 'tipo_sconto' | 'valore' | 'importo_minimo' | 'notti_min'
+>;
+
+export type CodiceScontoCreaPayload = Pick<
+  CodiceScontoInterface,
+  'codice' | 'tipo_sconto' | 'valore'
+> &
+  Partial<
+    Pick<
+      CodiceScontoInterface,
+      | 'descrizione'
+      | 'valido_dal'
+      | 'valido_al'
+      | 'importo_minimo'
+      | 'notti_min'
+      | 'utilizzi_max'
+      | 'utilizzi_per_utente'
+      | 'attivo'
+    >
+  >;
+
+export type CodiceScontoAggiornaPayload = Partial<CodiceScontoCreaPayload>;
+
+export interface FiltriCodiciSconto {
+  attivo?: boolean;
+  cerca?: string;
+}

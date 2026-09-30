@@ -12,6 +12,9 @@ export const METODI_STRUTTURA = ['bonifico', 'contanti', 'pos', 'ota'] as const;
 
 export const STATI_PAGAMENTO = ['in_attesa', 'completato', 'fallito', 'annullato'] as const;
 
+/** File scaricabili di una fattura: PDF di cortesia o XML FatturaPA. */
+export const TIPI_FILE_FATTURA = ['pdf', 'xml'] as const;
+
 /** TD01 fattura, TD04 nota di credito */
 export const TIPI_DOCUMENTO_FATTURA = ['TD01', 'TD04'] as const;
 

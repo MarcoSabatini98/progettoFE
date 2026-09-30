@@ -44,3 +44,31 @@ export interface AttivitaPuliziaInterface {
   addetto?: UtenteInterface | null;
   verificatore?: UtenteInterface | null;
 }
+
+/** Attività di una giornata. */
+export interface FiltriPulizie {
+  /** 'YYYY-MM-DD', vuota = oggi. */
+  data?: string;
+  stato?: StatoAttivitaPulizia;
+  camera_id?: number;
+  assegnata_a?: number;
+  /** Solo le attività assegnate a me. */
+  mie?: boolean;
+}
+
+export type AttivitaPuliziaCreaPayload = Pick<
+  AttivitaPuliziaInterface,
+  'camera_id' | 'data_prevista' | 'tipo'
+> &
+  Partial<Pick<AttivitaPuliziaInterface, 'prenotazione_id' | 'assegnata_a' | 'priorita' | 'note'>>;
+
+export type AttivitaPuliziaAggiornaPayload = Partial<
+  Pick<AttivitaPuliziaInterface, 'assegnata_a' | 'data_prevista' | 'priorita' | 'tipo' | 'note'>
+>;
+
+/** Lavoro dell'addetto. Il BE controlla che il passaggio di stato sia ammesso. */
+export type AvanzamentoPuliziaPayload = Partial<
+  Pick<AttivitaPuliziaInterface, 'stato' | 'note'>
+> & {
+  checklist?: VoceChecklistInterface[];
+};

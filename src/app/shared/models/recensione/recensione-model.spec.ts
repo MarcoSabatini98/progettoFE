@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { STATI_RECENSIONE } from '../../../core/services/prenotazioni/prenotazioni-costanti';
-import { RecensioneInterface } from './recensione-model';
+import { RecensioneInterface, RecensionePerCodicePayload } from './recensione-model';
 
 describe('RecensioneInterface', () => {
   it('accetta una recensione anonima in attesa di moderazione', () => {
@@ -31,5 +31,17 @@ describe('RecensioneInterface', () => {
     };
 
     expect(STATI_RECENSIONE).toContain(recensione.stato);
+  });
+
+  it("accetta una recensione anonima dal link dell'email", () => {
+    const recensione: RecensionePerCodicePayload = {
+      codice: 'BB-2026-0042',
+      email: 'anna@example.com',
+      voto: 5,
+      voto_pulizia: 5,
+      anonima: true,
+    };
+
+    expect(recensione.voto).toBeLessThanOrEqual(5);
   });
 });

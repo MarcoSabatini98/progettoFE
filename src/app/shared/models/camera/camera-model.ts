@@ -2,7 +2,9 @@ import type {
   STATI_CAMERA,
   STATI_PULIZIA_CAMERA,
 } from '../../../core/services/camere/camere-costanti';
+import { DataBloccataInterface } from '../data-bloccata/data-bloccata-model';
 import { MediaInterface } from '../media/media-model';
+import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
 import { ServizioInterface } from '../servizio/servizio-model';
 import { SituazioneCameraInterface } from '../situazione-camera/situazione-camera-model';
 import { TipologiaCameraInterface } from '../tipologia-camera/tipologia-camera-model';
@@ -33,4 +35,22 @@ export interface CameraInterface {
   servizi?: ServizioInterface[];
   media?: MediaInterface[];
   situazione?: SituazioneCameraInterface | null;
+  /** Nel planning: soggiorni e chiusure del periodo. */
+  prenotazioni?: PrenotazioneInterface[];
+  date_bloccate?: DataBloccataInterface[];
+}
+
+export type CameraCreaPayload = Pick<CameraInterface, 'numero' | 'tipologia_id'> &
+  Partial<Pick<CameraInterface, 'nome' | 'piano' | 'ospiti_max' | 'stato' | 'note'>> & {
+    /** Dotazioni: sostituiscono quelle attuali. */
+    servizi?: number[];
+  };
+
+export type CameraAggiornaPayload = Partial<CameraCreaPayload>;
+
+export interface FiltriCamere {
+  tipologia_id?: number;
+  stato?: StatoCamera;
+  stato_pulizia?: StatoPuliziaCamera;
+  piano?: number;
 }

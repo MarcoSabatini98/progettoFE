@@ -6,10 +6,13 @@ import { CameraInterface } from '../camera/camera-model';
 import { CodiceScontoInterface } from '../codice-sconto/codice-sconto-model';
 import { DettaglioPrezzoInterface } from '../dettaglio-prezzo/dettaglio-prezzo-model';
 import { InvioAlloggiatiInterface } from '../invio-alloggiati/invio-alloggiati-model';
-import { OspiteInterface } from '../ospite/ospite-model';
+import { OspiteCreaPayload, OspiteInterface } from '../ospite/ospite-model';
 import { PacchettoInterface } from '../pacchetto/pacchetto-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
 import { PagamentoInterface } from '../pagamento/pagamento-model';
+import { FiltriPeriodo } from '../periodo/periodo-model';
 import { PianoTariffarioInterface } from '../piano-tariffario/piano-tariffario-model';
+import { PreventivoPayload } from '../preventivo/preventivo-model';
 import { PrenotazioneOspiteInterface } from '../prenotazione-ospite/prenotazione-ospite-model';
 import { PrenotazioneServizioInterface } from '../prenotazione-servizio/prenotazione-servizio-model';
 import { SaldoPrenotazioneInterface } from '../saldo-prenotazione/saldo-prenotazione-model';
@@ -91,4 +94,60 @@ export interface PrenotazioneInterface {
   pacchetto?: PacchettoInterface | null;
   autore?: UtenteInterface | null;
   invii_alloggiati?: InvioAlloggiatiInterface[];
+}
+
+/**
+ * Online serve la sessione del blocco, lo staff indica camera_id.
+ * I campi dello staff il backend li ignora per clienti e visitatori.
+ */
+export interface PrenotazioneCreaPayload extends Omit<PreventivoPayload, 'tipologia_id'> {
+  sessione?: string;
+  camera_id?: number;
+  /** Chi prenota senza account. */
+  titolare?: OspiteCreaPayload;
+  richieste_speciali?: string | null;
+  /** 'HH:mm' */
+  ora_arrivo_prevista?: string | null;
+
+  // ─── Solo staff ───
+  utente_id?: number;
+  canale?: Canale;
+  id_esterno?: string | null;
+  stato?: Extract<StatoPrenotazione, 'in_attesa' | 'confermata'>;
+  note_interne?: string | null;
+}
+
+export type PrenotazioneAggiornaPayload = Partial<
+  Pick<
+    PrenotazioneInterface,
+    | 'camera_id'
+    | 'data_arrivo'
+    | 'data_partenza'
+    | 'adulti'
+    | 'bambini'
+    | 'note_interne'
+    | 'richieste_speciali'
+    | 'ora_arrivo_prevista'
+  >
+>;
+
+export interface CancellazionePayload {
+  motivo?: string | null;
+  /** Solo staff: sostituisce la penale calcolata. */
+  penale?: number | null;
+}
+
+/** Chi ha prenotato senza account ritrova la prenotazione con codice ed email. */
+export type AccessoPerCodicePayload = Pick<PrenotazioneInterface, 'codice'> & {
+  email: string;
+};
+
+export interface FiltriPrenotazioni extends ParametriPaginaInterface, FiltriPeriodo {
+  stato?: StatoPrenotazione[];
+  canale?: Canale;
+  camera_id?: number;
+  /** Codice, cognome o email del titolare. */
+  cerca?: string;
+  /** Per data di arrivo. */
+  ordine?: 'asc' | 'desc';
 }

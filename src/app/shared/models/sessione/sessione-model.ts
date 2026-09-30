@@ -21,3 +21,35 @@ export interface SessioneInterface {
   accessToken: string;
   utente: UtenteSessioneInterface;
 }
+
+export interface CredenzialiPayload {
+  email: string;
+  password: string;
+}
+
+/** privacy e termini vanno accettati per registrarsi. */
+export interface ConsensiRegistrazione {
+  privacy: true;
+  termini: true;
+  marketing?: boolean;
+  cookie?: boolean;
+}
+
+export interface RegistrazionePayload extends CredenzialiPayload {
+  nome: string;
+  cognome: string;
+  telefono?: string | null;
+  lingua?: Lingua;
+  consensi: ConsensiRegistrazione;
+}
+
+/** Nuova password dal link ricevuto per email. */
+export interface NuovaPasswordPayload {
+  token: string;
+  password: string;
+}
+
+export interface CambioPasswordPayload {
+  password_attuale: string;
+  nuova_password: string;
+}

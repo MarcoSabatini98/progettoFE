@@ -1,5 +1,5 @@
 import type { TIPI_ALLOGGIATO } from '../../../core/services/prenotazioni/prenotazioni-costanti';
-import { OspiteInterface } from '../ospite/ospite-model';
+import { OspiteCreaPayload, OspiteInterface } from '../ospite/ospite-model';
 
 export type TipoAlloggiato = (typeof TIPI_ALLOGGIATO)[number];
 
@@ -13,4 +13,18 @@ export interface PrenotazioneOspiteInterface {
 
   // ─── Associazioni ───
   ospite?: OspiteInterface;
+}
+
+/** Ospite nella scheda del soggiorno, con i campi che mancano per la schedina Alloggiati. */
+export type OspiteSoggiornoInterface = OspiteInterface &
+  Pick<PrenotazioneOspiteInterface, 'tipo_alloggiato' | 'esente_tassa' | 'motivo_esenzione'> & {
+    campi_mancanti: (keyof OspiteInterface)[];
+  };
+
+/** Riga della lista ospiti: lo staff può agganciare un'anagrafica esistente col solo id. */
+export interface RigaOspitePayload<O = OspiteCreaPayload | Pick<OspiteInterface, 'id'>> {
+  ospite: O;
+  tipo_alloggiato?: TipoAlloggiato;
+  esente_tassa?: boolean;
+  motivo_esenzione?: string | null;
 }

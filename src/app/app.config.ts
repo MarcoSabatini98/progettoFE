@@ -12,8 +12,11 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import { provideTransloco } from '@jsverse/transloco';
+import { forkJoin } from 'rxjs';
 
 import { routes } from './app.routes';
+import { authInterceptor } from './core/services/auth/auth-interceptor';
+import { AuthService } from './core/services/auth/auth-service';
 import { CONFIG_TRANSLOCO } from './core/services/lingua/transloco-config';
 import { TranslocoHttpLoader } from './core/services/lingua/transloco-loader';
 import { linguaInterceptor } from './core/services/lingua/lingua-interceptor';
@@ -29,12 +32,12 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
       withViewTransitions(),
     ),
-    provideHttpClient(withFetch(), withInterceptors([linguaInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([linguaInterceptor, authInterceptor])),
     provideTransloco({ config: CONFIG_TRANSLOCO, loader: TranslocoHttpLoader }),
-    // Tema applicato e traduzioni scaricate prima del primo render.
+    // Prima del primo render: tema applicato, traduzioni scaricate e sessione ripristinata.
     provideAppInitializer(() => {
       inject(TemaService);
-      return inject(LinguaService).carica();
+      return forkJoin([inject(LinguaService).carica(), inject(AuthService).ripristina()]);
     }),
   ],
 };

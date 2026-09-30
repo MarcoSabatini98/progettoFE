@@ -1,12 +1,15 @@
 import type {
   STATI_SDI,
   TIPI_DOCUMENTO_FATTURA,
+  TIPI_FILE_FATTURA,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
-import { FatturaRigaInterface } from '../fattura-riga/fattura-riga-model';
+import { FatturaRigaInterface, RigaFatturaPayload } from '../fattura-riga/fattura-riga-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
 import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
 
 export type TipoDocumentoFattura = (typeof TIPI_DOCUMENTO_FATTURA)[number];
 export type StatoSdi = (typeof STATI_SDI)[number];
+export type TipoFileFattura = (typeof TIPI_FILE_FATTURA)[number];
 
 /**
  * Fattura elettronica (TD01) o nota di credito (TD04). Nasce in bozza senza numero:
@@ -53,4 +56,50 @@ export interface FatturaInterface {
   // ─── Associazioni ───
   righe?: FatturaRigaInterface[];
   prenotazione?: PrenotazioneInterface | null;
+}
+
+/**
+ * Intestatario diverso dal titolare: privato (nome, cognome, codice fiscale)
+ * o azienda (denominazione, partita IVA).
+ */
+export interface DatiClienteFatturaPayload {
+  denominazione?: string | null;
+  nome?: string | null;
+  cognome?: string | null;
+  codice_fiscale?: string | null;
+  partita_iva?: string | null;
+  indirizzo?: string | null;
+  cap?: string | null;
+  comune?: string | null;
+  provincia?: string | null;
+  /** ISO 3166-1 alpha-2 */
+  nazione?: string;
+  /** '0000000' = cassetto fiscale o PEC. */
+  codice_destinatario?: string;
+  pec?: string | null;
+}
+
+/** Le righe sostituiscono quelle della bozza. */
+export interface FatturaAggiornaPayload {
+  cliente?: DatiClienteFatturaPayload;
+  note?: string | null;
+  righe?: RigaFatturaPayload[];
+}
+
+/** Senza righe la nota storna tutta la fattura. */
+export interface NotaDiCreditoPayload {
+  motivo?: string | null;
+  righe?: RigaFatturaPayload[];
+}
+
+/** Esito dello SDI registrato a mano. */
+export type EsitoSdiPayload = Pick<FatturaInterface, 'stato_sdi'> &
+  Partial<Pick<FatturaInterface, 'id_sdi' | 'esito_sdi'>>;
+
+export interface FiltriFatture extends ParametriPaginaInterface {
+  stato_sdi?: StatoSdi[];
+  anno?: number;
+  prenotazione_id?: number;
+  /** Denominazione, cognome, codice fiscale o partita IVA. */
+  cerca?: string;
 }

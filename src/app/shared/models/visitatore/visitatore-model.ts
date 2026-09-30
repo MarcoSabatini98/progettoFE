@@ -12,3 +12,5 @@ export interface VisitatoreInterface {
   ultimo_accesso_il: string | null;
   creato_il: string;
 }
+
+export type VisitatoreCreaPayload = Partial<Pick<VisitatoreInterface, 'nome' | 'email' | 'lingua'>>;

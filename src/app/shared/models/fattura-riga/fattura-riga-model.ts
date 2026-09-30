@@ -11,3 +11,10 @@ export interface FatturaRigaInterface {
   totale: number | null;
   ordine: number;
 }
+
+/** Prezzo negativo ammesso: righe di sconto. */
+export type RigaFatturaPayload = Pick<
+  FatturaRigaInterface,
+  'descrizione' | 'prezzo_unitario' | 'aliquota_iva'
+> &
+  Partial<Pick<FatturaRigaInterface, 'quantita' | 'natura'>>;

@@ -1,4 +1,5 @@
 import type { TIPI_VARIAZIONE_PERIODO } from '../../../core/services/tariffe/tariffe-costanti';
+import { FiltriPeriodo } from '../periodo/periodo-model';
 import { TipologiaCameraInterface } from '../tipologia-camera/tipologia-camera-model';
 
 export type TipoVariazionePeriodo = (typeof TIPI_VARIAZIONE_PERIODO)[number];
@@ -26,4 +27,22 @@ export interface PeriodoTariffarioInterface {
 
   // ─── Associazioni ───
   tipologia?: TipologiaCameraInterface | null;
+}
+
+export type PeriodoTariffarioCreaPayload = Pick<
+  PeriodoTariffarioInterface,
+  'nome' | 'data_inizio' | 'data_fine' | 'tipo_variazione' | 'valore'
+> &
+  Partial<
+    Pick<
+      PeriodoTariffarioInterface,
+      'tipologia_id' | 'giorni_settimana' | 'soggiorno_minimo' | 'priorita' | 'attivo'
+    >
+  >;
+
+export type PeriodoTariffarioAggiornaPayload = Partial<PeriodoTariffarioCreaPayload>;
+
+export interface FiltriPeriodiTariffari extends FiltriPeriodo {
+  tipologia_id?: number;
+  attivo?: boolean;
 }

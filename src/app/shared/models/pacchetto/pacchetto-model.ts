@@ -1,4 +1,5 @@
 import { MediaInterface } from '../media/media-model';
+import { ServizioRichiestoPayload } from '../prenotazione-servizio/prenotazione-servizio-model';
 import { ServizioInterface } from '../servizio/servizio-model';
 import { TipologiaCameraInterface } from '../tipologia-camera/tipologia-camera-model';
 
@@ -28,3 +29,23 @@ export interface PacchettoInterface {
   media?: MediaInterface[];
   tipologia?: TipologiaCameraInterface | null;
 }
+
+export type PacchettoCreaPayload = Pick<PacchettoInterface, 'nome' | 'prezzo'> &
+  Partial<
+    Pick<
+      PacchettoInterface,
+      | 'slug'
+      | 'descrizione'
+      | 'tipologia_id'
+      | 'notti_min'
+      | 'valido_dal'
+      | 'valido_al'
+      | 'attivo'
+      | 'ordine'
+    >
+  > & {
+    /** Servizi inclusi: sostituiscono quelli attuali. */
+    servizi?: ServizioRichiestoPayload[];
+  };
+
+export type PacchettoAggiornaPayload = Partial<PacchettoCreaPayload>;

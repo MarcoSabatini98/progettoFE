@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { FedeltaUtenteInterface } from './fedelta-utente-model';
+import { FedeltaUtenteInterface, SituazioneFedeltaInterface } from './fedelta-utente-model';
 
 describe('FedeltaUtenteInterface', () => {
   it('accetta la situazione fedeltà di un cliente', () => {
@@ -15,5 +15,20 @@ describe('FedeltaUtenteInterface', () => {
     };
 
     expect(fedelta.livello).toBe('silver');
+  });
+
+  it('accetta un cliente già al livello più alto', () => {
+    const situazione: SituazioneFedeltaInterface = {
+      utente_id: 9,
+      punti_fedelta: 12000,
+      livello_id: 4,
+      livello: 'diamond',
+      livello_nome: 'Diamond',
+      sconto_percentuale: 15,
+      punti_prossimo_livello: null,
+      punti_mancanti: null,
+    };
+
+    expect(situazione.punti_mancanti).toBeNull();
   });
 });

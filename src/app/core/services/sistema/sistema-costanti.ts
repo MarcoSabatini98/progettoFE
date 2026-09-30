@@ -23,3 +23,12 @@ export const AZIONI_REGISTRO = ['inserimento', 'modifica', 'eliminazione'] as co
 
 /** Tabelle scritte dai trigger di audit. */
 export const TABELLE_REGISTRO = ['prenotazioni', 'pagamenti', 'fatture'] as const;
+
+/** Campi traducibili per entità: l'italiano resta nella tabella originale. */
+export const CAMPI_TRADUCIBILI = {
+  tipologia_camera: ['nome', 'descrizione', 'letti'],
+  servizio: ['nome', 'descrizione'],
+  pacchetto: ['nome', 'descrizione'],
+  promozione: ['nome', 'descrizione'],
+  faq: ['domanda', 'risposta'],
+} as const;

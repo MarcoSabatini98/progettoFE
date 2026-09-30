@@ -24,3 +24,27 @@ export interface PianoTariffarioInterface {
   creato_il: string;
   aggiornato_il: string;
 }
+
+export type PianoCreaPayload = Pick<PianoTariffarioInterface, 'nome'> &
+  Partial<
+    Pick<
+      PianoTariffarioInterface,
+      | 'descrizione'
+      | 'tipo_variazione'
+      | 'valore_variazione'
+      | 'rimborsabile'
+      | 'ore_cancellazione_gratuita'
+      | 'penale_percentuale'
+      | 'acconto_percentuale'
+      | 'predefinito'
+      | 'attivo'
+      | 'ordine'
+    >
+  >;
+
+export type PianoAggiornaPayload = Partial<PianoCreaPayload>;
+
+/** Filtro comune a piani e pacchetti. */
+export interface FiltriAttivo {
+  attivo?: boolean;
+}

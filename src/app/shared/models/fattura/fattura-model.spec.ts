@@ -4,7 +4,7 @@ import {
   STATI_SDI,
   TIPI_DOCUMENTO_FATTURA,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
-import { FatturaInterface } from './fattura-model';
+import { FatturaAggiornaPayload, FatturaInterface } from './fattura-model';
 
 describe('FatturaInterface', () => {
   it('accetta una bozza ancora senza anno e numero', () => {
@@ -48,5 +48,18 @@ describe('FatturaInterface', () => {
     expect(TIPI_DOCUMENTO_FATTURA).toContain(bozza.tipo_documento);
     expect(STATI_SDI).toContain(bozza.stato_sdi);
     expect(bozza.numero).toBeNull();
+  });
+
+  it("accetta i dati di un'azienda e una riga di sconto", () => {
+    const modifiche: FatturaAggiornaPayload = {
+      cliente: {
+        denominazione: 'Rossi Srl',
+        partita_iva: '01234567890',
+        codice_destinatario: 'ABC1234',
+      },
+      righe: [{ descrizione: 'Sconto', prezzo_unitario: -10, aliquota_iva: 10 }],
+    };
+
+    expect(modifiche.righe?.[0].prezzo_unitario).toBeLessThan(0);
   });
 });

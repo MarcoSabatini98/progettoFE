@@ -1,7 +1,8 @@
 import { FedeltaUtenteInterface } from '../fedelta-utente/fedelta-utente-model';
 import { Lingua } from '../lingua/lingua-model';
-import { OspiteInterface } from '../ospite/ospite-model';
-import { CodiceRuolo, RuoloInterface } from '../ruolo/ruolo-model';
+import { AnagraficaPayload, OspiteInterface } from '../ospite/ospite-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
+import { CodiceRuolo, RuoloAssegnabile, RuoloInterface } from '../ruolo/ruolo-model';
 
 /** Account del sito: cliente o membro dello staff. La password non esce mai dall'API. */
 export interface UtenteInterface {
@@ -29,4 +30,32 @@ export interface UtenteInterface {
   dettagli_ruolo?: RuoloInterface;
   anagrafica?: OspiteInterface | null;
   fedelta?: FedeltaUtenteInterface | null;
+}
+
+/** Dati personali dell'area riservata: account e anagrafica restano allineati. */
+export type ProfiloAggiornaPayload = Partial<
+  Pick<UtenteInterface, 'nome' | 'cognome' | 'telefono' | 'lingua' | 'notifiche_email'>
+> &
+  AnagraficaPayload;
+
+export type PreferenzeEmailInterface = Pick<UtenteInterface, 'notifiche_email'>;
+
+/** Nuovo account staff: l'admin nasce dal seed, i clienti si registrano da soli. */
+export type UtenteCreaPayload = Pick<UtenteInterface, 'email' | 'nome' | 'cognome'> &
+  Partial<Pick<UtenteInterface, 'telefono' | 'lingua'>> & {
+    password: string;
+    ruolo: RuoloAssegnabile;
+  };
+
+export type UtenteAggiornaPayload = Partial<
+  Pick<UtenteInterface, 'nome' | 'cognome' | 'telefono' | 'lingua' | 'attivo'> & {
+    ruolo: RuoloAssegnabile;
+  }
+>;
+
+export interface FiltriUtenti extends ParametriPaginaInterface {
+  ruolo?: CodiceRuolo;
+  attivo?: boolean;
+  /** Nome, cognome o email. */
+  cerca?: string;
 }

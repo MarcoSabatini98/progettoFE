@@ -16,3 +16,11 @@ export interface TassaSoggiornoInterface {
   creato_il: string;
   aggiornato_il: string;
 }
+
+export type TassaCreaPayload = Pick<
+  TassaSoggiornoInterface,
+  'nome' | 'valida_dal' | 'valida_al' | 'importo_notte'
+> &
+  Partial<Pick<TassaSoggiornoInterface, 'notti_max' | 'eta_esenzione' | 'attiva'>>;
+
+export type TassaAggiornaPayload = Partial<TassaCreaPayload>;

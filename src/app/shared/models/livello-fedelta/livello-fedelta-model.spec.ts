@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { LivelloFedeltaInterface } from './livello-fedelta-model';
+import { LivelloFedeltaCreaPayload, LivelloFedeltaInterface } from './livello-fedelta-model';
 
 describe('LivelloFedeltaInterface', () => {
   it('accetta un livello con sconto e colore', () => {
@@ -14,5 +14,15 @@ describe('LivelloFedeltaInterface', () => {
     };
 
     expect(livello.punti_minimi).toBe(0);
+  });
+
+  it('accetta un nuovo livello senza sconto', () => {
+    const livello: LivelloFedeltaCreaPayload = {
+      codice: 'platinum',
+      nome: 'Platinum',
+      punti_minimi: 5000,
+    };
+
+    expect(livello.codice).toMatch(/^[a-z0-9_-]+$/);
   });
 });

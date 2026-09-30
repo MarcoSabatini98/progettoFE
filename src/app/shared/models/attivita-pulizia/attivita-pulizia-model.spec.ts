@@ -5,7 +5,7 @@ import {
   STATI_ATTIVITA_PULIZIA,
   TIPI_PULIZIA,
 } from '../../../core/services/pulizie/pulizie-costanti';
-import { AttivitaPuliziaInterface } from './attivita-pulizia-model';
+import { AttivitaPuliziaInterface, AvanzamentoPuliziaPayload } from './attivita-pulizia-model';
 
 describe('AttivitaPuliziaInterface', () => {
   it('accetta una pulizia di partenza in corso con la checklist a metà', () => {
@@ -35,5 +35,14 @@ describe('AttivitaPuliziaInterface', () => {
     expect(TIPI_PULIZIA).toContain(attivita.tipo);
     expect(PRIORITA).toContain(attivita.priorita);
     expect(STATI_ATTIVITA_PULIZIA).toContain(attivita.stato);
+  });
+
+  it("accetta l'avanzamento con la checklist spuntata", () => {
+    const avanzamento: AvanzamentoPuliziaPayload = {
+      stato: 'completata',
+      checklist: [{ voce: 'Cambio lenzuola', fatto: true }],
+    };
+
+    expect(STATI_ATTIVITA_PULIZIA).toContain(avanzamento.stato);
   });
 });

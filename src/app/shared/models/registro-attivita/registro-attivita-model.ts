@@ -2,6 +2,8 @@ import type {
   AZIONI_REGISTRO,
   TABELLE_REGISTRO,
 } from '../../../core/services/sistema/sistema-costanti';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
+import { FiltriPeriodo } from '../periodo/periodo-model';
 import { UtenteInterface } from '../utente/utente-model';
 
 export type AzioneRegistro = (typeof AZIONI_REGISTRO)[number];
@@ -22,3 +24,8 @@ export interface RegistroAttivitaInterface {
   // ─── Associazioni ───
   utente?: UtenteInterface | null;
 }
+
+/** dal/al: 'YYYY-MM-DD' sulla data della modifica. */
+export type FiltriRegistro = ParametriPaginaInterface &
+  FiltriPeriodo &
+  Partial<Pick<RegistroAttivitaInterface, 'tabella' | 'record_id' | 'utente_id' | 'azione'>>;

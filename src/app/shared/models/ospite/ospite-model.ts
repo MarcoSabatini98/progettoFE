@@ -3,6 +3,7 @@ import { AlloggiatiDocumentoInterface } from '../alloggiati-documento/alloggiati
 import { AlloggiatiLuogoInterface } from '../alloggiati-luogo/alloggiati-luogo-model';
 import { DocumentoOspiteInterface } from '../documento-ospite/documento-ospite-model';
 import { Lingua } from '../lingua/lingua-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
 import { PrenotazioneOspiteInterface } from '../prenotazione-ospite/prenotazione-ospite-model';
 import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
 
@@ -57,4 +58,38 @@ export interface OspiteInterface {
   luogo_rilascio?: AlloggiatiLuogoInterface | null;
   documento_tipo?: AlloggiatiDocumentoInterface | null;
   soggiorni?: SoggiornoOspiteInterface[];
+}
+
+/** Dati anagrafici e del documento: gli stessi per gli ospiti e per il profilo del cliente. */
+export type AnagraficaPayload = Partial<
+  Pick<
+    OspiteInterface,
+    | 'sesso'
+    | 'data_nascita'
+    | 'cittadinanza_codice'
+    | 'stato_nascita_codice'
+    | 'comune_nascita_codice'
+    | 'provincia_nascita'
+    | 'tipo_documento'
+    | 'numero_documento'
+    | 'luogo_rilascio_codice'
+    | 'scadenza_documento'
+    | 'codice_fiscale'
+    | 'indirizzo'
+    | 'cap'
+    | 'citta'
+    | 'provincia'
+    | 'paese'
+  >
+>;
+
+export type OspiteCreaPayload = Pick<OspiteInterface, 'nome' | 'cognome'> &
+  Partial<Pick<OspiteInterface, 'email' | 'telefono' | 'lingua' | 'note'>> &
+  AnagraficaPayload;
+
+export type OspiteAggiornaPayload = Partial<OspiteCreaPayload>;
+
+export interface FiltriOspiti extends ParametriPaginaInterface {
+  /** Nome, cognome, email o documento. */
+  cerca?: string;
 }
