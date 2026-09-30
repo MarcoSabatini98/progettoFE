@@ -21,10 +21,20 @@
   </header>
 
   @if (foto.length) {
-    <app-galleria
-      [media]="foto"
+    <app-carosello
+      [elementi]="foto"
       [etichetta]="'tipologia.foto' | transloco: { nome: camera.nome }"
-    />
+    >
+      <ng-template let-immagine>
+        <img
+          class="foto"
+          [src]="immagine.percorso | media"
+          [alt]="immagine.testo_alternativo"
+          [attr.width]="immagine.larghezza"
+          [attr.height]="immagine.altezza"
+        />
+      </ng-template>
+    </app-carosello>
   }
 
   <div class="corpo">

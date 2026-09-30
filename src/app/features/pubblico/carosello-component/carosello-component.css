@@ -1,0 +1,131 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+/*
+ * Tutte le slide nella stessa cella: il palco è alto quanto la più alta
+ * e ognuna si sposta dal centro di un passo per posizione.
+ */
+.palco {
+  display: grid;
+  padding-block: var(--bb-spazio-2);
+  overflow: hidden;
+  touch-action: pan-y;
+  border-radius: var(--bb-raggio);
+  --passo: 44%;
+}
+
+/* Lo sfondo della pagina copre le vicine dove la slide attiva le sovrappone. */
+.slide {
+  grid-area: 1 / 1;
+  justify-self: center;
+  inline-size: 78%;
+  padding: var(--bb-spazio-2);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-sfondo);
+  transition-property: translate, scale, filter, opacity;
+  transition-duration: 0.52s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide[data-posizione='0'] {
+  z-index: 3;
+}
+
+.slide[data-posizione='-1'],
+.slide[data-posizione='1'] {
+  z-index: 2;
+  scale: 0.76;
+  filter: blur(3px);
+  opacity: 0.8;
+}
+
+.slide[data-posizione='-2'],
+.slide[data-posizione='2'] {
+  z-index: 1;
+  scale: 0.55;
+  opacity: 0;
+}
+
+.slide[data-posizione='-1'] {
+  translate: calc(-1 * var(--passo)) 0;
+}
+
+.slide[data-posizione='1'] {
+  translate: var(--passo) 0;
+}
+
+.slide[data-posizione='-2'] {
+  translate: calc(-2 * var(--passo)) 0;
+}
+
+.slide[data-posizione='2'] {
+  translate: calc(2 * var(--passo)) 0;
+}
+
+/* Una sola slide: ferma e larga, senza ventaglio. */
+.singola .slide {
+  inline-size: 100%;
+  padding: 0;
+}
+
+.comandi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bb-spazio-3);
+}
+
+.puntini {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Area di tocco ampia, puntino piccolo al centro. */
+.puntino {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.puntino::before {
+  content: '';
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 999px;
+  background: var(--bb-linea);
+  transition: inline-size var(--bb-durata) var(--bb-curva);
+}
+
+.puntino[aria-current='true']::before {
+  inline-size: 1.25rem;
+  background: var(--bb-brand);
+}
+
+@media (width >= 58.75rem) {
+  .palco {
+    --passo: 68%;
+  }
+
+  .slide {
+    inline-size: 44%;
+  }
+
+  .singola .slide {
+    inline-size: 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .puntino::before {
+    transition: none;
+  }
+}

@@ -79,3 +79,11 @@ dd {
     grid-template-columns: 1fr 20rem;
   }
 }
+
+.foto {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--bb-raggio);
+}

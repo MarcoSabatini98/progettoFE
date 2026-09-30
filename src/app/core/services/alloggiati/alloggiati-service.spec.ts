@@ -19,6 +19,15 @@ describe('AlloggiatiService', () => {
 
   afterEach(() => backend.verify());
 
+  it('cerca comuni e stati per nome', () => {
+    service.cercaLuoghi({ cerca: 'Rom', tipo: 'comune' }).subscribe((luoghi) => {
+      expect(luoghi[0].codice).toBe('412058091');
+    });
+
+    const richiesta = backend.expectOne(`${API}/luoghi?cerca=Rom&tipo=comune`);
+    richiesta.flush(risposta([{ codice: '412058091', descrizione: 'ROMA', provincia: 'RM' }]));
+  });
+
   it('scarica il file di più prenotazioni come blob', () => {
     service.scaricaFile([8, 9]).subscribe();
 

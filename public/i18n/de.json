@@ -548,27 +548,45 @@
       "occhiello": "Online-Check-in",
       "titolo": "Wer übernachtet",
       "soggiorno": "Buchung {{ codice }}, vom {{ arrivo }} bis {{ partenza }}.",
-      "testo": "Geben Sie die Daten aller Gäste ein: Bei der Ankunft ist nichts weiter zu tun.",
+      "testo": "Geben Sie die Daten jedes Gastes ein: Bei der Ankunft ist nichts weiter zu tun. Leere Felder ändern bereits gespeicherte Daten nicht.",
       "ospite": "Gast {{ numero }}",
-      "sesso": "Geschlecht",
       "scegli": "Auswählen…",
       "sessi": {
         "M": "Männlich",
         "F": "Weiblich"
       },
-      "nascita": "Geburtsdatum",
-      "documento": "Ausweis des ersten Gastes, gesetzlich für die Meldung vorgeschrieben.",
-      "tipoDocumento": "Dokumentart",
+      "documento": "Ausweis der Person, die die Gruppe leitet, gesetzlich für die Meldung vorgeschrieben.",
       "documenti": {
         "IDENT": "Personalausweis",
         "IDELE": "Elektronischer Personalausweis",
         "PASOR": "Reisepass",
         "PATEN": "Führerschein"
       },
-      "numeroDocumento": "Dokumentnummer",
-      "scadenza": "Ablaufdatum",
       "invia": "Daten senden",
-      "fatto": "Daten am {{ data }} erhalten. Sie können sie bis zur Ankunft korrigieren."
+      "fatto": "Daten am {{ data }} erhalten. Sie können sie bis zur Ankunft korrigieren.",
+      "mancano": "Daten bereits gespeichert. Es fehlen noch:",
+      "completo": "Daten bereits gespeichert und vollständig: Korrigieren Sie nur, was sich geändert hat.",
+      "luogoRilascio": "Italienische Gemeinde oder ausländischer Staat.",
+      "campi": {
+        "nome": "Vorname",
+        "cognome": "Nachname",
+        "sesso": "Geschlecht",
+        "data_nascita": "Geburtsdatum",
+        "cittadinanza_codice": "Staatsangehörigkeit",
+        "stato_nascita_codice": "Geburtsland",
+        "comune_nascita_codice": "Geburtsgemeinde",
+        "provincia_nascita": "Geburtsprovinz",
+        "tipo_documento": "Art des Ausweises",
+        "numero_documento": "Ausweisnummer",
+        "luogo_rilascio_codice": "Ausstellungsort",
+        "scadenza_documento": "Ablaufdatum des Ausweises"
+      }
     }
+  },
+  "carosello": {
+    "ruolo": "Karussell",
+    "slide": "{{ numero }} von {{ totale }}",
+    "precedente": "Zurück",
+    "successiva": "Weiter"
   }
 }

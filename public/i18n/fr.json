@@ -548,27 +548,45 @@
       "occhiello": "Enregistrement en ligne",
       "titolo": "Qui séjourne",
       "soggiorno": "Réservation {{ codice }}, du {{ arrivo }} au {{ partenza }}.",
-      "testo": "Saisissez les données de chaque client : rien d’autre à faire à l’arrivée.",
+      "testo": "Saisissez les données de chaque voyageur : rien d’autre à faire à l’arrivée. Les champs laissés vides ne modifient pas les données déjà enregistrées.",
       "ospite": "Client {{ numero }}",
-      "sesso": "Sexe",
       "scegli": "Choisir…",
       "sessi": {
         "M": "Homme",
         "F": "Femme"
       },
-      "nascita": "Date de naissance",
-      "documento": "Pièce d’identité du premier client, exigée par la loi pour l’enregistrement.",
-      "tipoDocumento": "Type de document",
+      "documento": "Pièce d’identité du responsable du groupe, exigée par la loi pour l’enregistrement.",
       "documenti": {
         "IDENT": "Carte d’identité",
         "IDELE": "Carte d’identité électronique",
         "PASOR": "Passeport",
         "PATEN": "Permis de conduire"
       },
-      "numeroDocumento": "Numéro du document",
-      "scadenza": "Date d’expiration",
       "invia": "Envoyer les données",
-      "fatto": "Données reçues le {{ data }}. Vous pouvez les corriger jusqu’à l’arrivée."
+      "fatto": "Données reçues le {{ data }}. Vous pouvez les corriger jusqu’à l’arrivée.",
+      "mancano": "Données déjà enregistrées. Il manque encore :",
+      "completo": "Données déjà enregistrées et complètes : corrigez seulement ce qui a changé.",
+      "luogoRilascio": "Commune italienne ou pays étranger.",
+      "campi": {
+        "nome": "Prénom",
+        "cognome": "Nom",
+        "sesso": "Sexe",
+        "data_nascita": "Date de naissance",
+        "cittadinanza_codice": "Nationalité",
+        "stato_nascita_codice": "Pays de naissance",
+        "comune_nascita_codice": "Commune de naissance",
+        "provincia_nascita": "Province de naissance",
+        "tipo_documento": "Type de document",
+        "numero_documento": "Numéro du document",
+        "luogo_rilascio_codice": "Lieu de délivrance",
+        "scadenza_documento": "Date d’expiration du document"
+      }
     }
+  },
+  "carosello": {
+    "ruolo": "carrousel",
+    "slide": "{{ numero }} sur {{ totale }}",
+    "precedente": "Précédent",
+    "successiva": "Suivant"
   }
 }

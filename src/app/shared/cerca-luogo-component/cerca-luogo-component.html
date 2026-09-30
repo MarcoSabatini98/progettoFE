@@ -1,0 +1,8 @@
+<app-campo [etichetta]="etichetta()" [aiuto]="aiuto()">
+  <input #campo type="text" autocomplete="off" [attr.list]="elenco" (input)="scrivi(campo.value)" />
+</app-campo>
+<datalist [id]="elenco">
+  @for (luogo of suggerimenti(); track luogo.codice) {
+    <option [value]="nome(luogo)"></option>
+  }
+</datalist>

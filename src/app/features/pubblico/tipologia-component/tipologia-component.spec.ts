@@ -24,6 +24,7 @@ describe('TipologiaComponent', () => {
     media: [],
     servizi: [{ id: 5, nome: 'Wi-Fi', icona: 'wifi' }],
   } as unknown as TipologiaCameraInterface;
+  const foto = (id: number) => ({ id, percorso: `${id}.jpg`, testo_alternativo: `Foto ${id}` });
 
   beforeEach(() => {
     camere.leggiTipologiaPubblica.mockReset();
@@ -56,7 +57,25 @@ describe('TipologiaComponent', () => {
     expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe('/prenota');
     expect(elemento.querySelectorAll('.dettagli dd')).toHaveLength(2);
     expect(elemento.querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
-    expect(elemento.querySelector('app-galleria')).toBeNull();
+    expect(elemento.querySelector('app-carosello')).toBeNull();
+  });
+
+  it('più foto scorrono nel carosello', async () => {
+    camere.leggiTipologiaPubblica.mockReturnValue(of({ ...tipologia, media: [foto(1), foto(2)] }));
+
+    const elemento = await crea();
+
+    expect(elemento.querySelectorAll('app-carosello img.foto')).toHaveLength(2);
+    expect(elemento.querySelector('app-carosello .comandi')).not.toBeNull();
+  });
+
+  it('una foto sola resta ferma, senza comandi', async () => {
+    camere.leggiTipologiaPubblica.mockReturnValue(of({ ...tipologia, media: [foto(1)] }));
+
+    const elemento = await crea();
+
+    expect(elemento.querySelector('app-carosello img.foto')?.getAttribute('alt')).toBe('Foto 1');
+    expect(elemento.querySelector('app-carosello .comandi')).toBeNull();
   });
 
   it('con uno slug sconosciuto lo dice e riporta alle camere', async () => {
