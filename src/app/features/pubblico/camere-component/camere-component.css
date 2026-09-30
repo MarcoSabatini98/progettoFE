@@ -1,0 +1,26 @@
+.servizio {
+  gap: var(--bb-spazio-2);
+}
+
+.servizio-icona {
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.servizio-descrizione {
+  color: var(--bb-testo-tenue);
+}
+
+.servizio-prezzo {
+  margin-block-start: auto;
+  font-weight: 600;
+}
+
+.servizio-prezzo span {
+  color: var(--bb-testo-tenue);
+  font-weight: 400;
+}

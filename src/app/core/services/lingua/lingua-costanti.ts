@@ -1,3 +1,5 @@
+import { HttpContextToken } from '@angular/common/http';
+
 import type { Lingua } from '../../../shared/models/lingua/lingua-model';
 
 /** Lingue del sito, nell'ordine in cui compaiono nel selettore. */
@@ -16,3 +18,9 @@ export const NOMI_LINGUE: Record<Lingua, string> = {
 
 /** Cartella di public/ con un file JSON di traduzioni per lingua. */
 export const PERCORSO_TRADUZIONI = 'i18n';
+
+/**
+ * Per le chiamate in cui ?lingua= è un filtro e non la lingua dei testi
+ * (es. recensioni pubbliche): il linguaInterceptor non la aggiunge.
+ */
+export const SENZA_LINGUA_AUTOMATICA = new HttpContextToken(() => false);

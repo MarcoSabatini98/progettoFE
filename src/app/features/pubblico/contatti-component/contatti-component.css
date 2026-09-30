@@ -1,0 +1,25 @@
+.contatto > app-icona {
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 2rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+address {
+  font-style: normal;
+}
+
+.contatto a {
+  overflow-wrap: anywhere;
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.esterno {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  --icona-dimensione: 1rem;
+}

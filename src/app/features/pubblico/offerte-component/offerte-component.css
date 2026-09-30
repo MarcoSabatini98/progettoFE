@@ -1,0 +1,58 @@
+.offerta {
+  overflow: hidden;
+}
+
+/* La foto occupa tutta la larghezza della scheda, sopra il testo. */
+.offerta-foto {
+  inline-size: calc(100% + 2 * var(--bb-spazio-6));
+  max-inline-size: none;
+  aspect-ratio: 3 / 2;
+  margin: calc(-1 * var(--bb-spazio-6)) calc(-1 * var(--bb-spazio-6)) var(--bb-spazio-2);
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+.offerta-prezzo {
+  color: var(--bb-brand-testo);
+  font-family: var(--bb-font-titoli);
+  font-size: 1.75rem;
+}
+
+.sconto {
+  justify-self: start;
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+  font-weight: 700;
+}
+
+.condizioni,
+.incluso {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+}
+
+.incluso-titolo {
+  font-weight: 600;
+}
+
+.incluso li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo);
+  --icona-dimensione: 1.125rem;
+}
+
+.incluso app-icona {
+  color: var(--bb-brand-testo);
+}

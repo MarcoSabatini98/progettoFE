@@ -1,0 +1,76 @@
+/* Tutta la scheda è cliccabile: il link del titolo si allarga sopra la scheda. */
+.scheda-tipologia {
+  position: relative;
+  display: grid;
+  gap: var(--bb-spazio-4);
+  block-size: 100%;
+}
+
+/* L'arco dell'area pubblica fa da cornice alla foto; senza foto resta il gradiente. */
+.foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 50% 50% var(--bb-raggio) var(--bb-raggio) / 38% 38% var(--bb-raggio)
+    var(--bb-raggio);
+  background: linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
+}
+
+.foto img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  transition: scale var(--bb-durata) var(--bb-curva);
+}
+
+.scheda-tipologia:hover img {
+  scale: 1.04;
+}
+
+.testo {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h3 a {
+  color: var(--bb-testo);
+  text-decoration: none;
+}
+
+h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.dettagli {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+  --icona-dimensione: 1.125rem;
+}
+
+.dettagli li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+}
+
+.prezzo {
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foto img {
+    transition: none;
+  }
+}

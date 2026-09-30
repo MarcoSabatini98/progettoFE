@@ -54,6 +54,14 @@
       "ruoli": "Rollen und Rechte",
       "registro": "Aktivitätsprotokoll",
       "impostazioni": "Einstellungen"
+    },
+    "sito": {
+      "aria": "Website-Menü",
+      "camere": "Zimmer",
+      "offerte": "Angebote",
+      "recensioni": "Bewertungen",
+      "faq": "Häufige Fragen",
+      "contatti": "Kontakt"
     }
   },
   "avvisi": {
@@ -67,7 +75,13 @@
   "home": {
     "invito": "Willkommen: Buchen Sie Ihren Aufenthalt direkt bei uns.",
     "checkin": "Check-in ab",
-    "checkout": "Check-out bis"
+    "checkout": "Check-out bis",
+    "struttura": "Die Unterkunft",
+    "camere": "Unsere Zimmer",
+    "tutteCamere": "Alle Zimmer ansehen",
+    "recensioni": "Das sagen unsere Gäste",
+    "media": "{{ media }}/5 aus {{ numero }} Bewertungen",
+    "tutteRecensioni": "Alle Bewertungen lesen"
   },
   "accesso": {
     "titolo": "Anmelden",
@@ -195,5 +209,95 @@
     "conferma": "Endgültig löschen",
     "annulla": "Abbrechen",
     "fatto": "Konto gelöscht."
+  },
+  "galleria": {
+    "precedente": "Vorheriges Foto",
+    "successiva": "Nächstes Foto"
+  },
+  "camere": {
+    "occhiello": "Übernachten Sie bei uns",
+    "titolo": "Zimmer",
+    "introduzione": "Wählen Sie die passende Unterkunft für Ihre Reise.",
+    "tipologie": "Unterkünfte",
+    "nessuna": "Derzeit sind keine Zimmer online buchbar.",
+    "ospitiMax": "Bis zu {{ numero }} Gäste",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "Ab {{ prezzo }} pro Nacht",
+    "extra": "Zusatzleistungen",
+    "extraIntroduzione": "Jederzeit zu Ihrer Buchung hinzufügbar.",
+    "calcolo": {
+      "a_soggiorno": "pro Aufenthalt",
+      "a_notte": "pro Nacht",
+      "a_persona": "pro Person",
+      "a_persona_notte": "pro Person und Nacht"
+    }
+  },
+  "tipologia": {
+    "tutte": "Alle Zimmer",
+    "foto": "Fotos von {{ nome }}",
+    "ospiti": "Gäste",
+    "superficie": "Größe",
+    "letti": "Betten",
+    "dotazioni": "Im Zimmer",
+    "nonTrovata": "Zimmer nicht gefunden",
+    "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar."
+  },
+  "offerte": {
+    "occhiello": "Für Sie",
+    "titolo": "Angebote",
+    "introduzione": "Pakete mit inklusiven Leistungen und Aktionen für Ihren Aufenthalt.",
+    "nessuna": "Derzeit gibt es keine aktiven Angebote.",
+    "pacchetti": "Pakete",
+    "promozioni": "Aktionen",
+    "tipologia": "Zimmer: {{ nome }}",
+    "nottiMin": "Mindestnächte: {{ numero }}",
+    "periodo": "Vom {{ dal }} bis {{ al }}",
+    "dal": "Ab {{ dal }}",
+    "fino": "Bis {{ al }}",
+    "incluso": "Inklusive",
+    "scontoPercentuale": "-{{ valore }} %",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Aufenthalte vom {{ dal }} bis {{ al }}"
+  },
+  "recensioni": {
+    "occhiello": "Erfahrungen unserer Gäste",
+    "titolo": "Bewertungen",
+    "introduzione": "Was Gäste über ihren Aufenthalt bei uns erzählen.",
+    "riepilogo": "Durchschnittliche Bewertung",
+    "numero": "Bewertungen: {{ numero }}",
+    "elenco": "Liste der Bewertungen",
+    "nessuna": "Es gibt noch keine Bewertungen.",
+    "altre": "Weitere Bewertungen anzeigen",
+    "voto": "Bewertung:",
+    "anonima": "Gast",
+    "risposta": "Antwort von {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Sauberkeit",
+      "media_personale": "Personal",
+      "media_posizione": "Lage",
+      "media_comfort": "Komfort",
+      "media_qualita_prezzo": "Preis-Leistung"
+    }
+  },
+  "faq": {
+    "occhiello": "Brauchen Sie Hilfe?",
+    "titolo": "Häufige Fragen",
+    "nessuna": "Es gibt noch keine häufigen Fragen.",
+    "altraDomanda": "Keine Antwort gefunden?",
+    "scrivici": "Schreiben Sie uns: Wir antworten so schnell wie möglich.",
+    "contatti": "Kontakt aufnehmen"
+  },
+  "contatti": {
+    "occhiello": "Wir sind für Sie da",
+    "titolo": "Kontakt",
+    "introduzione": "Für Informationen und Anfragen erreichen Sie uns so.",
+    "indirizzo": "Adresse",
+    "mappa": "In Karten öffnen",
+    "nuovaScheda": "(öffnet in einem neuen Tab)",
+    "email": "E-Mail",
+    "telefono": "Telefon",
+    "orari": "Zeiten",
+    "checkin": "Check-in ab {{ orario }} Uhr",
+    "checkout": "Check-out bis {{ orario }} Uhr"
   }
 }

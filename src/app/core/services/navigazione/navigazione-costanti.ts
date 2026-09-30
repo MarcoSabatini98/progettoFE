@@ -1,4 +1,7 @@
-import type { GruppoMenuInterface } from '../../../shared/models/voce-menu/voce-menu-model';
+import type {
+  GruppoMenuInterface,
+  VoceMenuInterface,
+} from '../../../shared/models/voce-menu/voce-menu-model';
 import { PERMESSI, RUOLI } from '../ruoli/ruoli-costanti';
 
 /** Radice dell'area staff: è anche il percorso dei link nelle email del backend. */
@@ -12,9 +15,27 @@ export const PERCORSI_PUBBLICI = {
   recuperoPassword: '/recupero-password',
   reimpostaPassword: '/reimposta-password',
   areaPersonale: '/area-personale',
+  /** Seguito dallo slug per il dettaglio: /camere/doppia-vista-mare. */
+  camere: '/camere',
+  offerte: '/offerte',
+  recensioni: '/recensioni',
+  faq: '/faq',
+  contatti: '/contatti',
   /** Seguito dal tipo: /documenti/privacy, /documenti/termini, /documenti/cookie. */
   documenti: '/documenti',
 } as const;
+
+/** Menu del sito pubblico, nell'ordine della testata. */
+export const MENU_PUBBLICO: readonly VoceMenuInterface[] = [
+  { etichetta: 'menu.sito.camere', percorso: PERCORSI_PUBBLICI.camere, icona: 'bed' },
+  { etichetta: 'menu.sito.offerte', percorso: PERCORSI_PUBBLICI.offerte, icona: 'sell' },
+  { etichetta: 'menu.sito.recensioni', percorso: PERCORSI_PUBBLICI.recensioni, icona: 'reviews' },
+  { etichetta: 'menu.sito.faq', percorso: PERCORSI_PUBBLICI.faq, icona: 'help' },
+  { etichetta: 'menu.sito.contatti', percorso: PERCORSI_PUBBLICI.contatti, icona: 'mail' },
+];
+
+/** Ricerca di un indirizzo sulle mappe: si apre in una nuova scheda, niente mappe incorporate (cookie di terze parti). */
+export const URL_MAPPE = 'https://www.google.com/maps/search/?api=1&query=';
 
 /** Account dello staff dentro il gestionale: stessa pagina dell'area personale. */
 export const PERCORSO_ACCOUNT_STAFF = `${PERCORSO_STAFF}/account`;

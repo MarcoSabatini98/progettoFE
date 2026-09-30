@@ -1,0 +1,46 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'contatti.occhiello' | transloco }}</p>
+  <h1>{{ 'contatti.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'contatti.introduzione' | transloco }}</p>
+</header>
+
+<ul class="griglia-schede">
+  @if (indirizzo()) {
+    <li class="scheda contatto">
+      <app-icona nome="location_on" />
+      <h2>{{ 'contatti.indirizzo' | transloco }}</h2>
+      <address>{{ indirizzo() }}</address>
+      <a class="esterno" [href]="mappa()" target="_blank" rel="noopener">
+        {{ 'contatti.mappa' | transloco }}
+        <app-icona nome="open_in_new" />
+        <span class="visivamente-nascosto">{{ 'contatti.nuovaScheda' | transloco }}</span>
+      </a>
+    </li>
+  }
+  @if (email()) {
+    <li class="scheda contatto">
+      <app-icona nome="mail" />
+      <h2>{{ 'contatti.email' | transloco }}</h2>
+      <a [href]="'mailto:' + email()">{{ email() }}</a>
+    </li>
+  }
+  @if (telefono()) {
+    <li class="scheda contatto">
+      <app-icona nome="call" />
+      <h2>{{ 'contatti.telefono' | transloco }}</h2>
+      <a [href]="'tel:' + telefono()">{{ telefono() }}</a>
+    </li>
+  }
+  @if (checkin() || checkout()) {
+    <li class="scheda contatto">
+      <app-icona nome="schedule" />
+      <h2>{{ 'contatti.orari' | transloco }}</h2>
+      @if (checkin()) {
+        <p>{{ 'contatti.checkin' | transloco: { orario: checkin() } }}</p>
+      }
+      @if (checkout()) {
+        <p>{{ 'contatti.checkout' | transloco: { orario: checkout() } }}</p>
+      }
+    </li>
+  }
+</ul>

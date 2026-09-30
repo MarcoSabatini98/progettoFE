@@ -1,10 +1,11 @@
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClient, HttpContext, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
+import { SENZA_LINGUA_AUTOMATICA } from './lingua-costanti';
 import { LinguaService } from './lingua-service';
 import { linguaInterceptor } from './lingua-interceptor';
 
@@ -30,6 +31,14 @@ describe('linguaInterceptor', () => {
     http.get(`${environment.apiUrl}/camere`).subscribe();
     const richiesta = backend.expectOne((r) => r.url === `${environment.apiUrl}/camere`);
     expect(richiesta.request.params.get('lingua')).toBe('en');
+    richiesta.flush([]);
+  });
+
+  it('non aggiunge la lingua quando la chiamata la usa come filtro', () => {
+    const context = new HttpContext().set(SENZA_LINGUA_AUTOMATICA, true);
+    http.get(`${environment.apiUrl}/recensioni/pubbliche`, { context }).subscribe();
+    const richiesta = backend.expectOne(`${environment.apiUrl}/recensioni/pubbliche`);
+    expect(richiesta.request.params.has('lingua')).toBe(false);
     richiesta.flush([]);
   });
 

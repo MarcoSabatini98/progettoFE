@@ -1,0 +1,35 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'faq.occhiello' | transloco }}</p>
+  <h1>{{ 'faq.titolo' | transloco }}</h1>
+</header>
+
+@for (gruppo of gruppi(); track gruppo.categoria) {
+  <section class="sezione">
+    @if (gruppo.categoria) {
+      <h2 class="sezione-titolo">{{ gruppo.categoria }}</h2>
+    }
+    <div class="domande">
+      @for (domanda of gruppo.domande; track domanda.id) {
+        <details class="domanda">
+          <summary>
+            {{ domanda.domanda }}
+            <app-icona nome="keyboard_arrow_down" />
+          </summary>
+          <p class="testo-libero">{{ domanda.risposta }}</p>
+        </details>
+      }
+    </div>
+  </section>
+} @empty {
+  @if (!faq.isLoading()) {
+    <p class="stato-vuoto">{{ (faq.error() ? 'errori.generico' : 'faq.nessuna') | transloco }}</p>
+  }
+}
+
+<aside class="scheda altre-domande">
+  <h2>{{ 'faq.altraDomanda' | transloco }}</h2>
+  <p>{{ 'faq.scrivici' | transloco }}</p>
+  <a class="pulsante pulsante-primario" [routerLink]="contatti">
+    {{ 'faq.contatti' | transloco }}
+  </a>
+</aside>

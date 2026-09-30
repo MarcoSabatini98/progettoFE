@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
@@ -16,6 +16,7 @@ import {
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
 import { ValutazioniInterface } from '../../../shared/models/valutazioni/valutazioni-model';
 import { creaParametri } from '../api/parametri-http';
+import { SENZA_LINGUA_AUTOMATICA } from '../lingua/lingua-costanti';
 
 /** Recensioni dei soggiorni: pubblicazione sul sito, invio dell'ospite e moderazione. */
 @Injectable({
@@ -29,6 +30,7 @@ export class RecensioniService {
 
   /**
    * PUBBLICHE — GET /pubbliche
+   * Qui la lingua filtra le recensioni scritte in quella lingua: senza, arrivano tutte.
    */
   elencaPubbliche(
     filtri: FiltriRecensioniPubbliche = {},
@@ -36,7 +38,10 @@ export class RecensioniService {
     return this.http
       .get<RispostaApiInterface<PaginaInterface<RecensionePubblicaInterface>>>(
         `${this.apiUrl}/pubbliche`,
-        { params: creaParametri(filtri) },
+        {
+          params: creaParametri(filtri),
+          context: new HttpContext().set(SENZA_LINGUA_AUTOMATICA, true),
+        },
       )
       .pipe(map((res) => res.dati));
   }

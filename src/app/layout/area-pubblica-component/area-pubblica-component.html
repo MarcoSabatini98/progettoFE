@@ -9,14 +9,49 @@
       <span class="marchio-nome">{{ nome() }}</span>
     </a>
 
-    @if (auth.collegato()) {
-      <app-menu-utente area="pubblica" />
-    } @else {
-      <a class="pulsante pulsante-secondario" [routerLink]="percorsi.accesso">
-        <app-icona nome="login" />
-        {{ 'menu.accedi' | transloco }}
-      </a>
-    }
+    <nav
+      id="menu-sito"
+      #cassetto
+      class="menu-sito"
+      popover
+      [attr.aria-label]="'menu.sito.aria' | transloco"
+    >
+      <ul>
+        @for (voce of menuSito; track voce.percorso) {
+          <li>
+            <a
+              class="voce"
+              [routerLink]="voce.percorso"
+              routerLinkActive="voce-attiva"
+              ariaCurrentWhenActive="page"
+              (click)="chiudiMenu(cassetto)"
+            >
+              <app-icona [nome]="voce.icona" />
+              {{ voce.etichetta | transloco }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="testata-azioni">
+      @if (auth.collegato()) {
+        <app-menu-utente area="pubblica" />
+      } @else {
+        <a class="pulsante pulsante-secondario" [routerLink]="percorsi.accesso">
+          <app-icona nome="login" />
+          {{ 'menu.accedi' | transloco }}
+        </a>
+      }
+      <button
+        type="button"
+        class="pulsante pulsante-fantasma pulsante-icona apri-menu"
+        popovertarget="menu-sito"
+        [attr.aria-label]="'menu.apri' | transloco"
+      >
+        <app-icona nome="menu" />
+      </button>
+    </div>
   </div>
 </header>
 

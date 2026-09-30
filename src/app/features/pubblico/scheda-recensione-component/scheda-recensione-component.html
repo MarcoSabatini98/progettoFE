@@ -1,0 +1,33 @@
+@let voce = recensione();
+
+<article class="scheda recensione">
+  <p class="voto">
+    <app-icona nome="star-fill" />
+    <span class="visivamente-nascosto">{{ 'recensioni.voto' | transloco }}</span>
+    {{ voce.voto | voto }}/5
+  </p>
+
+  @if (voce.titolo) {
+    <h3>{{ voce.titolo }}</h3>
+  }
+  @if (voce.commento) {
+    <p class="testo-libero commento">{{ voce.commento }}</p>
+  }
+
+  <p class="firma">
+    <span>{{ voce.autore ?? ('recensioni.anonima' | transloco) }}</span>
+    @if (voce.paese) {
+      <span>{{ voce.paese | paese }}</span>
+    }
+    <time [attr.datetime]="voce.creato_il">{{ voce.creato_il | data: 'mese' }}</time>
+  </p>
+
+  @if (voce.risposta) {
+    <div class="risposta">
+      <p class="risposta-titolo">
+        {{ 'recensioni.risposta' | transloco: { nome: struttura() } }}
+      </p>
+      <p class="testo-libero">{{ voce.risposta }}</p>
+    </div>
+  }
+</article>

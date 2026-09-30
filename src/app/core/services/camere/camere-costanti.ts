@@ -20,3 +20,8 @@ export const ENTITA_MEDIA = [
   'logo',
   'varie',
 ] as const;
+
+// ─── Solo frontend ───
+
+/** Icona Material Symbols per i servizi senza icona scelta dallo staff. */
+export const ICONA_SERVIZIO_PREDEFINITA = 'check_circle';

@@ -54,6 +54,14 @@
       "ruoli": "Roles y permisos",
       "registro": "Registro de actividad",
       "impostazioni": "Ajustes"
+    },
+    "sito": {
+      "aria": "Menú del sitio",
+      "camere": "Habitaciones",
+      "offerte": "Ofertas",
+      "recensioni": "Opiniones",
+      "faq": "Preguntas frecuentes",
+      "contatti": "Contacto"
     }
   },
   "avvisi": {
@@ -67,7 +75,13 @@
   "home": {
     "invito": "Bienvenidos: reservad vuestra estancia directamente con nosotros.",
     "checkin": "Check-in desde las",
-    "checkout": "Check-out hasta las"
+    "checkout": "Check-out hasta las",
+    "struttura": "El alojamiento",
+    "camere": "Nuestras habitaciones",
+    "tutteCamere": "Ver todas las habitaciones",
+    "recensioni": "Lo que dicen de nosotros",
+    "media": "{{ media }}/5 de {{ numero }} opiniones",
+    "tutteRecensioni": "Leer todas las opiniones"
   },
   "accesso": {
     "titolo": "Iniciar sesión",
@@ -195,5 +209,95 @@
     "conferma": "Eliminar definitivamente",
     "annulla": "Cancelar",
     "fatto": "Cuenta eliminada."
+  },
+  "galleria": {
+    "precedente": "Foto anterior",
+    "successiva": "Foto siguiente"
+  },
+  "camere": {
+    "occhiello": "Alójate con nosotros",
+    "titolo": "Habitaciones",
+    "introduzione": "Elige el alojamiento que mejor se adapte a tu viaje.",
+    "tipologie": "Alojamientos",
+    "nessuna": "En este momento no hay habitaciones reservables en línea.",
+    "ospitiMax": "Hasta {{ numero }} huéspedes",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "Desde {{ prezzo }} por noche",
+    "extra": "Servicios adicionales",
+    "extraIntroduzione": "Para añadir a tu reserva cuando quieras.",
+    "calcolo": {
+      "a_soggiorno": "por estancia",
+      "a_notte": "por noche",
+      "a_persona": "por persona",
+      "a_persona_notte": "por persona y noche"
+    }
+  },
+  "tipologia": {
+    "tutte": "Todas las habitaciones",
+    "foto": "Fotos de {{ nome }}",
+    "ospiti": "Huéspedes",
+    "superficie": "Superficie",
+    "letti": "Camas",
+    "dotazioni": "En la habitación",
+    "nonTrovata": "Habitación no encontrada",
+    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible."
+  },
+  "offerte": {
+    "occhiello": "Para ti",
+    "titolo": "Ofertas",
+    "introduzione": "Paquetes con servicios incluidos y promociones en estancias.",
+    "nessuna": "En este momento no hay ofertas activas.",
+    "pacchetti": "Paquetes",
+    "promozioni": "Promociones",
+    "tipologia": "Habitación: {{ nome }}",
+    "nottiMin": "Noches mínimas: {{ numero }}",
+    "periodo": "Del {{ dal }} al {{ al }}",
+    "dal": "Desde el {{ dal }}",
+    "fino": "Hasta el {{ al }}",
+    "incluso": "Incluido",
+    "scontoPercentuale": "-{{ valore }} %",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Estancias del {{ dal }} al {{ al }}"
+  },
+  "recensioni": {
+    "occhiello": "Experiencias de los huéspedes",
+    "titolo": "Opiniones",
+    "introduzione": "Lo que cuentan los huéspedes que se alojaron con nosotros.",
+    "riepilogo": "Valoración media",
+    "numero": "Opiniones: {{ numero }}",
+    "elenco": "Lista de opiniones",
+    "nessuna": "Todavía no hay opiniones.",
+    "altre": "Mostrar más opiniones",
+    "voto": "Puntuación:",
+    "anonima": "Huésped",
+    "risposta": "Respuesta de {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Limpieza",
+      "media_personale": "Personal",
+      "media_posizione": "Ubicación",
+      "media_comfort": "Comodidad",
+      "media_qualita_prezzo": "Calidad/precio"
+    }
+  },
+  "faq": {
+    "occhiello": "¿Necesitas ayuda?",
+    "titolo": "Preguntas frecuentes",
+    "nessuna": "Todavía no hay preguntas frecuentes.",
+    "altraDomanda": "¿No encontraste la respuesta?",
+    "scrivici": "Escríbenos: te responderemos lo antes posible.",
+    "contatti": "Contáctanos"
+  },
+  "contatti": {
+    "occhiello": "Estamos aquí",
+    "titolo": "Contacto",
+    "introduzione": "Para información y solicitudes, así puedes contactarnos.",
+    "indirizzo": "Dirección",
+    "mappa": "Abrir en mapas",
+    "nuovaScheda": "(se abre en una pestaña nueva)",
+    "email": "Correo electrónico",
+    "telefono": "Teléfono",
+    "orari": "Horarios",
+    "checkin": "Check-in desde las {{ orario }}",
+    "checkout": "Check-out hasta las {{ orario }}"
   }
 }

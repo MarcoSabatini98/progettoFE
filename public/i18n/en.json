@@ -54,6 +54,14 @@
       "ruoli": "Roles and permissions",
       "registro": "Activity log",
       "impostazioni": "Settings"
+    },
+    "sito": {
+      "aria": "Site menu",
+      "camere": "Rooms",
+      "offerte": "Offers",
+      "recensioni": "Reviews",
+      "faq": "FAQ",
+      "contatti": "Contact"
     }
   },
   "avvisi": {
@@ -67,7 +75,13 @@
   "home": {
     "invito": "Welcome: book your stay directly with us.",
     "checkin": "Check-in from",
-    "checkout": "Check-out by"
+    "checkout": "Check-out by",
+    "struttura": "The property",
+    "camere": "Our rooms",
+    "tutteCamere": "See all rooms",
+    "recensioni": "What guests say",
+    "media": "{{ media }}/5 from {{ numero }} reviews",
+    "tutteRecensioni": "Read all reviews"
   },
   "accesso": {
     "titolo": "Sign in",
@@ -195,5 +209,95 @@
     "conferma": "Delete permanently",
     "annulla": "Cancel",
     "fatto": "Account deleted."
+  },
+  "galleria": {
+    "precedente": "Previous photo",
+    "successiva": "Next photo"
+  },
+  "camere": {
+    "occhiello": "Stay with us",
+    "titolo": "Rooms",
+    "introduzione": "Choose the accommodation that suits your trip.",
+    "tipologie": "Accommodation",
+    "nessuna": "There are no rooms available to book online right now.",
+    "ospitiMax": "Up to {{ numero }} guests",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "From {{ prezzo }} per night",
+    "extra": "Extras",
+    "extraIntroduzione": "Add them to your booking whenever you like.",
+    "calcolo": {
+      "a_soggiorno": "per stay",
+      "a_notte": "per night",
+      "a_persona": "per person",
+      "a_persona_notte": "per person per night"
+    }
+  },
+  "tipologia": {
+    "tutte": "All rooms",
+    "foto": "Photos of {{ nome }}",
+    "ospiti": "Guests",
+    "superficie": "Size",
+    "letti": "Beds",
+    "dotazioni": "In the room",
+    "nonTrovata": "Room not found",
+    "nonTrovataTesto": "This room does not exist or is no longer available."
+  },
+  "offerte": {
+    "occhiello": "For you",
+    "titolo": "Offers",
+    "introduzione": "Packages with included services and deals on stays.",
+    "nessuna": "There are no active offers right now.",
+    "pacchetti": "Packages",
+    "promozioni": "Deals",
+    "tipologia": "Room: {{ nome }}",
+    "nottiMin": "Minimum nights: {{ numero }}",
+    "periodo": "From {{ dal }} to {{ al }}",
+    "dal": "From {{ dal }}",
+    "fino": "Until {{ al }}",
+    "incluso": "Included",
+    "scontoPercentuale": "-{{ valore }}%",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Stays from {{ dal }} to {{ al }}"
+  },
+  "recensioni": {
+    "occhiello": "Guest experiences",
+    "titolo": "Reviews",
+    "introduzione": "What guests who stayed with us have to say.",
+    "riepilogo": "Average rating",
+    "numero": "Reviews: {{ numero }}",
+    "elenco": "List of reviews",
+    "nessuna": "There are no reviews yet.",
+    "altre": "Show more reviews",
+    "voto": "Rating:",
+    "anonima": "Guest",
+    "risposta": "Reply from {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Cleanliness",
+      "media_personale": "Staff",
+      "media_posizione": "Location",
+      "media_comfort": "Comfort",
+      "media_qualita_prezzo": "Value for money"
+    }
+  },
+  "faq": {
+    "occhiello": "Need help?",
+    "titolo": "Frequently asked questions",
+    "nessuna": "There are no FAQs yet.",
+    "altraDomanda": "Didn’t find your answer?",
+    "scrivici": "Write to us: we’ll reply as soon as we can.",
+    "contatti": "Contact us"
+  },
+  "contatti": {
+    "occhiello": "We’re here",
+    "titolo": "Contact",
+    "introduzione": "For information and requests, here’s how to reach us.",
+    "indirizzo": "Address",
+    "mappa": "Open in maps",
+    "nuovaScheda": "(opens in a new tab)",
+    "email": "Email",
+    "telefono": "Phone",
+    "orari": "Times",
+    "checkin": "Check-in from {{ orario }}",
+    "checkout": "Check-out by {{ orario }}"
   }
 }

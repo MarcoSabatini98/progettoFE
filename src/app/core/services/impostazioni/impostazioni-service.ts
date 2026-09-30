@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
@@ -9,6 +9,7 @@ import {
   ImpostazioniPubbliche,
 } from '../../../shared/models/impostazione/impostazione-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
+import { CHIAVI_IMPOSTAZIONI } from './impostazioni-costanti';
 
 /**
  * Impostazioni della struttura: le pubbliche servono al sito, le altre all'admin.
@@ -34,6 +35,22 @@ export class ImpostazioniService {
     const valore = this.pubbliche()[chiave];
     return valore === null || valore === undefined ? '' : String(valore);
   }
+
+  /**
+   * INDIRIZZO
+   * "Via Roma 1, 07100 Sassari (SS)" dalle impostazioni pubbliche: le parti mancanti vengono saltate.
+   */
+  readonly indirizzo = computed(() => {
+    const provincia = this.testo(CHIAVI_IMPOSTAZIONI.provincia);
+    const localita = [
+      this.testo(CHIAVI_IMPOSTAZIONI.cap),
+      this.testo(CHIAVI_IMPOSTAZIONI.comune),
+      provincia && `(${provincia})`,
+    ]
+      .filter(Boolean)
+      .join(' ');
+    return [this.testo(CHIAVI_IMPOSTAZIONI.indirizzo), localita].filter(Boolean).join(', ');
+  });
 
   /**
    * PUBBLICHE — GET /pubbliche

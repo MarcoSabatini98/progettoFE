@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
 import { configuraHttpTest, risposta } from '../api/configura-http-test';
+import { CHIAVI_IMPOSTAZIONI } from './impostazioni-costanti';
 import { ImpostazioniService } from './impostazioni-service';
 
 const API = `${environment.apiUrl}/impostazioni`;
@@ -39,6 +40,25 @@ describe('ImpostazioniService', () => {
 
     expect(service.pubbliche()['struttura_nome']).toBe('Villa Mare');
     expect(service.testo('fedelta_punti_per_notte')).toBe('10');
+  });
+
+  it('compone l’indirizzo saltando le parti mancanti', () => {
+    service.leggiPubbliche().subscribe();
+    backend.expectOne(`${API}/pubbliche`).flush(
+      risposta({
+        [CHIAVI_IMPOSTAZIONI.indirizzo]: 'Via Roma 1',
+        [CHIAVI_IMPOSTAZIONI.cap]: '07100',
+        [CHIAVI_IMPOSTAZIONI.comune]: 'Sassari',
+        [CHIAVI_IMPOSTAZIONI.provincia]: 'SS',
+      }),
+    );
+    expect(service.indirizzo()).toBe('Via Roma 1, 07100 Sassari (SS)');
+
+    service.leggiPubbliche().subscribe();
+    backend
+      .expectOne(`${API}/pubbliche`)
+      .flush(risposta({ [CHIAVI_IMPOSTAZIONI.comune]: 'Sassari' }));
+    expect(service.indirizzo()).toBe('Sassari');
   });
 
   it('aggiorna più impostazioni in una sola richiesta', () => {
