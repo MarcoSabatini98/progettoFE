@@ -1,5 +1,6 @@
 import type { TIPI_DOCUMENTO_LEGALE } from '../../../core/services/sistema/sistema-costanti';
 import { Lingua } from '../lingua/lingua-model';
+import { UtenteInterface } from '../utente/utente-model';
 
 export type TipoDocumentoLegale = (typeof TIPI_DOCUMENTO_LEGALE)[number];
 
@@ -15,4 +16,20 @@ export interface DocumentoLegaleInterface {
   pubblicato_il: string | null;
   creato_da: number | null;
   creato_il: string;
+
+  // ─── Associazioni ───
+  autore?: UtenteInterface | null;
 }
+
+export interface FiltriDocumentiLegali {
+  tipo?: TipoDocumentoLegale;
+  lingua?: Lingua;
+}
+
+/** Nasce come bozza: si pubblica a parte. Senza lingua vale l'italiano. */
+export type DocumentoLegaleCreaPayload = Pick<DocumentoLegaleInterface, 'tipo' | 'versione'> &
+  Partial<Pick<DocumentoLegaleInterface, 'lingua'>> & { contenuto: string };
+
+export type DocumentoLegaleAggiornaPayload = Partial<
+  Pick<DocumentoLegaleCreaPayload, 'versione' | 'contenuto'>
+>;

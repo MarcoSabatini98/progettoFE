@@ -1,7 +1,8 @@
 import type { STATI_RECENSIONE } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import { Lingua } from '../lingua/lingua-model';
 import { OspiteInterface } from '../ospite/ospite-model';
-import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
+import { AccessoPerCodicePayload, PrenotazioneInterface } from '../prenotazione/prenotazione-model';
 import { UtenteInterface } from '../utente/utente-model';
 
 export type StatoRecensione = (typeof STATI_RECENSIONE)[number];
@@ -36,4 +37,42 @@ export interface RecensioneInterface {
   ospite?: OspiteInterface;
   prenotazione?: PrenotazioneInterface;
   moderatore?: UtenteInterface | null;
+}
+
+type VotiDettaglio =
+  'voto_pulizia' | 'voto_personale' | 'voto_posizione' | 'voto_comfort' | 'voto_qualita_prezzo';
+
+/** Sul sito: niente nome completo né dati della prenotazione. */
+export type RecensionePubblicaInterface = Pick<
+  RecensioneInterface,
+  | 'id'
+  | 'voto'
+  | VotiDettaglio
+  | 'titolo'
+  | 'commento'
+  | 'lingua'
+  | 'risposta'
+  | 'risposta_il'
+  | 'creato_il'
+> & {
+  /** "Mario R.", null se anonima. */
+  autore: string | null;
+  paese: string | null;
+};
+
+/** Voti di dettaglio facoltativi. */
+export type RecensioneCreaPayload = Pick<RecensioneInterface, 'voto'> &
+  Partial<Pick<RecensioneInterface, VotiDettaglio | 'titolo' | 'commento' | 'lingua' | 'anonima'>>;
+
+/** Ospite senza account, dal link nell'email. */
+export type RecensionePerCodicePayload = AccessoPerCodicePayload & RecensioneCreaPayload;
+
+export interface FiltriRecensioniPubbliche extends ParametriPaginaInterface {
+  lingua?: Lingua;
+}
+
+export interface FiltriRecensioni extends ParametriPaginaInterface {
+  stato?: StatoRecensione;
+  /** Per trovare in fretta le recensioni negative. */
+  voto_max?: number;
 }

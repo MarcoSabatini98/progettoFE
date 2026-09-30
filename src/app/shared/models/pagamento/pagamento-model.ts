@@ -1,14 +1,20 @@
 import type {
+  METODI_ONLINE,
   METODI_PAGAMENTO,
+  METODI_STRUTTURA,
   STATI_PAGAMENTO,
   TIPI_PAGAMENTO,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
-import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
+import { FiltriPeriodo } from '../periodo/periodo-model';
+import { AccessoPerCodicePayload, PrenotazioneInterface } from '../prenotazione/prenotazione-model';
 import { UtenteInterface } from '../utente/utente-model';
 
 export type TipoPagamento = (typeof TIPI_PAGAMENTO)[number];
 export type MetodoPagamento = (typeof METODI_PAGAMENTO)[number];
 export type StatoPagamento = (typeof STATI_PAGAMENTO)[number];
+export type MetodoOnline = (typeof METODI_ONLINE)[number];
+export type MetodoStruttura = (typeof METODI_STRUTTURA)[number];
 
 /** Movimento di denaro su una prenotazione. L'importo è sempre positivo: il tipo dice la direzione. */
 export interface PagamentoInterface {
@@ -37,4 +43,38 @@ export interface PagamentoInterface {
   // ─── Associazioni ───
   prenotazione?: PrenotazioneInterface;
   operatore?: UtenteInterface | null;
+}
+
+/** Senza importo si paga quanto dovuto ora (acconto o saldo). */
+export interface PagaOnlinePayload {
+  metodo: MetodoOnline;
+  importo?: number;
+}
+
+export type PagaPerCodicePayload = AccessoPerCodicePayload & PagaOnlinePayload;
+
+/** Link di pagamento creato dallo staff. */
+export interface AvviaOnlinePayload extends PagaOnlinePayload {
+  /** Manda il link all'ospite. */
+  invia_email?: boolean;
+}
+
+/** Incasso in struttura o bonifico ricevuto. */
+export type RegistraPagamentoPayload = Pick<PagamentoInterface, 'tipo' | 'importo'> &
+  Partial<Pick<PagamentoInterface, 'riferimento' | 'documento_fiscale' | 'note'>> & {
+    metodo: MetodoStruttura;
+  };
+
+export interface RimborsoPayload {
+  /** Vuoto = rimborso totale. */
+  importo?: number;
+  motivo: string;
+  /** Registra il rimborso anche se il provider non risponde. */
+  forza?: boolean;
+}
+
+export interface FiltriPagamenti extends ParametriPaginaInterface, FiltriPeriodo {
+  stato?: StatoPagamento[];
+  metodo?: MetodoPagamento[];
+  tipo?: TipoPagamento[];
 }

@@ -30,4 +30,11 @@ describe('ArchivioService', () => {
   it('restituisce null se la chiave non esiste', () => {
     expect(service.leggi('assente', ['a'])).toBeNull();
   });
+
+  it('legge un testo libero e lo elimina', () => {
+    service.scrivi('token', 'abc');
+    expect(service.leggiTesto('token')).toBe('abc');
+    service.elimina('token');
+    expect(service.leggiTesto('token')).toBeNull();
+  });
 });

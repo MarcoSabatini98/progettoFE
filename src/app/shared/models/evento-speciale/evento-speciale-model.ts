@@ -17,3 +17,18 @@ export interface EventoSpecialeInterface {
   creato_il: string;
   aggiornato_il: string;
 }
+
+/** dal/al: 'YYYY-MM-DD', eventi che toccano il periodo. */
+export interface FiltriEventi {
+  tipo?: TipoEventoSpeciale;
+  dal?: string;
+  al?: string;
+}
+
+export type EventoSpecialeCreaPayload = Pick<
+  EventoSpecialeInterface,
+  'titolo' | 'data_inizio' | 'data_fine'
+> &
+  Partial<Pick<EventoSpecialeInterface, 'tipo' | 'impatto' | 'note'>>;
+
+export type EventoSpecialeAggiornaPayload = Partial<EventoSpecialeCreaPayload>;

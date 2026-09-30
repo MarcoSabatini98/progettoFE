@@ -8,3 +8,11 @@ export interface ChecklistModelloInterface {
   ordine: number;
   attiva: boolean;
 }
+
+/** Le nuove voci valgono per un tipo di pulizia preciso. */
+export type ChecklistModelloCreaPayload = Pick<ChecklistModelloInterface, 'voce'> &
+  Partial<Pick<ChecklistModelloInterface, 'ordine' | 'attiva'>> & {
+    tipo_pulizia: TipoPulizia;
+  };
+
+export type ChecklistModelloAggiornaPayload = Partial<ChecklistModelloCreaPayload>;

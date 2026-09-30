@@ -20,3 +20,14 @@ export interface MessaggioInterface {
   mittente_visitatore?: VisitatoreInterface | null;
   allegati?: MessaggioAllegatoInterface[];
 }
+
+/** Storico a ritroso: prima_di = id del messaggio più vecchio già caricato. */
+export interface FiltriMessaggi {
+  prima_di?: number;
+  limite?: number;
+}
+
+/** Il testo può mancare se ci sono allegati (al massimo ALLEGATI_MAX). */
+export type InviaMessaggioPayload = Partial<Pick<MessaggioInterface, 'testo' | 'risposta_a_id'>> & {
+  allegati?: File[];
+};

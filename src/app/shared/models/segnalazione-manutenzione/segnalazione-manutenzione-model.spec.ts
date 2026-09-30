@@ -4,7 +4,10 @@ import {
   STATI_SEGNALAZIONE,
   STATI_SEGNALAZIONE_APERTA,
 } from '../../../core/services/pulizie/pulizie-costanti';
-import { SegnalazioneManutenzioneInterface } from './segnalazione-manutenzione-model';
+import {
+  SegnalazioneCreaPayload,
+  SegnalazioneManutenzioneInterface,
+} from './segnalazione-manutenzione-model';
 
 describe('SegnalazioneManutenzioneInterface', () => {
   it('accetta un guasto aperto in area comune', () => {
@@ -25,5 +28,16 @@ describe('SegnalazioneManutenzioneInterface', () => {
 
     expect(STATI_SEGNALAZIONE).toContain(segnalazione.stato);
     expect(STATI_SEGNALAZIONE_APERTA).toContain(segnalazione.stato);
+  });
+
+  it('accetta un guasto che mette la camera fuori servizio', () => {
+    const guasto: SegnalazioneCreaPayload = {
+      camera_id: 4,
+      titolo: 'Perdita dal lavandino',
+      priorita: 'alta',
+      stato_camera: 'fuori_servizio',
+    };
+
+    expect(guasto.stato_camera).toBe('fuori_servizio');
   });
 });

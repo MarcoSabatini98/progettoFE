@@ -4,10 +4,10 @@ import { TIPI_IMPOSTAZIONE } from '../../../core/services/sistema/sistema-costan
 import { ImpostazioneInterface } from './impostazione-model';
 
 describe('ImpostazioneInterface', () => {
-  it("accetta un'impostazione numerica salvata come testo", () => {
+  it("accetta un'impostazione numerica già convertita", () => {
     const impostazione: ImpostazioneInterface = {
       chiave: 'ora_checkin',
-      valore: '14',
+      valore: 14,
       tipo: 'numero',
       gruppo: 'soggiorno',
       descrizione: 'Ora di inizio del check-in',
@@ -17,6 +17,6 @@ describe('ImpostazioneInterface', () => {
     };
 
     expect(TIPI_IMPOSTAZIONE).toContain(impostazione.tipo);
-    expect(Number(impostazione.valore)).toBe(14);
+    expect(impostazione.valore).toBe(14);
   });
 });

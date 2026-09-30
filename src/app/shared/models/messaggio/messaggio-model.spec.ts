@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { TESTO_MAX } from '../../../core/services/chat/chat-costanti';
-import { MessaggioInterface } from './messaggio-model';
+import { ALLEGATI_MAX, TESTO_MAX } from '../../../core/services/chat/chat-costanti';
+import { InviaMessaggioPayload, MessaggioInterface } from './messaggio-model';
 
 describe('MessaggioInterface', () => {
   it('accetta un messaggio di un visitatore entro la lunghezza massima', () => {
@@ -19,5 +19,11 @@ describe('MessaggioInterface', () => {
     };
 
     expect(messaggio.testo.length).toBeLessThanOrEqual(TESTO_MAX);
+  });
+
+  it('accetta un messaggio di soli allegati', () => {
+    const invio: InviaMessaggioPayload = { allegati: [new File(['x'], 'foto.jpg')] };
+
+    expect(invio.allegati?.length).toBeLessThanOrEqual(ALLEGATI_MAX);
   });
 });

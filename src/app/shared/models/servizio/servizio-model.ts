@@ -23,3 +23,18 @@ export interface ServizioInterface {
   // ─── Associazioni ───
   media?: MediaInterface[];
 }
+
+export type ServizioCreaPayload = Pick<ServizioInterface, 'nome' | 'tipo'> &
+  Partial<
+    Pick<
+      ServizioInterface,
+      'prezzo' | 'descrizione' | 'icona' | 'calcolo_prezzo' | 'aliquota_iva' | 'ordine' | 'attivo'
+    >
+  >;
+
+export type ServizioAggiornaPayload = Partial<ServizioCreaPayload>;
+
+export interface FiltriServizi {
+  tipo?: TipoServizio;
+  attivo?: boolean;
+}

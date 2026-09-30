@@ -17,3 +17,14 @@ export interface MediaInterface {
   ordine: number;
   creato_il: string;
 }
+
+/** Senza entita_id: media generici dell'entità (es. galleria della struttura). */
+export type FiltriMedia = Pick<MediaInterface, 'entita'> & { entita_id?: number };
+
+/** Multipart: file nel campo "file", JPG, PNG o WEBP. */
+export type MediaCreaPayload = Pick<MediaInterface, 'entita'> &
+  Partial<Pick<MediaInterface, 'entita_id' | 'testo_alternativo' | 'ordine'>> & { file: File };
+
+export type MediaAggiornaPayload = Partial<
+  Pick<MediaInterface, 'ordine'> & { testo_alternativo: string | null }
+>;

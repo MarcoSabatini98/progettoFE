@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { STATI_CONVERSAZIONE, TIPI_CONVERSAZIONE } from '../../../core/services/chat/chat-costanti';
-import { ConversazioneInterface } from './conversazione-model';
+import { ChatStaffCreaPayload, ConversazioneInterface } from './conversazione-model';
 
 describe('ConversazioneInterface', () => {
   it("accetta un'assistenza aperta di un visitatore non ancora presa", () => {
@@ -24,5 +24,15 @@ describe('ConversazioneInterface', () => {
 
     expect(TIPI_CONVERSAZIONE).toContain(conversazione.tipo);
     expect(STATI_CONVERSAZIONE).toContain(conversazione.stato);
+  });
+
+  it('accetta un gruppo dello staff con titolo', () => {
+    const gruppo: ChatStaffCreaPayload = {
+      partecipanti: [2, 3],
+      titolo: 'Turno di sabato',
+      testo: 'Chi copre la reception?',
+    };
+
+    expect(gruppo.partecipanti.length).toBeGreaterThan(1);
   });
 });

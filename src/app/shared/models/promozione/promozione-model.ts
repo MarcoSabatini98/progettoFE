@@ -28,3 +28,28 @@ export interface PromozioneInterface {
   // ─── Associazioni ───
   tipologia?: TipologiaCameraInterface | null;
 }
+
+export type PromozioneCreaPayload = Pick<
+  PromozioneInterface,
+  'nome' | 'soggiorno_dal' | 'soggiorno_al' | 'tipo_sconto' | 'valore'
+> &
+  Partial<
+    Pick<
+      PromozioneInterface,
+      | 'descrizione'
+      | 'tipologia_id'
+      | 'prenotabile_dal'
+      | 'prenotabile_al'
+      | 'ospiti_min'
+      | 'ospiti_max'
+      | 'notti_min'
+      | 'attiva'
+    >
+  >;
+
+export type PromozioneAggiornaPayload = Partial<PromozioneCreaPayload>;
+
+export interface FiltriPromozioni {
+  attiva?: boolean;
+  tipologia_id?: number;
+}

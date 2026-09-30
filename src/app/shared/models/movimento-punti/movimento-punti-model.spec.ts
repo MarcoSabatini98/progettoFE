@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { MOTIVI_PUNTI } from '../../../core/services/tariffe/tariffe-costanti';
-import { MovimentoPuntiInterface } from './movimento-punti-model';
+import { MovimentoPuntiInterface, PuntiPayload } from './movimento-punti-model';
 
 describe('MovimentoPuntiInterface', () => {
   it('accetta lo storno dei punti di una prenotazione annullata', () => {
@@ -18,5 +18,11 @@ describe('MovimentoPuntiInterface', () => {
 
     expect(MOTIVI_PUNTI).toContain(movimento.motivo);
     expect(movimento.punti).toBeLessThan(0);
+  });
+
+  it('accetta una rettifica che toglie punti', () => {
+    const rettifica: PuntiPayload = { punti: -50, motivo: 'rettifica', note: 'Doppio accredito' };
+
+    expect(rettifica.punti).toBeLessThan(0);
   });
 });

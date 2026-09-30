@@ -5,7 +5,7 @@ import {
   STATI_PAGAMENTO,
   TIPI_PAGAMENTO,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
-import { PagamentoInterface } from './pagamento-model';
+import { PagamentoInterface, RegistraPagamentoPayload } from './pagamento-model';
 
 describe('PagamentoInterface', () => {
   it('accetta un saldo in contanti registrato in struttura', () => {
@@ -31,5 +31,16 @@ describe('PagamentoInterface', () => {
     expect(TIPI_PAGAMENTO).toContain(pagamento.tipo);
     expect(STATI_PAGAMENTO).toContain(pagamento.stato);
     expect(METODI_STRUTTURA).toContain(pagamento.metodo);
+  });
+
+  it('accetta un bonifico ricevuto', () => {
+    const incasso: RegistraPagamentoPayload = {
+      tipo: 'acconto',
+      metodo: 'bonifico',
+      importo: 60,
+      riferimento: 'CRO123',
+    };
+
+    expect(METODI_STRUTTURA).toContain(incasso.metodo);
   });
 });

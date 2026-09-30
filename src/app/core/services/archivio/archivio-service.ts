@@ -17,9 +17,24 @@ export class ArchivioService {
   }
 
   /**
+   * LEGGI TESTO
+   * Per i valori liberi (es. un token), che non hanno un elenco di ammessi.
+   */
+  leggiTesto(chiave: string): string | null {
+    return this.archivio?.getItem(chiave) ?? null;
+  }
+
+  /**
    * SCRIVI
    */
   scrivi(chiave: string, valore: string): void {
     this.archivio?.setItem(chiave, valore);
+  }
+
+  /**
+   * ELIMINA
+   */
+  elimina(chiave: string): void {
+    this.archivio?.removeItem(chiave);
   }
 }

@@ -4,7 +4,11 @@ import {
   CANALI,
   STATI_PRENOTAZIONE,
 } from '../../../core/services/prenotazioni/prenotazioni-costanti';
-import { PrenotazioneInterface } from './prenotazione-model';
+import {
+  FiltriPrenotazioni,
+  PrenotazioneCreaPayload,
+  PrenotazioneInterface,
+} from './prenotazione-model';
 
 describe('PrenotazioneInterface', () => {
   it('accetta una prenotazione diretta confermata', () => {
@@ -58,5 +62,21 @@ describe('PrenotazioneInterface', () => {
 
     expect(STATI_PRENOTAZIONE).toContain(prenotazione.stato);
     expect(CANALI).toContain(prenotazione.canale);
+  });
+
+  it('accetta una prenotazione telefonica dello staff', () => {
+    const richiesta: PrenotazioneCreaPayload = {
+      camera_id: 3,
+      arrivo: '2026-10-01',
+      partenza: '2026-10-03',
+      adulti: 2,
+      titolare: { nome: 'Anna', cognome: 'Rossi' },
+      canale: 'telefono',
+      stato: 'confermata',
+    };
+    const filtri: FiltriPrenotazioni = { stato: ['confermata', 'in_soggiorno'], ordine: 'desc' };
+
+    expect(CANALI).toContain(richiesta.canale);
+    expect(filtri.stato).toHaveLength(2);
   });
 });

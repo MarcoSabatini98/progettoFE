@@ -1,4 +1,5 @@
 import { LivelloFedeltaInterface } from '../livello-fedelta/livello-fedelta-model';
+import { ParametriPaginaInterface } from '../pagina/pagina-model';
 
 /** Punti e livello di un cliente (vista v_fedelta_utenti). */
 export interface FedeltaUtenteInterface {
@@ -13,4 +14,15 @@ export interface FedeltaUtenteInterface {
 
   // ─── Associazioni ───
   dettagli_livello?: LivelloFedeltaInterface | null;
+}
+
+/** Livello attuale e punti che mancano al successivo (null = già al più alto). */
+export interface SituazioneFedeltaInterface extends FedeltaUtenteInterface {
+  punti_mancanti: number | null;
+}
+
+/** Clienti dai più fedeli. */
+export interface FiltriClassificaFedelta extends ParametriPaginaInterface {
+  /** Codice del livello. */
+  livello?: string;
 }

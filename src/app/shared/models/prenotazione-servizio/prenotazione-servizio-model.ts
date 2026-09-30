@@ -12,3 +12,10 @@ export interface PrenotazioneServizioInterface {
   // ─── Associazioni ───
   servizio?: ServizioInterface;
 }
+
+/** Extra scelto: preventivo, prenotazione, pacchetti. */
+export interface ServizioRichiestoPayload {
+  servizio_id: number;
+  /** 1 se manca. */
+  quantita?: number;
+}

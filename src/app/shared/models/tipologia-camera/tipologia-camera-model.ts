@@ -23,3 +23,23 @@ export interface TipologiaCameraInterface {
   media?: MediaInterface[];
   camere?: CameraInterface[];
 }
+
+export type TipologiaCreaPayload = Pick<
+  TipologiaCameraInterface,
+  'nome' | 'prezzo_base' | 'ospiti_max'
+> &
+  Partial<
+    Pick<
+      TipologiaCameraInterface,
+      'slug' | 'descrizione' | 'superficie_mq' | 'letti' | 'ordine' | 'attiva'
+    >
+  > & {
+    /** Dotazioni incluse: sostituiscono quelle attuali. */
+    servizi?: number[];
+  };
+
+export type TipologiaAggiornaPayload = Partial<TipologiaCreaPayload>;
+
+export interface FiltriTipologie {
+  attiva?: boolean;
+}

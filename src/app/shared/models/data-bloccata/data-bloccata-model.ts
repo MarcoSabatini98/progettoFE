@@ -24,3 +24,18 @@ export interface DataBloccataInterface {
   camera?: CameraInterface | null;
   calendario?: CalendarioEsternoInterface | null;
 }
+
+/** dal/al: 'YYYY-MM-DD', chiusure che toccano il periodo. */
+export interface FiltriChiusure {
+  dal?: string;
+  al?: string;
+  camera_id?: number;
+}
+
+/** Senza camera_id chiude tutta la struttura. */
+export type ChiusuraCreaPayload = Pick<DataBloccataInterface, 'data_inizio' | 'data_fine'> &
+  Partial<Pick<DataBloccataInterface, 'camera_id' | 'motivo'>>;
+
+export type ChiusuraAggiornaPayload = Partial<
+  Pick<DataBloccataInterface, 'data_inizio' | 'data_fine' | 'motivo'>
+>;

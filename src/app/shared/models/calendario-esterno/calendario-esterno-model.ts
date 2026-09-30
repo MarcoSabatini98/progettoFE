@@ -20,3 +20,13 @@ export interface CalendarioEsternoInterface {
   // ─── Associazioni ───
   camera?: CameraInterface;
 }
+
+export type CalendarioEsternoCreaPayload = Pick<
+  CalendarioEsternoInterface,
+  'camera_id' | 'canale' | 'url'
+> &
+  Partial<Pick<CalendarioEsternoInterface, 'attivo'>> & { nome: string };
+
+export type CalendarioEsternoAggiornaPayload = Partial<
+  Omit<CalendarioEsternoCreaPayload, 'camera_id'>
+>;
