@@ -6,6 +6,7 @@ import { AuthService } from '../../core/services/auth/auth-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { PERCORSI_PUBBLICI } from '../../core/services/navigazione/navigazione-costanti';
+import { TIPI_DOCUMENTO_LEGALE } from '../../core/services/sistema/sistema-costanti';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { InizialiPipe } from '../../shared/pipes/iniziali-pipe';
@@ -37,6 +38,7 @@ export class AreaPubblicaComponent {
   private readonly impostazioni = inject(ImpostazioniService);
   protected readonly auth = inject(AuthService);
   protected readonly percorsi = PERCORSI_PUBBLICI;
+  protected readonly documentiLegali = TIPI_DOCUMENTO_LEGALE;
 
   protected readonly nome = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.nome));
   protected readonly email = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.email));

@@ -8,10 +8,16 @@ export const PERCORSO_STAFF = '/staff';
 export const PERCORSI_PUBBLICI = {
   home: '/',
   accesso: '/accesso',
+  registrazione: '/registrazione',
   recuperoPassword: '/recupero-password',
   reimpostaPassword: '/reimposta-password',
   areaPersonale: '/area-personale',
+  /** Seguito dal tipo: /documenti/privacy, /documenti/termini, /documenti/cookie. */
+  documenti: '/documenti',
 } as const;
+
+/** Account dello staff dentro il gestionale: stessa pagina dell'area personale. */
+export const PERCORSO_ACCOUNT_STAFF = `${PERCORSO_STAFF}/account`;
 
 /**
  * Menu dell'area staff, raggruppato per momento di lavoro. Ogni voce compare

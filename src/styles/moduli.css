@@ -48,3 +48,15 @@ input[type='radio'] {
   margin: 0;
   accent-color: var(--bb-brand);
 }
+
+/* Due campi affiancati da tablet in su, uno sotto l'altro sul telefono. */
+.campi-coppia {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+@media (width >= 30rem) {
+  .campi-coppia {
+    grid-template-columns: 1fr 1fr;
+  }
+}

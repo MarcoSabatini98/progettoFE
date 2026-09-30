@@ -10,7 +10,8 @@
   },
   "layout": {
     "saltaAlContenuto": "Skip to content",
-    "cin": "CIN"
+    "cin": "CIN",
+    "documentiLegali": "Legal documents"
   },
   "menu": {
     "accedi": "Sign in",
@@ -21,7 +22,8 @@
       "sito": "Go to website",
       "gestionale": "Go to management",
       "personale": "My account",
-      "esci": "Sign out"
+      "esci": "Sign out",
+      "account": "My account"
     },
     "gruppi": {
       "oggi": "Today",
@@ -73,7 +75,8 @@
     "email": "Email",
     "password": "Password",
     "dimenticata": "Forgot your password?",
-    "entra": "Sign in"
+    "entra": "Sign in",
+    "registrati": "No account yet? Sign up"
   },
   "recupero": {
     "titolo": "Reset your password",
@@ -86,9 +89,6 @@
   "reimposta": {
     "titolo": "New password",
     "introduzione": "Choose a new password for your account.",
-    "password": "New password",
-    "aiuto": "At least {{ minima }} characters.",
-    "conferma": "Repeat password",
     "salva": "Save password",
     "fatto": "Password updated: you can now sign in.",
     "linkNonValido": "This link is not valid. Request a new one.",
@@ -99,7 +99,8 @@
     "email": "Enter a valid email.",
     "minlength": "At least {{ requiredLength }} characters.",
     "maxlength": "At most {{ requiredLength }} characters.",
-    "passwordDiverse": "Passwords do not match."
+    "passwordDiverse": "Passwords do not match.",
+    "pattern": "Invalid format."
   },
   "errori": {
     "generico": "Something went wrong. Please try again.",
@@ -108,7 +109,7 @@
     "ACCOUNT_DISATTIVATO": "This account is disabled.",
     "EMAIL_GIA_REGISTRATA": "This email is already registered.",
     "EMAIL_GIA_VERIFICATA": "Your email is already verified.",
-    "CODICE_ERRATO": "The code is incorrect.",
+    "CODICE_ERRATO": "The code is not correct. After too many attempts, request a new one.",
     "CODICE_SCADUTO": "The code has expired: request a new one.",
     "LINK_NON_VALIDO": "The link is not valid or has already been used.",
     "TOKEN_NON_VALIDO": "The link is not valid.",
@@ -121,6 +122,78 @@
     "DATI_NON_VALIDI": "Please check the data you entered.",
     "ERRORE_INTERNO": "Server error. Please try again shortly.",
     "RISORSA_NON_TROVATA": "Item not found.",
-    "PASSWORD_ATTUALE_ERRATA": "Your current password is incorrect."
+    "PASSWORD_ATTUALE_ERRATA": "Your current password is incorrect.",
+    "CONSENSI_OBBLIGATORI": "To sign up you must accept the privacy policy and terms.",
+    "PASSWORD_ERRATA": "The password is not correct.",
+    "PRENOTAZIONI_ATTIVE": "You have current or upcoming bookings: cancel them or wait until your stay ends.",
+    "UTENTE_NON_TROVATO": "Account not found."
+  },
+  "nuovaPassword": {
+    "password": "New password",
+    "aiuto": "At least {{ minima }} characters.",
+    "conferma": "Repeat password"
+  },
+  "registrazione": {
+    "titolo": "Create your account",
+    "introduzione": "Book faster and find all your stays in one place.",
+    "nome": "First name",
+    "cognome": "Last name",
+    "email": "Email",
+    "telefono": "Phone",
+    "facoltativo": "Optional.",
+    "consensi": "Consents",
+    "privacy": "I have read the privacy policy",
+    "termini": "I accept the terms and conditions",
+    "leggi": "Read",
+    "marketing": "I want to receive offers and news by email",
+    "crea": "Create account",
+    "haiAccount": "Already have an account? Sign in"
+  },
+  "documenti": {
+    "privacy": "Privacy policy",
+    "termini": "Terms and conditions",
+    "cookie": "Cookie policy",
+    "versione": "Version {{ versione }}",
+    "nonDisponibile": "Document not available",
+    "nonDisponibileTesto": "This document has not been published yet."
+  },
+  "verifica": {
+    "titolo": "Verify your email",
+    "descrizione": "We sent you a {{ cifre }}-digit code: enter it here to confirm your address.",
+    "codice": "Verification code",
+    "conferma": "Verify",
+    "nuovoCodice": "Send a new code",
+    "inviato": "New code sent: check your inbox.",
+    "fatta": "Email verified."
+  },
+  "profilo": {
+    "titolo": "Your account",
+    "dati": "Personal details",
+    "lingua": "Language",
+    "linguaAiuto": "For the website and the emails you receive.",
+    "salva": "Save",
+    "salvato": "Changes saved.",
+    "email": "Email",
+    "notifiche": "Receive optional emails",
+    "notificheAiuto": "Message summaries and reminders. Booking and payment confirmations are always sent."
+  },
+  "sicurezza": {
+    "titolo": "Password and sign-in",
+    "attuale": "Current password",
+    "cambia": "Change password",
+    "cambiata": "Password changed: sign in with the new one.",
+    "sessioni": "Signed-in devices",
+    "sessioniDescrizione": "Signs you out on every device, including this one.",
+    "esciOvunque": "Sign out everywhere",
+    "uscito": "You have been signed out everywhere."
+  },
+  "eliminaAccount": {
+    "titolo": "Delete account",
+    "descrizione": "Your account will be closed. Past bookings stay in the property records as required by law.",
+    "elimina": "Delete my account",
+    "password": "Confirm with your password",
+    "conferma": "Delete permanently",
+    "annulla": "Cancel",
+    "fatto": "Account deleted."
   }
 }

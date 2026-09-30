@@ -49,6 +49,11 @@
       @if (cin()) {
         <p class="piede-cin">{{ 'layout.cin' | transloco }} {{ cin() }}</p>
       }
+      <nav class="piede-legale" [attr.aria-label]="'layout.documentiLegali' | transloco">
+        @for (tipo of documentiLegali; track tipo) {
+          <a [routerLink]="[percorsi.documenti, tipo]">{{ 'documenti.' + tipo | transloco }}</a>
+        }
+      </nav>
     </div>
 
     <div class="piede-preferenze">

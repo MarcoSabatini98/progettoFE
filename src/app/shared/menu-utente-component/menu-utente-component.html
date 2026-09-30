@@ -15,10 +15,12 @@
 
   <div ngMenu #menu="ngMenu" class="menu" (itemSelected)="scegli($event)">
     <ng-template ngMenuContent>
-      <div ngMenuItem class="voce" [value]="destinazione().percorso">
-        <app-icona [nome]="destinazione().icona" />
-        {{ destinazione().etichetta | transloco }}
-      </div>
+      @for (voce of voci(); track voce.percorso) {
+        <div ngMenuItem class="voce" [value]="voce.percorso">
+          <app-icona [nome]="voce.icona" />
+          {{ voce.etichetta | transloco }}
+        </div>
+      }
       <div ngMenuItem class="voce" [value]="valoreEsci">
         <app-icona nome="logout" />
         {{ 'menu.utente.esci' | transloco }}

@@ -1,0 +1,3 @@
+:host {
+  border-color: color-mix(in oklch, var(--bb-errore) 35%, var(--bb-linea));
+}

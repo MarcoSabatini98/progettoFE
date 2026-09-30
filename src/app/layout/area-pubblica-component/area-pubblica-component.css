@@ -105,6 +105,19 @@
   color: var(--bb-testo-tenue);
 }
 
+.piede-legale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-4);
+  font-size: 0.875rem;
+}
+
+.piede-legale a {
+  color: var(--bb-testo-tenue);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .piede-preferenze {
   display: flex;
   flex-wrap: wrap;

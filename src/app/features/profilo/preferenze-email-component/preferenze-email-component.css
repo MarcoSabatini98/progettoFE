@@ -1,0 +1,15 @@
+.interruttore {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bb-spazio-3);
+}
+
+.interruttore input {
+  flex: none;
+  margin-block-start: 0.125rem;
+}
+
+.interruttore .descrizione {
+  display: block;
+  font-size: 0.875rem;
+}

@@ -27,7 +27,7 @@ export class AccessoComponent {
   /** Pagina da riaprire dopo l'accesso: la mette authGuard nei parametri. */
   readonly ritorno = input<string>();
 
-  protected readonly recupero = PERCORSI_PUBBLICI.recuperoPassword;
+  protected readonly percorsi = PERCORSI_PUBBLICI;
   protected readonly inCorso = signal(false);
   protected readonly errore = signal('');
   protected readonly modulo = inject(NonNullableFormBuilder).group({

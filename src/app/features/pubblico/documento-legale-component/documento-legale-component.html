@@ -1,0 +1,17 @@
+<article class="documento" [attr.aria-busy]="documento.isLoading()">
+  @if (documento.hasValue()) {
+    <header class="intestazione">
+      <h1>{{ 'documenti.' + documento.value().tipo | transloco }}</h1>
+      <p class="versione">
+        {{ 'documenti.versione' | transloco: { versione: documento.value().versione } }}
+      </p>
+    </header>
+    <div class="testo">{{ documento.value().contenuto }}</div>
+  } @else if (!documento.isLoading()) {
+    <h1>{{ 'documenti.nonDisponibile' | transloco }}</h1>
+    <p class="versione">{{ 'documenti.nonDisponibileTesto' | transloco }}</p>
+    <a class="pulsante pulsante-secondario" [routerLink]="home">
+      {{ 'nonTrovata.home' | transloco }}
+    </a>
+  }
+</article>

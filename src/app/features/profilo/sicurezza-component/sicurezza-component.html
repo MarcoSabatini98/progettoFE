@@ -1,0 +1,37 @@
+<h2>{{ 'sicurezza.titolo' | transloco }}</h2>
+
+<form [formGroup]="modulo" (ngSubmit)="cambiaPassword()" novalidate>
+  <app-campo
+    [etichetta]="'sicurezza.attuale' | transloco"
+    [errore]="errori.campo(modulo.controls.attuale)"
+  >
+    <input type="password" formControlName="attuale" autocomplete="current-password" required />
+  </app-campo>
+
+  <app-nuova-password [gruppo]="modulo.controls.nuova" />
+
+  @if (errore()) {
+    <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+  }
+
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'sicurezza.cambia' | transloco }}
+    </button>
+  </div>
+</form>
+
+<div class="sessioni">
+  <h3>{{ 'sicurezza.sessioni' | transloco }}</h3>
+  <p class="descrizione">{{ 'sicurezza.sessioniDescrizione' | transloco }}</p>
+  <div class="azioni">
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="esciOvunque()"
+    >
+      {{ 'sicurezza.esciOvunque' | transloco }}
+    </button>
+  </div>
+</div>

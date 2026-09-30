@@ -1,0 +1,10 @@
+:host {
+  border-color: var(--bb-ocra);
+  background: var(--bb-ocra-tenue);
+}
+
+.codice {
+  max-width: 12rem;
+  font-family: var(--bb-font-mono);
+  letter-spacing: 0.3em;
+}

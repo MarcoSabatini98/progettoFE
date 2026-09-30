@@ -10,7 +10,8 @@
   },
   "layout": {
     "saltaAlContenuto": "Zum Inhalt springen",
-    "cin": "CIN"
+    "cin": "CIN",
+    "documentiLegali": "Rechtliche Dokumente"
   },
   "menu": {
     "accedi": "Anmelden",
@@ -21,7 +22,8 @@
       "sito": "Zur Website",
       "gestionale": "Zur Verwaltung",
       "personale": "Mein Bereich",
-      "esci": "Abmelden"
+      "esci": "Abmelden",
+      "account": "Mein Konto"
     },
     "gruppi": {
       "oggi": "Heute",
@@ -73,7 +75,8 @@
     "email": "E-Mail",
     "password": "Passwort",
     "dimenticata": "Passwort vergessen?",
-    "entra": "Anmelden"
+    "entra": "Anmelden",
+    "registrati": "Noch kein Konto? Registrieren"
   },
   "recupero": {
     "titolo": "Passwort zurücksetzen",
@@ -86,9 +89,6 @@
   "reimposta": {
     "titolo": "Neues Passwort",
     "introduzione": "Wählen Sie das neue Passwort für Ihr Konto.",
-    "password": "Neues Passwort",
-    "aiuto": "Mindestens {{ minima }} Zeichen.",
-    "conferma": "Passwort wiederholen",
     "salva": "Passwort speichern",
     "fatto": "Passwort aktualisiert: Sie können sich jetzt anmelden.",
     "linkNonValido": "Dieser Link ist ungültig. Fordern Sie einen neuen an.",
@@ -99,7 +99,8 @@
     "email": "Geben Sie eine gültige E-Mail ein.",
     "minlength": "Mindestens {{ requiredLength }} Zeichen.",
     "maxlength": "Höchstens {{ requiredLength }} Zeichen.",
-    "passwordDiverse": "Die Passwörter stimmen nicht überein."
+    "passwordDiverse": "Die Passwörter stimmen nicht überein.",
+    "pattern": "Ungültiges Format."
   },
   "errori": {
     "generico": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
@@ -108,7 +109,7 @@
     "ACCOUNT_DISATTIVATO": "Dieses Konto ist deaktiviert.",
     "EMAIL_GIA_REGISTRATA": "Diese E-Mail ist bereits registriert.",
     "EMAIL_GIA_VERIFICATA": "Die E-Mail ist bereits bestätigt.",
-    "CODICE_ERRATO": "Der Code ist falsch.",
+    "CODICE_ERRATO": "Der Code ist nicht korrekt. Nach zu vielen Versuchen fordern Sie einen neuen an.",
     "CODICE_SCADUTO": "Der Code ist abgelaufen: Fordern Sie einen neuen an.",
     "LINK_NON_VALIDO": "Der Link ist ungültig oder wurde bereits verwendet.",
     "TOKEN_NON_VALIDO": "Der Link ist ungültig.",
@@ -121,6 +122,78 @@
     "DATI_NON_VALIDI": "Bitte prüfen Sie Ihre Eingaben.",
     "ERRORE_INTERNO": "Serverfehler. Bitte gleich erneut versuchen.",
     "RISORSA_NON_TROVATA": "Element nicht gefunden.",
-    "PASSWORD_ATTUALE_ERRATA": "Das aktuelle Passwort ist falsch."
+    "PASSWORD_ATTUALE_ERRATA": "Das aktuelle Passwort ist falsch.",
+    "CONSENSI_OBBLIGATORI": "Für die Registrierung müssen Sie Datenschutz und AGB akzeptieren.",
+    "PASSWORD_ERRATA": "Das Passwort ist nicht korrekt.",
+    "PRENOTAZIONI_ATTIVE": "Sie haben laufende oder zukünftige Buchungen: Stornieren Sie sie oder warten Sie das Ende des Aufenthalts ab.",
+    "UTENTE_NON_TROVATO": "Konto nicht gefunden."
+  },
+  "nuovaPassword": {
+    "password": "Neues Passwort",
+    "aiuto": "Mindestens {{ minima }} Zeichen.",
+    "conferma": "Passwort wiederholen"
+  },
+  "registrazione": {
+    "titolo": "Konto erstellen",
+    "introduzione": "Schneller buchen und alle Aufenthalte an einem Ort finden.",
+    "nome": "Vorname",
+    "cognome": "Nachname",
+    "email": "E-Mail",
+    "telefono": "Telefon",
+    "facoltativo": "Optional.",
+    "consensi": "Einwilligungen",
+    "privacy": "Ich habe die Datenschutzerklärung gelesen",
+    "termini": "Ich akzeptiere die AGB",
+    "leggi": "Lesen",
+    "marketing": "Ich möchte Angebote und Neuigkeiten per E-Mail erhalten",
+    "crea": "Konto erstellen",
+    "haiAccount": "Schon ein Konto? Anmelden"
+  },
+  "documenti": {
+    "privacy": "Datenschutzerklärung",
+    "termini": "Allgemeine Geschäftsbedingungen",
+    "cookie": "Cookie-Richtlinie",
+    "versione": "Version {{ versione }}",
+    "nonDisponibile": "Dokument nicht verfügbar",
+    "nonDisponibileTesto": "Dieses Dokument wurde noch nicht veröffentlicht."
+  },
+  "verifica": {
+    "titolo": "E-Mail bestätigen",
+    "descrizione": "Wir haben Ihnen einen {{ cifre }}-stelligen Code gesendet: Geben Sie ihn hier ein, um Ihre Adresse zu bestätigen.",
+    "codice": "Bestätigungscode",
+    "conferma": "Bestätigen",
+    "nuovoCodice": "Neuen Code senden",
+    "inviato": "Neuer Code gesendet: Bitte prüfen Sie Ihr Postfach.",
+    "fatta": "E-Mail bestätigt."
+  },
+  "profilo": {
+    "titolo": "Ihr Konto",
+    "dati": "Persönliche Daten",
+    "lingua": "Sprache",
+    "linguaAiuto": "Für die Website und die E-Mails, die Sie erhalten.",
+    "salva": "Speichern",
+    "salvato": "Änderungen gespeichert.",
+    "email": "E-Mail",
+    "notifiche": "Optionale E-Mails erhalten",
+    "notificheAiuto": "Nachrichtenübersichten und Erinnerungen. Buchungs- und Zahlungsbestätigungen werden immer gesendet."
+  },
+  "sicurezza": {
+    "titolo": "Passwort und Anmeldungen",
+    "attuale": "Aktuelles Passwort",
+    "cambia": "Passwort ändern",
+    "cambiata": "Passwort geändert: Melden Sie sich mit dem neuen an.",
+    "sessioni": "Angemeldete Geräte",
+    "sessioniDescrizione": "Meldet Sie auf allen Geräten ab, auch auf diesem.",
+    "esciOvunque": "Überall abmelden",
+    "uscito": "Sie wurden auf allen Geräten abgemeldet."
+  },
+  "eliminaAccount": {
+    "titolo": "Konto löschen",
+    "descrizione": "Ihr Konto wird geschlossen. Frühere Buchungen bleiben gemäß gesetzlicher Vorgaben in den Unterlagen der Unterkunft.",
+    "elimina": "Mein Konto löschen",
+    "password": "Mit Ihrem Passwort bestätigen",
+    "conferma": "Endgültig löschen",
+    "annulla": "Abbrechen",
+    "fatto": "Konto gelöscht."
   }
 }

@@ -10,7 +10,8 @@
   },
   "layout": {
     "saltaAlContenuto": "Vai al contenuto",
-    "cin": "CIN"
+    "cin": "CIN",
+    "documentiLegali": "Documenti legali"
   },
   "menu": {
     "accedi": "Accedi",
@@ -21,7 +22,8 @@
       "sito": "Vai al sito",
       "gestionale": "Vai al gestionale",
       "personale": "Area personale",
-      "esci": "Esci"
+      "esci": "Esci",
+      "account": "Il mio account"
     },
     "gruppi": {
       "oggi": "Oggi",
@@ -73,7 +75,8 @@
     "email": "Email",
     "password": "Password",
     "dimenticata": "Password dimenticata?",
-    "entra": "Accedi"
+    "entra": "Accedi",
+    "registrati": "Non hai un account? Registrati"
   },
   "recupero": {
     "titolo": "Recupera la password",
@@ -86,9 +89,6 @@
   "reimposta": {
     "titolo": "Nuova password",
     "introduzione": "Scegli la nuova password del tuo account.",
-    "password": "Nuova password",
-    "aiuto": "Almeno {{ minima }} caratteri.",
-    "conferma": "Ripeti la password",
     "salva": "Salva la password",
     "fatto": "Password aggiornata: ora puoi accedere.",
     "linkNonValido": "Il link non è valido. Chiedine uno nuovo.",
@@ -99,7 +99,8 @@
     "email": "Inserisci un’email valida.",
     "minlength": "Almeno {{ requiredLength }} caratteri.",
     "maxlength": "Al massimo {{ requiredLength }} caratteri.",
-    "passwordDiverse": "Le password non coincidono."
+    "passwordDiverse": "Le password non coincidono.",
+    "pattern": "Formato non valido."
   },
   "errori": {
     "generico": "Qualcosa è andato storto. Riprova.",
@@ -108,7 +109,7 @@
     "ACCOUNT_DISATTIVATO": "Questo account è disattivato.",
     "EMAIL_GIA_REGISTRATA": "Questa email è già registrata.",
     "EMAIL_GIA_VERIFICATA": "L’email è già verificata.",
-    "CODICE_ERRATO": "Il codice non è corretto.",
+    "CODICE_ERRATO": "Il codice non è corretto. Dopo troppi tentativi chiedine uno nuovo.",
     "CODICE_SCADUTO": "Il codice è scaduto: chiedine uno nuovo.",
     "LINK_NON_VALIDO": "Il link non è valido o è già stato usato.",
     "TOKEN_NON_VALIDO": "Il link non è valido.",
@@ -121,6 +122,78 @@
     "DATI_NON_VALIDI": "Controlla i dati inseriti.",
     "ERRORE_INTERNO": "Errore del server. Riprova tra poco.",
     "RISORSA_NON_TROVATA": "Elemento non trovato.",
-    "PASSWORD_ATTUALE_ERRATA": "La password attuale non è corretta."
+    "PASSWORD_ATTUALE_ERRATA": "La password attuale non è corretta.",
+    "CONSENSI_OBBLIGATORI": "Per registrarti devi accettare privacy e termini.",
+    "PASSWORD_ERRATA": "La password non è corretta.",
+    "PRENOTAZIONI_ATTIVE": "Hai prenotazioni in corso o future: annullale o attendi la fine del soggiorno.",
+    "UTENTE_NON_TROVATO": "Account non trovato."
+  },
+  "nuovaPassword": {
+    "password": "Nuova password",
+    "aiuto": "Almeno {{ minima }} caratteri.",
+    "conferma": "Ripeti la password"
+  },
+  "registrazione": {
+    "titolo": "Crea il tuo account",
+    "introduzione": "Prenota più velocemente e ritrova i tuoi soggiorni in un unico posto.",
+    "nome": "Nome",
+    "cognome": "Cognome",
+    "email": "Email",
+    "telefono": "Telefono",
+    "facoltativo": "Facoltativo.",
+    "consensi": "Consensi",
+    "privacy": "Ho letto l’informativa sulla privacy",
+    "termini": "Accetto i termini e le condizioni",
+    "leggi": "Leggi",
+    "marketing": "Voglio ricevere offerte e novità via email",
+    "crea": "Crea account",
+    "haiAccount": "Hai già un account? Accedi"
+  },
+  "documenti": {
+    "privacy": "Informativa sulla privacy",
+    "termini": "Termini e condizioni",
+    "cookie": "Cookie policy",
+    "versione": "Versione {{ versione }}",
+    "nonDisponibile": "Documento non disponibile",
+    "nonDisponibileTesto": "Questo documento non è ancora stato pubblicato."
+  },
+  "verifica": {
+    "titolo": "Verifica la tua email",
+    "descrizione": "Ti abbiamo inviato un codice di {{ cifre }} cifre: inseriscilo qui per confermare l’indirizzo.",
+    "codice": "Codice di verifica",
+    "conferma": "Verifica",
+    "nuovoCodice": "Invia un nuovo codice",
+    "inviato": "Nuovo codice inviato: controlla la posta.",
+    "fatta": "Email verificata."
+  },
+  "profilo": {
+    "titolo": "Il tuo account",
+    "dati": "Dati personali",
+    "lingua": "Lingua",
+    "linguaAiuto": "Per il sito e per le email che ricevi.",
+    "salva": "Salva",
+    "salvato": "Modifiche salvate.",
+    "email": "Email",
+    "notifiche": "Ricevi email facoltative",
+    "notificheAiuto": "Riepiloghi dei messaggi e promemoria. Le conferme di prenotazione e pagamento arrivano sempre."
+  },
+  "sicurezza": {
+    "titolo": "Password e accessi",
+    "attuale": "Password attuale",
+    "cambia": "Cambia password",
+    "cambiata": "Password cambiata: accedi con quella nuova.",
+    "sessioni": "Dispositivi collegati",
+    "sessioniDescrizione": "Chiude l’accesso su tutti i dispositivi, compreso questo.",
+    "esciOvunque": "Esci da tutti i dispositivi",
+    "uscito": "Sei uscito da tutti i dispositivi."
+  },
+  "eliminaAccount": {
+    "titolo": "Elimina account",
+    "descrizione": "Il tuo account verrà chiuso. Le prenotazioni passate restano nei registri della struttura come previsto dalla legge.",
+    "elimina": "Elimina il mio account",
+    "password": "Conferma con la tua password",
+    "conferma": "Elimina definitivamente",
+    "annulla": "Annulla",
+    "fatto": "Account eliminato."
   }
 }

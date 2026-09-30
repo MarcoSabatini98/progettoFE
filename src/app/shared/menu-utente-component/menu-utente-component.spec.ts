@@ -23,6 +23,7 @@ describe('MenuUtenteComponent', () => {
   };
 
   beforeEach(() => {
+    utente.update((u) => ({ ...u, ruolo: 'receptionist' }));
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [provideRouter([]), { provide: AuthService, useValue: auth }],
@@ -53,16 +54,29 @@ describe('MenuUtenteComponent', () => {
     await apri(fixture);
     const navigazione = vi.spyOn(TestBed.inject(Router), 'navigateByUrl');
 
-    voci()[0].click();
+    voci()[1].click();
 
     expect(navigazione).toHaveBeenCalledWith('/staff');
   });
 
-  it('dal gestionale riporta al sito', async () => {
+  it('dal gestionale offre il proprio account e il ritorno al sito', async () => {
     const { fixture, voci } = await crea('staff');
     await apri(fixture);
 
-    expect(voci()[0].textContent).toContain('menu.utente.sito');
+    expect(voci().map((voce) => voce.textContent?.trim())).toEqual([
+      'menu.utente.account',
+      'menu.utente.sito',
+      'menu.utente.esci',
+    ]);
+  });
+
+  it("al cliente offre solo l'area personale", async () => {
+    utente.update((u) => ({ ...u, ruolo: 'cliente' }));
+    const { fixture, voci } = await crea('pubblica');
+    await apri(fixture);
+
+    expect(voci()[0].textContent).toContain('menu.utente.personale');
+    expect(voci()).toHaveLength(2);
   });
 
   it('esce e torna alla home', async () => {
@@ -70,7 +84,7 @@ describe('MenuUtenteComponent', () => {
     await apri(fixture);
     const navigazione = vi.spyOn(TestBed.inject(Router), 'navigateByUrl');
 
-    voci()[1].click();
+    voci()[2].click();
 
     expect(auth.esci).toHaveBeenCalled();
     expect(navigazione).toHaveBeenCalledWith('/');
