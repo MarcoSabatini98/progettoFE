@@ -1,0 +1,51 @@
+<button type="button" class="salta" (click)="contenuto.focus()">
+  {{ 'layout.saltaAlContenuto' | transloco }}
+</button>
+
+<header class="barra">
+  <button
+    type="button"
+    class="pulsante pulsante-fantasma pulsante-icona apri-menu"
+    popovertarget="menu-staff"
+    [attr.aria-label]="'menu.apri' | transloco"
+  >
+    <app-icona nome="menu" />
+  </button>
+  <a class="marchio" [routerLink]="percorsoStaff">{{ nome() }}</a>
+  <app-menu-utente area="staff" />
+</header>
+
+<nav id="menu-staff" #menu class="binario" popover [attr.aria-label]="'menu.staff' | transloco">
+  <div class="binario-voci">
+    @for (gruppo of navigazione.menuStaff(); track gruppo.etichetta) {
+      <section class="gruppo">
+        <h2 class="gruppo-titolo">{{ gruppo.etichetta | transloco }}</h2>
+        <ul>
+          @for (voce of gruppo.voci; track voce.percorso) {
+            <li>
+              <a
+                class="voce"
+                [routerLink]="voce.percorso"
+                routerLinkActive="voce-attiva"
+                ariaCurrentWhenActive="page"
+                (click)="chiudiMenu(menu)"
+              >
+                <app-icona [nome]="voce.icona" />
+                {{ voce.etichetta | transloco }}
+              </a>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </div>
+
+  <div class="binario-preferenze">
+    <app-selettore-lingua />
+    <app-selettore-tema />
+  </div>
+</nav>
+
+<main #contenuto class="contenuto" tabindex="-1">
+  <router-outlet />
+</main>

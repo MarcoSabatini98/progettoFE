@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "*.svg",
+                "input": "node_modules/@material-symbols/svg-400/rounded",
+                "output": "icone"
               }
             ],
             "styles": ["src/styles.css"]

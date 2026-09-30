@@ -1,0 +1,81 @@
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+.attivatore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  min-height: var(--bb-controllo-altezza);
+  padding: 0 var(--bb-spazio-2) 0 3px;
+  border: 1px solid var(--bb-linea);
+  border-radius: 999px;
+  background: var(--bb-superficie);
+  cursor: pointer;
+  --icona-dimensione: 1.125rem;
+}
+
+.attivatore:hover {
+  border-color: var(--bb-brand-bordo);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  inline-size: calc(var(--bb-controllo-altezza) - 8px);
+  block-size: calc(var(--bb-controllo-altezza) - 8px);
+  border-radius: 50%;
+  background: var(--colore-avatar, var(--bb-brand));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Il nome compare solo dove c'è spazio. */
+.nome {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (width >= 40rem) {
+  .nome {
+    display: inline;
+  }
+}
+
+/* Angular Aria gestisce apertura e tastiera; posizione e visibilità sono nostre. */
+.menu {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: calc(100% + var(--bb-spazio-2));
+  z-index: 50;
+  min-inline-size: 13rem;
+  padding: var(--bb-spazio-1);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+  box-shadow: var(--bb-ombra);
+}
+
+.menu[data-visible='false'] {
+  display: none;
+}
+
+.voce {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  padding: var(--bb-spazio-3);
+  border-radius: calc(var(--bb-raggio-piccolo) - 2px);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.voce:hover,
+.voce[data-active='true'] {
+  background: var(--bb-incavo);
+}

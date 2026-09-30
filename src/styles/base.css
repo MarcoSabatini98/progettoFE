@@ -41,11 +41,22 @@ h3 {
   text-wrap: balance;
 }
 
+/* Titoli dell'area pubblica nel carattere serif; il gestionale resta su Geist. */
+.area-pubblica :is(h1, h2, h3) {
+  font-family: var(--bb-font-titoli);
+  font-weight: 400;
+}
+
 img,
 svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+a {
+  color: var(--bb-brand-testo);
+  text-underline-offset: 0.2em;
 }
 
 input,
@@ -59,6 +70,25 @@ select {
 :focus-visible {
   outline: 2px solid var(--bb-brand-testo);
   outline-offset: 2px;
+}
+
+/* Pulsante "salta al contenuto" dei layout: visibile solo quando riceve il focus da tastiera. */
+.salta {
+  position: absolute;
+  inset-inline-start: var(--bb-spazio-4);
+  inset-block-start: var(--bb-spazio-2);
+  z-index: 60;
+  padding: var(--bb-spazio-2) var(--bb-spazio-4);
+  border: 0;
+  border-radius: var(--bb-pulsante-raggio);
+  cursor: pointer;
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+  transform: translateY(-200%);
+}
+
+.salta:focus {
+  transform: none;
 }
 
 /* Testo per i lettori di schermo, invisibile a video. */

@@ -1,0 +1,55 @@
+/*
+ * Scheda comune alle pagine di accesso, recupero e reimpostazione della password.
+ * Ogni pagina la carica con styleUrls insieme al proprio CSS.
+ */
+
+:host {
+  display: block;
+  padding: var(--bb-spazio-8) var(--bb-margine) var(--bb-spazio-12);
+}
+
+.scheda {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  max-width: 26rem;
+  margin-inline: auto;
+  padding: var(--bb-spazio-8) var(--bb-spazio-6);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+  box-shadow: var(--bb-ombra);
+}
+
+.intestazione {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 6vw, 2.25rem);
+}
+
+.introduzione {
+  color: var(--bb-testo-tenue);
+}
+
+form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.esito {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.esito-errore {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+}
+
+.collegamento {
+  justify-self: center;
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}

@@ -1,8 +1,12 @@
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TranslocoService, TranslocoTestingModule } from '@jsverse/transloco';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { risposta } from '../api/configura-http-test';
 import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
+import { ImpostazioniService } from '../impostazioni/impostazioni-service';
 import { LINGUE } from './lingua-costanti';
 import { LinguaService } from './lingua-service';
 import { CONFIG_TRANSLOCO } from './transloco-config';
@@ -18,6 +22,7 @@ describe('LinguaService', () => {
           translocoConfig: CONFIG_TRANSLOCO,
         }),
       ],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     return TestBed.inject(LinguaService);
   }
@@ -52,5 +57,17 @@ describe('LinguaService', () => {
     expect(TestBed.inject(TranslocoService).getActiveLang()).toBe('fr');
     expect(document.documentElement.lang).toBe('fr');
     expect(localStorage.getItem(CHIAVI_ARCHIVIO.lingua)).toBe('fr');
+  });
+
+  it("offre solo le lingue attivate dall'admin, nell'ordine del selettore", () => {
+    const service = crea();
+    expect(service.disponibili()).toEqual(LINGUE);
+
+    TestBed.inject(ImpostazioniService).leggiPubbliche().subscribe();
+    TestBed.inject(HttpTestingController)
+      .expectOne((req) => req.url.endsWith('/impostazioni/pubbliche'))
+      .flush(risposta({ lingue_attive: ['en', 'it'] }));
+
+    expect(service.disponibili()).toEqual(['it', 'en']);
   });
 });

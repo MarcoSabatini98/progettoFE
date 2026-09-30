@@ -7,5 +7,120 @@
     "sistema": "Automatisch",
     "chiaro": "Hell",
     "scuro": "Dunkel"
+  },
+  "layout": {
+    "saltaAlContenuto": "Zum Inhalt springen",
+    "cin": "CIN"
+  },
+  "menu": {
+    "accedi": "Anmelden",
+    "apri": "Menü öffnen",
+    "staff": "Verwaltungsmenü",
+    "utente": {
+      "apri": "Menü von {{ nome }}",
+      "sito": "Zur Website",
+      "gestionale": "Zur Verwaltung",
+      "personale": "Mein Bereich",
+      "esci": "Abmelden"
+    },
+    "gruppi": {
+      "oggi": "Heute",
+      "soggiorni": "Aufenthalte",
+      "struttura": "Unterkunft",
+      "cassa": "Kasse",
+      "direzione": "Leitung"
+    },
+    "voci": {
+      "cruscotto": "Übersicht",
+      "pulizie": "Reinigung",
+      "chat": "Chat",
+      "manutenzione": "Wartung",
+      "prenotazioni": "Buchungen",
+      "planning": "Belegungsplan",
+      "ospiti": "Gäste",
+      "alloggiati": "Gästemeldung",
+      "camere": "Zimmer",
+      "tariffe": "Preise",
+      "calendari": "Externe Kalender",
+      "contenuti": "Inhalte",
+      "faq": "FAQ",
+      "recensioni": "Bewertungen",
+      "pagamenti": "Zahlungen",
+      "fatture": "Rechnungen",
+      "report": "Berichte",
+      "utenti": "Benutzer",
+      "ruoli": "Rollen und Rechte",
+      "registro": "Aktivitätsprotokoll",
+      "impostazioni": "Einstellungen"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Hinweis schließen"
+  },
+  "nonTrovata": {
+    "titolo": "Seite nicht gefunden",
+    "testo": "Der Link ist möglicherweise falsch oder die Seite existiert nicht mehr.",
+    "home": "Zur Startseite"
+  },
+  "home": {
+    "invito": "Willkommen: Buchen Sie Ihren Aufenthalt direkt bei uns.",
+    "checkin": "Check-in ab",
+    "checkout": "Check-out bis"
+  },
+  "accesso": {
+    "titolo": "Anmelden",
+    "introduzione": "Melden Sie sich mit der E-Mail und dem Passwort Ihres Kontos an.",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "dimenticata": "Passwort vergessen?",
+    "entra": "Anmelden"
+  },
+  "recupero": {
+    "titolo": "Passwort zurücksetzen",
+    "introduzione": "Geben Sie die E-Mail Ihres Kontos ein: Wir senden Ihnen einen Link, um ein neues Passwort zu wählen.",
+    "email": "E-Mail",
+    "invia": "Link senden",
+    "inviata": "Wenn die E-Mail registriert ist, erhalten Sie in Kürze eine Nachricht mit dem Link. Prüfen Sie auch den Spam-Ordner.",
+    "torna": "Zurück zur Anmeldung"
+  },
+  "reimposta": {
+    "titolo": "Neues Passwort",
+    "introduzione": "Wählen Sie das neue Passwort für Ihr Konto.",
+    "password": "Neues Passwort",
+    "aiuto": "Mindestens {{ minima }} Zeichen.",
+    "conferma": "Passwort wiederholen",
+    "salva": "Passwort speichern",
+    "fatto": "Passwort aktualisiert: Sie können sich jetzt anmelden.",
+    "linkNonValido": "Dieser Link ist ungültig. Fordern Sie einen neuen an.",
+    "nuovoLink": "Neuen Link anfordern"
+  },
+  "moduli": {
+    "required": "Pflichtfeld.",
+    "email": "Geben Sie eine gültige E-Mail ein.",
+    "minlength": "Mindestens {{ requiredLength }} Zeichen.",
+    "maxlength": "Höchstens {{ requiredLength }} Zeichen.",
+    "passwordDiverse": "Die Passwörter stimmen nicht überein."
+  },
+  "errori": {
+    "generico": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "rete": "Server nicht erreichbar. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
+    "CREDENZIALI_NON_VALIDE": "E-Mail oder Passwort falsch.",
+    "ACCOUNT_DISATTIVATO": "Dieses Konto ist deaktiviert.",
+    "EMAIL_GIA_REGISTRATA": "Diese E-Mail ist bereits registriert.",
+    "EMAIL_GIA_VERIFICATA": "Die E-Mail ist bereits bestätigt.",
+    "CODICE_ERRATO": "Der Code ist falsch.",
+    "CODICE_SCADUTO": "Der Code ist abgelaufen: Fordern Sie einen neuen an.",
+    "LINK_NON_VALIDO": "Der Link ist ungültig oder wurde bereits verwendet.",
+    "TOKEN_NON_VALIDO": "Der Link ist ungültig.",
+    "TOKEN_SCADUTO": "Der Link ist abgelaufen: Fordern Sie einen neuen an.",
+    "SESSIONE_SCADUTA": "Ihre Sitzung ist abgelaufen: Bitte melden Sie sich erneut an.",
+    "SESSIONE_COMPROMESSA": "Aus Sicherheitsgründen wurde die Sitzung beendet: Bitte melden Sie sich erneut an.",
+    "NON_AUTENTICATO": "Melden Sie sich an, um fortzufahren.",
+    "PERMESSO_NEGATO": "Dafür fehlt Ihnen die Berechtigung.",
+    "TROPPE_RICHIESTE": "Zu viele Versuche. Warten Sie einige Minuten und versuchen Sie es erneut.",
+    "DATI_NON_VALIDI": "Bitte prüfen Sie Ihre Eingaben.",
+    "ERRORE_INTERNO": "Serverfehler. Bitte gleich erneut versuchen.",
+    "RISORSA_NON_TROVATA": "Element nicht gefunden.",
+    "PASSWORD_ATTUALE_ERRATA": "Das aktuelle Passwort ist falsch."
   }
 }

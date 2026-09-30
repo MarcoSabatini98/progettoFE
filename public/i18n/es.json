@@ -7,5 +7,120 @@
     "sistema": "Automático",
     "chiaro": "Claro",
     "scuro": "Oscuro"
+  },
+  "layout": {
+    "saltaAlContenuto": "Ir al contenido",
+    "cin": "CIN"
+  },
+  "menu": {
+    "accedi": "Iniciar sesión",
+    "apri": "Abrir menú",
+    "staff": "Menú de gestión",
+    "utente": {
+      "apri": "Menú de {{ nome }}",
+      "sito": "Ir al sitio",
+      "gestionale": "Ir a la gestión",
+      "personale": "Mi área",
+      "esci": "Cerrar sesión"
+    },
+    "gruppi": {
+      "oggi": "Hoy",
+      "soggiorni": "Estancias",
+      "struttura": "Alojamiento",
+      "cassa": "Caja",
+      "direzione": "Dirección"
+    },
+    "voci": {
+      "cruscotto": "Panel",
+      "pulizie": "Limpieza",
+      "chat": "Chat",
+      "manutenzione": "Mantenimiento",
+      "prenotazioni": "Reservas",
+      "planning": "Planning",
+      "ospiti": "Huéspedes",
+      "alloggiati": "Registro de huéspedes",
+      "camere": "Habitaciones",
+      "tariffe": "Tarifas",
+      "calendari": "Calendarios externos",
+      "contenuti": "Contenidos",
+      "faq": "FAQ",
+      "recensioni": "Reseñas",
+      "pagamenti": "Pagos",
+      "fatture": "Facturas",
+      "report": "Informes",
+      "utenti": "Usuarios",
+      "ruoli": "Roles y permisos",
+      "registro": "Registro de actividad",
+      "impostazioni": "Ajustes"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Cerrar aviso"
+  },
+  "nonTrovata": {
+    "titolo": "Página no encontrada",
+    "testo": "Puede que el enlace sea incorrecto o que la página ya no exista.",
+    "home": "Volver al inicio"
+  },
+  "home": {
+    "invito": "Bienvenidos: reservad vuestra estancia directamente con nosotros.",
+    "checkin": "Check-in desde las",
+    "checkout": "Check-out hasta las"
+  },
+  "accesso": {
+    "titolo": "Iniciar sesión",
+    "introduzione": "Usa el correo y la contraseña de tu cuenta.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "dimenticata": "¿Has olvidado la contraseña?",
+    "entra": "Iniciar sesión"
+  },
+  "recupero": {
+    "titolo": "Recuperar la contraseña",
+    "introduzione": "Escribe el correo de tu cuenta: te enviaremos un enlace para elegir una nueva.",
+    "email": "Correo electrónico",
+    "invia": "Enviar enlace",
+    "inviata": "Si el correo está registrado, pronto recibirás un mensaje con el enlace. Revisa también el correo no deseado.",
+    "torna": "Volver a iniciar sesión"
+  },
+  "reimposta": {
+    "titolo": "Nueva contraseña",
+    "introduzione": "Elige la nueva contraseña de tu cuenta.",
+    "password": "Nueva contraseña",
+    "aiuto": "Al menos {{ minima }} caracteres.",
+    "conferma": "Repite la contraseña",
+    "salva": "Guardar contraseña",
+    "fatto": "Contraseña actualizada: ya puedes iniciar sesión.",
+    "linkNonValido": "El enlace no es válido. Solicita uno nuevo.",
+    "nuovoLink": "Solicitar un nuevo enlace"
+  },
+  "moduli": {
+    "required": "Campo obligatorio.",
+    "email": "Introduce un correo válido.",
+    "minlength": "Al menos {{ requiredLength }} caracteres.",
+    "maxlength": "Como máximo {{ requiredLength }} caracteres.",
+    "passwordDiverse": "Las contraseñas no coinciden."
+  },
+  "errori": {
+    "generico": "Algo ha ido mal. Inténtalo de nuevo.",
+    "rete": "No se puede conectar con el servidor. Comprueba la conexión e inténtalo de nuevo.",
+    "CREDENZIALI_NON_VALIDE": "Correo o contraseña incorrectos.",
+    "ACCOUNT_DISATTIVATO": "Esta cuenta está desactivada.",
+    "EMAIL_GIA_REGISTRATA": "Este correo ya está registrado.",
+    "EMAIL_GIA_VERIFICATA": "El correo ya está verificado.",
+    "CODICE_ERRATO": "El código no es correcto.",
+    "CODICE_SCADUTO": "El código ha caducado: solicita uno nuevo.",
+    "LINK_NON_VALIDO": "El enlace no es válido o ya se ha usado.",
+    "TOKEN_NON_VALIDO": "El enlace no es válido.",
+    "TOKEN_SCADUTO": "El enlace ha caducado: solicita uno nuevo.",
+    "SESSIONE_SCADUTA": "Tu sesión ha caducado: inicia sesión de nuevo.",
+    "SESSIONE_COMPROMESSA": "Por seguridad se ha cerrado la sesión: inicia sesión de nuevo.",
+    "NON_AUTENTICATO": "Inicia sesión para continuar.",
+    "PERMESSO_NEGATO": "No tienes permiso para esta operación.",
+    "TROPPE_RICHIESTE": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "DATI_NON_VALIDI": "Revisa los datos introducidos.",
+    "ERRORE_INTERNO": "Error del servidor. Inténtalo de nuevo en breve.",
+    "RISORSA_NON_TROVATA": "Elemento no encontrado.",
+    "PASSWORD_ATTUALE_ERRATA": "La contraseña actual no es correcta."
   }
 }

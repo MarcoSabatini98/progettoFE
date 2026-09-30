@@ -1,0 +1,24 @@
+.non-trovata {
+  display: grid;
+  justify-items: center;
+  gap: var(--bb-spazio-4);
+  max-width: 32rem;
+  margin: var(--bb-spazio-12) auto;
+  padding-inline: var(--bb-margine);
+  text-align: center;
+}
+
+.codice {
+  color: var(--bb-brand-testo);
+  font-family: var(--bb-font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+.testo {
+  color: var(--bb-testo-tenue);
+}

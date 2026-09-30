@@ -1,0 +1,13 @@
+<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -- il controllo arriva da ng-content -->
+<label class="campo">
+  <span class="campo-etichetta">{{ etichetta() }}</span>
+  <ng-content />
+</label>
+@if (errore()) {
+  <p class="campo-nota campo-errore" role="alert">
+    <app-icona nome="error" />
+    {{ errore() }}
+  </p>
+} @else if (aiuto()) {
+  <p class="campo-nota">{{ aiuto() }}</p>
+}

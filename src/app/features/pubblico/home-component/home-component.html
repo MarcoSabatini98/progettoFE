@@ -1,0 +1,30 @@
+<section class="copertina">
+  <div class="arco" aria-hidden="true"></div>
+  <div class="copertina-testo">
+    @if (comune()) {
+      <p class="luogo">
+        <app-icona nome="location_on" />
+        {{ comune() }}
+      </p>
+    }
+    <h1>{{ nome() }}</h1>
+    <p class="invito">{{ 'home.invito' | transloco }}</p>
+
+    @if (checkin() || checkout()) {
+      <dl class="orari">
+        @if (checkin()) {
+          <div>
+            <dt>{{ 'home.checkin' | transloco }}</dt>
+            <dd>{{ checkin() }}</dd>
+          </div>
+        }
+        @if (checkout()) {
+          <div>
+            <dt>{{ 'home.checkout' | transloco }}</dt>
+            <dd>{{ checkout() }}</dd>
+          </div>
+        }
+      </dl>
+    }
+  </div>
+</section>

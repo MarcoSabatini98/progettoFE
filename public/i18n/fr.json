@@ -7,5 +7,120 @@
     "sistema": "Automatique",
     "chiaro": "Clair",
     "scuro": "Sombre"
+  },
+  "layout": {
+    "saltaAlContenuto": "Aller au contenu",
+    "cin": "CIN"
+  },
+  "menu": {
+    "accedi": "Se connecter",
+    "apri": "Ouvrir le menu",
+    "staff": "Menu de gestion",
+    "utente": {
+      "apri": "Menu de {{ nome }}",
+      "sito": "Aller au site",
+      "gestionale": "Aller à la gestion",
+      "personale": "Mon espace",
+      "esci": "Se déconnecter"
+    },
+    "gruppi": {
+      "oggi": "Aujourd’hui",
+      "soggiorni": "Séjours",
+      "struttura": "Établissement",
+      "cassa": "Caisse",
+      "direzione": "Direction"
+    },
+    "voci": {
+      "cruscotto": "Tableau de bord",
+      "pulizie": "Ménage",
+      "chat": "Chat",
+      "manutenzione": "Maintenance",
+      "prenotazioni": "Réservations",
+      "planning": "Planning",
+      "ospiti": "Clients",
+      "alloggiati": "Déclaration des hôtes",
+      "camere": "Chambres",
+      "tariffe": "Tarifs",
+      "calendari": "Calendriers externes",
+      "contenuti": "Contenus",
+      "faq": "FAQ",
+      "recensioni": "Avis",
+      "pagamenti": "Paiements",
+      "fatture": "Factures",
+      "report": "Rapports",
+      "utenti": "Utilisateurs",
+      "ruoli": "Rôles et autorisations",
+      "registro": "Journal d’activité",
+      "impostazioni": "Paramètres"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Fermer la notification"
+  },
+  "nonTrovata": {
+    "titolo": "Page introuvable",
+    "testo": "Le lien est peut-être erroné ou la page n’existe plus.",
+    "home": "Retour à l’accueil"
+  },
+  "home": {
+    "invito": "Bienvenue : réservez votre séjour directement chez nous.",
+    "checkin": "Arrivée à partir de",
+    "checkout": "Départ avant"
+  },
+  "accesso": {
+    "titolo": "Se connecter",
+    "introduzione": "Utilisez l’e-mail et le mot de passe de votre compte.",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "dimenticata": "Mot de passe oublié ?",
+    "entra": "Se connecter"
+  },
+  "recupero": {
+    "titolo": "Récupérer le mot de passe",
+    "introduzione": "Saisissez l’e-mail de votre compte : nous vous enverrons un lien pour en choisir un nouveau.",
+    "email": "E-mail",
+    "invia": "Envoyer le lien",
+    "inviata": "Si l’e-mail est enregistré, vous recevrez bientôt un message avec le lien. Vérifiez aussi les courriers indésirables.",
+    "torna": "Retour à la connexion"
+  },
+  "reimposta": {
+    "titolo": "Nouveau mot de passe",
+    "introduzione": "Choisissez le nouveau mot de passe de votre compte.",
+    "password": "Nouveau mot de passe",
+    "aiuto": "Au moins {{ minima }} caractères.",
+    "conferma": "Répétez le mot de passe",
+    "salva": "Enregistrer",
+    "fatto": "Mot de passe mis à jour : vous pouvez vous connecter.",
+    "linkNonValido": "Ce lien n’est pas valide. Demandez-en un nouveau.",
+    "nuovoLink": "Demander un nouveau lien"
+  },
+  "moduli": {
+    "required": "Champ obligatoire.",
+    "email": "Saisissez un e-mail valide.",
+    "minlength": "Au moins {{ requiredLength }} caractères.",
+    "maxlength": "Au maximum {{ requiredLength }} caractères.",
+    "passwordDiverse": "Les mots de passe ne correspondent pas."
+  },
+  "errori": {
+    "generico": "Une erreur s’est produite. Réessayez.",
+    "rete": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
+    "CREDENZIALI_NON_VALIDE": "E-mail ou mot de passe incorrect.",
+    "ACCOUNT_DISATTIVATO": "Ce compte est désactivé.",
+    "EMAIL_GIA_REGISTRATA": "Cet e-mail est déjà enregistré.",
+    "EMAIL_GIA_VERIFICATA": "L’e-mail est déjà vérifié.",
+    "CODICE_ERRATO": "Le code est incorrect.",
+    "CODICE_SCADUTO": "Le code a expiré : demandez-en un nouveau.",
+    "LINK_NON_VALIDO": "Le lien n’est pas valide ou a déjà été utilisé.",
+    "TOKEN_NON_VALIDO": "Le lien n’est pas valide.",
+    "TOKEN_SCADUTO": "Le lien a expiré : demandez-en un nouveau.",
+    "SESSIONE_SCADUTA": "Votre session a expiré : reconnectez-vous.",
+    "SESSIONE_COMPROMESSA": "Par sécurité, la session a été fermée : reconnectez-vous.",
+    "NON_AUTENTICATO": "Connectez-vous pour continuer.",
+    "PERMESSO_NEGATO": "Vous n’avez pas l’autorisation pour cette opération.",
+    "TROPPE_RICHIESTE": "Trop de tentatives. Patientez quelques minutes et réessayez.",
+    "DATI_NON_VALIDI": "Vérifiez les données saisies.",
+    "ERRORE_INTERNO": "Erreur du serveur. Réessayez dans un instant.",
+    "RISORSA_NON_TROVATA": "Élément introuvable.",
+    "PASSWORD_ATTUALE_ERRATA": "Le mot de passe actuel est incorrect."
   }
 }

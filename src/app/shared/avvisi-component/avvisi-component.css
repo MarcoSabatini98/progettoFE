@@ -1,0 +1,62 @@
+/* In basso al centro su mobile (vicino al pollice), in basso a destra da desktop. */
+.avvisi {
+  position: fixed;
+  inset-inline: var(--bb-spazio-4);
+  inset-block-end: calc(var(--bb-spazio-4) + env(safe-area-inset-bottom));
+  z-index: 100;
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.avviso {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  padding: var(--bb-spazio-2) var(--bb-spazio-2) var(--bb-spazio-2) var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-inline-start: 4px solid var(--colore-avviso);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+  box-shadow: var(--bb-ombra);
+  pointer-events: auto;
+  animation: entra var(--bb-durata) var(--bb-curva);
+}
+
+.avviso > app-icona {
+  color: var(--colore-avviso);
+}
+
+.avviso p {
+  flex: 1;
+  font-size: 0.9375rem;
+}
+
+.avviso-successo {
+  --colore-avviso: var(--bb-ok);
+}
+
+.avviso-errore {
+  --colore-avviso: var(--bb-errore);
+}
+
+.avviso-info {
+  --colore-avviso: var(--bb-info);
+}
+
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+@media (width >= 40rem) {
+  .avvisi {
+    inset-inline-start: auto;
+    inline-size: 24rem;
+  }
+}

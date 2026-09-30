@@ -1,0 +1,17 @@
+<fieldset class="selettore-tema">
+  <legend class="visivamente-nascosto">{{ 'tema.etichetta' | transloco }}</legend>
+  @for (preferenza of preferenze; track preferenza) {
+    <label class="opzione" [title]="'tema.' + preferenza | transloco">
+      <input
+        type="radio"
+        name="tema"
+        class="visivamente-nascosto"
+        [value]="preferenza"
+        [checked]="tema.preferenza() === preferenza"
+        (change)="tema.imposta(preferenza)"
+      />
+      <app-icona [nome]="icone[preferenza]" />
+      <span class="visivamente-nascosto">{{ 'tema.' + preferenza | transloco }}</span>
+    </label>
+  }
+</fieldset>

@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.campo {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.campo-etichetta {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.campo-nota {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  font-size: 0.8125rem;
+  color: var(--bb-testo-tenue);
+  --icona-dimensione: 1rem;
+}
+
+.campo-errore {
+  color: var(--bb-errore);
+}

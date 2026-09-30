@@ -1,26 +1,34 @@
 // ============================================================================
 // APP - SUITE TEST
 // ============================================================================
-// Verifica il componente radice: per ora contiene solo il router-outlet,
-// i layout pubblico e gestionale arriveranno come rotte figlie.
+// Verifica il componente radice: router-outlet per i layout pubblico e
+// gestionale, avvisi in sovrimpressione montati una sola volta.
 // ============================================================================
 
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { App } from './app';
+import { traduzioniTest } from './core/services/lingua/configura-transloco-test';
 
 describe('App', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [App, traduzioniTest()],
+      providers: [provideRouter([])],
+    });
+  });
+
   it('should create', () => {
-    TestBed.configureTestingModule({ imports: [App], providers: [provideRouter([])] });
     const fixture = TestBed.createComponent(App);
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('mostra il router-outlet', () => {
-    TestBed.configureTestingModule({ imports: [App], providers: [provideRouter([])] });
+  it('mostra il router-outlet e gli avvisi', () => {
     const fixture = TestBed.createComponent(App);
-    expect(fixture.nativeElement.querySelector('router-outlet')).not.toBeNull();
+    const elemento: HTMLElement = fixture.nativeElement;
+    expect(elemento.querySelector('router-outlet')).not.toBeNull();
+    expect(elemento.querySelector('app-avvisi')).not.toBeNull();
   });
 });

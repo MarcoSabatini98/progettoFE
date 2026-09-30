@@ -1,0 +1,22 @@
+.selettore-lingua {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--bb-testo-tenue);
+  --icona-dimensione: 1.125rem;
+}
+
+.selettore-lingua app-icona {
+  position: absolute;
+  inset-inline-start: var(--bb-spazio-3);
+  pointer-events: none;
+}
+
+select {
+  inline-size: auto;
+  min-height: 2.5rem;
+  padding-inline-start: calc(var(--bb-spazio-3) + 1.125rem + var(--bb-spazio-2));
+  border-radius: var(--bb-pulsante-raggio);
+  background: var(--bb-incavo);
+  cursor: pointer;
+}

@@ -21,11 +21,24 @@ describe('ImpostazioniService', () => {
 
   it('legge le impostazioni pubbliche come mappa', () => {
     let nome: unknown;
-    service.leggiPubbliche().subscribe((impostazioni) => (nome = impostazioni['nome_struttura']));
+    service.leggiPubbliche().subscribe((impostazioni) => (nome = impostazioni['struttura_nome']));
 
-    backend.expectOne(`${API}/pubbliche`).flush(risposta({ nome_struttura: 'Villa Mare' }));
+    backend.expectOne(`${API}/pubbliche`).flush(risposta({ struttura_nome: 'Villa Mare' }));
 
     expect(nome).toBe('Villa Mare');
+  });
+
+  it('conserva le pubbliche nel segnale e le legge come testo', () => {
+    // Prima della risposta il testo è vuoto, mai "undefined".
+    expect(service.testo('struttura_nome')).toBe('');
+
+    service.leggiPubbliche().subscribe();
+    backend
+      .expectOne(`${API}/pubbliche`)
+      .flush(risposta({ struttura_nome: 'Villa Mare', fedelta_punti_per_notte: 10 }));
+
+    expect(service.pubbliche()['struttura_nome']).toBe('Villa Mare');
+    expect(service.testo('fedelta_punti_per_notte')).toBe('10');
   });
 
   it('aggiorna più impostazioni in una sola richiesta', () => {

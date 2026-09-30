@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Injectable, inject, signal } from '@angular/core';
+import { Observable, map, tap } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import {
@@ -19,14 +19,33 @@ import { RispostaApiInterface } from '../../../shared/models/risposta-api/rispos
 export class ImpostazioniService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = `${environment.apiUrl}/impostazioni`;
+  private readonly pubblicheCorrenti = signal<ImpostazioniPubbliche>({});
+
+  /**
+   * Impostazioni pubbliche lette all'avvio: nome, contatti, orari, lingue attive.
+   */
+  readonly pubbliche = this.pubblicheCorrenti.asReadonly();
+
+  /**
+   * TESTO
+   * Impostazione pubblica come testo; stringa vuota se manca.
+   */
+  testo(chiave: string): string {
+    const valore = this.pubbliche()[chiave];
+    return valore === null || valore === undefined ? '' : String(valore);
+  }
 
   /**
    * PUBBLICHE — GET /pubbliche
+   * Aggiorna anche il segnale pubbliche.
    */
   leggiPubbliche(): Observable<ImpostazioniPubbliche> {
     return this.http
       .get<RispostaApiInterface<ImpostazioniPubbliche>>(`${this.apiUrl}/pubbliche`)
-      .pipe(map((res) => res.dati));
+      .pipe(
+        map((res) => res.dati),
+        tap((impostazioni) => this.pubblicheCorrenti.set(impostazioni)),
+      );
   }
 
   /**

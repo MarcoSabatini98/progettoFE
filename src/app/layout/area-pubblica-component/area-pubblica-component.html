@@ -1,0 +1,59 @@
+<button type="button" class="salta" (click)="contenuto.focus()">
+  {{ 'layout.saltaAlContenuto' | transloco }}
+</button>
+
+<header class="testata">
+  <div class="testata-interno">
+    <a class="marchio" [routerLink]="percorsi.home">
+      <span class="marchio-arco" aria-hidden="true">{{ nome() | iniziali }}</span>
+      <span class="marchio-nome">{{ nome() }}</span>
+    </a>
+
+    @if (auth.collegato()) {
+      <app-menu-utente area="pubblica" />
+    } @else {
+      <a class="pulsante pulsante-secondario" [routerLink]="percorsi.accesso">
+        <app-icona nome="login" />
+        {{ 'menu.accedi' | transloco }}
+      </a>
+    }
+  </div>
+</header>
+
+<main #contenuto class="contenuto" tabindex="-1">
+  <router-outlet />
+</main>
+
+<footer class="piede">
+  <div class="piede-interno">
+    <div class="piede-struttura">
+      <p class="piede-nome">{{ nome() }}</p>
+      @if (indirizzo()) {
+        <p class="piede-riga">
+          <app-icona nome="location_on" />
+          {{ indirizzo() }}
+        </p>
+      }
+      @if (email()) {
+        <p class="piede-riga">
+          <app-icona nome="mail" />
+          <a [href]="'mailto:' + email()">{{ email() }}</a>
+        </p>
+      }
+      @if (telefono()) {
+        <p class="piede-riga">
+          <app-icona nome="call" />
+          <a [href]="'tel:' + telefono()">{{ telefono() }}</a>
+        </p>
+      }
+      @if (cin()) {
+        <p class="piede-cin">{{ 'layout.cin' | transloco }} {{ cin() }}</p>
+      }
+    </div>
+
+    <div class="piede-preferenze">
+      <app-selettore-lingua />
+      <app-selettore-tema />
+    </div>
+  </div>
+</footer>
