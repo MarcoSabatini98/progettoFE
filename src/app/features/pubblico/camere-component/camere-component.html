@@ -1,0 +1,44 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'camere.occhiello' | transloco }}</p>
+  <h1>{{ 'camere.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'camere.introduzione' | transloco }}</p>
+</header>
+
+<section class="sezione" [attr.aria-busy]="tipologie.isLoading()">
+  <h2 class="visivamente-nascosto">{{ 'camere.tipologie' | transloco }}</h2>
+  @if (tipologie.error()) {
+    <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+  } @else if (tipologie.hasValue()) {
+    <ul class="griglia-schede">
+      @for (tipologia of tipologie.value(); track tipologia.id) {
+        <li><app-scheda-tipologia [tipologia]="tipologia" /></li>
+      } @empty {
+        <li class="stato-vuoto">{{ 'camere.nessuna' | transloco }}</li>
+      }
+    </ul>
+  }
+</section>
+
+@if (extra.hasValue() && extra.value().length) {
+  <section class="sezione">
+    <div class="pagina-intestazione">
+      <h2 class="sezione-titolo">{{ 'camere.extra' | transloco }}</h2>
+      <p class="introduzione">{{ 'camere.extraIntroduzione' | transloco }}</p>
+    </div>
+    <ul class="griglia-schede">
+      @for (servizio of extra.value(); track servizio.id) {
+        <li class="scheda servizio">
+          <app-icona class="servizio-icona" [nome]="servizio.icona || iconaPredefinita" />
+          <h3>{{ servizio.nome }}</h3>
+          @if (servizio.descrizione) {
+            <p class="servizio-descrizione">{{ servizio.descrizione }}</p>
+          }
+          <p class="servizio-prezzo">
+            {{ servizio.prezzo | prezzo }}
+            <span>{{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}</span>
+          </p>
+        </li>
+      }
+    </ul>
+  </section>
+}

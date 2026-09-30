@@ -47,6 +47,46 @@ export const routes: Routes = [
           import('./features/pubblico/home-component/home-component').then((m) => m.HomeComponent),
       },
       {
+        path: 'camere',
+        loadComponent: () =>
+          import('./features/pubblico/camere-component/camere-component').then(
+            (m) => m.CamereComponent,
+          ),
+      },
+      {
+        path: 'camere/:slug',
+        loadComponent: () =>
+          import('./features/pubblico/tipologia-component/tipologia-component').then(
+            (m) => m.TipologiaComponent,
+          ),
+      },
+      {
+        path: 'offerte',
+        loadComponent: () =>
+          import('./features/pubblico/offerte-component/offerte-component').then(
+            (m) => m.OfferteComponent,
+          ),
+      },
+      {
+        path: 'recensioni',
+        loadComponent: () =>
+          import('./features/pubblico/recensioni-component/recensioni-component').then(
+            (m) => m.RecensioniComponent,
+          ),
+      },
+      {
+        path: 'faq',
+        loadComponent: () =>
+          import('./features/pubblico/faq-component/faq-component').then((m) => m.FaqComponent),
+      },
+      {
+        path: 'contatti',
+        loadComponent: () =>
+          import('./features/pubblico/contatti-component/contatti-component').then(
+            (m) => m.ContattiComponent,
+          ),
+      },
+      {
         path: 'accesso',
         loadComponent: () =>
           import('./features/accesso/accesso-component/accesso-component').then(

@@ -54,6 +54,14 @@
       "ruoli": "Ruoli e permessi",
       "registro": "Registro attività",
       "impostazioni": "Impostazioni"
+    },
+    "sito": {
+      "aria": "Menu del sito",
+      "camere": "Camere",
+      "offerte": "Offerte",
+      "recensioni": "Recensioni",
+      "faq": "Domande frequenti",
+      "contatti": "Contatti"
     }
   },
   "avvisi": {
@@ -67,7 +75,13 @@
   "home": {
     "invito": "Benvenuti: prenotate il vostro soggiorno direttamente con noi.",
     "checkin": "Check-in dalle",
-    "checkout": "Check-out entro le"
+    "checkout": "Check-out entro le",
+    "struttura": "La struttura",
+    "camere": "Le nostre camere",
+    "tutteCamere": "Vedi tutte le camere",
+    "recensioni": "Dicono di noi",
+    "media": "{{ media }}/5 su {{ numero }} recensioni",
+    "tutteRecensioni": "Leggi tutte le recensioni"
   },
   "accesso": {
     "titolo": "Accedi",
@@ -195,5 +209,95 @@
     "conferma": "Elimina definitivamente",
     "annulla": "Annulla",
     "fatto": "Account eliminato."
+  },
+  "galleria": {
+    "precedente": "Foto precedente",
+    "successiva": "Foto successiva"
+  },
+  "camere": {
+    "occhiello": "Soggiorna da noi",
+    "titolo": "Camere",
+    "introduzione": "Scegli la sistemazione più adatta al tuo viaggio.",
+    "tipologie": "Le sistemazioni",
+    "nessuna": "Al momento non ci sono camere prenotabili online.",
+    "ospitiMax": "Fino a {{ numero }} ospiti",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "Da {{ prezzo }} a notte",
+    "extra": "Servizi extra",
+    "extraIntroduzione": "Da aggiungere alla prenotazione, quando vuoi.",
+    "calcolo": {
+      "a_soggiorno": "a soggiorno",
+      "a_notte": "a notte",
+      "a_persona": "a persona",
+      "a_persona_notte": "a persona a notte"
+    }
+  },
+  "tipologia": {
+    "tutte": "Tutte le camere",
+    "foto": "Foto di {{ nome }}",
+    "ospiti": "Ospiti",
+    "superficie": "Superficie",
+    "letti": "Letti",
+    "dotazioni": "In camera",
+    "nonTrovata": "Camera non trovata",
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile."
+  },
+  "offerte": {
+    "occhiello": "Per te",
+    "titolo": "Offerte",
+    "introduzione": "Pacchetti con servizi inclusi e promozioni sui soggiorni.",
+    "nessuna": "Al momento non ci sono offerte attive.",
+    "pacchetti": "Pacchetti",
+    "promozioni": "Promozioni",
+    "tipologia": "Camera: {{ nome }}",
+    "nottiMin": "Notti minime: {{ numero }}",
+    "periodo": "Dal {{ dal }} al {{ al }}",
+    "dal": "Dal {{ dal }}",
+    "fino": "Fino al {{ al }}",
+    "incluso": "Incluso",
+    "scontoPercentuale": "-{{ valore }}%",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Soggiorni dal {{ dal }} al {{ al }}"
+  },
+  "recensioni": {
+    "occhiello": "Esperienze degli ospiti",
+    "titolo": "Recensioni",
+    "introduzione": "Cosa raccontano gli ospiti che hanno soggiornato da noi.",
+    "riepilogo": "Valutazione media",
+    "numero": "Recensioni: {{ numero }}",
+    "elenco": "Elenco delle recensioni",
+    "nessuna": "Non ci sono ancora recensioni.",
+    "altre": "Mostra altre recensioni",
+    "voto": "Voto:",
+    "anonima": "Ospite",
+    "risposta": "Risposta di {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Pulizia",
+      "media_personale": "Personale",
+      "media_posizione": "Posizione",
+      "media_comfort": "Comfort",
+      "media_qualita_prezzo": "Qualità/prezzo"
+    }
+  },
+  "faq": {
+    "occhiello": "Serve aiuto?",
+    "titolo": "Domande frequenti",
+    "nessuna": "Non ci sono ancora domande frequenti.",
+    "altraDomanda": "Non hai trovato la risposta?",
+    "scrivici": "Scrivici: ti rispondiamo il prima possibile.",
+    "contatti": "Contattaci"
+  },
+  "contatti": {
+    "occhiello": "Siamo qui",
+    "titolo": "Contatti",
+    "introduzione": "Per informazioni e richieste, ecco come raggiungerci.",
+    "indirizzo": "Indirizzo",
+    "mappa": "Apri nelle mappe",
+    "nuovaScheda": "(si apre in una nuova scheda)",
+    "email": "Email",
+    "telefono": "Telefono",
+    "orari": "Orari",
+    "checkin": "Check-in dalle {{ orario }}",
+    "checkout": "Check-out entro le {{ orario }}"
   }
 }

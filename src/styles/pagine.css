@@ -1,0 +1,83 @@
+/*
+ * Impaginazione delle pagine del sito pubblico: colonna centrata, intestazione,
+ * sezioni e griglie di schede. Il componente la prende con host: { class: 'pagina' }.
+ */
+
+.pagina {
+  display: grid;
+  gap: var(--bb-spazio-12);
+  align-content: start;
+  width: min(100% - 2 * var(--bb-margine), var(--bb-contenuto));
+  margin: var(--bb-spazio-8) auto 0;
+}
+
+.pagina-intestazione {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  max-width: 44rem;
+}
+
+.pagina-intestazione h1 {
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}
+
+/* Riga piccola sopra i titoli, nel colore della struttura. */
+.occhiello {
+  color: var(--bb-brand-testo);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.introduzione {
+  color: var(--bb-testo-tenue);
+  font-size: 1.125rem;
+}
+
+.sezione {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+.sezione-titolo {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.griglia-schede {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Messaggio "nessun elemento" al posto delle schede, su tutta la riga. */
+.griglia-schede > .stato-vuoto {
+  grid-column: 1 / -1;
+}
+
+.scheda {
+  display: grid;
+  align-content: start;
+  gap: var(--bb-spazio-3);
+  padding: var(--bb-spazio-6);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+}
+
+.stato-vuoto {
+  padding: var(--bb-spazio-8) var(--bb-spazio-6);
+  border: 1px dashed var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  color: var(--bb-testo-tenue);
+  text-align: center;
+}
+
+/* Testo semplice dal backend: gli a capo diventano paragrafi. */
+.testo-libero {
+  white-space: pre-line;
+  line-height: 1.7;
+}

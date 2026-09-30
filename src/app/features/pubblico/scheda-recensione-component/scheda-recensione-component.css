@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.recensione {
+  block-size: 100%;
+}
+
+/* Ocra: riservato a voti e VIP. */
+.voto {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  color: var(--bb-ocra);
+  font-weight: 700;
+  --icona-dimensione: 1.25rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.commento {
+  line-height: 1.6;
+}
+
+.firma {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-2);
+  margin-block-start: auto;
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+.firma > * + *::before {
+  content: '·';
+  margin-inline-end: var(--bb-spazio-2);
+}
+
+.firma span:first-child {
+  color: var(--bb-testo);
+  font-weight: 600;
+}
+
+.risposta {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-inline-start: 3px solid var(--bb-brand-bordo);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-incavo);
+  font-size: 0.9375rem;
+}
+
+.risposta-titolo {
+  font-weight: 600;
+}

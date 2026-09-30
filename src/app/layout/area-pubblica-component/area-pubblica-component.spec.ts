@@ -6,16 +6,13 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { AuthService } from '../../core/services/auth/auth-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
+import { MENU_PUBBLICO } from '../../core/services/navigazione/navigazione-costanti';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { AreaPubblicaComponent } from './area-pubblica-component';
 
 describe('AreaPubblicaComponent', () => {
   const impostazioni: Record<string, string> = {
     [CHIAVI_IMPOSTAZIONI.nome]: 'Casa del Mare',
-    [CHIAVI_IMPOSTAZIONI.indirizzo]: 'Via Roma 1',
-    [CHIAVI_IMPOSTAZIONI.cap]: '07100',
-    [CHIAVI_IMPOSTAZIONI.comune]: 'Sassari',
-    [CHIAVI_IMPOSTAZIONI.provincia]: 'SS',
     [CHIAVI_IMPOSTAZIONI.email]: 'info@example.com',
     [CHIAVI_IMPOSTAZIONI.cin]: 'IT090064C2000000001',
   };
@@ -30,6 +27,7 @@ describe('AreaPubblicaComponent', () => {
           useValue: {
             pubbliche: signal({}),
             testo: (chiave: string) => impostazioni[chiave] ?? '',
+            indirizzo: signal('Via Roma 1, 07100 Sassari (SS)'),
           },
         },
         { provide: AuthService, useValue: { collegato: signal(false), utente: signal(null) } },
@@ -65,6 +63,17 @@ describe('AreaPubblicaComponent', () => {
       a.getAttribute('href'),
     );
     expect(link).toEqual(['/documenti/privacy', '/documenti/termini', '/documenti/cookie']);
+  });
+
+  it('mostra le voci del sito nel menu a cassetto', async () => {
+    const elemento = await crea();
+
+    const menu = elemento.querySelector('#menu-sito');
+    expect(menu?.hasAttribute('popover')).toBe(true);
+    expect([...menu!.querySelectorAll('a')].map((a) => a.getAttribute('href'))).toEqual(
+      MENU_PUBBLICO.map((voce) => voce.percorso),
+    );
+    expect(elemento.querySelector('[popovertarget="menu-sito"]')).not.toBeNull();
   });
 
   it('senza sessione offre il pulsante di accesso', async () => {

@@ -10,6 +10,7 @@ import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { SelettoreLinguaComponent } from '../../shared/selettore-lingua-component/selettore-lingua-component';
 import { SelettoreTemaComponent } from '../../shared/selettore-tema-component/selettore-tema-component';
+import { chiudiPopover } from '../chiudi-popover';
 
 /**
  * Guscio del gestionale. Il menu è un popover nativo: su mobile si apre dalla barra
@@ -37,11 +38,5 @@ export class AreaStaffComponent {
   protected readonly navigazione = inject(NavigazioneService);
   protected readonly percorsoStaff = PERCORSO_STAFF;
   protected readonly nome = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.nome));
-
-  /** Dopo la scelta di una voce il cassetto si chiude (da desktop non è aperto: nessun effetto). */
-  protected chiudiMenu(menu: HTMLElement): void {
-    if (menu.matches(':popover-open')) {
-      menu.hidePopover();
-    }
-  }
+  protected readonly chiudiMenu = chiudiPopover;
 }

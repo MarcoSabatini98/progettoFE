@@ -11,4 +11,8 @@ export const CHIAVI_IMPOSTAZIONI = {
   orarioCheckin: 'orario_checkin',
   orarioCheckout: 'orario_checkout',
   lingueAttive: 'lingue_attive',
+  valuta: 'valuta',
 } as const;
+
+/** Valuta dei prezzi se l'impostazione manca (ISO 4217). */
+export const VALUTA_PREDEFINITA = 'EUR';

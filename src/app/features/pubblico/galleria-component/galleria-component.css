@@ -1,0 +1,36 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.striscia {
+  display: grid;
+  grid-auto-columns: min(85%, 36rem);
+  grid-auto-flow: column;
+  gap: var(--bb-spazio-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: var(--bb-raggio);
+}
+
+.striscia img {
+  inline-size: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--bb-raggio);
+  scroll-snap-align: start;
+}
+
+.comandi {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--bb-spazio-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .striscia {
+    scroll-behavior: smooth;
+  }
+}

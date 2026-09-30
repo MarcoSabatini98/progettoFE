@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
 import { configuraHttpTest, risposta } from '../api/configura-http-test';
+import { SENZA_LINGUA_AUTOMATICA } from '../lingua/lingua-costanti';
 import { RecensioniService } from './recensioni-service';
 
 const API = `${environment.apiUrl}/recensioni`;
@@ -24,6 +25,7 @@ describe('RecensioniService', () => {
 
     const richiesta = backend.expectOne((req) => req.url === `${API}/pubbliche`);
     expect(richiesta.request.params.toString()).toBe('lingua=en&pagina=2');
+    expect(richiesta.request.context.get(SENZA_LINGUA_AUTOMATICA)).toBe(true);
     richiesta.flush(risposta({ elementi: [], totale: 0, pagina: 2, perPagina: 20, pagine: 0 }));
   });
 

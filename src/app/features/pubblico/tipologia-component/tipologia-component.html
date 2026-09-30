@@ -1,0 +1,69 @@
+<a class="indietro" [routerLink]="percorsoCamere">
+  <app-icona nome="arrow_back" />
+  {{ 'tipologia.tutte' | transloco }}
+</a>
+
+@if (tipologia.hasValue()) {
+  @let camera = tipologia.value();
+  @let foto = camera.media ?? [];
+  @let dotazioni = camera.servizi ?? [];
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'camere.occhiello' | transloco }}</p>
+    <h1>{{ camera.nome }}</h1>
+    <p class="prezzo">
+      {{ 'camere.prezzoDa' | transloco: { prezzo: (camera.prezzo_base | prezzo) } }}
+    </p>
+  </header>
+
+  @if (foto.length) {
+    <app-galleria
+      [media]="foto"
+      [etichetta]="'tipologia.foto' | transloco: { nome: camera.nome }"
+    />
+  }
+
+  <div class="corpo">
+    @if (camera.descrizione) {
+      <p class="testo-libero descrizione">{{ camera.descrizione }}</p>
+    }
+
+    <dl class="scheda dettagli">
+      <div>
+        <dt><app-icona nome="group" />{{ 'tipologia.ospiti' | transloco }}</dt>
+        <dd>{{ 'camere.ospitiMax' | transloco: { numero: camera.ospiti_max } }}</dd>
+      </div>
+      @if (camera.superficie_mq) {
+        <div>
+          <dt><app-icona nome="square_foot" />{{ 'tipologia.superficie' | transloco }}</dt>
+          <dd>{{ 'camere.superficie' | transloco: { mq: camera.superficie_mq } }}</dd>
+        </div>
+      }
+      @if (camera.letti) {
+        <div>
+          <dt><app-icona nome="bed" />{{ 'tipologia.letti' | transloco }}</dt>
+          <dd>{{ camera.letti }}</dd>
+        </div>
+      }
+    </dl>
+  </div>
+
+  @if (dotazioni.length) {
+    <section class="sezione">
+      <h2 class="sezione-titolo">{{ 'tipologia.dotazioni' | transloco }}</h2>
+      <ul class="dotazioni">
+        @for (dotazione of dotazioni; track dotazione.id) {
+          <li>
+            <app-icona [nome]="dotazione.icona || iconaPredefinita" />
+            {{ dotazione.nome }}
+          </li>
+        }
+      </ul>
+    </section>
+  }
+} @else if (!tipologia.isLoading()) {
+  <div class="pagina-intestazione">
+    <h1>{{ 'tipologia.nonTrovata' | transloco }}</h1>
+    <p class="introduzione">{{ 'tipologia.nonTrovataTesto' | transloco }}</p>
+  </div>
+}

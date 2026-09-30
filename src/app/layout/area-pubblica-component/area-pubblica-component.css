@@ -63,6 +63,93 @@
   --icona-dimensione: 1.125rem;
 }
 
+.testata-azioni {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+}
+
+/* Mobile: cassetto da destra, aperto dal pulsante menu. */
+.menu-sito {
+  inset: 0 0 0 auto;
+  inline-size: min(18rem, 85vw);
+  block-size: 100dvh;
+  max-block-size: none;
+  margin: 0;
+  padding: var(--bb-spazio-6) var(--bb-spazio-4)
+    calc(var(--bb-spazio-6) + env(safe-area-inset-bottom));
+  border: 0;
+  border-inline-start: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  overflow-y: auto;
+}
+
+.menu-sito::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.menu-sito ul {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.voce {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-height: 2.75rem;
+  padding-inline: var(--bb-spazio-3);
+  border-radius: var(--bb-raggio-piccolo);
+  color: var(--bb-testo-tenue);
+  font-weight: 500;
+  text-decoration: none;
+  --icona-dimensione: 1.25rem;
+}
+
+.voce:hover {
+  background: var(--bb-incavo);
+  color: var(--bb-testo);
+}
+
+.voce-attiva {
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+}
+
+/* Desktop: il popover resta chiuso ma visibile, in riga nella testata. */
+@media (width >= 58.75rem) {
+  .apri-menu {
+    display: none;
+  }
+
+  .menu-sito {
+    position: static;
+    display: block;
+    inline-size: auto;
+    block-size: auto;
+    margin-inline: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    overflow: visible;
+  }
+
+  .menu-sito ul {
+    display: flex;
+    gap: var(--bb-spazio-1);
+  }
+
+  .voce {
+    min-height: 2.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .voce app-icona {
+    display: none;
+  }
+}
+
 .contenuto {
   flex: 1;
   outline: none;

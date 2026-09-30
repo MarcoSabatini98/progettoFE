@@ -1,8 +1,6 @@
 .copertina {
   display: grid;
   gap: var(--bb-spazio-8);
-  width: min(100% - 2 * var(--bb-margine), var(--bb-contenuto));
-  margin: var(--bb-spazio-8) auto 0;
 }
 
 /* L'arco dell'area pubblica: finestra mediterranea nel colore della struttura. */
@@ -15,6 +13,13 @@
     radial-gradient(circle at 50% 30%, var(--bb-ocra-tenue), transparent 60%),
     linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
   box-shadow: var(--bb-ombra);
+  overflow: hidden;
+}
+
+.arco img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
 }
 
 .copertina-testo {
@@ -73,10 +78,34 @@ dd {
 @media (width >= 58.75rem) {
   .copertina {
     grid-template-columns: 1fr 1fr;
-    margin-block-start: var(--bb-spazio-12);
+    margin-block-start: var(--bb-spazio-4);
   }
 
   .arco {
     order: 1;
   }
+}
+
+.tutte {
+  justify-self: center;
+}
+
+.recensioni-intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bb-spazio-2) var(--bb-spazio-6);
+}
+
+/* Ocra: riservato a voti e VIP. */
+.media {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  font-weight: 600;
+}
+
+.media app-icona {
+  color: var(--bb-ocra);
 }
