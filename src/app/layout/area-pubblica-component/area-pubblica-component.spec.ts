@@ -58,6 +58,15 @@ describe('AreaPubblicaComponent', () => {
     expect(elemento.querySelector('a[href="mailto:info@example.com"]')).not.toBeNull();
   });
 
+  it('collega privacy, termini e cookie policy', async () => {
+    const elemento = await crea();
+
+    const link = [...elemento.querySelectorAll('.piede-legale a')].map((a) =>
+      a.getAttribute('href'),
+    );
+    expect(link).toEqual(['/documenti/privacy', '/documenti/termini', '/documenti/cookie']);
+  });
+
   it('senza sessione offre il pulsante di accesso', async () => {
     const elemento = await crea();
 

@@ -26,6 +26,13 @@ export const routes: Routes = [
         pathMatch: 'full',
         redirectTo: () => inject(NavigazioneService).primaPaginaStaff(),
       },
+      {
+        path: 'account',
+        loadComponent: () =>
+          import('./features/profilo/profilo-component/profilo-component').then(
+            (m) => m.ProfiloComponent,
+          ),
+      },
       { path: '**', component: PaginaNonTrovataComponent },
     ],
   },
@@ -58,6 +65,28 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/accesso/reimposta-password-component/reimposta-password-component').then(
             (m) => m.ReimpostaPasswordComponent,
+          ),
+      },
+      {
+        path: 'registrazione',
+        loadComponent: () =>
+          import('./features/accesso/registrazione-component/registrazione-component').then(
+            (m) => m.RegistrazioneComponent,
+          ),
+      },
+      {
+        path: 'documenti/:tipo',
+        loadComponent: () =>
+          import('./features/pubblico/documento-legale-component/documento-legale-component').then(
+            (m) => m.DocumentoLegaleComponent,
+          ),
+      },
+      {
+        path: 'area-personale',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./features/profilo/profilo-component/profilo-component').then(
+            (m) => m.ProfiloComponent,
           ),
       },
       { path: '**', component: PaginaNonTrovataComponent },

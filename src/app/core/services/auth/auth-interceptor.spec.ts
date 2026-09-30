@@ -27,6 +27,7 @@ const sessione = (accessToken: string): SessioneInterface => ({
 });
 
 const NON_AUTORIZZATO = { status: 401, statusText: 'Unauthorized' };
+const erroreApi = (codice: string) => ({ successo: false, errore: { codice, messaggio: codice } });
 
 describe('authInterceptor', () => {
   let http: HttpClient;
@@ -85,7 +86,7 @@ describe('authInterceptor', () => {
     let risposta: unknown;
     http.get(`${API}/camere`).subscribe((dati) => (risposta = dati));
 
-    backend.expectOne(`${API}/camere`).flush(null, NON_AUTORIZZATO);
+    backend.expectOne(`${API}/camere`).flush(erroreApi('TOKEN_SCADUTO'), NON_AUTORIZZATO);
     backend.expectOne(`${API}/auth/rinnovo`).flush({ successo: true, dati: sessione('nuovo') });
     const ripetuta = backend.expectOne(`${API}/camere`);
     expect(ripetuta.request.headers.get('Authorization')).toBe('Bearer nuovo');
@@ -99,18 +100,30 @@ describe('authInterceptor', () => {
     let stato = 0;
     http.get(`${API}/camere`).subscribe({ error: (errore) => (stato = errore.status) });
 
-    backend.expectOne(`${API}/camere`).flush(null, NON_AUTORIZZATO);
+    backend.expectOne(`${API}/camere`).flush(erroreApi('TOKEN_SCADUTO'), NON_AUTORIZZATO);
     backend.expectOne(`${API}/auth/rinnovo`).flush(null, NON_AUTORIZZATO);
 
     expect(stato).toBe(401);
     expect(TestBed.inject(AuthService).collegato()).toBe(false);
   });
 
+  it('un 401 che non riguarda il token passa senza rinnovo', () => {
+    accedi('valido');
+    let codice = '';
+    http.delete(`${API}/auth/account`).subscribe({
+      error: (errore) => (codice = errore.error.errore.codice),
+    });
+
+    backend.expectOne(`${API}/auth/account`).flush(erroreApi('PASSWORD_ERRATA'), NON_AUTORIZZATO);
+    backend.expectNone(`${API}/auth/rinnovo`);
+    expect(codice).toBe('PASSWORD_ERRATA');
+  });
+
   it('senza sessione un 401 passa senza rinnovo', () => {
     let stato = 0;
     http.get(`${API}/prenotazioni/mie`).subscribe({ error: (errore) => (stato = errore.status) });
 
-    backend.expectOne(`${API}/prenotazioni/mie`).flush(null, NON_AUTORIZZATO);
+    backend.expectOne(`${API}/prenotazioni/mie`).flush(erroreApi('TOKEN_SCADUTO'), NON_AUTORIZZATO);
     backend.expectNone(`${API}/auth/rinnovo`);
     expect(stato).toBe(401);
   });

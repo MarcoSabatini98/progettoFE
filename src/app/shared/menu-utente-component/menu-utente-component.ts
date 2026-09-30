@@ -6,6 +6,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { AuthService } from '../../core/services/auth/auth-service';
 import {
   PERCORSI_PUBBLICI,
+  PERCORSO_ACCOUNT_STAFF,
   PERCORSO_STAFF,
 } from '../../core/services/navigazione/navigazione-costanti';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
@@ -15,6 +16,27 @@ import { InizialiPipe } from '../pipes/iniziali-pipe';
 
 /** Valore della voce "Esci": le altre voci hanno come valore il percorso da aprire. */
 const VALORE_ESCI = 'esci';
+
+const VOCE_PERSONALE: VoceMenuInterface = {
+  etichetta: 'menu.utente.personale',
+  percorso: PERCORSI_PUBBLICI.areaPersonale,
+  icona: 'person',
+};
+const VOCE_ACCOUNT: VoceMenuInterface = {
+  etichetta: 'menu.utente.account',
+  percorso: PERCORSO_ACCOUNT_STAFF,
+  icona: 'manage_accounts',
+};
+const VOCE_SITO: VoceMenuInterface = {
+  etichetta: 'menu.utente.sito',
+  percorso: PERCORSI_PUBBLICI.home,
+  icona: 'storefront',
+};
+const VOCE_GESTIONALE: VoceMenuInterface = {
+  etichetta: 'menu.utente.gestionale',
+  percorso: PERCORSO_STAFF,
+  icona: 'dashboard',
+};
 
 /**
  * Avatar dell'utente collegato con il menu del suo account: cambio area ed uscita.
@@ -35,21 +57,12 @@ export class MenuUtenteComponent {
   /** Area in cui si trova il menu: dallo staff si torna al sito e viceversa. */
   readonly area = input.required<'pubblica' | 'staff'>();
 
-  protected readonly destinazione = computed<VoceMenuInterface>(() => {
-    if (this.area() === 'staff') {
-      return {
-        etichetta: 'menu.utente.sito',
-        percorso: PERCORSI_PUBBLICI.home,
-        icona: 'storefront',
-      };
+  /** Clienti: area personale. Staff: il proprio account e il passaggio tra sito e gestionale. */
+  protected readonly voci = computed<VoceMenuInterface[]>(() => {
+    if (!this.navigazione.staff()) {
+      return [VOCE_PERSONALE];
     }
-    return this.navigazione.staff()
-      ? { etichetta: 'menu.utente.gestionale', percorso: PERCORSO_STAFF, icona: 'dashboard' }
-      : {
-          etichetta: 'menu.utente.personale',
-          percorso: PERCORSI_PUBBLICI.areaPersonale,
-          icona: 'person',
-        };
+    return [VOCE_ACCOUNT, this.area() === 'staff' ? VOCE_SITO : VOCE_GESTIONALE];
   });
 
   protected scegli(valore: string): void {

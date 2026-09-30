@@ -10,7 +10,8 @@
   },
   "layout": {
     "saltaAlContenuto": "Aller au contenu",
-    "cin": "CIN"
+    "cin": "CIN",
+    "documentiLegali": "Documents légaux"
   },
   "menu": {
     "accedi": "Se connecter",
@@ -21,7 +22,8 @@
       "sito": "Aller au site",
       "gestionale": "Aller à la gestion",
       "personale": "Mon espace",
-      "esci": "Se déconnecter"
+      "esci": "Se déconnecter",
+      "account": "Mon compte"
     },
     "gruppi": {
       "oggi": "Aujourd’hui",
@@ -73,7 +75,8 @@
     "email": "E-mail",
     "password": "Mot de passe",
     "dimenticata": "Mot de passe oublié ?",
-    "entra": "Se connecter"
+    "entra": "Se connecter",
+    "registrati": "Pas encore de compte ? Inscrivez-vous"
   },
   "recupero": {
     "titolo": "Récupérer le mot de passe",
@@ -86,9 +89,6 @@
   "reimposta": {
     "titolo": "Nouveau mot de passe",
     "introduzione": "Choisissez le nouveau mot de passe de votre compte.",
-    "password": "Nouveau mot de passe",
-    "aiuto": "Au moins {{ minima }} caractères.",
-    "conferma": "Répétez le mot de passe",
     "salva": "Enregistrer",
     "fatto": "Mot de passe mis à jour : vous pouvez vous connecter.",
     "linkNonValido": "Ce lien n’est pas valide. Demandez-en un nouveau.",
@@ -99,7 +99,8 @@
     "email": "Saisissez un e-mail valide.",
     "minlength": "Au moins {{ requiredLength }} caractères.",
     "maxlength": "Au maximum {{ requiredLength }} caractères.",
-    "passwordDiverse": "Les mots de passe ne correspondent pas."
+    "passwordDiverse": "Les mots de passe ne correspondent pas.",
+    "pattern": "Format non valide."
   },
   "errori": {
     "generico": "Une erreur s’est produite. Réessayez.",
@@ -108,7 +109,7 @@
     "ACCOUNT_DISATTIVATO": "Ce compte est désactivé.",
     "EMAIL_GIA_REGISTRATA": "Cet e-mail est déjà enregistré.",
     "EMAIL_GIA_VERIFICATA": "L’e-mail est déjà vérifié.",
-    "CODICE_ERRATO": "Le code est incorrect.",
+    "CODICE_ERRATO": "Le code est incorrect. Après trop de tentatives, demandez-en un nouveau.",
     "CODICE_SCADUTO": "Le code a expiré : demandez-en un nouveau.",
     "LINK_NON_VALIDO": "Le lien n’est pas valide ou a déjà été utilisé.",
     "TOKEN_NON_VALIDO": "Le lien n’est pas valide.",
@@ -121,6 +122,78 @@
     "DATI_NON_VALIDI": "Vérifiez les données saisies.",
     "ERRORE_INTERNO": "Erreur du serveur. Réessayez dans un instant.",
     "RISORSA_NON_TROVATA": "Élément introuvable.",
-    "PASSWORD_ATTUALE_ERRATA": "Le mot de passe actuel est incorrect."
+    "PASSWORD_ATTUALE_ERRATA": "Le mot de passe actuel est incorrect.",
+    "CONSENSI_OBBLIGATORI": "Pour vous inscrire, vous devez accepter la politique de confidentialité et les conditions.",
+    "PASSWORD_ERRATA": "Le mot de passe est incorrect.",
+    "PRENOTAZIONI_ATTIVE": "Vous avez des réservations en cours ou à venir : annulez-les ou attendez la fin du séjour.",
+    "UTENTE_NON_TROVATO": "Compte introuvable."
+  },
+  "nuovaPassword": {
+    "password": "Nouveau mot de passe",
+    "aiuto": "Au moins {{ minima }} caractères.",
+    "conferma": "Répétez le mot de passe"
+  },
+  "registrazione": {
+    "titolo": "Créez votre compte",
+    "introduzione": "Réservez plus vite et retrouvez tous vos séjours au même endroit.",
+    "nome": "Prénom",
+    "cognome": "Nom",
+    "email": "E-mail",
+    "telefono": "Téléphone",
+    "facoltativo": "Facultatif.",
+    "consensi": "Consentements",
+    "privacy": "J’ai lu la politique de confidentialité",
+    "termini": "J’accepte les conditions générales",
+    "leggi": "Lire",
+    "marketing": "Je souhaite recevoir des offres et des nouvelles par e-mail",
+    "crea": "Créer le compte",
+    "haiAccount": "Déjà un compte ? Connectez-vous"
+  },
+  "documenti": {
+    "privacy": "Politique de confidentialité",
+    "termini": "Conditions générales",
+    "cookie": "Politique des cookies",
+    "versione": "Version {{ versione }}",
+    "nonDisponibile": "Document indisponible",
+    "nonDisponibileTesto": "Ce document n’a pas encore été publié."
+  },
+  "verifica": {
+    "titolo": "Vérifiez votre e-mail",
+    "descrizione": "Nous vous avons envoyé un code à {{ cifre }} chiffres : saisissez-le ici pour confirmer votre adresse.",
+    "codice": "Code de vérification",
+    "conferma": "Vérifier",
+    "nuovoCodice": "Envoyer un nouveau code",
+    "inviato": "Nouveau code envoyé : consultez votre boîte mail.",
+    "fatta": "E-mail vérifiée."
+  },
+  "profilo": {
+    "titolo": "Votre compte",
+    "dati": "Données personnelles",
+    "lingua": "Langue",
+    "linguaAiuto": "Pour le site et les e-mails que vous recevez.",
+    "salva": "Enregistrer",
+    "salvato": "Modifications enregistrées.",
+    "email": "E-mail",
+    "notifiche": "Recevoir les e-mails facultatifs",
+    "notificheAiuto": "Résumés des messages et rappels. Les confirmations de réservation et de paiement sont toujours envoyées."
+  },
+  "sicurezza": {
+    "titolo": "Mot de passe et connexions",
+    "attuale": "Mot de passe actuel",
+    "cambia": "Changer le mot de passe",
+    "cambiata": "Mot de passe modifié : connectez-vous avec le nouveau.",
+    "sessioni": "Appareils connectés",
+    "sessioniDescrizione": "Vous déconnecte de tous les appareils, y compris celui-ci.",
+    "esciOvunque": "Se déconnecter partout",
+    "uscito": "Vous êtes déconnecté de tous les appareils."
+  },
+  "eliminaAccount": {
+    "titolo": "Supprimer le compte",
+    "descrizione": "Votre compte sera fermé. Les réservations passées restent dans les registres de l’établissement, comme l’exige la loi.",
+    "elimina": "Supprimer mon compte",
+    "password": "Confirmez avec votre mot de passe",
+    "conferma": "Supprimer définitivement",
+    "annulla": "Annuler",
+    "fatto": "Compte supprimé."
   }
 }

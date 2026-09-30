@@ -1,0 +1,9 @@
+<h2>{{ 'profilo.email' | transloco }}</h2>
+
+<label class="interruttore">
+  <input #casella type="checkbox" [checked]="salvate()" (change)="cambia(casella)" />
+  <span>
+    {{ 'profilo.notifiche' | transloco }}
+    <span class="descrizione">{{ 'profilo.notificheAiuto' | transloco }}</span>
+  </span>
+</label>

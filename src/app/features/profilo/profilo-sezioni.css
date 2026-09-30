@@ -1,0 +1,47 @@
+/*
+ * Scheda comune alle sezioni della pagina profilo (verifica email, dati, sicurezza...).
+ * Ogni sezione la carica con styleUrls insieme al proprio CSS.
+ */
+
+:host {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  padding: var(--bb-spazio-6);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+.descrizione {
+  color: var(--bb-testo-tenue);
+}
+
+form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}
+
+.esito {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.esito-errore {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+}
+
+.esito-ok {
+  background: var(--bb-ok-tenue);
+  color: var(--bb-ok);
+}

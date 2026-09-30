@@ -10,7 +10,8 @@
   },
   "layout": {
     "saltaAlContenuto": "Ir al contenido",
-    "cin": "CIN"
+    "cin": "CIN",
+    "documentiLegali": "Documentos legales"
   },
   "menu": {
     "accedi": "Iniciar sesión",
@@ -21,7 +22,8 @@
       "sito": "Ir al sitio",
       "gestionale": "Ir a la gestión",
       "personale": "Mi área",
-      "esci": "Cerrar sesión"
+      "esci": "Cerrar sesión",
+      "account": "Mi cuenta"
     },
     "gruppi": {
       "oggi": "Hoy",
@@ -73,7 +75,8 @@
     "email": "Correo electrónico",
     "password": "Contraseña",
     "dimenticata": "¿Has olvidado la contraseña?",
-    "entra": "Iniciar sesión"
+    "entra": "Iniciar sesión",
+    "registrati": "¿No tienes cuenta? Regístrate"
   },
   "recupero": {
     "titolo": "Recuperar la contraseña",
@@ -86,9 +89,6 @@
   "reimposta": {
     "titolo": "Nueva contraseña",
     "introduzione": "Elige la nueva contraseña de tu cuenta.",
-    "password": "Nueva contraseña",
-    "aiuto": "Al menos {{ minima }} caracteres.",
-    "conferma": "Repite la contraseña",
     "salva": "Guardar contraseña",
     "fatto": "Contraseña actualizada: ya puedes iniciar sesión.",
     "linkNonValido": "El enlace no es válido. Solicita uno nuevo.",
@@ -99,7 +99,8 @@
     "email": "Introduce un correo válido.",
     "minlength": "Al menos {{ requiredLength }} caracteres.",
     "maxlength": "Como máximo {{ requiredLength }} caracteres.",
-    "passwordDiverse": "Las contraseñas no coinciden."
+    "passwordDiverse": "Las contraseñas no coinciden.",
+    "pattern": "Formato no válido."
   },
   "errori": {
     "generico": "Algo ha ido mal. Inténtalo de nuevo.",
@@ -108,7 +109,7 @@
     "ACCOUNT_DISATTIVATO": "Esta cuenta está desactivada.",
     "EMAIL_GIA_REGISTRATA": "Este correo ya está registrado.",
     "EMAIL_GIA_VERIFICATA": "El correo ya está verificado.",
-    "CODICE_ERRATO": "El código no es correcto.",
+    "CODICE_ERRATO": "El código no es correcto. Tras demasiados intentos, solicita uno nuevo.",
     "CODICE_SCADUTO": "El código ha caducado: solicita uno nuevo.",
     "LINK_NON_VALIDO": "El enlace no es válido o ya se ha usado.",
     "TOKEN_NON_VALIDO": "El enlace no es válido.",
@@ -121,6 +122,78 @@
     "DATI_NON_VALIDI": "Revisa los datos introducidos.",
     "ERRORE_INTERNO": "Error del servidor. Inténtalo de nuevo en breve.",
     "RISORSA_NON_TROVATA": "Elemento no encontrado.",
-    "PASSWORD_ATTUALE_ERRATA": "La contraseña actual no es correcta."
+    "PASSWORD_ATTUALE_ERRATA": "La contraseña actual no es correcta.",
+    "CONSENSI_OBBLIGATORI": "Para registrarte debes aceptar la privacidad y los términos.",
+    "PASSWORD_ERRATA": "La contraseña no es correcta.",
+    "PRENOTAZIONI_ATTIVE": "Tienes reservas en curso o futuras: cancélalas o espera al final de la estancia.",
+    "UTENTE_NON_TROVATO": "Cuenta no encontrada."
+  },
+  "nuovaPassword": {
+    "password": "Nueva contraseña",
+    "aiuto": "Al menos {{ minima }} caracteres.",
+    "conferma": "Repite la contraseña"
+  },
+  "registrazione": {
+    "titolo": "Crea tu cuenta",
+    "introduzione": "Reserva más rápido y encuentra todas tus estancias en un solo lugar.",
+    "nome": "Nombre",
+    "cognome": "Apellidos",
+    "email": "Email",
+    "telefono": "Teléfono",
+    "facoltativo": "Opcional.",
+    "consensi": "Consentimientos",
+    "privacy": "He leído la política de privacidad",
+    "termini": "Acepto los términos y condiciones",
+    "leggi": "Leer",
+    "marketing": "Quiero recibir ofertas y novedades por email",
+    "crea": "Crear cuenta",
+    "haiAccount": "¿Ya tienes cuenta? Inicia sesión"
+  },
+  "documenti": {
+    "privacy": "Política de privacidad",
+    "termini": "Términos y condiciones",
+    "cookie": "Política de cookies",
+    "versione": "Versión {{ versione }}",
+    "nonDisponibile": "Documento no disponible",
+    "nonDisponibileTesto": "Este documento aún no se ha publicado."
+  },
+  "verifica": {
+    "titolo": "Verifica tu email",
+    "descrizione": "Te hemos enviado un código de {{ cifre }} cifras: introdúcelo aquí para confirmar tu dirección.",
+    "codice": "Código de verificación",
+    "conferma": "Verificar",
+    "nuovoCodice": "Enviar un código nuevo",
+    "inviato": "Código nuevo enviado: revisa tu correo.",
+    "fatta": "Email verificado."
+  },
+  "profilo": {
+    "titolo": "Tu cuenta",
+    "dati": "Datos personales",
+    "lingua": "Idioma",
+    "linguaAiuto": "Para el sitio y los emails que recibes.",
+    "salva": "Guardar",
+    "salvato": "Cambios guardados.",
+    "email": "Email",
+    "notifiche": "Recibir emails opcionales",
+    "notificheAiuto": "Resúmenes de mensajes y recordatorios. Las confirmaciones de reserva y pago se envían siempre."
+  },
+  "sicurezza": {
+    "titolo": "Contraseña y accesos",
+    "attuale": "Contraseña actual",
+    "cambia": "Cambiar contraseña",
+    "cambiata": "Contraseña cambiada: inicia sesión con la nueva.",
+    "sessioni": "Dispositivos conectados",
+    "sessioniDescrizione": "Cierra la sesión en todos los dispositivos, incluido este.",
+    "esciOvunque": "Cerrar sesión en todas partes",
+    "uscito": "Has cerrado sesión en todos los dispositivos."
+  },
+  "eliminaAccount": {
+    "titolo": "Eliminar cuenta",
+    "descrizione": "Tu cuenta se cerrará. Las reservas pasadas se conservan en los registros del alojamiento, como exige la ley.",
+    "elimina": "Eliminar mi cuenta",
+    "password": "Confirma con tu contraseña",
+    "conferma": "Eliminar definitivamente",
+    "annulla": "Cancelar",
+    "fatto": "Cuenta eliminada."
   }
 }
