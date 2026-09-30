@@ -1,0 +1,51 @@
+<h2 class="titolo-scheda">{{ 'portale.cancella.titolo' | transloco }}</h2>
+
+@if (!aperta()) {
+  <p>{{ 'portale.cancella.testo' | transloco }}</p>
+  <button class="pulsante pulsante-secondario" type="button" (click)="aperta.set(true)">
+    {{ 'portale.cancella.apri' | transloco }}
+  </button>
+} @else if (anteprima.hasValue()) {
+  @let costo = anteprima.value();
+  <dl class="dati">
+    <div>
+      <dt>{{ 'portale.cancella.penale' | transloco }}</dt>
+      <dd>{{ costo.penale | prezzo }}</dd>
+    </div>
+    <div>
+      <dt>{{ 'portale.cancella.rimborso' | transloco }}</dt>
+      <dd>{{ rimborso() | prezzo }}</dd>
+    </div>
+  </dl>
+  @if (costo.gratuita_fino_al) {
+    <p class="esito esito-ok">
+      {{
+        'portale.cancella.gratuita' | transloco: { data: (costo.gratuita_fino_al | data: 'ora') }
+      }}
+    </p>
+  }
+
+  <form [formGroup]="modulo" (ngSubmit)="conferma()" novalidate>
+    <app-campo
+      [etichetta]="'portale.cancella.motivo' | transloco"
+      [aiuto]="'conferma.facoltativo' | transloco"
+      [errore]="errori.campo(modulo.controls.motivo)"
+    >
+      <textarea formControlName="motivo" rows="3" [maxLength]="lunghezzaMotivo"></textarea>
+    </app-campo>
+    <div class="azioni">
+      <button class="pulsante pulsante-pericolo" type="submit" [disabled]="inCorso()">
+        {{ 'portale.cancella.conferma' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="aperta.set(false)">
+        {{ 'portale.cancella.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else if (anteprima.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}

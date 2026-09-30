@@ -166,7 +166,23 @@
     "PAGAMENTO_NON_RIUSCITO": "Le paiement a échoué. Réessayez.",
     "PAGAMENTO_NON_TROVATO": "Paiement introuvable.",
     "SERVIZIO_NON_DISPONIBILE": "Un service choisi n’est plus disponible.",
-    "IMPORTO_SUPERIORE_AL_SALDO": "Le montant dépasse le reste à payer."
+    "IMPORTO_SUPERIORE_AL_SALDO": "Le montant dépasse le reste à payer.",
+    "RECENSIONE_GIA_PRESENTE": "Vous avez déjà donné votre avis sur ce séjour.",
+    "RECENSIONE_NON_CONSENTITA": "Seul un séjour terminé peut être évalué.",
+    "PRENOTAZIONE_ALTRUI": "Cette réservation n’est pas la vôtre.",
+    "LINK_CHECKIN_NON_VALIDO": "Le lien d’enregistrement en ligne n’est pas valide ou a expiré.",
+    "PRENOTAZIONE_CHIUSA": "La réservation est annulée.",
+    "TROPPI_OSPITI": "Vous avez saisi plus de clients que prévu.",
+    "OSPITE_DUPLICATO": "Le même client est saisi deux fois.",
+    "SERVIZIO_NON_TROVATO": "Service introuvable.",
+    "FILE_MANCANTE": "Fichier non disponible.",
+    "FORMATO_FILE_NON_VALIDO": "Format non accepté : utilisez PDF, JPG, PNG ou WebP.",
+    "FILE_TROPPO_GRANDE": "Le fichier est trop volumineux.",
+    "ANAGRAFICA_MANCANTE": "Complétez d’abord vos données personnelles.",
+    "DOCUMENTO_NON_TROVATO": "Document introuvable.",
+    "NON_RIMBORSABILE": "Ce tarif n’est pas remboursable.",
+    "SOGGIORNO_INIZIATO": "Le séjour a déjà commencé.",
+    "PAGAMENTO_NON_AVVIATO": "Impossible de lancer le paiement."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -436,6 +452,123 @@
     },
     "errore": {
       "titolo": "Échec du paiement"
+    }
+  },
+  "recensione": {
+    "titolo": "Comment s’est passé votre séjour ?",
+    "voto": "Votre note",
+    "stelle": "{{ voto }} sur {{ massimo }}",
+    "dettagli": "Vous voulez en dire plus ?",
+    "senzaVoto": "Pas de note",
+    "titoloRecensione": "Titre",
+    "commento": "Racontez votre séjour",
+    "anonima": "Publier sans mon nom",
+    "invia": "Envoyer l’avis",
+    "grazie": "Merci ! Votre avis sera publié après vérification."
+  },
+  "portale": {
+    "occhiello": "Espace personnel",
+    "saluto": "Bonjour {{ nome }}",
+    "mostraAltre": "Afficher plus",
+    "menu": {
+      "prenotazioni": "Réservations",
+      "fatture": "Factures",
+      "fedelta": "Fidélité",
+      "documenti": "Documents",
+      "profilo": "Profil"
+    },
+    "prenotazioni": {
+      "prossime": "Prochains séjours",
+      "passate": "Séjours passés",
+      "nessuna": "Aucun séjour prévu.",
+      "prenota": "Réserver un séjour",
+      "tutte": "Toutes les réservations"
+    },
+    "extra": {
+      "titolo": "Services supplémentaires",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "Retirer {{ nome }}",
+      "nessuno": "Aucun service supplémentaire.",
+      "servizio": "Ajouter un service",
+      "scegli": "Choisir…",
+      "quantita": "Quantité",
+      "aggiungi": "Ajouter"
+    },
+    "cancella": {
+      "titolo": "Annuler la réservation",
+      "testo": "Avant de confirmer, nous vous indiquons les éventuels frais.",
+      "apri": "Je veux annuler",
+      "penale": "Frais",
+      "rimborso": "Remboursement",
+      "gratuita": "Annulation gratuite jusqu’au {{ data }}.",
+      "motivo": "Motif",
+      "conferma": "Confirmer l’annulation",
+      "annulla": "Ne pas annuler"
+    },
+    "fatture": {
+      "titolo": "Factures",
+      "TD01": "Facture {{ numero }}/{{ anno }}",
+      "TD04": "Avoir {{ numero }}/{{ anno }}",
+      "scarica": "Télécharger le PDF",
+      "nessuna": "Aucune facture émise."
+    },
+    "fedelta": {
+      "titolo": "Programme de fidélité",
+      "sconto": "Remise de {{ sconto }} %",
+      "inizia": "Cumulez des points à chaque séjour et débloquez des remises exclusives.",
+      "punti": "{{ punti }} points",
+      "mancano": "Encore {{ punti }} points pour le niveau {{ livello }}.",
+      "massimo": "Vous êtes au niveau le plus élevé. Merci !",
+      "anno": "Votre année {{ anno }}",
+      "guadagnati": "Points gagnés",
+      "tolti": "Points retirés",
+      "livelli": "Niveaux",
+      "movimenti": "Historique des points",
+      "nessunMovimento": "Aucun mouvement pour l’instant.",
+      "motivi": {
+        "soggiorno": "Séjour",
+        "bonus": "Bonus",
+        "rettifica": "Correction",
+        "annullamento": "Annulation"
+      }
+    },
+    "documenti": {
+      "titolo": "Pièces d’identité",
+      "testo": "Téléchargez-les une fois : nous les utiliserons pour l’enregistrement de vos séjours.",
+      "carica": "Télécharger un document",
+      "formati": "PDF, JPG, PNG ou WebP.",
+      "caricato": "Téléchargé le {{ data }}",
+      "scarica": "Télécharger",
+      "elimina": "Supprimer {{ nome }}",
+      "conferma": "Supprimer",
+      "annulla": "Annuler",
+      "nessuno": "Aucun document téléchargé."
+    },
+    "checkin": {
+      "occhiello": "Enregistrement en ligne",
+      "titolo": "Qui séjourne",
+      "soggiorno": "Réservation {{ codice }}, du {{ arrivo }} au {{ partenza }}.",
+      "testo": "Saisissez les données de chaque client : rien d’autre à faire à l’arrivée.",
+      "ospite": "Client {{ numero }}",
+      "sesso": "Sexe",
+      "scegli": "Choisir…",
+      "sessi": {
+        "M": "Homme",
+        "F": "Femme"
+      },
+      "nascita": "Date de naissance",
+      "documento": "Pièce d’identité du premier client, exigée par la loi pour l’enregistrement.",
+      "tipoDocumento": "Type de document",
+      "documenti": {
+        "IDENT": "Carte d’identité",
+        "IDELE": "Carte d’identité électronique",
+        "PASOR": "Passeport",
+        "PATEN": "Permis de conduire"
+      },
+      "numeroDocumento": "Numéro du document",
+      "scadenza": "Date d’expiration",
+      "invia": "Envoyer les données",
+      "fatto": "Données reçues le {{ data }}. Vous pouvez les corriger jusqu’à l’arrivée."
     }
   }
 }

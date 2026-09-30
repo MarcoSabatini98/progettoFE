@@ -166,7 +166,23 @@
     "PAGAMENTO_NON_RIUSCITO": "Die Zahlung ist fehlgeschlagen. Bitte erneut versuchen.",
     "PAGAMENTO_NON_TROVATO": "Zahlung nicht gefunden.",
     "SERVIZIO_NON_DISPONIBILE": "Eine gewählte Zusatzleistung ist nicht mehr verfügbar.",
-    "IMPORTO_SUPERIORE_AL_SALDO": "Der Betrag übersteigt den offenen Betrag."
+    "IMPORTO_SUPERIORE_AL_SALDO": "Der Betrag übersteigt den offenen Betrag.",
+    "RECENSIONE_GIA_PRESENTE": "Sie haben diesen Aufenthalt bereits bewertet.",
+    "RECENSIONE_NON_CONSENTITA": "Nur abgeschlossene Aufenthalte können bewertet werden.",
+    "PRENOTAZIONE_ALTRUI": "Diese Buchung gehört nicht Ihnen.",
+    "LINK_CHECKIN_NON_VALIDO": "Der Link zum Online-Check-in ist ungültig oder abgelaufen.",
+    "PRENOTAZIONE_CHIUSA": "Die Buchung wurde storniert.",
+    "TROPPI_OSPITI": "Sie haben mehr Gäste eingegeben als gebucht.",
+    "OSPITE_DUPLICATO": "Derselbe Gast ist doppelt eingetragen.",
+    "SERVIZIO_NON_TROVATO": "Leistung nicht gefunden.",
+    "FILE_MANCANTE": "Datei nicht verfügbar.",
+    "FORMATO_FILE_NON_VALIDO": "Format nicht erlaubt: PDF, JPG, PNG oder WebP verwenden.",
+    "FILE_TROPPO_GRANDE": "Die Datei ist zu groß.",
+    "ANAGRAFICA_MANCANTE": "Vervollständigen Sie zuerst Ihre persönlichen Daten.",
+    "DOCUMENTO_NON_TROVATO": "Dokument nicht gefunden.",
+    "NON_RIMBORSABILE": "Dieser Tarif ist nicht erstattungsfähig.",
+    "SOGGIORNO_INIZIATO": "Der Aufenthalt hat bereits begonnen.",
+    "PAGAMENTO_NON_AVVIATO": "Die Zahlung konnte nicht gestartet werden."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -436,6 +452,123 @@
     },
     "errore": {
       "titolo": "Zahlung fehlgeschlagen"
+    }
+  },
+  "recensione": {
+    "titolo": "Wie war Ihr Aufenthalt?",
+    "voto": "Ihre Bewertung",
+    "stelle": "{{ voto }} von {{ massimo }}",
+    "dettagli": "Möchten Sie mehr sagen?",
+    "senzaVoto": "Keine Bewertung",
+    "titoloRecensione": "Titel",
+    "commento": "Erzählen Sie von Ihrem Aufenthalt",
+    "anonima": "Ohne meinen Namen veröffentlichen",
+    "invia": "Bewertung senden",
+    "grazie": "Danke! Ihre Bewertung wird nach einer Prüfung veröffentlicht."
+  },
+  "portale": {
+    "occhiello": "Mein Bereich",
+    "saluto": "Hallo {{ nome }}",
+    "mostraAltre": "Mehr anzeigen",
+    "menu": {
+      "prenotazioni": "Buchungen",
+      "fatture": "Rechnungen",
+      "fedelta": "Treue",
+      "documenti": "Dokumente",
+      "profilo": "Profil"
+    },
+    "prenotazioni": {
+      "prossime": "Kommende Aufenthalte",
+      "passate": "Vergangene Aufenthalte",
+      "nessuna": "Keine geplanten Aufenthalte.",
+      "prenota": "Aufenthalt buchen",
+      "tutte": "Alle Buchungen"
+    },
+    "extra": {
+      "titolo": "Zusatzleistungen",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "{{ nome }} entfernen",
+      "nessuno": "Keine Zusatzleistungen.",
+      "servizio": "Leistung hinzufügen",
+      "scegli": "Auswählen…",
+      "quantita": "Menge",
+      "aggiungi": "Hinzufügen"
+    },
+    "cancella": {
+      "titolo": "Buchung stornieren",
+      "testo": "Vor der Bestätigung zeigen wir Ihnen eventuelle Stornogebühren.",
+      "apri": "Ich möchte stornieren",
+      "penale": "Gebühr",
+      "rimborso": "Erstattung",
+      "gratuita": "Kostenlose Stornierung bis {{ data }}.",
+      "motivo": "Grund",
+      "conferma": "Stornierung bestätigen",
+      "annulla": "Nicht stornieren"
+    },
+    "fatture": {
+      "titolo": "Rechnungen",
+      "TD01": "Rechnung {{ numero }}/{{ anno }}",
+      "TD04": "Gutschrift {{ numero }}/{{ anno }}",
+      "scarica": "PDF herunterladen",
+      "nessuna": "Noch keine Rechnungen."
+    },
+    "fedelta": {
+      "titolo": "Treueprogramm",
+      "sconto": "{{ sconto }} % Rabatt",
+      "inizia": "Sammeln Sie bei jedem Aufenthalt Punkte und schalten Sie exklusive Rabatte frei.",
+      "punti": "{{ punti }} Punkte",
+      "mancano": "Noch {{ punti }} Punkte bis {{ livello }}.",
+      "massimo": "Sie haben die höchste Stufe erreicht. Danke!",
+      "anno": "Ihr Jahr {{ anno }}",
+      "guadagnati": "Gesammelte Punkte",
+      "tolti": "Abgezogene Punkte",
+      "livelli": "Stufen",
+      "movimenti": "Punkteverlauf",
+      "nessunMovimento": "Noch keine Bewegungen.",
+      "motivi": {
+        "soggiorno": "Aufenthalt",
+        "bonus": "Bonus",
+        "rettifica": "Korrektur",
+        "annullamento": "Stornierung"
+      }
+    },
+    "documenti": {
+      "titolo": "Ausweisdokumente",
+      "testo": "Einmal hochladen: Wir verwenden sie für den Check-in Ihrer Aufenthalte.",
+      "carica": "Dokument hochladen",
+      "formati": "PDF, JPG, PNG oder WebP.",
+      "caricato": "Hochgeladen am {{ data }}",
+      "scarica": "Herunterladen",
+      "elimina": "{{ nome }} löschen",
+      "conferma": "Löschen",
+      "annulla": "Abbrechen",
+      "nessuno": "Keine Dokumente hochgeladen."
+    },
+    "checkin": {
+      "occhiello": "Online-Check-in",
+      "titolo": "Wer übernachtet",
+      "soggiorno": "Buchung {{ codice }}, vom {{ arrivo }} bis {{ partenza }}.",
+      "testo": "Geben Sie die Daten aller Gäste ein: Bei der Ankunft ist nichts weiter zu tun.",
+      "ospite": "Gast {{ numero }}",
+      "sesso": "Geschlecht",
+      "scegli": "Auswählen…",
+      "sessi": {
+        "M": "Männlich",
+        "F": "Weiblich"
+      },
+      "nascita": "Geburtsdatum",
+      "documento": "Ausweis des ersten Gastes, gesetzlich für die Meldung vorgeschrieben.",
+      "tipoDocumento": "Dokumentart",
+      "documenti": {
+        "IDENT": "Personalausweis",
+        "IDELE": "Elektronischer Personalausweis",
+        "PASOR": "Reisepass",
+        "PATEN": "Führerschein"
+      },
+      "numeroDocumento": "Dokumentnummer",
+      "scadenza": "Ablaufdatum",
+      "invia": "Daten senden",
+      "fatto": "Daten am {{ data }} erhalten. Sie können sie bis zur Ankunft korrigieren."
     }
   }
 }

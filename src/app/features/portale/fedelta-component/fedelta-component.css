@@ -1,0 +1,74 @@
+/* Il colore del livello arriva dal backend; senza, l'ocra riservato al VIP. */
+.livello,
+.scala li {
+  --colore: var(--colore-livello, var(--bb-ocra));
+}
+
+.badge {
+  justify-self: start;
+  padding: var(--bb-spazio-1) var(--bb-spazio-4);
+  border: 2px solid var(--colore);
+  border-radius: 999px;
+  background: var(--bb-ocra-tenue);
+  font-family: var(--bb-font-titoli);
+  font-size: 1.25rem;
+}
+
+.punti {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+progress {
+  width: 100%;
+  accent-color: var(--colore);
+}
+
+.scala,
+.movimenti {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scala li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--bb-spazio-4);
+  padding: var(--bb-spazio-2) var(--bb-spazio-3);
+  border-inline-start: 4px solid var(--colore);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.scala .attuale {
+  background: var(--bb-ocra-tenue);
+  font-weight: 600;
+}
+
+.movimento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--bb-spazio-4);
+  padding-block: var(--bb-spazio-3);
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.tenue {
+  color: var(--bb-testo-tenue);
+}
+
+.variazione {
+  font-weight: 600;
+  color: var(--bb-ok);
+}
+
+.variazione.negativa {
+  color: var(--bb-errore);
+}
+
+.altre {
+  justify-self: center;
+}

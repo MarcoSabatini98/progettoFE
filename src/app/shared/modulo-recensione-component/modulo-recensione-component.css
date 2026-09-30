@@ -1,0 +1,76 @@
+form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-block-end: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+/* Stelle: piene fino a quella scelta (o a quella sotto il puntatore), in ocra. */
+.stelle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+}
+
+.stelle legend {
+  inline-size: 100%;
+}
+
+.stelle label {
+  display: grid;
+  padding: var(--bb-spazio-1);
+  border-radius: var(--bb-raggio-piccolo);
+  color: var(--bb-linea);
+  cursor: pointer;
+  --icona-dimensione: 2rem;
+}
+
+.stelle label:has(input:checked),
+.stelle label:has(~ label input:checked),
+.stelle:hover label {
+  color: var(--bb-ocra);
+}
+
+.stelle label:hover ~ label {
+  color: var(--bb-linea);
+}
+
+.stelle label:has(input:focus-visible) {
+  box-shadow: 0 0 0 4px var(--bb-brand-tenue);
+}
+
+.errore-voto {
+  inline-size: 100%;
+  color: var(--bb-errore);
+  font-size: 0.875rem;
+}
+
+.dettagli {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
+  gap: var(--bb-spazio-4);
+}
+
+.dettagli legend {
+  grid-column: 1 / -1;
+}
+
+.anonima {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+}
+
+form > .pulsante {
+  justify-self: start;
+}

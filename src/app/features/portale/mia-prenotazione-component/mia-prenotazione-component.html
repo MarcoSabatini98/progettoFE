@@ -1,0 +1,32 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'portale.prenotazioni.tutte' | transloco }}
+</a>
+
+@if (dati.hasValue()) {
+  @let prenotazione = dati.value().prenotazione;
+  @let pagamento = dati.value().pagamento;
+
+  <h2 class="sezione-titolo">
+    {{ 'prenotazione.titolo' | transloco: { codice: prenotazione.codice } }}
+  </h2>
+
+  <div class="griglia-prenotazione">
+    <app-dettagli-prenotazione [prenotazione]="prenotazione" />
+    <app-conto-prenotazione [importi]="prenotazione" [pagamento]="pagamento" />
+    <app-pagamento-prenotazione class="larga" [riepilogo]="pagamento" [avvia]="avvia" />
+    <app-extra-prenotazione
+      [prenotazione]="prenotazione"
+      [modificabile]="modificabile()"
+      (aggiornata)="dati.reload()"
+    />
+    @if (modificabile()) {
+      <app-cancella-prenotazione [prenotazioneId]="prenotazione.id" (cancellata)="dati.reload()" />
+    }
+    @if (prenotazione.stato === 'conclusa') {
+      <app-modulo-recensione class="larga" [invia]="recensisci" />
+    }
+  </div>
+} @else if (dati.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

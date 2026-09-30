@@ -44,9 +44,10 @@ describe('ProfiloComponent', () => {
     });
   });
 
-  async function crea(ruolo: CodiceRuolo, verificata: boolean) {
+  async function crea(ruolo: CodiceRuolo, verificata: boolean, incorporato = false) {
     utente.update((u) => ({ ...u, ruolo, email_verificata: verificata }));
     const fixture = TestBed.createComponent(ProfiloComponent);
+    fixture.componentRef.setInput('incorporato', incorporato);
     await fixture.whenStable();
     return fixture.nativeElement as HTMLElement;
   }
@@ -64,6 +65,14 @@ describe('ProfiloComponent', () => {
     ]) {
       expect(elemento.querySelector(sezione), sezione).not.toBeNull();
     }
+  });
+
+  it("incorporato nell'area personale lascia il titolo alla pagina", async () => {
+    const elemento = await crea('cliente', true, true);
+
+    expect(elemento.classList).toContain('incorporato');
+    expect(elemento.querySelector('h1')).toBeNull();
+    expect(elemento.querySelector('.email')?.textContent).toContain('anna@esempio.it');
   });
 
   it('allo staff verificato non propone verifica né eliminazione', async () => {

@@ -29,7 +29,36 @@ export const PERCORSI_PUBBLICI = {
   contatti: '/contatti',
   /** Seguito dal tipo: /documenti/privacy, /documenti/termini, /documenti/cookie. */
   documenti: '/documenti',
+  /** Link nell'email prima dell'arrivo: /checkin-online?token=... */
+  checkinOnline: '/checkin-online',
 } as const;
+
+/** Sezioni dell'area personale dei clienti. */
+export const PERCORSI_PORTALE = {
+  /** Seguito dall'id per il dettaglio: /area-personale/prenotazioni/12. */
+  prenotazioni: `${PERCORSI_PUBBLICI.areaPersonale}/prenotazioni`,
+  fatture: `${PERCORSI_PUBBLICI.areaPersonale}/fatture`,
+  fedelta: `${PERCORSI_PUBBLICI.areaPersonale}/fedelta`,
+  documenti: `${PERCORSI_PUBBLICI.areaPersonale}/documenti`,
+  profilo: `${PERCORSI_PUBBLICI.areaPersonale}/profilo`,
+} as const;
+
+/** Schede dell'area personale, nell'ordine della barra. */
+export const MENU_PORTALE: readonly VoceMenuInterface[] = [
+  {
+    etichetta: 'portale.menu.prenotazioni',
+    percorso: PERCORSI_PORTALE.prenotazioni,
+    icona: 'event_note',
+  },
+  { etichetta: 'portale.menu.fatture', percorso: PERCORSI_PORTALE.fatture, icona: 'receipt_long' },
+  {
+    etichetta: 'portale.menu.fedelta',
+    percorso: PERCORSI_PORTALE.fedelta,
+    icona: 'workspace_premium',
+  },
+  { etichetta: 'portale.menu.documenti', percorso: PERCORSI_PORTALE.documenti, icona: 'badge' },
+  { etichetta: 'portale.menu.profilo', percorso: PERCORSI_PORTALE.profilo, icona: 'person' },
+];
 
 /** Menu del sito pubblico, nell'ordine della testata. */
 export const MENU_PUBBLICO: readonly VoceMenuInterface[] = [

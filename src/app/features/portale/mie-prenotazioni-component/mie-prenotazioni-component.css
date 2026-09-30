@@ -1,0 +1,25 @@
+.prenotazione {
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.prenotazione:hover {
+  border-color: var(--bb-brand);
+}
+
+.codice {
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+.stato-vuoto {
+  display: grid;
+  justify-items: center;
+  gap: var(--bb-spazio-4);
+}
+
+.altre {
+  justify-self: center;
+}

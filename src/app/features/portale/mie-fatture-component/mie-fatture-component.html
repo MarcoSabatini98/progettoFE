@@ -1,0 +1,42 @@
+<h2 class="sezione-titolo">{{ 'portale.fatture.titolo' | transloco }}</h2>
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+
+@if (elenco.hasValue()) {
+  <ul class="fatture">
+    @for (fattura of elenco.value(); track fattura.id) {
+      <li class="scheda fattura">
+        <div class="intestazione">
+          <h3 class="titolo-scheda">
+            {{
+              'portale.fatture.' + fattura.tipo_documento
+                | transloco: { numero: fattura.sezionale + fattura.numero, anno: fattura.anno }
+            }}
+          </h3>
+          <p class="tenue">
+            {{ fattura.data_emissione | data: 'giorno' }}
+            @if (fattura.prenotazione) {
+              · {{ fattura.prenotazione.codice }}
+            }
+          </p>
+        </div>
+        <p class="totale">{{ fattura.totale | prezzo }}</p>
+        <button
+          class="pulsante pulsante-secondario"
+          type="button"
+          [disabled]="inDownload() === fattura.id"
+          (click)="scarica(fattura)"
+        >
+          <app-icona nome="download" />
+          {{ 'portale.fatture.scarica' | transloco }}
+        </button>
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'portale.fatture.nessuna' | transloco }}</li>
+    }
+  </ul>
+} @else if (elenco.error()) {
+  <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+}

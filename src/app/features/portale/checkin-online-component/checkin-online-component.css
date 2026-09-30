@@ -1,0 +1,13 @@
+.ospite {
+  margin: 0;
+  min-width: 0;
+}
+
+.aiuto {
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+form > .pulsante {
+  justify-self: start;
+}

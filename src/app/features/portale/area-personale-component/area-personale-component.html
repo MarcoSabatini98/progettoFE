@@ -1,0 +1,22 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'portale.occhiello' | transloco }}</p>
+  <h1>{{ 'portale.saluto' | transloco: { nome: auth.utente()?.nome } }}</h1>
+</header>
+
+<div class="contenuto">
+  <nav class="schede" [attr.aria-label]="'portale.occhiello' | transloco">
+    @for (voce of menu; track voce.percorso) {
+      <a
+        class="scheda-link"
+        [routerLink]="voce.percorso"
+        routerLinkActive="attiva"
+        ariaCurrentWhenActive="page"
+      >
+        <app-icona [nome]="voce.icona" />
+        {{ voce.etichetta | transloco }}
+      </a>
+    }
+  </nav>
+
+  <router-outlet />
+</div>

@@ -1,0 +1,35 @@
+:host {
+  display: grid;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.metodi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}
+
+.metodi .pulsante {
+  flex: 1 1 12rem;
+}
+
+.bonifico {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  padding-block-start: var(--bb-spazio-4);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.bonifico h3 {
+  font-size: 1rem;
+}
+
+.iban {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+  user-select: all;
+}

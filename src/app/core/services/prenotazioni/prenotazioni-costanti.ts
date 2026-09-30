@@ -70,3 +70,36 @@ export const LUNGHEZZA_RICHIESTE = 5000;
 export const FORMATO_CODICE_SCONTO = /^[A-Z0-9_-]+$/i;
 
 export const LUNGHEZZA_CODICE_SCONTO = 30;
+
+/** Stati in cui il cliente può ancora cancellare o cambiare gli extra (prenotazioni.service.js). */
+export const STATI_MODIFICABILI_CLIENTE = ['in_attesa', 'confermata'] as const;
+
+/** Motivo della cancellazione (prenotazioni.validator.js). */
+export const LUNGHEZZA_MOTIVO_CANCELLAZIONE = 255;
+
+/** Quantità di un extra (prenotazioni.validator.js). */
+export const LIMITI_QUANTITA_EXTRA = { min: 1, max: 255 } as const;
+
+/**
+ * Documenti più usati della tabella Alloggiati Web (alloggiati_documenti.csv):
+ * bastano per il check-in online, gli altri li inserisce la reception.
+ */
+export const TIPI_DOCUMENTO_IDENTITA = ['IDENT', 'IDELE', 'PASOR', 'PATEN'] as const;
+
+/** Numero del documento (ospiti.validator.js). */
+export const LUNGHEZZA_NUMERO_DOCUMENTO = 30;
+
+/** Voti delle recensioni, da 1 a 5 (recensioni.validator.js). */
+export const VOTI_RECENSIONE = [1, 2, 3, 4, 5] as const;
+
+/** Lunghezze massime di titolo e commento (recensioni.validator.js). */
+export const LUNGHEZZA_RECENSIONE = { titolo: 150, commento: 5000 } as const;
+
+/** Voti di dettaglio facoltativi di una recensione, nell'ordine del modulo. */
+export const CATEGORIE_VOTO = [
+  'pulizia',
+  'personale',
+  'posizione',
+  'comfort',
+  'qualita_prezzo',
+] as const;
