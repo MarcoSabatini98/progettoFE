@@ -38,16 +38,6 @@ form {
   gap: var(--bb-spazio-4);
 }
 
-.esito {
-  padding: var(--bb-spazio-3) var(--bb-spazio-4);
-  border-radius: var(--bb-raggio-piccolo);
-}
-
-.esito-errore {
-  background: var(--bb-errore-tenue);
-  color: var(--bb-errore);
-}
-
 .collegamento {
   justify-self: center;
   color: var(--bb-brand-testo);

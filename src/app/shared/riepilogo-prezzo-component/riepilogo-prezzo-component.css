@@ -1,0 +1,34 @@
+.riepilogo {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+}
+
+.riga {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-4);
+}
+
+dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sconto dd {
+  color: var(--bb-ok);
+}
+
+.totale {
+  margin-block-start: var(--bb-spazio-2);
+  padding-block-start: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.acconto {
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}

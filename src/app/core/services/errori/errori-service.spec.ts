@@ -46,6 +46,15 @@ describe('ErroriService', () => {
     expect(service.messaggio(errore)).toBe('Messaggio del backend');
   });
 
+  it('traduce anche un errore arrivato nei dati di una risposta', () => {
+    expect(service.testo({ codice: 'CREDENZIALI_NON_VALIDE', messaggio: 'x' })).toBe(
+      'Email o password errate',
+    );
+    expect(service.testo({ codice: 'SOGGIORNO_MINIMO', messaggio: 'Almeno 3 notti' })).toBe(
+      'Almeno 3 notti',
+    );
+  });
+
   it('riconosce la connessione assente', () => {
     expect(service.messaggio(new HttpErrorResponse({ status: 0 }))).toBe('Connessione assente');
   });

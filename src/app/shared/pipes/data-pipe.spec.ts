@@ -25,6 +25,10 @@ describe('DataPipe', () => {
     expect(pipe.transform('2026-10-01', 'mese')).toBe('ottobre 2026');
   });
 
+  it('nel formato ora mostra giorno e orario di un istante', () => {
+    expect(pipe.transform('2026-10-01T15:30:00', 'ora')).toBe('1 ottobre alle ore 15:30');
+  });
+
   it('segue la lingua del sito', () => {
     lingua.set('en');
 

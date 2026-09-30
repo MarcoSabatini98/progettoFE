@@ -53,6 +53,7 @@ describe('TipologiaComponent', () => {
     expect(camere.leggiTipologiaPubblica).toHaveBeenCalledWith('doppia-vista-mare');
     expect(elemento.querySelector('h1')?.textContent).toBe('Doppia vista mare');
     expect(elemento.querySelector('.descrizione')?.textContent).toBe('Vista sul golfo.');
+    expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe('/prenota');
     expect(elemento.querySelectorAll('.dettagli dd')).toHaveLength(2);
     expect(elemento.querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
     expect(elemento.querySelector('app-galleria')).toBeNull();

@@ -61,7 +61,8 @@
       "offerte": "Ofertas",
       "recensioni": "Opiniones",
       "faq": "Preguntas frecuentes",
-      "contatti": "Contacto"
+      "contatti": "Contacto",
+      "prenota": "Reservar"
     }
   },
   "avvisi": {
@@ -81,7 +82,8 @@
     "tutteCamere": "Ver todas las habitaciones",
     "recensioni": "Lo que dicen de nosotros",
     "media": "{{ media }}/5 de {{ numero }} opiniones",
-    "tutteRecensioni": "Leer todas las opiniones"
+    "tutteRecensioni": "Leer todas las opiniones",
+    "prenota": "Reserva tu estancia"
   },
   "accesso": {
     "titolo": "Iniciar sesión",
@@ -114,7 +116,10 @@
     "minlength": "Al menos {{ requiredLength }} caracteres.",
     "maxlength": "Como máximo {{ requiredLength }} caracteres.",
     "passwordDiverse": "Las contraseñas no coinciden.",
-    "pattern": "Formato no válido."
+    "pattern": "Formato no válido.",
+    "min": "El valor mínimo es {{ min }}.",
+    "max": "El valor máximo es {{ max }}.",
+    "partenzaPrimaArrivo": "La salida debe ser posterior a la llegada."
   },
   "errori": {
     "generico": "Algo ha ido mal. Inténtalo de nuevo.",
@@ -140,7 +145,28 @@
     "CONSENSI_OBBLIGATORI": "Para registrarte debes aceptar la privacidad y los términos.",
     "PASSWORD_ERRATA": "La contraseña no es correcta.",
     "PRENOTAZIONI_ATTIVE": "Tienes reservas en curso o futuras: cancélalas o espera al final de la estancia.",
-    "UTENTE_NON_TROVATO": "Cuenta no encontrada."
+    "UTENTE_NON_TROVATO": "Cuenta no encontrada.",
+    "ARRIVO_NEL_PASSATO": "La fecha de llegada ya ha pasado.",
+    "DATE_NON_VALIDE": "Revisa las fechas: la salida debe ser posterior a la llegada.",
+    "BLOCCO_DIVERSO": "La habitación reservada para ti no corresponde a esta estancia: repite la búsqueda.",
+    "BLOCCO_SCADUTO": "Se acabó el tiempo para completar la reserva: repite la búsqueda.",
+    "CAMERA_NON_DISPONIBILE": "La habitación ya no está disponible en estas fechas.",
+    "CODICE_SCONTO_NON_VALIDO": "El código de descuento no es válido o ha caducado.",
+    "CODICE_SCONTO_NON_APPLICABILE": "El código de descuento no es válido para esta estancia.",
+    "CODICE_SCONTO_NON_TROVATO": "El código de descuento no existe.",
+    "PACCHETTO_NON_APPLICABILE": "El paquete no es válido para esta estancia.",
+    "PACCHETTO_NON_TROVATO": "El paquete ya no está disponible.",
+    "SOGGIORNO_MINIMO": "Estas fechas requieren una estancia más larga.",
+    "TITOLARE_MANCANTE": "Indica los datos de quien reserva.",
+    "PRENOTAZIONE_NON_TROVATA": "No hay ninguna reserva con este código y correo.",
+    "STATO_NON_VALIDO": "No es posible en el estado actual de la reserva.",
+    "NULLA_DA_PAGARE": "No hay nada que pagar.",
+    "METODO_NON_VALIDO": "Método de pago no disponible.",
+    "METODO_NON_ATTIVO": "Método de pago no disponible.",
+    "PAGAMENTO_NON_RIUSCITO": "El pago no se ha completado. Inténtalo de nuevo.",
+    "PAGAMENTO_NON_TROVATO": "Pago no encontrado.",
+    "SERVIZIO_NON_DISPONIBILE": "Un servicio elegido ya no está disponible.",
+    "IMPORTO_SUPERIORE_AL_SALDO": "El importe supera lo pendiente de pago."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -240,7 +266,8 @@
     "letti": "Camas",
     "dotazioni": "En la habitación",
     "nonTrovata": "Habitación no encontrada",
-    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible."
+    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible.",
+    "prenota": "Ver disponibilidad"
   },
   "offerte": {
     "occhiello": "Para ti",
@@ -299,5 +326,116 @@
     "orari": "Horarios",
     "checkin": "Check-in desde las {{ orario }}",
     "checkout": "Check-out hasta las {{ orario }}"
+  },
+  "prenota": {
+    "occhiello": "Reserva directa",
+    "titolo": "Reservar",
+    "introduzione": "Elige fechas y huéspedes: te mostramos las habitaciones libres al mejor precio.",
+    "arrivo": "Llegada",
+    "partenza": "Salida",
+    "adulti": "Adultos",
+    "bambini": "Niños",
+    "bambiniAiuto": "Hasta {{ eta }} años",
+    "etaBambini": "Edad de los niños",
+    "bambino": "Niño {{ numero }}",
+    "scegliEta": "Edad",
+    "cerca": "Buscar habitaciones",
+    "risultati": "Habitaciones disponibles",
+    "camereLibere": "Habitaciones libres: {{ numero }}",
+    "totale": "{{ prezzo }} por {{ notti }} noches",
+    "acconto": "Depósito al reservar: {{ prezzo }}",
+    "scegli": "Elegir",
+    "nessunaCamera": "No hay habitaciones libres en estas fechas. Prueba con otras."
+  },
+  "riepilogoPrezzo": {
+    "importo_soggiorno": "Estancia",
+    "sconto_promozione": "Promoción",
+    "sconto_codice": "Código de descuento",
+    "sconto_fedelta": "Descuento de fidelidad ({{ percentuale }} %)",
+    "importo_pacchetto": "Paquete",
+    "importo_servizi": "Servicios extra",
+    "tassa_soggiorno": "Tasa turística",
+    "totale": "Total",
+    "acconto": "Depósito a pagar"
+  },
+  "conferma": {
+    "date": "Del {{ arrivo }} al {{ partenza }}",
+    "ospiti": "Adultos: {{ adulti }} · Niños: {{ bambini }}",
+    "cambiaCamera": "Cambiar habitación",
+    "bloccata": "Te guardamos la habitación hasta las {{ ora }}.",
+    "opzioni": "Personaliza tu estancia",
+    "codiceSconto": "Código de descuento",
+    "applica": "Aplicar",
+    "codicePercentuale": "{{ codice }}: {{ valore }} % de descuento",
+    "codiceImporto": "{{ codice }}: {{ valore }} de descuento",
+    "togliCodice": "Quitar",
+    "pacchetto": "Paquete",
+    "nessunPacchetto": "Sin paquete",
+    "extra": "Servicios extra",
+    "titolare": "Quién reserva",
+    "titolareAiuto": "Usaremos estos datos para la confirmación y para contactarte.",
+    "nome": "Nombre",
+    "cognome": "Apellidos",
+    "email": "Correo electrónico",
+    "telefono": "Teléfono",
+    "facoltativo": "Opcional",
+    "arrivo": "Tu llegada",
+    "oraArrivo": "Hora de llegada prevista",
+    "richieste": "Peticiones especiales",
+    "richiesteAiuto": "Cuna, alergias, accesibilidad… Haremos lo posible.",
+    "prenota": "Confirmar la reserva",
+    "conto": "Tu cuenta",
+    "rimborsabile": "Cancelación gratuita hasta {{ ore }} horas antes de la llegada.",
+    "nonRimborsabile": "Tarifa no reembolsable."
+  },
+  "prenotazione": {
+    "occhiello": "Tu reserva",
+    "titolo": "Reserva {{ codice }}",
+    "chiediEmail": "Introduce el correo con el que reservaste para ver los detalles.",
+    "email": "Correo electrónico",
+    "apri": "Abrir la reserva",
+    "camera": "Habitación",
+    "arrivo": "Llegada",
+    "partenza": "Salida",
+    "ospiti": "Huéspedes",
+    "scade": "Completa el pago antes del {{ ora }}; si no, la reserva caduca.",
+    "pagato": "Ya pagado",
+    "saldo": "Pendiente",
+    "daPagare": "A pagar ahora: {{ importo }}",
+    "metodi": {
+      "stripe": "Pagar con tarjeta",
+      "paypal": "Pagar con PayPal"
+    },
+    "bonifico": "O por transferencia",
+    "iban": "IBAN",
+    "intestatario": "Titular",
+    "causale": "Concepto",
+    "tuttoPagato": "Todo pagado: ¡hasta pronto!",
+    "stati": {
+      "in_attesa": "Pendiente de pago",
+      "confermata": "Confirmada",
+      "in_soggiorno": "En estancia",
+      "conclusa": "Finalizada",
+      "cancellata": "Cancelada",
+      "no_show": "No presentado"
+    }
+  },
+  "esito": {
+    "torna": "Ir a la reserva {{ codice }}",
+    "in_corso": {
+      "titolo": "Registrando el pago…",
+      "testo": "Quédate en esta página unos segundos."
+    },
+    "ok": {
+      "titolo": "Pago recibido",
+      "testo": "¡Gracias! Te enviamos la confirmación por correo."
+    },
+    "annullato": {
+      "titolo": "Pago cancelado",
+      "testo": "No se te ha cobrado nada. Puedes volver a intentarlo desde la reserva."
+    },
+    "errore": {
+      "titolo": "Pago no realizado"
+    }
   }
 }

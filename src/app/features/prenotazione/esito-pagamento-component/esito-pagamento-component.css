@@ -1,0 +1,25 @@
+.esito-pagamento {
+  justify-items: center;
+  gap: var(--bb-spazio-4);
+  width: min(100%, 32rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.esito-pagamento h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.icona-esito {
+  font-size: 3rem;
+  color: var(--bb-brand-testo);
+}
+
+[data-esito='ok'] .icona-esito {
+  color: var(--bb-ok);
+}
+
+[data-esito='errore'] .icona-esito,
+[data-esito='annullato'] .icona-esito {
+  color: var(--bb-errore);
+}

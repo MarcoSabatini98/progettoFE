@@ -96,6 +96,21 @@ export interface PrenotazioneInterface {
   invii_alloggiati?: InvioAlloggiatiInterface[];
 }
 
+/** Voci del prezzo comuni a preventivo e prenotazione: il riepilogo le mostra allo stesso modo. */
+export type ImportiPrenotazioneInterface = Pick<
+  PrenotazioneInterface,
+  | 'importo_soggiorno'
+  | 'sconto_promozione'
+  | 'sconto_codice'
+  | 'percentuale_fedelta'
+  | 'sconto_fedelta'
+  | 'importo_pacchetto'
+  | 'importo_servizi'
+  | 'tassa_soggiorno'
+  | 'totale'
+  | 'acconto_richiesto'
+>;
+
 /**
  * Online serve la sessione del blocco, lo staff indica camera_id.
  * I campi dello staff il backend li ignora per clienti e visitatori.

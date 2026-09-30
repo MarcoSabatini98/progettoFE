@@ -6,6 +6,7 @@ import {
 } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import {
   FiltriPrenotazioni,
+  ImportiPrenotazioneInterface,
   PrenotazioneCreaPayload,
   PrenotazioneInterface,
 } from './prenotazione-model';
@@ -78,5 +79,22 @@ describe('PrenotazioneInterface', () => {
 
     expect(CANALI).toContain(richiesta.canale);
     expect(filtri.stato).toHaveLength(2);
+  });
+
+  it('prende gli importi da mostrare nel riepilogo del prezzo', () => {
+    const importi: ImportiPrenotazioneInterface = {
+      importo_soggiorno: 200,
+      sconto_promozione: 20,
+      sconto_codice: 0,
+      percentuale_fedelta: 5,
+      sconto_fedelta: 9,
+      importo_pacchetto: 0,
+      importo_servizi: 30,
+      tassa_soggiorno: 4,
+      totale: 205,
+      acconto_richiesto: 61.5,
+    };
+
+    expect(importi.totale).toBe(205);
   });
 });

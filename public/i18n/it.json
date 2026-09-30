@@ -61,7 +61,8 @@
       "offerte": "Offerte",
       "recensioni": "Recensioni",
       "faq": "Domande frequenti",
-      "contatti": "Contatti"
+      "contatti": "Contatti",
+      "prenota": "Prenota"
     }
   },
   "avvisi": {
@@ -81,7 +82,8 @@
     "tutteCamere": "Vedi tutte le camere",
     "recensioni": "Dicono di noi",
     "media": "{{ media }}/5 su {{ numero }} recensioni",
-    "tutteRecensioni": "Leggi tutte le recensioni"
+    "tutteRecensioni": "Leggi tutte le recensioni",
+    "prenota": "Prenota il tuo soggiorno"
   },
   "accesso": {
     "titolo": "Accedi",
@@ -114,7 +116,10 @@
     "minlength": "Almeno {{ requiredLength }} caratteri.",
     "maxlength": "Al massimo {{ requiredLength }} caratteri.",
     "passwordDiverse": "Le password non coincidono.",
-    "pattern": "Formato non valido."
+    "pattern": "Formato non valido.",
+    "min": "Il valore minimo è {{ min }}.",
+    "max": "Il valore massimo è {{ max }}.",
+    "partenzaPrimaArrivo": "La partenza deve essere dopo l’arrivo."
   },
   "errori": {
     "generico": "Qualcosa è andato storto. Riprova.",
@@ -140,7 +145,28 @@
     "CONSENSI_OBBLIGATORI": "Per registrarti devi accettare privacy e termini.",
     "PASSWORD_ERRATA": "La password non è corretta.",
     "PRENOTAZIONI_ATTIVE": "Hai prenotazioni in corso o future: annullale o attendi la fine del soggiorno.",
-    "UTENTE_NON_TROVATO": "Account non trovato."
+    "UTENTE_NON_TROVATO": "Account non trovato.",
+    "ARRIVO_NEL_PASSATO": "La data di arrivo è già passata.",
+    "DATE_NON_VALIDE": "Controlla le date: la partenza deve essere dopo l’arrivo.",
+    "BLOCCO_DIVERSO": "La camera tenuta per te non corrisponde a questo soggiorno: ripeti la ricerca.",
+    "BLOCCO_SCADUTO": "Il tempo per completare la prenotazione è scaduto: ripeti la ricerca.",
+    "CAMERA_NON_DISPONIBILE": "La camera non è più disponibile per queste date.",
+    "CODICE_SCONTO_NON_VALIDO": "Il codice sconto non è valido o è scaduto.",
+    "CODICE_SCONTO_NON_APPLICABILE": "Il codice sconto non vale per questo soggiorno.",
+    "CODICE_SCONTO_NON_TROVATO": "Il codice sconto non esiste.",
+    "PACCHETTO_NON_APPLICABILE": "Il pacchetto non vale per questo soggiorno.",
+    "PACCHETTO_NON_TROVATO": "Il pacchetto non è più disponibile.",
+    "SOGGIORNO_MINIMO": "Per queste date serve un soggiorno più lungo.",
+    "TITOLARE_MANCANTE": "Indica i dati di chi prenota.",
+    "PRENOTAZIONE_NON_TROVATA": "Nessuna prenotazione con questo codice ed email.",
+    "STATO_NON_VALIDO": "Operazione non possibile nello stato attuale della prenotazione.",
+    "NULLA_DA_PAGARE": "Non c’è nulla da pagare.",
+    "METODO_NON_VALIDO": "Metodo di pagamento non disponibile.",
+    "METODO_NON_ATTIVO": "Metodo di pagamento non disponibile.",
+    "PAGAMENTO_NON_RIUSCITO": "Il pagamento non è andato a buon fine. Riprova.",
+    "PAGAMENTO_NON_TROVATO": "Pagamento non trovato.",
+    "SERVIZIO_NON_DISPONIBILE": "Un servizio scelto non è più disponibile.",
+    "IMPORTO_SUPERIORE_AL_SALDO": "L’importo supera quanto resta da pagare."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -240,7 +266,8 @@
     "letti": "Letti",
     "dotazioni": "In camera",
     "nonTrovata": "Camera non trovata",
-    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile."
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
+    "prenota": "Verifica disponibilità"
   },
   "offerte": {
     "occhiello": "Per te",
@@ -299,5 +326,116 @@
     "orari": "Orari",
     "checkin": "Check-in dalle {{ orario }}",
     "checkout": "Check-out entro le {{ orario }}"
+  },
+  "prenota": {
+    "occhiello": "Prenotazione diretta",
+    "titolo": "Prenota",
+    "introduzione": "Scegli le date e gli ospiti: ti mostriamo le camere libere con il prezzo migliore.",
+    "arrivo": "Arrivo",
+    "partenza": "Partenza",
+    "adulti": "Adulti",
+    "bambini": "Bambini",
+    "bambiniAiuto": "Fino a {{ eta }} anni",
+    "etaBambini": "Età dei bambini",
+    "bambino": "Bambino {{ numero }}",
+    "scegliEta": "Età",
+    "cerca": "Cerca camere",
+    "risultati": "Camere disponibili",
+    "camereLibere": "Camere libere: {{ numero }}",
+    "totale": "{{ prezzo }} per {{ notti }} notti",
+    "acconto": "Acconto alla prenotazione: {{ prezzo }}",
+    "scegli": "Scegli",
+    "nessunaCamera": "Nessuna camera libera per queste date. Prova a cambiarle."
+  },
+  "riepilogoPrezzo": {
+    "importo_soggiorno": "Soggiorno",
+    "sconto_promozione": "Promozione",
+    "sconto_codice": "Codice sconto",
+    "sconto_fedelta": "Sconto fedeltà ({{ percentuale }}%)",
+    "importo_pacchetto": "Pacchetto",
+    "importo_servizi": "Servizi extra",
+    "tassa_soggiorno": "Tassa di soggiorno",
+    "totale": "Totale",
+    "acconto": "Acconto da versare"
+  },
+  "conferma": {
+    "date": "Dal {{ arrivo }} al {{ partenza }}",
+    "ospiti": "Adulti: {{ adulti }} · Bambini: {{ bambini }}",
+    "cambiaCamera": "Cambia camera",
+    "bloccata": "Teniamo la camera per te fino alle {{ ora }}.",
+    "opzioni": "Personalizza il soggiorno",
+    "codiceSconto": "Codice sconto",
+    "applica": "Applica",
+    "codicePercentuale": "{{ codice }}: sconto del {{ valore }}%",
+    "codiceImporto": "{{ codice }}: sconto di {{ valore }}",
+    "togliCodice": "Rimuovi",
+    "pacchetto": "Pacchetto",
+    "nessunPacchetto": "Nessun pacchetto",
+    "extra": "Servizi extra",
+    "titolare": "Chi prenota",
+    "titolareAiuto": "Useremo questi dati per la conferma e per contattarti.",
+    "nome": "Nome",
+    "cognome": "Cognome",
+    "email": "Email",
+    "telefono": "Telefono",
+    "facoltativo": "Facoltativo",
+    "arrivo": "Il tuo arrivo",
+    "oraArrivo": "Ora di arrivo prevista",
+    "richieste": "Richieste particolari",
+    "richiesteAiuto": "Culla, allergie, esigenze di accessibilità… Faremo il possibile.",
+    "prenota": "Conferma la prenotazione",
+    "conto": "Il tuo conto",
+    "rimborsabile": "Cancellazione gratuita fino a {{ ore }} ore prima dell’arrivo.",
+    "nonRimborsabile": "Tariffa non rimborsabile."
+  },
+  "prenotazione": {
+    "occhiello": "La tua prenotazione",
+    "titolo": "Prenotazione {{ codice }}",
+    "chiediEmail": "Inserisci l’email usata per prenotare per vedere i dettagli.",
+    "email": "Email",
+    "apri": "Apri la prenotazione",
+    "camera": "Camera",
+    "arrivo": "Arrivo",
+    "partenza": "Partenza",
+    "ospiti": "Ospiti",
+    "scade": "Completa il pagamento entro il {{ ora }}, altrimenti la prenotazione scade.",
+    "pagato": "Già pagato",
+    "saldo": "Da saldare",
+    "daPagare": "Da pagare ora: {{ importo }}",
+    "metodi": {
+      "stripe": "Paga con carta",
+      "paypal": "Paga con PayPal"
+    },
+    "bonifico": "Oppure con bonifico",
+    "iban": "IBAN",
+    "intestatario": "Intestatario",
+    "causale": "Causale",
+    "tuttoPagato": "Tutto pagato: ci vediamo presto!",
+    "stati": {
+      "in_attesa": "In attesa di pagamento",
+      "confermata": "Confermata",
+      "in_soggiorno": "In soggiorno",
+      "conclusa": "Conclusa",
+      "cancellata": "Cancellata",
+      "no_show": "Mancato arrivo"
+    }
+  },
+  "esito": {
+    "torna": "Vai alla prenotazione {{ codice }}",
+    "in_corso": {
+      "titolo": "Stiamo registrando il pagamento…",
+      "testo": "Resta su questa pagina qualche secondo."
+    },
+    "ok": {
+      "titolo": "Pagamento ricevuto",
+      "testo": "Grazie! Ti mandiamo la conferma per email."
+    },
+    "annullato": {
+      "titolo": "Pagamento annullato",
+      "testo": "Non ti è stato addebitato nulla. Puoi riprovare dalla prenotazione."
+    },
+    "errore": {
+      "titolo": "Pagamento non riuscito"
+    }
   }
 }

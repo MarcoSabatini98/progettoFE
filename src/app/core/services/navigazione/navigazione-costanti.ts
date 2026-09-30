@@ -15,6 +15,12 @@ export const PERCORSI_PUBBLICI = {
   recuperoPassword: '/recupero-password',
   reimpostaPassword: '/reimposta-password',
   areaPersonale: '/area-personale',
+  prenota: '/prenota',
+  /**
+   * Seguito dal codice: /prenotazioni/BB-2026-0012 (link nelle email del backend).
+   * Stripe e PayPal rimandano a /prenotazioni/:codice/pagamento.
+   */
+  prenotazioni: '/prenotazioni',
   /** Seguito dallo slug per il dettaglio: /camere/doppia-vista-mare. */
   camere: '/camere',
   offerte: '/offerte',
@@ -27,6 +33,7 @@ export const PERCORSI_PUBBLICI = {
 
 /** Menu del sito pubblico, nell'ordine della testata. */
 export const MENU_PUBBLICO: readonly VoceMenuInterface[] = [
+  { etichetta: 'menu.sito.prenota', percorso: PERCORSI_PUBBLICI.prenota, icona: 'event_available' },
   { etichetta: 'menu.sito.camere', percorso: PERCORSI_PUBBLICI.camere, icona: 'bed' },
   { etichetta: 'menu.sito.offerte', percorso: PERCORSI_PUBBLICI.offerte, icona: 'sell' },
   { etichetta: 'menu.sito.recensioni', percorso: PERCORSI_PUBBLICI.recensioni, icona: 'reviews' },

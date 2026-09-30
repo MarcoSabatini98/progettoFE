@@ -14,6 +14,10 @@
     <p class="prezzo">
       {{ 'camere.prezzoDa' | transloco: { prezzo: (camera.prezzo_base | prezzo) } }}
     </p>
+    <a class="pulsante pulsante-primario prenota" [routerLink]="percorsoPrenota">
+      <app-icona nome="event_available" />
+      {{ 'tipologia.prenota' | transloco }}
+    </a>
   </header>
 
   @if (foto.length) {

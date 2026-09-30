@@ -60,3 +60,19 @@ input[type='radio'] {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Esito di un invio, sotto il modulo o al posto suo. */
+.esito {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.esito-errore {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+}
+
+.esito-ok {
+  background: var(--bb-ok-tenue);
+  color: var(--bb-ok);
+}
