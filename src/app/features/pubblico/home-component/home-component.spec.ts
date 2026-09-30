@@ -83,10 +83,10 @@ describe('HomeComponent', () => {
     expect(elemento.querySelector('app-galleria img')?.getAttribute('alt')).toBe('struttura');
   });
 
-  it('mostra in anteprima tre tipologie e le ultime recensioni con la media', async () => {
+  it('mostra tutte le tipologie nel carosello e le ultime recensioni con la media', async () => {
     const elemento = await crea({});
 
-    expect(elemento.querySelectorAll('app-scheda-tipologia')).toHaveLength(3);
+    expect(elemento.querySelectorAll('app-carosello app-scheda-tipologia')).toHaveLength(4);
     expect(recensioni.elencaPubbliche).toHaveBeenCalledWith({ pagina: 1, perPagina: 3 });
     expect(elemento.querySelectorAll('app-scheda-recensione')).toHaveLength(1);
     expect(elemento.querySelector('.media')?.textContent).toContain('home.media');

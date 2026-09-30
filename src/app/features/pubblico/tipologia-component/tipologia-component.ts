@@ -9,12 +9,16 @@ import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazione-costanti';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { PrezzoPipe } from '../../../shared/pipes/prezzo-pipe';
-import { GalleriaComponent } from '../galleria-component/galleria-component';
+import { MediaPipe } from '../../../shared/pipes/media-pipe';
+import { CaroselloComponent } from '../carosello-component/carosello-component';
 
-/** Dettaglio di una tipologia (/camere/:slug): foto, descrizione, letti e dotazioni incluse. */
+/**
+ * Dettaglio di una tipologia (/camere/:slug): foto nel carosello (ferma se è una sola),
+ * descrizione, letti e dotazioni incluse.
+ */
 @Component({
   selector: 'app-tipologia',
-  imports: [RouterLink, TranslocoPipe, IconaComponent, PrezzoPipe, GalleriaComponent],
+  imports: [RouterLink, TranslocoPipe, IconaComponent, MediaPipe, PrezzoPipe, CaroselloComponent],
   templateUrl: './tipologia-component.html',
   styleUrl: './tipologia-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,60 @@
+<div
+  class="palco"
+  role="region"
+  [class.singola]="!scorrevole()"
+  [attr.aria-roledescription]="'carosello.ruolo' | transloco"
+  [attr.aria-label]="etichetta()"
+  [attr.tabindex]="scorrevole() ? 0 : null"
+  (keydown.arrowleft)="scorri(-1)"
+  (keydown.arrowright)="scorri(1)"
+  (pointerdown)="inizia($event)"
+  (pointerup)="rilascia($event)"
+>
+  @for (voce of slide(); track voce.indice) {
+    <div
+      class="slide"
+      role="group"
+      [attr.data-posizione]="voce.posizione"
+      [attr.inert]="voce.posizione === 0 ? null : ''"
+      [attr.aria-label]="
+        'carosello.slide' | transloco: { numero: voce.indice + 1, totale: elementi().length }
+      "
+    >
+      <ng-container *ngTemplateOutlet="modello(); context: { $implicit: voce.elemento }" />
+    </div>
+  }
+</div>
+
+@if (scorrevole()) {
+  <div class="comandi">
+    <button
+      type="button"
+      class="pulsante pulsante-secondario pulsante-icona"
+      [attr.aria-label]="'carosello.precedente' | transloco"
+      (click)="scorri(-1)"
+    >
+      <app-icona nome="chevron_left" />
+    </button>
+    <div class="puntini">
+      @for (elemento of elementi(); track $index) {
+        <button
+          type="button"
+          class="puntino"
+          [attr.aria-current]="$index === attiva() || null"
+          [attr.aria-label]="
+            'carosello.slide' | transloco: { numero: $index + 1, totale: elementi().length }
+          "
+          (click)="vai($index)"
+        ></button>
+      }
+    </div>
+    <button
+      type="button"
+      class="pulsante pulsante-secondario pulsante-icona"
+      [attr.aria-label]="'carosello.successiva' | transloco"
+      (click)="scorri(1)"
+    >
+      <app-icona nome="chevron_right" />
+    </button>
+  </div>
+}

@@ -548,27 +548,45 @@
       "occhiello": "Check-in online",
       "titolo": "Quién se aloja",
       "soggiorno": "Reserva {{ codice }}, del {{ arrivo }} al {{ partenza }}.",
-      "testo": "Introduce los datos de cada huésped: a la llegada no tendrás que hacer nada más.",
+      "testo": "Introduce los datos de cada huésped: a la llegada no tendrás que hacer nada más. Los campos vacíos no cambian los datos ya registrados.",
       "ospite": "Huésped {{ numero }}",
-      "sesso": "Sexo",
       "scegli": "Elegir…",
       "sessi": {
         "M": "Hombre",
         "F": "Mujer"
       },
-      "nascita": "Fecha de nacimiento",
-      "documento": "Documento del primer huésped, exigido por ley para el registro.",
-      "tipoDocumento": "Tipo de documento",
+      "documento": "Documento de quien encabeza el grupo, exigido por la ley para el registro.",
       "documenti": {
         "IDENT": "Documento de identidad",
         "IDELE": "Documento de identidad electrónico",
         "PASOR": "Pasaporte",
         "PATEN": "Permiso de conducir"
       },
-      "numeroDocumento": "Número del documento",
-      "scadenza": "Fecha de caducidad",
       "invia": "Enviar los datos",
-      "fatto": "Datos recibidos el {{ data }}. Puedes corregirlos hasta la llegada."
+      "fatto": "Datos recibidos el {{ data }}. Puedes corregirlos hasta la llegada.",
+      "mancano": "Datos ya registrados. Todavía faltan:",
+      "completo": "Datos ya registrados y completos: corrige solo lo que haya cambiado.",
+      "luogoRilascio": "Municipio italiano o país extranjero.",
+      "campi": {
+        "nome": "Nombre",
+        "cognome": "Apellidos",
+        "sesso": "Sexo",
+        "data_nascita": "Fecha de nacimiento",
+        "cittadinanza_codice": "Nacionalidad",
+        "stato_nascita_codice": "País de nacimiento",
+        "comune_nascita_codice": "Municipio de nacimiento",
+        "provincia_nascita": "Provincia de nacimiento",
+        "tipo_documento": "Tipo de documento",
+        "numero_documento": "Número del documento",
+        "luogo_rilascio_codice": "Lugar de expedición",
+        "scadenza_documento": "Fecha de caducidad del documento"
+      }
     }
+  },
+  "carosello": {
+    "ruolo": "carrusel",
+    "slide": "{{ numero }} de {{ totale }}",
+    "precedente": "Anterior",
+    "successiva": "Siguiente"
   }
 }

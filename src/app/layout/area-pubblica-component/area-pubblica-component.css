@@ -92,6 +92,9 @@
 .menu-sito ul {
   display: grid;
   gap: var(--bb-spazio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .voce {
@@ -138,6 +141,21 @@
   .menu-sito ul {
     display: flex;
     gap: var(--bb-spazio-1);
+  }
+
+  /* Puntino tra una voce e l'altra, centrato nello spazio che le separa. */
+  .menu-sito li {
+    display: flex;
+    align-items: center;
+    gap: var(--bb-spazio-1);
+  }
+
+  .menu-sito li + li::before {
+    content: '';
+    inline-size: 0.25rem;
+    block-size: 0.25rem;
+    border-radius: 50%;
+    background: color-mix(in oklch, var(--bb-testo-tenue) 55%, transparent);
   }
 
   .voce {

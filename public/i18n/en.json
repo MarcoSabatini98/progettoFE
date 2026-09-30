@@ -548,27 +548,45 @@
       "occhiello": "Online check-in",
       "titolo": "Who is staying",
       "soggiorno": "Booking {{ codice }}, from {{ arrivo }} to {{ partenza }}.",
-      "testo": "Enter the details of each guest: nothing else to do on arrival.",
+      "testo": "Enter the details of each guest: nothing else to do on arrival. Fields left blank do not change what is already registered.",
       "ospite": "Guest {{ numero }}",
-      "sesso": "Sex",
       "scegli": "Choose…",
       "sessi": {
         "M": "Male",
         "F": "Female"
       },
-      "nascita": "Date of birth",
-      "documento": "Document of the first guest, required by law for registration.",
-      "tipoDocumento": "Document type",
+      "documento": "ID document of the group leader, required by law for registration.",
       "documenti": {
         "IDENT": "Identity card",
         "IDELE": "Electronic identity card",
         "PASOR": "Passport",
         "PATEN": "Driving licence"
       },
-      "numeroDocumento": "Document number",
-      "scadenza": "Document expiry date",
       "invia": "Send details",
-      "fatto": "Details received on {{ data }}. You can correct them until arrival."
+      "fatto": "Details received on {{ data }}. You can correct them until arrival.",
+      "mancano": "Details already registered. Still missing:",
+      "completo": "Details already registered and complete: only correct what has changed.",
+      "luogoRilascio": "Italian municipality or foreign country.",
+      "campi": {
+        "nome": "First name",
+        "cognome": "Last name",
+        "sesso": "Sex",
+        "data_nascita": "Date of birth",
+        "cittadinanza_codice": "Citizenship",
+        "stato_nascita_codice": "Country of birth",
+        "comune_nascita_codice": "Municipality of birth",
+        "provincia_nascita": "Province of birth",
+        "tipo_documento": "Document type",
+        "numero_documento": "Document number",
+        "luogo_rilascio_codice": "Place of issue",
+        "scadenza_documento": "Document expiry date"
+      }
     }
+  },
+  "carosello": {
+    "ruolo": "carousel",
+    "slide": "{{ numero }} of {{ totale }}",
+    "precedente": "Previous",
+    "successiva": "Next"
   }
 }

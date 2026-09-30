@@ -4,14 +4,20 @@ import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import {
+  FiltriLuoghi,
+  LuogoTrovatoInterface,
+} from '../../../shared/models/alloggiati-luogo/alloggiati-luogo-model';
+import {
   RegistraInvioPayload,
   SoggiornoDaInviareInterface,
 } from '../../../shared/models/invio-alloggiati/invio-alloggiati-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
 import { SchedaAlloggiatiInterface } from '../../../shared/models/scheda-alloggiati/scheda-alloggiati-model';
+import { creaParametri } from '../api/parametri-http';
 
 /**
- * Alloggiati Web: schedine degli ospiti, file per il portale ed esiti degli invii.
+ * Alloggiati Web: schedine degli ospiti, file per il portale ed esiti degli invii,
+ * ricerca di comuni e stati coi codici ufficiali.
  */
 @Injectable({
   providedIn: 'root',
@@ -19,6 +25,18 @@ import { SchedaAlloggiatiInterface } from '../../../shared/models/scheda-alloggi
 export class AlloggiatiService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = `${environment.apiUrl}/alloggiati`;
+
+  /**
+   * LUOGHI — GET /luoghi
+   * Pubblica: serve anche al check-in online, senza account.
+   */
+  cercaLuoghi(filtri: FiltriLuoghi): Observable<LuogoTrovatoInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<LuogoTrovatoInterface[]>>(`${this.apiUrl}/luoghi`, {
+        params: creaParametri(filtri),
+      })
+      .pipe(map((res) => res.dati));
+  }
 
   /**
    * DA INVIARE — GET /da-inviare

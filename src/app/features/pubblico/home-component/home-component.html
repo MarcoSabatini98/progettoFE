@@ -50,14 +50,12 @@
   </section>
 }
 
-@if (anteprimaCamere().length) {
+@if (elencoCamere().length) {
   <section class="sezione camere">
     <h2 class="sezione-titolo">{{ 'home.camere' | transloco }}</h2>
-    <ul class="griglia-schede">
-      @for (tipologia of anteprimaCamere(); track tipologia.id) {
-        <li><app-scheda-tipologia [tipologia]="tipologia" /></li>
-      }
-    </ul>
+    <app-carosello [elementi]="elencoCamere()" [etichetta]="'home.camere' | transloco">
+      <ng-template let-tipologia><app-scheda-tipologia [tipologia]="tipologia" /></ng-template>
+    </app-carosello>
     <a class="pulsante pulsante-secondario tutte" [routerLink]="percorsi.camere">
       {{ 'home.tutteCamere' | transloco }}
     </a>

@@ -11,13 +11,21 @@ describe('CheckinOnlineInterface', () => {
       adulti: 2,
       bambini: 0,
       checkin_online_il: null,
-      ospiti: [],
+      ospiti: [
+        {
+          nome: 'Anna',
+          cognome: 'Rossi',
+          tipo_alloggiato: 'capofamiglia',
+          campi_mancanti: ['numero_documento'],
+        },
+      ],
     };
     const invio: CheckinOnlinePayload = {
       ospiti: [{ ospite: { nome: 'Anna', cognome: 'Rossi' }, tipo_alloggiato: 'capofamiglia' }],
     };
 
     expect(riepilogo.checkin_online_il).toBeNull();
+    expect(riepilogo.ospiti[0]).not.toHaveProperty('numero_documento');
     expect(invio.ospiti).toHaveLength(1);
   });
 });

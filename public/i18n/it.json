@@ -548,27 +548,45 @@
       "occhiello": "Check-in online",
       "titolo": "Chi soggiorna",
       "soggiorno": "Prenotazione {{ codice }}, dal {{ arrivo }} al {{ partenza }}.",
-      "testo": "Inserisci i dati di ogni ospite: all’arrivo non dovrai fare altro.",
+      "testo": "Inserisci i dati di ogni ospite: all’arrivo non dovrai fare altro. I campi lasciati vuoti non cambiano quelli già registrati.",
       "ospite": "Ospite {{ numero }}",
-      "sesso": "Sesso",
       "scegli": "Scegli…",
       "sessi": {
         "M": "Maschio",
         "F": "Femmina"
       },
-      "nascita": "Data di nascita",
-      "documento": "Documento del primo ospite, richiesto dalla legge per la registrazione.",
-      "tipoDocumento": "Tipo di documento",
+      "documento": "Documento di chi guida il gruppo, richiesto dalla legge per la registrazione.",
       "documenti": {
         "IDENT": "Carta d’identità",
         "IDELE": "Carta d’identità elettronica",
         "PASOR": "Passaporto",
         "PATEN": "Patente di guida"
       },
-      "numeroDocumento": "Numero del documento",
-      "scadenza": "Scadenza del documento",
       "invia": "Invia i dati",
-      "fatto": "Dati ricevuti il {{ data }}. Puoi correggerli fino all’arrivo."
+      "fatto": "Dati ricevuti il {{ data }}. Puoi correggerli fino all’arrivo.",
+      "mancano": "Dati già registrati. Mancano ancora:",
+      "completo": "Dati già registrati e completi: correggi solo quello che è cambiato.",
+      "luogoRilascio": "Comune italiano o stato estero.",
+      "campi": {
+        "nome": "Nome",
+        "cognome": "Cognome",
+        "sesso": "Sesso",
+        "data_nascita": "Data di nascita",
+        "cittadinanza_codice": "Cittadinanza",
+        "stato_nascita_codice": "Stato di nascita",
+        "comune_nascita_codice": "Comune di nascita",
+        "provincia_nascita": "Provincia di nascita",
+        "tipo_documento": "Tipo di documento",
+        "numero_documento": "Numero del documento",
+        "luogo_rilascio_codice": "Luogo di rilascio",
+        "scadenza_documento": "Scadenza del documento"
+      }
     }
+  },
+  "carosello": {
+    "ruolo": "carosello",
+    "slide": "{{ numero }} di {{ totale }}",
+    "precedente": "Precedente",
+    "successiva": "Successiva"
   }
 }

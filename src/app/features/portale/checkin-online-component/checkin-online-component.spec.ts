@@ -1,15 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { By } from '@angular/platform-browser';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
+import { AlloggiatiService } from '../../../core/services/alloggiati/alloggiati-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
+import { CercaLuogoComponent } from '../../../shared/cerca-luogo-component/cerca-luogo-component';
 import { CheckinOnlineComponent } from './checkin-online-component';
 
 describe('CheckinOnlineComponent', () => {
   const prenotazioni = { leggiCheckinOnline: vi.fn(), inviaCheckinOnline: vi.fn() };
+  const alloggiati = { cercaLuoghi: vi.fn() };
+  const italia = { codice: '100000100', descrizione: 'ITALIA', provincia: null, tipo: 'stato' };
+  const roma = { codice: '412058091', descrizione: 'ROMA', provincia: 'RM', tipo: 'comune' };
   const soggiorno = {
     codice: 'BB-7',
     data_arrivo: '2030-07-01',
@@ -17,7 +23,14 @@ describe('CheckinOnlineComponent', () => {
     adulti: 2,
     bambini: 0,
     checkin_online_il: null,
-    ospiti: [{ nome: 'Anna', cognome: 'Rossi', sesso: 'F', data_nascita: '1990-05-02' }],
+    ospiti: [
+      {
+        nome: 'Anna',
+        cognome: 'Rossi',
+        tipo_alloggiato: 'capofamiglia',
+        campi_mancanti: ['numero_documento'],
+      },
+    ],
   };
 
   beforeEach(() => {
@@ -27,6 +40,7 @@ describe('CheckinOnlineComponent', () => {
       providers: [
         { provide: PrenotazioniService, useValue: prenotazioni },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
+        { provide: AlloggiatiService, useValue: alloggiati },
       ],
     });
   });
@@ -45,11 +59,20 @@ describe('CheckinOnlineComponent', () => {
       campo.value = valore;
       campo.dispatchEvent(new Event(campo instanceof HTMLSelectElement ? 'change' : 'input'));
     };
+    // La ricerca dei luoghi ha il suo test: qui basta il luogo che il campo emette.
+    const scegli = async (fieldset: number, etichetta: string, luogo: object | null) => {
+      fixture.debugElement
+        .queryAll(By.directive(CercaLuogoComponent))
+        .map((campo) => campo.componentInstance as CercaLuogoComponent)
+        .filter((campo) => campo.etichetta() === etichetta)
+        [fieldset].scelto.emit(luogo as never);
+      await fixture.whenStable();
+    };
     const invia = async () => {
       elemento.querySelector('form')?.dispatchEvent(new Event('submit'));
       await fixture.whenStable();
     };
-    return { elemento, scrivi, invia };
+    return { elemento, scrivi, scegli, invia };
   }
 
   it('senza token dice che il link non vale e non chiama il backend', async () => {
@@ -61,7 +84,7 @@ describe('CheckinOnlineComponent', () => {
     );
   });
 
-  it('una riga per ospite, già compilata; il documento solo per il primo', async () => {
+  it('una riga per ospite: di chi è registrato solo il nome e cosa manca; documento al primo', async () => {
     prenotazioni.leggiCheckinOnline.mockReturnValue(of(soggiorno));
 
     const { elemento } = await crea('abc');
@@ -72,6 +95,11 @@ describe('CheckinOnlineComponent', () => {
     expect(righe[0].querySelector<HTMLInputElement>('[formcontrolname="nome"]')?.value).toBe(
       'Anna',
     );
+    expect(righe[0].querySelector<HTMLSelectElement>('[formcontrolname="sesso"]')?.value).toBe('');
+    expect(righe[0].querySelector('.mancanti')?.textContent).toContain(
+      'portale.checkin.campi.numero_documento',
+    );
+    expect(righe[1].querySelector('.registrato')).toBeNull();
     expect(righe[0].querySelector('[formcontrolname="tipo_documento"]')).not.toBeNull();
     expect(righe[1].querySelector('[formcontrolname="tipo_documento"]')).toBeNull();
     expect(
@@ -96,9 +124,11 @@ describe('CheckinOnlineComponent', () => {
     prenotazioni.inviaCheckinOnline.mockReturnValue(
       of({ ...soggiorno, checkin_online_il: '2030-06-28T09:00:00Z' }),
     );
-    const { elemento, scrivi, invia } = await crea('abc');
+    const { elemento, scrivi, scegli, invia } = await crea('abc');
 
     scrivi(0, 'tipo_documento', 'PASOR');
+    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', italia);
+    await scegli(0, 'portale.checkin.campi.comune_nascita_codice', roma);
     scrivi(0, 'numero_documento', 'YA1234567');
     scrivi(1, 'nome', 'Luca');
     scrivi(1, 'cognome', 'Bianchi');
@@ -110,16 +140,30 @@ describe('CheckinOnlineComponent', () => {
           ospite: {
             nome: 'Anna',
             cognome: 'Rossi',
-            sesso: 'F',
-            data_nascita: '1990-05-02',
+            stato_nascita_codice: '100000100',
+            comune_nascita_codice: '412058091',
+            provincia_nascita: 'RM',
             tipo_documento: 'PASOR',
             numero_documento: 'YA1234567',
           },
+          tipo_alloggiato: 'capofamiglia',
         },
         { ospite: { nome: 'Luca', cognome: 'Bianchi' } },
       ],
     });
     expect(elemento.querySelector('.esito-ok')?.textContent).toContain('portale.checkin.fatto');
+  });
+
+  it('il comune di nascita compare solo per chi è nato in Italia', async () => {
+    prenotazioni.leggiCheckinOnline.mockReturnValue(of({ ...soggiorno, adulti: 1 }));
+    const { elemento, scegli } = await crea('abc');
+    const comuni = () => elemento.querySelectorAll('app-cerca-luogo').length;
+
+    expect(comuni()).toBe(3);
+    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', italia);
+    expect(comuni()).toBe(4);
+    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', null);
+    expect(comuni()).toBe(3);
   });
 
   it('se il backend rifiuta spiega perché', async () => {

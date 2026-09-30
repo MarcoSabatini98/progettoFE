@@ -31,21 +31,37 @@
     <p>{{ 'portale.checkin.testo' | transloco }}</p>
 
     <ng-container formArrayName="ospiti">
-      @for (riga of ospiti.controls; track riga; let indice = $index, primo = $first) {
+      @for (riga of ospiti.controls; track riga; let indice = $index) {
+        @let giaRegistrato = registrato(indice);
         <fieldset class="scheda ospite" [formGroupName]="indice">
           <legend class="titolo-scheda">
             {{ 'portale.checkin.ospite' | transloco: { numero: indice + 1 } }}
           </legend>
 
+          @if (giaRegistrato) {
+            <div class="aiuto registrato">
+              @if (giaRegistrato.campi_mancanti.length) {
+                <p>{{ 'portale.checkin.mancano' | transloco }}</p>
+                <ul class="mancanti">
+                  @for (campo of giaRegistrato.campi_mancanti; track campo) {
+                    <li>{{ 'portale.checkin.campi.' + campo | transloco }}</li>
+                  }
+                </ul>
+              } @else {
+                <p>{{ 'portale.checkin.completo' | transloco }}</p>
+              }
+            </div>
+          }
+
           <div class="campi-coppia">
             <app-campo
-              [etichetta]="'registrazione.nome' | transloco"
+              [etichetta]="'portale.checkin.campi.nome' | transloco"
               [errore]="errori.campo(riga.controls.nome)"
             >
               <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
             </app-campo>
             <app-campo
-              [etichetta]="'registrazione.cognome' | transloco"
+              [etichetta]="'portale.checkin.campi.cognome' | transloco"
               [errore]="errori.campo(riga.controls.cognome)"
             >
               <input
@@ -58,7 +74,7 @@
           </div>
 
           <div class="campi-coppia">
-            <app-campo [etichetta]="'portale.checkin.sesso' | transloco">
+            <app-campo [etichetta]="'portale.checkin.campi.sesso' | transloco">
               <select formControlName="sesso">
                 <option value="">{{ 'portale.checkin.scegli' | transloco }}</option>
                 @for (sesso of sessi; track sesso) {
@@ -68,15 +84,36 @@
                 }
               </select>
             </app-campo>
-            <app-campo [etichetta]="'portale.checkin.nascita' | transloco">
+            <app-campo [etichetta]="'portale.checkin.campi.data_nascita' | transloco">
               <input type="date" formControlName="data_nascita" />
             </app-campo>
           </div>
 
-          @if (primo) {
+          <div class="campi-coppia">
+            <app-cerca-luogo
+              tipo="stato"
+              [etichetta]="'portale.checkin.campi.cittadinanza_codice' | transloco"
+              (scelto)="scegli(indice, 'cittadinanza_codice', $event)"
+            />
+            <app-cerca-luogo
+              tipo="stato"
+              [etichetta]="'portale.checkin.campi.stato_nascita_codice' | transloco"
+              (scelto)="scegliStatoNascita(indice, $event)"
+            />
+          </div>
+
+          @if (natoInItalia(indice)) {
+            <app-cerca-luogo
+              tipo="comune"
+              [etichetta]="'portale.checkin.campi.comune_nascita_codice' | transloco"
+              (scelto)="scegliComuneNascita(indice, $event)"
+            />
+          }
+
+          @if (conDocumento(indice)) {
             <p class="aiuto">{{ 'portale.checkin.documento' | transloco }}</p>
             <div class="campi-coppia">
-              <app-campo [etichetta]="'portale.checkin.tipoDocumento' | transloco">
+              <app-campo [etichetta]="'portale.checkin.campi.tipo_documento' | transloco">
                 <select formControlName="tipo_documento">
                   <option value="">{{ 'portale.checkin.scegli' | transloco }}</option>
                   @for (tipo of tipiDocumento; track tipo) {
@@ -87,7 +124,7 @@
                 </select>
               </app-campo>
               <app-campo
-                [etichetta]="'portale.checkin.numeroDocumento' | transloco"
+                [etichetta]="'portale.checkin.campi.numero_documento' | transloco"
                 [errore]="errori.campo(riga.controls.numero_documento)"
               >
                 <input
@@ -97,9 +134,16 @@
                 />
               </app-campo>
             </div>
-            <app-campo [etichetta]="'portale.checkin.scadenza' | transloco">
-              <input type="date" formControlName="scadenza_documento" />
-            </app-campo>
+            <div class="campi-coppia">
+              <app-cerca-luogo
+                [etichetta]="'portale.checkin.campi.luogo_rilascio_codice' | transloco"
+                [aiuto]="'portale.checkin.luogoRilascio' | transloco"
+                (scelto)="scegli(indice, 'luogo_rilascio_codice', $event)"
+              />
+              <app-campo [etichetta]="'portale.checkin.campi.scadenza_documento' | transloco">
+                <input type="date" formControlName="scadenza_documento" />
+              </app-campo>
+            </div>
           }
         </fieldset>
       }

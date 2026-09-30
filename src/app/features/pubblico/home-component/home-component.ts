@@ -13,16 +13,17 @@ import { RecensioniService } from '../../../core/services/recensioni/recensioni-
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { MediaPipe } from '../../../shared/pipes/media-pipe';
 import { VotoPipe } from '../../../shared/pipes/voto-pipe';
+import { CaroselloComponent } from '../carosello-component/carosello-component';
 import { GalleriaComponent } from '../galleria-component/galleria-component';
 import { SchedaRecensioneComponent } from '../scheda-recensione-component/scheda-recensione-component';
 import { SchedaTipologiaComponent } from '../scheda-tipologia-component/scheda-tipologia-component';
 
-/** Tipologie e recensioni in anteprima: le altre sulle pagine dedicate. */
+/** Recensioni in anteprima: le altre sulla pagina dedicata. */
 const ANTEPRIME_HOME = 3;
 
 /**
  * Pagina iniziale del sito: copertina con nome, località e orari, foto della struttura,
- * anteprima di camere e recensioni. Le sezioni senza contenuti non compaiono.
+ * camere nel carosello e anteprima delle recensioni. Le sezioni senza contenuti non compaiono.
  */
 @Component({
   selector: 'app-home',
@@ -32,6 +33,7 @@ const ANTEPRIME_HOME = 3;
     IconaComponent,
     MediaPipe,
     VotoPipe,
+    CaroselloComponent,
     GalleriaComponent,
     SchedaRecensioneComponent,
     SchedaTipologiaComponent,
@@ -82,8 +84,8 @@ export class HomeComponent {
   protected readonly fotoStruttura = computed(() =>
     this.fotoStrutturaRisorsa.hasValue() ? this.fotoStrutturaRisorsa.value() : [],
   );
-  protected readonly anteprimaCamere = computed(() =>
-    this.tipologie.hasValue() ? this.tipologie.value().slice(0, ANTEPRIME_HOME) : [],
+  protected readonly elencoCamere = computed(() =>
+    this.tipologie.hasValue() ? this.tipologie.value() : [],
   );
   protected readonly anteprimaRecensioni = computed(() =>
     this.ultimeRecensioni.hasValue() ? this.ultimeRecensioni.value().elementi : [],
