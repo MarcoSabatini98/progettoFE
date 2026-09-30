@@ -166,7 +166,23 @@
     "PAGAMENTO_NON_RIUSCITO": "Il pagamento non è andato a buon fine. Riprova.",
     "PAGAMENTO_NON_TROVATO": "Pagamento non trovato.",
     "SERVIZIO_NON_DISPONIBILE": "Un servizio scelto non è più disponibile.",
-    "IMPORTO_SUPERIORE_AL_SALDO": "L’importo supera quanto resta da pagare."
+    "IMPORTO_SUPERIORE_AL_SALDO": "L’importo supera quanto resta da pagare.",
+    "RECENSIONE_GIA_PRESENTE": "Hai già recensito questo soggiorno.",
+    "RECENSIONE_NON_CONSENTITA": "Si può recensire solo un soggiorno concluso.",
+    "PRENOTAZIONE_ALTRUI": "Questa prenotazione non è tua.",
+    "LINK_CHECKIN_NON_VALIDO": "Il link per il check-in online non è valido o è scaduto.",
+    "PRENOTAZIONE_CHIUSA": "La prenotazione è cancellata.",
+    "TROPPI_OSPITI": "Hai inserito più ospiti di quelli prenotati.",
+    "OSPITE_DUPLICATO": "Lo stesso ospite è inserito due volte.",
+    "SERVIZIO_NON_TROVATO": "Servizio non trovato.",
+    "FILE_MANCANTE": "File non disponibile.",
+    "FORMATO_FILE_NON_VALIDO": "Formato non ammesso: usa PDF, JPG, PNG o WebP.",
+    "FILE_TROPPO_GRANDE": "Il file è troppo grande.",
+    "ANAGRAFICA_MANCANTE": "Completa prima i tuoi dati personali.",
+    "DOCUMENTO_NON_TROVATO": "Documento non trovato.",
+    "NON_RIMBORSABILE": "La tariffa non è rimborsabile.",
+    "SOGGIORNO_INIZIATO": "Il soggiorno è già iniziato.",
+    "PAGAMENTO_NON_AVVIATO": "Non è stato possibile avviare il pagamento."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -436,6 +452,123 @@
     },
     "errore": {
       "titolo": "Pagamento non riuscito"
+    }
+  },
+  "recensione": {
+    "titolo": "Com’è andato il soggiorno?",
+    "voto": "Il tuo voto",
+    "stelle": "{{ voto }} su {{ massimo }}",
+    "dettagli": "Vuoi dire di più?",
+    "senzaVoto": "Nessun voto",
+    "titoloRecensione": "Titolo",
+    "commento": "Racconta il soggiorno",
+    "anonima": "Pubblica senza il mio nome",
+    "invia": "Invia la recensione",
+    "grazie": "Grazie! La recensione sarà pubblicata dopo un controllo."
+  },
+  "portale": {
+    "occhiello": "Area personale",
+    "saluto": "Ciao {{ nome }}",
+    "mostraAltre": "Mostra altre",
+    "menu": {
+      "prenotazioni": "Prenotazioni",
+      "fatture": "Fatture",
+      "fedelta": "Fedeltà",
+      "documenti": "Documenti",
+      "profilo": "Profilo"
+    },
+    "prenotazioni": {
+      "prossime": "Prossimi soggiorni",
+      "passate": "Soggiorni passati",
+      "nessuna": "Nessun soggiorno in programma.",
+      "prenota": "Prenota un soggiorno",
+      "tutte": "Tutte le prenotazioni"
+    },
+    "extra": {
+      "titolo": "Servizi extra",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "Rimuovi {{ nome }}",
+      "nessuno": "Nessun servizio extra.",
+      "servizio": "Aggiungi un servizio",
+      "scegli": "Scegli…",
+      "quantita": "Quantità",
+      "aggiungi": "Aggiungi"
+    },
+    "cancella": {
+      "titolo": "Cancella la prenotazione",
+      "testo": "Prima di confermare ti mostriamo l’eventuale penale.",
+      "apri": "Voglio cancellare",
+      "penale": "Penale",
+      "rimborso": "Rimborso",
+      "gratuita": "Cancellazione gratuita fino al {{ data }}.",
+      "motivo": "Motivo",
+      "conferma": "Conferma la cancellazione",
+      "annulla": "Non cancellare"
+    },
+    "fatture": {
+      "titolo": "Fatture",
+      "TD01": "Fattura {{ numero }}/{{ anno }}",
+      "TD04": "Nota di credito {{ numero }}/{{ anno }}",
+      "scarica": "Scarica PDF",
+      "nessuna": "Nessuna fattura emessa."
+    },
+    "fedelta": {
+      "titolo": "Programma fedeltà",
+      "sconto": "Sconto {{ sconto }}%",
+      "inizia": "Accumula punti a ogni soggiorno e sblocca sconti riservati.",
+      "punti": "{{ punti }} punti",
+      "mancano": "Mancano {{ punti }} punti al livello {{ livello }}.",
+      "massimo": "Sei al livello più alto. Grazie!",
+      "anno": "Il tuo {{ anno }}",
+      "guadagnati": "Punti guadagnati",
+      "tolti": "Punti tolti",
+      "livelli": "Livelli",
+      "movimenti": "Movimenti dei punti",
+      "nessunMovimento": "Ancora nessun movimento.",
+      "motivi": {
+        "soggiorno": "Soggiorno",
+        "bonus": "Bonus",
+        "rettifica": "Rettifica",
+        "annullamento": "Annullamento"
+      }
+    },
+    "documenti": {
+      "titolo": "Documenti d’identità",
+      "testo": "Caricali una volta: li useremo per il check-in dei tuoi soggiorni.",
+      "carica": "Carica un documento",
+      "formati": "PDF, JPG, PNG o WebP.",
+      "caricato": "Caricato il {{ data }}",
+      "scarica": "Scarica",
+      "elimina": "Elimina {{ nome }}",
+      "conferma": "Elimina",
+      "annulla": "Annulla",
+      "nessuno": "Nessun documento caricato."
+    },
+    "checkin": {
+      "occhiello": "Check-in online",
+      "titolo": "Chi soggiorna",
+      "soggiorno": "Prenotazione {{ codice }}, dal {{ arrivo }} al {{ partenza }}.",
+      "testo": "Inserisci i dati di ogni ospite: all’arrivo non dovrai fare altro.",
+      "ospite": "Ospite {{ numero }}",
+      "sesso": "Sesso",
+      "scegli": "Scegli…",
+      "sessi": {
+        "M": "Maschio",
+        "F": "Femmina"
+      },
+      "nascita": "Data di nascita",
+      "documento": "Documento del primo ospite, richiesto dalla legge per la registrazione.",
+      "tipoDocumento": "Tipo di documento",
+      "documenti": {
+        "IDENT": "Carta d’identità",
+        "IDELE": "Carta d’identità elettronica",
+        "PASOR": "Passaporto",
+        "PATEN": "Patente di guida"
+      },
+      "numeroDocumento": "Numero del documento",
+      "scadenza": "Scadenza del documento",
+      "invia": "Invia i dati",
+      "fatto": "Dati ricevuti il {{ data }}. Puoi correggerli fino all’arrivo."
     }
   }
 }

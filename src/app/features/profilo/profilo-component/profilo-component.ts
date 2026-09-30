@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  booleanAttribute,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@jsverse/transloco';
 
@@ -14,7 +21,8 @@ import { VerificaEmailComponent } from '../verifica-email-component/verifica-ema
 
 /**
  * Account dell'utente collegato: area personale per i clienti, /staff/account per lo staff.
- * L'eliminazione dell'account è solo per i clienti.
+ * L'eliminazione dell'account è solo per i clienti. Incorporato (dentro l'area personale)
+ * lascia titolo e margini alla pagina che lo contiene.
  */
 @Component({
   selector: 'app-profilo',
@@ -29,11 +37,14 @@ import { VerificaEmailComponent } from '../verifica-email-component/verifica-ema
   templateUrl: './profilo-component.html',
   styleUrl: './profilo-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '[class.incorporato]': 'incorporato()' },
 })
 export class ProfiloComponent {
   private readonly utenti = inject(UtentiService);
   protected readonly auth = inject(AuthService);
   protected readonly errori = inject(ErroriService);
+
+  readonly incorporato = input(false, { transform: booleanAttribute });
 
   protected readonly cliente = computed(() => this.auth.haRuolo([RUOLI.CLIENTE]));
   protected readonly profilo = rxResource({ stream: () => this.utenti.leggiProfilo() });

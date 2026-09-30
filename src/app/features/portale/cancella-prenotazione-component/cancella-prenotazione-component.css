@@ -1,0 +1,14 @@
+:host > .pulsante {
+  justify-self: start;
+}
+
+form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}

@@ -33,22 +33,22 @@
   </section>
 }
 
-<section class="sezione" [attr.aria-busy]="elenco.isLoading()">
+<section class="sezione" [attr.aria-busy]="elenco.risorsa.isLoading()">
   <h2 class="visivamente-nascosto">{{ 'recensioni.elenco' | transloco }}</h2>
   <ul class="griglia-schede">
-    @for (recensione of mostrate(); track recensione.id) {
+    @for (recensione of elenco.mostrate(); track recensione.id) {
       <li><app-scheda-recensione [recensione]="recensione" /></li>
     } @empty {
-      @if (elenco.error()) {
+      @if (elenco.risorsa.error()) {
         <li class="stato-vuoto">{{ 'errori.generico' | transloco }}</li>
-      } @else if (!elenco.isLoading()) {
+      } @else if (!elenco.risorsa.isLoading()) {
         <li class="stato-vuoto">{{ 'recensioni.nessuna' | transloco }}</li>
       }
     }
   </ul>
 
-  @if (altre()) {
-    <button type="button" class="pulsante pulsante-secondario altre" (click)="mostraAltre()">
+  @if (elenco.altre()) {
+    <button type="button" class="pulsante pulsante-secondario altre" (click)="elenco.mostraAltre()">
       {{ 'recensioni.altre' | transloco }}
     </button>
   }

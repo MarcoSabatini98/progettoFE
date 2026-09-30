@@ -1,0 +1,58 @@
+<ng-template #scheda let-prenotazione>
+  <a class="scheda prenotazione" [routerLink]="[percorsi.prenotazioni, prenotazione.id]">
+    <p class="stato-prenotazione" [attr.data-stato]="prenotazione.stato">
+      {{ 'prenotazione.stati.' + prenotazione.stato | transloco }}
+    </p>
+    <h3 class="titolo-scheda">{{ prenotazione.camera?.tipologia?.nome }}</h3>
+    <p>
+      {{ prenotazione.data_arrivo | data: 'giorno' }} –
+      {{ prenotazione.data_partenza | data: 'giorno' }}
+    </p>
+    <p class="codice">{{ prenotazione.codice }}</p>
+  </a>
+</ng-template>
+
+<h2 class="sezione-titolo">{{ 'portale.prenotazioni.prossime' | transloco }}</h2>
+
+@if (elenco.risorsa.error()) {
+  <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+} @else {
+  <ul class="griglia-schede">
+    @for (prenotazione of prossime(); track prenotazione.id) {
+      <li>
+        <ng-container *ngTemplateOutlet="scheda; context: { $implicit: prenotazione }" />
+      </li>
+    } @empty {
+      @if (!elenco.risorsa.isLoading()) {
+        <li class="stato-vuoto">
+          <p>{{ 'portale.prenotazioni.nessuna' | transloco }}</p>
+          <a class="pulsante pulsante-primario" [routerLink]="percorsi.prenota">
+            {{ 'portale.prenotazioni.prenota' | transloco }}
+          </a>
+        </li>
+      }
+    }
+  </ul>
+}
+
+@if (passate().length) {
+  <h2 class="sezione-titolo">{{ 'portale.prenotazioni.passate' | transloco }}</h2>
+  <ul class="griglia-schede">
+    @for (prenotazione of passate(); track prenotazione.id) {
+      <li>
+        <ng-container *ngTemplateOutlet="scheda; context: { $implicit: prenotazione }" />
+      </li>
+    }
+  </ul>
+}
+
+@if (elenco.altre()) {
+  <button
+    class="pulsante pulsante-secondario altre"
+    type="button"
+    [disabled]="elenco.risorsa.isLoading()"
+    (click)="elenco.mostraAltre()"
+  >
+    {{ 'portale.mostraAltre' | transloco }}
+  </button>
+}

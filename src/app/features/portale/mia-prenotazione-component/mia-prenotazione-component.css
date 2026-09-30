@@ -1,0 +1,9 @@
+.indietro {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -6,6 +6,12 @@
   padding-block: var(--bb-spazio-8) var(--bb-spazio-12);
 }
 
+:host(.incorporato) {
+  width: auto;
+  margin-inline: 0;
+  padding-block: 0;
+}
+
 .intestazione {
   display: grid;
   gap: var(--bb-spazio-1);

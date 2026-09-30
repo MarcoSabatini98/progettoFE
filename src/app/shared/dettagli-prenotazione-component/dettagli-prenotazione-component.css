@@ -1,0 +1,8 @@
+.scadenza {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-avviso-tenue);
+}

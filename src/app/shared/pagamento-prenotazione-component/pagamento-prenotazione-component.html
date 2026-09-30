@@ -1,0 +1,49 @@
+@let conto = riepilogo();
+@if (situazione() === 'da_pagare') {
+  <section class="scheda pagamento">
+    <h2 class="titolo-scheda">
+      {{ 'prenotazione.daPagare' | transloco: { importo: (conto.da_pagare_ora | prezzo) } }}
+    </h2>
+    @if (conto.metodi_online.length) {
+      <div class="metodi">
+        @for (metodo of conto.metodi_online; track metodo) {
+          <button
+            class="pulsante pulsante-primario"
+            type="button"
+            [disabled]="inPagamento() !== undefined"
+            (click)="paga(metodo)"
+          >
+            <app-icona nome="payments" />
+            {{ 'prenotazione.metodi.' + metodo | transloco }}
+          </button>
+        }
+      </div>
+    }
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+    @if (conto.bonifico; as bonifico) {
+      <div class="bonifico">
+        <h3>{{ 'prenotazione.bonifico' | transloco }}</h3>
+        <dl class="dati">
+          <div>
+            <dt>{{ 'prenotazione.iban' | transloco }}</dt>
+            <dd class="iban">{{ bonifico.iban }}</dd>
+          </div>
+          @if (bonifico.intestatario) {
+            <div>
+              <dt>{{ 'prenotazione.intestatario' | transloco }}</dt>
+              <dd>{{ bonifico.intestatario }}</dd>
+            </div>
+          }
+          <div>
+            <dt>{{ 'prenotazione.causale' | transloco }}</dt>
+            <dd>{{ bonifico.causale }}</dd>
+          </div>
+        </dl>
+      </div>
+    }
+  </section>
+} @else if (situazione() === 'pagato') {
+  <p class="esito esito-ok">{{ 'prenotazione.tuttoPagato' | transloco }}</p>
+}

@@ -166,7 +166,23 @@
     "PAGAMENTO_NON_RIUSCITO": "The payment didn’t go through. Please try again.",
     "PAGAMENTO_NON_TROVATO": "Payment not found.",
     "SERVIZIO_NON_DISPONIBILE": "A selected extra is no longer available.",
-    "IMPORTO_SUPERIORE_AL_SALDO": "The amount exceeds the balance due."
+    "IMPORTO_SUPERIORE_AL_SALDO": "The amount exceeds the balance due.",
+    "RECENSIONE_GIA_PRESENTE": "You have already reviewed this stay.",
+    "RECENSIONE_NON_CONSENTITA": "Only completed stays can be reviewed.",
+    "PRENOTAZIONE_ALTRUI": "This booking is not yours.",
+    "LINK_CHECKIN_NON_VALIDO": "The online check-in link is invalid or has expired.",
+    "PRENOTAZIONE_CHIUSA": "The booking has been cancelled.",
+    "TROPPI_OSPITI": "You entered more guests than booked.",
+    "OSPITE_DUPLICATO": "The same guest is entered twice.",
+    "SERVIZIO_NON_TROVATO": "Service not found.",
+    "FILE_MANCANTE": "File not available.",
+    "FORMATO_FILE_NON_VALIDO": "Format not allowed: use PDF, JPG, PNG or WebP.",
+    "FILE_TROPPO_GRANDE": "The file is too large.",
+    "ANAGRAFICA_MANCANTE": "Complete your personal details first.",
+    "DOCUMENTO_NON_TROVATO": "Document not found.",
+    "NON_RIMBORSABILE": "This rate is non-refundable.",
+    "SOGGIORNO_INIZIATO": "The stay has already started.",
+    "PAGAMENTO_NON_AVVIATO": "The payment could not be started."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -436,6 +452,123 @@
     },
     "errore": {
       "titolo": "Payment failed"
+    }
+  },
+  "recensione": {
+    "titolo": "How was your stay?",
+    "voto": "Your rating",
+    "stelle": "{{ voto }} out of {{ massimo }}",
+    "dettagli": "Want to say more?",
+    "senzaVoto": "No rating",
+    "titoloRecensione": "Title",
+    "commento": "Tell us about your stay",
+    "anonima": "Publish without my name",
+    "invia": "Send review",
+    "grazie": "Thank you! Your review will be published after moderation."
+  },
+  "portale": {
+    "occhiello": "My account",
+    "saluto": "Hello {{ nome }}",
+    "mostraAltre": "Show more",
+    "menu": {
+      "prenotazioni": "Bookings",
+      "fatture": "Invoices",
+      "fedelta": "Loyalty",
+      "documenti": "Documents",
+      "profilo": "Profile"
+    },
+    "prenotazioni": {
+      "prossime": "Upcoming stays",
+      "passate": "Past stays",
+      "nessuna": "No upcoming stays.",
+      "prenota": "Book a stay",
+      "tutte": "All bookings"
+    },
+    "extra": {
+      "titolo": "Extra services",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "Remove {{ nome }}",
+      "nessuno": "No extra services.",
+      "servizio": "Add a service",
+      "scegli": "Choose…",
+      "quantita": "Quantity",
+      "aggiungi": "Add"
+    },
+    "cancella": {
+      "titolo": "Cancel booking",
+      "testo": "Before you confirm, we show you any cancellation fee.",
+      "apri": "I want to cancel",
+      "penale": "Fee",
+      "rimborso": "Refund",
+      "gratuita": "Free cancellation until {{ data }}.",
+      "motivo": "Reason",
+      "conferma": "Confirm cancellation",
+      "annulla": "Keep booking"
+    },
+    "fatture": {
+      "titolo": "Invoices",
+      "TD01": "Invoice {{ numero }}/{{ anno }}",
+      "TD04": "Credit note {{ numero }}/{{ anno }}",
+      "scarica": "Download PDF",
+      "nessuna": "No invoices yet."
+    },
+    "fedelta": {
+      "titolo": "Loyalty programme",
+      "sconto": "{{ sconto }}% discount",
+      "inizia": "Earn points with every stay and unlock exclusive discounts.",
+      "punti": "{{ punti }} points",
+      "mancano": "{{ punti }} points to reach {{ livello }}.",
+      "massimo": "You are at the top level. Thank you!",
+      "anno": "Your {{ anno }}",
+      "guadagnati": "Points earned",
+      "tolti": "Points removed",
+      "livelli": "Levels",
+      "movimenti": "Points history",
+      "nessunMovimento": "No points activity yet.",
+      "motivi": {
+        "soggiorno": "Stay",
+        "bonus": "Bonus",
+        "rettifica": "Adjustment",
+        "annullamento": "Cancellation"
+      }
+    },
+    "documenti": {
+      "titolo": "Identity documents",
+      "testo": "Upload them once: we will use them to check you in.",
+      "carica": "Upload a document",
+      "formati": "PDF, JPG, PNG or WebP.",
+      "caricato": "Uploaded on {{ data }}",
+      "scarica": "Download",
+      "elimina": "Delete {{ nome }}",
+      "conferma": "Delete",
+      "annulla": "Cancel",
+      "nessuno": "No documents uploaded."
+    },
+    "checkin": {
+      "occhiello": "Online check-in",
+      "titolo": "Who is staying",
+      "soggiorno": "Booking {{ codice }}, from {{ arrivo }} to {{ partenza }}.",
+      "testo": "Enter the details of each guest: nothing else to do on arrival.",
+      "ospite": "Guest {{ numero }}",
+      "sesso": "Sex",
+      "scegli": "Choose…",
+      "sessi": {
+        "M": "Male",
+        "F": "Female"
+      },
+      "nascita": "Date of birth",
+      "documento": "Document of the first guest, required by law for registration.",
+      "tipoDocumento": "Document type",
+      "documenti": {
+        "IDENT": "Identity card",
+        "IDELE": "Electronic identity card",
+        "PASOR": "Passport",
+        "PATEN": "Driving licence"
+      },
+      "numeroDocumento": "Document number",
+      "scadenza": "Document expiry date",
+      "invia": "Send details",
+      "fatto": "Details received on {{ data }}. You can correct them until arrival."
     }
   }
 }

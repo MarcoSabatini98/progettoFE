@@ -1,0 +1,36 @@
+.contenuto {
+  display: grid;
+  gap: var(--bb-spazio-8);
+}
+
+/* Su telefono le schede scorrono in orizzontale invece di andare a capo. */
+.schede {
+  display: flex;
+  gap: var(--bb-spazio-2);
+  overflow-x: auto;
+  padding-block-end: var(--bb-spazio-2);
+  border-block-end: 1px solid var(--bb-linea);
+  scrollbar-width: thin;
+}
+
+.scheda-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-2) var(--bb-spazio-4);
+  border-radius: 999px;
+  color: var(--bb-testo-tenue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.scheda-link:hover {
+  color: var(--bb-testo);
+  background: var(--bb-brand-tenue);
+}
+
+.scheda-link.attiva {
+  color: var(--bb-brand-testo);
+  background: var(--bb-brand-tenue);
+}

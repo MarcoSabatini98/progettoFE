@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/services/auth/auth-guard';
 import { ruoloGuard } from './core/services/auth/ruolo-guard';
 import { NavigazioneService } from './core/services/navigazione/navigazione-service';
-import { RUOLI_STAFF } from './core/services/ruoli/ruoli-costanti';
+import { RUOLI, RUOLI_STAFF } from './core/services/ruoli/ruoli-costanti';
 import { AreaPubblicaComponent } from './layout/area-pubblica-component/area-pubblica-component';
 import { AreaStaffComponent } from './layout/area-staff-component/area-staff-component';
 import { PaginaNonTrovataComponent } from './layout/pagina-non-trovata-component/pagina-non-trovata-component';
@@ -143,12 +143,66 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'area-personale',
-        canActivate: [authGuard],
+        path: 'checkin-online',
         loadComponent: () =>
-          import('./features/profilo/profilo-component/profilo-component').then(
-            (m) => m.ProfiloComponent,
+          import('./features/portale/checkin-online-component/checkin-online-component').then(
+            (m) => m.CheckinOnlineComponent,
           ),
+      },
+      {
+        path: 'area-personale',
+        canActivate: [authGuard, ruoloGuard],
+        data: { ruoli: [RUOLI.CLIENTE] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/portale/area-personale-component/area-personale-component').then(
+            (m) => m.AreaPersonaleComponent,
+          ),
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'prenotazioni' },
+          {
+            path: 'prenotazioni',
+            loadComponent: () =>
+              import('./features/portale/mie-prenotazioni-component/mie-prenotazioni-component').then(
+                (m) => m.MiePrenotazioniComponent,
+              ),
+          },
+          {
+            path: 'prenotazioni/:id',
+            loadComponent: () =>
+              import('./features/portale/mia-prenotazione-component/mia-prenotazione-component').then(
+                (m) => m.MiaPrenotazioneComponent,
+              ),
+          },
+          {
+            path: 'fatture',
+            loadComponent: () =>
+              import('./features/portale/mie-fatture-component/mie-fatture-component').then(
+                (m) => m.MieFattureComponent,
+              ),
+          },
+          {
+            path: 'fedelta',
+            loadComponent: () =>
+              import('./features/portale/fedelta-component/fedelta-component').then(
+                (m) => m.FedeltaComponent,
+              ),
+          },
+          {
+            path: 'documenti',
+            loadComponent: () =>
+              import('./features/portale/documenti-component/documenti-component').then(
+                (m) => m.DocumentiComponent,
+              ),
+          },
+          {
+            path: 'profilo',
+            data: { incorporato: true },
+            loadComponent: () =>
+              import('./features/profilo/profilo-component/profilo-component').then(
+                (m) => m.ProfiloComponent,
+              ),
+          },
+        ],
       },
       { path: '**', component: PaginaNonTrovataComponent },
     ],

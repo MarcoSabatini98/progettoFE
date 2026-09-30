@@ -11,6 +11,7 @@ import { traduzioniTest } from '../../../core/services/lingua/configura-transloc
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PagamentiService } from '../../../core/services/pagamenti/pagamenti-service';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
+import { RecensioniService } from '../../../core/services/recensioni/recensioni-service';
 import { PrenotazioneInterface } from '../../../shared/models/prenotazione/prenotazione-model';
 import { RiepilogoPagamentoInterface } from '../../../shared/models/riepilogo-pagamento/riepilogo-pagamento-model';
 import { PrenotazioneComponent } from './prenotazione-component';
@@ -18,6 +19,7 @@ import { PrenotazioneComponent } from './prenotazione-component';
 describe('PrenotazioneComponent', () => {
   const prenotazioni = { accediPerCodice: vi.fn() };
   const pagamenti = { leggiRiepilogoPerCodice: vi.fn(), pagaPerCodice: vi.fn() };
+  const recensioni = { creaRecensionePerCodice: vi.fn() };
   const prenotazione = {
     codice: 'BB-123',
     stato: 'in_attesa',
@@ -44,7 +46,11 @@ describe('PrenotazioneComponent', () => {
   const accesso = { codice: 'BB-123', email: 'anna@esempio.it' };
 
   beforeEach(() => {
-    [prenotazioni.accediPerCodice, ...Object.values(pagamenti)].forEach((spia) => spia.mockReset());
+    [
+      prenotazioni.accediPerCodice,
+      recensioni.creaRecensionePerCodice,
+      ...Object.values(pagamenti),
+    ].forEach((spia) => spia.mockReset());
     prenotazioni.accediPerCodice.mockReturnValue(of(prenotazione));
     pagamenti.leggiRiepilogoPerCodice.mockReturnValue(of(riepilogo));
     TestBed.configureTestingModule({
@@ -53,6 +59,7 @@ describe('PrenotazioneComponent', () => {
         provideRouter([]),
         { provide: PrenotazioniService, useValue: prenotazioni },
         { provide: PagamentiService, useValue: pagamenti },
+        { provide: RecensioniService, useValue: recensioni },
         { provide: AuthService, useValue: { utente: () => null } },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
@@ -86,7 +93,9 @@ describe('PrenotazioneComponent', () => {
     expect(prenotazioni.accediPerCodice).toHaveBeenCalledWith(accesso);
     expect(pagamenti.leggiRiepilogoPerCodice).toHaveBeenCalledWith(accesso);
     expect(elemento.querySelector('form')).toBeNull();
-    expect(elemento.querySelector('.stato')?.textContent).toContain('prenotazione.stati.in_attesa');
+    expect(elemento.querySelector('.stato-prenotazione')?.textContent).toContain(
+      'prenotazione.stati.in_attesa',
+    );
     expect(elemento.querySelectorAll('.metodi button')).toHaveLength(2);
     expect(elemento.querySelector('.iban')?.textContent).toContain('IT60X0542811101000000123456');
   });
@@ -100,7 +109,7 @@ describe('PrenotazioneComponent', () => {
 
     await accedi(accesso.email);
     expect(prenotazioni.accediPerCodice).toHaveBeenCalledWith(accesso);
-    expect(elemento.querySelector('.stato')).not.toBeNull();
+    expect(elemento.querySelector('.stato-prenotazione')).not.toBeNull();
   });
 
   it('con codice ed email che non corrispondono resta sul modulo col motivo', async () => {
@@ -140,6 +149,26 @@ describe('PrenotazioneComponent', () => {
     expect(pagamenti.pagaPerCodice).toHaveBeenLastCalledWith({ ...accesso, metodo: 'paypal' });
     expect(elemento.querySelector('.pagamento [role="alert"]')?.textContent).toContain(
       'Già pagata',
+    );
+  });
+
+  it('prima della partenza non chiede la recensione', async () => {
+    const { elemento } = await crea({ email: accesso.email });
+
+    expect(elemento.querySelector('app-modulo-recensione')).toBeNull();
+  });
+
+  it('a soggiorno concluso la recensione parte a nome di chi ha aperto la prenotazione', async () => {
+    prenotazioni.accediPerCodice.mockReturnValue(of({ ...prenotazione, stato: 'conclusa' }));
+    recensioni.creaRecensionePerCodice.mockReturnValue(of({}));
+    const { elemento, clicca } = await crea({ email: accesso.email });
+
+    await clicca('.stelle label:last-of-type input');
+    await clicca('app-modulo-recensione [type="submit"]');
+
+    expect(elemento.querySelector('app-modulo-recensione .esito-ok')).not.toBeNull();
+    expect(recensioni.creaRecensionePerCodice).toHaveBeenCalledWith(
+      expect.objectContaining({ ...accesso, voto: 5 }),
     );
   });
 });

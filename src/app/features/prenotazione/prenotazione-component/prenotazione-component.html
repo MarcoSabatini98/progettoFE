@@ -7,104 +7,12 @@
   @let prenotazione = dati.value().prenotazione;
   @let pagamento = dati.value().pagamento;
 
-  <div class="prenotazione">
-    <section class="scheda dettagli">
-      <p class="stato" [attr.data-stato]="prenotazione.stato">
-        {{ 'prenotazione.stati.' + prenotazione.stato | transloco }}
-      </p>
-      <dl>
-        <div>
-          <dt>{{ 'prenotazione.camera' | transloco }}</dt>
-          <dd>{{ prenotazione.camera?.tipologia?.nome }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'prenotazione.arrivo' | transloco }}</dt>
-          <dd>{{ prenotazione.data_arrivo | data: 'giorno' }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'prenotazione.partenza' | transloco }}</dt>
-          <dd>{{ prenotazione.data_partenza | data: 'giorno' }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'prenotazione.ospiti' | transloco }}</dt>
-          <dd>
-            {{
-              'conferma.ospiti'
-                | transloco: { adulti: prenotazione.adulti, bambini: prenotazione.bambini }
-            }}
-          </dd>
-        </div>
-      </dl>
-      @if (prenotazione.stato === 'in_attesa' && prenotazione.scade_il) {
-        <p class="scadenza" role="status">
-          <app-icona nome="timer" />
-          {{ 'prenotazione.scade' | transloco: { ora: (prenotazione.scade_il | data: 'ora') } }}
-        </p>
-      }
-    </section>
-
-    <section class="scheda conto">
-      <h2 class="titolo-scheda">{{ 'conferma.conto' | transloco }}</h2>
-      <app-riepilogo-prezzo [importi]="prenotazione" />
-      <dl class="saldo">
-        <div>
-          <dt>{{ 'prenotazione.pagato' | transloco }}</dt>
-          <dd>{{ (pagamento.incassato ?? 0) - (pagamento.rimborsato ?? 0) | prezzo }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'prenotazione.saldo' | transloco }}</dt>
-          <dd>{{ pagamento.saldo | prezzo }}</dd>
-        </div>
-      </dl>
-    </section>
-
-    @if (pagamento.da_pagare_ora > 0) {
-      <section class="scheda pagamento">
-        <h2 class="titolo-scheda">
-          {{ 'prenotazione.daPagare' | transloco: { importo: (pagamento.da_pagare_ora | prezzo) } }}
-        </h2>
-        @if (pagamento.metodi_online.length) {
-          <div class="metodi">
-            @for (metodo of pagamento.metodi_online; track metodo) {
-              <button
-                class="pulsante pulsante-primario"
-                type="button"
-                [disabled]="inPagamento() !== undefined"
-                (click)="paga(metodo)"
-              >
-                <app-icona nome="payments" />
-                {{ 'prenotazione.metodi.' + metodo | transloco }}
-              </button>
-            }
-          </div>
-        }
-        @if (errorePagamento()) {
-          <p class="esito esito-errore" role="alert">{{ errorePagamento() }}</p>
-        }
-        @if (pagamento.bonifico; as bonifico) {
-          <div class="bonifico">
-            <h3>{{ 'prenotazione.bonifico' | transloco }}</h3>
-            <dl>
-              <div>
-                <dt>{{ 'prenotazione.iban' | transloco }}</dt>
-                <dd class="iban">{{ bonifico.iban }}</dd>
-              </div>
-              @if (bonifico.intestatario) {
-                <div>
-                  <dt>{{ 'prenotazione.intestatario' | transloco }}</dt>
-                  <dd>{{ bonifico.intestatario }}</dd>
-                </div>
-              }
-              <div>
-                <dt>{{ 'prenotazione.causale' | transloco }}</dt>
-                <dd>{{ bonifico.causale }}</dd>
-              </div>
-            </dl>
-          </div>
-        }
-      </section>
-    } @else if (pagamento.saldo === 0) {
-      <p class="esito esito-ok">{{ 'prenotazione.tuttoPagato' | transloco }}</p>
+  <div class="griglia-prenotazione">
+    <app-dettagli-prenotazione [prenotazione]="prenotazione" />
+    <app-conto-prenotazione [importi]="prenotazione" [pagamento]="pagamento" />
+    <app-pagamento-prenotazione class="larga" [riepilogo]="pagamento" [avvia]="avvia" />
+    @if (prenotazione.stato === 'conclusa') {
+      <app-modulo-recensione class="larga" [invia]="recensisci" />
     }
   </div>
 } @else if (!dati.isLoading()) {

@@ -1,6 +1,8 @@
 @if (auth.utente(); as utente) {
   <header class="intestazione">
-    <h1>{{ 'profilo.titolo' | transloco }}</h1>
+    @if (!incorporato()) {
+      <h1>{{ 'profilo.titolo' | transloco }}</h1>
+    }
     <p class="email">{{ utente.email }}</p>
   </header>
 

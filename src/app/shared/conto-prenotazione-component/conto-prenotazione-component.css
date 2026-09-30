@@ -1,0 +1,8 @@
+.saldo {
+  padding-block-start: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.saldo dd {
+  font-variant-numeric: tabular-nums;
+}

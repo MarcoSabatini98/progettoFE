@@ -85,3 +85,66 @@
   white-space: pre-line;
   line-height: 1.7;
 }
+
+/* Coppie etichetta-valore su righe: etichetta a sinistra, valore a destra. */
+.dati {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+}
+
+.dati > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-4);
+}
+
+.dati dt {
+  color: var(--bb-testo-tenue);
+}
+
+.dati dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: end;
+}
+
+/* Etichetta dello stato di una prenotazione, colorata per stato. */
+.stato-prenotazione {
+  justify-self: start;
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.stato-prenotazione[data-stato='cancellata'],
+.stato-prenotazione[data-stato='no_show'] {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-testo);
+}
+
+.stato-prenotazione[data-stato='confermata'],
+.stato-prenotazione[data-stato='in_soggiorno'] {
+  background: var(--bb-ok-tenue);
+  color: var(--bb-testo);
+}
+
+/* Schede di una prenotazione: due colonne da desktop, le larghe su tutta la riga. */
+.griglia-prenotazione {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-items: start;
+}
+
+@media (width >= 58.75rem) {
+  .griglia-prenotazione {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .griglia-prenotazione > .larga {
+    grid-column: 1 / -1;
+  }
+}
