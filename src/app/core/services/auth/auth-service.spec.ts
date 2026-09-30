@@ -66,6 +66,17 @@ describe('AuthService', () => {
     expect(service.haPermessi(['prenotazioni.leggi', 'tariffe.gestisci'])).toBe(false);
   });
 
+  it('puoAccedere: basta uno dei ruoli ma servono tutti i permessi', () => {
+    avvia();
+    accedi();
+
+    expect(service.puoAccedere({})).toBe(true);
+    expect(service.puoAccedere({ ruoli: ['admin', 'receptionist'] })).toBe(true);
+    expect(service.puoAccedere({ ruoli: ['receptionist'], permessi: ['tariffe.gestisci'] })).toBe(
+      false,
+    );
+  });
+
   it('le richieste di rinnovo contemporanee ne fanno partire una sola', () => {
     avvia();
     service.rinnova().subscribe();

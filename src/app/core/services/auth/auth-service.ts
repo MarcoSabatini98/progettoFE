@@ -5,6 +5,7 @@ import { Observable, catchError, finalize, map, of, shareReplay, tap, throwError
 import { environment } from '../../../../environments/environment';
 import { CodicePermesso } from '../../../shared/models/permesso/permesso-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
+import { RequisitiAccessoInterface } from '../../../shared/models/requisiti-accesso/requisiti-accesso-model';
 import { CodiceRuolo } from '../../../shared/models/ruolo/ruolo-model';
 import {
   CambioPasswordPayload,
@@ -53,6 +54,14 @@ export class AuthService {
   haPermessi(permessi: readonly CodicePermesso[]): boolean {
     const posseduti = this.utente()?.permessi ?? [];
     return permessi.every((permesso) => posseduti.includes(permesso));
+  }
+
+  /**
+   * PUÒ ACCEDERE
+   * Stessa regola per le rotte (ruoloGuard) e per le voci di menu.
+   */
+  puoAccedere({ ruoli, permessi }: RequisitiAccessoInterface): boolean {
+    return (!ruoli || this.haRuolo(ruoli)) && (!permessi || this.haPermessi(permessi));
   }
 
   /**

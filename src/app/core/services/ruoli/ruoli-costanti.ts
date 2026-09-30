@@ -15,6 +15,9 @@ export const RUOLI_ASSEGNABILI = [
   RUOLI.HOUSEKEEPER,
 ] as const;
 
+/** Ruoli che entrano nell'area staff. */
+export const RUOLI_STAFF = [RUOLI.ADMIN, ...RUOLI_ASSEGNABILI] as const;
+
 /** Squadre della chat interna: ogni membro dello staff entra nel gruppo della sua squadra. */
 export const SQUADRE = {
   receptionist: [RUOLI.RECEPTIONIST],

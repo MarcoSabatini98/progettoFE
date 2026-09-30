@@ -7,5 +7,120 @@
     "sistema": "Automatic",
     "chiaro": "Light",
     "scuro": "Dark"
+  },
+  "layout": {
+    "saltaAlContenuto": "Skip to content",
+    "cin": "CIN"
+  },
+  "menu": {
+    "accedi": "Sign in",
+    "apri": "Open menu",
+    "staff": "Management menu",
+    "utente": {
+      "apri": "{{ nome }}’s menu",
+      "sito": "Go to website",
+      "gestionale": "Go to management",
+      "personale": "My account",
+      "esci": "Sign out"
+    },
+    "gruppi": {
+      "oggi": "Today",
+      "soggiorni": "Stays",
+      "struttura": "Property",
+      "cassa": "Payments",
+      "direzione": "Management"
+    },
+    "voci": {
+      "cruscotto": "Dashboard",
+      "pulizie": "Housekeeping",
+      "chat": "Chat",
+      "manutenzione": "Maintenance",
+      "prenotazioni": "Bookings",
+      "planning": "Planner",
+      "ospiti": "Guests",
+      "alloggiati": "Police registration",
+      "camere": "Rooms",
+      "tariffe": "Rates",
+      "calendari": "External calendars",
+      "contenuti": "Content",
+      "faq": "FAQ",
+      "recensioni": "Reviews",
+      "pagamenti": "Payments",
+      "fatture": "Invoices",
+      "report": "Reports",
+      "utenti": "Users",
+      "ruoli": "Roles and permissions",
+      "registro": "Activity log",
+      "impostazioni": "Settings"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Dismiss notification"
+  },
+  "nonTrovata": {
+    "titolo": "Page not found",
+    "testo": "The link may be wrong or the page no longer exists.",
+    "home": "Back to home"
+  },
+  "home": {
+    "invito": "Welcome: book your stay directly with us.",
+    "checkin": "Check-in from",
+    "checkout": "Check-out by"
+  },
+  "accesso": {
+    "titolo": "Sign in",
+    "introduzione": "Use your account email and password.",
+    "email": "Email",
+    "password": "Password",
+    "dimenticata": "Forgot your password?",
+    "entra": "Sign in"
+  },
+  "recupero": {
+    "titolo": "Reset your password",
+    "introduzione": "Enter your account email: we will send you a link to choose a new one.",
+    "email": "Email",
+    "invia": "Send link",
+    "inviata": "If the email is registered, you will shortly receive a message with the link. Check your spam folder too.",
+    "torna": "Back to sign in"
+  },
+  "reimposta": {
+    "titolo": "New password",
+    "introduzione": "Choose a new password for your account.",
+    "password": "New password",
+    "aiuto": "At least {{ minima }} characters.",
+    "conferma": "Repeat password",
+    "salva": "Save password",
+    "fatto": "Password updated: you can now sign in.",
+    "linkNonValido": "This link is not valid. Request a new one.",
+    "nuovoLink": "Request a new link"
+  },
+  "moduli": {
+    "required": "Required field.",
+    "email": "Enter a valid email.",
+    "minlength": "At least {{ requiredLength }} characters.",
+    "maxlength": "At most {{ requiredLength }} characters.",
+    "passwordDiverse": "Passwords do not match."
+  },
+  "errori": {
+    "generico": "Something went wrong. Please try again.",
+    "rete": "Cannot reach the server. Check your connection and try again.",
+    "CREDENZIALI_NON_VALIDE": "Incorrect email or password.",
+    "ACCOUNT_DISATTIVATO": "This account is disabled.",
+    "EMAIL_GIA_REGISTRATA": "This email is already registered.",
+    "EMAIL_GIA_VERIFICATA": "Your email is already verified.",
+    "CODICE_ERRATO": "The code is incorrect.",
+    "CODICE_SCADUTO": "The code has expired: request a new one.",
+    "LINK_NON_VALIDO": "The link is not valid or has already been used.",
+    "TOKEN_NON_VALIDO": "The link is not valid.",
+    "TOKEN_SCADUTO": "The link has expired: request a new one.",
+    "SESSIONE_SCADUTA": "Your session has expired: please sign in again.",
+    "SESSIONE_COMPROMESSA": "For your security the session was closed: please sign in again.",
+    "NON_AUTENTICATO": "Sign in to continue.",
+    "PERMESSO_NEGATO": "You are not allowed to do this.",
+    "TROPPE_RICHIESTE": "Too many attempts. Wait a few minutes and try again.",
+    "DATI_NON_VALIDI": "Please check the data you entered.",
+    "ERRORE_INTERNO": "Server error. Please try again shortly.",
+    "RISORSA_NON_TROVATA": "Item not found.",
+    "PASSWORD_ATTUALE_ERRATA": "Your current password is incorrect."
   }
 }

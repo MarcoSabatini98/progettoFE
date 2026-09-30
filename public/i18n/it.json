@@ -7,5 +7,120 @@
     "sistema": "Automatico",
     "chiaro": "Chiaro",
     "scuro": "Scuro"
+  },
+  "layout": {
+    "saltaAlContenuto": "Vai al contenuto",
+    "cin": "CIN"
+  },
+  "menu": {
+    "accedi": "Accedi",
+    "apri": "Apri il menu",
+    "staff": "Menu del gestionale",
+    "utente": {
+      "apri": "Menu di {{ nome }}",
+      "sito": "Vai al sito",
+      "gestionale": "Vai al gestionale",
+      "personale": "Area personale",
+      "esci": "Esci"
+    },
+    "gruppi": {
+      "oggi": "Oggi",
+      "soggiorni": "Soggiorni",
+      "struttura": "Struttura",
+      "cassa": "Cassa",
+      "direzione": "Direzione"
+    },
+    "voci": {
+      "cruscotto": "Cruscotto",
+      "pulizie": "Pulizie",
+      "chat": "Chat",
+      "manutenzione": "Manutenzione",
+      "prenotazioni": "Prenotazioni",
+      "planning": "Planning",
+      "ospiti": "Ospiti",
+      "alloggiati": "Alloggiati Web",
+      "camere": "Camere",
+      "tariffe": "Tariffe",
+      "calendari": "Calendari esterni",
+      "contenuti": "Contenuti",
+      "faq": "FAQ",
+      "recensioni": "Recensioni",
+      "pagamenti": "Pagamenti",
+      "fatture": "Fatture",
+      "report": "Report",
+      "utenti": "Utenti",
+      "ruoli": "Ruoli e permessi",
+      "registro": "Registro attività",
+      "impostazioni": "Impostazioni"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Chiudi avviso"
+  },
+  "nonTrovata": {
+    "titolo": "Pagina non trovata",
+    "testo": "Il link potrebbe essere sbagliato o la pagina non esiste più.",
+    "home": "Torna alla home"
+  },
+  "home": {
+    "invito": "Benvenuti: prenotate il vostro soggiorno direttamente con noi.",
+    "checkin": "Check-in dalle",
+    "checkout": "Check-out entro le"
+  },
+  "accesso": {
+    "titolo": "Accedi",
+    "introduzione": "Entra con l’email e la password del tuo account.",
+    "email": "Email",
+    "password": "Password",
+    "dimenticata": "Password dimenticata?",
+    "entra": "Accedi"
+  },
+  "recupero": {
+    "titolo": "Recupera la password",
+    "introduzione": "Inserisci l’email del tuo account: ti invieremo un link per sceglierne una nuova.",
+    "email": "Email",
+    "invia": "Invia il link",
+    "inviata": "Se l’email è registrata, riceverai a breve un messaggio con il link. Controlla anche la posta indesiderata.",
+    "torna": "Torna all’accesso"
+  },
+  "reimposta": {
+    "titolo": "Nuova password",
+    "introduzione": "Scegli la nuova password del tuo account.",
+    "password": "Nuova password",
+    "aiuto": "Almeno {{ minima }} caratteri.",
+    "conferma": "Ripeti la password",
+    "salva": "Salva la password",
+    "fatto": "Password aggiornata: ora puoi accedere.",
+    "linkNonValido": "Il link non è valido. Chiedine uno nuovo.",
+    "nuovoLink": "Chiedi un nuovo link"
+  },
+  "moduli": {
+    "required": "Campo obbligatorio.",
+    "email": "Inserisci un’email valida.",
+    "minlength": "Almeno {{ requiredLength }} caratteri.",
+    "maxlength": "Al massimo {{ requiredLength }} caratteri.",
+    "passwordDiverse": "Le password non coincidono."
+  },
+  "errori": {
+    "generico": "Qualcosa è andato storto. Riprova.",
+    "rete": "Nessuna connessione con il server. Controlla la rete e riprova.",
+    "CREDENZIALI_NON_VALIDE": "Email o password non corrette.",
+    "ACCOUNT_DISATTIVATO": "Questo account è disattivato.",
+    "EMAIL_GIA_REGISTRATA": "Questa email è già registrata.",
+    "EMAIL_GIA_VERIFICATA": "L’email è già verificata.",
+    "CODICE_ERRATO": "Il codice non è corretto.",
+    "CODICE_SCADUTO": "Il codice è scaduto: chiedine uno nuovo.",
+    "LINK_NON_VALIDO": "Il link non è valido o è già stato usato.",
+    "TOKEN_NON_VALIDO": "Il link non è valido.",
+    "TOKEN_SCADUTO": "Il link è scaduto: chiedine uno nuovo.",
+    "SESSIONE_SCADUTA": "La sessione è scaduta: accedi di nuovo.",
+    "SESSIONE_COMPROMESSA": "Per sicurezza la sessione è stata chiusa: accedi di nuovo.",
+    "NON_AUTENTICATO": "Accedi per continuare.",
+    "PERMESSO_NEGATO": "Non hai il permesso per questa operazione.",
+    "TROPPE_RICHIESTE": "Troppi tentativi. Attendi qualche minuto e riprova.",
+    "DATI_NON_VALIDI": "Controlla i dati inseriti.",
+    "ERRORE_INTERNO": "Errore del server. Riprova tra poco.",
+    "RISORSA_NON_TROVATA": "Elemento non trovato.",
+    "PASSWORD_ATTUALE_ERRATA": "La password attuale non è corretta."
   }
 }

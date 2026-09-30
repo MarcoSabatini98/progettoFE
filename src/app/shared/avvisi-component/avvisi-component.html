@@ -1,0 +1,16 @@
+<ol class="avvisi" aria-live="polite">
+  @for (avviso of avvisi.avvisi(); track avviso.id) {
+    <li class="avviso" [class]="'avviso-' + avviso.tipo">
+      <app-icona [nome]="icone[avviso.tipo]" />
+      <p>{{ avviso.testo }}</p>
+      <button
+        type="button"
+        class="pulsante pulsante-fantasma pulsante-icona"
+        [attr.aria-label]="'avvisi.chiudi' | transloco"
+        (click)="avvisi.chiudi(avviso.id)"
+      >
+        <app-icona nome="close" />
+      </button>
+    </li>
+  }
+</ol>

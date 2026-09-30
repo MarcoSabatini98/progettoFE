@@ -1,0 +1,62 @@
+import { signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { beforeEach, describe, expect, it } from 'vitest';
+
+import { AuthService } from '../../core/services/auth/auth-service';
+import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
+import { GruppoMenuInterface } from '../../shared/models/voce-menu/voce-menu-model';
+import { AreaStaffComponent } from './area-staff-component';
+
+describe('AreaStaffComponent', () => {
+  const menuStaff = signal<GruppoMenuInterface[]>([
+    {
+      etichetta: 'menu.gruppi.oggi',
+      voci: [
+        { etichetta: 'menu.voci.pulizie', percorso: '/staff/pulizie', icona: 'cleaning_services' },
+        { etichetta: 'menu.voci.chat', percorso: '/staff/chat', icona: 'chat' },
+      ],
+    },
+  ]);
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [traduzioniTest()],
+      providers: [
+        provideRouter([]),
+        { provide: NavigazioneService, useValue: { menuStaff, staff: signal(true) } },
+        { provide: AuthService, useValue: { utente: signal(null) } },
+      ],
+    });
+  });
+
+  async function crea() {
+    const fixture = TestBed.createComponent(AreaStaffComponent);
+    await fixture.whenStable();
+    return fixture.nativeElement as HTMLElement;
+  }
+
+  it('applica i token del gestionale', async () => {
+    expect((await crea()).classList).toContain('area-gestionale');
+  });
+
+  it('mostra i gruppi del menu con le voci permesse', async () => {
+    const elemento = await crea();
+
+    expect(elemento.querySelector('.gruppo-titolo')?.textContent).toContain('menu.gruppi.oggi');
+    expect(
+      [...elemento.querySelectorAll<HTMLAnchorElement>('.voce')].map((voce) =>
+        voce.getAttribute('href'),
+      ),
+    ).toEqual(['/staff/pulizie', '/staff/chat']);
+  });
+
+  it('il pulsante della barra apre il menu come popover', async () => {
+    const elemento = await crea();
+    const menu = elemento.querySelector('nav')!;
+
+    expect(menu.hasAttribute('popover')).toBe(true);
+    expect(elemento.querySelector('[popovertarget]')?.getAttribute('popovertarget')).toBe(menu.id);
+  });
+});

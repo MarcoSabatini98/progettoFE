@@ -1,14 +1,8 @@
-/** Pagine usate dalle guardie: accesso e ripiego quando il ruolo non basta. */
-export const PERCORSI_AUTH = {
-  accesso: '/accesso',
-  home: '/',
-} as const;
-
 /** Parametro con la pagina da riaprire dopo l'accesso. */
 export const PARAMETRO_RITORNO = 'ritorno';
 
-/** Chiavi di route.data lette da ruoloGuard. */
-export const DATI_ROTTA = {
-  ruoli: 'ruoli',
-  permessi: 'permessi',
+/** Limiti della password (stessi del validatore di progettoBE: bcrypt legge al massimo 72 byte). */
+export const LUNGHEZZA_PASSWORD = {
+  minima: 8,
+  massima: 72,
 } as const;

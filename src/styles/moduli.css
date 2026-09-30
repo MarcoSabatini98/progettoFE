@@ -1,0 +1,50 @@
+/*
+ * Campi dei moduli: stile sugli elementi nativi, così ogni input del sito è uguale.
+ * Etichetta, aiuto ed errore li aggiunge app-campo.
+ */
+
+:where(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+  width: 100%;
+  min-height: var(--bb-controllo-altezza);
+  padding: 0 var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  /* Sotto i 16px Safari su iPhone ingrandisce la pagina al tocco. */
+  font-size: max(1rem, var(--bb-controllo-testo));
+  transition:
+    border-color var(--bb-durata),
+    box-shadow var(--bb-durata);
+}
+
+@media (width >= 58.75rem) {
+  :where(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+    font-size: var(--bb-controllo-testo);
+  }
+}
+
+textarea {
+  padding-block: var(--bb-spazio-3);
+  resize: vertical;
+}
+
+:where(input, select, textarea):focus-visible {
+  outline: none;
+  border-color: var(--bb-brand-testo);
+  box-shadow: 0 0 0 4px var(--bb-brand-tenue);
+}
+
+/* Errore solo dopo che l'utente ha toccato il campo (classi di Angular Forms). */
+:where(input, select, textarea).ng-invalid.ng-touched {
+  border-color: var(--bb-errore);
+  box-shadow: 0 0 0 4px var(--bb-errore-tenue);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--bb-brand);
+}

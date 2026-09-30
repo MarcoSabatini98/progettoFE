@@ -12,11 +12,12 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import { provideTransloco } from '@jsverse/transloco';
-import { forkJoin } from 'rxjs';
+import { catchError, forkJoin, of } from 'rxjs';
 
 import { routes } from './app.routes';
 import { authInterceptor } from './core/services/auth/auth-interceptor';
 import { AuthService } from './core/services/auth/auth-service';
+import { ImpostazioniService } from './core/services/impostazioni/impostazioni-service';
 import { CONFIG_TRANSLOCO } from './core/services/lingua/transloco-config';
 import { TranslocoHttpLoader } from './core/services/lingua/transloco-loader';
 import { linguaInterceptor } from './core/services/lingua/lingua-interceptor';
@@ -34,10 +35,17 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withFetch(), withInterceptors([linguaInterceptor, authInterceptor])),
     provideTransloco({ config: CONFIG_TRANSLOCO, loader: TranslocoHttpLoader }),
-    // Prima del primo render: tema applicato, traduzioni scaricate e sessione ripristinata.
+    // Prima del primo render: tema applicato, traduzioni scaricate, sessione ripristinata
+    // e impostazioni pubbliche lette (se il backend non risponde il sito parte lo stesso).
     provideAppInitializer(() => {
       inject(TemaService);
-      return forkJoin([inject(LinguaService).carica(), inject(AuthService).ripristina()]);
+      return forkJoin([
+        inject(LinguaService).carica(),
+        inject(AuthService).ripristina(),
+        inject(ImpostazioniService)
+          .leggiPubbliche()
+          .pipe(catchError(() => of({}))),
+      ]);
     }),
   ],
 };

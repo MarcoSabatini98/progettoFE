@@ -1,0 +1,82 @@
+.copertina {
+  display: grid;
+  gap: var(--bb-spazio-8);
+  width: min(100% - 2 * var(--bb-margine), var(--bb-contenuto));
+  margin: var(--bb-spazio-8) auto 0;
+}
+
+/* L'arco dell'area pubblica: finestra mediterranea nel colore della struttura. */
+.arco {
+  justify-self: center;
+  inline-size: min(100%, 22rem);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--bb-raggio) var(--bb-raggio);
+  background:
+    radial-gradient(circle at 50% 30%, var(--bb-ocra-tenue), transparent 60%),
+    linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
+  box-shadow: var(--bb-ombra);
+}
+
+.copertina-testo {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  align-content: center;
+}
+
+.luogo {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  color: var(--bb-brand-testo);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  --icona-dimensione: 1.125rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+}
+
+.invito {
+  max-width: 34rem;
+  color: var(--bb-testo-tenue);
+  font-size: 1.125rem;
+}
+
+.orari {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+  margin: var(--bb-spazio-2) 0 0;
+}
+
+.orari div {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+}
+
+dt {
+  color: var(--bb-testo-tenue);
+  font-size: 0.8125rem;
+}
+
+dd {
+  margin: 0;
+  font-family: var(--bb-font-titoli);
+  font-size: 1.5rem;
+}
+
+@media (width >= 58.75rem) {
+  .copertina {
+    grid-template-columns: 1fr 1fr;
+    margin-block-start: var(--bb-spazio-12);
+  }
+
+  .arco {
+    order: 1;
+  }
+}

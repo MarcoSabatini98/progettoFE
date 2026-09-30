@@ -40,6 +40,8 @@
   --bb-ombra: 0 18px 40px -24px light-dark(rgb(30 41 42 / 0.45), rgb(0 0 0 / 0.8));
   --bb-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
   --bb-durata: 240ms;
+  --bb-contenuto: 77.5rem;
+  --bb-margine: clamp(1rem, 4vw, 2.5rem);
 }
 
 [data-tema='chiaro'] {
@@ -62,6 +64,11 @@
   --bb-font: var(--bb-font-pubblico);
   --bb-raggio: 22px;
   --bb-raggio-piccolo: 14px;
+  --bb-pulsante-raggio: 999px;
+  --bb-pulsante-spazio: 1.5rem;
+  --bb-pulsante-peso: 600;
+  --bb-controllo-altezza: 3.125rem;
+  --bb-controllo-testo: 0.9375rem;
 }
 
 /* Area gestionale dello staff: "Minimal preciso". */
@@ -75,6 +82,11 @@
   --bb-font: var(--bb-font-gestionale);
   --bb-raggio: 8px;
   --bb-raggio-piccolo: 6px;
+  --bb-pulsante-raggio: 6px;
+  --bb-pulsante-spazio: 0.75rem;
+  --bb-pulsante-peso: 500;
+  --bb-controllo-altezza: 2.5rem;
+  --bb-controllo-testo: 0.875rem;
 }
 
 /* Derivati: ridichiarati per area così seguono la superficie dell'area. */
