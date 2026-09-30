@@ -61,7 +61,8 @@
       "offerte": "Offers",
       "recensioni": "Reviews",
       "faq": "FAQ",
-      "contatti": "Contact"
+      "contatti": "Contact",
+      "prenota": "Book"
     }
   },
   "avvisi": {
@@ -81,7 +82,8 @@
     "tutteCamere": "See all rooms",
     "recensioni": "What guests say",
     "media": "{{ media }}/5 from {{ numero }} reviews",
-    "tutteRecensioni": "Read all reviews"
+    "tutteRecensioni": "Read all reviews",
+    "prenota": "Book your stay"
   },
   "accesso": {
     "titolo": "Sign in",
@@ -114,7 +116,10 @@
     "minlength": "At least {{ requiredLength }} characters.",
     "maxlength": "At most {{ requiredLength }} characters.",
     "passwordDiverse": "Passwords do not match.",
-    "pattern": "Invalid format."
+    "pattern": "Invalid format.",
+    "min": "The minimum is {{ min }}.",
+    "max": "The maximum is {{ max }}.",
+    "partenzaPrimaArrivo": "Departure must be after arrival."
   },
   "errori": {
     "generico": "Something went wrong. Please try again.",
@@ -140,7 +145,28 @@
     "CONSENSI_OBBLIGATORI": "To sign up you must accept the privacy policy and terms.",
     "PASSWORD_ERRATA": "The password is not correct.",
     "PRENOTAZIONI_ATTIVE": "You have current or upcoming bookings: cancel them or wait until your stay ends.",
-    "UTENTE_NON_TROVATO": "Account not found."
+    "UTENTE_NON_TROVATO": "Account not found.",
+    "ARRIVO_NEL_PASSATO": "The arrival date is in the past.",
+    "DATE_NON_VALIDE": "Check the dates: departure must be after arrival.",
+    "BLOCCO_DIVERSO": "The room held for you doesn’t match this stay: search again.",
+    "BLOCCO_SCADUTO": "Time to complete the booking has run out: search again.",
+    "CAMERA_NON_DISPONIBILE": "The room is no longer available for these dates.",
+    "CODICE_SCONTO_NON_VALIDO": "The discount code is invalid or expired.",
+    "CODICE_SCONTO_NON_APPLICABILE": "The discount code doesn’t apply to this stay.",
+    "CODICE_SCONTO_NON_TROVATO": "The discount code doesn’t exist.",
+    "PACCHETTO_NON_APPLICABILE": "The package doesn’t apply to this stay.",
+    "PACCHETTO_NON_TROVATO": "The package is no longer available.",
+    "SOGGIORNO_MINIMO": "These dates require a longer stay.",
+    "TITOLARE_MANCANTE": "Enter the details of who is booking.",
+    "PRENOTAZIONE_NON_TROVATA": "No booking matches this code and email.",
+    "STATO_NON_VALIDO": "This action isn’t possible in the booking’s current status.",
+    "NULLA_DA_PAGARE": "There’s nothing to pay.",
+    "METODO_NON_VALIDO": "Payment method not available.",
+    "METODO_NON_ATTIVO": "Payment method not available.",
+    "PAGAMENTO_NON_RIUSCITO": "The payment didn’t go through. Please try again.",
+    "PAGAMENTO_NON_TROVATO": "Payment not found.",
+    "SERVIZIO_NON_DISPONIBILE": "A selected extra is no longer available.",
+    "IMPORTO_SUPERIORE_AL_SALDO": "The amount exceeds the balance due."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -240,7 +266,8 @@
     "letti": "Beds",
     "dotazioni": "In the room",
     "nonTrovata": "Room not found",
-    "nonTrovataTesto": "This room does not exist or is no longer available."
+    "nonTrovataTesto": "This room does not exist or is no longer available.",
+    "prenota": "Check availability"
   },
   "offerte": {
     "occhiello": "For you",
@@ -299,5 +326,116 @@
     "orari": "Times",
     "checkin": "Check-in from {{ orario }}",
     "checkout": "Check-out by {{ orario }}"
+  },
+  "prenota": {
+    "occhiello": "Book direct",
+    "titolo": "Book",
+    "introduzione": "Pick your dates and guests: we’ll show the available rooms at the best price.",
+    "arrivo": "Arrival",
+    "partenza": "Departure",
+    "adulti": "Adults",
+    "bambini": "Children",
+    "bambiniAiuto": "Up to {{ eta }} years old",
+    "etaBambini": "Children’s ages",
+    "bambino": "Child {{ numero }}",
+    "scegliEta": "Age",
+    "cerca": "Search rooms",
+    "risultati": "Available rooms",
+    "camereLibere": "Rooms left: {{ numero }}",
+    "totale": "{{ prezzo }} for {{ notti }} nights",
+    "acconto": "Deposit on booking: {{ prezzo }}",
+    "scegli": "Select",
+    "nessunaCamera": "No rooms available for these dates. Try different ones."
+  },
+  "riepilogoPrezzo": {
+    "importo_soggiorno": "Stay",
+    "sconto_promozione": "Promotion",
+    "sconto_codice": "Discount code",
+    "sconto_fedelta": "Loyalty discount ({{ percentuale }}%)",
+    "importo_pacchetto": "Package",
+    "importo_servizi": "Extras",
+    "tassa_soggiorno": "Tourist tax",
+    "totale": "Total",
+    "acconto": "Deposit due"
+  },
+  "conferma": {
+    "date": "From {{ arrivo }} to {{ partenza }}",
+    "ospiti": "Adults: {{ adulti }} · Children: {{ bambini }}",
+    "cambiaCamera": "Change room",
+    "bloccata": "We’re holding the room for you until {{ ora }}.",
+    "opzioni": "Customise your stay",
+    "codiceSconto": "Discount code",
+    "applica": "Apply",
+    "codicePercentuale": "{{ codice }}: {{ valore }}% off",
+    "codiceImporto": "{{ codice }}: {{ valore }} off",
+    "togliCodice": "Remove",
+    "pacchetto": "Package",
+    "nessunPacchetto": "No package",
+    "extra": "Extras",
+    "titolare": "Who is booking",
+    "titolareAiuto": "We’ll use these details for the confirmation and to contact you.",
+    "nome": "First name",
+    "cognome": "Last name",
+    "email": "Email",
+    "telefono": "Phone",
+    "facoltativo": "Optional",
+    "arrivo": "Your arrival",
+    "oraArrivo": "Expected arrival time",
+    "richieste": "Special requests",
+    "richiesteAiuto": "Cot, allergies, accessibility needs… We’ll do our best.",
+    "prenota": "Confirm booking",
+    "conto": "Your bill",
+    "rimborsabile": "Free cancellation up to {{ ore }} hours before arrival.",
+    "nonRimborsabile": "Non-refundable rate."
+  },
+  "prenotazione": {
+    "occhiello": "Your booking",
+    "titolo": "Booking {{ codice }}",
+    "chiediEmail": "Enter the email you booked with to see the details.",
+    "email": "Email",
+    "apri": "Open booking",
+    "camera": "Room",
+    "arrivo": "Arrival",
+    "partenza": "Departure",
+    "ospiti": "Guests",
+    "scade": "Complete payment by {{ ora }}, otherwise the booking expires.",
+    "pagato": "Already paid",
+    "saldo": "Balance due",
+    "daPagare": "Due now: {{ importo }}",
+    "metodi": {
+      "stripe": "Pay by card",
+      "paypal": "Pay with PayPal"
+    },
+    "bonifico": "Or by bank transfer",
+    "iban": "IBAN",
+    "intestatario": "Account holder",
+    "causale": "Reference",
+    "tuttoPagato": "All paid: see you soon!",
+    "stati": {
+      "in_attesa": "Awaiting payment",
+      "confermata": "Confirmed",
+      "in_soggiorno": "Checked in",
+      "conclusa": "Completed",
+      "cancellata": "Cancelled",
+      "no_show": "No-show"
+    }
+  },
+  "esito": {
+    "torna": "Go to booking {{ codice }}",
+    "in_corso": {
+      "titolo": "Recording your payment…",
+      "testo": "Please stay on this page for a few seconds."
+    },
+    "ok": {
+      "titolo": "Payment received",
+      "testo": "Thank you! We’ll email you the confirmation."
+    },
+    "annullato": {
+      "titolo": "Payment cancelled",
+      "testo": "You haven’t been charged. You can try again from your booking."
+    },
+    "errore": {
+      "titolo": "Payment failed"
+    }
   }
 }

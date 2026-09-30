@@ -50,6 +50,10 @@ h1 {
   font-size: 1.125rem;
 }
 
+.prenota {
+  justify-self: start;
+}
+
 .orari {
   display: flex;
   flex-wrap: wrap;

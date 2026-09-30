@@ -1,0 +1,115 @@
+/* Conto sotto i moduli sul telefono, a lato e sempre visibile da desktop. */
+.conferma {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-items: start;
+}
+
+@media (width >= 58.75rem) {
+  .conferma {
+    grid-template-columns: minmax(0, 3fr) minmax(18rem, 2fr);
+  }
+
+  .conto {
+    position: sticky;
+    top: var(--bb-spazio-6);
+  }
+}
+
+.colonna-moduli,
+form,
+.scheda {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.colonna-moduli,
+form {
+  gap: var(--bb-spazio-6);
+}
+
+.riassunto {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.riassunto-testo {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.blocco {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-avviso-tenue);
+  color: var(--bb-testo);
+}
+
+.tenue {
+  color: var(--bb-testo-tenue);
+}
+
+.codice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--bb-spazio-3);
+  align-items: start;
+}
+
+/* Il pulsante si allinea all'input, sotto l'etichetta del campo. */
+.codice .pulsante {
+  margin-block-start: 1.75rem;
+}
+
+.codice-applicato {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-2) var(--bb-spazio-3);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-ok-tenue);
+}
+
+.codice-applicato p {
+  flex: 1;
+  display: grid;
+}
+
+.extra {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.extra legend {
+  margin-block-end: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+.casella {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-height: var(--bb-controllo-altezza);
+  cursor: pointer;
+}
+
+.conto[aria-busy='true'] app-riepilogo-prezzo {
+  opacity: 0.6;
+}
+
+.politica {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+}

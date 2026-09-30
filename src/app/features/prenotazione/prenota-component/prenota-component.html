@@ -1,0 +1,85 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'prenota.occhiello' | transloco }}</p>
+  <h1>{{ 'prenota.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'prenota.introduzione' | transloco }}</p>
+</header>
+
+@if (scelta(); as scelta) {
+  <app-conferma-prenotazione [scelta]="scelta" (cambiaCamera)="cambiaCamera()" />
+} @else {
+  <app-ricerca-soggiorno class="scheda" [inCorso]="risultati.isLoading()" (cerca)="cerca($event)" />
+
+  @if (errore()) {
+    <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+  }
+
+  @if (risultati.hasValue()) {
+    <section class="sezione">
+      <h2 class="sezione-titolo">{{ 'prenota.risultati' | transloco }}</h2>
+      <ul class="risultati">
+        @for (voce of risultati.value(); track voce.tipologia.id) {
+          @let foto = voce.tipologia.media?.[0];
+          <li class="scheda risultato">
+            <div class="foto">
+              @if (foto) {
+                <img
+                  [src]="foto.percorso | media"
+                  [alt]="foto.testo_alternativo"
+                  [attr.width]="foto.larghezza"
+                  [attr.height]="foto.altezza"
+                  loading="lazy"
+                />
+              }
+            </div>
+
+            <div class="testo">
+              <h3>{{ voce.tipologia.nome }}</h3>
+              <ul class="dettagli">
+                <li>
+                  <app-icona nome="group" />
+                  {{ 'camere.ospitiMax' | transloco: { numero: voce.tipologia.ospiti_max } }}
+                </li>
+                <li>
+                  <app-icona nome="door_front" />
+                  {{ 'prenota.camereLibere' | transloco: { numero: voce.camere_libere } }}
+                </li>
+              </ul>
+
+              @if (voce.preventivo; as preventivo) {
+                <p class="prezzo">
+                  {{
+                    'prenota.totale'
+                      | transloco
+                        : { prezzo: (preventivo.totale | prezzo), notti: preventivo.numero_notti }
+                  }}
+                </p>
+                @if (preventivo.acconto_richiesto > 0) {
+                  <p class="acconto">
+                    {{
+                      'prenota.acconto'
+                        | transloco: { prezzo: (preventivo.acconto_richiesto | prezzo) }
+                    }}
+                  </p>
+                }
+                <button
+                  class="pulsante pulsante-primario"
+                  type="button"
+                  [disabled]="inBlocco() !== undefined"
+                  (click)="scegli(voce.tipologia, preventivo)"
+                >
+                  {{ 'prenota.scegli' | transloco }}
+                </button>
+              } @else if (voce.non_prenotabile; as motivo) {
+                <p class="non-prenotabile">{{ errori.testo(motivo) }}</p>
+              }
+            </div>
+          </li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'prenota.nessunaCamera' | transloco }}</li>
+        }
+      </ul>
+    </section>
+  } @else if (risultati.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+}

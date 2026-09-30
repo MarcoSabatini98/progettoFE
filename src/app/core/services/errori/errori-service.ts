@@ -3,7 +3,10 @@ import { Injectable, inject } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 
-import { RispostaErroreApiInterface } from '../../../shared/models/errore-api/errore-api-model';
+import {
+  ErroreApiInterface,
+  RispostaErroreApiInterface,
+} from '../../../shared/models/errore-api/errore-api-model';
 import { ERRORI_LOCALI, PREFISSO_ERRORI, PREFISSO_MODULI } from './errori-costanti';
 
 /**
@@ -28,11 +31,17 @@ export class ErroriService {
       errore instanceof HttpErrorResponse
         ? (errore.error as RispostaErroreApiInterface | null)?.errore
         : undefined;
-    if (!dettaglio) {
-      return this.traduci(ERRORI_LOCALI.generico);
-    }
-    const tradotto = this.traduci(dettaglio.codice);
-    return tradotto === `${PREFISSO_ERRORI}.${dettaglio.codice}` ? dettaglio.messaggio : tradotto;
+    return dettaglio ? this.testo(dettaglio) : this.traduci(ERRORI_LOCALI.generico);
+  }
+
+  /**
+   * TESTO
+   * Errore del backend arrivato dentro una risposta riuscita (es. tipologia non prenotabile
+   * nella ricerca): tradotto come messaggio(), col testo italiano se la traduzione manca.
+   */
+  testo({ codice, messaggio }: Pick<ErroreApiInterface, 'codice' | 'messaggio'>): string {
+    const tradotto = this.traduci(codice);
+    return tradotto === `${PREFISSO_ERRORI}.${codice}` ? messaggio : tradotto;
   }
 
   /**

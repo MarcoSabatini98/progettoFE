@@ -56,3 +56,17 @@ export const TIPI_LUOGO = ['comune', 'stato'] as const;
 export const TIPI_CONSENSO = ['privacy', 'termini', 'marketing', 'cookie'] as const;
 
 export const STATI_RECENSIONE = ['in_attesa', 'pubblicata', 'rifiutata'] as const;
+
+/** Ospiti di una ricerca: stessi limiti di progettoBE (tariffe.validator.js). */
+export const LIMITI_OSPITI = { adulti: 50, bambini: 50, etaBambini: 17 } as const;
+
+/** Lunghezza massima delle richieste speciali (prenotazioni.validator.js). */
+export const LUNGHEZZA_RICHIESTE = 5000;
+
+/**
+ * Formato dei codici sconto (tariffe.validator.js): lettere, cifre, _ e -.
+ * Le minuscole vanno bene: il backend porta il codice in maiuscolo.
+ */
+export const FORMATO_CODICE_SCONTO = /^[A-Z0-9_-]+$/i;
+
+export const LUNGHEZZA_CODICE_SCONTO = 30;

@@ -19,6 +19,10 @@
     }
     <h1>{{ nome() }}</h1>
     <p class="invito">{{ 'home.invito' | transloco }}</p>
+    <a class="pulsante pulsante-primario prenota" [routerLink]="percorsi.prenota">
+      <app-icona nome="event_available" />
+      {{ 'home.prenota' | transloco }}
+    </a>
 
     @if (checkin() || checkout()) {
       <dl class="orari">

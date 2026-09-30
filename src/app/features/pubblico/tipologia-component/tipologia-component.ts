@@ -28,6 +28,7 @@ export class TipologiaComponent {
   readonly slug = input.required<string>();
 
   protected readonly percorsoCamere = PERCORSI_PUBBLICI.camere;
+  protected readonly percorsoPrenota = PERCORSI_PUBBLICI.prenota;
   protected readonly iconaPredefinita = ICONA_SERVIZIO_PREDEFINITA;
   protected readonly tipologia = rxResource({
     params: () => ({ slug: this.slug(), lingua: this.lingua.attiva() }),

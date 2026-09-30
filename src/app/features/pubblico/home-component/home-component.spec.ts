@@ -63,6 +63,7 @@ describe('HomeComponent', () => {
 
     expect(elemento.querySelector('h1')?.textContent).toBe('Casa del Mare');
     expect(elemento.querySelector('.luogo')?.textContent).toContain('Alghero');
+    expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe('/prenota');
     expect([...elemento.querySelectorAll('.orari dd')].map((dd) => dd.textContent)).toEqual([
       '15:00',
       '10:30',

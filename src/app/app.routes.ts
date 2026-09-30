@@ -87,6 +87,27 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'prenota',
+        loadComponent: () =>
+          import('./features/prenotazione/prenota-component/prenota-component').then(
+            (m) => m.PrenotaComponent,
+          ),
+      },
+      {
+        path: 'prenotazioni/:codice',
+        loadComponent: () =>
+          import('./features/prenotazione/prenotazione-component/prenotazione-component').then(
+            (m) => m.PrenotazioneComponent,
+          ),
+      },
+      {
+        path: 'prenotazioni/:codice/pagamento',
+        loadComponent: () =>
+          import('./features/prenotazione/esito-pagamento-component/esito-pagamento-component').then(
+            (m) => m.EsitoPagamentoComponent,
+          ),
+      },
+      {
         path: 'accesso',
         loadComponent: () =>
           import('./features/accesso/accesso-component/accesso-component').then(
