@@ -33,7 +33,6 @@ const OSPITI_PER_PAGINA = 20;
     PaginazioneComponent,
   ],
   templateUrl: './ospiti-component.html',
-  styleUrl: './ospiti-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },
 })

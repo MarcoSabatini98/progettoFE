@@ -11,12 +11,6 @@ h2:not(.titolo-scheda) {
   padding-inline-start: var(--bb-spazio-4);
 }
 
-.colonna {
-  display: grid;
-  align-content: start;
-  gap: var(--bb-spazio-6);
-}
-
 .soggiorni {
   display: grid;
   gap: var(--bb-spazio-3);

@@ -89,6 +89,33 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'camere',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CAMERE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/elenco-camere-component/elenco-camere-component').then(
+            (m) => m.ElencoCamereComponent,
+          ),
+      },
+      {
+        path: 'camere/tipologie/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CAMERE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-tipologia-camera-component/scheda-tipologia-camera-component').then(
+            (m) => m.SchedaTipologiaCameraComponent,
+          ),
+      },
+      {
+        path: 'camere/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CAMERE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-camera-component/scheda-camera-component').then(
+            (m) => m.SchedaCameraComponent,
+          ),
+      },
+      {
         path: 'alloggiati',
         canActivate: [ruoloGuard],
         data: { permessi: [PERMESSI.ALLOGGIATI_INVIA] } satisfies RequisitiAccessoInterface,

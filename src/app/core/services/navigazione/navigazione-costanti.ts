@@ -85,6 +85,10 @@ export const PERCORSI_STAFF = {
   /** Seguito dall'id per la scheda: /staff/ospiti/5. */
   ospiti: `${PERCORSO_STAFF}/ospiti`,
   alloggiati: `${PERCORSO_STAFF}/alloggiati`,
+  /** Seguito dall'id per la scheda: /staff/camere/4. */
+  camere: `${PERCORSO_STAFF}/camere`,
+  /** Seguito dall'id per la scheda: /staff/camere/tipologie/2. */
+  tipologie: `${PERCORSO_STAFF}/camere/tipologie`,
 } as const;
 
 /**
@@ -157,7 +161,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
     voci: [
       {
         etichetta: 'menu.voci.camere',
-        percorso: `${PERCORSO_STAFF}/camere`,
+        percorso: PERCORSI_STAFF.camere,
         icona: 'bed',
         permessi: [PERMESSI.CAMERE_GESTISCI],
       },

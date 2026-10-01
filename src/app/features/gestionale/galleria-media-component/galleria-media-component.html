@@ -1,0 +1,91 @@
+<h2 class="titolo-scheda">{{ 'gestionale.foto.titolo' | transloco }}</h2>
+<p class="tenue piccolo">{{ 'gestionale.foto.aiuto' | transloco }}</p>
+
+<label class="pulsante pulsante-primario carica" [class.disabilitato]="inCorso()">
+  <app-icona nome="add_photo_alternate" />
+  {{ 'gestionale.foto.carica' | transloco }}
+  <input
+    class="visivamente-nascosto"
+    type="file"
+    multiple
+    [accept]="formati"
+    [disabled]="inCorso()"
+    (change)="carica($event)"
+  />
+</label>
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+
+<ol class="foto" [attr.aria-busy]="inCorso()">
+  @for (foto of media(); track foto.id; let primo = $first, ultimo = $last, indice = $index) {
+    <li class="elemento">
+      <img [src]="foto.percorso | media" [alt]="foto.testo_alternativo" loading="lazy" />
+      <div class="dettagli">
+        @if (primo) {
+          <span class="copertina piccolo">{{ 'gestionale.foto.copertina' | transloco }}</span>
+        }
+        <label class="campo-testo">
+          <span class="piccolo">{{ 'gestionale.foto.testoAlternativo' | transloco }}</span>
+          <input
+            #testo
+            type="text"
+            [value]="foto.testo_alternativo"
+            [maxLength]="lunghezzaTesto"
+            [disabled]="inCorso()"
+            (change)="descrivi(foto, testo.value)"
+          />
+        </label>
+        <div class="azioni">
+          <button
+            class="pulsante pulsante-fantasma pulsante-icona"
+            type="button"
+            [attr.aria-label]="'gestionale.foto.prima' | transloco"
+            [disabled]="primo || inCorso()"
+            (click)="sposta(indice, -1)"
+          >
+            <app-icona nome="arrow_upward" />
+          </button>
+          <button
+            class="pulsante pulsante-fantasma pulsante-icona"
+            type="button"
+            [attr.aria-label]="'gestionale.foto.dopo' | transloco"
+            [disabled]="ultimo || inCorso()"
+            (click)="sposta(indice, 1)"
+          >
+            <app-icona nome="arrow_downward" />
+          </button>
+          @if (daEliminare() === foto.id) {
+            <button
+              class="pulsante pulsante-pericolo"
+              type="button"
+              [disabled]="inCorso()"
+              (click)="elimina(foto.id)"
+            >
+              {{ 'gestionale.foto.conferma' | transloco }}
+            </button>
+            <button
+              class="pulsante pulsante-fantasma"
+              type="button"
+              (click)="daEliminare.set(undefined)"
+            >
+              {{ 'portale.documenti.annulla' | transloco }}
+            </button>
+          } @else {
+            <button
+              class="pulsante pulsante-fantasma pulsante-icona"
+              type="button"
+              [attr.aria-label]="'gestionale.foto.elimina' | transloco"
+              (click)="daEliminare.set(foto.id)"
+            >
+              <app-icona nome="delete" />
+            </button>
+          }
+        </div>
+      </div>
+    </li>
+  } @empty {
+    <li class="stato-vuoto">{{ 'gestionale.foto.nessuna' | transloco }}</li>
+  }
+</ol>
