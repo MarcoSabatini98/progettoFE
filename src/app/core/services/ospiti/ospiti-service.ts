@@ -9,6 +9,7 @@ import {
   OspiteAggiornaPayload,
   OspiteCreaPayload,
   OspiteInterface,
+  SchedaOspiteInterface,
 } from '../../../shared/models/ospite/ospite-model';
 import { PaginaInterface } from '../../../shared/models/pagina/pagina-model';
 import {
@@ -82,27 +83,27 @@ export class OspitiService {
   /**
    * CREA — POST /
    */
-  creaOspite(dati: OspiteCreaPayload): Observable<OspiteInterface> {
+  creaOspite(dati: OspiteCreaPayload): Observable<SchedaOspiteInterface> {
     return this.http
-      .post<RispostaApiInterface<OspiteInterface>>(this.apiUrl, dati)
+      .post<RispostaApiInterface<SchedaOspiteInterface>>(this.apiUrl, dati)
       .pipe(map((res) => res.dati));
   }
 
   /**
    * SCHEDA — GET /:id
    */
-  leggiOspite(id: number): Observable<OspiteInterface> {
+  leggiOspite(id: number): Observable<SchedaOspiteInterface> {
     return this.http
-      .get<RispostaApiInterface<OspiteInterface>>(`${this.apiUrl}/${id}`)
+      .get<RispostaApiInterface<SchedaOspiteInterface>>(`${this.apiUrl}/${id}`)
       .pipe(map((res) => res.dati));
   }
 
   /**
    * AGGIORNA — PATCH /:id
    */
-  aggiornaOspite(id: number, dati: OspiteAggiornaPayload): Observable<OspiteInterface> {
+  aggiornaOspite(id: number, dati: OspiteAggiornaPayload): Observable<SchedaOspiteInterface> {
     return this.http
-      .patch<RispostaApiInterface<OspiteInterface>>(`${this.apiUrl}/${id}`, dati)
+      .patch<RispostaApiInterface<SchedaOspiteInterface>>(`${this.apiUrl}/${id}`, dati)
       .pipe(map((res) => res.dati));
   }
 

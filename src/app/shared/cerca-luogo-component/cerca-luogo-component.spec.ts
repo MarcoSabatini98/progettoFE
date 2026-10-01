@@ -22,9 +22,10 @@ describe('CercaLuogoComponent', () => {
     });
   });
 
-  async function crea() {
+  async function crea(valore = '') {
     const fixture = TestBed.createComponent(CercaLuogoComponent);
     fixture.componentRef.setInput('etichetta', 'Comune di nascita');
+    fixture.componentRef.setInput('valore', valore);
     fixture.componentRef.setInput('tipo', 'comune');
     const scelti: (LuogoTrovatoInterface | null)[] = [];
     fixture.componentInstance.scelto.subscribe((luogo) => scelti.push(luogo));
@@ -38,6 +39,13 @@ describe('CercaLuogoComponent', () => {
     };
     return { elemento, scelti, scrivi };
   }
+
+  it('mostra il luogo già registrato senza cercarlo', async () => {
+    const { elemento } = await crea('ROMA');
+
+    expect(elemento.querySelector('input')!.value).toBe('ROMA');
+    expect(alloggiati.cercaLuoghi).not.toHaveBeenCalled();
+  });
 
   it('con meno di due lettere non cerca', async () => {
     const { scrivi } = await crea();

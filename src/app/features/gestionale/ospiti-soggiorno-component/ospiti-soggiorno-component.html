@@ -1,0 +1,133 @@
+@let aperta = modificabile();
+<h2 class="titolo-scheda">{{ 'gestionale.ospitiSoggiorno.titolo' | transloco }}</h2>
+
+@if (elenco.hasValue()) {
+  <ul class="righe">
+    @for (riga of righe.controls; track riga; let indice = $index) {
+      @let ospite = riga.controls.ospite.value;
+      <li class="riga" [formGroup]="riga">
+        <div class="chi">
+          @if (ospite.id) {
+            <a [routerLink]="[scheda, ospite.id]">{{ ospite.cognome }} {{ ospite.nome }}</a>
+          } @else {
+            <strong>{{ ospite.cognome }} {{ ospite.nome }}</strong>
+          }
+          <span class="tenue piccolo">
+            @if (!ospite.campi_mancanti) {
+              {{ 'gestionale.ospitiSoggiorno.daSalvare' | transloco }}
+            } @else if (ospite.campi_mancanti.length) {
+              {{
+                'gestionale.ospitiSoggiorno.mancano'
+                  | transloco: { numero: ospite.campi_mancanti.length }
+              }}
+            } @else {
+              {{ 'gestionale.ospitiSoggiorno.completo' | transloco }}
+            }
+          </span>
+        </div>
+        <app-campo [etichetta]="'gestionale.ospitiSoggiorno.tipo' | transloco">
+          <select formControlName="tipo_alloggiato">
+            @for (tipo of tipi; track tipo) {
+              <option [value]="tipo">{{ 'gestionale.tipiAlloggiato.' + tipo | transloco }}</option>
+            }
+          </select>
+        </app-campo>
+        <label class="spunta">
+          <input type="checkbox" formControlName="esente_tassa" />
+          {{ 'gestionale.ospitiSoggiorno.esente' | transloco }}
+        </label>
+        @if (riga.controls.esente_tassa.value) {
+          <app-campo
+            [etichetta]="'gestionale.ospitiSoggiorno.motivo' | transloco"
+            [errore]="errori.campo(riga.controls.motivo_esenzione)"
+          >
+            <input type="text" formControlName="motivo_esenzione" [maxLength]="lunghezza.motivo" />
+          </app-campo>
+        }
+        @if (aperta) {
+          <button
+            class="pulsante pulsante-icona pulsante-fantasma togli"
+            type="button"
+            [attr.aria-label]="'gestionale.ospitiSoggiorno.togli' | transloco"
+            (click)="togli(indice)"
+          >
+            <app-icona nome="person_remove" />
+          </button>
+        }
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.ospitiSoggiorno.nessuno' | transloco }}</li>
+    }
+  </ul>
+
+  @if (!aperta) {
+    <p class="tenue piccolo">{{ 'gestionale.ospitiSoggiorno.chiusa' | transloco }}</p>
+  } @else if (piena()) {
+    <p class="tenue piccolo">{{ 'gestionale.ospitiSoggiorno.piena' | transloco }}</p>
+  } @else {
+    <app-campo [etichetta]="'gestionale.ospitiSoggiorno.cerca' | transloco">
+      <input type="search" [formControl]="cerca" />
+    </app-campo>
+    @if (trovati.hasValue()) {
+      <ul class="trovati">
+        @for (trovato of trovati.value(); track trovato.id) {
+          <li>
+            <button
+              class="pulsante pulsante-secondario"
+              type="button"
+              [disabled]="presente(trovato.id)"
+              (click)="aggiungi(trovato)"
+            >
+              <app-icona nome="person_add" />
+              {{ trovato.cognome }} {{ trovato.nome }}
+              @if (trovato.email) {
+                · {{ trovato.email }}
+              }
+            </button>
+          </li>
+        } @empty {
+          <li class="tenue piccolo">{{ 'gestionale.ospiti.nessuno' | transloco }}</li>
+        }
+      </ul>
+    }
+
+    <form class="nuovo" [formGroup]="nuovo" (ngSubmit)="aggiungiNuovo()" novalidate>
+      <div class="campi-coppia">
+        <app-campo
+          [etichetta]="'anagrafica.campi.nome' | transloco"
+          [errore]="errori.campo(nuovo.controls.nome)"
+        >
+          <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+        </app-campo>
+        <app-campo
+          [etichetta]="'anagrafica.campi.cognome' | transloco"
+          [errore]="errori.campo(nuovo.controls.cognome)"
+        >
+          <input type="text" formControlName="cognome" [maxLength]="lunghezza.cognome" required />
+        </app-campo>
+      </div>
+      <button class="pulsante pulsante-secondario" type="submit">
+        <app-icona nome="person_add" />
+        {{ 'gestionale.ospitiSoggiorno.aggiungiNuovo' | transloco }}
+      </button>
+    </form>
+  }
+
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  @if (aperta) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso() || righe.pristine || righe.invalid"
+        (click)="salva()"
+      >
+        {{ 'gestionale.ospitiSoggiorno.salva' | transloco }}
+      </button>
+    </div>
+  }
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

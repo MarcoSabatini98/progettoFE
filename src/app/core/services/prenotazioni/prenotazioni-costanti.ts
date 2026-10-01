@@ -13,6 +13,9 @@ export const STATI_PRENOTAZIONE = [
 /** Stati che occupano la camera. */
 export const STATI_ATTIVI = ['in_attesa', 'confermata', 'in_soggiorno'] as const;
 
+/** Stati in cui gli ospiti del soggiorno non si cambiano più. */
+export const STATI_CHIUSI = ['cancellata', 'no_show'] as const;
+
 /** Stati che contano per ricavi e occupazione. */
 export const STATI_FATTURABILI = ['confermata', 'in_soggiorno', 'conclusa'] as const;
 
@@ -48,6 +51,12 @@ export const TIPI_CON_DOCUMENTO = ['ospite_singolo', 'capofamiglia', 'capogruppo
 export const CODICE_ITALIA = '100000100';
 
 export const ESITI_ALLOGGIATI = ['inviata', 'errore', 'test'] as const;
+
+/** Esito annotato dopo il caricamento sul portale Alloggiati Web (testo restituito dal portale). */
+export const LUNGHEZZA_MESSAGGIO_INVIO = 5000;
+
+/** Inizio del nome del file da caricare sul portale, seguito dalla data. */
+export const PREFISSO_FILE_ALLOGGIATI = 'alloggiati';
 
 export const SESSI = ['M', 'F'] as const;
 

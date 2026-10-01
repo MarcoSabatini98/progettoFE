@@ -111,6 +111,9 @@
       [modificabile]="puo.gestire && inCorso()"
       (aggiornata)="prenotazione.reload()"
     />
+    @if (puo.ospiti) {
+      <app-ospiti-soggiorno [prenotazione]="dati" (aggiornati)="prenotazione.reload()" />
+    }
     @if (puo.incassi) {
       <app-incassi-prenotazione
         class="larga"

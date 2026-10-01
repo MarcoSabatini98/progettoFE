@@ -56,10 +56,6 @@ progress {
   border-bottom: 1px solid var(--bb-linea);
 }
 
-.tenue {
-  color: var(--bb-testo-tenue);
-}
-
 .variazione {
   font-weight: 600;
   color: var(--bb-ok);

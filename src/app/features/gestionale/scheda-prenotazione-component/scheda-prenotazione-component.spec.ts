@@ -9,6 +9,7 @@ import { ImpostazioniService } from '../../../core/services/impostazioni/imposta
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PagamentiService } from '../../../core/services/pagamenti/pagamenti-service';
+import { OspitiService } from '../../../core/services/ospiti/ospiti-service';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
 import { SchedaPrenotazioneComponent } from './scheda-prenotazione-component';
 
@@ -51,6 +52,7 @@ describe('SchedaPrenotazioneComponent', () => {
           provide: CamereService,
           useValue: { elencaServizi: () => of([]), elencaCamere: () => of([]) },
         },
+        { provide: OspitiService, useValue: { elencaOspitiPrenotazione: () => of([]) } },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
       ],
@@ -75,12 +77,13 @@ describe('SchedaPrenotazioneComponent', () => {
     expect(elemento.textContent).toContain('Cliente abituale');
   });
 
-  it('con i permessi propone modifica, incassi, link di check-in e cancellazione', async () => {
+  it('con i permessi propone modifica, ospiti, incassi, link di check-in e cancellazione', async () => {
     const elemento = await crea(true);
 
     for (const selettore of [
       'app-modifica-prenotazione',
       'app-incassi-prenotazione',
+      'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',
     ]) {
@@ -94,6 +97,7 @@ describe('SchedaPrenotazioneComponent', () => {
     for (const selettore of [
       'app-modifica-prenotazione',
       'app-incassi-prenotazione',
+      'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',
     ]) {

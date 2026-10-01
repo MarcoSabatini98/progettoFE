@@ -23,11 +23,6 @@
   gap: var(--bb-spazio-1);
 }
 
-.tenue {
-  color: var(--bb-testo-tenue);
-  font-size: 0.875rem;
-}
-
 .stato-prenotazione {
   grid-column: 1 / -1;
   justify-self: start;

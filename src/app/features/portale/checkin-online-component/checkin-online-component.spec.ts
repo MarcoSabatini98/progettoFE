@@ -97,7 +97,7 @@ describe('CheckinOnlineComponent', () => {
     );
     expect(righe[0].querySelector<HTMLSelectElement>('[formcontrolname="sesso"]')?.value).toBe('');
     expect(righe[0].querySelector('.mancanti')?.textContent).toContain(
-      'portale.checkin.campi.numero_documento',
+      'anagrafica.campi.numero_documento',
     );
     expect(righe[1].querySelector('.registrato')).toBeNull();
     expect(righe[0].querySelector('[formcontrolname="tipo_documento"]')).not.toBeNull();
@@ -127,8 +127,8 @@ describe('CheckinOnlineComponent', () => {
     const { elemento, scrivi, scegli, invia } = await crea('abc');
 
     scrivi(0, 'tipo_documento', 'PASOR');
-    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', italia);
-    await scegli(0, 'portale.checkin.campi.comune_nascita_codice', roma);
+    await scegli(0, 'anagrafica.campi.stato_nascita_codice', italia);
+    await scegli(0, 'anagrafica.campi.comune_nascita_codice', roma);
     scrivi(0, 'numero_documento', 'YA1234567');
     scrivi(1, 'nome', 'Luca');
     scrivi(1, 'cognome', 'Bianchi');
@@ -160,9 +160,9 @@ describe('CheckinOnlineComponent', () => {
     const comuni = () => elemento.querySelectorAll('app-cerca-luogo').length;
 
     expect(comuni()).toBe(3);
-    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', italia);
+    await scegli(0, 'anagrafica.campi.stato_nascita_codice', italia);
     expect(comuni()).toBe(4);
-    await scegli(0, 'portale.checkin.campi.stato_nascita_codice', null);
+    await scegli(0, 'anagrafica.campi.stato_nascita_codice', null);
     expect(comuni()).toBe(3);
   });
 

@@ -49,10 +49,6 @@ form {
   color: var(--bb-testo);
 }
 
-.tenue {
-  color: var(--bb-testo-tenue);
-}
-
 .codice {
   display: grid;
   grid-template-columns: 1fr auto;

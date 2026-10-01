@@ -82,6 +82,9 @@ export const PERCORSI_STAFF = {
   /** Seguito dall'id per la scheda: /staff/prenotazioni/12. */
   prenotazioni: `${PERCORSO_STAFF}/prenotazioni`,
   nuovaPrenotazione: `${PERCORSO_STAFF}/prenotazioni/nuova`,
+  /** Seguito dall'id per la scheda: /staff/ospiti/5. */
+  ospiti: `${PERCORSO_STAFF}/ospiti`,
+  alloggiati: `${PERCORSO_STAFF}/alloggiati`,
 } as const;
 
 /**
@@ -137,13 +140,13 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.ospiti',
-        percorso: `${PERCORSO_STAFF}/ospiti`,
+        percorso: PERCORSI_STAFF.ospiti,
         icona: 'group',
         permessi: [PERMESSI.OSPITI_GESTISCI],
       },
       {
         etichetta: 'menu.voci.alloggiati',
-        percorso: `${PERCORSO_STAFF}/alloggiati`,
+        percorso: PERCORSI_STAFF.alloggiati,
         icona: 'badge',
         permessi: [PERMESSI.ALLOGGIATI_INVIA],
       },

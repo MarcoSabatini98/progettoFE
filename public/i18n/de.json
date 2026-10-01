@@ -186,7 +186,14 @@
     "PAGAMENTO_NON_AVVIATO": "Die Zahlung konnte nicht gestartet werden.",
     "ARRIVO_FUTURO": "Der Anreisetag ist noch nicht gekommen.",
     "CAMERA_NON_TROVATA": "Zimmer nicht gefunden.",
-    "SALDO_APERTO": "Es ist noch ein Restbetrag offen."
+    "SALDO_APERTO": "Es ist noch ein Restbetrag offen.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Vervollständigen Sie die Gästedaten vor dem Senden.",
+    "DATI_CLIENTE_PROTETTI": "Persönliche Daten kann nur der Kunde selbst ändern.",
+    "OSPITE_CON_SOGGIORNI": "Der Gast hat erfasste Aufenthalte: Seine Daten müssen aufbewahrt werden.",
+    "OSPITE_NON_TROVATO": "Gast nicht gefunden.",
+    "DATO_DUPLICATO": "Dieser Eintrag existiert bereits.",
+    "RISORSA_IN_USO": "Löschen nicht möglich: Der Eintrag wird anderswo verwendet.",
+    "RIFERIMENTO_NON_VALIDO": "Ein verknüpfter Eintrag existiert nicht."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -554,37 +561,11 @@
       "soggiorno": "Buchung {{ codice }}, vom {{ arrivo }} bis {{ partenza }}.",
       "testo": "Geben Sie die Daten jedes Gastes ein: Bei der Ankunft ist nichts weiter zu tun. Leere Felder ändern bereits gespeicherte Daten nicht.",
       "ospite": "Gast {{ numero }}",
-      "scegli": "Auswählen…",
-      "sessi": {
-        "M": "Männlich",
-        "F": "Weiblich"
-      },
       "documento": "Ausweis der Person, die die Gruppe leitet, gesetzlich für die Meldung vorgeschrieben.",
-      "documenti": {
-        "IDENT": "Personalausweis",
-        "IDELE": "Elektronischer Personalausweis",
-        "PASOR": "Reisepass",
-        "PATEN": "Führerschein"
-      },
       "invia": "Daten senden",
       "fatto": "Daten am {{ data }} erhalten. Sie können sie bis zur Ankunft korrigieren.",
       "mancano": "Daten bereits gespeichert. Es fehlen noch:",
-      "completo": "Daten bereits gespeichert und vollständig: Korrigieren Sie nur, was sich geändert hat.",
-      "luogoRilascio": "Italienische Gemeinde oder ausländischer Staat.",
-      "campi": {
-        "nome": "Vorname",
-        "cognome": "Nachname",
-        "sesso": "Geschlecht",
-        "data_nascita": "Geburtsdatum",
-        "cittadinanza_codice": "Staatsangehörigkeit",
-        "stato_nascita_codice": "Geburtsland",
-        "comune_nascita_codice": "Geburtsgemeinde",
-        "provincia_nascita": "Geburtsprovinz",
-        "tipo_documento": "Art des Ausweises",
-        "numero_documento": "Ausweisnummer",
-        "luogo_rilascio_codice": "Ausstellungsort",
-        "scadenza_documento": "Ablaufdatum des Ausweises"
-      }
+      "completo": "Daten bereits gespeichert und vollständig: Korrigieren Sie nur, was sich geändert hat."
     }
   },
   "carosello": {
@@ -729,6 +710,124 @@
       "completato": "Abgeschlossen",
       "fallito": "Fehlgeschlagen",
       "annullato": "Storniert"
+    },
+    "anagrafica": {
+      "titolo": "Personendaten",
+      "contatti": "Kontakt",
+      "nascita": "Geburt und Staatsangehörigkeit",
+      "documento": "Ausweis",
+      "residenza": "Wohnsitz",
+      "tipoDocumento": "Nur für Alleinreisende oder Gruppenleiter nötig.",
+      "paese": "Zweistelliger Code, z. B. IT.",
+      "salva": "Daten speichern",
+      "salvata": "Daten gespeichert."
+    },
+    "ospiti": {
+      "occhiello": "Verwaltung",
+      "titolo": "Gäste",
+      "cerca": "Nach Vorname, Nachname oder E-Mail suchen",
+      "totale": "Gefundene Gäste: {{ totale }}",
+      "nessuno": "Keine Gäste gefunden.",
+      "nuovo": "Neuer Gast",
+      "crea": "Anlegen und Daten ergänzen"
+    },
+    "ospite": {
+      "tutti": "Alle Gäste",
+      "occhiello": "Gast",
+      "mancano": "Für Alloggiati Web fehlt:",
+      "completa": "Daten für Alloggiati Web vollständig.",
+      "soggiorni": "Aufenthalte",
+      "nessunSoggiorno": "Keine Aufenthalte.",
+      "elimina": "Gast löschen",
+      "eliminaAiuto": "Nur möglich, wenn der Gast keine erfassten Aufenthalte hat.",
+      "conferma": "Endgültig löschen"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Gäste des Aufenthalts",
+      "daSalvare": "Noch nicht gespeichert",
+      "mancano": "{{ numero }} Angaben fehlen",
+      "completo": "Daten vollständig",
+      "tipo": "Rolle im Meldeschein",
+      "esente": "Von der Kurtaxe befreit",
+      "motivo": "Grund der Befreiung",
+      "togli": "Aus dem Aufenthalt entfernen",
+      "nessuno": "Keine Gäste erfasst.",
+      "chiusa": "Buchung abgeschlossen: Die Gäste können nicht mehr geändert werden.",
+      "piena": "Alle Plätze der Buchung sind vergeben.",
+      "cerca": "Bereits erfassten Gast suchen",
+      "aggiungiNuovo": "Neuen Gast hinzufügen",
+      "salva": "Gäste speichern",
+      "salvati": "Gäste gespeichert."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Einzelgast",
+      "capofamiglia": "Familienoberhaupt",
+      "capogruppo": "Gruppenleiter",
+      "familiare": "Familienmitglied",
+      "membro_gruppo": "Gruppenmitglied"
+    },
+    "esiti": {
+      "inviata": "Gesendet",
+      "errore": "Vom Portal abgelehnt",
+      "test": "Test"
+    },
+    "alloggiati": {
+      "occhiello": "Verwaltung",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Aufenthalte der letzten Tage, die noch zu melden sind: Datei herunterladen, im Portal der Staatspolizei hochladen und das Ergebnis erfassen.",
+      "arrivo": "Anreise",
+      "prenotazione": "Buchung öffnen",
+      "schedine": "Meldescheine",
+      "nessuno": "Keine Aufenthalte zu melden.",
+      "scarica": "Datei herunterladen ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Meldescheine bereit zum Senden.",
+      "incomplete": "Bei einigen Gästen fehlen Angaben.",
+      "mancano": "Es fehlt",
+      "nessuno": "Keine Gäste erfasst.",
+      "esito": "Ergebnis des Portals",
+      "messaggio": "Meldung des Portals",
+      "registra": "Ergebnis erfassen",
+      "registrato": "Ergebnis erfasst."
     }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "Vorname",
+      "cognome": "Nachname",
+      "sesso": "Geschlecht",
+      "data_nascita": "Geburtsdatum",
+      "cittadinanza_codice": "Staatsangehörigkeit",
+      "stato_nascita_codice": "Geburtsland",
+      "comune_nascita_codice": "Geburtsgemeinde",
+      "provincia_nascita": "Geburtsprovinz",
+      "tipo_documento": "Art des Ausweises",
+      "numero_documento": "Ausweisnummer",
+      "luogo_rilascio_codice": "Ausstellungsort",
+      "scadenza_documento": "Ablaufdatum des Ausweises",
+      "email": "E-Mail",
+      "telefono": "Telefon",
+      "lingua": "Sprache",
+      "codice_fiscale": "Steuernummer",
+      "indirizzo": "Adresse",
+      "cap": "PLZ",
+      "citta": "Stadt",
+      "provincia": "Provinz",
+      "paese": "Land",
+      "note": "Notizen"
+    },
+    "sessi": {
+      "M": "Männlich",
+      "F": "Weiblich"
+    },
+    "documenti": {
+      "IDENT": "Personalausweis",
+      "IDELE": "Elektronischer Personalausweis",
+      "PASOR": "Reisepass",
+      "PATEN": "Führerschein"
+    },
+    "scegli": "Auswählen…",
+    "luogoRilascio": "Italienische Gemeinde oder ausländischer Staat."
   }
 }

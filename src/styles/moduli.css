@@ -89,3 +89,12 @@ input[type='radio'] {
   flex-wrap: wrap;
   gap: var(--bb-spazio-3);
 }
+
+/* Casella di spunta con la sua etichetta accanto. */
+.spunta {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  min-height: var(--bb-controllo-altezza);
+  cursor: pointer;
+}

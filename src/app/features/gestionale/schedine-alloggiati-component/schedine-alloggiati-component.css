@@ -1,0 +1,21 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.ospiti {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ospiti li {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.mancano {
+  color: var(--bb-errore);
+}

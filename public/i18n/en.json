@@ -186,7 +186,14 @@
     "PAGAMENTO_NON_AVVIATO": "The payment could not be started.",
     "ARRIVO_FUTURO": "The arrival day has not come yet.",
     "CAMERA_NON_TROVATA": "Room not found.",
-    "SALDO_APERTO": "There is still a balance to collect."
+    "SALDO_APERTO": "There is still a balance to collect.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Complete the guests’ details before sending.",
+    "DATI_CLIENTE_PROTETTI": "Only the customer can change their personal details.",
+    "OSPITE_CON_SOGGIORNI": "The guest has recorded stays: their details must be kept.",
+    "OSPITE_NON_TROVATO": "Guest not found.",
+    "DATO_DUPLICATO": "This already exists.",
+    "RISORSA_IN_USO": "Cannot delete: it is used elsewhere.",
+    "RIFERIMENTO_NON_VALIDO": "A linked item does not exist."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -554,37 +561,11 @@
       "soggiorno": "Booking {{ codice }}, from {{ arrivo }} to {{ partenza }}.",
       "testo": "Enter the details of each guest: nothing else to do on arrival. Fields left blank do not change what is already registered.",
       "ospite": "Guest {{ numero }}",
-      "scegli": "Choose…",
-      "sessi": {
-        "M": "Male",
-        "F": "Female"
-      },
       "documento": "ID document of the group leader, required by law for registration.",
-      "documenti": {
-        "IDENT": "Identity card",
-        "IDELE": "Electronic identity card",
-        "PASOR": "Passport",
-        "PATEN": "Driving licence"
-      },
       "invia": "Send details",
       "fatto": "Details received on {{ data }}. You can correct them until arrival.",
       "mancano": "Details already registered. Still missing:",
-      "completo": "Details already registered and complete: only correct what has changed.",
-      "luogoRilascio": "Italian municipality or foreign country.",
-      "campi": {
-        "nome": "First name",
-        "cognome": "Last name",
-        "sesso": "Sex",
-        "data_nascita": "Date of birth",
-        "cittadinanza_codice": "Citizenship",
-        "stato_nascita_codice": "Country of birth",
-        "comune_nascita_codice": "Municipality of birth",
-        "provincia_nascita": "Province of birth",
-        "tipo_documento": "Document type",
-        "numero_documento": "Document number",
-        "luogo_rilascio_codice": "Place of issue",
-        "scadenza_documento": "Document expiry date"
-      }
+      "completo": "Details already registered and complete: only correct what has changed."
     }
   },
   "carosello": {
@@ -729,6 +710,124 @@
       "completato": "Completed",
       "fallito": "Failed",
       "annullato": "Cancelled"
+    },
+    "anagrafica": {
+      "titolo": "Personal details",
+      "contatti": "Contacts",
+      "nascita": "Birth and citizenship",
+      "documento": "Document",
+      "residenza": "Residence",
+      "tipoDocumento": "Only needed for solo travellers or group leaders.",
+      "paese": "Two-letter code, e.g. IT.",
+      "salva": "Save details",
+      "salvata": "Details saved."
+    },
+    "ospiti": {
+      "occhiello": "Management",
+      "titolo": "Guests",
+      "cerca": "Search by first name, last name or email",
+      "totale": "Guests found: {{ totale }}",
+      "nessuno": "No guests found.",
+      "nuovo": "New guest",
+      "crea": "Create and complete details"
+    },
+    "ospite": {
+      "tutti": "All guests",
+      "occhiello": "Guest",
+      "mancano": "Missing for Alloggiati Web:",
+      "completa": "Details complete for Alloggiati Web.",
+      "soggiorni": "Stays",
+      "nessunSoggiorno": "No stays.",
+      "elimina": "Delete guest",
+      "eliminaAiuto": "Only possible if the guest has no recorded stays.",
+      "conferma": "Delete permanently"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Guests in this stay",
+      "daSalvare": "Not saved yet",
+      "mancano": "{{ numero }} details missing",
+      "completo": "Details complete",
+      "tipo": "Role on the form",
+      "esente": "Exempt from tourist tax",
+      "motivo": "Reason for exemption",
+      "togli": "Remove from stay",
+      "nessuno": "No guests recorded.",
+      "chiusa": "Booking closed: guests can no longer be changed.",
+      "piena": "All places in the booking are assigned.",
+      "cerca": "Search for an existing guest",
+      "aggiungiNuovo": "Add a new guest",
+      "salva": "Save guests",
+      "salvati": "Guests saved."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Single guest",
+      "capofamiglia": "Head of family",
+      "capogruppo": "Group leader",
+      "familiare": "Family member",
+      "membro_gruppo": "Group member"
+    },
+    "esiti": {
+      "inviata": "Sent",
+      "errore": "Rejected by the portal",
+      "test": "Test"
+    },
+    "alloggiati": {
+      "occhiello": "Management",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Stays from the last few days still to be reported: download the file, upload it to the State Police portal and record the outcome.",
+      "arrivo": "Arrival",
+      "prenotazione": "Open booking",
+      "schedine": "Guest forms",
+      "nessuno": "No stays to report.",
+      "scarica": "Download file ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Guest forms ready to send.",
+      "incomplete": "Some guests are missing details.",
+      "mancano": "Missing",
+      "nessuno": "No guests recorded.",
+      "esito": "Portal outcome",
+      "messaggio": "Portal message",
+      "registra": "Record outcome",
+      "registrato": "Outcome recorded."
     }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "First name",
+      "cognome": "Last name",
+      "sesso": "Sex",
+      "data_nascita": "Date of birth",
+      "cittadinanza_codice": "Citizenship",
+      "stato_nascita_codice": "Country of birth",
+      "comune_nascita_codice": "Municipality of birth",
+      "provincia_nascita": "Province of birth",
+      "tipo_documento": "Document type",
+      "numero_documento": "Document number",
+      "luogo_rilascio_codice": "Place of issue",
+      "scadenza_documento": "Document expiry date",
+      "email": "Email",
+      "telefono": "Phone",
+      "lingua": "Language",
+      "codice_fiscale": "Tax code",
+      "indirizzo": "Address",
+      "cap": "Postcode",
+      "citta": "City",
+      "provincia": "Province",
+      "paese": "Country",
+      "note": "Notes"
+    },
+    "sessi": {
+      "M": "Male",
+      "F": "Female"
+    },
+    "documenti": {
+      "IDENT": "Identity card",
+      "IDELE": "Electronic identity card",
+      "PASOR": "Passport",
+      "PATEN": "Driving licence"
+    },
+    "scegli": "Choose…",
+    "luogoRilascio": "Italian municipality or foreign country."
   }
 }

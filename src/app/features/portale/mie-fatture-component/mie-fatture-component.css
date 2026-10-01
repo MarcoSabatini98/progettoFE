@@ -11,10 +11,6 @@
   align-items: center;
 }
 
-.tenue {
-  color: var(--bb-testo-tenue);
-}
-
 .totale {
   font-size: 1.125rem;
   font-weight: 600;

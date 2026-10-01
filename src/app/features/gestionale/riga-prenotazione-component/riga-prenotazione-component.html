@@ -3,7 +3,7 @@
   <span class="camera">{{ dati.camera?.numero }}</span>
   <span class="chi">
     <strong>{{ dati.titolare?.cognome }} {{ dati.titolare?.nome }}</strong>
-    <span class="tenue">
+    <span class="tenue piccolo">
       {{ dati.codice }} · {{ dati.data_arrivo | data: 'giorno' }} –
       {{ dati.data_partenza | data: 'giorno' }} ·
       {{ 'conferma.ospiti' | transloco: { adulti: dati.adulti, bambini: dati.bambini } }}

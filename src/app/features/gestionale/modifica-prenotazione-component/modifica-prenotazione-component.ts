@@ -5,6 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { finalize } from 'rxjs';
 
 import { CamereService } from '../../../core/services/camere/camere-service';
+import { campiCambiati } from '../../../core/services/api/campi-cambiati';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import {
   LIMITI_OSPITI,
@@ -90,7 +91,7 @@ export class ModificaPrenotazioneComponent {
       this.modulo.markAllAsTouched();
       return;
     }
-    const modifiche = this.modifiche();
+    const modifiche: PrenotazioneAggiornaPayload = campiCambiati(this.modulo.controls);
     if (!Object.keys(modifiche).length) {
       this.aperta.set(false);
       return;
@@ -107,13 +108,5 @@ export class ModificaPrenotazioneComponent {
         },
         error: (errore: unknown) => this.errore.set(this.errori.messaggio(errore)),
       });
-  }
-
-  private modifiche(): PrenotazioneAggiornaPayload {
-    return Object.fromEntries(
-      Object.entries(this.modulo.controls)
-        .filter(([, controllo]) => controllo.dirty)
-        .map(([campo, controllo]) => [campo, controllo.value === '' ? null : controllo.value]),
-    );
   }
 }
