@@ -3,6 +3,7 @@ import type {
   METODI_PAGAMENTO,
   METODI_STRUTTURA,
   STATI_PAGAMENTO,
+  TIPI_INCASSO,
   TIPI_PAGAMENTO,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
 import { ParametriPaginaInterface } from '../pagina/pagina-model';
@@ -15,6 +16,7 @@ export type MetodoPagamento = (typeof METODI_PAGAMENTO)[number];
 export type StatoPagamento = (typeof STATI_PAGAMENTO)[number];
 export type MetodoOnline = (typeof METODI_ONLINE)[number];
 export type MetodoStruttura = (typeof METODI_STRUTTURA)[number];
+export type TipoIncasso = (typeof TIPI_INCASSO)[number];
 
 /** Movimento di denaro su una prenotazione. L'importo è sempre positivo: il tipo dice la direzione. */
 export interface PagamentoInterface {
@@ -60,8 +62,9 @@ export interface AvviaOnlinePayload extends PagaOnlinePayload {
 }
 
 /** Incasso in struttura o bonifico ricevuto. */
-export type RegistraPagamentoPayload = Pick<PagamentoInterface, 'tipo' | 'importo'> &
+export type RegistraPagamentoPayload = Pick<PagamentoInterface, 'importo'> &
   Partial<Pick<PagamentoInterface, 'riferimento' | 'documento_fiscale' | 'note'>> & {
+    tipo: TipoIncasso;
     metodo: MetodoStruttura;
   };
 

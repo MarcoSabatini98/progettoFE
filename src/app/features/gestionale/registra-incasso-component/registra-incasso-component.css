@@ -1,0 +1,7 @@
+:host {
+  display: grid;
+}
+
+:host > .pulsante {
+  justify-self: start;
+}

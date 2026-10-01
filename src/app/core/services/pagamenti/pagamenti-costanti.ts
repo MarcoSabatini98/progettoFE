@@ -10,6 +10,15 @@ export const METODI_ONLINE = ['stripe', 'paypal'] as const;
 /** Metodi registrati a mano dallo staff (incasso in struttura o bonifico ricevuto). */
 export const METODI_STRUTTURA = ['bonifico', 'contanti', 'pos', 'ota'] as const;
 
+/** Tipi che lo staff registra a mano: i rimborsi hanno la loro funzione (pagamenti.service.js). */
+export const TIPI_INCASSO = ['acconto', 'saldo', 'extra', 'penale'] as const;
+
+/** Importo minimo di un pagamento: i validator vogliono un numero maggiore di zero. */
+export const IMPORTO_MINIMO = 0.01;
+
+/** Riferimento, ricevuta e note di un incasso (pagamenti.validator.js). */
+export const LUNGHEZZE_INCASSO = { riferimento: 100, documentoFiscale: 50, note: 5000 } as const;
+
 export const STATI_PAGAMENTO = ['in_attesa', 'completato', 'fallito', 'annullato'] as const;
 
 /** File scaricabili di una fattura: PDF di cortesia o XML FatturaPA. */

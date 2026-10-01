@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/services/auth/auth-guard';
 import { ruoloGuard } from './core/services/auth/ruolo-guard';
 import { NavigazioneService } from './core/services/navigazione/navigazione-service';
-import { RUOLI, RUOLI_STAFF } from './core/services/ruoli/ruoli-costanti';
+import { PERMESSI, RUOLI, RUOLI_STAFF } from './core/services/ruoli/ruoli-costanti';
 import { AreaPubblicaComponent } from './layout/area-pubblica-component/area-pubblica-component';
 import { AreaStaffComponent } from './layout/area-staff-component/area-staff-component';
 import { PaginaNonTrovataComponent } from './layout/pagina-non-trovata-component/pagina-non-trovata-component';
@@ -31,6 +31,43 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/profilo/profilo-component/profilo-component').then(
             (m) => m.ProfiloComponent,
+          ),
+      },
+      {
+        path: 'oggi',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/giornata-component/giornata-component').then(
+            (m) => m.GiornataComponent,
+          ),
+      },
+      {
+        path: 'prenotazioni',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/prenotazioni-component/prenotazioni-component').then(
+            (m) => m.PrenotazioniComponent,
+          ),
+      },
+      {
+        // Stesso percorso del sito, con i campi della reception (canale, stato, note interne).
+        path: 'prenotazioni/nuova',
+        canActivate: [ruoloGuard],
+        data: { staff: true, permessi: [PERMESSI.PRENOTAZIONI_GESTISCI] },
+        loadComponent: () =>
+          import('./features/prenotazione/prenota-component/prenota-component').then(
+            (m) => m.PrenotaComponent,
+          ),
+      },
+      {
+        path: 'prenotazioni/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-prenotazione-component/scheda-prenotazione-component').then(
+            (m) => m.SchedaPrenotazioneComponent,
           ),
       },
       { path: '**', component: PaginaNonTrovataComponent },

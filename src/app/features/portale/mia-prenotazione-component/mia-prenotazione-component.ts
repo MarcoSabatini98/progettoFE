@@ -17,16 +17,16 @@ import { PagamentiService } from '../../../core/services/pagamenti/pagamenti-ser
 import { STATI_MODIFICABILI_CLIENTE } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
 import { RecensioniService } from '../../../core/services/recensioni/recensioni-service';
+import { CancellaPrenotazioneComponent } from '../../../shared/cancella-prenotazione-component/cancella-prenotazione-component';
 import { ContoPrenotazioneComponent } from '../../../shared/conto-prenotazione-component/conto-prenotazione-component';
 import { DettagliPrenotazioneComponent } from '../../../shared/dettagli-prenotazione-component/dettagli-prenotazione-component';
+import { ExtraPrenotazioneComponent } from '../../../shared/extra-prenotazione-component/extra-prenotazione-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { MetodoOnline } from '../../../shared/models/pagamento/pagamento-model';
 import { StatoPrenotazione } from '../../../shared/models/prenotazione/prenotazione-model';
 import { RecensioneCreaPayload } from '../../../shared/models/recensione/recensione-model';
 import { ModuloRecensioneComponent } from '../../../shared/modulo-recensione-component/modulo-recensione-component';
 import { PagamentoPrenotazioneComponent } from '../../../shared/pagamento-prenotazione-component/pagamento-prenotazione-component';
-import { CancellaPrenotazioneComponent } from '../cancella-prenotazione-component/cancella-prenotazione-component';
-import { ExtraPrenotazioneComponent } from '../extra-prenotazione-component/extra-prenotazione-component';
 
 const STATI_MODIFICABILI: readonly StatoPrenotazione[] = STATI_MODIFICABILI_CLIENTE;
 
@@ -48,7 +48,6 @@ const STATI_MODIFICABILI: readonly StatoPrenotazione[] = STATI_MODIFICABILI_CLIE
     PagamentoPrenotazioneComponent,
   ],
   templateUrl: './mia-prenotazione-component.html',
-  styleUrl: './mia-prenotazione-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'sezione' },
 })

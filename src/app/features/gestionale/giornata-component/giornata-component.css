@@ -1,0 +1,19 @@
+.strumenti {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--bb-spazio-3);
+}
+
+.conteggio {
+  color: var(--bb-testo-tenue);
+  font-variant-numeric: tabular-nums;
+}
+
+.elenco {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

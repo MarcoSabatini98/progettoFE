@@ -66,6 +66,12 @@ describe('ErroriService', () => {
     expect(service.messaggio(new Error('boom'))).toBe('Qualcosa è andato storto');
   });
 
+  it('legge il codice del backend, nessuno per errori non HTTP', () => {
+    expect(service.codice(erroreApi(409, 'SALDO_APERTO', 'Restano 50 €'))).toBe('SALDO_APERTO');
+    expect(service.codice(new HttpErrorResponse({ status: 502 }))).toBeUndefined();
+    expect(service.codice(new Error('boom'))).toBeUndefined();
+  });
+
   it('traduce il primo errore di un campo solo dopo che è stato toccato', () => {
     const campo = new FormControl('abc', [Validators.required, Validators.minLength(8)]);
     expect(service.campo(campo)).toBe('');

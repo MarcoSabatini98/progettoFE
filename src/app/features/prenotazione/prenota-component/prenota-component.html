@@ -1,11 +1,13 @@
+@let testi = staff() ? 'gestionale.nuova' : 'prenota';
+
 <header class="pagina-intestazione">
-  <p class="occhiello">{{ 'prenota.occhiello' | transloco }}</p>
-  <h1>{{ 'prenota.titolo' | transloco }}</h1>
-  <p class="introduzione">{{ 'prenota.introduzione' | transloco }}</p>
+  <p class="occhiello">{{ testi + '.occhiello' | transloco }}</p>
+  <h1>{{ testi + '.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ testi + '.introduzione' | transloco }}</p>
 </header>
 
 @if (scelta(); as scelta) {
-  <app-conferma-prenotazione [scelta]="scelta" (cambiaCamera)="cambiaCamera()" />
+  <app-conferma-prenotazione [scelta]="scelta" [staff]="staff()" (cambiaCamera)="cambiaCamera()" />
 } @else {
   <app-ricerca-soggiorno class="scheda" [inCorso]="risultati.isLoading()" (cerca)="cerca($event)" />
 

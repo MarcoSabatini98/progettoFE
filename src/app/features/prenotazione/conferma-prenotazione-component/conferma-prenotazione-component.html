@@ -158,7 +158,12 @@
               [etichetta]="'conferma.email' | transloco"
               [errore]="errori.campo(titolare.controls.email)"
             >
-              <input type="email" formControlName="email" autocomplete="email" required />
+              <input
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                [required]="!staff()"
+              />
             </app-campo>
             <app-campo
               [etichetta]="'conferma.telefono' | transloco"
@@ -196,6 +201,65 @@
           ></textarea>
         </app-campo>
       </section>
+
+      @if (staff()) {
+        <section class="scheda" [formGroup]="gestione">
+          <h2 class="titolo-scheda">{{ 'gestionale.nuova.gestione' | transloco }}</h2>
+          <div class="campi-coppia">
+            <app-campo [etichetta]="'gestionale.campi.canale' | transloco">
+              <select formControlName="canale">
+                @for (canale of scelte.canali; track canale) {
+                  <option [ngValue]="canale">
+                    {{ 'gestionale.canali.' + canale | transloco }}
+                  </option>
+                }
+              </select>
+            </app-campo>
+            <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+              <select formControlName="stato">
+                @for (stato of scelte.stati; track stato) {
+                  <option [ngValue]="stato">{{ 'prenotazione.stati.' + stato | transloco }}</option>
+                }
+              </select>
+            </app-campo>
+          </div>
+          <div class="campi-coppia">
+            <app-campo
+              [etichetta]="'gestionale.campi.idEsterno' | transloco"
+              [aiuto]="'conferma.facoltativo' | transloco"
+              [errore]="errori.campo(gestione.controls.id_esterno)"
+            >
+              <input
+                type="text"
+                formControlName="id_esterno"
+                autocomplete="off"
+                [maxLength]="lunghezza.idEsterno"
+              />
+            </app-campo>
+            <app-campo
+              [etichetta]="'gestionale.campi.lingua' | transloco"
+              [aiuto]="'gestionale.nuova.linguaAiuto' | transloco"
+            >
+              <select formControlName="lingua">
+                @for (lingua of scelte.lingue; track lingua) {
+                  <option [ngValue]="lingua">{{ scelte.nomiLingue[lingua] }}</option>
+                }
+              </select>
+            </app-campo>
+          </div>
+          <app-campo
+            [etichetta]="'gestionale.campi.noteInterne' | transloco"
+            [aiuto]="'gestionale.campi.noteInterneAiuto' | transloco"
+            [errore]="errori.campo(gestione.controls.note_interne)"
+          >
+            <textarea
+              formControlName="note_interne"
+              rows="3"
+              [maxLength]="lunghezza.note"
+            ></textarea>
+          </app-campo>
+        </section>
+      }
 
       @if (errore()) {
         <p class="esito esito-errore" role="alert">{{ errore() }}</p>

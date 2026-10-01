@@ -3,16 +3,16 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { CamereService } from '../../../core/services/camere/camere-service';
-import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
-import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { LinguaService } from '../../../core/services/lingua/lingua-service';
-import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
-import { PrenotazioneInterface } from '../../../shared/models/prenotazione/prenotazione-model';
+import { CamereService } from '../../core/services/camere/camere-service';
+import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
+import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { LinguaService } from '../../core/services/lingua/lingua-service';
+import { PrenotazioniService } from '../../core/services/prenotazioni/prenotazioni-service';
+import { PrenotazioneInterface } from '../models/prenotazione/prenotazione-model';
 import { ExtraPrenotazioneComponent } from './extra-prenotazione-component';
 
 describe('ExtraPrenotazioneComponent', () => {
-  const camere = { elencaExtraPubblici: vi.fn() };
+  const camere = { elencaExtraPubblici: vi.fn(), elencaServizi: vi.fn() };
   const prenotazioni = { aggiungiServizio: vi.fn(), rimuoviServizio: vi.fn() };
   const prenotazione = {
     id: 7,
@@ -22,12 +22,10 @@ describe('ExtraPrenotazioneComponent', () => {
   } as unknown as PrenotazioneInterface;
 
   beforeEach(() => {
-    [camere.elencaExtraPubblici, ...Object.values(prenotazioni)].forEach((spia) =>
-      spia.mockReset(),
-    );
-    camere.elencaExtraPubblici.mockReturnValue(
-      of([{ id: 4, nome: 'Parcheggio', prezzo: 10, calcolo_prezzo: 'a_notte' }]),
-    );
+    [...Object.values(camere), ...Object.values(prenotazioni)].forEach((spia) => spia.mockReset());
+    const catalogo = of([{ id: 4, nome: 'Parcheggio', prezzo: 10, calcolo_prezzo: 'a_notte' }]);
+    camere.elencaExtraPubblici.mockReturnValue(catalogo);
+    camere.elencaServizi.mockReturnValue(catalogo);
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [
@@ -39,10 +37,11 @@ describe('ExtraPrenotazioneComponent', () => {
     });
   });
 
-  async function crea(modificabile: boolean) {
+  async function crea(modificabile: boolean, staff = false) {
     const fixture = TestBed.createComponent(ExtraPrenotazioneComponent);
     fixture.componentRef.setInput('prenotazione', prenotazione);
     fixture.componentRef.setInput('modificabile', modificabile);
+    fixture.componentRef.setInput('staff', staff);
     const aggiornata = vi.fn();
     fixture.componentInstance.aggiornata.subscribe(aggiornata);
     await fixture.whenStable();
@@ -93,6 +92,18 @@ describe('ExtraPrenotazioneComponent', () => {
       true,
     );
     expect(aggiornata).toHaveBeenCalled();
+  });
+
+  it('lo staff sceglie tra tutti i servizi attivi e usa le sue rotte', async () => {
+    prenotazioni.rimuoviServizio.mockReturnValue(of({}));
+    const { elemento, aggiorna } = await crea(true, true);
+
+    elemento.querySelector<HTMLButtonElement>('.righe button')?.click();
+    await aggiorna();
+
+    expect(camere.elencaServizi).toHaveBeenCalledWith({ attivo: true });
+    expect(camere.elencaExtraPubblici).not.toHaveBeenCalled();
+    expect(prenotazioni.rimuoviServizio).toHaveBeenCalledWith(7, 3, false);
   });
 
   it('se il backend rifiuta spiega perché', async () => {

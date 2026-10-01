@@ -1,0 +1,31 @@
+@if (disponibili().length) {
+  <div class="azioni">
+    @for (azione of disponibili(); track azione) {
+      @let secondoTocco = daConfermare() === azione;
+      <button
+        class="pulsante"
+        type="button"
+        [class.pulsante-primario]="!secondoTocco"
+        [class.pulsante-pericolo]="secondoTocco"
+        [disabled]="inCorso()"
+        (click)="esegui(azione)"
+      >
+        <app-icona [nome]="icone[azione]" />
+        {{ 'gestionale.azioni.' + (secondoTocco ? 'conferme.' : '') + azione | transloco }}
+      </button>
+    }
+    @if (daConfermare()) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        (click)="daConfermare.set(undefined)"
+      >
+        {{ 'gestionale.azioni.annulla' | transloco }}
+      </button>
+    }
+  </div>
+}
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}

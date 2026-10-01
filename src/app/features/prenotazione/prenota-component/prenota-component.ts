@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  booleanAttribute,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { finalize } from 'rxjs';
@@ -18,7 +26,8 @@ import { ConfermaPrenotazioneComponent } from '../conferma-prenotazione-componen
 import { RicercaSoggiornoComponent } from '../ricerca-soggiorno-component/ricerca-soggiorno-component';
 
 /**
- * Prenotazione dal sito (/prenota): ricerca, scelta della tipologia e conferma.
+ * Prenotazione dal sito (/prenota) o dalla reception (/staff/prenotazioni/nuova):
+ * ricerca, scelta della tipologia e conferma.
  * Scegliere blocca una camera per qualche minuto; lasciare la pagina la libera.
  */
 @Component({
@@ -40,6 +49,9 @@ export class PrenotaComponent {
   private readonly disponibilita = inject(DisponibilitaService);
   private readonly lingua = inject(LinguaService);
   protected readonly errori = inject(ErroriService);
+
+  /** Dai dati della rotta del gestionale. */
+  readonly staff = input(false, { transform: booleanAttribute });
 
   /** Blocco della sessione: resta anche tornando ai risultati, finché non se ne sceglie un altro. */
   private blocco?: BloccoCameraInterface;

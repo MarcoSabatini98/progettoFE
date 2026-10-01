@@ -1,0 +1,16 @@
+@let dati = prenotazione();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">{{ dati.camera?.numero }}</span>
+  <span class="chi">
+    <strong>{{ dati.titolare?.cognome }} {{ dati.titolare?.nome }}</strong>
+    <span class="tenue">
+      {{ dati.codice }} · {{ dati.data_arrivo | data: 'giorno' }} –
+      {{ dati.data_partenza | data: 'giorno' }} ·
+      {{ 'conferma.ospiti' | transloco: { adulti: dati.adulti, bambini: dati.bambini } }}
+    </span>
+  </span>
+  <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+    {{ 'prenotazione.stati.' + dati.stato | transloco }}
+  </span>
+</a>
+<ng-content />

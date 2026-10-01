@@ -1,0 +1,88 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.elenco.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.elenco.titolo' | transloco }}</h1>
+  @if (puoPrenotare) {
+    <a class="pulsante pulsante-primario nuova" [routerLink]="nuova">
+      <app-icona nome="add" />
+      {{ 'gestionale.nuova.titolo' | transloco }}
+    </a>
+  }
+</header>
+
+<form class="filtri" [formGroup]="filtri" role="search" (submit)="$event.preventDefault()">
+  <app-campo class="larga" [etichetta]="'gestionale.elenco.cerca' | transloco">
+    <input type="search" formControlName="cerca" />
+  </app-campo>
+  <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+    <select formControlName="stato">
+      <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+      @for (stato of stati; track stato) {
+        <option [value]="stato">{{ 'prenotazione.stati.' + stato | transloco }}</option>
+      }
+    </select>
+  </app-campo>
+  <app-campo [etichetta]="'gestionale.campi.canale' | transloco">
+    <select formControlName="canale">
+      <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+      @for (canale of canali; track canale) {
+        <option [value]="canale">{{ 'gestionale.canali.' + canale | transloco }}</option>
+      }
+    </select>
+  </app-campo>
+  <app-campo [etichetta]="'gestionale.elenco.dal' | transloco">
+    <input type="date" formControlName="dal" />
+  </app-campo>
+  <app-campo [etichetta]="'gestionale.elenco.al' | transloco">
+    <input type="date" formControlName="al" />
+  </app-campo>
+  <app-campo [etichetta]="'gestionale.elenco.ordine' | transloco">
+    <select formControlName="ordine">
+      <option value="desc">{{ 'gestionale.elenco.recenti' | transloco }}</option>
+      <option value="asc">{{ 'gestionale.elenco.vicine' | transloco }}</option>
+    </select>
+  </app-campo>
+</form>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.elenco.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (prenotazione of risultato.elementi; track prenotazione.id) {
+      <li><app-riga-prenotazione [prenotazione]="prenotazione" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.elenco.nessuna' | transloco }}</li>
+    }
+  </ul>
+  @if (risultato.pagine > 1) {
+    <nav class="pagine" [attr.aria-label]="'gestionale.elenco.pagine' | transloco">
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="risultato.pagina <= 1 || elenco.isLoading()"
+        (click)="sfoglia(-1)"
+      >
+        <app-icona nome="chevron_left" />
+        {{ 'gestionale.elenco.precedente' | transloco }}
+      </button>
+      <span>
+        {{
+          'gestionale.elenco.pagina'
+            | transloco: { pagina: risultato.pagina, pagine: risultato.pagine }
+        }}
+      </span>
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="risultato.pagina >= risultato.pagine || elenco.isLoading()"
+        (click)="sfoglia(1)"
+      >
+        {{ 'gestionale.elenco.successiva' | transloco }}
+        <app-icona nome="chevron_right" />
+      </button>
+    </nav>
+  }
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

@@ -76,6 +76,14 @@ export const URL_MAPPE = 'https://www.google.com/maps/search/?api=1&query=';
 /** Account dello staff dentro il gestionale: stessa pagina dell'area personale. */
 export const PERCORSO_ACCOUNT_STAFF = `${PERCORSO_STAFF}/account`;
 
+/** Pagine del gestionale raggiunte anche da link e pulsanti, non solo dal menu. */
+export const PERCORSI_STAFF = {
+  oggi: `${PERCORSO_STAFF}/oggi`,
+  /** Seguito dall'id per la scheda: /staff/prenotazioni/12. */
+  prenotazioni: `${PERCORSO_STAFF}/prenotazioni`,
+  nuovaPrenotazione: `${PERCORSO_STAFF}/prenotazioni/nuova`,
+} as const;
+
 /**
  * Menu dell'area staff, raggruppato per momento di lavoro. Ogni voce compare
  * solo a chi ha i permessi (stessa regola del ruoloGuard sulle rotte).
@@ -89,6 +97,13 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
         percorso: `${PERCORSO_STAFF}/cruscotto`,
         icona: 'dashboard',
         permessi: [PERMESSI.ANALYTICS_LEGGI],
+      },
+      // Senza cruscotto (reception) si comincia da qui.
+      {
+        etichetta: 'menu.voci.oggi',
+        percorso: PERCORSI_STAFF.oggi,
+        icona: 'today',
+        permessi: [PERMESSI.PRENOTAZIONI_LEGGI],
       },
       {
         etichetta: 'menu.voci.pulizie',
@@ -110,7 +125,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
     voci: [
       {
         etichetta: 'menu.voci.prenotazioni',
-        percorso: `${PERCORSO_STAFF}/prenotazioni`,
+        percorso: PERCORSI_STAFF.prenotazioni,
         icona: 'event_note',
         permessi: [PERMESSI.PRENOTAZIONI_LEGGI],
       },

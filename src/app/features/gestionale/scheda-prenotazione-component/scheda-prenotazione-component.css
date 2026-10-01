@@ -1,0 +1,13 @@
+.intestazione {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.intestazione h1 {
+  margin: 0;
+}
+
+h3 {
+  margin-block: var(--bb-spazio-4) var(--bb-spazio-1);
+  font-size: 0.875rem;
+}

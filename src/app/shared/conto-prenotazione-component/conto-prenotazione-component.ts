@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { ImportiPrenotazioneInterface } from '../models/prenotazione/prenotazione-model';
-import { RiepilogoPagamentoInterface } from '../models/riepilogo-pagamento/riepilogo-pagamento-model';
+import { SaldoPrenotazioneInterface } from '../models/saldo-prenotazione/saldo-prenotazione-model';
 import { PrezzoPipe } from '../pipes/prezzo-pipe';
 import { RiepilogoPrezzoComponent } from '../riepilogo-prezzo-component/riepilogo-prezzo-component';
 
@@ -17,7 +17,9 @@ import { RiepilogoPrezzoComponent } from '../riepilogo-prezzo-component/riepilog
 })
 export class ContoPrenotazioneComponent {
   readonly importi = input.required<ImportiPrenotazioneInterface>();
-  readonly pagamento = input.required<RiepilogoPagamentoInterface>();
+  /** Riepilogo del pagamento (cliente) o saldo della prenotazione (staff). */
+  readonly pagamento =
+    input.required<Pick<SaldoPrenotazioneInterface, 'incassato' | 'rimborsato' | 'saldo'>>();
 
   /** Incassato meno i rimborsi. */
   protected readonly pagato = computed(() => {

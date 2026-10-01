@@ -1,0 +1,7 @@
+:host > .pulsante {
+  justify-self: start;
+}
+
+.tenue {
+  color: var(--bb-testo-tenue);
+}

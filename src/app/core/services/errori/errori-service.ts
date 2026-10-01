@@ -27,11 +27,16 @@ export class ErroriService {
     if (errore instanceof HttpErrorResponse && errore.status === 0) {
       return this.traduci(ERRORI_LOCALI.rete);
     }
-    const dettaglio =
-      errore instanceof HttpErrorResponse
-        ? (errore.error as RispostaErroreApiInterface | null)?.errore
-        : undefined;
+    const dettaglio = this.dettaglio(errore);
     return dettaglio ? this.testo(dettaglio) : this.traduci(ERRORI_LOCALI.generico);
+  }
+
+  /**
+   * CODICE
+   * Codice del backend (es. SALDO_APERTO), per scegliere cosa proporre dopo l'errore.
+   */
+  codice(errore: unknown): string | undefined {
+    return this.dettaglio(errore)?.codice;
   }
 
   /**
@@ -57,6 +62,12 @@ export class ErroriService {
     const [codice, dettaglio] = errore;
     const parametri = typeof dettaglio === 'object' ? dettaglio : {};
     return this.transloco.translate(`${PREFISSO_MODULI}.${codice}`, parametri);
+  }
+
+  private dettaglio(errore: unknown): ErroreApiInterface | undefined {
+    return errore instanceof HttpErrorResponse
+      ? (errore.error as RispostaErroreApiInterface | null)?.errore
+      : undefined;
   }
 
   private traduci(codice: string): string {

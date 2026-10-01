@@ -53,7 +53,8 @@
       "utenti": "Utenti",
       "ruoli": "Ruoli e permessi",
       "registro": "Registro attività",
-      "impostazioni": "Impostazioni"
+      "impostazioni": "Impostazioni",
+      "oggi": "Oggi"
     },
     "sito": {
       "aria": "Menu del sito",
@@ -182,7 +183,10 @@
     "DOCUMENTO_NON_TROVATO": "Documento non trovato.",
     "NON_RIMBORSABILE": "La tariffa non è rimborsabile.",
     "SOGGIORNO_INIZIATO": "Il soggiorno è già iniziato.",
-    "PAGAMENTO_NON_AVVIATO": "Non è stato possibile avviare il pagamento."
+    "PAGAMENTO_NON_AVVIATO": "Non è stato possibile avviare il pagamento.",
+    "ARRIVO_FUTURO": "Il giorno di arrivo non è ancora arrivato.",
+    "CAMERA_NON_TROVATA": "Camera non trovata.",
+    "SALDO_APERTO": "Resta un saldo da incassare."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -588,5 +592,143 @@
     "slide": "{{ numero }} di {{ totale }}",
     "precedente": "Precedente",
     "successiva": "Successiva"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Reception",
+      "titolo": "La giornata",
+      "giorno": "Giorno",
+      "arrivi": "Arrivi",
+      "partenze": "Partenze",
+      "in_casa": "In casa",
+      "vuoto": "Nessuna prenotazione."
+    },
+    "elenco": {
+      "occhiello": "Soggiorni",
+      "titolo": "Prenotazioni",
+      "cerca": "Cerca per codice, cognome o email",
+      "tutti": "Tutti",
+      "dal": "Arrivo dal",
+      "al": "Arrivo entro",
+      "ordine": "Ordine",
+      "recenti": "Arrivi più lontani prima",
+      "vicine": "Arrivi più vicini prima",
+      "totale": "Prenotazioni trovate: {{ totale }}",
+      "nessuna": "Nessuna prenotazione con questi filtri.",
+      "pagine": "Pagine",
+      "precedente": "Precedente",
+      "successiva": "Successiva",
+      "pagina": "Pagina {{ pagina }} di {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Gestionale",
+      "titolo": "Nuova prenotazione",
+      "introduzione": "Prenotazione al telefono, per email o al banco: scegli date, ospiti e camera.",
+      "gestione": "Gestione",
+      "linguaAiuto": "Lingua delle email inviate all’ospite."
+    },
+    "scheda": {
+      "tutte": "Tutte le prenotazioni",
+      "creata": "Creata",
+      "cancellata": "Cancellata",
+      "motivo": "Motivo della cancellazione"
+    },
+    "campi": {
+      "canale": "Canale",
+      "stato": "Stato",
+      "idEsterno": "Id sul portale",
+      "lingua": "Lingua",
+      "noteInterne": "Note interne",
+      "noteInterneAiuto": "Visibili solo allo staff.",
+      "camera": "Camera",
+      "adulti": "Adulti",
+      "bambini": "Bambini",
+      "oraArrivo": "Ora di arrivo prevista",
+      "richieste": "Richieste dell’ospite",
+      "tipo": "Tipo",
+      "metodo": "Metodo",
+      "importo": "Importo",
+      "documentoFiscale": "Numero ricevuta",
+      "riferimento": "Riferimento",
+      "note": "Note"
+    },
+    "canali": {
+      "diretto": "Sito",
+      "telefono": "Telefono",
+      "email": "Email",
+      "walk_in": "Al banco",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Altro portale"
+    },
+    "link": {
+      "copia": "Copia",
+      "copiato": "Copiato"
+    },
+    "linkCheckin": {
+      "titolo": "Check-in online",
+      "testo": "L’ospite inserisce i dati dei documenti prima di arrivare.",
+      "crea": "Crea il link"
+    },
+    "linkPagamento": {
+      "titolo": "Link di pagamento",
+      "apri": "Crea un link di pagamento",
+      "crea": "Crea il link",
+      "importoAiuto": "Vuoto: quanto è dovuto ora.",
+      "inviaEmail": "Invia il link per email all’ospite",
+      "inviato": "Link inviato per email."
+    },
+    "cancella": {
+      "penale": "Penale",
+      "penaleAiuto": "Vuoto: la penale prevista dalla tariffa."
+    },
+    "azioni": {
+      "conferma": "Conferma",
+      "checkIn": "Check-in",
+      "noShow": "Mancato arrivo",
+      "checkOut": "Check-out",
+      "annulla": "Annulla",
+      "conferme": {
+        "noShow": "Conferma il mancato arrivo",
+        "checkOut": "Chiudi comunque"
+      }
+    },
+    "modifica": {
+      "titolo": "Modifica",
+      "testo": "Cambia camera, date, ospiti o note.",
+      "apri": "Modifica la prenotazione",
+      "ricalcolo": "Cambiando camera, date o ospiti il prezzo si ricalcola.",
+      "salva": "Salva le modifiche"
+    },
+    "incassi": {
+      "titolo": "Incassi",
+      "nessuno": "Nessun movimento.",
+      "registra": "Registra un incasso",
+      "conferma": "Registra",
+      "riferimentoAiuto": "Es. CRO del bonifico o scontrino del POS.",
+      "ricevuta": "Ricevuta {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Acconto",
+      "saldo": "Saldo",
+      "extra": "Extra",
+      "penale": "Penale",
+      "rimborso": "Rimborso"
+    },
+    "metodi": {
+      "stripe": "Carta",
+      "paypal": "PayPal",
+      "bonifico": "Bonifico",
+      "contanti": "Contanti",
+      "pos": "POS",
+      "ota": "Portale"
+    },
+    "statiPagamento": {
+      "in_attesa": "In attesa",
+      "completato": "Completato",
+      "fallito": "Fallito",
+      "annullato": "Annullato"
+    }
   }
 }

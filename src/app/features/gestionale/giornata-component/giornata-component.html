@@ -1,0 +1,44 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.oggi.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.oggi.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <app-campo [etichetta]="'gestionale.oggi.giorno' | transloco">
+      <input #campo type="date" [value]="giorno()" (change)="cambiaGiorno(campo.value)" />
+    </app-campo>
+    @if (puoPrenotare) {
+      <a class="pulsante pulsante-primario" [routerLink]="nuova">
+        <app-icona nome="add" />
+        {{ 'gestionale.nuova.titolo' | transloco }}
+      </a>
+    }
+  </div>
+</header>
+
+@if (giornata.hasValue()) {
+  @let dati = giornata.value();
+  @for (sezione of sezioni; track sezione) {
+    @let elenco = dati[sezione];
+    <section class="sezione" [attr.aria-labelledby]="'giornata-' + sezione">
+      <h2 class="sezione-titolo" [id]="'giornata-' + sezione">
+        {{ 'gestionale.oggi.' + sezione | transloco }}
+        <span class="conteggio">{{ elenco.length }}</span>
+      </h2>
+      <ul class="elenco">
+        @for (prenotazione of elenco; track prenotazione.id) {
+          <li>
+            <app-riga-prenotazione [prenotazione]="prenotazione">
+              <app-azioni-prenotazione
+                [prenotazione]="prenotazione"
+                (aggiornata)="giornata.reload()"
+              />
+            </app-riga-prenotazione>
+          </li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'gestionale.oggi.vuoto' | transloco }}</li>
+        }
+      </ul>
+    </section>
+  }
+} @else if (giornata.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

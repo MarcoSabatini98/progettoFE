@@ -12,17 +12,17 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { TranslocoPipe } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 
-import { CamereService } from '../../../core/services/camere/camere-service';
-import { ErroriService } from '../../../core/services/errori/errori-service';
-import { LIMITI_QUANTITA_EXTRA } from '../../../core/services/prenotazioni/prenotazioni-costanti';
-import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
-import { CampoComponent } from '../../../shared/campo-component/campo-component';
-import { IconaComponent } from '../../../shared/icona-component/icona-component';
-import { PrenotazioneInterface } from '../../../shared/models/prenotazione/prenotazione-model';
-import { PrezzoPipe } from '../../../shared/pipes/prezzo-pipe';
+import { CamereService } from '../../core/services/camere/camere-service';
+import { ErroriService } from '../../core/services/errori/errori-service';
+import { LIMITI_QUANTITA_EXTRA } from '../../core/services/prenotazioni/prenotazioni-costanti';
+import { PrenotazioniService } from '../../core/services/prenotazioni/prenotazioni-service';
+import { CampoComponent } from '../campo-component/campo-component';
+import { IconaComponent } from '../icona-component/icona-component';
+import { PrenotazioneInterface } from '../models/prenotazione/prenotazione-model';
+import { PrezzoPipe } from '../pipes/prezzo-pipe';
 
 /**
- * Extra di una prenotazione del cliente. Finché è modificabile si possono togliere
+ * Extra di una prenotazione, per il cliente o per lo staff. Finché è modificabile si possono togliere
  * e aggiungere; scegliere un extra già presente ne cambia la quantità.
  */
 @Component({
@@ -40,13 +40,18 @@ export class ExtraPrenotazioneComponent {
 
   readonly prenotazione = input.required<PrenotazioneInterface>();
   readonly modificabile = input(false, { transform: booleanAttribute });
+  /** Dal gestionale: rotte dello staff e tutti i servizi attivi, anche quelli non in vetrina. */
+  readonly staff = input(false, { transform: booleanAttribute });
   /** Extra cambiati: il conto va ricaricato. */
   readonly aggiornata = output();
 
   protected readonly limiti = LIMITI_QUANTITA_EXTRA;
   protected readonly catalogo = rxResource({
     params: () => (this.modificabile() ? true : undefined),
-    stream: () => this.camere.elencaExtraPubblici(),
+    stream: () =>
+      this.staff()
+        ? this.camere.elencaServizi({ attivo: true })
+        : this.camere.elencaExtraPubblici(),
   });
   protected readonly modulo = inject(NonNullableFormBuilder).group({
     servizio_id: [null as number | null, Validators.required],
@@ -72,7 +77,11 @@ export class ExtraPrenotazioneComponent {
       return;
     }
     this.esegui(
-      this.prenotazioni.aggiungiServizio(this.prenotazione().id, { servizio_id, quantita }, true),
+      this.prenotazioni.aggiungiServizio(
+        this.prenotazione().id,
+        { servizio_id, quantita },
+        !this.staff(),
+      ),
     );
   }
 
@@ -80,7 +89,9 @@ export class ExtraPrenotazioneComponent {
    * RIMUOVI
    */
   rimuovi(servizioId: number): void {
-    this.esegui(this.prenotazioni.rimuoviServizio(this.prenotazione().id, servizioId, true));
+    this.esegui(
+      this.prenotazioni.rimuoviServizio(this.prenotazione().id, servizioId, !this.staff()),
+    );
   }
 
   private esegui(richiesta: Observable<unknown>): void {

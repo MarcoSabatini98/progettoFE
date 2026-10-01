@@ -69,8 +69,9 @@ describe('PrenotaComponent', () => {
     });
   });
 
-  async function crea() {
+  async function crea(staff = false) {
     const fixture = TestBed.createComponent(PrenotaComponent);
+    fixture.componentRef.setInput('staff', staff);
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const cerca = async () => {
@@ -160,5 +161,16 @@ describe('PrenotaComponent', () => {
 
     expect(conferma()).toBeNull();
     expect(elemento.querySelector('[role="alert"]')?.textContent).toContain('Appena prenotata');
+  });
+
+  it('dal gestionale cambia intestazione e passa la modalità staff alla conferma', async () => {
+    disponibilita.blocca.mockReturnValue(of(blocco));
+    const { elemento, cerca, scegli, conferma } = await crea(true);
+    await cerca();
+
+    await scegli();
+
+    expect(elemento.querySelector('h1')?.textContent).toContain('gestionale.nuova.titolo');
+    expect(conferma().componentInstance.staff()).toBe(true);
   });
 });

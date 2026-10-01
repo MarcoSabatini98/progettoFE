@@ -1,0 +1,134 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.scheda.tutte' | transloco }}
+</a>
+
+@if (prenotazione.hasValue()) {
+  @let dati = prenotazione.value();
+  @let titolare = dati.titolare;
+
+  <header class="intestazione">
+    <h1>{{ 'prenotazione.titolo' | transloco: { codice: dati.codice } }}</h1>
+    <app-azioni-prenotazione [prenotazione]="dati" (aggiornata)="prenotazione.reload()" />
+  </header>
+
+  <div class="griglia-prenotazione">
+    <app-dettagli-prenotazione [prenotazione]="dati" />
+    @if (dati.saldo; as saldo) {
+      <app-conto-prenotazione [importi]="dati" [pagamento]="saldo" />
+    }
+
+    <section class="scheda" aria-labelledby="scheda-gestione">
+      <h2 class="titolo-scheda" id="scheda-gestione">
+        {{ 'gestionale.nuova.gestione' | transloco }}
+      </h2>
+      <dl class="dati">
+        @if (titolare) {
+          <div>
+            <dt>{{ 'conferma.titolare' | transloco }}</dt>
+            <dd>{{ titolare.cognome }} {{ titolare.nome }}</dd>
+          </div>
+          @if (titolare.email) {
+            <div>
+              <dt>{{ 'conferma.email' | transloco }}</dt>
+              <dd>
+                <a [href]="'mailto:' + titolare.email">{{ titolare.email }}</a>
+              </dd>
+            </div>
+          }
+          @if (titolare.telefono) {
+            <div>
+              <dt>{{ 'conferma.telefono' | transloco }}</dt>
+              <dd>
+                <a [href]="'tel:' + titolare.telefono">{{ titolare.telefono }}</a>
+              </dd>
+            </div>
+          }
+          <div>
+            <dt>{{ 'gestionale.campi.lingua' | transloco }}</dt>
+            <dd>{{ nomiLingue[titolare.lingua] }}</dd>
+          </div>
+        }
+        <div>
+          <dt>{{ 'gestionale.campi.camera' | transloco }}</dt>
+          <dd>{{ dati.camera?.numero }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'gestionale.campi.canale' | transloco }}</dt>
+          <dd>
+            {{ 'gestionale.canali.' + dati.canale | transloco }}
+            @if (dati.id_esterno) {
+              · {{ dati.id_esterno }}
+            }
+          </dd>
+        </div>
+        @if (dati.ora_arrivo_prevista) {
+          <div>
+            <dt>{{ 'gestionale.campi.oraArrivo' | transloco }}</dt>
+            <dd>{{ dati.ora_arrivo_prevista.slice(0, lunghezzaOra) }}</dd>
+          </div>
+        }
+        <div>
+          <dt>{{ 'gestionale.scheda.creata' | transloco }}</dt>
+          <dd>
+            {{ dati.creato_il | data: 'ora' }}
+            @if (dati.autore; as autore) {
+              · {{ autore.nome }} {{ autore.cognome }}
+            }
+          </dd>
+        </div>
+        @if (dati.cancellata_il) {
+          <div>
+            <dt>{{ 'gestionale.scheda.cancellata' | transloco }}</dt>
+            <dd>{{ dati.cancellata_il | data: 'ora' }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'gestionale.cancella.penale' | transloco }}</dt>
+            <dd>{{ dati.penale_applicata | prezzo }}</dd>
+          </div>
+        }
+      </dl>
+      @if (dati.motivo_cancellazione) {
+        <h3>{{ 'gestionale.scheda.motivo' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.motivo_cancellazione }}</p>
+      }
+      @if (dati.richieste_speciali) {
+        <h3>{{ 'gestionale.campi.richieste' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.richieste_speciali }}</p>
+      }
+      @if (dati.note_interne) {
+        <h3>{{ 'gestionale.campi.noteInterne' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.note_interne }}</p>
+      }
+    </section>
+
+    @if (puo.gestire && inCorso()) {
+      <app-modifica-prenotazione [prenotazione]="dati" (aggiornata)="prenotazione.reload()" />
+    }
+    <app-extra-prenotazione
+      staff
+      [prenotazione]="dati"
+      [modificabile]="puo.gestire && inCorso()"
+      (aggiornata)="prenotazione.reload()"
+    />
+    @if (puo.incassi) {
+      <app-incassi-prenotazione
+        class="larga"
+        [prenotazione]="dati"
+        (aggiornata)="prenotazione.reload()"
+      />
+    }
+    @if (puo.checkIn && primaArrivo()) {
+      <app-link-checkin [prenotazioneId]="dati.id" />
+    }
+    @if (puo.gestire && primaArrivo()) {
+      <app-cancella-prenotazione
+        staff
+        [prenotazioneId]="dati.id"
+        (cancellata)="prenotazione.reload()"
+      />
+    }
+  </div>
+} @else if (prenotazione.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

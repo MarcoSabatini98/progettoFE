@@ -1,0 +1,84 @@
+<h2 class="titolo-scheda">{{ 'gestionale.modifica.titolo' | transloco }}</h2>
+
+@if (aperta()) {
+  @let controlli = modulo.controls;
+  @let camere = elencoCamere.hasValue() ? elencoCamere.value() : [];
+  <form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+    <app-campo
+      [etichetta]="'gestionale.campi.camera' | transloco"
+      [aiuto]="'gestionale.modifica.ricalcolo' | transloco"
+    >
+      <select formControlName="camera_id">
+        @for (camera of camere; track camera.id) {
+          <option [ngValue]="camera.id">{{ camera.numero }} · {{ camera.tipologia?.nome }}</option>
+        }
+      </select>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'prenotazione.arrivo' | transloco"
+        [errore]="errori.campo(controlli.data_arrivo)"
+      >
+        <input type="date" formControlName="data_arrivo" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'prenotazione.partenza' | transloco"
+        [errore]="errori.campo(controlli.data_partenza)"
+      >
+        <input type="date" formControlName="data_partenza" required />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.campi.adulti' | transloco"
+        [errore]="errori.campo(controlli.adulti)"
+      >
+        <input type="number" formControlName="adulti" min="1" [max]="limiti.adulti" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.campi.bambini' | transloco"
+        [errore]="errori.campo(controlli.bambini)"
+      >
+        <input type="number" formControlName="bambini" min="0" [max]="limiti.bambini" />
+      </app-campo>
+    </div>
+    <app-campo [etichetta]="'gestionale.campi.oraArrivo' | transloco">
+      <input type="time" formControlName="ora_arrivo_prevista" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.campi.richieste' | transloco"
+      [errore]="errori.campo(controlli.richieste_speciali)"
+    >
+      <textarea
+        formControlName="richieste_speciali"
+        rows="3"
+        [maxlength]="lunghezza.richieste"
+      ></textarea>
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.campi.noteInterne' | transloco"
+      [aiuto]="'gestionale.campi.noteInterneAiuto' | transloco"
+      [errore]="errori.campo(controlli.note_interne)"
+    >
+      <textarea formControlName="note_interne" rows="3" [maxlength]="lunghezza.note"></textarea>
+    </app-campo>
+
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        {{ 'gestionale.modifica.salva' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="aperta.set(false)">
+        {{ 'gestionale.azioni.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <p class="tenue">{{ 'gestionale.modifica.testo' | transloco }}</p>
+  <button class="pulsante pulsante-secondario" type="button" (click)="apri()">
+    <app-icona nome="edit" />
+    {{ 'gestionale.modifica.apri' | transloco }}
+  </button>
+}
