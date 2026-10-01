@@ -25,3 +25,21 @@ export const ENTITA_MEDIA = [
 
 /** Icona Material Symbols per i servizi senza icona scelta dallo staff. */
 export const ICONA_SERVIZIO_PREDEFINITA = 'check_circle';
+
+/** Foto accettate dal backend (JPG, PNG, WEBP). */
+export const FORMATI_MEDIA = 'image/jpeg,image/png,image/webp';
+
+export const LUNGHEZZA_TESTO_ALTERNATIVO = 255;
+
+export const LUNGHEZZA_TIPOLOGIA = { nome: 100, letti: 100, descrizione: 10_000 } as const;
+
+export const LUNGHEZZA_CAMERA = { numero: 10, nome: 100, note: 5000 } as const;
+
+/** Limiti delle colonne numeriche del database. */
+export const LIMITI_CAMERE = {
+  ospitiMax: 127,
+  superficieMax: 65_535,
+  ordineMax: 65_535,
+  pianoMin: -128,
+  pianoMax: 127,
+} as const;

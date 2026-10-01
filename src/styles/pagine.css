@@ -78,6 +78,17 @@
   list-style: none;
 }
 
+/* Scheda intera cliccabile che porta al dettaglio di un elemento dell'elenco. */
+.scheda-link {
+  gap: var(--bb-spazio-1);
+  color: inherit;
+  text-decoration: none;
+}
+
+.scheda-link:hover strong {
+  color: var(--bb-brand-testo);
+}
+
 /* Messaggio "nessun elemento" al posto delle schede, su tutta la riga. */
 .griglia-schede > .stato-vuoto {
   grid-column: 1 / -1;
@@ -173,6 +184,13 @@
   display: grid;
   gap: var(--bb-spazio-6);
   align-items: start;
+}
+
+/* Più schede impilate in una colonna della griglia. */
+.colonna {
+  display: grid;
+  align-content: start;
+  gap: var(--bb-spazio-6);
 }
 
 @media (width >= 58.75rem) {

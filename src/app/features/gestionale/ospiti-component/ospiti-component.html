@@ -17,7 +17,7 @@
   <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
     @for (ospite of risultato.elementi; track ospite.id) {
       <li>
-        <a class="scheda riga" [routerLink]="[scheda, ospite.id]">
+        <a class="scheda scheda-link" [routerLink]="[scheda, ospite.id]">
           <strong>{{ ospite.cognome }} {{ ospite.nome }}</strong>
           @if (ospite.email || ospite.telefono) {
             <span class="tenue piccolo">

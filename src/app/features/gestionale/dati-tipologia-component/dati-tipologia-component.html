@@ -1,0 +1,67 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.camere.datiTipologia' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <app-campo
+    [etichetta]="'gestionale.camere.campi.nome' | transloco"
+    [errore]="errori.campo(controlli.nome)"
+  >
+    <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.prezzo_base' | transloco"
+      [errore]="errori.campo(controlli.prezzo_base)"
+    >
+      <input type="number" formControlName="prezzo_base" min="0" step="0.01" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.ospiti_max' | transloco"
+      [errore]="errori.campo(controlli.ospiti_max)"
+    >
+      <input type="number" formControlName="ospiti_max" min="1" [max]="limiti.ospitiMax" required />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.superficie_mq' | transloco"
+      [errore]="errori.campo(controlli.superficie_mq)"
+    >
+      <input type="number" formControlName="superficie_mq" min="1" [max]="limiti.superficieMax" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.letti' | transloco"
+      [errore]="errori.campo(controlli.letti)"
+    >
+      <input type="text" formControlName="letti" [maxLength]="lunghezza.letti" />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.camere.campi.descrizione' | transloco"
+    [errore]="errori.campo(controlli.descrizione)"
+  >
+    <textarea formControlName="descrizione" rows="5" [maxLength]="lunghezza.descrizione"></textarea>
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.ordine' | transloco"
+      [aiuto]="'gestionale.camere.ordineAiuto' | transloco"
+      [errore]="errori.campo(controlli.ordine)"
+    >
+      <input type="number" formControlName="ordine" min="0" [max]="limiti.ordineMax" />
+    </app-campo>
+    <label class="spunta">
+      <input type="checkbox" formControlName="attiva" />
+      {{ 'gestionale.camere.campi.attiva' | transloco }}
+    </label>
+  </div>
+  <app-scelta-dotazioni [controllo]="controlli.servizi" />
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.camere.salva' | transloco }}
+    </button>
+  </div>
+</form>

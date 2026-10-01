@@ -1,0 +1,25 @@
+<h2 class="titolo-scheda">{{ titolo() }}</h2>
+<p>{{ aiuto() }}</p>
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+<div class="azioni">
+  @if (daEliminare()) {
+    <button
+      class="pulsante pulsante-pericolo"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="elimina()"
+    >
+      {{ conferma() }}
+    </button>
+    <button class="pulsante pulsante-fantasma" type="button" (click)="daEliminare.set(false)">
+      {{ 'portale.documenti.annulla' | transloco }}
+    </button>
+  } @else {
+    <button class="pulsante pulsante-secondario" type="button" (click)="daEliminare.set(true)">
+      <app-icona nome="delete" />
+      {{ titolo() }}
+    </button>
+  }
+</div>

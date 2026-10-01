@@ -1,0 +1,73 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.camere.datiCamera' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.numero' | transloco"
+      [errore]="errori.campo(controlli.numero)"
+    >
+      <input type="text" formControlName="numero" [maxLength]="lunghezza.numero" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.nomeCamera' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.tipologia' | transloco"
+      [aiuto]="'gestionale.camere.tipologiaAiuto' | transloco"
+    >
+      <select formControlName="tipologia_id">
+        @for (tipologia of tipologie(); track tipologia.id) {
+          <option [ngValue]="tipologia.id">{{ tipologia.nome }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.camere.campi.stato' | transloco">
+      <select formControlName="stato">
+        @for (stato of stati; track stato) {
+          <option [value]="stato">{{ 'gestionale.camere.stati.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.piano' | transloco"
+      [errore]="errori.campo(controlli.piano)"
+    >
+      <input
+        type="number"
+        formControlName="piano"
+        [min]="limiti.pianoMin"
+        [max]="limiti.pianoMax"
+      />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.camere.campi.ospiti_max' | transloco"
+      [aiuto]="'gestionale.camere.ospitiAiuto' | transloco"
+      [errore]="errori.campo(controlli.ospiti_max)"
+    >
+      <input type="number" formControlName="ospiti_max" min="1" [max]="limiti.ospitiMax" />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.camere.campi.note' | transloco"
+    [errore]="errori.campo(controlli.note)"
+  >
+    <textarea formControlName="note" rows="3" [maxLength]="lunghezza.note"></textarea>
+  </app-campo>
+  <app-scelta-dotazioni [controllo]="controlli.servizi" />
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.camere.salva' | transloco }}
+    </button>
+  </div>
+</form>

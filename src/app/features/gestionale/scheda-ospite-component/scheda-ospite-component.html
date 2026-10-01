@@ -61,43 +61,13 @@
         </ul>
       </section>
 
-      <section class="scheda" aria-labelledby="elimina-ospite">
-        <h2 class="titolo-scheda" id="elimina-ospite">
-          {{ 'gestionale.ospite.elimina' | transloco }}
-        </h2>
-        <p>{{ 'gestionale.ospite.eliminaAiuto' | transloco }}</p>
-        @if (errore(); as testo) {
-          <p class="esito esito-errore" role="alert">{{ testo }}</p>
-        }
-        <div class="azioni">
-          @if (daEliminare()) {
-            <button
-              class="pulsante pulsante-pericolo"
-              type="button"
-              [disabled]="inCorso()"
-              (click)="elimina()"
-            >
-              {{ 'gestionale.ospite.conferma' | transloco }}
-            </button>
-            <button
-              class="pulsante pulsante-fantasma"
-              type="button"
-              (click)="daEliminare.set(false)"
-            >
-              {{ 'portale.documenti.annulla' | transloco }}
-            </button>
-          } @else {
-            <button
-              class="pulsante pulsante-secondario"
-              type="button"
-              (click)="daEliminare.set(true)"
-            >
-              <app-icona nome="delete" />
-              {{ 'gestionale.ospite.elimina' | transloco }}
-            </button>
-          }
-        </div>
-      </section>
+      <app-elimina
+        [titolo]="'gestionale.ospite.elimina' | transloco"
+        [aiuto]="'gestionale.ospite.eliminaAiuto' | transloco"
+        [conferma]="'gestionale.ospite.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
     </div>
   </div>
 } @else if (scheda.error(); as errore) {

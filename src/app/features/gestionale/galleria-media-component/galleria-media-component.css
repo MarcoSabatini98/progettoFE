@@ -1,0 +1,61 @@
+/* L'input vero è nascosto: il fuoco si vede sull'etichetta-pulsante. */
+.carica {
+  justify-self: start;
+  cursor: pointer;
+}
+
+.carica:focus-within {
+  outline: 2px solid var(--bb-brand);
+  outline-offset: 2px;
+}
+
+.carica.disabilitato {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.foto {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.elemento {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.elemento img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--bb-raggio-piccolo);
+  object-fit: cover;
+}
+
+.dettagli {
+  display: grid;
+  align-content: start;
+  gap: var(--bb-spazio-2);
+}
+
+.copertina {
+  justify-self: start;
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.campo-testo {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+@media (width >= 40rem) {
+  .elemento {
+    grid-template-columns: 12rem 1fr;
+  }
+}
