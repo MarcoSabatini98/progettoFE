@@ -14,12 +14,7 @@
   border-block-end: 1px solid var(--bb-linea);
 }
 
-.movimenti > li.tenue {
-  display: block;
-  border: 0;
-}
-
-.quando,
+.movimenti > li .quando,
 .tenue {
   color: var(--bb-testo-tenue);
   font-size: 0.875rem;

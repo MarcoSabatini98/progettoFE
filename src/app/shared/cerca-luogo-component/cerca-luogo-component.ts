@@ -12,14 +12,12 @@ import { switchMap, timer } from 'rxjs';
 
 import { AlloggiatiService } from '../../core/services/alloggiati/alloggiati-service';
 import { CampoComponent } from '../campo-component/campo-component';
+import { ATTESA_RICERCA_MS, LETTERE_MINIME_RICERCA } from '../../core/services/api/api-costanti';
 import {
   LuogoTrovatoInterface,
   TipoLuogo,
 } from '../models/alloggiati-luogo/alloggiati-luogo-model';
 
-/** Pausa dopo l'ultimo tasto prima di chiedere al backend. */
-const ATTESA_RICERCA_MS = 300;
-const LETTERE_MINIME = 2;
 /** La ricerca accetta solo lettere, spazi, apostrofi, punti e trattini. */
 const NON_CERCABILI = /[^\p{L}\s'.-]/gu;
 
@@ -44,6 +42,8 @@ export class CercaLuogoComponent {
   /** Senza tipo cerca sia comuni sia stati. */
   readonly tipo = input<TipoLuogo>();
   readonly aiuto = input('');
+  /** Nome del luogo già registrato: si vede nel campo, senza cercarlo. */
+  readonly valore = input('');
   readonly scelto = output<LuogoTrovatoInterface | null>();
 
   protected readonly elenco = `luoghi-${prossimoElenco++}`;
@@ -74,7 +74,7 @@ export class CercaLuogoComponent {
   // Scelto un luogo non serve cercare ancora.
   private filtri() {
     const cerca = this.testo().replace(NON_CERCABILI, '').trim();
-    if (this.luogo() || cerca.length < LETTERE_MINIME) return undefined;
+    if (this.luogo() || cerca.length < LETTERE_MINIME_RICERCA) return undefined;
     return { cerca, tipo: this.tipo() };
   }
 }

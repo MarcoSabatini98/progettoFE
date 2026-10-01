@@ -1,0 +1,26 @@
+@let pagine = risultato();
+@if (pagine.pagine > 1) {
+  <nav class="pagine" [attr.aria-label]="'gestionale.elenco.pagine' | transloco">
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="pagine.pagina <= 1 || occupato()"
+      (click)="sfoglia.emit(-1)"
+    >
+      <app-icona nome="chevron_left" />
+      {{ 'gestionale.elenco.precedente' | transloco }}
+    </button>
+    <span>
+      {{ 'gestionale.elenco.pagina' | transloco: { pagina: pagine.pagina, pagine: pagine.pagine } }}
+    </span>
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="pagine.pagina >= pagine.pagine || occupato()"
+      (click)="sfoglia.emit(1)"
+    >
+      {{ 'gestionale.elenco.successiva' | transloco }}
+      <app-icona nome="chevron_right" />
+    </button>
+  </nav>
+}

@@ -17,7 +17,7 @@
             }}</span>
           }
           @if (movimento.documento_fiscale) {
-            <span class="tenue">
+            <span class="tenue piccolo">
               {{
                 'gestionale.incassi.ricevuta' | transloco: { numero: movimento.documento_fiscale }
               }}
@@ -27,7 +27,7 @@
         <span class="importo">{{ movimento.importo | prezzo }}</span>
       </li>
     } @empty {
-      <li class="tenue">{{ 'gestionale.incassi.nessuno' | transloco }}</li>
+      <li class="tenue piccolo">{{ 'gestionale.incassi.nessuno' | transloco }}</li>
     }
   </ul>
 

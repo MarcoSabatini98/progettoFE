@@ -186,7 +186,14 @@
     "PAGAMENTO_NON_AVVIATO": "Non è stato possibile avviare il pagamento.",
     "ARRIVO_FUTURO": "Il giorno di arrivo non è ancora arrivato.",
     "CAMERA_NON_TROVATA": "Camera non trovata.",
-    "SALDO_APERTO": "Resta un saldo da incassare."
+    "SALDO_APERTO": "Resta un saldo da incassare.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Completa i dati degli ospiti prima dell’invio.",
+    "DATI_CLIENTE_PROTETTI": "I dati personali del cliente li modifica solo il cliente.",
+    "OSPITE_CON_SOGGIORNI": "L’ospite ha soggiorni registrati: i suoi dati vanno conservati.",
+    "OSPITE_NON_TROVATO": "Ospite non trovato.",
+    "DATO_DUPLICATO": "Il dato esiste già.",
+    "RISORSA_IN_USO": "Impossibile eliminare: il dato è usato altrove.",
+    "RIFERIMENTO_NON_VALIDO": "Un dato collegato non esiste."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -554,37 +561,11 @@
       "soggiorno": "Prenotazione {{ codice }}, dal {{ arrivo }} al {{ partenza }}.",
       "testo": "Inserisci i dati di ogni ospite: all’arrivo non dovrai fare altro. I campi lasciati vuoti non cambiano quelli già registrati.",
       "ospite": "Ospite {{ numero }}",
-      "scegli": "Scegli…",
-      "sessi": {
-        "M": "Maschio",
-        "F": "Femmina"
-      },
       "documento": "Documento di chi guida il gruppo, richiesto dalla legge per la registrazione.",
-      "documenti": {
-        "IDENT": "Carta d’identità",
-        "IDELE": "Carta d’identità elettronica",
-        "PASOR": "Passaporto",
-        "PATEN": "Patente di guida"
-      },
       "invia": "Invia i dati",
       "fatto": "Dati ricevuti il {{ data }}. Puoi correggerli fino all’arrivo.",
       "mancano": "Dati già registrati. Mancano ancora:",
-      "completo": "Dati già registrati e completi: correggi solo quello che è cambiato.",
-      "luogoRilascio": "Comune italiano o stato estero.",
-      "campi": {
-        "nome": "Nome",
-        "cognome": "Cognome",
-        "sesso": "Sesso",
-        "data_nascita": "Data di nascita",
-        "cittadinanza_codice": "Cittadinanza",
-        "stato_nascita_codice": "Stato di nascita",
-        "comune_nascita_codice": "Comune di nascita",
-        "provincia_nascita": "Provincia di nascita",
-        "tipo_documento": "Tipo di documento",
-        "numero_documento": "Numero del documento",
-        "luogo_rilascio_codice": "Luogo di rilascio",
-        "scadenza_documento": "Scadenza del documento"
-      }
+      "completo": "Dati già registrati e completi: correggi solo quello che è cambiato."
     }
   },
   "carosello": {
@@ -729,6 +710,124 @@
       "completato": "Completato",
       "fallito": "Fallito",
       "annullato": "Annullato"
+    },
+    "anagrafica": {
+      "titolo": "Anagrafica",
+      "contatti": "Contatti",
+      "nascita": "Nascita e cittadinanza",
+      "documento": "Documento",
+      "residenza": "Residenza",
+      "tipoDocumento": "Serve solo a chi viaggia da solo o guida il gruppo.",
+      "paese": "Sigla di due lettere, es. IT.",
+      "salva": "Salva l’anagrafica",
+      "salvata": "Anagrafica salvata."
+    },
+    "ospiti": {
+      "occhiello": "Gestionale",
+      "titolo": "Ospiti",
+      "cerca": "Cerca per nome, cognome o email",
+      "totale": "Ospiti trovati: {{ totale }}",
+      "nessuno": "Nessun ospite trovato.",
+      "nuovo": "Nuovo ospite",
+      "crea": "Crea e completa i dati"
+    },
+    "ospite": {
+      "tutti": "Tutti gli ospiti",
+      "occhiello": "Ospite",
+      "mancano": "Per Alloggiati Web mancano:",
+      "completa": "Dati completi per Alloggiati Web.",
+      "soggiorni": "Soggiorni",
+      "nessunSoggiorno": "Nessun soggiorno.",
+      "elimina": "Elimina l’anagrafica",
+      "eliminaAiuto": "Possibile solo se l’ospite non ha soggiorni registrati.",
+      "conferma": "Elimina definitivamente"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Ospiti del soggiorno",
+      "daSalvare": "Da salvare",
+      "mancano": "Mancano {{ numero }} dati",
+      "completo": "Dati completi",
+      "tipo": "Ruolo nella schedina",
+      "esente": "Esente dalla tassa di soggiorno",
+      "motivo": "Motivo dell’esenzione",
+      "togli": "Togli dal soggiorno",
+      "nessuno": "Nessun ospite registrato.",
+      "chiusa": "Prenotazione chiusa: gli ospiti non si cambiano più.",
+      "piena": "Tutti i posti della prenotazione sono assegnati.",
+      "cerca": "Cerca un ospite già registrato",
+      "aggiungiNuovo": "Aggiungi un nuovo ospite",
+      "salva": "Salva gli ospiti",
+      "salvati": "Ospiti salvati."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Ospite singolo",
+      "capofamiglia": "Capofamiglia",
+      "capogruppo": "Capogruppo",
+      "familiare": "Familiare",
+      "membro_gruppo": "Membro del gruppo"
+    },
+    "esiti": {
+      "inviata": "Inviata",
+      "errore": "Rifiutata dal portale",
+      "test": "Prova"
+    },
+    "alloggiati": {
+      "occhiello": "Gestionale",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Soggiorni degli ultimi giorni ancora da comunicare: scarica il file, caricalo sul portale della Polizia di Stato e registra l’esito.",
+      "arrivo": "Arrivo",
+      "prenotazione": "Apri la prenotazione",
+      "schedine": "Schedine",
+      "nessuno": "Nessun soggiorno da comunicare.",
+      "scarica": "Scarica il file ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Schedine pronte per l’invio.",
+      "incomplete": "Ad alcuni ospiti mancano dei dati.",
+      "mancano": "Mancano",
+      "nessuno": "Nessun ospite registrato.",
+      "esito": "Esito del portale",
+      "messaggio": "Messaggio del portale",
+      "registra": "Registra l’esito",
+      "registrato": "Esito registrato."
     }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "Nome",
+      "cognome": "Cognome",
+      "sesso": "Sesso",
+      "data_nascita": "Data di nascita",
+      "cittadinanza_codice": "Cittadinanza",
+      "stato_nascita_codice": "Stato di nascita",
+      "comune_nascita_codice": "Comune di nascita",
+      "provincia_nascita": "Provincia di nascita",
+      "tipo_documento": "Tipo di documento",
+      "numero_documento": "Numero del documento",
+      "luogo_rilascio_codice": "Luogo di rilascio",
+      "scadenza_documento": "Scadenza del documento",
+      "email": "Email",
+      "telefono": "Telefono",
+      "lingua": "Lingua",
+      "codice_fiscale": "Codice fiscale",
+      "indirizzo": "Indirizzo",
+      "cap": "CAP",
+      "citta": "Città",
+      "provincia": "Provincia",
+      "paese": "Paese",
+      "note": "Note"
+    },
+    "sessi": {
+      "M": "Maschio",
+      "F": "Femmina"
+    },
+    "documenti": {
+      "IDENT": "Carta d’identità",
+      "IDELE": "Carta d’identità elettronica",
+      "PASOR": "Passaporto",
+      "PATEN": "Patente di guida"
+    },
+    "scegli": "Scegli…",
+    "luogoRilascio": "Comune italiano o stato estero."
   }
 }

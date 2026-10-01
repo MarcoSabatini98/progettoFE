@@ -1,5 +1,5 @@
 import type { TIPI_ALLOGGIATO } from '../../../core/services/prenotazioni/prenotazioni-costanti';
-import { OspiteCreaPayload, OspiteInterface } from '../ospite/ospite-model';
+import { OspiteCreaPayload, OspiteInterface, SchedaOspiteInterface } from '../ospite/ospite-model';
 
 export type TipoAlloggiato = (typeof TIPI_ALLOGGIATO)[number];
 
@@ -16,10 +16,8 @@ export interface PrenotazioneOspiteInterface {
 }
 
 /** Ospite nella scheda del soggiorno, con i campi che mancano per la schedina Alloggiati. */
-export type OspiteSoggiornoInterface = OspiteInterface &
-  Pick<PrenotazioneOspiteInterface, 'tipo_alloggiato' | 'esente_tassa' | 'motivo_esenzione'> & {
-    campi_mancanti: (keyof OspiteInterface)[];
-  };
+export type OspiteSoggiornoInterface = SchedaOspiteInterface &
+  Pick<PrenotazioneOspiteInterface, 'tipo_alloggiato' | 'esente_tassa' | 'motivo_esenzione'>;
 
 /** Riga della lista ospiti: lo staff può agganciare un'anagrafica esistente col solo id. */
 export interface RigaOspitePayload<O = OspiteCreaPayload | Pick<OspiteInterface, 'id'>> {
@@ -28,3 +26,10 @@ export interface RigaOspitePayload<O = OspiteCreaPayload | Pick<OspiteInterface,
   esente_tassa?: boolean;
   motivo_esenzione?: string | null;
 }
+
+/** Ospite nella lista che lo staff compone: chi è appena aggiunto non ha ancora un'anagrafica. */
+export type OspiteInListaInterface = Pick<OspiteInterface, 'nome' | 'cognome'> &
+  Partial<Pick<OspiteSoggiornoInterface, 'id' | 'campi_mancanti'>>;
+
+/** Riga della lista ospiti in modifica, prima di salvarla. */
+export type RigaOspiteInListaInterface = Required<RigaOspitePayload<OspiteInListaInterface>>;

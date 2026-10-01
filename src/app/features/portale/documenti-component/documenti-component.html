@@ -1,84 +1,12 @@
 <h2 class="sezione-titolo">{{ 'portale.documenti.titolo' | transloco }}</h2>
 <p>{{ 'portale.documenti.testo' | transloco }}</p>
 
-<label class="pulsante pulsante-primario carica" [class.disabilitato]="inCorso()">
-  <app-icona nome="upload_file" />
-  {{ 'portale.documenti.carica' | transloco }}
-  <input
-    class="visivamente-nascosto"
-    type="file"
-    [accept]="formati"
-    [disabled]="inCorso()"
-    (change)="carica($event)"
-  />
-</label>
-<p class="aiuto">{{ 'portale.documenti.formati' | transloco }}</p>
-
-@if (errore(); as testo) {
-  <p class="esito esito-errore" role="alert">{{ testo }}</p>
-}
-
 @if (profilo.error()) {
   <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
-} @else {
-  <ul class="documenti">
-    @for (documento of documenti(); track documento.id) {
-      <li class="scheda documento">
-        <div>
-          <p class="nome">{{ documento.nome_originale }}</p>
-          <p class="aiuto">
-            {{
-              'portale.documenti.caricato'
-                | transloco: { data: (documento.caricato_il | data: 'giorno') }
-            }}
-          </p>
-        </div>
-        @if (daEliminare() === documento.id) {
-          <div class="azioni">
-            <button
-              class="pulsante pulsante-pericolo"
-              type="button"
-              [disabled]="inCorso()"
-              (click)="elimina(documento.id)"
-            >
-              {{ 'portale.documenti.conferma' | transloco }}
-            </button>
-            <button
-              class="pulsante pulsante-fantasma"
-              type="button"
-              (click)="daEliminare.set(undefined)"
-            >
-              {{ 'portale.documenti.annulla' | transloco }}
-            </button>
-          </div>
-        } @else {
-          <div class="azioni">
-            <button
-              class="pulsante pulsante-secondario"
-              type="button"
-              [disabled]="inCorso()"
-              (click)="scarica(documento)"
-            >
-              <app-icona nome="download" />
-              {{ 'portale.documenti.scarica' | transloco }}
-            </button>
-            <button
-              class="pulsante pulsante-icona pulsante-fantasma"
-              type="button"
-              [attr.aria-label]="
-                'portale.documenti.elimina' | transloco: { nome: documento.nome_originale }
-              "
-              (click)="daEliminare.set(documento.id)"
-            >
-              <app-icona nome="delete" />
-            </button>
-          </div>
-        }
-      </li>
-    } @empty {
-      @if (!profilo.isLoading()) {
-        <li class="stato-vuoto">{{ 'portale.documenti.nessuno' | transloco }}</li>
-      }
-    }
-  </ul>
+} @else if (profilo.hasValue()) {
+  <app-documenti-identita
+    [documenti]="profilo.value().anagrafica?.documenti ?? []"
+    [azioni]="azioni"
+    (cambiati)="profilo.reload()"
+  />
 }

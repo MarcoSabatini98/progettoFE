@@ -1,0 +1,14 @@
+.soggiorno {
+  gap: var(--bb-spazio-3);
+}
+
+.intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-2) var(--bb-spazio-4);
+}
+
+.intestazione > button {
+  margin-inline-start: auto;
+}

@@ -186,7 +186,14 @@
     "PAGAMENTO_NON_AVVIATO": "No se ha podido iniciar el pago.",
     "ARRIVO_FUTURO": "Todavía no ha llegado el día de llegada.",
     "CAMERA_NON_TROVATA": "Habitación no encontrada.",
-    "SALDO_APERTO": "Queda un saldo por cobrar."
+    "SALDO_APERTO": "Queda un saldo por cobrar.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Completa los datos de los huéspedes antes del envío.",
+    "DATI_CLIENTE_PROTETTI": "Solo el cliente puede modificar sus datos personales.",
+    "OSPITE_CON_SOGGIORNI": "El huésped tiene estancias registradas: sus datos deben conservarse.",
+    "OSPITE_NON_TROVATO": "Huésped no encontrado.",
+    "DATO_DUPLICATO": "El dato ya existe.",
+    "RISORSA_IN_USO": "No se puede eliminar: el dato se usa en otro lugar.",
+    "RIFERIMENTO_NON_VALIDO": "Un dato vinculado no existe."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -554,37 +561,11 @@
       "soggiorno": "Reserva {{ codice }}, del {{ arrivo }} al {{ partenza }}.",
       "testo": "Introduce los datos de cada huésped: a la llegada no tendrás que hacer nada más. Los campos vacíos no cambian los datos ya registrados.",
       "ospite": "Huésped {{ numero }}",
-      "scegli": "Elegir…",
-      "sessi": {
-        "M": "Hombre",
-        "F": "Mujer"
-      },
       "documento": "Documento de quien encabeza el grupo, exigido por la ley para el registro.",
-      "documenti": {
-        "IDENT": "Documento de identidad",
-        "IDELE": "Documento de identidad electrónico",
-        "PASOR": "Pasaporte",
-        "PATEN": "Permiso de conducir"
-      },
       "invia": "Enviar los datos",
       "fatto": "Datos recibidos el {{ data }}. Puedes corregirlos hasta la llegada.",
       "mancano": "Datos ya registrados. Todavía faltan:",
-      "completo": "Datos ya registrados y completos: corrige solo lo que haya cambiado.",
-      "luogoRilascio": "Municipio italiano o país extranjero.",
-      "campi": {
-        "nome": "Nombre",
-        "cognome": "Apellidos",
-        "sesso": "Sexo",
-        "data_nascita": "Fecha de nacimiento",
-        "cittadinanza_codice": "Nacionalidad",
-        "stato_nascita_codice": "País de nacimiento",
-        "comune_nascita_codice": "Municipio de nacimiento",
-        "provincia_nascita": "Provincia de nacimiento",
-        "tipo_documento": "Tipo de documento",
-        "numero_documento": "Número del documento",
-        "luogo_rilascio_codice": "Lugar de expedición",
-        "scadenza_documento": "Fecha de caducidad del documento"
-      }
+      "completo": "Datos ya registrados y completos: corrige solo lo que haya cambiado."
     }
   },
   "carosello": {
@@ -729,6 +710,124 @@
       "completato": "Completado",
       "fallito": "Fallido",
       "annullato": "Anulado"
+    },
+    "anagrafica": {
+      "titolo": "Datos personales",
+      "contatti": "Contacto",
+      "nascita": "Nacimiento y nacionalidad",
+      "documento": "Documento",
+      "residenza": "Residencia",
+      "tipoDocumento": "Solo para quien viaja solo o dirige el grupo.",
+      "paese": "Código de dos letras, p. ej. IT.",
+      "salva": "Guardar datos",
+      "salvata": "Datos guardados."
+    },
+    "ospiti": {
+      "occhiello": "Gestión",
+      "titolo": "Huéspedes",
+      "cerca": "Buscar por nombre, apellido o correo",
+      "totale": "Huéspedes encontrados: {{ totale }}",
+      "nessuno": "No se han encontrado huéspedes.",
+      "nuovo": "Nuevo huésped",
+      "crea": "Crear y completar los datos"
+    },
+    "ospite": {
+      "tutti": "Todos los huéspedes",
+      "occhiello": "Huésped",
+      "mancano": "Falta para Alloggiati Web:",
+      "completa": "Datos completos para Alloggiati Web.",
+      "soggiorni": "Estancias",
+      "nessunSoggiorno": "Sin estancias.",
+      "elimina": "Eliminar huésped",
+      "eliminaAiuto": "Solo es posible si el huésped no tiene estancias registradas.",
+      "conferma": "Eliminar definitivamente"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Huéspedes de la estancia",
+      "daSalvare": "Sin guardar",
+      "mancano": "Faltan {{ numero }} datos",
+      "completo": "Datos completos",
+      "tipo": "Función en la ficha",
+      "esente": "Exento de la tasa turística",
+      "motivo": "Motivo de la exención",
+      "togli": "Quitar de la estancia",
+      "nessuno": "No hay huéspedes registrados.",
+      "chiusa": "Reserva cerrada: los huéspedes ya no se pueden cambiar.",
+      "piena": "Todas las plazas de la reserva están asignadas.",
+      "cerca": "Buscar un huésped ya registrado",
+      "aggiungiNuovo": "Añadir un huésped nuevo",
+      "salva": "Guardar huéspedes",
+      "salvati": "Huéspedes guardados."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Huésped individual",
+      "capofamiglia": "Cabeza de familia",
+      "capogruppo": "Jefe de grupo",
+      "familiare": "Familiar",
+      "membro_gruppo": "Miembro del grupo"
+    },
+    "esiti": {
+      "inviata": "Enviada",
+      "errore": "Rechazada por el portal",
+      "test": "Prueba"
+    },
+    "alloggiati": {
+      "occhiello": "Gestión",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Estancias de los últimos días aún por comunicar: descarga el archivo, súbelo al portal de la Policía del Estado y registra el resultado.",
+      "arrivo": "Llegada",
+      "prenotazione": "Abrir la reserva",
+      "schedine": "Fichas",
+      "nessuno": "No hay estancias por comunicar.",
+      "scarica": "Descargar el archivo ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Fichas listas para el envío.",
+      "incomplete": "A algunos huéspedes les faltan datos.",
+      "mancano": "Falta",
+      "nessuno": "No hay huéspedes registrados.",
+      "esito": "Resultado del portal",
+      "messaggio": "Mensaje del portal",
+      "registra": "Registrar el resultado",
+      "registrato": "Resultado registrado."
     }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "Nombre",
+      "cognome": "Apellidos",
+      "sesso": "Sexo",
+      "data_nascita": "Fecha de nacimiento",
+      "cittadinanza_codice": "Nacionalidad",
+      "stato_nascita_codice": "País de nacimiento",
+      "comune_nascita_codice": "Municipio de nacimiento",
+      "provincia_nascita": "Provincia de nacimiento",
+      "tipo_documento": "Tipo de documento",
+      "numero_documento": "Número del documento",
+      "luogo_rilascio_codice": "Lugar de expedición",
+      "scadenza_documento": "Fecha de caducidad del documento",
+      "email": "Correo electrónico",
+      "telefono": "Teléfono",
+      "lingua": "Idioma",
+      "codice_fiscale": "Código fiscal",
+      "indirizzo": "Dirección",
+      "cap": "Código postal",
+      "citta": "Ciudad",
+      "provincia": "Provincia",
+      "paese": "País",
+      "note": "Notas"
+    },
+    "sessi": {
+      "M": "Hombre",
+      "F": "Mujer"
+    },
+    "documenti": {
+      "IDENT": "Documento de identidad",
+      "IDELE": "Documento de identidad electrónico",
+      "PASOR": "Pasaporte",
+      "PATEN": "Permiso de conducir"
+    },
+    "scegli": "Elegir…",
+    "luogoRilascio": "Municipio italiano o país extranjero."
   }
 }

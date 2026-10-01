@@ -1,0 +1,64 @@
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+  <p class="esito" [class.esito-ok]="dati.completa" [class.esito-errore]="!dati.completa">
+    {{
+      (dati.completa ? 'gestionale.schedine.pronte' : 'gestionale.schedine.incomplete') | transloco
+    }}
+  </p>
+
+  <ul class="ospiti">
+    @for (ospite of dati.ospiti; track ospite.ospite_id) {
+      <li>
+        <a [routerLink]="[anagrafica, ospite.ospite_id]">{{ ospite.cognome }} {{ ospite.nome }}</a>
+        <span class="tenue piccolo">{{
+          'gestionale.tipiAlloggiato.' + ospite.tipo_alloggiato | transloco
+        }}</span>
+        @if (ospite.campi_mancanti.length) {
+          <span class="mancano piccolo">
+            {{ 'gestionale.schedine.mancano' | transloco }}:
+            @for (campo of ospite.campi_mancanti; track campo; let ultimo = $last) {
+              {{ 'anagrafica.campi.' + campo | transloco }}{{ ultimo ? '' : ',' }}
+            }
+          </span>
+        }
+        @if (ospite.ultimo_invio; as invio) {
+          <span class="tenue piccolo">
+            {{ 'gestionale.esiti.' + invio.esito | transloco }} ·
+            {{ invio.inviato_il | data: 'ora' }}
+            @if (invio.messaggio) {
+              · {{ invio.messaggio }}
+            }
+          </span>
+        }
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.schedine.nessuno' | transloco }}</li>
+    }
+  </ul>
+
+  <form class="modulo-scheda" [formGroup]="invio" (ngSubmit)="registra()" novalidate>
+    <app-campo [etichetta]="'gestionale.schedine.esito' | transloco">
+      <select formControlName="esito">
+        @for (esito of esiti; track esito) {
+          <option [value]="esito">{{ 'gestionale.esiti.' + esito | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.schedine.messaggio' | transloco"
+      [errore]="errori.campo(invio.controls.messaggio)"
+    >
+      <textarea formControlName="messaggio" rows="2" [maxLength]="lunghezzaMessaggio"></textarea>
+    </app-campo>
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-secondario" type="submit" [disabled]="inCorso()">
+        {{ 'gestionale.schedine.registra' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

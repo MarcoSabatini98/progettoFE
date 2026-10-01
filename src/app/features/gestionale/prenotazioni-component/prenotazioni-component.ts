@@ -6,6 +6,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime } from 'rxjs';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
+import { ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
 import {
@@ -16,6 +17,7 @@ import { PrenotazioniService } from '../../../core/services/prenotazioni/prenota
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
+import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import {
   Canale,
   FiltriPrenotazioni,
@@ -24,8 +26,6 @@ import {
 import { RigaPrenotazioneComponent } from '../riga-prenotazione-component/riga-prenotazione-component';
 
 const PRENOTAZIONI_PER_PAGINA = 20;
-/** Pausa dopo l'ultima modifica ai filtri prima di chiedere al backend. */
-const ATTESA_FILTRI_MS = 300;
 
 /** Tutte le prenotazioni, filtrate per testo, stato, canale e periodo di arrivo. */
 @Component({
@@ -36,6 +36,7 @@ const ATTESA_FILTRI_MS = 300;
     TranslocoPipe,
     CampoComponent,
     IconaComponent,
+    PaginazioneComponent,
     RigaPrenotazioneComponent,
   ],
   templateUrl: './prenotazioni-component.html',
@@ -62,7 +63,7 @@ export class PrenotazioniComponent {
     ordine: 'desc' as NonNullable<FiltriPrenotazioni['ordine']>,
   });
   private readonly scelti = toSignal(
-    this.filtri.valueChanges.pipe(debounceTime(ATTESA_FILTRI_MS)),
+    this.filtri.valueChanges.pipe(debounceTime(ATTESA_RICERCA_MS)),
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando filtri si riparte dalla prima pagina. */

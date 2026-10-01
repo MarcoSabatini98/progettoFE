@@ -70,6 +70,33 @@ export const routes: Routes = [
             (m) => m.SchedaPrenotazioneComponent,
           ),
       },
+      {
+        path: 'ospiti',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.OSPITI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/ospiti-component/ospiti-component').then(
+            (m) => m.OspitiComponent,
+          ),
+      },
+      {
+        path: 'ospiti/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.OSPITI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-ospite-component/scheda-ospite-component').then(
+            (m) => m.SchedaOspiteComponent,
+          ),
+      },
+      {
+        path: 'alloggiati',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.ALLOGGIATI_INVIA] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/alloggiati-component/alloggiati-component').then(
+            (m) => m.AlloggiatiComponent,
+          ),
+      },
       { path: '**', component: PaginaNonTrovataComponent },
     ],
   },

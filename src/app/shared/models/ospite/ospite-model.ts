@@ -60,6 +60,11 @@ export interface OspiteInterface {
   soggiorni?: SoggiornoOspiteInterface[];
 }
 
+/** Scheda dello staff: con i campi che mancano per la schedina Alloggiati Web. */
+export interface SchedaOspiteInterface extends OspiteInterface {
+  campi_mancanti: (keyof OspiteInterface)[];
+}
+
 /** Dati anagrafici e del documento: gli stessi per gli ospiti e per il profilo del cliente. */
 export type AnagraficaPayload = Partial<
   Pick<

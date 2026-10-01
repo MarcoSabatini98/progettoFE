@@ -44,7 +44,7 @@
                 <p>{{ 'portale.checkin.mancano' | transloco }}</p>
                 <ul class="mancanti">
                   @for (campo of giaRegistrato.campi_mancanti; track campo) {
-                    <li>{{ 'portale.checkin.campi.' + campo | transloco }}</li>
+                    <li>{{ 'anagrafica.campi.' + campo | transloco }}</li>
                   }
                 </ul>
               } @else {
@@ -55,13 +55,13 @@
 
           <div class="campi-coppia">
             <app-campo
-              [etichetta]="'portale.checkin.campi.nome' | transloco"
+              [etichetta]="'anagrafica.campi.nome' | transloco"
               [errore]="errori.campo(riga.controls.nome)"
             >
               <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
             </app-campo>
             <app-campo
-              [etichetta]="'portale.checkin.campi.cognome' | transloco"
+              [etichetta]="'anagrafica.campi.cognome' | transloco"
               [errore]="errori.campo(riga.controls.cognome)"
             >
               <input
@@ -74,17 +74,17 @@
           </div>
 
           <div class="campi-coppia">
-            <app-campo [etichetta]="'portale.checkin.campi.sesso' | transloco">
+            <app-campo [etichetta]="'anagrafica.campi.sesso' | transloco">
               <select formControlName="sesso">
-                <option value="">{{ 'portale.checkin.scegli' | transloco }}</option>
+                <option value="">{{ 'anagrafica.scegli' | transloco }}</option>
                 @for (sesso of sessi; track sesso) {
                   <option [value]="sesso">
-                    {{ 'portale.checkin.sessi.' + sesso | transloco }}
+                    {{ 'anagrafica.sessi.' + sesso | transloco }}
                   </option>
                 }
               </select>
             </app-campo>
-            <app-campo [etichetta]="'portale.checkin.campi.data_nascita' | transloco">
+            <app-campo [etichetta]="'anagrafica.campi.data_nascita' | transloco">
               <input type="date" formControlName="data_nascita" />
             </app-campo>
           </div>
@@ -92,12 +92,12 @@
           <div class="campi-coppia">
             <app-cerca-luogo
               tipo="stato"
-              [etichetta]="'portale.checkin.campi.cittadinanza_codice' | transloco"
+              [etichetta]="'anagrafica.campi.cittadinanza_codice' | transloco"
               (scelto)="scegli(indice, 'cittadinanza_codice', $event)"
             />
             <app-cerca-luogo
               tipo="stato"
-              [etichetta]="'portale.checkin.campi.stato_nascita_codice' | transloco"
+              [etichetta]="'anagrafica.campi.stato_nascita_codice' | transloco"
               (scelto)="scegliStatoNascita(indice, $event)"
             />
           </div>
@@ -105,7 +105,7 @@
           @if (natoInItalia(indice)) {
             <app-cerca-luogo
               tipo="comune"
-              [etichetta]="'portale.checkin.campi.comune_nascita_codice' | transloco"
+              [etichetta]="'anagrafica.campi.comune_nascita_codice' | transloco"
               (scelto)="scegliComuneNascita(indice, $event)"
             />
           }
@@ -113,18 +113,18 @@
           @if (conDocumento(indice)) {
             <p class="aiuto">{{ 'portale.checkin.documento' | transloco }}</p>
             <div class="campi-coppia">
-              <app-campo [etichetta]="'portale.checkin.campi.tipo_documento' | transloco">
+              <app-campo [etichetta]="'anagrafica.campi.tipo_documento' | transloco">
                 <select formControlName="tipo_documento">
-                  <option value="">{{ 'portale.checkin.scegli' | transloco }}</option>
+                  <option value="">{{ 'anagrafica.scegli' | transloco }}</option>
                   @for (tipo of tipiDocumento; track tipo) {
                     <option [value]="tipo">
-                      {{ 'portale.checkin.documenti.' + tipo | transloco }}
+                      {{ 'anagrafica.documenti.' + tipo | transloco }}
                     </option>
                   }
                 </select>
               </app-campo>
               <app-campo
-                [etichetta]="'portale.checkin.campi.numero_documento' | transloco"
+                [etichetta]="'anagrafica.campi.numero_documento' | transloco"
                 [errore]="errori.campo(riga.controls.numero_documento)"
               >
                 <input
@@ -136,11 +136,11 @@
             </div>
             <div class="campi-coppia">
               <app-cerca-luogo
-                [etichetta]="'portale.checkin.campi.luogo_rilascio_codice' | transloco"
-                [aiuto]="'portale.checkin.luogoRilascio' | transloco"
+                [etichetta]="'anagrafica.campi.luogo_rilascio_codice' | transloco"
+                [aiuto]="'anagrafica.luogoRilascio' | transloco"
                 (scelto)="scegli(indice, 'luogo_rilascio_codice', $event)"
               />
-              <app-campo [etichetta]="'portale.checkin.campi.scadenza_documento' | transloco">
+              <app-campo [etichetta]="'anagrafica.campi.scadenza_documento' | transloco">
                 <input type="date" formControlName="scadenza_documento" />
               </app-campo>
             </div>

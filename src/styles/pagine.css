@@ -30,6 +30,15 @@
   text-transform: uppercase;
 }
 
+/* Testo secondario; con .piccolo per le righe di dettaglio. */
+.tenue {
+  color: var(--bb-testo-tenue);
+}
+
+.piccolo {
+  font-size: 0.875rem;
+}
+
 .introduzione {
   color: var(--bb-testo-tenue);
   font-size: 1.125rem;
@@ -48,6 +57,22 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
   gap: var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Quanti elementi ha trovato una ricerca, sopra l'elenco. */
+.conteggio {
+  margin: 0;
+  color: var(--bb-testo-tenue);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Elenco di righe (prenotazioni, ospiti), una sotto l'altra. */
+.elenco {
+  display: grid;
+  gap: var(--bb-spazio-3);
   margin: 0;
   padding: 0;
   list-style: none;
