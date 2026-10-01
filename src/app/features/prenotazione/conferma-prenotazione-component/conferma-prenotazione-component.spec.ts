@@ -79,9 +79,10 @@ describe('ConfermaPrenotazioneComponent', () => {
     });
   });
 
-  async function crea() {
+  async function crea(staff = false) {
     const fixture = TestBed.createComponent(ConfermaPrenotazioneComponent);
     fixture.componentRef.setInput('scelta', scelta);
+    fixture.componentRef.setInput('staff', staff);
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const scrivi = async (nome: string, valore: string) => {
@@ -168,6 +169,44 @@ describe('ConfermaPrenotazioneComponent', () => {
     expect(naviga).toHaveBeenCalledWith(['/prenotazioni', 'BB-9'], {
       state: { email: 'cliente@esempio.it' },
     });
+  });
+
+  it('lo staff prenota senza email, con canale e note, e apre la scheda', async () => {
+    prenotazioni.creaPrenotazione.mockReturnValue(of({ id: 42, codice: 'BB-42' }));
+    const naviga = vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
+    const { elemento, scrivi, invia } = await crea(true);
+    const stato = elemento.querySelector<HTMLSelectElement>('[formControlName="stato"]')!;
+
+    await scrivi('nome', 'Anna');
+    await scrivi('cognome', 'Rossi');
+    await scrivi('id_esterno', 'BK-1');
+    await scrivi('note_interne', 'Cliente abituale');
+    stato.selectedIndex = 1;
+    stato.dispatchEvent(new Event('change'));
+    await invia();
+
+    expect(prenotazioni.creaPrenotazione).toHaveBeenCalledWith(
+      expect.objectContaining({
+        titolare: { nome: 'Anna', cognome: 'Rossi', email: '', telefono: '', lingua: 'en' },
+        canale: 'telefono',
+        stato: 'in_attesa',
+        id_esterno: 'BK-1',
+        note_interne: 'Cliente abituale',
+      }),
+    );
+    expect(naviga).toHaveBeenCalledWith(['/staff/prenotazioni', 42]);
+  });
+
+  it('online i campi dello staff non ci sono', async () => {
+    prenotazioni.creaPrenotazione.mockReturnValue(of({ codice: 'BB-9' }));
+    auth.haRuolo.mockReturnValue(true);
+    vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
+    const { elemento, invia } = await crea();
+
+    expect(elemento.querySelector('[formControlName="canale"]')).toBeNull();
+    await invia();
+
+    expect(prenotazioni.creaPrenotazione.mock.calls[0][0]).not.toHaveProperty('canale');
   });
 
   it('un codice valido e gli extra ricalcolano il conto', async () => {

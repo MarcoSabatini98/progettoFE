@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  booleanAttribute,
   computed,
   inject,
   input,
@@ -18,11 +19,20 @@ import { AuthService } from '../../../core/services/auth/auth-service';
 import { CamereService } from '../../../core/services/camere/camere-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
-import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazione-costanti';
+import { LINGUE, NOMI_LINGUE } from '../../../core/services/lingua/lingua-costanti';
 import {
+  PERCORSI_PUBBLICI,
+  PERCORSI_STAFF,
+} from '../../../core/services/navigazione/navigazione-costanti';
+import {
+  CANALE_STAFF,
+  CANALI,
   FORMATO_CODICE_SCONTO,
   LUNGHEZZA_CODICE_SCONTO,
+  LUNGHEZZA_ID_ESTERNO,
+  LUNGHEZZA_NOTE_INTERNE,
   LUNGHEZZA_RICHIESTE,
+  STATI_NUOVA_STAFF,
 } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
 import { RUOLI } from '../../../core/services/ruoli/ruoli-costanti';
@@ -31,6 +41,8 @@ import { LUNGHEZZA_DATI_PERSONALI } from '../../../core/services/utenti/utenti-c
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { CodiceScontoVerificatoInterface } from '../../../shared/models/codice-sconto/codice-sconto-model';
+import { Lingua } from '../../../shared/models/lingua/lingua-model';
+import { Canale } from '../../../shared/models/prenotazione/prenotazione-model';
 import {
   PreventivoInterface,
   PreventivoPayload,
@@ -70,12 +82,22 @@ export class ConfermaPrenotazioneComponent {
   protected readonly errori = inject(ErroriService);
 
   readonly scelta = input.required<SceltaSoggiornoInterface>();
+  /** Dal gestionale: canale, stato e note interne; email del titolare facoltativa. */
+  readonly staff = input(false, { transform: booleanAttribute });
   readonly cambiaCamera = output();
 
   protected readonly lunghezza = {
     ...LUNGHEZZA_DATI_PERSONALI,
     codice: LUNGHEZZA_CODICE_SCONTO,
     richieste: LUNGHEZZA_RICHIESTE,
+    idEsterno: LUNGHEZZA_ID_ESTERNO,
+    note: LUNGHEZZA_NOTE_INTERNE,
+  };
+  protected readonly scelte = {
+    canali: CANALI,
+    stati: STATI_NUOVA_STAFF,
+    lingue: LINGUE,
+    nomiLingue: NOMI_LINGUE,
   };
   /** Il cliente collegato prenota a suo nome; visitatori e staff indicano il titolare. */
   protected readonly chiedeTitolare = computed(() => !this.auth.haRuolo([RUOLI.CLIENTE]));
@@ -93,8 +115,17 @@ export class ConfermaPrenotazioneComponent {
   protected readonly titolare = this.fb.group({
     nome: ['', [Validators.required, Validators.maxLength(LUNGHEZZA_DATI_PERSONALI.nome)]],
     cognome: ['', [Validators.required, Validators.maxLength(LUNGHEZZA_DATI_PERSONALI.cognome)]],
-    email: ['', [Validators.required, Validators.email]],
+    // Obbligatoria solo online: [required] nel template.
+    email: ['', Validators.email],
     telefono: ['', Validators.maxLength(LUNGHEZZA_DATI_PERSONALI.telefono)],
+  });
+  protected readonly gestione = this.fb.group({
+    canale: this.fb.control<Canale>(CANALE_STAFF),
+    stato: this.fb.control<(typeof STATI_NUOVA_STAFF)[number]>(STATI_NUOVA_STAFF[0]),
+    id_esterno: ['', Validators.maxLength(LUNGHEZZA_ID_ESTERNO)],
+    note_interne: ['', Validators.maxLength(LUNGHEZZA_NOTE_INTERNE)],
+    /** Lingua delle email al titolare. */
+    lingua: this.fb.control<Lingua>(this.lingua.attiva()),
   });
 
   protected readonly pacchetti = rxResource({
@@ -196,14 +227,14 @@ export class ConfermaPrenotazioneComponent {
    */
   invia(): void {
     const titolareMancante = this.chiedeTitolare() && this.titolare.invalid;
-    if (this.opzioni.invalid || titolareMancante) {
-      this.opzioni.markAllAsTouched();
-      this.titolare.markAllAsTouched();
+    if (this.opzioni.invalid || titolareMancante || this.gestione.invalid) {
+      [this.opzioni, this.titolare, this.gestione].forEach((modulo) => modulo.markAllAsTouched());
       return;
     }
     const { richieste_speciali, ora_arrivo_prevista } = this.opzioni.getRawValue();
+    const { lingua, ...gestione } = this.gestione.getRawValue();
     const titolare = this.chiedeTitolare()
-      ? { ...this.titolare.getRawValue(), lingua: this.lingua.attiva() }
+      ? { ...this.titolare.getRawValue(), lingua: this.staff() ? lingua : this.lingua.attiva() }
       : undefined;
     this.inCorso.set(true);
     this.errore.set('');
@@ -214,13 +245,20 @@ export class ConfermaPrenotazioneComponent {
         titolare,
         richieste_speciali: richieste_speciali || null,
         ora_arrivo_prevista: ora_arrivo_prevista || null,
+        ...(this.staff() && {
+          ...gestione,
+          id_esterno: gestione.id_esterno || null,
+          note_interne: gestione.note_interne || null,
+        }),
       })
       .pipe(finalize(() => this.inCorso.set(false)))
       .subscribe({
-        next: ({ codice }) =>
-          void this.router.navigate([PERCORSI_PUBBLICI.prenotazioni, codice], {
-            state: { email: titolare?.email ?? this.auth.utente()?.email },
-          }),
+        next: ({ id, codice }) =>
+          void (this.staff()
+            ? this.router.navigate([PERCORSI_STAFF.prenotazioni, id])
+            : this.router.navigate([PERCORSI_PUBBLICI.prenotazioni, codice], {
+                state: { email: titolare?.email ?? this.auth.utente()?.email },
+              })),
         error: (errore: unknown) => this.errore.set(this.errori.messaggio(errore)),
       });
   }

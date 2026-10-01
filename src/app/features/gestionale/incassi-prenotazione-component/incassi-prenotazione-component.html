@@ -1,0 +1,45 @@
+<h2 class="titolo-scheda">{{ 'gestionale.incassi.titolo' | transloco }}</h2>
+
+@if (dati.hasValue()) {
+  @let movimenti = dati.value().movimenti;
+  <ul class="movimenti">
+    @for (movimento of movimenti; track movimento.id) {
+      <li [class.uscita]="movimento.tipo === 'rimborso'">
+        <span class="quando">{{
+          movimento.pagato_il ?? movimento.creato_il | data: 'giorno'
+        }}</span>
+        <span class="cosa">
+          {{ 'gestionale.tipiPagamento.' + movimento.tipo | transloco }} ·
+          {{ 'gestionale.metodi.' + movimento.metodo | transloco }}
+          @if (movimento.stato !== 'completato') {
+            <span class="stato">{{
+              'gestionale.statiPagamento.' + movimento.stato | transloco
+            }}</span>
+          }
+          @if (movimento.documento_fiscale) {
+            <span class="tenue">
+              {{
+                'gestionale.incassi.ricevuta' | transloco: { numero: movimento.documento_fiscale }
+              }}
+            </span>
+          }
+        </span>
+        <span class="importo">{{ movimento.importo | prezzo }}</span>
+      </li>
+    } @empty {
+      <li class="tenue">{{ 'gestionale.incassi.nessuno' | transloco }}</li>
+    }
+  </ul>
+
+  @if (registra) {
+    @let riepilogo = dati.value().riepilogo;
+    <app-registra-incasso
+      [prenotazioneId]="prenotazione().id"
+      [daPagare]="riepilogo.da_pagare_ora"
+      (registrato)="aggiornata.emit()"
+    />
+    <app-link-pagamento [prenotazioneId]="prenotazione().id" [riepilogo]="riepilogo" />
+  }
+} @else if (dati.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

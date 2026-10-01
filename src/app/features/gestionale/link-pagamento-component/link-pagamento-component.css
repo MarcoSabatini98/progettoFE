@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+:host > .pulsante {
+  justify-self: start;
+}
+
+.spunta {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  min-height: var(--bb-controllo-altezza);
+  cursor: pointer;
+}

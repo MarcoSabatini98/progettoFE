@@ -53,7 +53,8 @@
       "utenti": "Benutzer",
       "ruoli": "Rollen und Rechte",
       "registro": "Aktivitätsprotokoll",
-      "impostazioni": "Einstellungen"
+      "impostazioni": "Einstellungen",
+      "oggi": "Heute"
     },
     "sito": {
       "aria": "Website-Menü",
@@ -182,7 +183,10 @@
     "DOCUMENTO_NON_TROVATO": "Dokument nicht gefunden.",
     "NON_RIMBORSABILE": "Dieser Tarif ist nicht erstattungsfähig.",
     "SOGGIORNO_INIZIATO": "Der Aufenthalt hat bereits begonnen.",
-    "PAGAMENTO_NON_AVVIATO": "Die Zahlung konnte nicht gestartet werden."
+    "PAGAMENTO_NON_AVVIATO": "Die Zahlung konnte nicht gestartet werden.",
+    "ARRIVO_FUTURO": "Der Anreisetag ist noch nicht gekommen.",
+    "CAMERA_NON_TROVATA": "Zimmer nicht gefunden.",
+    "SALDO_APERTO": "Es ist noch ein Restbetrag offen."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -588,5 +592,143 @@
     "slide": "{{ numero }} von {{ totale }}",
     "precedente": "Zurück",
     "successiva": "Weiter"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Rezeption",
+      "titolo": "Der Tag",
+      "giorno": "Tag",
+      "arrivi": "Anreisen",
+      "partenze": "Abreisen",
+      "in_casa": "Im Haus",
+      "vuoto": "Keine Buchungen."
+    },
+    "elenco": {
+      "occhiello": "Aufenthalte",
+      "titolo": "Buchungen",
+      "cerca": "Nach Code, Nachname oder E-Mail suchen",
+      "tutti": "Alle",
+      "dal": "Anreise ab",
+      "al": "Anreise bis",
+      "ordine": "Reihenfolge",
+      "recenti": "Späteste Anreisen zuerst",
+      "vicine": "Nächste Anreisen zuerst",
+      "totale": "Gefundene Buchungen: {{ totale }}",
+      "nessuna": "Keine Buchungen mit diesen Filtern.",
+      "pagine": "Seiten",
+      "precedente": "Zurück",
+      "successiva": "Weiter",
+      "pagina": "Seite {{ pagina }} von {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Verwaltung",
+      "titolo": "Neue Buchung",
+      "introduzione": "Buchung per Telefon, E-Mail oder an der Rezeption: Daten, Gäste und Zimmer wählen.",
+      "gestione": "Verwaltung",
+      "linguaAiuto": "Sprache der E-Mails an den Gast."
+    },
+    "scheda": {
+      "tutte": "Alle Buchungen",
+      "creata": "Erstellt",
+      "cancellata": "Storniert",
+      "motivo": "Stornogrund"
+    },
+    "campi": {
+      "canale": "Kanal",
+      "stato": "Status",
+      "idEsterno": "Portal-ID",
+      "lingua": "Sprache",
+      "noteInterne": "Interne Notizen",
+      "noteInterneAiuto": "Nur für das Personal sichtbar.",
+      "camera": "Zimmer",
+      "adulti": "Erwachsene",
+      "bambini": "Kinder",
+      "oraArrivo": "Voraussichtliche Ankunftszeit",
+      "richieste": "Wünsche des Gastes",
+      "tipo": "Art",
+      "metodo": "Zahlungsart",
+      "importo": "Betrag",
+      "documentoFiscale": "Belegnummer",
+      "riferimento": "Referenz",
+      "note": "Notizen"
+    },
+    "canali": {
+      "diretto": "Website",
+      "telefono": "Telefon",
+      "email": "E-Mail",
+      "walk_in": "Laufkundschaft",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Anderes Portal"
+    },
+    "link": {
+      "copia": "Kopieren",
+      "copiato": "Kopiert"
+    },
+    "linkCheckin": {
+      "titolo": "Online-Check-in",
+      "testo": "Der Gast gibt seine Ausweisdaten vor der Anreise ein.",
+      "crea": "Link erstellen"
+    },
+    "linkPagamento": {
+      "titolo": "Zahlungslink",
+      "apri": "Zahlungslink erstellen",
+      "crea": "Link erstellen",
+      "importoAiuto": "Leer: der jetzt fällige Betrag.",
+      "inviaEmail": "Link per E-Mail an den Gast senden",
+      "inviato": "Link per E-Mail gesendet."
+    },
+    "cancella": {
+      "penale": "Stornogebühr",
+      "penaleAiuto": "Leer: die Gebühr laut Tarif."
+    },
+    "azioni": {
+      "conferma": "Bestätigen",
+      "checkIn": "Check-in",
+      "noShow": "Nichterscheinen",
+      "checkOut": "Check-out",
+      "annulla": "Abbrechen",
+      "conferme": {
+        "noShow": "Nichterscheinen bestätigen",
+        "checkOut": "Trotzdem abschließen"
+      }
+    },
+    "modifica": {
+      "titolo": "Ändern",
+      "testo": "Zimmer, Daten, Gäste oder Notizen ändern.",
+      "apri": "Buchung ändern",
+      "ricalcolo": "Bei Änderung von Zimmer, Daten oder Gästen wird der Preis neu berechnet.",
+      "salva": "Änderungen speichern"
+    },
+    "incassi": {
+      "titolo": "Zahlungen",
+      "nessuno": "Keine Bewegungen.",
+      "registra": "Zahlung erfassen",
+      "conferma": "Erfassen",
+      "riferimentoAiuto": "Z. B. Überweisungsreferenz oder Kartenbeleg.",
+      "ricevuta": "Beleg {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Anzahlung",
+      "saldo": "Restzahlung",
+      "extra": "Extra",
+      "penale": "Stornogebühr",
+      "rimborso": "Erstattung"
+    },
+    "metodi": {
+      "stripe": "Karte",
+      "paypal": "PayPal",
+      "bonifico": "Überweisung",
+      "contanti": "Bar",
+      "pos": "Kartenterminal",
+      "ota": "Portal"
+    },
+    "statiPagamento": {
+      "in_attesa": "Ausstehend",
+      "completato": "Abgeschlossen",
+      "fallito": "Fehlgeschlagen",
+      "annullato": "Storniert"
+    }
   }
 }

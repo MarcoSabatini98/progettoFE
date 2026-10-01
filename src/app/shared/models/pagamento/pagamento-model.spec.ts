@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   METODI_STRUTTURA,
   STATI_PAGAMENTO,
+  TIPI_INCASSO,
   TIPI_PAGAMENTO,
 } from '../../../core/services/pagamenti/pagamenti-costanti';
 import { PagamentoInterface, RegistraPagamentoPayload } from './pagamento-model';
@@ -42,5 +43,6 @@ describe('PagamentoInterface', () => {
     };
 
     expect(METODI_STRUTTURA).toContain(incasso.metodo);
+    expect(TIPI_INCASSO).toContain(incasso.tipo);
   });
 });

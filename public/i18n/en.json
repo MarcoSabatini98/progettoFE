@@ -53,7 +53,8 @@
       "utenti": "Users",
       "ruoli": "Roles and permissions",
       "registro": "Activity log",
-      "impostazioni": "Settings"
+      "impostazioni": "Settings",
+      "oggi": "Today"
     },
     "sito": {
       "aria": "Site menu",
@@ -182,7 +183,10 @@
     "DOCUMENTO_NON_TROVATO": "Document not found.",
     "NON_RIMBORSABILE": "This rate is non-refundable.",
     "SOGGIORNO_INIZIATO": "The stay has already started.",
-    "PAGAMENTO_NON_AVVIATO": "The payment could not be started."
+    "PAGAMENTO_NON_AVVIATO": "The payment could not be started.",
+    "ARRIVO_FUTURO": "The arrival day has not come yet.",
+    "CAMERA_NON_TROVATA": "Room not found.",
+    "SALDO_APERTO": "There is still a balance to collect."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -588,5 +592,143 @@
     "slide": "{{ numero }} of {{ totale }}",
     "precedente": "Previous",
     "successiva": "Next"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Front desk",
+      "titolo": "The day",
+      "giorno": "Day",
+      "arrivi": "Arrivals",
+      "partenze": "Departures",
+      "in_casa": "In house",
+      "vuoto": "No bookings."
+    },
+    "elenco": {
+      "occhiello": "Stays",
+      "titolo": "Bookings",
+      "cerca": "Search by code, surname or email",
+      "tutti": "All",
+      "dal": "Arrival from",
+      "al": "Arrival by",
+      "ordine": "Order",
+      "recenti": "Latest arrivals first",
+      "vicine": "Nearest arrivals first",
+      "totale": "Bookings found: {{ totale }}",
+      "nessuna": "No bookings match these filters.",
+      "pagine": "Pages",
+      "precedente": "Previous",
+      "successiva": "Next",
+      "pagina": "Page {{ pagina }} of {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Back office",
+      "titolo": "New booking",
+      "introduzione": "Booking by phone, email or at the desk: choose dates, guests and room.",
+      "gestione": "Management",
+      "linguaAiuto": "Language of the emails sent to the guest."
+    },
+    "scheda": {
+      "tutte": "All bookings",
+      "creata": "Created",
+      "cancellata": "Cancelled",
+      "motivo": "Cancellation reason"
+    },
+    "campi": {
+      "canale": "Channel",
+      "stato": "Status",
+      "idEsterno": "Portal id",
+      "lingua": "Language",
+      "noteInterne": "Internal notes",
+      "noteInterneAiuto": "Visible to staff only.",
+      "camera": "Room",
+      "adulti": "Adults",
+      "bambini": "Children",
+      "oraArrivo": "Expected arrival time",
+      "richieste": "Guest requests",
+      "tipo": "Type",
+      "metodo": "Method",
+      "importo": "Amount",
+      "documentoFiscale": "Receipt number",
+      "riferimento": "Reference",
+      "note": "Notes"
+    },
+    "canali": {
+      "diretto": "Website",
+      "telefono": "Phone",
+      "email": "Email",
+      "walk_in": "Walk-in",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Other portal"
+    },
+    "link": {
+      "copia": "Copy",
+      "copiato": "Copied"
+    },
+    "linkCheckin": {
+      "titolo": "Online check-in",
+      "testo": "The guest enters their ID details before arriving.",
+      "crea": "Create the link"
+    },
+    "linkPagamento": {
+      "titolo": "Payment link",
+      "apri": "Create a payment link",
+      "crea": "Create the link",
+      "importoAiuto": "Empty: the amount due now.",
+      "inviaEmail": "Email the link to the guest",
+      "inviato": "Link sent by email."
+    },
+    "cancella": {
+      "penale": "Penalty",
+      "penaleAiuto": "Empty: the penalty set by the rate."
+    },
+    "azioni": {
+      "conferma": "Confirm",
+      "checkIn": "Check in",
+      "noShow": "No-show",
+      "checkOut": "Check out",
+      "annulla": "Cancel",
+      "conferme": {
+        "noShow": "Confirm the no-show",
+        "checkOut": "Close anyway"
+      }
+    },
+    "modifica": {
+      "titolo": "Edit",
+      "testo": "Change room, dates, guests or notes.",
+      "apri": "Edit the booking",
+      "ricalcolo": "Changing room, dates or guests recalculates the price.",
+      "salva": "Save changes"
+    },
+    "incassi": {
+      "titolo": "Payments",
+      "nessuno": "No transactions.",
+      "registra": "Record a payment",
+      "conferma": "Record",
+      "riferimentoAiuto": "E.g. bank transfer reference or POS slip.",
+      "ricevuta": "Receipt {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Deposit",
+      "saldo": "Balance",
+      "extra": "Extra",
+      "penale": "Penalty",
+      "rimborso": "Refund"
+    },
+    "metodi": {
+      "stripe": "Card",
+      "paypal": "PayPal",
+      "bonifico": "Bank transfer",
+      "contanti": "Cash",
+      "pos": "POS",
+      "ota": "Portal"
+    },
+    "statiPagamento": {
+      "in_attesa": "Pending",
+      "completato": "Completed",
+      "fallito": "Failed",
+      "annullato": "Cancelled"
+    }
   }
 }

@@ -53,7 +53,8 @@
       "utenti": "Usuarios",
       "ruoli": "Roles y permisos",
       "registro": "Registro de actividad",
-      "impostazioni": "Ajustes"
+      "impostazioni": "Ajustes",
+      "oggi": "Hoy"
     },
     "sito": {
       "aria": "Menú del sitio",
@@ -182,7 +183,10 @@
     "DOCUMENTO_NON_TROVATO": "Documento no encontrado.",
     "NON_RIMBORSABILE": "Esta tarifa no es reembolsable.",
     "SOGGIORNO_INIZIATO": "La estancia ya ha comenzado.",
-    "PAGAMENTO_NON_AVVIATO": "No se ha podido iniciar el pago."
+    "PAGAMENTO_NON_AVVIATO": "No se ha podido iniciar el pago.",
+    "ARRIVO_FUTURO": "Todavía no ha llegado el día de llegada.",
+    "CAMERA_NON_TROVATA": "Habitación no encontrada.",
+    "SALDO_APERTO": "Queda un saldo por cobrar."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -588,5 +592,143 @@
     "slide": "{{ numero }} de {{ totale }}",
     "precedente": "Anterior",
     "successiva": "Siguiente"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Recepción",
+      "titolo": "El día",
+      "giorno": "Día",
+      "arrivi": "Llegadas",
+      "partenze": "Salidas",
+      "in_casa": "Alojados",
+      "vuoto": "Ninguna reserva."
+    },
+    "elenco": {
+      "occhiello": "Estancias",
+      "titolo": "Reservas",
+      "cerca": "Buscar por código, apellido o email",
+      "tutti": "Todos",
+      "dal": "Llegada desde",
+      "al": "Llegada hasta",
+      "ordine": "Orden",
+      "recenti": "Llegadas más lejanas primero",
+      "vicine": "Llegadas más cercanas primero",
+      "totale": "Reservas encontradas: {{ totale }}",
+      "nessuna": "Ninguna reserva con estos filtros.",
+      "pagine": "Páginas",
+      "precedente": "Anterior",
+      "successiva": "Siguiente",
+      "pagina": "Página {{ pagina }} de {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Gestión",
+      "titolo": "Nueva reserva",
+      "introduzione": "Reserva por teléfono, email o en el mostrador: elige fechas, huéspedes y habitación.",
+      "gestione": "Gestión",
+      "linguaAiuto": "Idioma de los emails enviados al huésped."
+    },
+    "scheda": {
+      "tutte": "Todas las reservas",
+      "creata": "Creada",
+      "cancellata": "Cancelada",
+      "motivo": "Motivo de la cancelación"
+    },
+    "campi": {
+      "canale": "Canal",
+      "stato": "Estado",
+      "idEsterno": "Id en el portal",
+      "lingua": "Idioma",
+      "noteInterne": "Notas internas",
+      "noteInterneAiuto": "Visibles solo para el personal.",
+      "camera": "Habitación",
+      "adulti": "Adultos",
+      "bambini": "Niños",
+      "oraArrivo": "Hora de llegada prevista",
+      "richieste": "Peticiones del huésped",
+      "tipo": "Tipo",
+      "metodo": "Método",
+      "importo": "Importe",
+      "documentoFiscale": "Número de recibo",
+      "riferimento": "Referencia",
+      "note": "Notas"
+    },
+    "canali": {
+      "diretto": "Web",
+      "telefono": "Teléfono",
+      "email": "Email",
+      "walk_in": "En el mostrador",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Otro portal"
+    },
+    "link": {
+      "copia": "Copiar",
+      "copiato": "Copiado"
+    },
+    "linkCheckin": {
+      "titolo": "Check-in online",
+      "testo": "El huésped introduce sus documentos antes de llegar.",
+      "crea": "Crear el enlace"
+    },
+    "linkPagamento": {
+      "titolo": "Enlace de pago",
+      "apri": "Crear un enlace de pago",
+      "crea": "Crear el enlace",
+      "importoAiuto": "Vacío: lo que se debe ahora.",
+      "inviaEmail": "Enviar el enlace por email al huésped",
+      "inviato": "Enlace enviado por email."
+    },
+    "cancella": {
+      "penale": "Penalización",
+      "penaleAiuto": "Vacío: la penalización prevista por la tarifa."
+    },
+    "azioni": {
+      "conferma": "Confirmar",
+      "checkIn": "Check-in",
+      "noShow": "No presentado",
+      "checkOut": "Check-out",
+      "annulla": "Cancelar",
+      "conferme": {
+        "noShow": "Confirmar no presentado",
+        "checkOut": "Cerrar de todos modos"
+      }
+    },
+    "modifica": {
+      "titolo": "Modificar",
+      "testo": "Cambia habitación, fechas, huéspedes o notas.",
+      "apri": "Modificar la reserva",
+      "ricalcolo": "Al cambiar habitación, fechas o huéspedes el precio se recalcula.",
+      "salva": "Guardar cambios"
+    },
+    "incassi": {
+      "titolo": "Cobros",
+      "nessuno": "Ningún movimiento.",
+      "registra": "Registrar un cobro",
+      "conferma": "Registrar",
+      "riferimentoAiuto": "P. ej. referencia de la transferencia o ticket del TPV.",
+      "ricevuta": "Recibo {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Anticipo",
+      "saldo": "Saldo",
+      "extra": "Extra",
+      "penale": "Penalización",
+      "rimborso": "Reembolso"
+    },
+    "metodi": {
+      "stripe": "Tarjeta",
+      "paypal": "PayPal",
+      "bonifico": "Transferencia",
+      "contanti": "Efectivo",
+      "pos": "TPV",
+      "ota": "Portal"
+    },
+    "statiPagamento": {
+      "in_attesa": "Pendiente",
+      "completato": "Completado",
+      "fallito": "Fallido",
+      "annullato": "Anulado"
+    }
   }
 }

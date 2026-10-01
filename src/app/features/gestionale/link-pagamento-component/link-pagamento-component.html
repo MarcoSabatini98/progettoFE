@@ -1,0 +1,56 @@
+@if (url(); as link) {
+  <h3>{{ 'gestionale.linkPagamento.titolo' | transloco }}</h3>
+  <app-link-copiabile [url]="link" [etichetta]="'gestionale.linkPagamento.titolo' | transloco" />
+  @if (inviato()) {
+    <p class="esito esito-ok" role="status">{{ 'gestionale.linkPagamento.inviato' | transloco }}</p>
+  }
+} @else if (aperto()) {
+  @let controlli = modulo.controls;
+  <form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="crea()" novalidate>
+    <h3>{{ 'gestionale.linkPagamento.titolo' | transloco }}</h3>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.campi.metodo' | transloco">
+        <select formControlName="metodo">
+          @for (metodo of metodi(); track metodo) {
+            <option [ngValue]="metodo">{{ 'gestionale.metodi.' + metodo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.campi.importo' | transloco"
+        [aiuto]="'gestionale.linkPagamento.importoAiuto' | transloco"
+        [errore]="errori.campo(controlli.importo)"
+      >
+        <input
+          type="number"
+          inputmode="decimal"
+          formControlName="importo"
+          [min]="importoMinimo"
+          [step]="importoMinimo"
+        />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input type="checkbox" formControlName="invia_email" />
+      {{ 'gestionale.linkPagamento.inviaEmail' | transloco }}
+    </label>
+
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        <app-icona nome="link" />
+        {{ 'gestionale.linkPagamento.crea' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="aperto.set(false)">
+        {{ 'gestionale.azioni.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <button class="pulsante pulsante-secondario" type="button" (click)="apri()">
+    <app-icona nome="link" />
+    {{ 'gestionale.linkPagamento.apri' | transloco }}
+  </button>
+}

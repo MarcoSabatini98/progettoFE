@@ -80,6 +80,17 @@
   text-align: center;
 }
 
+/* Link per tornare all'elenco da una scheda. */
+.indietro {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+  text-decoration: none;
+}
+
 /* Testo semplice dal backend: gli a capo diventano paragrafi. */
 .testo-libero {
   white-space: pre-line;

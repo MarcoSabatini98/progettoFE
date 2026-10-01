@@ -76,3 +76,16 @@ input[type='radio'] {
   background: var(--bb-ok-tenue);
   color: var(--bb-ok);
 }
+
+/* Modulo dentro una scheda: campi in colonna. */
+.modulo-scheda {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+/* Pulsanti affiancati che vanno a capo sul telefono. */
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}

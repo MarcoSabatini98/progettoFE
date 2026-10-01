@@ -71,7 +71,21 @@ export const FORMATO_CODICE_SCONTO = /^[A-Z0-9_-]+$/i;
 
 export const LUNGHEZZA_CODICE_SCONTO = 30;
 
-/** Stati in cui il cliente può ancora cancellare o cambiare gli extra (prenotazioni.service.js). */
+/** Prenotazione presa dalla reception (prenotazioni.validator.js): stati ammessi e canale proposto. */
+export const STATI_NUOVA_STAFF = ['confermata', 'in_attesa'] as const;
+export const CANALE_STAFF = 'telefono';
+
+/** Id della prenotazione sul portale esterno e note interne (prenotazioni.validator.js). */
+export const LUNGHEZZA_ID_ESTERNO = 100;
+export const LUNGHEZZA_NOTE_INTERNE = 5000;
+
+/** 'HH:mm:ss' del backend → 'HH:mm' di campi e schede. */
+export const LUNGHEZZA_ORA = 5;
+
+/** Errore del check-out con saldo da incassare: si può chiudere lo stesso con `forza`. */
+export const CODICE_SALDO_APERTO = 'SALDO_APERTO';
+
+/** Stati in cui si può ancora cancellare o, per il cliente, cambiare gli extra (prenotazioni.service.js). */
 export const STATI_MODIFICABILI_CLIENTE = ['in_attesa', 'confermata'] as const;
 
 /** Motivo della cancellazione (prenotazioni.validator.js). */

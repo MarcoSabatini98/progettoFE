@@ -3,10 +3,10 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
-import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { LinguaService } from '../../../core/services/lingua/lingua-service';
-import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
+import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
+import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { LinguaService } from '../../core/services/lingua/lingua-service';
+import { PrenotazioniService } from '../../core/services/prenotazioni/prenotazioni-service';
 import { CancellaPrenotazioneComponent } from './cancella-prenotazione-component';
 
 describe('CancellaPrenotazioneComponent', () => {
@@ -27,9 +27,10 @@ describe('CancellaPrenotazioneComponent', () => {
     });
   });
 
-  async function apri() {
+  async function apri(staff = false) {
     const fixture = TestBed.createComponent(CancellaPrenotazioneComponent);
     fixture.componentRef.setInput('prenotazioneId', 7);
+    fixture.componentRef.setInput('staff', staff);
     const cancellata = vi.fn();
     fixture.componentInstance.cancellata.subscribe(cancellata);
     await fixture.whenStable();
@@ -68,6 +69,29 @@ describe('CancellaPrenotazioneComponent', () => {
       true,
     );
     expect(cancellata).toHaveBeenCalled();
+  });
+
+  it('il cliente non vede la penale da applicare', async () => {
+    const { elemento } = await apri();
+
+    expect(elemento.querySelector('input[type="number"]')).toBeNull();
+  });
+
+  it('lo staff usa le sue rotte e può cambiare la penale', async () => {
+    prenotazioni.cancellaPrenotazione.mockReturnValue(of({}));
+    const { elemento, conferma } = await apri(true);
+    const penale = elemento.querySelector<HTMLInputElement>('input[type="number"]')!;
+
+    penale.value = '40';
+    penale.dispatchEvent(new Event('input'));
+    await conferma('');
+
+    expect(prenotazioni.anteprimaCancellazione).toHaveBeenCalledWith(7, false);
+    expect(prenotazioni.cancellaPrenotazione).toHaveBeenCalledWith(
+      7,
+      { motivo: null, penale: 40 },
+      false,
+    );
   });
 
   it('se il backend rifiuta spiega perché', async () => {

@@ -6,7 +6,7 @@ import { CodicePermesso } from '../../../shared/models/permesso/permesso-model';
 import { RequisitiAccessoInterface } from '../../../shared/models/requisiti-accesso/requisiti-accesso-model';
 import { CodiceRuolo } from '../../../shared/models/ruolo/ruolo-model';
 import { AuthService } from '../auth/auth-service';
-import { PERCORSI_PUBBLICI, PERCORSO_STAFF } from './navigazione-costanti';
+import { PERCORSI_PUBBLICI, PERCORSI_STAFF, PERCORSO_STAFF } from './navigazione-costanti';
 import { NavigazioneService } from './navigazione-service';
 
 describe('NavigazioneService', () => {
@@ -32,6 +32,12 @@ describe('NavigazioneService', () => {
       [`${PERCORSO_STAFF}/pulizie`, `${PERCORSO_STAFF}/chat`, `${PERCORSO_STAFF}/manutenzione`],
     ]);
     expect(service.primaPaginaStaff()).toBe(`${PERCORSO_STAFF}/pulizie`);
+  });
+
+  it('la reception, senza cruscotto, comincia dalla giornata', () => {
+    const { service } = crea('receptionist', ['prenotazioni.leggi', 'pulizie.leggi']);
+
+    expect(service.primaPaginaStaff()).toBe(PERCORSI_STAFF.oggi);
   });
 
   it('le voci riservate al ruolo admin compaiono solo all’admin', () => {
