@@ -1,0 +1,58 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.manutenzione.nuova' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="segnala()" novalidate>
+  <app-campo
+    [etichetta]="'gestionale.manutenzione.campi.titolo' | transloco"
+    [errore]="errori.campo(controlli.titolo)"
+  >
+    <input type="text" formControlName="titolo" [maxLength]="lunghezza.titolo" required />
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.manutenzione.campi.camera' | transloco">
+      <select formControlName="camera_id">
+        <option [ngValue]="null">{{ 'gestionale.manutenzione.areaComune' | transloco }}</option>
+        @for (camera of elencoCamere.value() ?? []; track camera.id) {
+          <option [ngValue]="camera.id">{{ camera.numero }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.manutenzione.campi.priorita' | transloco">
+      <select formControlName="priorita">
+        @for (livello of priorita; track livello) {
+          <option [value]="livello">
+            {{ 'gestionale.pulizie.priorita.' + livello | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  @if (gestore() && controlli.camera_id.value !== null) {
+    <app-campo
+      [etichetta]="'gestionale.manutenzione.campi.statoCamera' | transloco"
+      [aiuto]="'gestionale.manutenzione.statoCameraAiuto' | transloco"
+    >
+      <select formControlName="stato_camera">
+        <option value="">{{ 'gestionale.manutenzione.nonCambiare' | transloco }}</option>
+        @for (stato of statiCamera; track stato) {
+          <option [value]="stato">{{ 'gestionale.camere.stati.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  }
+  <app-campo
+    [etichetta]="'gestionale.manutenzione.campi.descrizione' | transloco"
+    [errore]="errori.campo(controlli.descrizione)"
+  >
+    <textarea formControlName="descrizione" rows="3" [maxLength]="lunghezza.testo"></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      <app-icona nome="build" />
+      {{ 'gestionale.manutenzione.invia' | transloco }}
+    </button>
+  </div>
+</form>

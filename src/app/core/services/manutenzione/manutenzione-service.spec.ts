@@ -35,6 +35,14 @@ describe('ManutenzioneService', () => {
     richiesta.flush(risposta({}));
   });
 
+  it('elenca chi può prendere in carico', () => {
+    service.elencaIncaricabili().subscribe();
+
+    const richiesta = backend.expectOne(`${API}/incaricabili`);
+    expect(richiesta.request.method).toBe('GET');
+    richiesta.flush(risposta([]));
+  });
+
   it('chiude la segnalazione con le note', () => {
     const dati = { stato: 'risolta' as const, note_risoluzione: 'Sostituito il sifone' };
     service.aggiornaSegnalazione(3, dati).subscribe();

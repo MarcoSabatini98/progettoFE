@@ -222,7 +222,9 @@
     "MESSAGGIO_NON_TROVATO": "Mensaje no encontrado.",
     "ALLEGATO_NON_TROVATO": "Adjunto no encontrado.",
     "OPERATORE_NON_VALIDO": "Este usuario no puede atender la asistencia.",
-    "STATO_PRESENZA_NON_VALIDO": "Estado no válido."
+    "STATO_PRESENZA_NON_VALIDO": "Estado no válido.",
+    "SEGNALAZIONE_NON_TROVATA": "Aviso no encontrado.",
+    "SEGNALAZIONE_CHIUSA": "El aviso está cerrado: reábrelo para modificarlo."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1076,6 +1078,50 @@
       "housekeeper_senior": "Gobernanta",
       "housekeeper": "Camarera de pisos",
       "cliente": "Cliente"
+    },
+    "manutenzione": {
+      "occhiello": "Averías",
+      "titolo": "Mantenimiento",
+      "filtri": {
+        "stato": "Estado",
+        "aperte": "Por resolver",
+        "tutte": "Todas",
+        "tuttePriorita": "Todas",
+        "mie": "Solo las mías"
+      },
+      "stati": {
+        "aperta": "Abierta",
+        "in_corso": "En curso",
+        "risolta": "Resuelta",
+        "annullata": "Anulada"
+      },
+      "totale": "{{ totale }} avisos",
+      "vuoto": "Ningún aviso.",
+      "areaComune": "Zona común",
+      "libera": "Sin asignar",
+      "nessuno": "Nadie",
+      "nuova": "Avisar de una avería",
+      "invia": "Enviar aviso",
+      "inviata": "Aviso enviado.",
+      "campi": {
+        "titolo": "Qué falla",
+        "camera": "Dónde",
+        "priorita": "Prioridad",
+        "descrizione": "Detalles",
+        "statoCamera": "Estado de la habitación",
+        "stato": "Estado",
+        "incaricato": "Se encarga",
+        "noteRisoluzione": "Notas de resolución"
+      },
+      "nonCambiare": "Dejar como está",
+      "statoCameraAiuto": "Fuera de servicio retira la habitación de la venta.",
+      "senzaDescrizione": "Sin detalles.",
+      "segnalataDa": "Avisada por",
+      "risoltaIl": "Resuelta el",
+      "gestione": "Gestión",
+      "salva": "Guardar",
+      "salvata": "Cambios guardados.",
+      "tutte": "Todos los avisos"
     }
   },
   "anagrafica": {

@@ -184,7 +184,8 @@
 
 .stato-prenotazione[data-stato='confermata'],
 .stato-prenotazione[data-stato='in_soggiorno'],
-.stato-prenotazione[data-stato='verificata'] {
+.stato-prenotazione[data-stato='verificata'],
+.stato-prenotazione[data-stato='risolta'] {
   background: var(--bb-ok-tenue);
   color: var(--bb-testo);
 }

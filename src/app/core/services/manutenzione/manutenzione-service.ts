@@ -11,6 +11,7 @@ import {
   SegnalazioneCreaPayload,
   SegnalazioneManutenzioneInterface,
 } from '../../../shared/models/segnalazione-manutenzione/segnalazione-manutenzione-model';
+import { AddettoInterface } from '../../../shared/models/utente/utente-model';
 import { creaParametri } from '../api/parametri-http';
 
 /** Segnalazioni di guasti: chiunque dello staff segnala, chi gestisce assegna e chiude. */
@@ -40,6 +41,16 @@ export class ManutenzioneService {
   segnala(dati: SegnalazioneCreaPayload): Observable<SegnalazioneManutenzioneInterface> {
     return this.http
       .post<RispostaApiInterface<SegnalazioneManutenzioneInterface>>(this.apiUrl, dati)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * INCARICABILI — GET /incaricabili
+   * Lo staff attivo che gestisce la manutenzione, a cui assegnare una segnalazione.
+   */
+  elencaIncaricabili(): Observable<AddettoInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<AddettoInterface[]>>(`${this.apiUrl}/incaricabili`)
       .pipe(map((res) => res.dati));
   }
 

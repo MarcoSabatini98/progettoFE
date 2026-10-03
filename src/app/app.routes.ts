@@ -160,6 +160,25 @@ export const routes: Routes = [
             (m) => m.AlloggiatiComponent,
           ),
       },
+      // Chi segnala vede le sue segnalazioni, chi gestisce le vede tutte (lo decide il backend).
+      {
+        path: 'manutenzione',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.MANUTENZIONE_SEGNALA] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/manutenzione-component/manutenzione-component').then(
+            (m) => m.ManutenzioneComponent,
+          ),
+      },
+      {
+        path: 'manutenzione/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.MANUTENZIONE_SEGNALA] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-segnalazione-component/scheda-segnalazione-component').then(
+            (m) => m.SchedaSegnalazioneComponent,
+          ),
+      },
       {
         // Chat interna: tutto lo staff. L'assistenza si vede solo con CHAT_ASSISTENZA.
         path: 'chat',

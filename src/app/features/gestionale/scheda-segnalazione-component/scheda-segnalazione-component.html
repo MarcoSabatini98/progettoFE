@@ -1,0 +1,75 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.manutenzione.tutte' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">
+      @if (dati.camera; as camera) {
+        {{ 'gestionale.camere.titoloCamera' | transloco: { numero: camera.numero } }}
+      } @else {
+        {{ 'gestionale.manutenzione.areaComune' | transloco }}
+      }
+    </p>
+    <h1>{{ dati.titolo }}</h1>
+    <p class="introduzione">
+      {{ dati.creato_il | data: 'ora' }} ·
+      {{ 'gestionale.pulizie.priorita.' + dati.priorita | transloco }}
+    </p>
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.manutenzione.stati.' + dati.stato | transloco }}
+    </span>
+  </header>
+
+  <dl class="dati">
+    <div>
+      <dt>{{ 'gestionale.manutenzione.segnalataDa' | transloco }}</dt>
+      <dd>{{ dati.segnalatore?.nome }} {{ dati.segnalatore?.cognome }}</dd>
+    </div>
+    <div>
+      <dt>{{ 'gestionale.manutenzione.campi.incaricato' | transloco }}</dt>
+      <dd>
+        @if (dati.incaricato; as incaricato) {
+          {{ incaricato.nome }} {{ incaricato.cognome }}
+        } @else {
+          {{ 'gestionale.manutenzione.libera' | transloco }}
+        }
+      </dd>
+    </div>
+    @if (dati.camera; as camera) {
+      <div>
+        <dt>{{ 'gestionale.manutenzione.campi.statoCamera' | transloco }}</dt>
+        <dd>{{ 'gestionale.camere.stati.' + camera.stato | transloco }}</dd>
+      </div>
+    }
+    @if (dati.risolta_il) {
+      <div>
+        <dt>{{ 'gestionale.manutenzione.risoltaIl' | transloco }}</dt>
+        <dd>{{ dati.risolta_il | data: 'ora' }}</dd>
+      </div>
+    }
+  </dl>
+
+  <div class="griglia-prenotazione">
+    <section class="scheda" aria-labelledby="segnalazione-descrizione">
+      <h2 class="titolo-scheda" id="segnalazione-descrizione">
+        {{ 'gestionale.manutenzione.campi.descrizione' | transloco }}
+      </h2>
+      <p class="testo-libero">
+        {{ dati.descrizione || ('gestionale.manutenzione.senzaDescrizione' | transloco) }}
+      </p>
+      @if (dati.note_risoluzione && !gestore) {
+        <h3>{{ 'gestionale.manutenzione.campi.noteRisoluzione' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.note_risoluzione }}</p>
+      }
+    </section>
+    @if (gestore) {
+      <app-gestione-segnalazione [segnalazione]="dati" (salvata)="scheda.set($event)" />
+    }
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
