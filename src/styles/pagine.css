@@ -212,3 +212,24 @@
     grid-column: 1 / -1;
   }
 }
+
+/* Pallino della presenza dello staff in chat. */
+.presenza {
+  display: inline-block;
+  inline-size: 0.625rem;
+  block-size: 0.625rem;
+  border-radius: 50%;
+  background: var(--bb-linea);
+}
+
+.presenza[data-presenza='online'] {
+  background: var(--bb-ok);
+}
+
+.presenza[data-presenza='occupato'] {
+  background: var(--bb-errore);
+}
+
+.presenza[data-presenza='assente'] {
+  background: var(--bb-avviso);
+}

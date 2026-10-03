@@ -71,4 +71,12 @@ describe('ChatService', () => {
     expect(richiesta.request.params.get('prima_di')).toBe('90');
     richiesta.flush(risposta([]));
   });
+
+  it('elenca i colleghi con cui si può chattare', () => {
+    let colleghi: unknown;
+    service.elencaColleghi().subscribe((elenco) => (colleghi = elenco));
+
+    backend.expectOne(`${API}/colleghi`).flush(risposta([{ id: 2, presenza: 'online' }]));
+    expect(colleghi).toEqual([{ id: 2, presenza: 'online' }]);
+  });
 });

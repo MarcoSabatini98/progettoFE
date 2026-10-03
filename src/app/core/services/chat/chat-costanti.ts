@@ -15,7 +15,15 @@ export const GRUPPI_SQUADRA = {
 } as const;
 
 export const TESTO_MAX = 4000;
+export const TITOLO_MAX = 150;
 export const ALLEGATI_MAX = 5;
+
+/** Messaggi a ogni caricamento dello storico, come il backend. */
+export const MESSAGGI_PER_PAGINA = 50;
+
+/** "Sta scrivendo" parte al massimo ogni 3 secondi e sparisce dopo 5 senza conferme. */
+export const SCRIVE_OGNI_MS = 3000;
+export const SCRIVE_SCADENZA_MS = 5000;
 
 /**
  * Nomi degli eventi del socket.

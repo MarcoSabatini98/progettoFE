@@ -206,7 +206,23 @@
     "PULIZIA_INIZIATA": "Die Aufgabe hat bereits begonnen: Löschen nicht möglich.",
     "TRANSIZIONE_NON_VALIDA": "Dieser Schritt ist im aktuellen Zustand der Aufgabe nicht möglich.",
     "PULIZIA_ALTRUI": "Die Aufgabe ist einer anderen Person zugewiesen.",
-    "CHECKLIST_INCOMPLETA": "Erledige alle Punkte der Checkliste."
+    "CHECKLIST_INCOMPLETA": "Erledige alle Punkte der Checkliste.",
+    "CONVERSAZIONE_NON_TROVATA": "Unterhaltung nicht gefunden.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "Du gehörst nicht zu dieser Unterhaltung.",
+    "SOLO_CHAT_STAFF": "Nur in Team-Chats möglich.",
+    "SOLO_CLIENTI": "Nur für Gäste.",
+    "PARTECIPANTI_MANCANTI": "Wähle mindestens einen Kollegen.",
+    "TITOLO_RISERVATO": "Dieser Name ist Teamgruppen vorbehalten.",
+    "TITOLO_MANCANTE": "Eine Gruppe braucht einen Namen.",
+    "CHAT_NON_CONSENTITA": "Dieser Benutzer kann nicht an der Unterhaltung teilnehmen.",
+    "GRUPPO_DI_SQUADRA": "Teamgruppen folgen den Rollen und lassen sich nicht ändern.",
+    "SOLO_GRUPPI": "Nur in Gruppen möglich.",
+    "MESSAGGIO_VUOTO": "Schreibe einen Text oder hänge eine Datei an.",
+    "MESSAGGIO_ALTRUI": "Du kannst nur deine eigenen Nachrichten bearbeiten.",
+    "MESSAGGIO_NON_TROVATO": "Nachricht nicht gefunden.",
+    "ALLEGATO_NON_TROVATO": "Anhang nicht gefunden.",
+    "OPERATORE_NON_VALIDO": "Dieser Benutzer kann den Support nicht übernehmen.",
+    "STATO_PRESENZA_NON_VALIDO": "Ungültiger Status."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -967,6 +983,99 @@
         "incassato_mese": "Eingenommen seit dem 1.",
         "prenotato_da_inizio_mese": "Verkauft mit Anreise in diesem Monat"
       }
+    },
+    "chat": {
+      "occhiello": "Kommunikation",
+      "titolo": "Chat",
+      "presenza": "Mein Status",
+      "presenze": {
+        "online": "Online",
+        "occupato": "Beschäftigt",
+        "assente": "Abwesend",
+        "offline": "Offline"
+      },
+      "nuova": "Neuer Chat",
+      "elenco": "Unterhaltungen",
+      "tipi": {
+        "staff": "Team",
+        "assistenza": "Support"
+      },
+      "filtri": {
+        "stato": "Status",
+        "assegnate": "Zuweisung",
+        "tutte": "Alle",
+        "mie": "Meine",
+        "libere": "Offen"
+      },
+      "stati": {
+        "aperta": "Offen",
+        "chiusa": "Geschlossen"
+      },
+      "vuoto": "Keine Unterhaltungen.",
+      "scegli": "Wähle eine Unterhaltung oder starte eine neue.",
+      "senzaNome": "Unterhaltung",
+      "nonLetti": "ungelesene Nachrichten",
+      "nuovaChat": {
+        "colleghi": "Mit wem",
+        "nessunCollega": "Keine Kollegen verfügbar.",
+        "nessunoScelto": "Wähle mindestens einen Kollegen.",
+        "nomeGruppo": "Gruppenname",
+        "messaggio": "Erste Nachricht",
+        "apri": "Chat starten"
+      },
+      "messaggio": {
+        "modifica": "Bearbeiten",
+        "salva": "Speichern",
+        "modificato": "bearbeitet",
+        "conferma": "Löschen bestätigen",
+        "rispondi": "Antworten",
+        "elimina": "Löschen"
+      },
+      "scrivi": {
+        "rispondiA": "Antwort auf:",
+        "annullaRisposta": "Antwort abbrechen",
+        "togli": "{{ nome }} entfernen",
+        "allega": "Datei anhängen",
+        "testo": "Nachricht schreiben",
+        "invia": "Senden",
+        "troppiAllegati": "Höchstens {{ max }} Anhänge pro Nachricht."
+      },
+      "azioni": {
+        "prendi": "Übernehmen",
+        "rilascia": "Freigeben",
+        "chiudi": "Schließen",
+        "riapri": "Wieder öffnen",
+        "rinomina": "Umbenennen",
+        "aggiungi": "Hinzufügen",
+        "collega": "Kollege hinzufügen",
+        "esci": "Gruppe verlassen",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Unterhaltung übernommen.",
+          "rilasciata": "Unterhaltung freigegeben.",
+          "chiusa": "Unterhaltung geschlossen.",
+          "aperta": "Unterhaltung wieder geöffnet.",
+          "rinominata": "Gruppe umbenannt.",
+          "aggiunto": "Kollege hinzugefügt.",
+          "uscito": "Du hast die Gruppe verlassen."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Ältere Nachrichten",
+        "vuota": "Noch keine Nachrichten.",
+        "scrive": "{{ nome }} schreibt…",
+        "chiusa": "Unterhaltung geschlossen: zum Schreiben wieder öffnen.",
+        "operatore": "Bearbeiter",
+        "libera": "offen",
+        "partecipanti": "Teilnehmer"
+      }
+    },
+    "ruoli": {
+      "admin": "Administrator",
+      "receptionist": "Rezeption",
+      "housekeeper_senior": "Hausdame",
+      "housekeeper": "Zimmerpersonal",
+      "cliente": "Gast"
     }
   },
   "anagrafica": {

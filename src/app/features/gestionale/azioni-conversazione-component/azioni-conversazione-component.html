@@ -1,0 +1,102 @@
+@let dati = conversazione();
+<div class="azioni">
+  @if (dati.tipo === 'assistenza') {
+    @if (mia()) {
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="assegna(null)"
+      >
+        <app-icona nome="person_remove" />
+        {{ 'gestionale.chat.azioni.rilascia' | transloco }}
+      </button>
+    } @else {
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="assegna(mioId())"
+      >
+        <app-icona nome="support_agent" />
+        {{ 'gestionale.chat.azioni.prendi' | transloco }}
+      </button>
+    }
+  }
+  @if (gruppoLibero()) {
+    <button
+      class="pulsante pulsante-fantasma"
+      type="button"
+      [attr.aria-expanded]="pannello() === 'rinomina'"
+      (click)="apri('rinomina')"
+    >
+      <app-icona nome="edit" />
+      {{ 'gestionale.chat.azioni.rinomina' | transloco }}
+    </button>
+    <button
+      class="pulsante pulsante-fantasma"
+      type="button"
+      [attr.aria-expanded]="pannello() === 'aggiungi'"
+      (click)="apri('aggiungi')"
+    >
+      <app-icona nome="person_add" />
+      {{ 'gestionale.chat.azioni.aggiungi' | transloco }}
+    </button>
+    <button
+      class="pulsante pulsante-fantasma"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="esci()"
+    >
+      <app-icona nome="logout" />
+      {{ 'gestionale.chat.azioni.esci' | transloco }}
+    </button>
+  }
+  <button
+    class="pulsante pulsante-fantasma"
+    type="button"
+    [disabled]="inCorso()"
+    (click)="cambiaStato()"
+  >
+    <app-icona [nome]="dati.stato === 'aperta' ? 'archive' : 'unarchive'" />
+    {{ 'gestionale.chat.azioni.' + (dati.stato === 'aperta' ? 'chiudi' : 'riapri') | transloco }}
+  </button>
+  <button class="pulsante pulsante-fantasma" type="button" (click)="esportaPdf()">
+    <app-icona nome="picture_as_pdf" />
+    {{ 'gestionale.chat.azioni.pdf' | transloco }}
+  </button>
+</div>
+
+@switch (pannello()) {
+  @case ('rinomina') {
+    <form class="pannello" [formGroup]="moduloRinomina" (ngSubmit)="rinomina()" novalidate>
+      <app-campo
+        [etichetta]="'gestionale.chat.nuovaChat.nomeGruppo' | transloco"
+        [errore]="errori.campo(titolo)"
+      >
+        <input type="text" [formControl]="titolo" [maxLength]="titoloMax" required />
+      </app-campo>
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        {{ 'gestionale.chat.messaggio.salva' | transloco }}
+      </button>
+    </form>
+  }
+  @case ('aggiungi') {
+    <form class="pannello" [formGroup]="moduloAggiungi" (ngSubmit)="aggiungi()" novalidate>
+      <app-campo
+        [etichetta]="'gestionale.chat.azioni.collega' | transloco"
+        [errore]="errori.campo(collega)"
+      >
+        <select [formControl]="collega" required>
+          <option [ngValue]="null" disabled></option>
+          @for (persona of daAggiungere(); track persona.id) {
+            <option [ngValue]="persona.id">{{ persona.nome }} {{ persona.cognome }}</option>
+          }
+        </select>
+      </app-campo>
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        {{ 'gestionale.chat.azioni.aggiungi' | transloco }}
+      </button>
+    </form>
+  }
+}

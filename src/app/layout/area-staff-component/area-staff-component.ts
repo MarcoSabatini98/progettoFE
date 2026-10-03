@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 
+import { PresenzeService } from '../../core/services/chat/presenze-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { PERCORSO_STAFF } from '../../core/services/navigazione/navigazione-costanti';
@@ -39,4 +40,9 @@ export class AreaStaffComponent {
   protected readonly percorsoStaff = PERCORSO_STAFF;
   protected readonly nome = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.nome));
   protected readonly chiudiMenu = chiudiPopover;
+
+  constructor() {
+    // Collega il socket all'ingresso: si risulta online in tutto il gestionale, non solo in chat.
+    inject(PresenzeService);
+  }
 }

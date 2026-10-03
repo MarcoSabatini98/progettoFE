@@ -206,7 +206,23 @@
     "PULIZIA_INIZIATA": "La tâche a déjà commencé : impossible de la supprimer.",
     "TRANSIZIONE_NON_VALIDA": "Étape impossible dans l’état actuel de la tâche.",
     "PULIZIA_ALTRUI": "La tâche est attribuée à une autre personne.",
-    "CHECKLIST_INCOMPLETA": "Complétez tous les points de la check-list."
+    "CHECKLIST_INCOMPLETA": "Complétez tous les points de la check-list.",
+    "CONVERSAZIONE_NON_TROVATA": "Conversation introuvable.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "Vous ne faites pas partie de cette conversation.",
+    "SOLO_CHAT_STAFF": "Possible uniquement dans les discussions de l'équipe.",
+    "SOLO_CLIENTI": "Réservé aux clients.",
+    "PARTECIPANTI_MANCANTI": "Choisissez au moins un collègue.",
+    "TITOLO_RISERVATO": "Ce nom est réservé aux groupes d'équipe.",
+    "TITOLO_MANCANTE": "Un groupe doit avoir un nom.",
+    "CHAT_NON_CONSENTITA": "Cet utilisateur ne peut pas participer à la conversation.",
+    "GRUPPO_DI_SQUADRA": "Les groupes d'équipe suivent les rôles et ne se modifient pas.",
+    "SOLO_GRUPPI": "Possible uniquement dans les groupes.",
+    "MESSAGGIO_VUOTO": "Écrivez un texte ou joignez un fichier.",
+    "MESSAGGIO_ALTRUI": "Vous ne pouvez modifier que vos messages.",
+    "MESSAGGIO_NON_TROVATO": "Message introuvable.",
+    "ALLEGATO_NON_TROVATO": "Pièce jointe introuvable.",
+    "OPERATORE_NON_VALIDO": "Cet utilisateur ne peut pas gérer l'assistance.",
+    "STATO_PRESENZA_NON_VALIDO": "Statut non valide."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -967,6 +983,99 @@
         "incassato_mese": "Encaissé depuis le 1er",
         "prenotato_da_inizio_mese": "Vendu avec arrivée ce mois-ci"
       }
+    },
+    "chat": {
+      "occhiello": "Communication",
+      "titolo": "Chat",
+      "presenza": "Mon statut",
+      "presenze": {
+        "online": "En ligne",
+        "occupato": "Occupé",
+        "assente": "Absent",
+        "offline": "Hors ligne"
+      },
+      "nuova": "Nouvelle discussion",
+      "elenco": "Conversations",
+      "tipi": {
+        "staff": "Équipe",
+        "assistenza": "Assistance"
+      },
+      "filtri": {
+        "stato": "Statut",
+        "assegnate": "Attribution",
+        "tutte": "Toutes",
+        "mie": "Les miennes",
+        "libere": "À prendre"
+      },
+      "stati": {
+        "aperta": "Ouvertes",
+        "chiusa": "Fermées"
+      },
+      "vuoto": "Aucune conversation.",
+      "scegli": "Choisissez une conversation ou ouvrez-en une nouvelle.",
+      "senzaNome": "Conversation",
+      "nonLetti": "messages non lus",
+      "nuovaChat": {
+        "colleghi": "Avec qui",
+        "nessunCollega": "Aucun collègue disponible.",
+        "nessunoScelto": "Choisissez au moins un collègue.",
+        "nomeGruppo": "Nom du groupe",
+        "messaggio": "Premier message",
+        "apri": "Ouvrir la discussion"
+      },
+      "messaggio": {
+        "modifica": "Modifier",
+        "salva": "Enregistrer",
+        "modificato": "modifié",
+        "conferma": "Confirmer la suppression",
+        "rispondi": "Répondre",
+        "elimina": "Supprimer"
+      },
+      "scrivi": {
+        "rispondiA": "Réponse à :",
+        "annullaRisposta": "Annuler la réponse",
+        "togli": "Retirer {{ nome }}",
+        "allega": "Joindre un fichier",
+        "testo": "Écrire un message",
+        "invia": "Envoyer",
+        "troppiAllegati": "Au maximum {{ max }} pièces jointes par message."
+      },
+      "azioni": {
+        "prendi": "Prendre en charge",
+        "rilascia": "Libérer",
+        "chiudi": "Fermer",
+        "riapri": "Rouvrir",
+        "rinomina": "Renommer",
+        "aggiungi": "Ajouter",
+        "collega": "Collègue à ajouter",
+        "esci": "Quitter le groupe",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Conversation prise en charge.",
+          "rilasciata": "Conversation libérée.",
+          "chiusa": "Conversation fermée.",
+          "aperta": "Conversation rouverte.",
+          "rinominata": "Groupe renommé.",
+          "aggiunto": "Collègue ajouté.",
+          "uscito": "Vous avez quitté le groupe."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Messages précédents",
+        "vuota": "Encore aucun message.",
+        "scrive": "{{ nome }} écrit…",
+        "chiusa": "Conversation fermée : rouvrez-la pour écrire.",
+        "operatore": "Opérateur",
+        "libera": "à prendre",
+        "partecipanti": "Participants"
+      }
+    },
+    "ruoli": {
+      "admin": "Administrateur",
+      "receptionist": "Réceptionniste",
+      "housekeeper_senior": "Gouvernante",
+      "housekeeper": "Femme de chambre",
+      "cliente": "Client"
     }
   },
   "anagrafica": {

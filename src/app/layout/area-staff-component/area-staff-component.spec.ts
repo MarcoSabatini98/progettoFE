@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
+import { PresenzeService } from '../../core/services/chat/presenze-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { GruppoMenuInterface } from '../../shared/models/voce-menu/voce-menu-model';
@@ -27,6 +28,7 @@ describe('AreaStaffComponent', () => {
         provideRouter([]),
         { provide: NavigazioneService, useValue: { menuStaff, staff: signal(true) } },
         { provide: AuthService, useValue: { utente: signal(null) } },
+        { provide: PresenzeService, useValue: {} },
       ],
     });
   });

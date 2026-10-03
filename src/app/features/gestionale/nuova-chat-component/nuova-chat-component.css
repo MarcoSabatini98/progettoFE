@@ -1,0 +1,43 @@
+.colleghi {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.colleghi legend {
+  margin-bottom: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+.collega {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  cursor: pointer;
+}
+
+.collega > span:last-child {
+  display: grid;
+}
+
+.avatar-chat {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: 50%;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.avatar-chat .presenza {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  outline: 2px solid var(--bb-superficie);
+}
