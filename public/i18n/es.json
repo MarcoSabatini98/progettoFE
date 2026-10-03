@@ -945,6 +945,28 @@
       "nuovaVoce": "Nuevo punto",
       "aggiungiVoce": "Añadir punto",
       "eliminaVoce": "Eliminar {{ voce }}"
+    },
+    "cruscotto": {
+      "occhiello": "Dirección",
+      "titolo": "Panel",
+      "aggiorna": "Actualizar",
+      "percentuale": "{{ valore }} %",
+      "gruppi": {
+        "oggi": "Hoy",
+        "daFare": "Pendiente",
+        "mese": "Este mes"
+      },
+      "voci": {
+        "occupazione_oggi": "{{ in_casa }} de {{ camere }} habitaciones ocupadas",
+        "arrivi_oggi": "Llegadas",
+        "partenze_oggi": "Salidas",
+        "in_casa": "Reservas en casa",
+        "da_confermare": "Reservas por confirmar",
+        "manutenzioni_aperte": "Mantenimientos abiertos",
+        "recensioni_da_moderare": "Reseñas por moderar",
+        "incassato_mese": "Cobrado desde el día 1",
+        "prenotato_da_inizio_mese": "Vendido con llegada este mes"
+      }
     }
   },
   "anagrafica": {

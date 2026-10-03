@@ -945,6 +945,28 @@
       "nuovaVoce": "Nouveau point",
       "aggiungiVoce": "Ajouter un point",
       "eliminaVoce": "Supprimer {{ voce }}"
+    },
+    "cruscotto": {
+      "occhiello": "Direction",
+      "titolo": "Tableau de bord",
+      "aggiorna": "Actualiser",
+      "percentuale": "{{ valore }} %",
+      "gruppi": {
+        "oggi": "Aujourd’hui",
+        "daFare": "En attente",
+        "mese": "Ce mois-ci"
+      },
+      "voci": {
+        "occupazione_oggi": "{{ in_casa }} chambres occupées sur {{ camere }}",
+        "arrivi_oggi": "Arrivées",
+        "partenze_oggi": "Départs",
+        "in_casa": "Réservations en cours de séjour",
+        "da_confermare": "Réservations à confirmer",
+        "manutenzioni_aperte": "Maintenances ouvertes",
+        "recensioni_da_moderare": "Avis à modérer",
+        "incassato_mese": "Encaissé depuis le 1er",
+        "prenotato_da_inizio_mese": "Vendu avec arrivée ce mois-ci"
+      }
     }
   },
   "anagrafica": {

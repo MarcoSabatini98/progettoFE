@@ -34,6 +34,15 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'cruscotto',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.ANALYTICS_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/cruscotto-component/cruscotto-component').then(
+            (m) => m.CruscottoComponent,
+          ),
+      },
+      {
         path: 'oggi',
         canActivate: [ruoloGuard],
         data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,
