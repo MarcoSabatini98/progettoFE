@@ -89,6 +89,9 @@ export const PERCORSI_STAFF = {
   camere: `${PERCORSO_STAFF}/camere`,
   /** Seguito dall'id per la scheda: /staff/camere/tipologie/2. */
   tipologie: `${PERCORSO_STAFF}/camere/tipologie`,
+  /** Seguito dall'id per la scheda: /staff/pulizie/9 (link nelle notifiche del backend). */
+  pulizie: `${PERCORSO_STAFF}/pulizie`,
+  checklistPulizie: `${PERCORSO_STAFF}/pulizie/checklist`,
 } as const;
 
 /**
@@ -114,7 +117,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.pulizie',
-        percorso: `${PERCORSO_STAFF}/pulizie`,
+        percorso: PERCORSI_STAFF.pulizie,
         icona: 'cleaning_services',
         permessi: [PERMESSI.PULIZIE_LEGGI],
       },

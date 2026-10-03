@@ -1,0 +1,65 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.pulizie.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.pulizie.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <app-campo [etichetta]="'gestionale.oggi.giorno' | transloco">
+      <input #campo type="date" [value]="giorno()" (change)="cambiaGiorno(campo.value)" />
+    </app-campo>
+    @if (addetto) {
+      <label class="spunta">
+        <input #solo type="checkbox" [checked]="mie()" (change)="mie.set(solo.checked)" />
+        {{ 'gestionale.pulizie.soloMie' | transloco }}
+      </label>
+    }
+  </div>
+  @if (gestore) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="generaGiornata()"
+      >
+        <app-icona nome="playlist_add" />
+        {{ 'gestionale.pulizie.genera' | transloco }}
+      </button>
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="assegna()"
+      >
+        <app-icona nome="group_add" />
+        {{ 'gestionale.pulizie.assegna' | transloco }}
+      </button>
+      <a class="pulsante pulsante-fantasma" [routerLink]="checklist">
+        <app-icona nome="checklist" />
+        {{ 'gestionale.pulizie.checklist' | transloco }}
+      </a>
+    </div>
+  }
+</header>
+
+@if (attivita.hasValue()) {
+  @for (gruppo of perStato(); track gruppo.stato) {
+    <section class="sezione" [attr.aria-labelledby]="'pulizie-' + gruppo.stato">
+      <h2 class="sezione-titolo" [id]="'pulizie-' + gruppo.stato">
+        {{ 'gestionale.pulizie.stati.' + gruppo.stato | transloco }}
+        <span class="conteggio">{{ gruppo.attivita.length }}</span>
+      </h2>
+      <ul class="elenco" [attr.aria-busy]="attivita.isLoading()">
+        @for (riga of gruppo.attivita; track riga.id) {
+          <li><app-riga-pulizia [attivita]="riga" /></li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'gestionale.pulizie.vuoto' | transloco }}</li>
+        }
+      </ul>
+    </section>
+  }
+} @else if (attivita.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+@if (gestore) {
+  <app-nuova-pulizia [giorno]="giorno()" (creata)="attivita.reload()" />
+}

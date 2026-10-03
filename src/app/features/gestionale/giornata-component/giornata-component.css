@@ -1,6 +1,0 @@
-.strumenti {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: var(--bb-spazio-3);
-}

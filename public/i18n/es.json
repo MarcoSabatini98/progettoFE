@@ -199,7 +199,14 @@
     "SLUG_GIA_USATO": "Ya existe un tipo con este nombre.",
     "TIPOLOGIA_IN_USO": "Hay habitaciones de este tipo: no se puede eliminar.",
     "TIPOLOGIA_NON_TROVATA": "Tipo de habitación no encontrado.",
-    "MEDIA_NON_TROVATO": "Foto no encontrada."
+    "MEDIA_NON_TROVATO": "Foto no encontrada.",
+    "PULIZIA_NON_TROVATA": "Tarea de limpieza no encontrada.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Punto de la checklist no encontrado.",
+    "PULIZIA_CHIUSA": "La tarea ya ha sido revisada.",
+    "PULIZIA_INIZIATA": "La tarea ya ha empezado: no se puede eliminar.",
+    "TRANSIZIONE_NON_VALIDA": "Paso no posible en el estado actual de la tarea.",
+    "PULIZIA_ALTRUI": "La tarea está asignada a otra persona.",
+    "CHECKLIST_INCOMPLETA": "Completa todos los puntos de la checklist."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -864,6 +871,80 @@
       "conferma": "Sí, eliminar",
       "elimina": "Eliminar foto",
       "nessuna": "Ninguna foto."
+    },
+    "pulizie": {
+      "occhiello": "Pisos",
+      "titolo": "Limpieza",
+      "soloMie": "Solo las mías",
+      "genera": "Generar jornada",
+      "assegna": "Asignar al personal",
+      "checklist": "Checklist",
+      "generata": "Jornada lista: {{ riassetti }} repasos añadidos, {{ checklist_aggiunte }} checklists completadas.",
+      "assegnate": "{{ assegnate }} tareas asignadas, {{ non_assegnate }} todavía libres.",
+      "vuoto": "Ninguna tarea.",
+      "stati": {
+        "da_fare": "Pendientes",
+        "in_corso": "En curso",
+        "completata": "Por revisar",
+        "verificata": "Revisadas"
+      },
+      "tipi": {
+        "partenza": "Salida",
+        "riassetto": "Repaso",
+        "profonda": "Limpieza a fondo",
+        "ispezione": "Inspección"
+      },
+      "priorita": {
+        "bassa": "Baja",
+        "normale": "Normal",
+        "alta": "Alta",
+        "urgente": "Urgente"
+      },
+      "libera": "Sin asignar",
+      "vociFatte": "{{ fatte }}/{{ totale }} puntos",
+      "nuova": "Nueva tarea",
+      "crea": "Añadir a la jornada",
+      "nessuno": "Nadie",
+      "campi": {
+        "camera": "Habitación",
+        "tipo": "Tipo",
+        "priorita": "Prioridad",
+        "addetto": "Camarera/o de pisos",
+        "note": "Notas",
+        "giorno": "Día",
+        "voce": "Punto"
+      },
+      "lavoro": "Trabajo",
+      "iniziaPerSpuntare": "Empieza la limpieza para marcar los puntos.",
+      "senzaChecklist": "Ningún punto que marcar.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Empezar"
+        },
+        "in_corso": {
+          "completata": "Terminado",
+          "da_fare": "Volver a pendiente"
+        },
+        "completata": {
+          "verificata": "Revisada",
+          "in_corso": "Rehacer"
+        }
+      },
+      "salvaNote": "Guardar notas",
+      "pianificazione": "Planificación",
+      "salva": "Guardar",
+      "salvata": "Cambios guardados.",
+      "tutte": "Todas las tareas",
+      "prenotazione": "Reserva",
+      "verificataDa": "Revisada por",
+      "elimina": "Eliminar tarea",
+      "eliminaAiuto": "Solo es posible mientras nadie la haya empezado.",
+      "checklistIntroduzione": "Los puntos activos se copian en las nuevas tareas de su tipo.",
+      "tuttiTipi": "Todos los tipos",
+      "nessunaVoce": "Ningún punto.",
+      "nuovaVoce": "Nuevo punto",
+      "aggiungiVoce": "Añadir punto",
+      "eliminaVoce": "Eliminar {{ voce }}"
     }
   },
   "anagrafica": {

@@ -18,6 +18,9 @@ export const TRANSIZIONI_PULIZIA = {
   verificata: {},
 } as const;
 
+/** Lunghezze massime dei campi di testo, come la validazione del backend. */
+export const LUNGHEZZA_PULIZIA = { note: 5000, voce: 150 } as const;
+
 export const STATI_SEGNALAZIONE = ['aperta', 'in_corso', 'risolta', 'annullata'] as const;
 
 export const STATI_SEGNALAZIONE_APERTA = ['aperta', 'in_corso'] as const;
