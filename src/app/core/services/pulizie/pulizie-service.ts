@@ -18,6 +18,7 @@ import {
 import { EsitoAssegnazionePulizieInterface } from '../../../shared/models/esito-assegnazione-pulizie/esito-assegnazione-pulizie-model';
 import { EsitoGiornataPulizieInterface } from '../../../shared/models/esito-giornata-pulizie/esito-giornata-pulizie-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
+import { AddettoInterface } from '../../../shared/models/utente/utente-model';
 import { creaParametri } from '../api/parametri-http';
 
 /** Pulizie: checklist, pianificazione della giornata e attività degli addetti. */
@@ -95,6 +96,16 @@ export class PulizieService {
         `${this.apiUrl}/giornata/assegnazione`,
         { giorno },
       )
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * ADDETTI — GET /addetti
+   * Gli addetti attivi a cui assegnare le attività.
+   */
+  elencaAddetti(): Observable<AddettoInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<AddettoInterface[]>>(`${this.apiUrl}/addetti`)
       .pipe(map((res) => res.dati));
   }
 

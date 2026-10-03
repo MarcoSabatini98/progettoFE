@@ -199,7 +199,14 @@
     "SLUG_GIA_USATO": "Eine Kategorie mit diesem Namen gibt es schon.",
     "TIPOLOGIA_IN_USO": "Zimmer nutzen diese Kategorie: sie kann nicht gelöscht werden.",
     "TIPOLOGIA_NON_TROVATA": "Kategorie nicht gefunden.",
-    "MEDIA_NON_TROVATO": "Foto nicht gefunden."
+    "MEDIA_NON_TROVATO": "Foto nicht gefunden.",
+    "PULIZIA_NON_TROVATA": "Reinigungsaufgabe nicht gefunden.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Checklistenpunkt nicht gefunden.",
+    "PULIZIA_CHIUSA": "Die Aufgabe wurde bereits geprüft.",
+    "PULIZIA_INIZIATA": "Die Aufgabe hat bereits begonnen: Löschen nicht möglich.",
+    "TRANSIZIONE_NON_VALIDA": "Dieser Schritt ist im aktuellen Zustand der Aufgabe nicht möglich.",
+    "PULIZIA_ALTRUI": "Die Aufgabe ist einer anderen Person zugewiesen.",
+    "CHECKLIST_INCOMPLETA": "Erledige alle Punkte der Checkliste."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -864,6 +871,80 @@
       "conferma": "Ja, löschen",
       "elimina": "Foto löschen",
       "nessuna": "Keine Fotos."
+    },
+    "pulizie": {
+      "occhiello": "Housekeeping",
+      "titolo": "Reinigung",
+      "soloMie": "Nur meine",
+      "genera": "Tag erstellen",
+      "assegna": "Dem Personal zuweisen",
+      "checklist": "Checkliste",
+      "generata": "Tag bereit: {{ riassetti }} Bleibereinigungen hinzugefügt, {{ checklist_aggiunte }} Checklisten ergänzt.",
+      "assegnate": "{{ assegnate }} Aufgaben zugewiesen, {{ non_assegnate }} noch frei.",
+      "vuoto": "Keine Aufgaben.",
+      "stati": {
+        "da_fare": "Offen",
+        "in_corso": "In Arbeit",
+        "completata": "Zu prüfen",
+        "verificata": "Geprüft"
+      },
+      "tipi": {
+        "partenza": "Abreise",
+        "riassetto": "Bleibereinigung",
+        "profonda": "Grundreinigung",
+        "ispezione": "Kontrolle"
+      },
+      "priorita": {
+        "bassa": "Niedrig",
+        "normale": "Normal",
+        "alta": "Hoch",
+        "urgente": "Dringend"
+      },
+      "libera": "Nicht zugewiesen",
+      "vociFatte": "{{ fatte }}/{{ totale }} Punkte",
+      "nuova": "Neue Aufgabe",
+      "crea": "Zum Tag hinzufügen",
+      "nessuno": "Niemand",
+      "campi": {
+        "camera": "Zimmer",
+        "tipo": "Art",
+        "priorita": "Priorität",
+        "addetto": "Zimmermädchen/-diener",
+        "note": "Notizen",
+        "giorno": "Tag",
+        "voce": "Punkt"
+      },
+      "lavoro": "Arbeit",
+      "iniziaPerSpuntare": "Beginne die Reinigung, um die Punkte abzuhaken.",
+      "senzaChecklist": "Keine Punkte abzuhaken.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Beginnen"
+        },
+        "in_corso": {
+          "completata": "Fertig",
+          "da_fare": "Zurück auf offen"
+        },
+        "completata": {
+          "verificata": "Geprüft",
+          "in_corso": "Nacharbeiten"
+        }
+      },
+      "salvaNote": "Notizen speichern",
+      "pianificazione": "Planung",
+      "salva": "Speichern",
+      "salvata": "Änderungen gespeichert.",
+      "tutte": "Alle Aufgaben",
+      "prenotazione": "Buchung",
+      "verificataDa": "Geprüft von",
+      "elimina": "Aufgabe löschen",
+      "eliminaAiuto": "Nur möglich, solange niemand sie begonnen hat.",
+      "checklistIntroduzione": "Aktive Punkte werden in neue Aufgaben ihrer Art übernommen.",
+      "tuttiTipi": "Alle Arten",
+      "nessunaVoce": "Keine Punkte.",
+      "nuovaVoce": "Neuer Punkt",
+      "aggiungiVoce": "Punkt hinzufügen",
+      "eliminaVoce": "{{ voce }} löschen"
     }
   },
   "anagrafica": {

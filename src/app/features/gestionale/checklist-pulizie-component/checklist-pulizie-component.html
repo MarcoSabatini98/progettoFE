@@ -1,0 +1,81 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.pulizie.tutte' | transloco }}
+</a>
+
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.pulizie.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.pulizie.checklist' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.pulizie.checklistIntroduzione' | transloco }}</p>
+</header>
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+
+@if (voci.hasValue()) {
+  @for (gruppo of gruppi(); track gruppo.tipo) {
+    @let titolo =
+      gruppo.tipo ? 'gestionale.pulizie.tipi.' + gruppo.tipo : 'gestionale.pulizie.tuttiTipi';
+    <section class="sezione" [attr.aria-label]="titolo | transloco">
+      <h2 class="sezione-titolo">
+        {{ titolo | transloco }}
+        <span class="conteggio">{{ gruppo.voci.length }}</span>
+      </h2>
+      <ul class="elenco">
+        @for (voce of gruppo.voci; track voce.id) {
+          <li class="scheda voce">
+            <label class="spunta">
+              <input
+                #casella
+                type="checkbox"
+                [checked]="voce.attiva"
+                [disabled]="inCorso()"
+                (change)="attiva(voce, casella.checked)"
+              />
+              <span [class.tenue]="!voce.attiva">{{ voce.voce }}</span>
+            </label>
+            <button
+              class="pulsante pulsante-icona pulsante-fantasma"
+              type="button"
+              [disabled]="inCorso()"
+              [attr.aria-label]="'gestionale.pulizie.eliminaVoce' | transloco: { voce: voce.voce }"
+              (click)="elimina(voce)"
+            >
+              <app-icona nome="delete" />
+            </button>
+          </li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'gestionale.pulizie.nessunaVoce' | transloco }}</li>
+        }
+      </ul>
+    </section>
+  }
+} @else if (voci.error(); as motivo) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(motivo) }}</p>
+}
+
+<form class="scheda modulo-scheda" [formGroup]="nuova" (ngSubmit)="aggiungi()" novalidate>
+  <h2 class="titolo-scheda">{{ 'gestionale.pulizie.nuovaVoce' | transloco }}</h2>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.pulizie.campi.voce' | transloco"
+      [errore]="errori.campo(nuova.controls.voce)"
+    >
+      <input type="text" formControlName="voce" [maxLength]="lunghezza.voce" required />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.pulizie.campi.tipo' | transloco">
+      <select formControlName="tipo_pulizia">
+        @for (tipo of tipi; track tipo) {
+          <option [value]="tipo">{{ 'gestionale.pulizie.tipi.' + tipo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      <app-icona nome="add" />
+      {{ 'gestionale.pulizie.aggiungiVoce' | transloco }}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+/* Voce a sinistra, cestino a destra. */
+.voce {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding-block: var(--bb-spazio-2);
+}

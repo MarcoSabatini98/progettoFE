@@ -62,6 +62,14 @@
   list-style: none;
 }
 
+/* Filtri e comandi nell'intestazione di una pagina (giorno, solo le mie...). */
+.strumenti {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--bb-spazio-3);
+}
+
 /* Quanti elementi ha trovato una ricerca, sopra l'elenco. */
 .conteggio {
   margin: 0;
@@ -168,13 +176,15 @@
 }
 
 .stato-prenotazione[data-stato='cancellata'],
-.stato-prenotazione[data-stato='no_show'] {
+.stato-prenotazione[data-stato='no_show'],
+.stato-prenotazione[data-stato='urgente'] {
   background: var(--bb-errore-tenue);
   color: var(--bb-testo);
 }
 
 .stato-prenotazione[data-stato='confermata'],
-.stato-prenotazione[data-stato='in_soggiorno'] {
+.stato-prenotazione[data-stato='in_soggiorno'],
+.stato-prenotazione[data-stato='verificata'] {
   background: var(--bb-ok-tenue);
   color: var(--bb-testo);
 }

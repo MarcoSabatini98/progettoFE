@@ -1,0 +1,64 @@
+@let dati = attivita();
+<h2 class="titolo-scheda">{{ 'gestionale.pulizie.lavoro' | transloco }}</h2>
+
+@if (dati.checklist?.length) {
+  <ul class="checklist">
+    @for (riga of dati.checklist; track $index) {
+      <li>
+        <label class="spunta">
+          <input
+            #casella
+            type="checkbox"
+            [checked]="riga.fatto"
+            [disabled]="!spuntabile() || inCorso()"
+            (change)="spunta($index, casella.checked)"
+          />
+          {{ riga.voce }}
+        </label>
+      </li>
+    }
+  </ul>
+  @if (puoLavorare() && dati.stato === 'da_fare') {
+    <p class="tenue piccolo">{{ 'gestionale.pulizie.iniziaPerSpuntare' | transloco }}</p>
+  }
+} @else {
+  <p class="tenue">{{ 'gestionale.pulizie.senzaChecklist' | transloco }}</p>
+}
+
+@if (puoLavorare()) {
+  <app-campo
+    [etichetta]="'gestionale.pulizie.campi.note' | transloco"
+    [errore]="errori.campo(note)"
+  >
+    <textarea [formControl]="note" rows="3" [maxLength]="lunghezza.note"></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    @for (stato of passaggi(); track stato; let primo = $first) {
+      <button
+        class="pulsante"
+        [class.pulsante-primario]="primo"
+        [class.pulsante-secondario]="!primo"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="passaA(stato)"
+      >
+        {{ 'gestionale.pulizie.passaggi.' + dati.stato + '.' + stato | transloco }}
+      </button>
+    }
+    @if (note.dirty) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="salvaNote()"
+      >
+        {{ 'gestionale.pulizie.salvaNote' | transloco }}
+      </button>
+    }
+  </div>
+} @else if (dati.note) {
+  <p class="testo-libero">{{ dati.note }}</p>
+}

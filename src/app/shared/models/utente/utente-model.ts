@@ -38,6 +38,9 @@ export type ProfiloAggiornaPayload = Partial<
 > &
   AnagraficaPayload;
 
+/** Membro dello staff in un elenco di scelta (es. addetti delle pulizie). */
+export type AddettoInterface = Pick<UtenteInterface, 'id' | 'nome' | 'cognome' | 'ruolo'>;
+
 export type PreferenzeEmailInterface = Pick<UtenteInterface, 'notifiche_email'>;
 
 /** Nuovo account staff: l'admin nasce dal seed, i clienti si registrano da soli. */

@@ -1,0 +1,47 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.pulizie.pianificazione' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.pulizie.campi.addetto' | transloco">
+      <select formControlName="assegnata_a">
+        <option [ngValue]="null">{{ 'gestionale.pulizie.nessuno' | transloco }}</option>
+        @for (addetto of addetti.value() ?? []; track addetto.id) {
+          <option [ngValue]="addetto.id">{{ addetto.nome }} {{ addetto.cognome }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.pulizie.campi.giorno' | transloco"
+      [errore]="errori.campo(controlli.data_prevista)"
+    >
+      <input type="date" formControlName="data_prevista" required />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.pulizie.campi.tipo' | transloco">
+      <select formControlName="tipo">
+        @for (tipo of tipi; track tipo) {
+          <option [value]="tipo">{{ 'gestionale.pulizie.tipi.' + tipo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.pulizie.campi.priorita' | transloco">
+      <select formControlName="priorita">
+        @for (livello of priorita; track livello) {
+          <option [value]="livello">
+            {{ 'gestionale.pulizie.priorita.' + livello | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.pulizie.salva' | transloco }}
+    </button>
+  </div>
+</form>

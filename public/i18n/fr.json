@@ -199,7 +199,14 @@
     "SLUG_GIA_USATO": "Une catégorie porte déjà ce nom.",
     "TIPOLOGIA_IN_USO": "Des chambres utilisent cette catégorie : impossible de la supprimer.",
     "TIPOLOGIA_NON_TROVATA": "Catégorie introuvable.",
-    "MEDIA_NON_TROVATO": "Photo introuvable."
+    "MEDIA_NON_TROVATO": "Photo introuvable.",
+    "PULIZIA_NON_TROVATA": "Tâche de ménage introuvable.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Point de check-list introuvable.",
+    "PULIZIA_CHIUSA": "La tâche a déjà été contrôlée.",
+    "PULIZIA_INIZIATA": "La tâche a déjà commencé : impossible de la supprimer.",
+    "TRANSIZIONE_NON_VALIDA": "Étape impossible dans l’état actuel de la tâche.",
+    "PULIZIA_ALTRUI": "La tâche est attribuée à une autre personne.",
+    "CHECKLIST_INCOMPLETA": "Complétez tous les points de la check-list."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -864,6 +871,80 @@
       "conferma": "Oui, supprimer",
       "elimina": "Supprimer la photo",
       "nessuna": "Aucune photo."
+    },
+    "pulizie": {
+      "occhiello": "Étages",
+      "titolo": "Ménage",
+      "soloMie": "Seulement les miennes",
+      "genera": "Générer la journée",
+      "assegna": "Attribuer au personnel",
+      "checklist": "Check-list",
+      "generata": "Journée prête : {{ riassetti }} recouches ajoutées, {{ checklist_aggiunte }} check-lists complétées.",
+      "assegnate": "{{ assegnate }} tâches attribuées, {{ non_assegnate }} encore libres.",
+      "vuoto": "Aucune tâche.",
+      "stati": {
+        "da_fare": "À faire",
+        "in_corso": "En cours",
+        "completata": "À contrôler",
+        "verificata": "Contrôlées"
+      },
+      "tipi": {
+        "partenza": "Départ",
+        "riassetto": "Recouche",
+        "profonda": "Ménage à fond",
+        "ispezione": "Contrôle"
+      },
+      "priorita": {
+        "bassa": "Basse",
+        "normale": "Normale",
+        "alta": "Haute",
+        "urgente": "Urgente"
+      },
+      "libera": "À attribuer",
+      "vociFatte": "{{ fatte }}/{{ totale }} points",
+      "nuova": "Nouvelle tâche",
+      "crea": "Ajouter à la journée",
+      "nessuno": "Personne",
+      "campi": {
+        "camera": "Chambre",
+        "tipo": "Type",
+        "priorita": "Priorité",
+        "addetto": "Femme/valet de chambre",
+        "note": "Notes",
+        "giorno": "Jour",
+        "voce": "Point"
+      },
+      "lavoro": "Travail",
+      "iniziaPerSpuntare": "Commencez le ménage pour cocher les points.",
+      "senzaChecklist": "Aucun point à cocher.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Commencer"
+        },
+        "in_corso": {
+          "completata": "Terminé",
+          "da_fare": "Remettre à faire"
+        },
+        "completata": {
+          "verificata": "Contrôlée",
+          "in_corso": "À refaire"
+        }
+      },
+      "salvaNote": "Enregistrer les notes",
+      "pianificazione": "Planification",
+      "salva": "Enregistrer",
+      "salvata": "Modifications enregistrées.",
+      "tutte": "Toutes les tâches",
+      "prenotazione": "Réservation",
+      "verificataDa": "Contrôlée par",
+      "elimina": "Supprimer la tâche",
+      "eliminaAiuto": "Possible uniquement tant que personne ne l’a commencée.",
+      "checklistIntroduzione": "Les points actifs sont copiés dans les nouvelles tâches de leur type.",
+      "tuttiTipi": "Tous les types",
+      "nessunaVoce": "Aucun point.",
+      "nuovaVoce": "Nouveau point",
+      "aggiungiVoce": "Ajouter un point",
+      "eliminaVoce": "Supprimer {{ voce }}"
     }
   },
   "anagrafica": {

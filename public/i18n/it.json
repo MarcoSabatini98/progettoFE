@@ -199,7 +199,14 @@
     "SLUG_GIA_USATO": "Esiste già una tipologia con questo nome.",
     "TIPOLOGIA_IN_USO": "Ci sono camere di questa tipologia: non si può eliminare.",
     "TIPOLOGIA_NON_TROVATA": "Tipologia non trovata.",
-    "MEDIA_NON_TROVATO": "Foto non trovata."
+    "MEDIA_NON_TROVATO": "Foto non trovata.",
+    "PULIZIA_NON_TROVATA": "Attività di pulizia non trovata.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Voce della checklist non trovata.",
+    "PULIZIA_CHIUSA": "L’attività è già stata verificata.",
+    "PULIZIA_INIZIATA": "L’attività è già iniziata: non si può eliminare.",
+    "TRANSIZIONE_NON_VALIDA": "Passaggio non possibile nello stato attuale dell’attività.",
+    "PULIZIA_ALTRUI": "L’attività è assegnata a un altro addetto.",
+    "CHECKLIST_INCOMPLETA": "Completa tutte le voci della checklist."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -864,6 +871,80 @@
       "conferma": "Sì, elimina",
       "elimina": "Elimina foto",
       "nessuna": "Nessuna foto."
+    },
+    "pulizie": {
+      "occhiello": "Housekeeping",
+      "titolo": "Pulizie",
+      "soloMie": "Solo le mie",
+      "genera": "Genera giornata",
+      "assegna": "Assegna agli addetti",
+      "checklist": "Checklist",
+      "generata": "Giornata pronta: {{ riassetti }} riassetti aggiunti, {{ checklist_aggiunte }} checklist completate.",
+      "assegnate": "{{ assegnate }} attività assegnate, {{ non_assegnate }} ancora libere.",
+      "vuoto": "Nessuna attività.",
+      "stati": {
+        "da_fare": "Da fare",
+        "in_corso": "In corso",
+        "completata": "Da verificare",
+        "verificata": "Verificate"
+      },
+      "tipi": {
+        "partenza": "Partenza",
+        "riassetto": "Riassetto",
+        "profonda": "Pulizia profonda",
+        "ispezione": "Ispezione"
+      },
+      "priorita": {
+        "bassa": "Bassa",
+        "normale": "Normale",
+        "alta": "Alta",
+        "urgente": "Urgente"
+      },
+      "libera": "Da assegnare",
+      "vociFatte": "{{ fatte }}/{{ totale }} voci",
+      "nuova": "Nuova attività",
+      "crea": "Aggiungi alla giornata",
+      "nessuno": "Nessuno",
+      "campi": {
+        "camera": "Camera",
+        "tipo": "Tipo",
+        "priorita": "Priorità",
+        "addetto": "Addetto",
+        "note": "Note",
+        "giorno": "Giorno",
+        "voce": "Voce"
+      },
+      "lavoro": "Lavoro",
+      "iniziaPerSpuntare": "Inizia la pulizia per spuntare le voci.",
+      "senzaChecklist": "Nessuna voce da spuntare.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Inizia"
+        },
+        "in_corso": {
+          "completata": "Ho finito",
+          "da_fare": "Rimetti da fare"
+        },
+        "completata": {
+          "verificata": "Verificata",
+          "in_corso": "Da rifare"
+        }
+      },
+      "salvaNote": "Salva note",
+      "pianificazione": "Pianificazione",
+      "salva": "Salva",
+      "salvata": "Modifiche salvate.",
+      "tutte": "Tutte le pulizie",
+      "prenotazione": "Prenotazione",
+      "verificataDa": "Verificata da",
+      "elimina": "Elimina attività",
+      "eliminaAiuto": "Possibile solo finché nessuno l’ha iniziata.",
+      "checklistIntroduzione": "Le voci attive si copiano nelle nuove attività del loro tipo.",
+      "tuttiTipi": "Tutti i tipi",
+      "nessunaVoce": "Nessuna voce.",
+      "nuovaVoce": "Nuova voce",
+      "aggiungiVoce": "Aggiungi voce",
+      "eliminaVoce": "Elimina {{ voce }}"
     }
   },
   "anagrafica": {

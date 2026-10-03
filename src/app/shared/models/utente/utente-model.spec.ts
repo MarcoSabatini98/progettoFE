@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { UtenteInterface } from './utente-model';
+import { AddettoInterface, UtenteInterface } from './utente-model';
 
 describe('UtenteInterface', () => {
   it('accetta un cliente senza associazioni', () => {
@@ -27,5 +27,16 @@ describe('UtenteInterface', () => {
 
     expect(utente.ruolo).toBe('cliente');
     expect(utente.dettagli_ruolo).toBeUndefined();
+  });
+
+  it('accetta un addetto con i soli dati per sceglierlo', () => {
+    const addetto: AddettoInterface = {
+      id: 3,
+      nome: 'Anna',
+      cognome: 'Bianchi',
+      ruolo: 'housekeeper',
+    };
+
+    expect(addetto.ruolo).toBe('housekeeper');
   });
 });

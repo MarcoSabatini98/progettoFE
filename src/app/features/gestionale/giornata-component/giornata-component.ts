@@ -37,7 +37,6 @@ const SEZIONI = [
     RigaPrenotazioneComponent,
   ],
   templateUrl: './giornata-component.html',
-  styleUrl: './giornata-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },
 })

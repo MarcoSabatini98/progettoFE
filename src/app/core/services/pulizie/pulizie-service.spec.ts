@@ -27,6 +27,14 @@ describe('PulizieService', () => {
     richiesta.flush(risposta([]));
   });
 
+  it('elenca gli addetti a cui assegnare', () => {
+    service.elencaAddetti().subscribe();
+
+    const richiesta = backend.expectOne(`${API}/addetti`);
+    expect(richiesta.request.method).toBe('GET');
+    richiesta.flush(risposta([]));
+  });
+
   it('genera la giornata di oggi', () => {
     service.generaGiornata().subscribe();
 

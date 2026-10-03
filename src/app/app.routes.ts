@@ -116,6 +116,33 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'pulizie',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PULIZIE_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/pulizie-component/pulizie-component').then(
+            (m) => m.PulizieComponent,
+          ),
+      },
+      {
+        path: 'pulizie/checklist',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PULIZIE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/checklist-pulizie-component/checklist-pulizie-component').then(
+            (m) => m.ChecklistPulizieComponent,
+          ),
+      },
+      {
+        path: 'pulizie/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PULIZIE_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-pulizia-component/scheda-pulizia-component').then(
+            (m) => m.SchedaPuliziaComponent,
+          ),
+      },
+      {
         path: 'alloggiati',
         canActivate: [ruoloGuard],
         data: { permessi: [PERMESSI.ALLOGGIATI_INVIA] } satisfies RequisitiAccessoInterface,

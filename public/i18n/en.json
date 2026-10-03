@@ -199,7 +199,14 @@
     "SLUG_GIA_USATO": "A room type with this name already exists.",
     "TIPOLOGIA_IN_USO": "Some rooms use this type: it cannot be deleted.",
     "TIPOLOGIA_NON_TROVATA": "Room type not found.",
-    "MEDIA_NON_TROVATO": "Photo not found."
+    "MEDIA_NON_TROVATO": "Photo not found.",
+    "PULIZIA_NON_TROVATA": "Housekeeping task not found.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Checklist item not found.",
+    "PULIZIA_CHIUSA": "The task has already been inspected.",
+    "PULIZIA_INIZIATA": "The task has already started: it cannot be deleted.",
+    "TRANSIZIONE_NON_VALIDA": "This step is not possible in the task’s current state.",
+    "PULIZIA_ALTRUI": "The task is assigned to another housekeeper.",
+    "CHECKLIST_INCOMPLETA": "Complete all the checklist items."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -864,6 +871,80 @@
       "conferma": "Yes, delete",
       "elimina": "Delete photo",
       "nessuna": "No photos."
+    },
+    "pulizie": {
+      "occhiello": "Housekeeping",
+      "titolo": "Housekeeping",
+      "soloMie": "Only mine",
+      "genera": "Generate day",
+      "assegna": "Assign to staff",
+      "checklist": "Checklist",
+      "generata": "Day ready: {{ riassetti }} stayover cleans added, {{ checklist_aggiunte }} checklists completed.",
+      "assegnate": "{{ assegnate }} tasks assigned, {{ non_assegnate }} still unassigned.",
+      "vuoto": "No tasks.",
+      "stati": {
+        "da_fare": "To do",
+        "in_corso": "In progress",
+        "completata": "To inspect",
+        "verificata": "Inspected"
+      },
+      "tipi": {
+        "partenza": "Checkout",
+        "riassetto": "Stayover",
+        "profonda": "Deep clean",
+        "ispezione": "Inspection"
+      },
+      "priorita": {
+        "bassa": "Low",
+        "normale": "Normal",
+        "alta": "High",
+        "urgente": "Urgent"
+      },
+      "libera": "Unassigned",
+      "vociFatte": "{{ fatte }}/{{ totale }} items",
+      "nuova": "New task",
+      "crea": "Add to the day",
+      "nessuno": "Nobody",
+      "campi": {
+        "camera": "Room",
+        "tipo": "Type",
+        "priorita": "Priority",
+        "addetto": "Housekeeper",
+        "note": "Notes",
+        "giorno": "Day",
+        "voce": "Item"
+      },
+      "lavoro": "Work",
+      "iniziaPerSpuntare": "Start cleaning to tick the items.",
+      "senzaChecklist": "No items to tick.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Start"
+        },
+        "in_corso": {
+          "completata": "Done",
+          "da_fare": "Back to to-do"
+        },
+        "completata": {
+          "verificata": "Inspected",
+          "in_corso": "Redo"
+        }
+      },
+      "salvaNote": "Save notes",
+      "pianificazione": "Planning",
+      "salva": "Save",
+      "salvata": "Changes saved.",
+      "tutte": "All tasks",
+      "prenotazione": "Booking",
+      "verificataDa": "Inspected by",
+      "elimina": "Delete task",
+      "eliminaAiuto": "Only possible until someone starts it.",
+      "checklistIntroduzione": "Active items are copied into new tasks of their type.",
+      "tuttiTipi": "All types",
+      "nessunaVoce": "No items.",
+      "nuovaVoce": "New item",
+      "aggiungiVoce": "Add item",
+      "eliminaVoce": "Delete {{ voce }}"
     }
   },
   "anagrafica": {
