@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { Router, provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -87,5 +87,14 @@ describe('PrenotazioniComponent', () => {
     const [precedente, successiva] = elemento.querySelectorAll<HTMLButtonElement>('.pagine button');
     expect(precedente.disabled).toBe(true);
     expect(successiva.disabled).toBe(false);
+  });
+
+  it('parte dallo stato arrivato col link', async () => {
+    await TestBed.inject(Router).navigateByUrl('/?stato=in_attesa');
+    await crea();
+
+    expect(prenotazioni.elencaPrenotazioni).toHaveBeenCalledWith(
+      expect.objectContaining({ stato: ['in_attesa'] }),
+    );
   });
 });

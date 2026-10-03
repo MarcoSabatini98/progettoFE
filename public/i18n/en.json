@@ -945,6 +945,28 @@
       "nuovaVoce": "New item",
       "aggiungiVoce": "Add item",
       "eliminaVoce": "Delete {{ voce }}"
+    },
+    "cruscotto": {
+      "occhiello": "Management",
+      "titolo": "Dashboard",
+      "aggiorna": "Refresh",
+      "percentuale": "{{ valore }}%",
+      "gruppi": {
+        "oggi": "Today",
+        "daFare": "Waiting",
+        "mese": "This month"
+      },
+      "voci": {
+        "occupazione_oggi": "{{ in_casa }} of {{ camere }} rooms occupied",
+        "arrivi_oggi": "Arrivals",
+        "partenze_oggi": "Departures",
+        "in_casa": "Bookings in house",
+        "da_confermare": "Bookings to confirm",
+        "manutenzioni_aperte": "Open maintenance",
+        "recensioni_da_moderare": "Reviews to moderate",
+        "incassato_mese": "Collected since the 1st",
+        "prenotato_da_inizio_mese": "Sold with arrival this month"
+      }
     }
   },
   "anagrafica": {

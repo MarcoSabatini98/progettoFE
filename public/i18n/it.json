@@ -945,6 +945,28 @@
       "nuovaVoce": "Nuova voce",
       "aggiungiVoce": "Aggiungi voce",
       "eliminaVoce": "Elimina {{ voce }}"
+    },
+    "cruscotto": {
+      "occhiello": "Direzione",
+      "titolo": "Cruscotto",
+      "aggiorna": "Aggiorna",
+      "percentuale": "{{ valore }}%",
+      "gruppi": {
+        "oggi": "Oggi",
+        "daFare": "In attesa",
+        "mese": "Questo mese"
+      },
+      "voci": {
+        "occupazione_oggi": "Occupate {{ in_casa }} camere su {{ camere }}",
+        "arrivi_oggi": "Arrivi",
+        "partenze_oggi": "Partenze",
+        "in_casa": "Prenotazioni in casa",
+        "da_confermare": "Prenotazioni da confermare",
+        "manutenzioni_aperte": "Manutenzioni aperte",
+        "recensioni_da_moderare": "Recensioni da moderare",
+        "incassato_mese": "Incassato dal primo del mese",
+        "prenotato_da_inizio_mese": "Venduto con arrivo nel mese"
+      }
     }
   },
   "anagrafica": {

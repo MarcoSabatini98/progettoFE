@@ -78,6 +78,7 @@ export const PERCORSO_ACCOUNT_STAFF = `${PERCORSO_STAFF}/account`;
 
 /** Pagine del gestionale raggiunte anche da link e pulsanti, non solo dal menu. */
 export const PERCORSI_STAFF = {
+  cruscotto: `${PERCORSO_STAFF}/cruscotto`,
   oggi: `${PERCORSO_STAFF}/oggi`,
   /** Seguito dall'id per la scheda: /staff/prenotazioni/12. */
   prenotazioni: `${PERCORSO_STAFF}/prenotazioni`,
@@ -92,6 +93,8 @@ export const PERCORSI_STAFF = {
   /** Seguito dall'id per la scheda: /staff/pulizie/9 (link nelle notifiche del backend). */
   pulizie: `${PERCORSO_STAFF}/pulizie`,
   checklistPulizie: `${PERCORSO_STAFF}/pulizie/checklist`,
+  manutenzione: `${PERCORSO_STAFF}/manutenzione`,
+  recensioni: `${PERCORSO_STAFF}/recensioni`,
 } as const;
 
 /**
@@ -104,7 +107,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
     voci: [
       {
         etichetta: 'menu.voci.cruscotto',
-        percorso: `${PERCORSO_STAFF}/cruscotto`,
+        percorso: PERCORSI_STAFF.cruscotto,
         icona: 'dashboard',
         permessi: [PERMESSI.ANALYTICS_LEGGI],
       },
@@ -124,7 +127,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       { etichetta: 'menu.voci.chat', percorso: `${PERCORSO_STAFF}/chat`, icona: 'chat' },
       {
         etichetta: 'menu.voci.manutenzione',
-        percorso: `${PERCORSO_STAFF}/manutenzione`,
+        percorso: PERCORSI_STAFF.manutenzione,
         icona: 'build',
         permessi: [PERMESSI.MANUTENZIONE_SEGNALA],
       },
@@ -194,7 +197,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.recensioni',
-        percorso: `${PERCORSO_STAFF}/recensioni`,
+        percorso: PERCORSI_STAFF.recensioni,
         icona: 'reviews',
         permessi: [PERMESSI.RECENSIONI_MODERA],
       },

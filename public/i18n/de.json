@@ -945,6 +945,28 @@
       "nuovaVoce": "Neuer Punkt",
       "aggiungiVoce": "Punkt hinzufügen",
       "eliminaVoce": "{{ voce }} löschen"
+    },
+    "cruscotto": {
+      "occhiello": "Leitung",
+      "titolo": "Übersicht",
+      "aggiorna": "Aktualisieren",
+      "percentuale": "{{ valore }} %",
+      "gruppi": {
+        "oggi": "Heute",
+        "daFare": "Offen",
+        "mese": "Dieser Monat"
+      },
+      "voci": {
+        "occupazione_oggi": "{{ in_casa }} von {{ camere }} Zimmern belegt",
+        "arrivi_oggi": "Anreisen",
+        "partenze_oggi": "Abreisen",
+        "in_casa": "Buchungen im Haus",
+        "da_confermare": "Zu bestätigende Buchungen",
+        "manutenzioni_aperte": "Offene Wartungen",
+        "recensioni_da_moderare": "Zu prüfende Bewertungen",
+        "incassato_mese": "Eingenommen seit dem 1.",
+        "prenotato_da_inizio_mese": "Verkauft mit Anreise in diesem Monat"
+      }
     }
   },
   "anagrafica": {

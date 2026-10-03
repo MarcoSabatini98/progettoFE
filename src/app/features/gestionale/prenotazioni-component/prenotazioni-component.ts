@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime } from 'rxjs';
 
@@ -56,7 +56,7 @@ export class PrenotazioniComponent {
   ]);
   protected readonly filtri = inject(NonNullableFormBuilder).group({
     cerca: '',
-    stato: '' as StatoPrenotazione | '',
+    stato: this.statoIniziale(),
     canale: '' as Canale | '',
     dal: '',
     al: '',
@@ -79,6 +79,12 @@ export class PrenotazioniComponent {
    */
   sfoglia(passo: number): void {
     this.pagina.update((numero) => numero + passo);
+  }
+
+  /** Lo stato può arrivare da un link, come quello del cruscotto (?stato=in_attesa). */
+  private statoIniziale(): StatoPrenotazione | '' {
+    const stato = inject(ActivatedRoute).snapshot.queryParamMap.get('stato');
+    return STATI_PRENOTAZIONE.find((valore) => valore === stato) ?? '';
   }
 
   // I campi vuoti non arrivano all'API (creaParametri).
