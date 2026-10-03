@@ -45,6 +45,7 @@
     "@jsverse/transloco": "^8.4.0",
     "@material-symbols/svg-400": "^0.47.5",
     "rxjs": "~7.8.0",
+    "socket.io-client": "^4.8.4",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

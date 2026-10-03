@@ -206,7 +206,23 @@
     "PULIZIA_INIZIATA": "L’attività è già iniziata: non si può eliminare.",
     "TRANSIZIONE_NON_VALIDA": "Passaggio non possibile nello stato attuale dell’attività.",
     "PULIZIA_ALTRUI": "L’attività è assegnata a un altro addetto.",
-    "CHECKLIST_INCOMPLETA": "Completa tutte le voci della checklist."
+    "CHECKLIST_INCOMPLETA": "Completa tutte le voci della checklist.",
+    "CONVERSAZIONE_NON_TROVATA": "Conversazione non trovata.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "Non fai parte di questa conversazione.",
+    "SOLO_CHAT_STAFF": "Operazione possibile solo nelle chat dello staff.",
+    "SOLO_CLIENTI": "Operazione riservata ai clienti.",
+    "PARTECIPANTI_MANCANTI": "Scegli almeno un collega.",
+    "TITOLO_RISERVATO": "Questo nome è riservato ai gruppi di squadra.",
+    "TITOLO_MANCANTE": "Un gruppo deve avere un nome.",
+    "CHAT_NON_CONSENTITA": "Questo utente non può partecipare alla conversazione.",
+    "GRUPPO_DI_SQUADRA": "I gruppi di squadra seguono i ruoli e non si modificano.",
+    "SOLO_GRUPPI": "Operazione possibile solo nei gruppi.",
+    "MESSAGGIO_VUOTO": "Scrivi un testo o allega un file.",
+    "MESSAGGIO_ALTRUI": "Puoi modificare solo i tuoi messaggi.",
+    "MESSAGGIO_NON_TROVATO": "Messaggio non trovato.",
+    "ALLEGATO_NON_TROVATO": "Allegato non trovato.",
+    "OPERATORE_NON_VALIDO": "Questo utente non può seguire l'assistenza.",
+    "STATO_PRESENZA_NON_VALIDO": "Stato di presenza non valido."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -967,6 +983,99 @@
         "incassato_mese": "Incassato dal primo del mese",
         "prenotato_da_inizio_mese": "Venduto con arrivo nel mese"
       }
+    },
+    "chat": {
+      "occhiello": "Comunicazione",
+      "titolo": "Chat",
+      "presenza": "La mia presenza",
+      "presenze": {
+        "online": "Online",
+        "occupato": "Occupato",
+        "assente": "Assente",
+        "offline": "Offline"
+      },
+      "nuova": "Nuova chat",
+      "elenco": "Conversazioni",
+      "tipi": {
+        "staff": "Staff",
+        "assistenza": "Assistenza"
+      },
+      "filtri": {
+        "stato": "Stato",
+        "assegnate": "Assegnazione",
+        "tutte": "Tutte",
+        "mie": "Le mie",
+        "libere": "Da prendere"
+      },
+      "stati": {
+        "aperta": "Aperte",
+        "chiusa": "Chiuse"
+      },
+      "vuoto": "Nessuna conversazione.",
+      "scegli": "Scegli una conversazione o aprine una nuova.",
+      "senzaNome": "Conversazione",
+      "nonLetti": "messaggi non letti",
+      "nuovaChat": {
+        "colleghi": "Con chi",
+        "nessunCollega": "Nessun collega disponibile.",
+        "nessunoScelto": "Scegli almeno un collega.",
+        "nomeGruppo": "Nome del gruppo",
+        "messaggio": "Primo messaggio",
+        "apri": "Apri la chat"
+      },
+      "messaggio": {
+        "modifica": "Modifica",
+        "salva": "Salva",
+        "modificato": "modificato",
+        "conferma": "Conferma eliminazione",
+        "rispondi": "Rispondi",
+        "elimina": "Elimina"
+      },
+      "scrivi": {
+        "rispondiA": "Rispondi a:",
+        "annullaRisposta": "Annulla la risposta",
+        "togli": "Togli {{ nome }}",
+        "allega": "Allega file",
+        "testo": "Scrivi un messaggio",
+        "invia": "Invia",
+        "troppiAllegati": "Al massimo {{ max }} allegati per messaggio."
+      },
+      "azioni": {
+        "prendi": "Prendi in carico",
+        "rilascia": "Rilascia",
+        "chiudi": "Chiudi",
+        "riapri": "Riapri",
+        "rinomina": "Rinomina",
+        "aggiungi": "Aggiungi",
+        "collega": "Collega da aggiungere",
+        "esci": "Esci dal gruppo",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Conversazione presa in carico.",
+          "rilasciata": "Conversazione rilasciata.",
+          "chiusa": "Conversazione chiusa.",
+          "aperta": "Conversazione riaperta.",
+          "rinominata": "Gruppo rinominato.",
+          "aggiunto": "Collega aggiunto.",
+          "uscito": "Sei uscito dal gruppo."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Messaggi precedenti",
+        "vuota": "Ancora nessun messaggio.",
+        "scrive": "{{ nome }} sta scrivendo…",
+        "chiusa": "Conversazione chiusa: riaprila per scrivere.",
+        "operatore": "Operatore",
+        "libera": "da prendere",
+        "partecipanti": "Partecipanti"
+      }
+    },
+    "ruoli": {
+      "admin": "Amministratore",
+      "receptionist": "Receptionist",
+      "housekeeper_senior": "Governante",
+      "housekeeper": "Addetto pulizie",
+      "cliente": "Cliente"
     }
   },
   "anagrafica": {

@@ -160,6 +160,31 @@ export const routes: Routes = [
             (m) => m.AlloggiatiComponent,
           ),
       },
+      {
+        // Chat interna: tutto lo staff. L'assistenza si vede solo con CHAT_ASSISTENZA.
+        path: 'chat',
+        loadComponent: () =>
+          import('./features/gestionale/chat-component/chat-component').then(
+            (m) => m.ChatComponent,
+          ),
+        children: [
+          { path: '', children: [] },
+          {
+            path: 'nuova',
+            loadComponent: () =>
+              import('./features/gestionale/nuova-chat-component/nuova-chat-component').then(
+                (m) => m.NuovaChatComponent,
+              ),
+          },
+          {
+            path: ':uuid',
+            loadComponent: () =>
+              import('./features/gestionale/conversazione-component/conversazione-component').then(
+                (m) => m.ConversazioneComponent,
+              ),
+          },
+        ],
+      },
       { path: '**', component: PaginaNonTrovataComponent },
     ],
   },

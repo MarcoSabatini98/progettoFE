@@ -1,0 +1,40 @@
+.chat {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-items: start;
+}
+
+.conversazioni {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.schede {
+  display: flex;
+  gap: var(--bb-spazio-2);
+}
+
+.schede [aria-pressed='true'] {
+  color: var(--bb-brand-testo);
+  border-bottom: 2px solid currentColor;
+}
+
+/* Mobile: elenco oppure conversazione, mai tutti e due. */
+@media (width < 64rem) {
+  :host(.aperta) .pagina-intestazione,
+  :host(.aperta) .conversazioni,
+  :host(:not(.aperta)) .riquadro {
+    display: none;
+  }
+}
+
+@media (min-width: 64rem) {
+  .chat {
+    grid-template-columns: minmax(16rem, 22rem) 1fr;
+  }
+
+  .riquadro {
+    position: sticky;
+    top: var(--bb-spazio-4);
+  }
+}

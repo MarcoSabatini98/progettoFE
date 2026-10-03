@@ -93,6 +93,9 @@ export const PERCORSI_STAFF = {
   /** Seguito dall'id per la scheda: /staff/pulizie/9 (link nelle notifiche del backend). */
   pulizie: `${PERCORSO_STAFF}/pulizie`,
   checklistPulizie: `${PERCORSO_STAFF}/pulizie/checklist`,
+  /** Seguito dall'uuid per la conversazione: /staff/chat/<uuid> (link nelle notifiche). */
+  chat: `${PERCORSO_STAFF}/chat`,
+  nuovaChat: `${PERCORSO_STAFF}/chat/nuova`,
   manutenzione: `${PERCORSO_STAFF}/manutenzione`,
   recensioni: `${PERCORSO_STAFF}/recensioni`,
 } as const;
@@ -124,7 +127,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
         icona: 'cleaning_services',
         permessi: [PERMESSI.PULIZIE_LEGGI],
       },
-      { etichetta: 'menu.voci.chat', percorso: `${PERCORSO_STAFF}/chat`, icona: 'chat' },
+      { etichetta: 'menu.voci.chat', percorso: PERCORSI_STAFF.chat, icona: 'chat' },
       {
         etichetta: 'menu.voci.manutenzione',
         percorso: PERCORSI_STAFF.manutenzione,

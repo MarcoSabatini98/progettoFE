@@ -1,0 +1,60 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.intestazione {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  padding-block-end: var(--bb-spazio-3);
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.intestazione h2,
+.intestazione p {
+  margin: 0;
+}
+
+.partecipanti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partecipanti li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+}
+
+.messaggi {
+  display: flex;
+  flex-direction: column-reverse;
+  block-size: 60dvh;
+  overflow-y: auto;
+}
+
+.flusso {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  justify-items: center;
+}
+
+.flusso app-messaggio-chat {
+  justify-self: stretch;
+}
+
+.scrive {
+  min-block-size: 1lh;
+  margin: 0;
+  color: var(--bb-testo-tenue);
+}
+
+@media (min-width: 64rem) {
+  .indietro {
+    display: none;
+  }
+}

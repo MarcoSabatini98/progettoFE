@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { STATI_CONVERSAZIONE, TIPI_CONVERSAZIONE } from '../../../core/services/chat/chat-costanti';
-import { ChatStaffCreaPayload, ConversazioneInterface } from './conversazione-model';
+import {
+  ChatStaffCreaPayload,
+  CollegaInterface,
+  ConversazioneInterface,
+} from './conversazione-model';
 
 describe('ConversazioneInterface', () => {
   it("accetta un'assistenza aperta di un visitatore non ancora presa", () => {
@@ -34,5 +38,17 @@ describe('ConversazioneInterface', () => {
     };
 
     expect(gruppo.partecipanti.length).toBeGreaterThan(1);
+  });
+
+  it('accetta un collega con la sua presenza', () => {
+    const collega: CollegaInterface = {
+      id: 2,
+      nome: 'Luca',
+      cognome: 'Verdi',
+      ruolo: 'receptionist',
+      presenza: 'occupato',
+    };
+
+    expect(collega.presenza).toBe('occupato');
   });
 });

@@ -7,6 +7,7 @@ import { AccessoVisitatoreInterface } from '../../../shared/models/accesso-visit
 import {
   AssistenzaCreaPayload,
   ChatStaffCreaPayload,
+  CollegaInterface,
   ConversazioneInterface,
   FiltriConversazioni,
   StatoConversazione,
@@ -104,6 +105,16 @@ export class ChatService {
         `${this.apiUrl}/conversazioni/assistenza`,
         dati,
       )
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * COLLEGHI — GET /colleghi
+   * Lo staff con cui si può aprire una chat interna, con la presenza.
+   */
+  elencaColleghi(): Observable<CollegaInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<CollegaInterface[]>>(`${this.apiUrl}/colleghi`)
       .pipe(map((res) => res.dati));
   }
 

@@ -6,7 +6,7 @@ import type {
 import { ConversazionePartecipanteInterface } from '../conversazione-partecipante/conversazione-partecipante-model';
 import { MessaggioInterface } from '../messaggio/messaggio-model';
 import { ParametriPaginaInterface } from '../pagina/pagina-model';
-import { UtenteInterface } from '../utente/utente-model';
+import { AddettoInterface, UtenteInterface } from '../utente/utente-model';
 import { VisitatoreInterface } from '../visitatore/visitatore-model';
 
 export type TipoConversazione = (typeof TIPI_CONVERSAZIONE)[number];
@@ -22,6 +22,9 @@ export interface PartecipanteInterface extends UtenteInterface {
   /** Solo nel dettaglio. */
   presenza?: StatoPresenza;
 }
+
+/** Membro dello staff con cui si può aprire una chat interna. */
+export type CollegaInterface = AddettoInterface & { presenza: StatoPresenza };
 
 /**
  * Chat di assistenza (cliente o visitatore con lo staff) o chat interna dello staff.

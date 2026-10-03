@@ -206,7 +206,23 @@
     "PULIZIA_INIZIATA": "The task has already started: it cannot be deleted.",
     "TRANSIZIONE_NON_VALIDA": "This step is not possible in the task’s current state.",
     "PULIZIA_ALTRUI": "The task is assigned to another housekeeper.",
-    "CHECKLIST_INCOMPLETA": "Complete all the checklist items."
+    "CHECKLIST_INCOMPLETA": "Complete all the checklist items.",
+    "CONVERSAZIONE_NON_TROVATA": "Conversation not found.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "You are not part of this conversation.",
+    "SOLO_CHAT_STAFF": "Only possible in staff chats.",
+    "SOLO_CLIENTI": "Reserved for guests.",
+    "PARTECIPANTI_MANCANTI": "Choose at least one colleague.",
+    "TITOLO_RISERVATO": "This name is reserved for team groups.",
+    "TITOLO_MANCANTE": "A group needs a name.",
+    "CHAT_NON_CONSENTITA": "This user cannot join the conversation.",
+    "GRUPPO_DI_SQUADRA": "Team groups follow roles and cannot be changed.",
+    "SOLO_GRUPPI": "Only possible in groups.",
+    "MESSAGGIO_VUOTO": "Write some text or attach a file.",
+    "MESSAGGIO_ALTRUI": "You can only edit your own messages.",
+    "MESSAGGIO_NON_TROVATO": "Message not found.",
+    "ALLEGATO_NON_TROVATO": "Attachment not found.",
+    "OPERATORE_NON_VALIDO": "This user cannot handle support.",
+    "STATO_PRESENZA_NON_VALIDO": "Invalid status."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -967,6 +983,99 @@
         "incassato_mese": "Collected since the 1st",
         "prenotato_da_inizio_mese": "Sold with arrival this month"
       }
+    },
+    "chat": {
+      "occhiello": "Communication",
+      "titolo": "Chat",
+      "presenza": "My status",
+      "presenze": {
+        "online": "Online",
+        "occupato": "Busy",
+        "assente": "Away",
+        "offline": "Offline"
+      },
+      "nuova": "New chat",
+      "elenco": "Conversations",
+      "tipi": {
+        "staff": "Staff",
+        "assistenza": "Support"
+      },
+      "filtri": {
+        "stato": "Status",
+        "assegnate": "Assignment",
+        "tutte": "All",
+        "mie": "Mine",
+        "libere": "Unassigned"
+      },
+      "stati": {
+        "aperta": "Open",
+        "chiusa": "Closed"
+      },
+      "vuoto": "No conversations.",
+      "scegli": "Pick a conversation or start a new one.",
+      "senzaNome": "Conversation",
+      "nonLetti": "unread messages",
+      "nuovaChat": {
+        "colleghi": "With",
+        "nessunCollega": "No colleagues available.",
+        "nessunoScelto": "Choose at least one colleague.",
+        "nomeGruppo": "Group name",
+        "messaggio": "First message",
+        "apri": "Start chat"
+      },
+      "messaggio": {
+        "modifica": "Edit",
+        "salva": "Save",
+        "modificato": "edited",
+        "conferma": "Confirm deletion",
+        "rispondi": "Reply",
+        "elimina": "Delete"
+      },
+      "scrivi": {
+        "rispondiA": "Replying to:",
+        "annullaRisposta": "Cancel reply",
+        "togli": "Remove {{ nome }}",
+        "allega": "Attach file",
+        "testo": "Write a message",
+        "invia": "Send",
+        "troppiAllegati": "At most {{ max }} attachments per message."
+      },
+      "azioni": {
+        "prendi": "Take over",
+        "rilascia": "Release",
+        "chiudi": "Close",
+        "riapri": "Reopen",
+        "rinomina": "Rename",
+        "aggiungi": "Add",
+        "collega": "Colleague to add",
+        "esci": "Leave group",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Conversation taken over.",
+          "rilasciata": "Conversation released.",
+          "chiusa": "Conversation closed.",
+          "aperta": "Conversation reopened.",
+          "rinominata": "Group renamed.",
+          "aggiunto": "Colleague added.",
+          "uscito": "You left the group."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Earlier messages",
+        "vuota": "No messages yet.",
+        "scrive": "{{ nome }} is typing…",
+        "chiusa": "Conversation closed: reopen it to write.",
+        "operatore": "Agent",
+        "libera": "unassigned",
+        "partecipanti": "Participants"
+      }
+    },
+    "ruoli": {
+      "admin": "Administrator",
+      "receptionist": "Receptionist",
+      "housekeeper_senior": "Head housekeeper",
+      "housekeeper": "Housekeeper",
+      "cliente": "Guest"
     }
   },
   "anagrafica": {

@@ -1,0 +1,94 @@
+@let dati = messaggio();
+<article class="fumetto" [class.di-sistema]="dati.di_sistema">
+  @if (!mio() && mittente()) {
+    <p class="mittente piccolo">{{ mittente() }}</p>
+  }
+  @if (citato(); as originale) {
+    <blockquote class="citazione piccolo">{{ originale.testo }}</blockquote>
+  }
+  @if (inModifica()) {
+    <form class="modifica" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+      <label class="visivamente-nascosto" [for]="'modifica-' + dati.id">
+        {{ 'gestionale.chat.messaggio.modifica' | transloco }}
+      </label>
+      <textarea
+        [id]="'modifica-' + dati.id"
+        [formControl]="testo"
+        rows="2"
+        [maxLength]="testoMax"
+      ></textarea>
+      <div class="azioni">
+        <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+          {{ 'gestionale.chat.messaggio.salva' | transloco }}
+        </button>
+        <button class="pulsante pulsante-fantasma" type="button" (click)="inModifica.set(false)">
+          {{ 'portale.documenti.annulla' | transloco }}
+        </button>
+      </div>
+    </form>
+  } @else {
+    <p class="testo-libero">{{ dati.testo }}</p>
+  }
+  @if (dati.allegati?.length) {
+    <ul class="allegati">
+      @for (allegato of dati.allegati; track allegato.id) {
+        <li>
+          <button class="pulsante pulsante-fantasma" type="button" (click)="scarica(allegato)">
+            <app-icona nome="attach_file" />
+            {{ allegato.nome_originale }}
+          </button>
+        </li>
+      }
+    </ul>
+  }
+  <footer class="piede piccolo">
+    <time [attr.datetime]="dati.inviato_il">{{ dati.inviato_il | data: 'ora' }}</time>
+    @if (dati.modificato_il) {
+      <span>· {{ 'gestionale.chat.messaggio.modificato' | transloco }}</span>
+    }
+    @if (!dati.di_sistema && !inModifica()) {
+      <span class="comandi">
+        @if (daEliminare()) {
+          <button
+            class="pulsante pulsante-pericolo"
+            type="button"
+            [disabled]="inCorso()"
+            (click)="elimina()"
+          >
+            {{ 'gestionale.chat.messaggio.conferma' | transloco }}
+          </button>
+          <button class="pulsante pulsante-fantasma" type="button" (click)="daEliminare.set(false)">
+            {{ 'portale.documenti.annulla' | transloco }}
+          </button>
+        } @else {
+          <button
+            class="pulsante pulsante-icona"
+            type="button"
+            [attr.aria-label]="'gestionale.chat.messaggio.rispondi' | transloco"
+            (click)="rispondi.emit(dati)"
+          >
+            <app-icona nome="reply" />
+          </button>
+          @if (mio()) {
+            <button
+              class="pulsante pulsante-icona"
+              type="button"
+              [attr.aria-label]="'gestionale.chat.messaggio.modifica' | transloco"
+              (click)="modifica()"
+            >
+              <app-icona nome="edit" />
+            </button>
+            <button
+              class="pulsante pulsante-icona"
+              type="button"
+              [attr.aria-label]="'gestionale.chat.messaggio.elimina' | transloco"
+              (click)="daEliminare.set(true)"
+            >
+              <app-icona nome="delete" />
+            </button>
+          }
+        }
+      </span>
+    }
+  </footer>
+</article>
