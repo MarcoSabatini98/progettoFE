@@ -37,7 +37,7 @@
 <div class="colonna">
   <ng-content />
   <!-- Una scheda nuova per voce: la conferma lasciata a metà non passa alla successiva. -->
-  @for (voce of scelta ? [scelta] : []; track voce.id) {
+  @for (voce of scelta && eliminabile() ? [scelta] : []; track voce.id) {
     <app-elimina
       [titolo]="chiave() + '.elimina' | transloco"
       [aiuto]="chiave() + '.eliminaAiuto' | transloco"

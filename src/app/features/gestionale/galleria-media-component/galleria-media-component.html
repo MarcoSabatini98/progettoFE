@@ -1,5 +1,5 @@
-<h2 class="titolo-scheda">{{ 'gestionale.foto.titolo' | transloco }}</h2>
-<p class="tenue piccolo">{{ 'gestionale.foto.aiuto' | transloco }}</p>
+<h2 class="titolo-scheda">{{ chiave() + '.titolo' | transloco }}</h2>
+<p class="tenue piccolo">{{ chiave() + '.aiuto' | transloco }}</p>
 
 <label class="pulsante pulsante-primario carica" [class.disabilitato]="inCorso()">
   <app-icona nome="add_photo_alternate" />

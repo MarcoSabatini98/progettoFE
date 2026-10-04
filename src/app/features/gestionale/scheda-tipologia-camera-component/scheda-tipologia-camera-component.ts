@@ -22,6 +22,7 @@ import { IconaComponent } from '../../../shared/icona-component/icona-component'
 import { DatiTipologiaComponent } from '../dati-tipologia-component/dati-tipologia-component';
 import { EliminaComponent } from '../elimina-component/elimina-component';
 import { GalleriaMediaComponent } from '../galleria-media-component/galleria-media-component';
+import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
 /** Scheda di una tipologia per lo staff: dati e dotazioni, foto del sito, eliminazione. */
 @Component({
@@ -32,6 +33,7 @@ import { GalleriaMediaComponent } from '../galleria-media-component/galleria-med
     DatiTipologiaComponent,
     EliminaComponent,
     GalleriaMediaComponent,
+    TraduzioniComponent,
     IconaComponent,
   ],
   templateUrl: './scheda-tipologia-camera-component.html',

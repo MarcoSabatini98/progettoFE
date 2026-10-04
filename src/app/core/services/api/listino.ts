@@ -38,6 +38,8 @@ export class Listino<T extends { id: number }, C> {
   readonly scelta = signal<T | null>(null);
   readonly inCorso = signal(false);
   readonly errore = signal('');
+  /** Valori di partenza di una voce nuova: vuoto = quelli del modulo. */
+  private readonly iniziali = signal<Partial<C> | undefined>(undefined);
   /** Per la scheda "Elimina": toglie la voce scelta. */
   readonly elimina = () => this.richieste.elimina(this.scelta()!.id);
 
@@ -51,7 +53,9 @@ export class Listino<T extends { id: number }, C> {
     this.elenco = rxResource({ stream: () => richieste.elenca() });
     effect(() => {
       const voce = this.scelta();
-      modulo.reset(voce ? { ...valoriVoce(modulo.controls, voce), ...adatta(voce) } : undefined);
+      modulo.reset(
+        voce ? { ...valoriVoce(modulo.controls, voce), ...adatta(voce) } : this.iniziali(),
+      );
     });
   }
 
@@ -61,7 +65,17 @@ export class Listino<T extends { id: number }, C> {
    */
   scegli(voce: T | null): void {
     this.errore.set('');
+    this.iniziali.set(undefined);
     this.scelta.set(voce);
+  }
+
+  /**
+   * NUOVA DA
+   * Una voce nuova che parte da questi valori (es. la nuova versione di un documento).
+   */
+  nuovaDa(valori: Partial<C>): void {
+    this.scegli(null);
+    this.iniziali.set(valori);
   }
 
   /**

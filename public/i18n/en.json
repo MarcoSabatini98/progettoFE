@@ -148,7 +148,7 @@
     "PRENOTAZIONI_ATTIVE": "You have current or upcoming bookings: cancel them or wait until your stay ends.",
     "UTENTE_NON_TROVATO": "Account not found.",
     "ARRIVO_NEL_PASSATO": "The arrival date is in the past.",
-    "DATE_NON_VALIDE": "Check the dates: departure must be after arrival.",
+    "DATE_NON_VALIDE": "Check the dates: the end cannot come before the start.",
     "BLOCCO_DIVERSO": "The room held for you doesn’t match this stay: search again.",
     "BLOCCO_SCADUTO": "Time to complete the booking has run out: search again.",
     "CAMERA_NON_DISPONIBILE": "The room is no longer available for these dates.",
@@ -230,7 +230,10 @@
     "PULIZIA_NON_RINVIABILE": "Only unfinished cleanings can be postponed.",
     "PULIZIA_IN_CORSO": "Finish the room you already have first.",
     "NESSUNA_PULIZIA_LIBERA": "There are no free rooms to clean.",
-    "CALENDARIO_DISATTIVATO": "The calendar is disabled: enable it to sync it."
+    "CALENDARIO_DISATTIVATO": "The calendar is disabled: enable it to sync it.",
+    "GIA_PUBBLICATO": "The document is already published: create a new version.",
+    "LINGUA_NON_ATTIVA": "This language is not enabled on the website.",
+    "CAMPO_NON_TRADUCIBILE": "This field cannot be translated."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1418,6 +1421,96 @@
         "nuovo": "New link",
         "avviso": "The current link stops working right away: you will have to paste the new one into every channel.",
         "conferma": "Yes, new link"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Website",
+      "titolo": "Content",
+      "sezioni": "Content sections",
+      "sezione": {
+        "foto": "Website photos",
+        "documenti": "Legal documents",
+        "eventi": "Local events"
+      },
+      "foto": {
+        "home": {
+          "titolo": "Home page cover",
+          "aiuto": "JPEG, PNG or WebP. The first one opens the home page."
+        },
+        "struttura": {
+          "titolo": "Property gallery",
+          "aiuto": "JPEG, PNG or WebP. Common areas, outdoors and surroundings."
+        }
+      },
+      "documenti": {
+        "titolo": "Legal documents",
+        "aiuto": "Privacy, terms and cookie policy. A draft can be edited until you publish it.",
+        "nuova": "New document",
+        "vuoto": "No documents.",
+        "modifica": "Edit draft",
+        "elimina": "Delete draft",
+        "eliminaAiuto": "The draft disappears. Published documents stay.",
+        "eliminaConferma": "Yes, delete",
+        "tipi": {
+          "privacy": "Privacy",
+          "termini": "Terms and conditions",
+          "cookie": "Cookie policy"
+        },
+        "campi": {
+          "tipo": "Document",
+          "lingua": "Language",
+          "versione": "Version",
+          "contenuto": "Text"
+        },
+        "versioneAiuto": "E.g. 2026.1: different from those already used for this document and language.",
+        "bozza": "Draft",
+        "pubblicatoIl": "Published on {{ data }}",
+        "pubblicatoAiuto": "Published: it can no longer be edited. To change it, create a new version.",
+        "nuovaVersione": "New version",
+        "pubblica": "Publish",
+        "pubblicaAiuto": "From then on it is the version in force on the website and can no longer be edited.",
+        "pubblicaConferma": "Yes, publish",
+        "pubblicato": "Document published."
+      },
+      "eventi": {
+        "titolo": "Local events",
+        "aiuto": "Fairs, festivals and events that raise demand: they weigh on the suggested price.",
+        "nuova": "New event",
+        "vuoto": "No events.",
+        "modifica": "Edit event",
+        "elimina": "Delete event",
+        "eliminaAiuto": "It no longer weighs on the suggested price.",
+        "eliminaConferma": "Yes, delete",
+        "tipi": {
+          "festivita": "Holiday",
+          "evento_locale": "Local event",
+          "fiera": "Fair",
+          "altro": "Other"
+        },
+        "campi": {
+          "titolo": "Title",
+          "tipo": "Type",
+          "data_inizio": "From",
+          "data_fine": "To",
+          "impatto": "Impact",
+          "note": "Notes"
+        },
+        "impatto": "impact {{ impatto }}/10",
+        "impattoAiuto": "From 1 (a few more people) to 10 (fully booked)."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Translations",
+      "aiuto": "The Italian text is the one in the form. An empty field uses Italian.",
+      "nessunaLingua": "The website is in Italian only: enable other languages in the settings.",
+      "salva": "Save translations",
+      "salvate": "Translations saved.",
+      "campi": {
+        "nome": "Name",
+        "descrizione": "Description",
+        "letti": "Beds",
+        "domanda": "Question",
+        "risposta": "Answer"
       }
     }
   },

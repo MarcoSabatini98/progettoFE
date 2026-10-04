@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { of } from 'rxjs';
@@ -24,13 +24,14 @@ const richieste = {
   imports: [ListinoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-listino [listino]="listino" chiave="prova">
+    <app-listino [listino]="listino" chiave="prova" [eliminabile]="eliminabile()">
       <ng-template #riga let-voce>{{ voce.nome }}</ng-template>
       <p class="modulo">modulo</p>
     </app-listino>
   `,
 })
 class OspiteComponent {
+  readonly eliminabile = signal(true);
   readonly modulo = new FormGroup({ nome: new FormControl('', { nonNullable: true }) });
   readonly listino = new Listino<Voce, unknown>(richieste as never, this.modulo);
 }
@@ -86,5 +87,15 @@ describe('ListinoComponent', () => {
     const { elemento } = await crea();
 
     expect(elemento.querySelector('.stato-vuoto')?.textContent).toContain('prova.vuoto');
+  });
+
+  it('non eliminabile: la voce scelta non mostra la scheda per eliminarla', async () => {
+    const { fixture, elemento, voce } = await crea();
+    fixture.componentInstance.eliminabile.set(false);
+
+    voce().click();
+    await fixture.whenStable();
+
+    expect(elemento.textContent).not.toContain('prova.elimina');
   });
 });

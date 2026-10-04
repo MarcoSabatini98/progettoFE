@@ -1,0 +1,5 @@
+.testo {
+  max-height: 24rem;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}

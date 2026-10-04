@@ -148,7 +148,7 @@
     "PRENOTAZIONI_ATTIVE": "Hai prenotazioni in corso o future: annullale o attendi la fine del soggiorno.",
     "UTENTE_NON_TROVATO": "Account non trovato.",
     "ARRIVO_NEL_PASSATO": "La data di arrivo è già passata.",
-    "DATE_NON_VALIDE": "Controlla le date: la partenza deve essere dopo l’arrivo.",
+    "DATE_NON_VALIDE": "Controlla le date: la fine non può venire prima dell’inizio.",
     "BLOCCO_DIVERSO": "La camera tenuta per te non corrisponde a questo soggiorno: ripeti la ricerca.",
     "BLOCCO_SCADUTO": "Il tempo per completare la prenotazione è scaduto: ripeti la ricerca.",
     "CAMERA_NON_DISPONIBILE": "La camera non è più disponibile per queste date.",
@@ -230,7 +230,10 @@
     "PULIZIA_NON_RINVIABILE": "Si rinviano solo le pulizie non ancora finite.",
     "PULIZIA_IN_CORSO": "Finisci prima la camera che hai già.",
     "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire.",
-    "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo."
+    "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo.",
+    "GIA_PUBBLICATO": "Il documento è già pubblicato: crea una nuova versione.",
+    "LINGUA_NON_ATTIVA": "Questa lingua non è attiva sul sito.",
+    "CAMPO_NON_TRADUCIBILE": "Questo campo non si traduce."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1418,6 +1421,96 @@
         "nuovo": "Nuovo link",
         "avviso": "Il link attuale smette subito di funzionare: dovrai incollare quello nuovo in ogni portale.",
         "conferma": "Sì, nuovo link"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Sito",
+      "titolo": "Contenuti",
+      "sezioni": "Sezioni dei contenuti",
+      "sezione": {
+        "foto": "Foto del sito",
+        "documenti": "Documenti legali",
+        "eventi": "Eventi in zona"
+      },
+      "foto": {
+        "home": {
+          "titolo": "Copertina della home",
+          "aiuto": "JPEG, PNG o WebP. La prima apre la home page."
+        },
+        "struttura": {
+          "titolo": "Galleria della struttura",
+          "aiuto": "JPEG, PNG o WebP. Spazi comuni, esterni e dintorni."
+        }
+      },
+      "documenti": {
+        "titolo": "Documenti legali",
+        "aiuto": "Privacy, termini e cookie policy. Una bozza si modifica finché non la pubblichi.",
+        "nuova": "Nuovo documento",
+        "vuoto": "Nessun documento.",
+        "modifica": "Modifica bozza",
+        "elimina": "Elimina bozza",
+        "eliminaAiuto": "La bozza sparisce. I documenti pubblicati restano.",
+        "eliminaConferma": "Sì, elimina",
+        "tipi": {
+          "privacy": "Privacy",
+          "termini": "Termini e condizioni",
+          "cookie": "Cookie policy"
+        },
+        "campi": {
+          "tipo": "Documento",
+          "lingua": "Lingua",
+          "versione": "Versione",
+          "contenuto": "Testo"
+        },
+        "versioneAiuto": "Es. 2026.1: diversa da quelle già usate per questo documento e lingua.",
+        "bozza": "Bozza",
+        "pubblicatoIl": "Pubblicato il {{ data }}",
+        "pubblicatoAiuto": "Pubblicato: non si modifica più. Per cambiarlo crea una nuova versione.",
+        "nuovaVersione": "Nuova versione",
+        "pubblica": "Pubblica",
+        "pubblicaAiuto": "Da quel momento è la versione in vigore sul sito e non si modifica più.",
+        "pubblicaConferma": "Sì, pubblica",
+        "pubblicato": "Documento pubblicato."
+      },
+      "eventi": {
+        "titolo": "Eventi in zona",
+        "aiuto": "Fiere, feste ed eventi che alzano la domanda: pesano sul prezzo suggerito.",
+        "nuova": "Nuovo evento",
+        "vuoto": "Nessun evento.",
+        "modifica": "Modifica evento",
+        "elimina": "Elimina evento",
+        "eliminaAiuto": "Non pesa più sul prezzo suggerito.",
+        "eliminaConferma": "Sì, elimina",
+        "tipi": {
+          "festivita": "Festività",
+          "evento_locale": "Evento locale",
+          "fiera": "Fiera",
+          "altro": "Altro"
+        },
+        "campi": {
+          "titolo": "Titolo",
+          "tipo": "Tipo",
+          "data_inizio": "Dal",
+          "data_fine": "Al",
+          "impatto": "Impatto",
+          "note": "Note"
+        },
+        "impatto": "impatto {{ impatto }}/10",
+        "impattoAiuto": "Da 1 (poca gente in più) a 10 (tutto pieno)."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Traduzioni",
+      "aiuto": "Il testo italiano è quello del modulo. Un campo vuoto usa l’italiano.",
+      "nessunaLingua": "Il sito è solo in italiano: attiva altre lingue nelle impostazioni.",
+      "salva": "Salva traduzioni",
+      "salvate": "Traduzioni salvate.",
+      "campi": {
+        "nome": "Nome",
+        "descrizione": "Descrizione",
+        "letti": "Letti",
+        "domanda": "Domanda",
+        "risposta": "Risposta"
       }
     }
   },

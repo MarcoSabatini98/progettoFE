@@ -148,7 +148,7 @@
     "PRENOTAZIONI_ATTIVE": "Sie haben laufende oder zukünftige Buchungen: Stornieren Sie sie oder warten Sie das Ende des Aufenthalts ab.",
     "UTENTE_NON_TROVATO": "Konto nicht gefunden.",
     "ARRIVO_NEL_PASSATO": "Das Anreisedatum liegt in der Vergangenheit.",
-    "DATE_NON_VALIDE": "Prüfen Sie die Daten: Die Abreise muss nach der Anreise liegen.",
+    "DATE_NON_VALIDE": "Prüfen Sie die Daten: Das Ende darf nicht vor dem Beginn liegen.",
     "BLOCCO_DIVERSO": "Das für Sie reservierte Zimmer passt nicht zu diesem Aufenthalt: Suchen Sie erneut.",
     "BLOCCO_SCADUTO": "Die Zeit für die Buchung ist abgelaufen: Suchen Sie erneut.",
     "CAMERA_NON_DISPONIBILE": "Das Zimmer ist für diese Daten nicht mehr verfügbar.",
@@ -230,7 +230,10 @@
     "PULIZIA_NON_RINVIABILE": "Nur nicht abgeschlossene Reinigungen können verschoben werden.",
     "PULIZIA_IN_CORSO": "Beende zuerst das Zimmer, das du schon hast.",
     "NESSUNA_PULIZIA_LIBERA": "Es gibt keine freien Zimmer zum Reinigen.",
-    "CALENDARIO_DISATTIVATO": "Der Kalender ist deaktiviert: Aktivieren Sie ihn, um ihn zu synchronisieren."
+    "CALENDARIO_DISATTIVATO": "Der Kalender ist deaktiviert: Aktivieren Sie ihn, um ihn zu synchronisieren.",
+    "GIA_PUBBLICATO": "Das Dokument ist bereits veröffentlicht: Legen Sie eine neue Version an.",
+    "LINGUA_NON_ATTIVA": "Diese Sprache ist auf der Website nicht aktiv.",
+    "CAMPO_NON_TRADUCIBILE": "Dieses Feld wird nicht übersetzt."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1418,6 +1421,96 @@
         "nuovo": "Neuer Link",
         "avviso": "Der aktuelle Link funktioniert sofort nicht mehr: Sie müssen den neuen in jedes Portal einfügen.",
         "conferma": "Ja, neuer Link"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Website",
+      "titolo": "Inhalte",
+      "sezioni": "Bereiche der Inhalte",
+      "sezione": {
+        "foto": "Fotos der Website",
+        "documenti": "Rechtliche Dokumente",
+        "eventi": "Veranstaltungen vor Ort"
+      },
+      "foto": {
+        "home": {
+          "titolo": "Titelbild der Startseite",
+          "aiuto": "JPEG, PNG oder WebP. Das erste eröffnet die Startseite."
+        },
+        "struttura": {
+          "titolo": "Galerie der Unterkunft",
+          "aiuto": "JPEG, PNG oder WebP. Gemeinschaftsräume, Außenbereiche und Umgebung."
+        }
+      },
+      "documenti": {
+        "titolo": "Rechtliche Dokumente",
+        "aiuto": "Datenschutz, AGB und Cookie-Richtlinie. Ein Entwurf lässt sich bis zur Veröffentlichung bearbeiten.",
+        "nuova": "Neues Dokument",
+        "vuoto": "Keine Dokumente.",
+        "modifica": "Entwurf bearbeiten",
+        "elimina": "Entwurf löschen",
+        "eliminaAiuto": "Der Entwurf verschwindet. Veröffentlichte Dokumente bleiben.",
+        "eliminaConferma": "Ja, löschen",
+        "tipi": {
+          "privacy": "Datenschutz",
+          "termini": "AGB",
+          "cookie": "Cookie-Richtlinie"
+        },
+        "campi": {
+          "tipo": "Dokument",
+          "lingua": "Sprache",
+          "versione": "Version",
+          "contenuto": "Text"
+        },
+        "versioneAiuto": "Z. B. 2026.1: anders als die für dieses Dokument und diese Sprache bereits verwendeten.",
+        "bozza": "Entwurf",
+        "pubblicatoIl": "Veröffentlicht am {{ data }}",
+        "pubblicatoAiuto": "Veröffentlicht: nicht mehr bearbeitbar. Für Änderungen eine neue Version anlegen.",
+        "nuovaVersione": "Neue Version",
+        "pubblica": "Veröffentlichen",
+        "pubblicaAiuto": "Ab dann ist es die gültige Version auf der Website und nicht mehr bearbeitbar.",
+        "pubblicaConferma": "Ja, veröffentlichen",
+        "pubblicato": "Dokument veröffentlicht."
+      },
+      "eventi": {
+        "titolo": "Veranstaltungen vor Ort",
+        "aiuto": "Messen, Feste und Veranstaltungen, die die Nachfrage erhöhen: Sie fließen in den Preisvorschlag ein.",
+        "nuova": "Neue Veranstaltung",
+        "vuoto": "Keine Veranstaltungen.",
+        "modifica": "Veranstaltung bearbeiten",
+        "elimina": "Veranstaltung löschen",
+        "eliminaAiuto": "Sie fließt nicht mehr in den Preisvorschlag ein.",
+        "eliminaConferma": "Ja, löschen",
+        "tipi": {
+          "festivita": "Feiertag",
+          "evento_locale": "Lokale Veranstaltung",
+          "fiera": "Messe",
+          "altro": "Sonstiges"
+        },
+        "campi": {
+          "titolo": "Titel",
+          "tipo": "Art",
+          "data_inizio": "Von",
+          "data_fine": "Bis",
+          "impatto": "Auswirkung",
+          "note": "Notizen"
+        },
+        "impatto": "Auswirkung {{ impatto }}/10",
+        "impattoAiuto": "Von 1 (etwas mehr Gäste) bis 10 (ausgebucht)."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Übersetzungen",
+      "aiuto": "Der italienische Text ist der aus dem Formular. Ein leeres Feld verwendet Italienisch.",
+      "nessunaLingua": "Die Website ist nur auf Italienisch: Aktivieren Sie weitere Sprachen in den Einstellungen.",
+      "salva": "Übersetzungen speichern",
+      "salvate": "Übersetzungen gespeichert.",
+      "campi": {
+        "nome": "Name",
+        "descrizione": "Beschreibung",
+        "letti": "Betten",
+        "domanda": "Frage",
+        "risposta": "Antwort"
       }
     }
   },

@@ -32,6 +32,8 @@ export class ListinoComponent<T extends { id: number }> {
 
   readonly listino = input.required<Listino<T, unknown>>();
   readonly chiave = input.required<string>();
+  /** false = la voce scelta non si elimina (es. un documento già pubblicato). */
+  readonly eliminabile = input(true);
 
   protected readonly riga = contentChild.required<TemplateRef<{ $implicit: T }>>('riga');
 }

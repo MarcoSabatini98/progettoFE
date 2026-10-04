@@ -125,4 +125,7 @@
     </label>
     <app-azioni-listino [listino]="listino" />
   </form>
+  @if (listino.scelta(); as promozione) {
+    <app-traduzioni entita="promozione" [entitaId]="promozione.id" />
+  }
 </app-listino>

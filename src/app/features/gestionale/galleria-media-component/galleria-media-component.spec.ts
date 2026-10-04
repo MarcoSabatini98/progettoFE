@@ -100,4 +100,24 @@ describe('GalleriaMediaComponent', () => {
 
     expect(contenuti.eliminaMedia).toHaveBeenCalledWith(5);
   });
+
+  it('foto del sito: senza scheda va senza id e coi testi della sezione', async () => {
+    const fixture = TestBed.createComponent(GalleriaMediaComponent);
+    fixture.componentRef.setInput('entita', 'home');
+    fixture.componentRef.setInput('media', []);
+    fixture.componentRef.setInput('descrizione', 'Home');
+    fixture.componentRef.setInput('chiave', 'gestionale.contenuti.foto.home');
+    await fixture.whenStable();
+    const elemento: HTMLElement = fixture.nativeElement;
+    const campo = elemento.querySelector<HTMLInputElement>('input[type="file"]')!;
+    Object.defineProperty(campo, 'files', { value: [new File(['a'], 'a.jpg')] });
+
+    campo.dispatchEvent(new Event('change'));
+    await fixture.whenStable();
+
+    expect(elemento.textContent).toContain('gestionale.contenuti.foto.home.titolo');
+    expect(contenuti.caricaMedia).toHaveBeenCalledWith(
+      expect.objectContaining({ entita: 'home', entita_id: null, ordine: 0 }),
+    );
+  });
 });

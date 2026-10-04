@@ -148,7 +148,7 @@
     "PRENOTAZIONI_ATTIVE": "Tienes reservas en curso o futuras: cancélalas o espera al final de la estancia.",
     "UTENTE_NON_TROVATO": "Cuenta no encontrada.",
     "ARRIVO_NEL_PASSATO": "La fecha de llegada ya ha pasado.",
-    "DATE_NON_VALIDE": "Revisa las fechas: la salida debe ser posterior a la llegada.",
+    "DATE_NON_VALIDE": "Revisa las fechas: el final no puede ser anterior al inicio.",
     "BLOCCO_DIVERSO": "La habitación reservada para ti no corresponde a esta estancia: repite la búsqueda.",
     "BLOCCO_SCADUTO": "Se acabó el tiempo para completar la reserva: repite la búsqueda.",
     "CAMERA_NON_DISPONIBILE": "La habitación ya no está disponible en estas fechas.",
@@ -230,7 +230,10 @@
     "PULIZIA_NON_RINVIABILE": "Solo se pueden aplazar las limpiezas no terminadas.",
     "PULIZIA_IN_CORSO": "Termina primero la habitación que ya tienes.",
     "NESSUNA_PULIZIA_LIBERA": "No hay habitaciones libres para limpiar.",
-    "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo."
+    "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo.",
+    "GIA_PUBBLICATO": "El documento ya está publicado: crea una nueva versión.",
+    "LINGUA_NON_ATTIVA": "Este idioma no está activo en el sitio.",
+    "CAMPO_NON_TRADUCIBILE": "Este campo no se traduce."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1418,6 +1421,96 @@
         "nuovo": "Nuevo enlace",
         "avviso": "El enlace actual deja de funcionar enseguida: tendrás que pegar el nuevo en cada portal.",
         "conferma": "Sí, nuevo enlace"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Sitio",
+      "titolo": "Contenidos",
+      "sezioni": "Secciones de contenidos",
+      "sezione": {
+        "foto": "Fotos del sitio",
+        "documenti": "Documentos legales",
+        "eventi": "Eventos en la zona"
+      },
+      "foto": {
+        "home": {
+          "titolo": "Portada de inicio",
+          "aiuto": "JPEG, PNG o WebP. La primera abre la página de inicio."
+        },
+        "struttura": {
+          "titolo": "Galería del alojamiento",
+          "aiuto": "JPEG, PNG o WebP. Zonas comunes, exteriores y alrededores."
+        }
+      },
+      "documenti": {
+        "titolo": "Documentos legales",
+        "aiuto": "Privacidad, términos y política de cookies. Un borrador se edita hasta que lo publicas.",
+        "nuova": "Nuevo documento",
+        "vuoto": "Ningún documento.",
+        "modifica": "Editar borrador",
+        "elimina": "Eliminar borrador",
+        "eliminaAiuto": "El borrador desaparece. Los documentos publicados se quedan.",
+        "eliminaConferma": "Sí, eliminar",
+        "tipi": {
+          "privacy": "Privacidad",
+          "termini": "Términos y condiciones",
+          "cookie": "Política de cookies"
+        },
+        "campi": {
+          "tipo": "Documento",
+          "lingua": "Idioma",
+          "versione": "Versión",
+          "contenuto": "Texto"
+        },
+        "versioneAiuto": "P. ej. 2026.1: distinta de las ya usadas para este documento e idioma.",
+        "bozza": "Borrador",
+        "pubblicatoIl": "Publicado el {{ data }}",
+        "pubblicatoAiuto": "Publicado: ya no se edita. Para cambiarlo, crea una nueva versión.",
+        "nuovaVersione": "Nueva versión",
+        "pubblica": "Publicar",
+        "pubblicaAiuto": "Desde entonces es la versión vigente en el sitio y ya no se edita.",
+        "pubblicaConferma": "Sí, publicar",
+        "pubblicato": "Documento publicado."
+      },
+      "eventi": {
+        "titolo": "Eventos en la zona",
+        "aiuto": "Ferias, fiestas y eventos que aumentan la demanda: influyen en el precio sugerido.",
+        "nuova": "Nuevo evento",
+        "vuoto": "Ningún evento.",
+        "modifica": "Editar evento",
+        "elimina": "Eliminar evento",
+        "eliminaAiuto": "Ya no influye en el precio sugerido.",
+        "eliminaConferma": "Sí, eliminar",
+        "tipi": {
+          "festivita": "Festivo",
+          "evento_locale": "Evento local",
+          "fiera": "Feria",
+          "altro": "Otro"
+        },
+        "campi": {
+          "titolo": "Título",
+          "tipo": "Tipo",
+          "data_inizio": "Desde",
+          "data_fine": "Hasta",
+          "impatto": "Impacto",
+          "note": "Notas"
+        },
+        "impatto": "impacto {{ impatto }}/10",
+        "impattoAiuto": "De 1 (algo más de gente) a 10 (todo lleno)."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Traducciones",
+      "aiuto": "El texto italiano es el del formulario. Un campo vacío usa el italiano.",
+      "nessunaLingua": "El sitio está solo en italiano: activa otros idiomas en los ajustes.",
+      "salva": "Guardar traducciones",
+      "salvate": "Traducciones guardadas.",
+      "campi": {
+        "nome": "Nombre",
+        "descrizione": "Descripción",
+        "letti": "Camas",
+        "domanda": "Pregunta",
+        "risposta": "Respuesta"
       }
     }
   },

@@ -178,6 +178,15 @@ export const routes: Routes = [
             (m) => m.TariffeComponent,
           ),
       },
+      {
+        path: 'contenuti',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CONTENUTI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/contenuti-component/contenuti-component').then(
+            (m) => m.ContenutiComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',
