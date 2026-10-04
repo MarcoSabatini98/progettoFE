@@ -1585,6 +1585,34 @@
         "risposta": "Réponse enregistrée.",
         "rispostaTolta": "Réponse retirée."
       }
+    },
+    "pagamenti": {
+      "occhiello": "Caisse",
+      "titolo": "Paiements",
+      "totale": "Mouvements : {{ totale }}",
+      "vuoto": "Aucun mouvement avec ces filtres."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Annuler l'encaissement",
+        "rimborsa": "Rembourser"
+      },
+      "aiuto": {
+        "annulla": "Pour un encaissement enregistré par erreur : aucun argent n'est rendu.",
+        "rimborsa": "Stripe et PayPal rendent l'argent au client ; espèces, TPE et virement sont seulement enregistrés."
+      },
+      "importo": "Montant à rembourser",
+      "importoAiuto": "Vide = tout l'encaissement.",
+      "forza": "Même au-delà du trop-perçu (ex. geste commercial)",
+      "motivo": "Motif",
+      "conferma": {
+        "annulla": "Annuler l'encaissement",
+        "rimborsa": "Confirmer le remboursement"
+      },
+      "esiti": {
+        "annulla": "Encaissement annulé.",
+        "rimborsa": "Remboursement enregistré."
+      }
     }
   },
   "anagrafica": {

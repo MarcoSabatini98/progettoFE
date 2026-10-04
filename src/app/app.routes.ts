@@ -215,6 +215,15 @@ export const routes: Routes = [
             (m) => m.ModerazioneRecensioneComponent,
           ),
       },
+      {
+        path: 'pagamenti',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PAGAMENTI_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/pagamenti-component/pagamenti-component').then(
+            (m) => m.PagamentiComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

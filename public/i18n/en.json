@@ -1585,6 +1585,34 @@
         "risposta": "Reply saved.",
         "rispostaTolta": "Reply removed."
       }
+    },
+    "pagamenti": {
+      "occhiello": "Cash desk",
+      "titolo": "Payments",
+      "totale": "Transactions: {{ totale }}",
+      "vuoto": "No transactions match these filters."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Void payment",
+        "rimborsa": "Refund"
+      },
+      "aiuto": {
+        "annulla": "For a payment recorded by mistake: no money is returned.",
+        "rimborsa": "Stripe and PayPal return the money to the guest; cash, card terminal and bank transfer are only recorded."
+      },
+      "importo": "Amount to refund",
+      "importoAiuto": "Empty = the whole payment.",
+      "forza": "Even beyond the overpaid amount (e.g. goodwill gesture)",
+      "motivo": "Reason",
+      "conferma": {
+        "annulla": "Void payment",
+        "rimborsa": "Confirm refund"
+      },
+      "esiti": {
+        "annulla": "Payment voided.",
+        "rimborsa": "Refund recorded."
+      }
     }
   },
   "anagrafica": {

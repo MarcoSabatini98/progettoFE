@@ -1,0 +1,57 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.pagamenti.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.pagamenti.titolo' | transloco }}</h1>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.elenco.dal' | transloco">
+      <input type="date" formControlName="dal" />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.elenco.al' | transloco">
+      <input type="date" formControlName="al" />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+      <select formControlName="stato">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (stato of scelte.stati; track stato) {
+          <option [value]="stato">{{ 'gestionale.statiPagamento.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.metodo' | transloco">
+      <select formControlName="metodo">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (metodo of scelte.metodi; track metodo) {
+          <option [value]="metodo">{{ 'gestionale.metodi.' + metodo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.tipo' | transloco">
+      <select formControlName="tipo">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (tipo of scelte.tipi; track tipo) {
+          <option [value]="tipo">{{ 'gestionale.tipiPagamento.' + tipo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  </form>
+</header>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.pagamenti.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (pagamento of risultato.elementi; track pagamento.id) {
+      <li><app-riga-pagamento [pagamento]="pagamento" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.pagamenti.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    (sfoglia)="sfoglia($event)"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

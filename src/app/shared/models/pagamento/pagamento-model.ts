@@ -72,7 +72,7 @@ export interface RimborsoPayload {
   /** Vuoto = rimborso totale. */
   importo?: number;
   motivo: string;
-  /** Registra il rimborso anche se il provider non risponde. */
+  /** Anche oltre quanto incassato in più del dovuto (es. gesto commerciale). */
   forza?: boolean;
 }
 

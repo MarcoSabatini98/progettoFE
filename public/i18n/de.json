@@ -1585,6 +1585,34 @@
         "risposta": "Antwort gespeichert.",
         "rispostaTolta": "Antwort entfernt."
       }
+    },
+    "pagamenti": {
+      "occhiello": "Kasse",
+      "titolo": "Zahlungen",
+      "totale": "Buchungen: {{ totale }}",
+      "vuoto": "Keine Buchungen mit diesen Filtern."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Zahlung stornieren",
+        "rimborsa": "Erstatten"
+      },
+      "aiuto": {
+        "annulla": "Für eine irrtümlich erfasste Zahlung: Es wird kein Geld zurückgegeben.",
+        "rimborsa": "Stripe und PayPal erstatten dem Gast das Geld; Bargeld, Kartenterminal und Überweisung werden nur erfasst."
+      },
+      "importo": "Zu erstattender Betrag",
+      "importoAiuto": "Leer = die gesamte Zahlung.",
+      "forza": "Auch über den zu viel gezahlten Betrag hinaus (z. B. Kulanz)",
+      "motivo": "Grund",
+      "conferma": {
+        "annulla": "Zahlung stornieren",
+        "rimborsa": "Erstattung bestätigen"
+      },
+      "esiti": {
+        "annulla": "Zahlung storniert.",
+        "rimborsa": "Erstattung erfasst."
+      }
     }
   },
   "anagrafica": {

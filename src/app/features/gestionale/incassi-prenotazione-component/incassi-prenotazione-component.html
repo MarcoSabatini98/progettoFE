@@ -25,6 +25,9 @@
           }
         </span>
         <span class="importo">{{ movimento.importo | prezzo }}</span>
+        @if (registra && movimento.stato === 'completato' && movimento.tipo !== 'rimborso') {
+          <app-rettifica-pagamento [pagamento]="movimento" (rettificato)="aggiornata.emit()" />
+        }
       </li>
     } @empty {
       <li class="tenue piccolo">{{ 'gestionale.incassi.nessuno' | transloco }}</li>

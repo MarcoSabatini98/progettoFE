@@ -1585,6 +1585,34 @@
         "risposta": "Risposta salvata.",
         "rispostaTolta": "Risposta tolta."
       }
+    },
+    "pagamenti": {
+      "occhiello": "Cassa",
+      "titolo": "Pagamenti",
+      "totale": "Movimenti: {{ totale }}",
+      "vuoto": "Nessun movimento con questi filtri."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Annulla incasso",
+        "rimborsa": "Rimborsa"
+      },
+      "aiuto": {
+        "annulla": "Per un incasso registrato per errore: non restituisce denaro.",
+        "rimborsa": "Stripe e PayPal restituiscono il denaro all'ospite; contanti, POS e bonifico si registrano soltanto."
+      },
+      "importo": "Importo da rimborsare",
+      "importoAiuto": "Vuoto = tutto l'incasso.",
+      "forza": "Anche oltre quanto pagato in più (es. gesto commerciale)",
+      "motivo": "Motivo",
+      "conferma": {
+        "annulla": "Annulla incasso",
+        "rimborsa": "Conferma rimborso"
+      },
+      "esiti": {
+        "annulla": "Incasso annullato.",
+        "rimborsa": "Rimborso registrato."
+      }
     }
   },
   "anagrafica": {

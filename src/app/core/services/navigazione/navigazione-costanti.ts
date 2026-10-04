@@ -98,6 +98,7 @@ export const PERCORSI_STAFF = {
   nuovaChat: `${PERCORSO_STAFF}/chat/nuova`,
   manutenzione: `${PERCORSO_STAFF}/manutenzione`,
   recensioni: `${PERCORSO_STAFF}/recensioni`,
+  pagamenti: `${PERCORSO_STAFF}/pagamenti`,
 } as const;
 
 /**
@@ -211,7 +212,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
     voci: [
       {
         etichetta: 'menu.voci.pagamenti',
-        percorso: `${PERCORSO_STAFF}/pagamenti`,
+        percorso: PERCORSI_STAFF.pagamenti,
         icona: 'payments',
         permessi: [PERMESSI.PAGAMENTI_LEGGI],
       },

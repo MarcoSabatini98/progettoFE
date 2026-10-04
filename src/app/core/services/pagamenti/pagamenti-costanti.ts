@@ -19,6 +19,9 @@ export const IMPORTO_MINIMO = 0.01;
 /** Riferimento, ricevuta e note di un incasso (pagamenti.validator.js). */
 export const LUNGHEZZE_INCASSO = { riferimento: 100, documentoFiscale: 50, note: 5000 } as const;
 
+/** Motivo di un annullamento o di un rimborso (pagamenti.validator.js). */
+export const LUNGHEZZA_MOTIVO = 255;
+
 export const STATI_PAGAMENTO = ['in_attesa', 'completato', 'fallito', 'annullato'] as const;
 
 /** File scaricabili di una fattura: PDF di cortesia o XML FatturaPA. */
