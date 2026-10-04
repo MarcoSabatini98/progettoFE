@@ -188,7 +188,7 @@
     "CAMERA_NON_TROVATA": "Camera non trovata.",
     "SALDO_APERTO": "Resta un saldo da incassare.",
     "DATI_ALLOGGIATI_INCOMPLETI": "Completa i dati degli ospiti prima dell’invio.",
-    "DATI_CLIENTE_PROTETTI": "I dati personali del cliente li modifica solo il cliente.",
+    "DATI_CLIENTE_PROTETTI": "I dati personali del cliente si modificano dalla sua scheda ospite.",
     "OSPITE_CON_SOGGIORNI": "L’ospite ha soggiorni registrati: i suoi dati vanno conservati.",
     "OSPITE_NON_TROVATO": "Ospite non trovato.",
     "DATO_DUPLICATO": "Il dato esiste già.",
@@ -224,7 +224,9 @@
     "OPERATORE_NON_VALIDO": "Questo utente non può seguire l'assistenza.",
     "STATO_PRESENZA_NON_VALIDO": "Stato di presenza non valido.",
     "SEGNALAZIONE_NON_TROVATA": "Segnalazione non trovata.",
-    "SEGNALAZIONE_CHIUSA": "La segnalazione è chiusa: riaprila per modificarla."
+    "SEGNALAZIONE_CHIUSA": "La segnalazione è chiusa: riaprila per modificarla.",
+    "EMAIL_ACCESSO_CLIENTE": "L'email di accesso la cambia solo il cliente.",
+    "OSPITE_CLIENTE": "L'anagrafica di un cliente registrato si elimina con il suo account."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -751,7 +753,8 @@
       "tipoDocumento": "Serve solo a chi viaggia da solo o guida il gruppo.",
       "paese": "Sigla di due lettere, es. IT.",
       "salva": "Salva l’anagrafica",
-      "salvata": "Anagrafica salvata."
+      "salvata": "Anagrafica salvata.",
+      "emailCliente": "È l'email con cui il cliente accede: la cambia lui dal suo profilo."
     },
     "ospiti": {
       "occhiello": "Gestionale",

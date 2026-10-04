@@ -188,7 +188,7 @@
     "CAMERA_NON_TROVATA": "Zimmer nicht gefunden.",
     "SALDO_APERTO": "Es ist noch ein Restbetrag offen.",
     "DATI_ALLOGGIATI_INCOMPLETI": "Vervollständigen Sie die Gästedaten vor dem Senden.",
-    "DATI_CLIENTE_PROTETTI": "Persönliche Daten kann nur der Kunde selbst ändern.",
+    "DATI_CLIENTE_PROTETTI": "Die persönlichen Daten des Kunden werden in seinem Gästeprofil geändert.",
     "OSPITE_CON_SOGGIORNI": "Der Gast hat erfasste Aufenthalte: Seine Daten müssen aufbewahrt werden.",
     "OSPITE_NON_TROVATO": "Gast nicht gefunden.",
     "DATO_DUPLICATO": "Dieser Eintrag existiert bereits.",
@@ -224,7 +224,9 @@
     "OPERATORE_NON_VALIDO": "Dieser Benutzer kann den Support nicht übernehmen.",
     "STATO_PRESENZA_NON_VALIDO": "Ungültiger Status.",
     "SEGNALAZIONE_NON_TROVATA": "Meldung nicht gefunden.",
-    "SEGNALAZIONE_CHIUSA": "Die Meldung ist geschlossen: öffne sie erneut, um sie zu bearbeiten."
+    "SEGNALAZIONE_CHIUSA": "Die Meldung ist geschlossen: öffne sie erneut, um sie zu bearbeiten.",
+    "EMAIL_ACCESSO_CLIENTE": "Die Anmelde-E-Mail kann nur der Kunde selbst ändern.",
+    "OSPITE_CLIENTE": "Die Daten eines registrierten Kunden werden zusammen mit seinem Konto gelöscht."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -751,7 +753,8 @@
       "tipoDocumento": "Nur für Alleinreisende oder Gruppenleiter nötig.",
       "paese": "Zweistelliger Code, z. B. IT.",
       "salva": "Daten speichern",
-      "salvata": "Daten gespeichert."
+      "salvata": "Daten gespeichert.",
+      "emailCliente": "Mit dieser E-Mail meldet sich der Kunde an: Er ändert sie in seinem Profil."
     },
     "ospiti": {
       "occhiello": "Verwaltung",

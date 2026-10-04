@@ -188,7 +188,7 @@
     "CAMERA_NON_TROVATA": "Room not found.",
     "SALDO_APERTO": "There is still a balance to collect.",
     "DATI_ALLOGGIATI_INCOMPLETI": "Complete the guests’ details before sending.",
-    "DATI_CLIENTE_PROTETTI": "Only the customer can change their personal details.",
+    "DATI_CLIENTE_PROTETTI": "The customer's personal details are edited from their guest record.",
     "OSPITE_CON_SOGGIORNI": "The guest has recorded stays: their details must be kept.",
     "OSPITE_NON_TROVATO": "Guest not found.",
     "DATO_DUPLICATO": "This already exists.",
@@ -224,7 +224,9 @@
     "OPERATORE_NON_VALIDO": "This user cannot handle support.",
     "STATO_PRESENZA_NON_VALIDO": "Invalid status.",
     "SEGNALAZIONE_NON_TROVATA": "Report not found.",
-    "SEGNALAZIONE_CHIUSA": "The report is closed: reopen it to edit it."
+    "SEGNALAZIONE_CHIUSA": "The report is closed: reopen it to edit it.",
+    "EMAIL_ACCESSO_CLIENTE": "Only the customer can change their login email.",
+    "OSPITE_CLIENTE": "A registered customer's record is deleted together with their account."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -751,7 +753,8 @@
       "tipoDocumento": "Only needed for solo travellers or group leaders.",
       "paese": "Two-letter code, e.g. IT.",
       "salva": "Save details",
-      "salvata": "Details saved."
+      "salvata": "Details saved.",
+      "emailCliente": "This is the email the customer signs in with: they change it from their profile."
     },
     "ospiti": {
       "occhiello": "Management",

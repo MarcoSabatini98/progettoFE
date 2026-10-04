@@ -21,9 +21,17 @@
   <div class="campi-coppia">
     <app-campo
       [etichetta]="'anagrafica.campi.email' | transloco"
+      [aiuto]="
+        ospite().cliente_registrato ? ('gestionale.anagrafica.emailCliente' | transloco) : ''
+      "
       [errore]="errori.campo(controlli.email)"
     >
-      <input type="email" formControlName="email" [maxLength]="lunghezza.email" />
+      <input
+        type="email"
+        formControlName="email"
+        [maxLength]="lunghezza.email"
+        [readOnly]="ospite().cliente_registrato"
+      />
     </app-campo>
     <app-campo
       [etichetta]="'anagrafica.campi.telefono' | transloco"

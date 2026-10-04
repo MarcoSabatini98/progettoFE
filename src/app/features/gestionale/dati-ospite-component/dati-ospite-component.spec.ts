@@ -43,9 +43,9 @@ describe('DatiOspiteComponent', () => {
     });
   });
 
-  async function crea() {
+  async function crea(ospite = anna) {
     const fixture = TestBed.createComponent(DatiOspiteComponent);
-    fixture.componentRef.setInput('ospite', anna);
+    fixture.componentRef.setInput('ospite', ospite);
     const salvati: SchedaOspiteInterface[] = [];
     fixture.componentInstance.salvato.subscribe((ospite) => salvati.push(ospite));
     await fixture.whenStable();
@@ -99,13 +99,30 @@ describe('DatiOspiteComponent', () => {
     expect(ospiti.aggiornaOspite).not.toHaveBeenCalled();
   });
 
-  it("l'anagrafica di un cliente registrato la cambia solo lui: lo spiega", async () => {
+  it("di un cliente registrato si corregge l'anagrafica ma non l'email di accesso", async () => {
+    ospiti.aggiornaOspite.mockReturnValue(of(anna));
+    const { elemento, scrivi, invia } = await crea({
+      ...anna,
+      email: 'anna@esempio.it',
+      cliente_registrato: true,
+    });
+    const email = elemento.querySelector<HTMLInputElement>('[formControlName=email]')!;
+
+    expect(email.readOnly).toBe(true);
+    expect(elemento.textContent).toContain('gestionale.anagrafica.emailCliente');
+    await scrivi('[formControlName=numero_documento]', 'CA12345');
+    await invia();
+
+    expect(ospiti.aggiornaOspite).toHaveBeenCalledWith(3, { numero_documento: 'CA12345' });
+  });
+
+  it('mostra il motivo se il backend rifiuta', async () => {
     ospiti.aggiornaOspite.mockReturnValue(
       throwError(
         () =>
           new HttpErrorResponse({
             status: 403,
-            error: { errore: { codice: 'DATI_CLIENTE_PROTETTI', messaggio: 'Protetti' } },
+            error: { errore: { codice: 'EMAIL_ACCESSO_CLIENTE', messaggio: 'Email bloccata' } },
           }),
       ),
     );
@@ -114,7 +131,7 @@ describe('DatiOspiteComponent', () => {
     await scrivi('[formControlName=telefono]', '333');
     await invia();
 
-    expect(elemento.querySelector('[role=alert]')?.textContent).toContain('Protetti');
+    expect(elemento.querySelector('[role=alert]')?.textContent).toContain('Email bloccata');
     expect(salvati).toHaveLength(0);
   });
 });
