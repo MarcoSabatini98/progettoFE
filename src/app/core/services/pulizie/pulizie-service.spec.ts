@@ -52,6 +52,22 @@ describe('PulizieService', () => {
     richiesta.flush(risposta({}));
   });
 
+  it('prende la prossima camera libera', () => {
+    service.prossima().subscribe();
+
+    const richiesta = backend.expectOne(`${API}/prossima`);
+    expect(richiesta.request.method).toBe('POST');
+    richiesta.flush(risposta({}));
+  });
+
+  it('rinvia a domani per il non disturbare', () => {
+    service.rinviaAttivita(9, 'domani').subscribe();
+
+    const richiesta = backend.expectOne(`${API}/9/rinvio`);
+    expect(richiesta.request.body).toEqual({ quando: 'domani' });
+    richiesta.flush(risposta({}));
+  });
+
   it('disattiva una voce della checklist', () => {
     service.aggiornaVoce(2, { attiva: false }).subscribe();
 

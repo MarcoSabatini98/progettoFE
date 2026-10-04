@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { AttivitaPuliziaInterface } from '../../../shared/models/attivita-pulizia/attivita-pulizia-model';
 import { AuthService } from '../auth/auth-service';
 import { PERMESSI } from '../ruoli/ruoli-costanti';
-import { passaggiPulizia, permessiPulizia, puoLavorare } from './passaggi-pulizia';
+import { minutiPulizia, passaggiPulizia, permessiPulizia, puoLavorare } from './passaggi-pulizia';
 
 describe('passaggi delle pulizie', () => {
   const addetto = { utenteId: 4, esegue: true, gestisce: false };
@@ -31,5 +31,13 @@ describe('passaggi delle pulizie', () => {
     } as unknown as AuthService;
 
     expect(permessiPulizia(auth)).toEqual({ utenteId: 4, esegue: true, gestisce: false });
+  });
+
+  it('misura i minuti di una pulizia finita', () => {
+    const tempi = (completata_il: string | null) =>
+      ({ iniziata_il: '2026-10-04T09:00:00.000Z', completata_il }) as AttivitaPuliziaInterface;
+
+    expect(minutiPulizia(tempi('2026-10-04T09:25:20.000Z'))).toBe(25);
+    expect(minutiPulizia(tempi(null))).toBeNull();
   });
 });

@@ -27,9 +27,10 @@ describe('RigaPuliziaComponent', () => {
     });
   });
 
-  function crea(dati: Partial<AttivitaPuliziaInterface> = {}) {
+  function crea(dati: Partial<AttivitaPuliziaInterface> = {}, tempi = false) {
     const fixture = TestBed.createComponent(RigaPuliziaComponent);
     fixture.componentRef.setInput('attivita', { ...attivita, ...dati });
+    fixture.componentRef.setInput('tempi', tempi);
     fixture.detectChanges();
     return fixture.nativeElement as HTMLElement;
   }
@@ -49,5 +50,23 @@ describe('RigaPuliziaComponent', () => {
 
     expect(elemento.querySelectorAll('.stato-prenotazione')).toHaveLength(2);
     expect(elemento.textContent).toContain('gestionale.pulizie.libera');
+  });
+
+  it('piano, non disturbare e, a chi gestisce, quanto è durata', () => {
+    const camera = { numero: '201', piano: 2 } as AttivitaPuliziaInterface['camera'];
+    const rinviata = crea({ camera, stato: 'da_fare', rinviata_il: '2026-10-04T10:00:00.000Z' });
+    expect(rinviata.textContent).toContain('gestionale.pulizie.piano');
+    expect(rinviata.querySelector('[data-stato=rinviata]')).not.toBeNull();
+
+    const tempi = {
+      iniziata_il: '2026-10-04T09:00:00.000Z',
+      completata_il: '2026-10-04T09:20:00.000Z',
+    };
+    expect(crea({ ...tempi, stato: 'completata' }, true).textContent).toContain(
+      'gestionale.pulizie.minuti',
+    );
+    expect(crea({ ...tempi, stato: 'completata' }).textContent).not.toContain(
+      'gestionale.pulizie.minuti',
+    );
   });
 });

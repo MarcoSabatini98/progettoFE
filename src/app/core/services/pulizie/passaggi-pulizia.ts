@@ -32,6 +32,14 @@ export function puoLavorare(
   return permessi.esegue && (mia || permessi.gestisce);
 }
 
+/** Minuti tra inizio e fine della pulizia; null se non è ancora finita. */
+export function minutiPulizia(attivita: AttivitaPuliziaInterface): number | null {
+  if (!attivita.iniziata_il || !attivita.completata_il) return null;
+  return Math.round(
+    (Date.parse(attivita.completata_il) - Date.parse(attivita.iniziata_il)) / 60_000,
+  );
+}
+
 /** Passaggi di stato ammessi: verifica e ispezione respinta solo a chi gestisce. */
 export function passaggiPulizia(
   stato: StatoAttivitaPulizia,

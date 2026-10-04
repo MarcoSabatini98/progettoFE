@@ -226,7 +226,10 @@
     "SEGNALAZIONE_NON_TROVATA": "Segnalazione non trovata.",
     "SEGNALAZIONE_CHIUSA": "La segnalazione è chiusa: riaprila per modificarla.",
     "EMAIL_ACCESSO_CLIENTE": "L'email di accesso la cambia solo il cliente.",
-    "OSPITE_CLIENTE": "L'anagrafica di un cliente registrato si elimina con il suo account."
+    "OSPITE_CLIENTE": "L'anagrafica di un cliente registrato si elimina con il suo account.",
+    "PULIZIA_NON_RINVIABILE": "Si rinviano solo le pulizie non ancora finite.",
+    "PULIZIA_IN_CORSO": "Finisci prima la camera che hai già.",
+    "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -976,7 +979,17 @@
       "assegnaA": "Assegna a…",
       "addetto": "{{ nome }} {{ cognome }}",
       "completate": "Completate",
-      "camera": "camera {{ numero }}"
+      "camera": "camera {{ numero }}",
+      "prossima": "Prossima camera",
+      "presa": "Camera {{ numero }}: tocca a te.",
+      "nonDisturbare": "Non disturbare",
+      "rinvii": {
+        "oggi": "Più tardi",
+        "domani": "Domani"
+      },
+      "piano": "piano {{ piano }}",
+      "tempo": "Tempo di pulizia",
+      "minuti": "{{ minuti }} min"
     },
     "cruscotto": {
       "occhiello": "Direzione",

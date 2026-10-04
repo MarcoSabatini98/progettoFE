@@ -226,7 +226,10 @@
     "SEGNALAZIONE_NON_TROVATA": "Meldung nicht gefunden.",
     "SEGNALAZIONE_CHIUSA": "Die Meldung ist geschlossen: öffne sie erneut, um sie zu bearbeiten.",
     "EMAIL_ACCESSO_CLIENTE": "Die Anmelde-E-Mail kann nur der Kunde selbst ändern.",
-    "OSPITE_CLIENTE": "Die Daten eines registrierten Kunden werden zusammen mit seinem Konto gelöscht."
+    "OSPITE_CLIENTE": "Die Daten eines registrierten Kunden werden zusammen mit seinem Konto gelöscht.",
+    "PULIZIA_NON_RINVIABILE": "Nur nicht abgeschlossene Reinigungen können verschoben werden.",
+    "PULIZIA_IN_CORSO": "Beende zuerst das Zimmer, das du schon hast.",
+    "NESSUNA_PULIZIA_LIBERA": "Es gibt keine freien Zimmer zum Reinigen."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -976,7 +979,17 @@
       "assegnaA": "Zuweisen an…",
       "addetto": "{{ nome }} {{ cognome }}",
       "completate": "Erledigt",
-      "camera": "Zimmer {{ numero }}"
+      "camera": "Zimmer {{ numero }}",
+      "prossima": "Nächstes Zimmer",
+      "presa": "Zimmer {{ numero }}: du bist dran.",
+      "nonDisturbare": "Bitte nicht stören",
+      "rinvii": {
+        "oggi": "Später",
+        "domani": "Morgen"
+      },
+      "piano": "Etage {{ piano }}",
+      "tempo": "Reinigungszeit",
+      "minuti": "{{ minuti }} Min."
     },
     "cruscotto": {
       "occhiello": "Leitung",

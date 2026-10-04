@@ -1,5 +1,6 @@
 import type {
   PRIORITA,
+  RINVII_PULIZIA,
   STATI_ATTIVITA_PULIZIA,
   TIPI_PULIZIA,
 } from '../../../core/services/pulizie/pulizie-costanti';
@@ -32,6 +33,8 @@ export interface AttivitaPuliziaInterface {
   note: string | null;
   iniziata_il: string | null;
   completata_il: string | null;
+  /** "Non disturbare": in fondo alla coda del giorno da questo momento. */
+  rinviata_il: string | null;
   verificata_il: string | null;
   verificata_da: number | null;
   creato_da: number | null;
@@ -65,6 +68,9 @@ export type AttivitaPuliziaCreaPayload = Pick<
 export type AttivitaPuliziaAggiornaPayload = Partial<
   Pick<AttivitaPuliziaInterface, 'assegnata_a' | 'data_prevista' | 'priorita' | 'tipo' | 'note'>
 >;
+
+/** "Non disturbare": più tardi in giornata o domani. */
+export type RinvioPulizia = (typeof RINVII_PULIZIA)[number];
 
 /** Lavoro dell'addetto. Il BE controlla che il passaggio di stato sia ammesso. */
 export type AvanzamentoPuliziaPayload = Partial<

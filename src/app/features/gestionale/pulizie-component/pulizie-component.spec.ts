@@ -22,6 +22,7 @@ describe('PulizieComponent', () => {
     elencaAddetti: vi.fn(),
     avanzaAttivita: vi.fn(),
     aggiornaAttivita: vi.fn(),
+    prossima: vi.fn(),
   };
   const auth = { haPermessi: vi.fn(), utente: () => ({ id: 1 }) };
   const pubbliche = signal<Record<string, unknown>>({});
@@ -134,6 +135,41 @@ describe('PulizieComponent', () => {
     expect(pulizie.avanzaAttivita).toHaveBeenCalledWith(1, { stato: 'in_corso' });
     expect(sezioni[0].querySelectorAll('app-riga-pulizia')).toHaveLength(1);
     expect(sezioni[1].querySelectorAll('app-riga-pulizia')).toHaveLength(1);
+  });
+
+  it('finita una camera ricarica la giornata: a turno ne arriva un altra', async () => {
+    pulizie.avanzaAttivita.mockReturnValue(of(attivita(1, 'completata', 1)));
+    const { fixture, elemento } = await crea();
+
+    scegli(elemento, 0, 'in_corso');
+    await fixture.whenStable();
+
+    expect(pulizie.elencaAttivita).toHaveBeenCalledTimes(2);
+  });
+
+  it('chi non ha camere aperte oggi si prende la prossima', async () => {
+    pulizie.prossima.mockReturnValue(of(attivita(2, 'da_fare', 1)));
+    const { fixture, elemento } = await crea();
+
+    pulsante(elemento, 'gestionale.pulizie.prossima').click();
+    await fixture.whenStable();
+
+    expect(pulizie.prossima).toHaveBeenCalled();
+    expect(avvisi.mostra).toHaveBeenCalledWith(expect.any(String), 'successo');
+    expect(pulizie.elencaAttivita).toHaveBeenCalledTimes(2);
+  });
+
+  it('con una camera aperta o in un altro giorno niente prossima', async () => {
+    pulizie.elencaAttivita.mockReturnValue(of([attivita(1, 'in_corso', 1)]));
+    const { fixture, elemento } = await crea();
+    expect(pulsante(elemento, 'gestionale.pulizie.prossima')).toBeUndefined();
+
+    pulizie.elencaAttivita.mockReturnValue(of([]));
+    const giorno = elemento.querySelector<HTMLInputElement>('input[type=date]')!;
+    giorno.value = '2030-06-05';
+    giorno.dispatchEvent(new Event('change'));
+    await fixture.whenStable();
+    expect(pulsante(elemento, 'gestionale.pulizie.prossima')).toBeUndefined();
   });
 
   it('se lo spostamento è rifiutato lo dice', async () => {

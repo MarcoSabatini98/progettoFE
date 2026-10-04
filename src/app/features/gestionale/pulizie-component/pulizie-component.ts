@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
-import { Observable, finalize } from 'rxjs';
+import { Observable, finalize, map } from 'rxjs';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
@@ -16,7 +16,10 @@ import {
   permessiPulizia,
   puoLavorare,
 } from '../../../core/services/pulizie/passaggi-pulizia';
-import { STATI_ATTIVITA_PULIZIA } from '../../../core/services/pulizie/pulizie-costanti';
+import {
+  STATI_ATTIVITA_PULIZIA,
+  STATI_PULIZIA_APERTA,
+} from '../../../core/services/pulizie/pulizie-costanti';
 import { PulizieService } from '../../../core/services/pulizie/pulizie-service';
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
@@ -122,6 +125,15 @@ export class PulizieComponent {
     ];
   });
 
+  /** Oggi l'addetto senza camere aperte può prendersi la prossima (anche il titolare da solo). */
+  protected readonly puoPrendere = computed(() => {
+    if (!this.addetto || this.giorno() !== dataCalendario(new Date())) return false;
+    const io = this.auth.utente()?.id;
+    return !(this.attivita.value() ?? []).some(
+      (riga) => riga.assegnata_a === io && STATI_PULIZIA_APERTA.includes(riga.stato),
+    );
+  });
+
   /** Stati in cui l'attività può passare, se c'è la colonna. */
   private readonly versoStato = (attivita: AttivitaPuliziaInterface): string[] =>
     puoLavorare(attivita, permessiPulizia(this.auth))
@@ -177,6 +189,15 @@ export class PulizieComponent {
   }
 
   /**
+   * PROSSIMA CAMERA
+   * La più vicina all'ultima finita, o al piano con meno gente.
+   */
+  prendiProssima(): void {
+    const presa = this.pulizie.prossima().pipe(map((attivita) => attivita.camera ?? {}));
+    this.esegui(presa, 'gestionale.pulizie.presa');
+  }
+
+  /**
    * SPOSTA
    * Per stato fa avanzare l'attività, per addetto la assegna (o la libera).
    */
@@ -188,10 +209,13 @@ export class PulizieComponent {
             assegnata_a: verso === LIBERE ? null : Number(verso),
           });
     richiesta.subscribe({
+      // Finita una camera, a turno ne arriva subito un'altra: si ricarica la giornata.
       next: (aggiornata) =>
-        this.attivita.value.update((elenco) =>
-          elenco?.map((riga) => (riga.id === aggiornata.id ? aggiornata : riga)),
-        ),
+        aggiornata.stato === 'completata'
+          ? this.attivita.reload()
+          : this.attivita.value.update((elenco) =>
+              elenco?.map((riga) => (riga.id === aggiornata.id ? aggiornata : riga)),
+            ),
       error: (motivo: unknown) => this.avvisi.mostra(this.errori.messaggio(motivo), 'errore'),
     });
   }

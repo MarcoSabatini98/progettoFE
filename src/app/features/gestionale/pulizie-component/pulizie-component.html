@@ -12,6 +12,19 @@
       </label>
     }
   </div>
+  @if (puoPrendere()) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="prendiProssima()"
+      >
+        <app-icona nome="cleaning_services" />
+        {{ 'gestionale.pulizie.prossima' | transloco }}
+      </button>
+    </div>
+  }
   @if (gestore) {
     <div class="azioni">
       <button
@@ -62,6 +75,7 @@
     [azione]="scelto.azione"
     [colonne]="scelto.colonne"
     [destinazioni]="scelto.destinazioni"
+    [tempi]="gestore"
     [attr.aria-busy]="attivita.isLoading()"
     (sposta)="sposta($event)"
   />

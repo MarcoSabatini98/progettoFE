@@ -21,7 +21,7 @@
             [cdkDragDisabled]="!verso.length"
             [cdkDragStartDelay]="ritardo"
           >
-            <app-riga-pulizia [attivita]="riga" />
+            <app-riga-pulizia [attivita]="riga" [tempi]="tempi()" />
             @if (verso.length) {
               <select
                 #menu

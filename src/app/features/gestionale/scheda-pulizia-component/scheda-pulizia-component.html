@@ -35,6 +35,12 @@
         <dd>{{ prenotazione.codice }} · {{ prenotazione.data_partenza | data: 'giorno' }}</dd>
       </div>
     }
+    @if (gestore && minuti(dati); as durata) {
+      <div>
+        <dt>{{ 'gestionale.pulizie.tempo' | transloco }}</dt>
+        <dd>{{ 'gestionale.pulizie.minuti' | transloco: { minuti: durata } }}</dd>
+      </div>
+    }
     @if (dati.verificatore; as verificatore) {
       <div>
         <dt>{{ 'gestionale.pulizie.verificataDa' | transloco }}</dt>
