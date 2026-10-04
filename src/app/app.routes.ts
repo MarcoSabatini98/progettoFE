@@ -178,6 +178,25 @@ export const routes: Routes = [
             (m) => m.TariffeComponent,
           ),
       },
+      // Con l'id (link della notifica di errore) apre quel calendario.
+      {
+        path: 'calendari',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CALENDARI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/calendari-component/calendari-component').then(
+            (m) => m.CalendariComponent,
+          ),
+      },
+      {
+        path: 'calendari/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CALENDARI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/calendari-component/calendari-component').then(
+            (m) => m.CalendariComponent,
+          ),
+      },
       // Chi segnala vede le sue segnalazioni, chi gestisce le vede tutte (lo decide il backend).
       {
         path: 'manutenzione',

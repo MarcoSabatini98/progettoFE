@@ -1,0 +1,29 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.calendari.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.calendari.titolo' | transloco }}</h1>
+  <div
+    class="linguette"
+    role="group"
+    [attr.aria-label]="'gestionale.calendari.sezioni' | transloco"
+  >
+    @for (voce of sezioni; track voce) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="sezione() === voce"
+        (click)="sezione.set(voce)"
+      >
+        {{ 'gestionale.calendari.sezione.' + voce | transloco }}
+      </button>
+    }
+  </div>
+</header>
+
+@switch (sezione()) {
+  @case ('importa') {
+    <app-calendari-esterni [apri]="id()" />
+  }
+  @case ('esporta') {
+    <app-link-esportazione />
+  }
+}

@@ -1,0 +1,109 @@
+@let controlli = modulo.controls;
+@let scelto = listino.scelta();
+<app-listino [listino]="listino" chiave="gestionale.calendari.esterni">
+  <ng-template #riga let-calendario>
+    <strong>{{ calendario.nome || ('gestionale.canali.' + calendario.canale | transloco) }}</strong>
+    <span class="piccolo">
+      {{ 'gestionale.canali.' + calendario.canale | transloco }} ·
+      {{ 'gestionale.camere.titoloCamera' | transloco: { numero: calendario.camera?.numero } }}
+      @if (!calendario.attivo) {
+        · {{ 'gestionale.calendari.esterni.disattivato' | transloco }}
+      }
+    </span>
+    <span class="piccolo tenue">
+      @if (calendario.ultima_sincronizzazione_il) {
+        {{ calendario.ultima_sincronizzazione_il | data: 'ora' }} · {{ calendario.ultimo_esito }}
+      } @else {
+        {{ 'gestionale.calendari.esterni.maiSincronizzato' | transloco }}
+      }
+    </span>
+    @if (calendario.errori_consecutivi) {
+      <span class="esito esito-avviso piccolo">
+        {{
+          'gestionale.calendari.esterni.errori'
+            | transloco: { errori: calendario.errori_consecutivi }
+        }}
+      </span>
+    }
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (scelto ? 'gestionale.calendari.esterni.modifica' : 'gestionale.calendari.esterni.nuova')
+          | transloco
+      }}
+    </h2>
+    @if (scelto) {
+      <!-- La camera non si cambia: per un'altra camera serve un altro calendario. -->
+      <p>
+        {{ 'gestionale.camere.titoloCamera' | transloco: { numero: scelto.camera?.numero } }}
+      </p>
+    } @else {
+      <app-campo
+        [etichetta]="'gestionale.calendari.campi.camera' | transloco"
+        [errore]="errori.campo(controlli.camera_id)"
+      >
+        <select formControlName="camera_id" required>
+          <option [ngValue]="null" disabled>
+            {{ 'gestionale.calendari.campi.scegliCamera' | transloco }}
+          </option>
+          @if (camere.hasValue()) {
+            @for (camera of camere.value(); track camera.id) {
+              <option [ngValue]="camera.id">{{ camera.numero }}</option>
+            }
+          }
+        </select>
+      </app-campo>
+    }
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.calendari.campi.canale' | transloco">
+        <select formControlName="canale">
+          @for (canale of canali; track canale) {
+            <option [ngValue]="canale">{{ 'gestionale.canali.' + canale | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.calendari.campi.nome' | transloco"
+        [errore]="errori.campo(controlli.nome)"
+      >
+        <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.calendari.campi.url' | transloco"
+      [aiuto]="'gestionale.calendari.esterni.urlAiuto' | transloco"
+      [errore]="errori.campo(controlli.url)"
+    >
+      <input type="url" inputmode="url" formControlName="url" [maxLength]="limiti.url" required />
+    </app-campo>
+    <label class="spunta">
+      <input type="checkbox" formControlName="attivo" />
+      {{ 'gestionale.calendari.campi.attivo' | transloco }}
+    </label>
+    <p class="piccolo tenue">{{ 'gestionale.calendari.esterni.attivoAiuto' | transloco }}</p>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+
+  @if (scelto) {
+    <section class="scheda sincronizzazione">
+      <h2 class="titolo-scheda">{{ 'gestionale.calendari.esterni.sincronizza' | transloco }}</h2>
+      <p>{{ 'gestionale.calendari.esterni.sincronizzaAiuto' | transloco }}</p>
+      @if (erroreSincronizzazione(); as testo) {
+        <p class="esito esito-errore" role="alert">{{ testo }}</p>
+      }
+      <div class="azioni">
+        <button
+          class="pulsante pulsante-secondario"
+          type="button"
+          [disabled]="sincronizzando() || !scelto.attivo"
+          (click)="sincronizza(scelto.id)"
+        >
+          <app-icona nome="sync" />
+          {{ 'gestionale.calendari.esterni.sincronizza' | transloco }}
+        </button>
+      </div>
+    </section>
+  }
+</app-listino>

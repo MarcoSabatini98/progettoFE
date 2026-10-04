@@ -3,7 +3,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { ErroriService } from '../../../core/services/errori/errori-service';
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import { LIMITI_TARIFFE } from '../../../core/services/tariffe/tariffe-costanti';
 import { TariffeService } from '../../../core/services/tariffe/tariffe-service';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';

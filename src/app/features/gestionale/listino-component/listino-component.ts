@@ -10,7 +10,7 @@ import {
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { ErroriService } from '../../../core/services/errori/errori-service';
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { EliminaComponent } from '../elimina-component/elimina-component';
 

@@ -5,7 +5,7 @@ import { traduzioniTest } from '../../../core/services/lingua/configura-transloc
 import { TariffeService } from '../../../core/services/tariffe/tariffe-service';
 
 /**
- * Solo per i test: apre una sezione del listino col TariffeService finto
+ * Solo per i test: apre una sezione del listino col TariffeService finto (altri servizi in providers)
  * e dà le mosse dell'utente (scegliere una voce, scrivere in un campo, inviare).
  */
 export async function apriSezione<C>(
