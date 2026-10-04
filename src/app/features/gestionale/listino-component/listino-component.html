@@ -1,0 +1,49 @@
+@let voci = listino();
+@let scelta = voci.scelta();
+<section class="colonna" [attr.aria-label]="chiave() + '.titolo' | transloco">
+  <div class="intestazione">
+    <h2 class="titolo-scheda">{{ chiave() + '.titolo' | transloco }}</h2>
+    <button class="pulsante pulsante-secondario" type="button" (click)="voci.scegli(null)">
+      <app-icona nome="add" />
+      {{ chiave() + '.nuova' | transloco }}
+    </button>
+  </div>
+  <p class="tenue">{{ chiave() + '.aiuto' | transloco }}</p>
+  @if (voci.elenco.hasValue()) {
+    <ul class="elenco">
+      @for (voce of voci.elenco.value(); track voce.id) {
+        <li>
+          <button
+            class="scheda voce"
+            type="button"
+            [attr.aria-pressed]="scelta?.id === voce.id"
+            (click)="voci.scegli(voce)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="riga()"
+              [ngTemplateOutletContext]="{ $implicit: voce }"
+            />
+          </button>
+        </li>
+      } @empty {
+        <li class="stato-vuoto">{{ chiave() + '.vuoto' | transloco }}</li>
+      }
+    </ul>
+  } @else if (voci.elenco.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>
+
+<div class="colonna">
+  <ng-content />
+  <!-- Una scheda nuova per voce: la conferma lasciata a metà non passa alla successiva. -->
+  @for (voce of scelta ? [scelta] : []; track voce.id) {
+    <app-elimina
+      [titolo]="chiave() + '.elimina' | transloco"
+      [aiuto]="chiave() + '.eliminaAiuto' | transloco"
+      [conferma]="chiave() + '.eliminaConferma' | transloco"
+      [richiesta]="voci.elimina"
+      (eliminato)="voci.ricarica()"
+    />
+  }
+</div>

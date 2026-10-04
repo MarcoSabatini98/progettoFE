@@ -1,0 +1,27 @@
+.intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+/* Ogni voce è una scheda cliccabile: la scelta ha il bordo del brand. */
+.voce {
+  inline-size: 100%;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-4);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.voce:hover,
+.voce[aria-pressed='true'] {
+  border-color: var(--bb-brand-testo);
+}
+
+.voce[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 1px var(--bb-brand-testo);
+}

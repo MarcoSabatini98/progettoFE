@@ -169,6 +169,15 @@ export const routes: Routes = [
             (m) => m.AlloggiatiComponent,
           ),
       },
+      {
+        path: 'tariffe',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.TARIFFE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/tariffe-component/tariffe-component').then(
+            (m) => m.TariffeComponent,
+          ),
+      },
       // Chi segnala vede le sue segnalazioni, chi gestisce le vede tutte (lo decide il backend).
       {
         path: 'manutenzione',

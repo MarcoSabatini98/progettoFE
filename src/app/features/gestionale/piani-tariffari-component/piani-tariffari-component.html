@@ -1,0 +1,104 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.piani">
+  <ng-template #riga let-piano>
+    <strong>{{ piano.nome }}</strong>
+    <span class="piccolo tenue">
+      {{ piano.valore_variazione | variazione: piano.tipo_variazione }} ·
+      {{
+        (piano.rimborsabile
+          ? 'gestionale.tariffe.rimborsabile'
+          : 'gestionale.tariffe.nonRimborsabile'
+        ) | transloco
+      }}
+      @if (piano.predefinito) {
+        · {{ 'gestionale.tariffe.campi.predefinito' | transloco }}
+      }
+      @if (!piano.attivo) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta() ? 'gestionale.tariffe.piani.modifica' : 'gestionale.tariffe.piani.nuova')
+          | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.descrizione' | transloco"
+      [errore]="errori.campo(controlli.descrizione)"
+    >
+      <textarea formControlName="descrizione" rows="3" [maxLength]="limiti.descrizione"></textarea>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.tariffe.campi.tipo_variazione' | transloco">
+        <select formControlName="tipo_variazione">
+          @for (tipo of tipi; track tipo) {
+            <option [value]="tipo">{{ 'gestionale.tariffe.tipi.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valore_variazione' | transloco"
+        [aiuto]="'gestionale.tariffe.piani.variazioneAiuto' | transloco"
+        [errore]="errori.campo(controlli.valore_variazione)"
+      >
+        <input type="number" formControlName="valore_variazione" step="0.01" />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input type="checkbox" formControlName="rimborsabile" />
+      {{ 'gestionale.tariffe.campi.rimborsabile' | transloco }}
+    </label>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.ore_cancellazione_gratuita' | transloco"
+        [errore]="errori.campo(controlli.ore_cancellazione_gratuita)"
+      >
+        <input
+          type="number"
+          formControlName="ore_cancellazione_gratuita"
+          min="0"
+          [max]="limiti.ore"
+        />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.penale_percentuale' | transloco"
+        [errore]="errori.campo(controlli.penale_percentuale)"
+      >
+        <input type="number" formControlName="penale_percentuale" min="0" max="100" step="0.01" />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.acconto_percentuale' | transloco"
+        [errore]="errori.campo(controlli.acconto_percentuale)"
+      >
+        <input type="number" formControlName="acconto_percentuale" min="0" max="100" step="0.01" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.ordine' | transloco"
+        [errore]="errori.campo(controlli.ordine)"
+      >
+        <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input type="checkbox" formControlName="predefinito" />
+      {{ 'gestionale.tariffe.campi.predefinito' | transloco }}
+    </label>
+    <label class="spunta">
+      <input type="checkbox" formControlName="attivo" />
+      {{ 'gestionale.tariffe.campi.attivo' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+</app-listino>
