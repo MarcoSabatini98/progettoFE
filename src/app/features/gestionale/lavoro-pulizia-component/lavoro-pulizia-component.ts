@@ -15,9 +15,11 @@ import { finalize } from 'rxjs';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import {
-  LUNGHEZZA_PULIZIA,
-  TRANSIZIONI_PULIZIA,
-} from '../../../core/services/pulizie/pulizie-costanti';
+  passaggiPulizia,
+  permessiPulizia,
+  puoLavorare,
+} from '../../../core/services/pulizie/passaggi-pulizia';
+import { LUNGHEZZA_PULIZIA } from '../../../core/services/pulizie/pulizie-costanti';
 import { PulizieService } from '../../../core/services/pulizie/pulizie-service';
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
@@ -55,21 +57,15 @@ export class LavoroPuliziaComponent {
     nonNullable: true,
     validators: Validators.maxLength(LUNGHEZZA_PULIZIA.note),
   });
-  /** L'addetto lavora sulle sue attività o su quelle libere; chi gestisce su tutte. */
-  protected readonly puoLavorare = computed(() => {
-    const assegnata = this.attivita().assegnata_a;
-    const mia = !assegnata || assegnata === this.auth.utente()?.id;
-    return this.auth.haPermessi([PERMESSI.PULIZIE_ESEGUI]) && (mia || this.gestore);
-  });
+  protected readonly puoLavorare = computed(() =>
+    puoLavorare(this.attivita(), permessiPulizia(this.auth)),
+  );
   /** Si spunta solo mentre la pulizia è in corso. */
   protected readonly spuntabile = computed(
     () => this.puoLavorare() && this.attivita().stato === 'in_corso',
   );
-  /** Passaggi di stato proposti: verifica e ispezione respinta solo a chi gestisce. */
   protected readonly passaggi = computed(() =>
-    Object.entries(TRANSIZIONI_PULIZIA[this.attivita().stato])
-      .filter(([, soloGestore]) => !soloGestore || this.gestore)
-      .map(([stato]) => stato as StatoAttivitaPulizia),
+    passaggiPulizia(this.attivita().stato, this.gestore),
   );
 
   constructor() {

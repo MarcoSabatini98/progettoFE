@@ -965,7 +965,18 @@
       "nessunaVoce": "Aucun point.",
       "nuovaVoce": "Nouveau point",
       "aggiungiVoce": "Ajouter un point",
-      "eliminaVoce": "Supprimer {{ voce }}"
+      "eliminaVoce": "Supprimer {{ voce }}",
+      "vista": "Vue",
+      "viste": {
+        "stato": "Par état",
+        "addetto": "Par employé"
+      },
+      "aiutoTrascina": "Faites glisser une chambre dans une autre colonne (sur téléphone, maintenez-la appuyée), ou choisissez dans le menu sous la chambre.",
+      "spostaIn": "Déplacer vers…",
+      "assegnaA": "Attribuer à…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Terminées",
+      "camera": "chambre {{ numero }}"
     },
     "cruscotto": {
       "occhiello": "Direction",

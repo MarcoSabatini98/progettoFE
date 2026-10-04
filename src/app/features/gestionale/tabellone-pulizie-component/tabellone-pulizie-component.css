@@ -1,0 +1,56 @@
+/* Telefono: colonne una sotto l'altra. Schermo largo: affiancate, scorrono di lato se tante. */
+.tabellone {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+@media (width >= 64rem) {
+  .tabellone {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(17rem, 1fr);
+    align-items: start;
+    overflow-x: auto;
+    padding-block-end: var(--bb-spazio-2);
+  }
+}
+
+.colonna {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+/* Spazio dove lasciare un'attività anche in una colonna vuota. */
+.elenco {
+  min-block-size: 5rem;
+  border-radius: var(--bb-raggio-piccolo);
+  transition: background var(--bb-durata) var(--bb-curva);
+}
+
+.elenco.cdk-drop-list-receiving {
+  background: var(--bb-incavo);
+}
+
+.attivita {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.attivita:not(.cdk-drag-disabled) {
+  cursor: grab;
+}
+
+.sposta {
+  justify-self: end;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.2);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.4;
+}
+
+.cdk-drop-list-dragging .attivita:not(.cdk-drag-placeholder) {
+  transition: transform var(--bb-durata) var(--bb-curva);
+}

@@ -965,7 +965,18 @@
       "nessunaVoce": "No items.",
       "nuovaVoce": "New item",
       "aggiungiVoce": "Add item",
-      "eliminaVoce": "Delete {{ voce }}"
+      "eliminaVoce": "Delete {{ voce }}",
+      "vista": "View",
+      "viste": {
+        "stato": "By status",
+        "addetto": "By housekeeper"
+      },
+      "aiutoTrascina": "Drag a room to another column (on a phone, press and hold it), or choose from the menu below the room.",
+      "spostaIn": "Move to…",
+      "assegnaA": "Assign to…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Completed",
+      "camera": "room {{ numero }}"
     },
     "cruscotto": {
       "occhiello": "Management",

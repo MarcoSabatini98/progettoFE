@@ -127,7 +127,7 @@ describe('AndamentoComponent', () => {
     const { clicca } = await crea();
     analytics.leggiOccupazione.mockReturnValue(of(occupazione(10, 50)));
 
-    await clicca('.periodi button');
+    await clicca('.linguette button');
 
     expect(analytics.leggiOccupazione).toHaveBeenCalledWith(intervallo('settimana'));
     expect(analytics.leggiRicavi).toHaveBeenLastCalledWith(intervallo('settimana'));

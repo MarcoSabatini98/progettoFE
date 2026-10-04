@@ -965,7 +965,18 @@
       "nessunaVoce": "Keine Punkte.",
       "nuovaVoce": "Neuer Punkt",
       "aggiungiVoce": "Punkt hinzufügen",
-      "eliminaVoce": "{{ voce }} löschen"
+      "eliminaVoce": "{{ voce }} löschen",
+      "vista": "Ansicht",
+      "viste": {
+        "stato": "Nach Status",
+        "addetto": "Nach Mitarbeiter"
+      },
+      "aiutoTrascina": "Ziehe ein Zimmer in eine andere Spalte (am Handy gedrückt halten) oder wähle im Menü unter dem Zimmer.",
+      "spostaIn": "Verschieben nach…",
+      "assegnaA": "Zuweisen an…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Erledigt",
+      "camera": "Zimmer {{ numero }}"
     },
     "cruscotto": {
       "occhiello": "Leitung",

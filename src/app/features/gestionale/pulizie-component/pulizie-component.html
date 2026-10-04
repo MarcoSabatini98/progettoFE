@@ -40,22 +40,31 @@
   }
 </header>
 
+@if (gestore) {
+  <div class="linguette" role="group" [attr.aria-label]="'gestionale.pulizie.vista' | transloco">
+    @for (scelta of viste; track scelta) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="vista() === scelta"
+        (click)="vista.set(scelta)"
+      >
+        {{ 'gestionale.pulizie.viste.' + scelta | transloco }}
+      </button>
+    }
+  </div>
+}
+
 @if (attivita.hasValue()) {
-  @for (gruppo of perStato(); track gruppo.stato) {
-    <section class="sezione" [attr.aria-labelledby]="'pulizie-' + gruppo.stato">
-      <h2 class="sezione-titolo" [id]="'pulizie-' + gruppo.stato">
-        {{ 'gestionale.pulizie.stati.' + gruppo.stato | transloco }}
-        <span class="conteggio">{{ gruppo.attivita.length }}</span>
-      </h2>
-      <ul class="elenco" [attr.aria-busy]="attivita.isLoading()">
-        @for (riga of gruppo.attivita; track riga.id) {
-          <li><app-riga-pulizia [attivita]="riga" /></li>
-        } @empty {
-          <li class="stato-vuoto">{{ 'gestionale.pulizie.vuoto' | transloco }}</li>
-        }
-      </ul>
-    </section>
-  }
+  <p class="tenue piccolo">{{ 'gestionale.pulizie.aiutoTrascina' | transloco }}</p>
+  @let scelto = tabellone();
+  <app-tabellone-pulizie
+    [azione]="scelto.azione"
+    [colonne]="scelto.colonne"
+    [destinazioni]="scelto.destinazioni"
+    [attr.aria-busy]="attivita.isLoading()"
+    (sposta)="sposta($event)"
+  />
 } @else if (attivita.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
 }
