@@ -222,7 +222,9 @@
     "MESSAGGIO_NON_TROVATO": "Message not found.",
     "ALLEGATO_NON_TROVATO": "Attachment not found.",
     "OPERATORE_NON_VALIDO": "This user cannot handle support.",
-    "STATO_PRESENZA_NON_VALIDO": "Invalid status."
+    "STATO_PRESENZA_NON_VALIDO": "Invalid status.",
+    "SEGNALAZIONE_NON_TROVATA": "Report not found.",
+    "SEGNALAZIONE_CHIUSA": "The report is closed: reopen it to edit it."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1076,6 +1078,50 @@
       "housekeeper_senior": "Head housekeeper",
       "housekeeper": "Housekeeper",
       "cliente": "Guest"
+    },
+    "manutenzione": {
+      "occhiello": "Faults",
+      "titolo": "Maintenance",
+      "filtri": {
+        "stato": "Status",
+        "aperte": "To fix",
+        "tutte": "All",
+        "tuttePriorita": "All",
+        "mie": "Only mine"
+      },
+      "stati": {
+        "aperta": "Open",
+        "in_corso": "In progress",
+        "risolta": "Resolved",
+        "annullata": "Cancelled"
+      },
+      "totale": "{{ totale }} reports",
+      "vuoto": "No reports.",
+      "areaComune": "Common area",
+      "libera": "Unassigned",
+      "nessuno": "Nobody",
+      "nuova": "Report a fault",
+      "invia": "Send report",
+      "inviata": "Report sent.",
+      "campi": {
+        "titolo": "What’s wrong",
+        "camera": "Where",
+        "priorita": "Priority",
+        "descrizione": "Details",
+        "statoCamera": "Room status",
+        "stato": "Status",
+        "incaricato": "Handled by",
+        "noteRisoluzione": "Resolution notes"
+      },
+      "nonCambiare": "Leave as is",
+      "statoCameraAiuto": "Out of order takes the room off sale.",
+      "senzaDescrizione": "No details.",
+      "segnalataDa": "Reported by",
+      "risoltaIl": "Resolved on",
+      "gestione": "Handling",
+      "salva": "Save",
+      "salvata": "Changes saved.",
+      "tutte": "All reports"
     }
   },
   "anagrafica": {

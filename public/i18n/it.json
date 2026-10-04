@@ -222,7 +222,9 @@
     "MESSAGGIO_NON_TROVATO": "Messaggio non trovato.",
     "ALLEGATO_NON_TROVATO": "Allegato non trovato.",
     "OPERATORE_NON_VALIDO": "Questo utente non può seguire l'assistenza.",
-    "STATO_PRESENZA_NON_VALIDO": "Stato di presenza non valido."
+    "STATO_PRESENZA_NON_VALIDO": "Stato di presenza non valido.",
+    "SEGNALAZIONE_NON_TROVATA": "Segnalazione non trovata.",
+    "SEGNALAZIONE_CHIUSA": "La segnalazione è chiusa: riaprila per modificarla."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1076,6 +1078,50 @@
       "housekeeper_senior": "Governante",
       "housekeeper": "Addetto pulizie",
       "cliente": "Cliente"
+    },
+    "manutenzione": {
+      "occhiello": "Guasti",
+      "titolo": "Manutenzione",
+      "filtri": {
+        "stato": "Stato",
+        "aperte": "Da risolvere",
+        "tutte": "Tutte",
+        "tuttePriorita": "Tutte",
+        "mie": "Solo le mie"
+      },
+      "stati": {
+        "aperta": "Aperta",
+        "in_corso": "In corso",
+        "risolta": "Risolta",
+        "annullata": "Annullata"
+      },
+      "totale": "{{ totale }} segnalazioni",
+      "vuoto": "Nessuna segnalazione.",
+      "areaComune": "Area comune",
+      "libera": "Da prendere in carico",
+      "nessuno": "Nessuno",
+      "nuova": "Segnala un guasto",
+      "invia": "Invia segnalazione",
+      "inviata": "Segnalazione inviata.",
+      "campi": {
+        "titolo": "Cosa non va",
+        "camera": "Dove",
+        "priorita": "Priorità",
+        "descrizione": "Dettagli",
+        "statoCamera": "Stato della camera",
+        "stato": "Stato",
+        "incaricato": "Se ne occupa",
+        "noteRisoluzione": "Note di risoluzione"
+      },
+      "nonCambiare": "Lascia com’è",
+      "statoCameraAiuto": "Fuori servizio toglie la camera dalla vendita.",
+      "senzaDescrizione": "Nessun dettaglio.",
+      "segnalataDa": "Segnalata da",
+      "risoltaIl": "Risolta il",
+      "gestione": "Gestione",
+      "salva": "Salva",
+      "salvata": "Modifiche salvate.",
+      "tutte": "Tutte le segnalazioni"
     }
   },
   "anagrafica": {

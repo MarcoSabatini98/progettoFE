@@ -222,7 +222,9 @@
     "MESSAGGIO_NON_TROVATO": "Message introuvable.",
     "ALLEGATO_NON_TROVATO": "Pièce jointe introuvable.",
     "OPERATORE_NON_VALIDO": "Cet utilisateur ne peut pas gérer l'assistance.",
-    "STATO_PRESENZA_NON_VALIDO": "Statut non valide."
+    "STATO_PRESENZA_NON_VALIDO": "Statut non valide.",
+    "SEGNALAZIONE_NON_TROVATA": "Signalement introuvable.",
+    "SEGNALAZIONE_CHIUSA": "Le signalement est clos : rouvrez-le pour le modifier."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -1076,6 +1078,50 @@
       "housekeeper_senior": "Gouvernante",
       "housekeeper": "Femme de chambre",
       "cliente": "Client"
+    },
+    "manutenzione": {
+      "occhiello": "Pannes",
+      "titolo": "Maintenance",
+      "filtri": {
+        "stato": "Statut",
+        "aperte": "À résoudre",
+        "tutte": "Toutes",
+        "tuttePriorita": "Toutes",
+        "mie": "Seulement les miennes"
+      },
+      "stati": {
+        "aperta": "Ouverte",
+        "in_corso": "En cours",
+        "risolta": "Résolue",
+        "annullata": "Annulée"
+      },
+      "totale": "{{ totale }} signalements",
+      "vuoto": "Aucun signalement.",
+      "areaComune": "Espace commun",
+      "libera": "Non attribuée",
+      "nessuno": "Personne",
+      "nuova": "Signaler une panne",
+      "invia": "Envoyer le signalement",
+      "inviata": "Signalement envoyé.",
+      "campi": {
+        "titolo": "Le problème",
+        "camera": "Où",
+        "priorita": "Priorité",
+        "descrizione": "Détails",
+        "statoCamera": "État de la chambre",
+        "stato": "Statut",
+        "incaricato": "Pris en charge par",
+        "noteRisoluzione": "Notes de résolution"
+      },
+      "nonCambiare": "Ne pas changer",
+      "statoCameraAiuto": "Hors service retire la chambre de la vente.",
+      "senzaDescrizione": "Aucun détail.",
+      "segnalataDa": "Signalée par",
+      "risoltaIl": "Résolue le",
+      "gestione": "Traitement",
+      "salva": "Enregistrer",
+      "salvata": "Modifications enregistrées.",
+      "tutte": "Tous les signalements"
     }
   },
   "anagrafica": {

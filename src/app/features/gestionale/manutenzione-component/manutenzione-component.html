@@ -1,0 +1,56 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.manutenzione.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.manutenzione.titolo' | transloco }}</h1>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.manutenzione.filtri.stato' | transloco">
+      <select formControlName="vista">
+        <option value="aperte">{{ 'gestionale.manutenzione.filtri.aperte' | transloco }}</option>
+        @for (stato of stati; track stato) {
+          <option [value]="stato">
+            {{ 'gestionale.manutenzione.stati.' + stato | transloco }}
+          </option>
+        }
+        <option value="tutte">{{ 'gestionale.manutenzione.filtri.tutte' | transloco }}</option>
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.manutenzione.campi.priorita' | transloco">
+      <select formControlName="priorita">
+        <option value="">{{ 'gestionale.manutenzione.filtri.tuttePriorita' | transloco }}</option>
+        @for (livello of priorita; track livello) {
+          <option [value]="livello">
+            {{ 'gestionale.pulizie.priorita.' + livello | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+    @if (gestore) {
+      <label class="spunta">
+        <input type="checkbox" formControlName="mie" />
+        {{ 'gestionale.manutenzione.filtri.mie' | transloco }}
+      </label>
+    }
+  </form>
+</header>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.manutenzione.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (segnalazione of risultato.elementi; track segnalazione.id) {
+      <li><app-riga-segnalazione [segnalazione]="segnalazione" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.manutenzione.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    (sfoglia)="sfoglia($event)"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+<app-nuova-segnalazione [gestore]="gestore" (creata)="elenco.reload()" />

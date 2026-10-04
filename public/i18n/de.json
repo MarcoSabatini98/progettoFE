@@ -222,7 +222,9 @@
     "MESSAGGIO_NON_TROVATO": "Nachricht nicht gefunden.",
     "ALLEGATO_NON_TROVATO": "Anhang nicht gefunden.",
     "OPERATORE_NON_VALIDO": "Dieser Benutzer kann den Support nicht übernehmen.",
-    "STATO_PRESENZA_NON_VALIDO": "Ungültiger Status."
+    "STATO_PRESENZA_NON_VALIDO": "Ungültiger Status.",
+    "SEGNALAZIONE_NON_TROVATA": "Meldung nicht gefunden.",
+    "SEGNALAZIONE_CHIUSA": "Die Meldung ist geschlossen: öffne sie erneut, um sie zu bearbeiten."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1076,6 +1078,50 @@
       "housekeeper_senior": "Hausdame",
       "housekeeper": "Zimmerpersonal",
       "cliente": "Gast"
+    },
+    "manutenzione": {
+      "occhiello": "Störungen",
+      "titolo": "Wartung",
+      "filtri": {
+        "stato": "Status",
+        "aperte": "Offen",
+        "tutte": "Alle",
+        "tuttePriorita": "Alle",
+        "mie": "Nur meine"
+      },
+      "stati": {
+        "aperta": "Offen",
+        "in_corso": "In Bearbeitung",
+        "risolta": "Behoben",
+        "annullata": "Storniert"
+      },
+      "totale": "{{ totale }} Meldungen",
+      "vuoto": "Keine Meldungen.",
+      "areaComune": "Gemeinschaftsbereich",
+      "libera": "Nicht zugewiesen",
+      "nessuno": "Niemand",
+      "nuova": "Störung melden",
+      "invia": "Meldung senden",
+      "inviata": "Meldung gesendet.",
+      "campi": {
+        "titolo": "Was ist kaputt",
+        "camera": "Wo",
+        "priorita": "Priorität",
+        "descrizione": "Details",
+        "statoCamera": "Zimmerstatus",
+        "stato": "Status",
+        "incaricato": "Zuständig",
+        "noteRisoluzione": "Lösungsnotizen"
+      },
+      "nonCambiare": "Unverändert lassen",
+      "statoCameraAiuto": "Außer Betrieb nimmt das Zimmer aus dem Verkauf.",
+      "senzaDescrizione": "Keine Details.",
+      "segnalataDa": "Gemeldet von",
+      "risoltaIl": "Behoben am",
+      "gestione": "Bearbeitung",
+      "salva": "Speichern",
+      "salvata": "Änderungen gespeichert.",
+      "tutte": "Alle Meldungen"
     }
   },
   "anagrafica": {

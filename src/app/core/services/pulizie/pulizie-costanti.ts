@@ -24,3 +24,6 @@ export const LUNGHEZZA_PULIZIA = { note: 5000, voce: 150 } as const;
 export const STATI_SEGNALAZIONE = ['aperta', 'in_corso', 'risolta', 'annullata'] as const;
 
 export const STATI_SEGNALAZIONE_APERTA = ['aperta', 'in_corso'] as const;
+
+/** Lunghezze massime delle segnalazioni, come la validazione del backend. */
+export const LUNGHEZZA_SEGNALAZIONE = { titolo: 150, testo: 10_000 } as const;
