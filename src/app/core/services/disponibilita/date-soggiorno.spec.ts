@@ -1,7 +1,13 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { describe, expect, it } from 'vitest';
 
-import { dataCalendario, giornoDopo, partenzaDopoArrivo } from './date-soggiorno';
+import {
+  dataCalendario,
+  giornoDopo,
+  giorniTra,
+  partenzaDopoArrivo,
+  spostaData,
+} from './date-soggiorno';
 
 describe('date del soggiorno', () => {
   it('scrive la data locale come AAAA-MM-GG', () => {
@@ -11,6 +17,13 @@ describe('date del soggiorno', () => {
   it('passa al giorno dopo anche a fine mese e fine anno', () => {
     expect(giornoDopo('2026-02-28')).toBe('2026-03-01');
     expect(giornoDopo('2026-12-31')).toBe('2027-01-01');
+  });
+
+  it('sposta una data avanti e indietro e conta i giorni, anche col cambio d’ora', () => {
+    expect(spostaData('2026-03-01', -1)).toBe('2026-02-28');
+    expect(spostaData('2026-10-20', 14)).toBe('2026-11-03');
+    expect(giorniTra('2026-10-20', '2026-11-03')).toBe(14);
+    expect(giorniTra('2026-03-30', '2026-03-28')).toBe(-2);
   });
 
   it('segnala una partenza uguale o precedente all’arrivo', () => {

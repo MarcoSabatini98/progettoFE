@@ -1193,6 +1193,40 @@
       "salva": "Save",
       "salvata": "Changes saved.",
       "tutte": "All reports"
+    },
+    "planning": {
+      "occhiello": "Front desk",
+      "titolo": "Room planner",
+      "dal": "From",
+      "durata": "Days shown",
+      "giorni": "{{ giorni }} days",
+      "precedente": "Previous period",
+      "successivo": "Next period",
+      "oggi": "Today",
+      "nuova": "New booking",
+      "legenda": "Legend",
+      "chiusa": "Closed",
+      "camera": "Room",
+      "struttura": "Whole property",
+      "aiutoTrascina": "Drag a stay to another room or other days (on a phone, press and hold). Only stays that have not started can be moved.",
+      "proposta": "Move {{ codice }} to room {{ camera }}, from {{ arrivo }} to {{ partenza }}? The price will be recalculated.",
+      "sposta": "Move",
+      "spostata": "Booking {{ codice }} moved.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "No rooms to show.",
+      "nuovaChiusura": "Close a room or the property",
+      "modificaChiusura": "Edit closure",
+      "aiutoChiusura": "Closed days cannot be booked. Existing bookings stay: they are listed below.",
+      "campi": {
+        "camera": "Room",
+        "dal": "Closed from",
+        "riapre": "Reopens on",
+        "motivo": "Reason"
+      },
+      "conflitti": "These bookings fall within the closure:",
+      "salva": "Save",
+      "chiudi": "Close",
+      "riapri": "Reopen"
     }
   },
   "anagrafica": {

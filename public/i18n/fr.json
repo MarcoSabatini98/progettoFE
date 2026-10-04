@@ -1193,6 +1193,40 @@
       "salva": "Enregistrer",
       "salvata": "Modifications enregistrées.",
       "tutte": "Tous les signalements"
+    },
+    "planning": {
+      "occhiello": "Réception",
+      "titolo": "Planning des chambres",
+      "dal": "Du",
+      "durata": "Jours affichés",
+      "giorni": "{{ giorni }} jours",
+      "precedente": "Période précédente",
+      "successivo": "Période suivante",
+      "oggi": "Aujourd'hui",
+      "nuova": "Nouvelle réservation",
+      "legenda": "Légende",
+      "chiusa": "Fermée",
+      "camera": "Chambre",
+      "struttura": "Tout l'établissement",
+      "aiutoTrascina": "Faites glisser un séjour vers une autre chambre ou d'autres jours (sur téléphone, appui long). Seuls les séjours pas encore commencés se déplacent.",
+      "proposta": "Déplacer {{ codice }} en chambre {{ camera }}, du {{ arrivo }} au {{ partenza }} ? Le prix sera recalculé.",
+      "sposta": "Déplacer",
+      "spostata": "Réservation {{ codice }} déplacée.",
+      "soggiorno": "{{ codice }} {{ ospite }} : {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "Aucune chambre à afficher.",
+      "nuovaChiusura": "Fermer une chambre ou l'établissement",
+      "modificaChiusura": "Modifier la fermeture",
+      "aiutoChiusura": "Les jours fermés ne sont pas réservables. Les réservations existantes restent : elles sont listées ci-dessous.",
+      "campi": {
+        "camera": "Chambre",
+        "dal": "Fermée du",
+        "riapre": "Rouvre le",
+        "motivo": "Motif"
+      },
+      "conflitti": "Ces réservations tombent pendant la fermeture :",
+      "salva": "Enregistrer",
+      "chiudi": "Fermer",
+      "riapri": "Rouvrir"
     }
   },
   "anagrafica": {

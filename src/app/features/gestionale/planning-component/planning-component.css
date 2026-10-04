@@ -1,0 +1,186 @@
+/*
+ * Una riga per camera, una colonna per giorno: le barre si posano con grid-column.
+ * Sul telefono il planning scorre di lato, con le camere sempre visibili a sinistra.
+ */
+.scorrimento {
+  --camera: 5.5rem;
+  --giorno: 2.75rem;
+
+  overflow-x: auto;
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+}
+
+.planning {
+  min-inline-size: max-content;
+}
+
+.riga {
+  display: grid;
+  grid-template-columns: var(--camera) repeat(var(--giorni), var(--giorno));
+  align-items: center;
+  min-block-size: 3rem;
+  border-block-end: 1px solid var(--bb-linea);
+  /* Righe dei giorni sullo sfondo, così si conta senza intestazione. */
+  background: repeating-linear-gradient(
+      to right,
+      transparent 0 calc(var(--giorno) - 1px),
+      var(--bb-linea) calc(var(--giorno) - 1px) var(--giorno)
+    )
+    var(--camera) 0 / calc(100% - var(--camera)) 100% no-repeat;
+}
+
+.riga:last-child {
+  border-block-end: none;
+}
+
+.riga.cdk-drop-list-receiving {
+  background-color: var(--bb-incavo);
+}
+
+.camera {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
+  align-content: center;
+  padding-inline: var(--bb-spazio-3);
+  border-inline-end: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+  line-height: 1.2;
+}
+
+.intestazione {
+  min-block-size: 2.5rem;
+  color: var(--bb-testo-tenue);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.giorno {
+  text-align: center;
+}
+
+.giorno.oggi {
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.barra {
+  overflow: hidden;
+  grid-row: 1;
+  min-inline-size: 0;
+  margin-inline: 2px;
+  padding: var(--bb-spazio-1) var(--bb-spazio-2);
+  border: 1px solid var(--colore);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--tenue);
+  color: var(--bb-testo);
+  font: inherit;
+  font-size: 0.8125rem;
+  text-align: start;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.barra:not(.cdk-drag-disabled) {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+button.barra {
+  cursor: pointer;
+}
+
+.barra:focus-visible {
+  outline: 2px solid var(--bb-brand-testo);
+  outline-offset: 1px;
+}
+
+/* Soggiorno cominciato prima o finito dopo il periodo: il bordo resta aperto. */
+.barra.prima {
+  margin-inline-start: 0;
+  border-inline-start-style: dashed;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.barra.dopo {
+  margin-inline-end: 0;
+  border-inline-end-style: dashed;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+[data-stato] {
+  --colore: var(--bb-info);
+  --tenue: var(--bb-info-tenue);
+}
+
+[data-stato='in_attesa'] {
+  --colore: var(--bb-avviso);
+  --tenue: var(--bb-avviso-tenue);
+}
+
+[data-stato='in_soggiorno'] {
+  --colore: var(--bb-ok);
+  --tenue: var(--bb-ok-tenue);
+}
+
+[data-stato='conclusa'] {
+  --colore: var(--bb-linea);
+  --tenue: var(--bb-incavo);
+}
+
+.chiusura {
+  --colore: var(--bb-errore);
+  --tenue: var(--bb-errore-tenue);
+}
+
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-2) var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.legenda li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+}
+
+.punto {
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  border: 1px solid var(--colore);
+  border-radius: 3px;
+  background: var(--tenue);
+}
+
+/* Il posto lasciato vuoto non deve spostare le altre barre: la griglia le tiene ferme. */
+.segnaposto {
+  display: none;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.2);
+}
+
+.stato-vuoto {
+  margin: var(--bb-spazio-4);
+}
+
+.esito {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}

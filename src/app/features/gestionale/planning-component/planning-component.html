@@ -1,0 +1,226 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.planning.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.planning.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <app-campo [etichetta]="'gestionale.planning.dal' | transloco">
+      <input #campo type="date" [value]="dal()" (change)="cambiaInizio(campo.value)" />
+    </app-campo>
+  </div>
+  <div class="linguette" role="group" [attr.aria-label]="'gestionale.planning.durata' | transloco">
+    @for (giorni of durate; track giorni) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="durata() === giorni"
+        (click)="durata.set(giorni)"
+      >
+        {{ 'gestionale.planning.giorni' | transloco: { giorni } }}
+      </button>
+    }
+  </div>
+  <div class="azioni">
+    <button
+      class="pulsante pulsante-fantasma"
+      type="button"
+      [attr.aria-label]="'gestionale.planning.precedente' | transloco"
+      (click)="vai(-durata())"
+    >
+      <app-icona nome="chevron_left" />
+    </button>
+    <button class="pulsante pulsante-secondario" type="button" (click)="dal.set(oggi)">
+      {{ 'gestionale.planning.oggi' | transloco }}
+    </button>
+    <button
+      class="pulsante pulsante-fantasma"
+      type="button"
+      [attr.aria-label]="'gestionale.planning.successivo' | transloco"
+      (click)="vai(durata())"
+    >
+      <app-icona nome="chevron_right" />
+    </button>
+    @if (spostare) {
+      <a class="pulsante pulsante-primario" [routerLink]="nuova">
+        <app-icona nome="add" />
+        {{ 'gestionale.planning.nuova' | transloco }}
+      </a>
+    }
+  </div>
+</header>
+
+<ul class="legenda" [attr.aria-label]="'gestionale.planning.legenda' | transloco">
+  @for (stato of statiLegenda; track stato) {
+    <li>
+      <span class="punto" [attr.data-stato]="stato" aria-hidden="true"></span>
+      {{ 'prenotazione.stati.' + stato | transloco }}
+    </li>
+  }
+  <li>
+    <span class="punto chiusura" aria-hidden="true"></span>
+    {{ 'gestionale.planning.chiusa' | transloco }}
+  </li>
+</ul>
+
+@if (proposta(); as scelta) {
+  <div class="esito esito-avviso" role="status">
+    <p>
+      {{
+        'gestionale.planning.proposta'
+          | transloco
+            : {
+                codice: scelta.prenotazione.codice,
+                camera: scelta.camera.numero,
+                arrivo: (scelta.data_arrivo | data),
+                partenza: (scelta.data_partenza | data),
+              }
+      }}
+    </p>
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="conferma(scelta)"
+      >
+        <app-icona nome="move_item" />
+        {{ 'gestionale.planning.sposta' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="proposta.set(null)">
+        {{ 'portale.documenti.annulla' | transloco }}
+      </button>
+    </div>
+  </div>
+}
+
+@if (planning.hasValue()) {
+  @if (spostare) {
+    <p class="tenue piccolo">{{ 'gestionale.planning.aiutoTrascina' | transloco }}</p>
+  }
+  <div
+    class="scorrimento"
+    cdkScrollable
+    [style.--giorni]="giorni().length"
+    [attr.aria-busy]="planning.isLoading()"
+  >
+    <div class="planning" cdkDropListGroup>
+      <div class="riga intestazione">
+        <span class="camera">{{ 'gestionale.planning.camera' | transloco }}</span>
+        @for (giorno of giorni(); track giorno) {
+          <span class="giorno" [class.oggi]="giorno === oggi">
+            {{ giorno | data: 'settimana' }}
+          </span>
+        }
+      </div>
+
+      @if (struttura().length) {
+        <div class="riga">
+          <span class="camera">{{ 'gestionale.planning.struttura' | transloco }}</span>
+          @for (barra of struttura(); track barra.chiusura?.id) {
+            <ng-container
+              [ngTemplateOutlet]="barraChiusura"
+              [ngTemplateOutletContext]="{ $implicit: barra }"
+            />
+          }
+        </div>
+      }
+
+      @for (riga of righe(); track riga.camera.id) {
+        <div
+          class="riga"
+          cdkDropList
+          cdkDropListSortingDisabled
+          [cdkDropListData]="riga.camera"
+          (cdkDropListDropped)="lascia($event)"
+        >
+          <span class="camera">
+            <strong>{{ riga.camera.numero }}</strong>
+            <span class="tenue piccolo">{{ riga.camera.tipologia?.nome }}</span>
+          </span>
+          @for (barra of riga.barre; track $index) {
+            @if (barra.prenotazione; as soggiorno) {
+              @let ospite = soggiorno.titolare?.cognome ?? soggiorno.codice;
+              @let descrizione =
+                'gestionale.planning.soggiorno'
+                  | transloco
+                    : {
+                        codice: soggiorno.codice,
+                        ospite: soggiorno.titolare
+                          ? soggiorno.titolare.nome + ' ' + soggiorno.titolare.cognome
+                          : '',
+                        arrivo: (soggiorno.data_arrivo | data),
+                        partenza: (soggiorno.data_partenza | data),
+                        stato: ('prenotazione.stati.' + soggiorno.stato | transloco),
+                      };
+              <a
+                class="barra"
+                [attr.data-stato]="soggiorno.stato"
+                [class.prima]="barra.prima"
+                [class.dopo]="barra.dopo"
+                [style.grid-column]="barra.da + 1 + ' / ' + (barra.a + 1)"
+                [routerLink]="[scheda, soggiorno.id]"
+                [attr.aria-label]="descrizione"
+                [title]="descrizione"
+                cdkDrag
+                [cdkDragData]="barra"
+                [cdkDragDisabled]="!spostabile(barra)"
+                [cdkDragStartDelay]="ritardo"
+              >
+                {{ ospite }}
+                <span *cdkDragPlaceholder class="segnaposto"></span>
+              </a>
+            } @else {
+              <ng-container
+                [ngTemplateOutlet]="barraChiusura"
+                [ngTemplateOutletContext]="{ $implicit: barra }"
+              />
+            }
+          }
+        </div>
+      } @empty {
+        <p class="stato-vuoto">{{ 'gestionale.planning.vuoto' | transloco }}</p>
+      }
+    </div>
+  </div>
+} @else if (planning.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+@if (chiudere) {
+  <section #zonaChiusura class="sezione">
+    <app-chiusura
+      [camere]="elencoCamere()"
+      [giorno]="dal()"
+      [chiusura]="chiusuraScelta()"
+      (cambiata)="chiusuraCambiata()"
+      (annulla)="chiusuraScelta.set(null)"
+    />
+  </section>
+}
+
+<ng-template #barraChiusura let-barra>
+  @let chiusura = barra.chiusura;
+  @let testo = chiusura.motivo || ('gestionale.planning.chiusa' | transloco);
+  @if (modificabile(chiusura)) {
+    <button
+      class="barra chiusura"
+      type="button"
+      [class.prima]="barra.prima"
+      [class.dopo]="barra.dopo"
+      [style.grid-column]="barra.da + 1 + ' / ' + (barra.a + 1)"
+      [title]="testo"
+      (click)="scegliChiusura(chiusura)"
+    >
+      {{ testo }}
+    </button>
+  } @else {
+    <span
+      class="barra chiusura"
+      [attr.data-origine]="chiusura.origine"
+      [class.prima]="barra.prima"
+      [class.dopo]="barra.dopo"
+      [style.grid-column]="barra.da + 1 + ' / ' + (barra.a + 1)"
+      [title]="testo"
+    >
+      {{ testo }}
+    </span>
+  }
+</ng-template>

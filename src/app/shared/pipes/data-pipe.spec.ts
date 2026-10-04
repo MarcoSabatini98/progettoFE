@@ -29,6 +29,10 @@ describe('DataPipe', () => {
     expect(pipe.transform('2026-10-01T15:30:00', 'ora')).toBe('1 ottobre alle ore 15:30');
   });
 
+  it('nel formato settimana mostra giorno della settimana e numero', () => {
+    expect(pipe.transform('2026-10-03', 'settimana')).toBe('sab 3');
+  });
+
   it('segue la lingua del sito', () => {
     lingua.set('en');
 

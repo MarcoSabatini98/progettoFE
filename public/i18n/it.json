@@ -1193,6 +1193,40 @@
       "salva": "Salva",
       "salvata": "Modifiche salvate.",
       "tutte": "Tutte le segnalazioni"
+    },
+    "planning": {
+      "occhiello": "Reception",
+      "titolo": "Planning camere",
+      "dal": "Dal",
+      "durata": "Giorni mostrati",
+      "giorni": "{{ giorni }} giorni",
+      "precedente": "Periodo precedente",
+      "successivo": "Periodo successivo",
+      "oggi": "Oggi",
+      "nuova": "Nuova prenotazione",
+      "legenda": "Legenda",
+      "chiusa": "Chiusa",
+      "camera": "Camera",
+      "struttura": "Tutta la struttura",
+      "aiutoTrascina": "Trascina un soggiorno su un'altra camera o su altri giorni (sul telefono tieni premuto). Si spostano solo quelli non ancora cominciati.",
+      "proposta": "Spostare {{ codice }} in camera {{ camera }}, dal {{ arrivo }} al {{ partenza }}? Il prezzo verrà ricalcolato.",
+      "sposta": "Sposta",
+      "spostata": "Prenotazione {{ codice }} spostata.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "Nessuna camera da mostrare.",
+      "nuovaChiusura": "Chiudi camera o struttura",
+      "modificaChiusura": "Modifica chiusura",
+      "aiutoChiusura": "Nei giorni chiusi non si prenota. Le prenotazioni già presenti restano: le trovi elencate qui sotto.",
+      "campi": {
+        "camera": "Camera",
+        "dal": "Chiusa dal",
+        "riapre": "Riapre il",
+        "motivo": "Motivo"
+      },
+      "conflitti": "Queste prenotazioni cadono nella chiusura:",
+      "salva": "Salva",
+      "chiudi": "Chiudi",
+      "riapri": "Riapri"
     }
   },
   "anagrafica": {
