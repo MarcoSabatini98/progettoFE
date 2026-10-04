@@ -987,6 +987,50 @@
         "recensioni_da_moderare": "Reseñas por moderar",
         "incassato_mese": "Cobrado desde el día 1",
         "prenotato_da_inizio_mese": "Vendido con llegada este mes"
+      },
+      "andamento": {
+        "titolo": "Evolución",
+        "periodo": "Período",
+        "report": "Descargar informe PDF",
+        "periodi": {
+          "settimana": "Esta semana",
+          "settimanaScorsa": "Semana pasada",
+          "mese": "Este mes",
+          "meseScorso": "Mes pasado",
+          "anno": "Este año"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Ocupación",
+          "ricavo_camere": "Ingresos por habitaciones",
+          "adr": "Precio medio por noche (ADR)",
+          "revpar": "Ingreso por habitación disponible (RevPAR)",
+          "notti_vendute": "Noches vendidas de {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} respecto al período anterior",
+        "senzaConfronto": "Sin datos del período anterior",
+        "grafici": {
+          "occupazione": "Ocupación",
+          "ricavi": "Ingresos por habitaciones",
+          "settimana": "Ocupación por día de la semana"
+        },
+        "tipologie": "Ingresos por tipo de habitación",
+        "camere": "Ingresos por habitación",
+        "camera": "Habitación {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} reservas · {{ notti }} noches",
+        "arrivati": "Estancias con llegada en el período.",
+        "canali": "Canales de venta",
+        "canaliNota": "Reservas creadas en el período.",
+        "campiCanale": {
+          "prenotazioni": "Reservas",
+          "cancellate": "Canceladas",
+          "no_show": "No-show",
+          "notti": "Noches vendidas",
+          "valore": "Valor vendido",
+          "durata_media": "Noches por reserva",
+          "anticipo_medio_giorni": "Días de antelación de media"
+        },
+        "vuoto": "No hay estancias en el período.",
+        "vuotoCanali": "No se han creado reservas en el período."
       }
     },
     "chat": {

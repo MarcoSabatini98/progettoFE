@@ -987,6 +987,50 @@
         "recensioni_da_moderare": "Reviews to moderate",
         "incassato_mese": "Collected since the 1st",
         "prenotato_da_inizio_mese": "Sold with arrival this month"
+      },
+      "andamento": {
+        "titolo": "Performance",
+        "periodo": "Period",
+        "report": "Download PDF report",
+        "periodi": {
+          "settimana": "This week",
+          "settimanaScorsa": "Last week",
+          "mese": "This month",
+          "meseScorso": "Last month",
+          "anno": "This year"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Occupancy",
+          "ricavo_camere": "Room revenue",
+          "adr": "Average daily rate (ADR)",
+          "revpar": "Revenue per available room (RevPAR)",
+          "notti_vendute": "Nights sold out of {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} vs previous period",
+        "senzaConfronto": "No data for the previous period",
+        "grafici": {
+          "occupazione": "Occupancy",
+          "ricavi": "Room revenue",
+          "settimana": "Occupancy by day of the week"
+        },
+        "tipologie": "Revenue by room type",
+        "camere": "Revenue by room",
+        "camera": "Room {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} bookings · {{ notti }} nights",
+        "arrivati": "Stays arriving in the period.",
+        "canali": "Sales channels",
+        "canaliNota": "Bookings created in the period.",
+        "campiCanale": {
+          "prenotazioni": "Bookings",
+          "cancellate": "Cancelled",
+          "no_show": "No-shows",
+          "notti": "Nights sold",
+          "valore": "Value sold",
+          "durata_media": "Nights per booking",
+          "anticipo_medio_giorni": "Average lead time in days"
+        },
+        "vuoto": "No stays in the period.",
+        "vuotoCanali": "No bookings created in the period."
       }
     },
     "chat": {

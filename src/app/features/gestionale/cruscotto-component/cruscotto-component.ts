@@ -9,6 +9,7 @@ import { AuthService } from '../../../core/services/auth/auth-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
+import { AndamentoComponent } from '../andamento-component/andamento-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { CruscottoInterface } from '../../../shared/models/cruscotto/cruscotto-model';
 import { RequisitiAccessoInterface } from '../../../shared/models/requisiti-accesso/requisiti-accesso-model';
@@ -72,13 +73,19 @@ const GRUPPI: readonly { titolo: string; tessere: readonly Tessera[] }[] = [
 
 /**
  * Cruscotto della direzione: occupazione e movimenti di oggi, cosa aspetta
- * qualcuno e gli importi del mese.
+ * qualcuno, gli importi del mese e sotto l'andamento di un periodo a scelta.
  */
 @Component({
   selector: 'app-cruscotto',
-  imports: [NgTemplateOutlet, RouterLink, TranslocoPipe, IconaComponent, PrezzoPipe],
+  imports: [
+    NgTemplateOutlet,
+    RouterLink,
+    TranslocoPipe,
+    AndamentoComponent,
+    IconaComponent,
+    PrezzoPipe,
+  ],
   templateUrl: './cruscotto-component.html',
-  styleUrl: './cruscotto-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },
 })
