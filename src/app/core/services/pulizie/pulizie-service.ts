@@ -9,6 +9,7 @@ import {
   AttivitaPuliziaInterface,
   AvanzamentoPuliziaPayload,
   FiltriPulizie,
+  RinvioPulizia,
 } from '../../../shared/models/attivita-pulizia/attivita-pulizia-model';
 import {
   ChecklistModelloAggiornaPayload,
@@ -109,6 +110,16 @@ export class PulizieService {
       .pipe(map((res) => res.dati));
   }
 
+  /**
+   * PROSSIMA CAMERA — POST /prossima
+   * Chi chiama si prende la prossima camera libera di oggi.
+   */
+  prossima(): Observable<AttivitaPuliziaInterface> {
+    return this.http
+      .post<RispostaApiInterface<AttivitaPuliziaInterface>>(`${this.apiUrl}/prossima`, {})
+      .pipe(map((res) => res.dati));
+  }
+
   // ─── Attività ───
 
   /**
@@ -174,6 +185,18 @@ export class PulizieService {
         `${this.apiUrl}/${id}/avanzamento`,
         dati,
       )
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * RINVIA — POST /:id/rinvio
+   * "Non disturbare": la camera torna libera più tardi o domani.
+   */
+  rinviaAttivita(id: number, quando: RinvioPulizia): Observable<AttivitaPuliziaInterface> {
+    return this.http
+      .post<RispostaApiInterface<AttivitaPuliziaInterface>>(`${this.apiUrl}/${id}/rinvio`, {
+        quando,
+      })
       .pipe(map((res) => res.dati));
   }
 }

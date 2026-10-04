@@ -226,7 +226,10 @@
     "SEGNALAZIONE_NON_TROVATA": "Signalement introuvable.",
     "SEGNALAZIONE_CHIUSA": "Le signalement est clos : rouvrez-le pour le modifier.",
     "EMAIL_ACCESSO_CLIENTE": "Seul le client peut modifier son e-mail de connexion.",
-    "OSPITE_CLIENTE": "La fiche d'un client inscrit se supprime avec son compte."
+    "OSPITE_CLIENTE": "La fiche d'un client inscrit se supprime avec son compte.",
+    "PULIZIA_NON_RINVIABILE": "Seuls les nettoyages non terminés peuvent être reportés.",
+    "PULIZIA_IN_CORSO": "Terminez d’abord la chambre que vous avez déjà.",
+    "NESSUNA_PULIZIA_LIBERA": "Aucune chambre libre à nettoyer."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -976,7 +979,17 @@
       "assegnaA": "Attribuer à…",
       "addetto": "{{ nome }} {{ cognome }}",
       "completate": "Terminées",
-      "camera": "chambre {{ numero }}"
+      "camera": "chambre {{ numero }}",
+      "prossima": "Chambre suivante",
+      "presa": "Chambre {{ numero }} : à vous.",
+      "nonDisturbare": "Ne pas déranger",
+      "rinvii": {
+        "oggi": "Plus tard",
+        "domani": "Demain"
+      },
+      "piano": "étage {{ piano }}",
+      "tempo": "Temps de nettoyage",
+      "minuti": "{{ minuti }} min"
     },
     "cruscotto": {
       "occhiello": "Direction",

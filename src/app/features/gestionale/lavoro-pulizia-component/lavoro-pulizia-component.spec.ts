@@ -11,7 +11,7 @@ import { AttivitaPuliziaInterface } from '../../../shared/models/attivita-pulizi
 import { LavoroPuliziaComponent } from './lavoro-pulizia-component';
 
 describe('LavoroPuliziaComponent', () => {
-  const pulizie = { avanzaAttivita: vi.fn() };
+  const pulizie = { avanzaAttivita: vi.fn(), rinviaAttivita: vi.fn() };
   const auth = { haPermessi: vi.fn(), utente: () => ({ id: 3 }) };
   const attivita = {
     id: 9,
@@ -68,12 +68,14 @@ describe('LavoroPuliziaComponent', () => {
     expect(aggiornata).toHaveBeenCalledWith(attivita);
   });
 
-  it('all addetto propone di finire o rimettere da fare', async () => {
+  it('all addetto propone di finire, rimettere da fare o rinviare', async () => {
     const { elemento } = await crea();
 
     expect(pulsanti(elemento)).toEqual([
       'gestionale.pulizie.passaggi.in_corso.completata',
       'gestionale.pulizie.passaggi.in_corso.da_fare',
+      'gestionale.pulizie.rinvii.oggi',
+      'gestionale.pulizie.rinvii.domani',
     ]);
     elemento.querySelector('button')!.click();
     expect(pulizie.avanzaAttivita).toHaveBeenCalledWith(9, { stato: 'completata' });
@@ -112,11 +114,26 @@ describe('LavoroPuliziaComponent', () => {
     campo.value = 'Tenda rotta';
     campo.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    Array.from(elemento.querySelectorAll('button')).at(-1)!.click();
+    Array.from(elemento.querySelectorAll('button'))
+      .find((pulsante) => pulsante.textContent!.includes('salvaNote'))!
+      .click();
     fixture.detectChanges();
 
     expect(pulizie.avanzaAttivita).toHaveBeenCalledWith(9, { note: 'Tenda rotta' });
     expect(elemento.querySelector('[role=alert]')).not.toBeNull();
+  });
+
+  it('non disturbare: rinvia la camera e passa quella aggiornata', async () => {
+    const libera = { ...attivita, stato: 'da_fare', assegnata_a: null };
+    pulizie.rinviaAttivita.mockReturnValue(of(libera));
+    const { fixture, elemento } = await crea();
+    const aggiornata = vi.fn();
+    fixture.componentInstance.aggiornata.subscribe(aggiornata);
+
+    Array.from(elemento.querySelectorAll('button')).at(-1)!.click();
+
+    expect(pulizie.rinviaAttivita).toHaveBeenCalledWith(9, 'domani');
+    expect(aggiornata).toHaveBeenCalledWith(libera);
   });
 
   it('usa i permessi delle pulizie', async () => {

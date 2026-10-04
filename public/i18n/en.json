@@ -226,7 +226,10 @@
     "SEGNALAZIONE_NON_TROVATA": "Report not found.",
     "SEGNALAZIONE_CHIUSA": "The report is closed: reopen it to edit it.",
     "EMAIL_ACCESSO_CLIENTE": "Only the customer can change their login email.",
-    "OSPITE_CLIENTE": "A registered customer's record is deleted together with their account."
+    "OSPITE_CLIENTE": "A registered customer's record is deleted together with their account.",
+    "PULIZIA_NON_RINVIABILE": "Only unfinished cleanings can be postponed.",
+    "PULIZIA_IN_CORSO": "Finish the room you already have first.",
+    "NESSUNA_PULIZIA_LIBERA": "There are no free rooms to clean."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -976,7 +979,17 @@
       "assegnaA": "Assign to…",
       "addetto": "{{ nome }} {{ cognome }}",
       "completate": "Completed",
-      "camera": "room {{ numero }}"
+      "camera": "room {{ numero }}",
+      "prossima": "Next room",
+      "presa": "Room {{ numero }}: it’s yours.",
+      "nonDisturbare": "Do not disturb",
+      "rinvii": {
+        "oggi": "Later",
+        "domani": "Tomorrow"
+      },
+      "piano": "floor {{ piano }}",
+      "tempo": "Cleaning time",
+      "minuti": "{{ minuti }} min"
     },
     "cruscotto": {
       "occhiello": "Management",

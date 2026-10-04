@@ -6,6 +6,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
+import { minutiPulizia } from '../../../core/services/pulizie/passaggi-pulizia';
 import { PulizieService } from '../../../core/services/pulizie/pulizie-service';
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
@@ -43,6 +44,8 @@ export class SchedaPuliziaComponent {
 
   protected readonly elenco = PERCORSI_STAFF.pulizie;
   protected readonly gestore = inject(AuthService).haPermessi([PERMESSI.PULIZIE_GESTISCI]);
+  /** Quanto è durata la pulizia, a chi gestisce. */
+  protected readonly minuti = minutiPulizia;
   protected readonly scheda = rxResource({
     params: () => this.id(),
     stream: ({ params: id }) => this.pulizie.leggiAttivita(id),

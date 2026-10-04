@@ -25,6 +25,7 @@ describe('AttivitaPuliziaInterface', () => {
       note: null,
       iniziata_il: '2026-10-03T10:30:00.000Z',
       completata_il: null,
+      rinviata_il: null,
       verificata_il: null,
       verificata_da: null,
       creato_da: null,

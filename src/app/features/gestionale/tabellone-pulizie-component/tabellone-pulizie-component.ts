@@ -30,6 +30,8 @@ export class TabellonePulizieComponent {
   readonly destinazioni = input.required<(attivita: AttivitaPuliziaInterface) => string[]>();
   /** Chiave i18n della voce vuota del menu: "Sposta in…", "Assegna a…". */
   readonly azione = input.required<string>();
+  /** Mostra quanto è durata ogni pulizia (a chi gestisce). */
+  readonly tempi = input(false);
   readonly sposta = output<SpostamentoPuliziaInterface>();
 
   protected readonly ritardo = RITARDO_TRASCINA;

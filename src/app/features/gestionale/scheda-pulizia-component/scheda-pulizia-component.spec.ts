@@ -84,6 +84,19 @@ describe('SchedaPuliziaComponent', () => {
     expect(elemento.querySelector('app-elimina')).toBeNull();
   });
 
+  it('a chi gestisce mostra quanto è durata la pulizia', async () => {
+    const finita = {
+      ...attivita,
+      stato: 'completata',
+      iniziata_il: '2026-10-04T09:00:00.000Z',
+      completata_il: '2026-10-04T09:30:00.000Z',
+    };
+    pulizie.leggiAttivita.mockReturnValue(of(finita));
+
+    expect((await crea()).textContent).toContain('gestionale.pulizie.tempo');
+    expect((await crea(false)).textContent).not.toContain('gestionale.pulizie.tempo');
+  });
+
   it('mostra l errore se l attività non esiste', async () => {
     pulizie.leggiAttivita.mockReturnValue(
       throwError(() => new HttpErrorResponse({ status: 404, error: {} })),

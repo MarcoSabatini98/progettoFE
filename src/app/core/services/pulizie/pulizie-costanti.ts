@@ -18,6 +18,12 @@ export const TRANSIZIONI_PULIZIA = {
   verificata: {},
 } as const;
 
+/** "Non disturbare": più tardi (in fondo alla coda di oggi) o domani. */
+export const RINVII_PULIZIA = ['oggi', 'domani'] as const;
+
+/** Pulizia non ancora finita: si può rinviare, e chi ce l'ha non ne prende un'altra. */
+export const STATI_PULIZIA_APERTA: readonly string[] = ['da_fare', 'in_corso'];
+
 /** Lunghezze massime dei campi di testo, come la validazione del backend. */
 export const LUNGHEZZA_PULIZIA = { note: 5000, voce: 150 } as const;
 

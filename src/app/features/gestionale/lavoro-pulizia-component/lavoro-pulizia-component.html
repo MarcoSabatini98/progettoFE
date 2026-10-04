@@ -59,6 +59,25 @@
       </button>
     }
   </div>
+  @if (rinviabile()) {
+    <div
+      class="azioni"
+      role="group"
+      [attr.aria-label]="'gestionale.pulizie.nonDisturbare' | transloco"
+    >
+      <span class="tenue piccolo">{{ 'gestionale.pulizie.nonDisturbare' | transloco }}</span>
+      @for (quando of rinvii; track quando) {
+        <button
+          class="pulsante pulsante-fantasma"
+          type="button"
+          [disabled]="inCorso()"
+          (click)="rinvia(quando)"
+        >
+          {{ 'gestionale.pulizie.rinvii.' + quando | transloco }}
+        </button>
+      }
+    </div>
+  }
 } @else if (dati.note) {
   <p class="testo-libero">{{ dati.note }}</p>
 }
