@@ -1,0 +1,59 @@
+@if (aperta(); as rettifica) {
+  @let controlli = modulo.controls;
+  <form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="conferma(rettifica)" novalidate>
+    <h3>{{ 'gestionale.rettifica.titoli.' + rettifica | transloco }}</h3>
+    <p class="tenue piccolo">{{ 'gestionale.rettifica.aiuto.' + rettifica | transloco }}</p>
+    @if (rettifica === 'rimborsa') {
+      <app-campo
+        [etichetta]="'gestionale.rettifica.importo' | transloco"
+        [aiuto]="'gestionale.rettifica.importoAiuto' | transloco"
+        [errore]="errori.campo(controlli.importo)"
+      >
+        <input
+          type="number"
+          inputmode="decimal"
+          formControlName="importo"
+          [min]="importoMinimo"
+          [max]="pagamento().importo"
+          [step]="importoMinimo"
+        />
+      </app-campo>
+      <label class="spunta">
+        <input type="checkbox" formControlName="forza" />
+        {{ 'gestionale.rettifica.forza' | transloco }}
+      </label>
+    }
+    <app-campo
+      [etichetta]="'gestionale.rettifica.motivo' | transloco"
+      [errore]="errori.campo(controlli.motivo)"
+    >
+      <input type="text" formControlName="motivo" [maxlength]="lunghezzaMotivo" required />
+    </app-campo>
+
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-pericolo" type="submit" [disabled]="inCorso()">
+        <app-icona nome="check" />
+        {{ 'gestionale.rettifica.conferma.' + rettifica | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="aperta.set(null)">
+        {{ 'gestionale.azioni.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <div class="azioni">
+    <button class="pulsante pulsante-fantasma" type="button" (click)="apri('rimborsa')">
+      <app-icona nome="undo" />
+      {{ 'gestionale.rettifica.titoli.rimborsa' | transloco }}
+    </button>
+    @if (annullabile()) {
+      <button class="pulsante pulsante-fantasma" type="button" (click)="apri('annulla')">
+        <app-icona nome="block" />
+        {{ 'gestionale.rettifica.titoli.annulla' | transloco }}
+      </button>
+    }
+  </div>
+}

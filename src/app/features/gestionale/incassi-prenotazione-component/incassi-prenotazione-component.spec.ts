@@ -81,6 +81,15 @@ describe('IncassiPrenotazioneComponent', () => {
 
     expect(elemento.querySelector('app-registra-incasso')).toBeNull();
     expect(elemento.querySelector('app-link-pagamento')).toBeNull();
+    expect(elemento.querySelector('app-rettifica-pagamento')).toBeNull();
+  });
+
+  it('chi registra può annullare o rimborsare solo gli incassi completati', async () => {
+    const { elemento } = await crea(true);
+
+    const righe = elemento.querySelectorAll('.movimenti > li');
+    expect(righe[0].querySelector('app-rettifica-pagamento')).not.toBeNull();
+    expect(righe[1].querySelector('app-rettifica-pagamento')).toBeNull();
   });
 
   it('un incasso registrato avvisa chi mostra la prenotazione', async () => {

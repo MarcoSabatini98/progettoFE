@@ -1585,6 +1585,34 @@
         "risposta": "Respuesta guardada.",
         "rispostaTolta": "Respuesta quitada."
       }
+    },
+    "pagamenti": {
+      "occhiello": "Caja",
+      "titolo": "Pagos",
+      "totale": "Movimientos: {{ totale }}",
+      "vuoto": "No hay movimientos con estos filtros."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Anular cobro",
+        "rimborsa": "Reembolsar"
+      },
+      "aiuto": {
+        "annulla": "Para un cobro registrado por error: no se devuelve dinero.",
+        "rimborsa": "Stripe y PayPal devuelven el dinero al huésped; efectivo, TPV y transferencia solo se registran."
+      },
+      "importo": "Importe a reembolsar",
+      "importoAiuto": "Vacío = todo el cobro.",
+      "forza": "Incluso más allá de lo pagado de más (p. ej. gesto comercial)",
+      "motivo": "Motivo",
+      "conferma": {
+        "annulla": "Anular cobro",
+        "rimborsa": "Confirmar reembolso"
+      },
+      "esiti": {
+        "annulla": "Cobro anulado.",
+        "rimborsa": "Reembolso registrado."
+      }
     }
   },
   "anagrafica": {
