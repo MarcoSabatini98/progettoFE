@@ -987,6 +987,50 @@
         "recensioni_da_moderare": "Avis à modérer",
         "incassato_mese": "Encaissé depuis le 1er",
         "prenotato_da_inizio_mese": "Vendu avec arrivée ce mois-ci"
+      },
+      "andamento": {
+        "titolo": "Évolution",
+        "periodo": "Période",
+        "report": "Télécharger le rapport PDF",
+        "periodi": {
+          "settimana": "Cette semaine",
+          "settimanaScorsa": "Semaine dernière",
+          "mese": "Ce mois-ci",
+          "meseScorso": "Mois dernier",
+          "anno": "Cette année"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Occupation",
+          "ricavo_camere": "Chiffre d’affaires chambres",
+          "adr": "Prix moyen par nuit (ADR)",
+          "revpar": "Revenu par chambre disponible (RevPAR)",
+          "notti_vendute": "Nuits vendues sur {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} par rapport à la période précédente",
+        "senzaConfronto": "Aucune donnée pour la période précédente",
+        "grafici": {
+          "occupazione": "Occupation",
+          "ricavi": "Chiffre d’affaires chambres",
+          "settimana": "Occupation par jour de la semaine"
+        },
+        "tipologie": "Chiffre d’affaires par type",
+        "camere": "Chiffre d’affaires par chambre",
+        "camera": "Chambre {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} réservations · {{ notti }} nuits",
+        "arrivati": "Séjours avec arrivée dans la période.",
+        "canali": "Canaux de vente",
+        "canaliNota": "Réservations créées dans la période.",
+        "campiCanale": {
+          "prenotazioni": "Réservations",
+          "cancellate": "Annulées",
+          "no_show": "No-show",
+          "notti": "Nuits vendues",
+          "valore": "Valeur vendue",
+          "durata_media": "Nuits par réservation",
+          "anticipo_medio_giorni": "Jours d’anticipation en moyenne"
+        },
+        "vuoto": "Aucun séjour dans la période.",
+        "vuotoCanali": "Aucune réservation créée dans la période."
       }
     },
     "chat": {

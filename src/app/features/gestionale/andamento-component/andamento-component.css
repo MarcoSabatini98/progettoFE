@@ -1,0 +1,107 @@
+.andamento {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+.intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+/* Sul telefono i periodi scorrono di lato invece di andare a capo. */
+.periodi {
+  display: flex;
+  gap: var(--bb-spazio-2);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.periodi button {
+  flex: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.periodi [aria-pressed='true'] {
+  color: var(--bb-brand-testo);
+  border-bottom-color: currentColor;
+}
+
+.variazione[data-segno='su'] {
+  color: var(--bb-ok);
+}
+
+.variazione[data-segno='giu'] {
+  color: var(--bb-errore);
+}
+
+.pannelli {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  align-items: start;
+}
+
+@media (width >= 58.75rem) {
+  .pannelli {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pannelli > .larga {
+    grid-column: 1 / -1;
+  }
+}
+
+.classifica,
+.canali {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.classifica li {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.riga {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Barra della quota sul totale del periodo. */
+.quota {
+  display: block;
+  block-size: 0.375rem;
+  border-radius: 999px;
+  background: var(--bb-incavo);
+}
+
+.quota span {
+  display: block;
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--bb-brand);
+}
+
+.canali {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.canale {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-incavo);
+}
+
+.canali > .stato-vuoto {
+  grid-column: 1 / -1;
+}

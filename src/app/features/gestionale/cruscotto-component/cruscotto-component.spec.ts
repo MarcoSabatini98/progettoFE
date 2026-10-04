@@ -12,7 +12,22 @@ import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { CruscottoComponent } from './cruscotto-component';
 
 describe('CruscottoComponent', () => {
-  const analytics = { leggiCruscotto: vi.fn() };
+  // L'andamento sotto riceve un periodo vuoto: ha il suo spec.
+  const periodo = { dal: '2026-10-01', al: '2026-11-01' };
+  const riepilogo = {
+    notti_disponibili: 0,
+    notti_vendute: 0,
+    occupazione_percentuale: 0,
+    ricavo_camere: 0,
+    adr: 0,
+    revpar: 0,
+  };
+  const analytics = {
+    leggiCruscotto: vi.fn(),
+    leggiOccupazione: () => of({ ...periodo, riepilogo, giorni: [] }),
+    leggiRicavi: () => of({ ...periodo, totale: 0, per_camera: [], per_tipologia: [] }),
+    elencaCanali: () => of([]),
+  };
   const auth = { puoAccedere: vi.fn() };
   const numeri = {
     arrivi_oggi: 3,
@@ -52,7 +67,7 @@ describe('CruscottoComponent', () => {
   it('mostra i numeri di oggi, quelli da fare e gli importi del mese', async () => {
     const { elemento } = await crea();
 
-    const sezioni = elemento.querySelectorAll('section');
+    const sezioni = elemento.querySelectorAll(':scope > section');
     expect(sezioni).toHaveLength(3);
     expect(sezioni[0].querySelectorAll('.tessera')).toHaveLength(4);
     expect(sezioni[0].querySelector('.valore')!.textContent).toContain(
@@ -73,7 +88,7 @@ describe('CruscottoComponent', () => {
     const { elemento } = await crea(false);
 
     expect(elemento.querySelectorAll('a.tessera')).toHaveLength(0);
-    expect(elemento.querySelectorAll('.tessera')).toHaveLength(9);
+    expect(elemento.querySelectorAll(':scope > section .tessera')).toHaveLength(9);
   });
 
   it('aggiorna i numeri e mostra il motivo del rifiuto', async () => {

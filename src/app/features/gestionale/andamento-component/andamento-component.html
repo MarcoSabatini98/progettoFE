@@ -1,0 +1,200 @@
+<section class="andamento" aria-labelledby="andamento-titolo">
+  <div class="intestazione">
+    <h2 class="sezione-titolo" id="andamento-titolo">
+      {{ 'gestionale.cruscotto.andamento.titolo' | transloco }}
+    </h2>
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="scaricando()"
+      (click)="scaricaReport()"
+    >
+      <app-icona nome="picture_as_pdf" />
+      {{ 'gestionale.cruscotto.andamento.report' | transloco }}
+    </button>
+  </div>
+
+  <div
+    class="periodi"
+    role="group"
+    [attr.aria-label]="'gestionale.cruscotto.andamento.periodo' | transloco"
+  >
+    @for (scelta of periodi; track scelta) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="periodo() === scelta"
+        (click)="periodo.set(scelta)"
+      >
+        {{ 'gestionale.cruscotto.andamento.periodi.' + scelta | transloco }}
+      </button>
+    }
+  </div>
+
+  @if (erroreReport()) {
+    <p class="esito esito-errore" role="alert">{{ erroreReport() }}</p>
+  }
+
+  @if (dati.hasValue()) {
+    @let valori = dati.value();
+    <ul class="tessere">
+      @for (indicatore of indicatori(); track indicatore.chiave) {
+        <li class="scheda tessera">
+          <app-icona [nome]="indicatore.icona" />
+          <strong class="valore">
+            @switch (indicatore.formato) {
+              @case ('prezzo') {
+                {{ indicatore.valore | prezzo }}
+              }
+              @case ('percentuale') {
+                {{ 'gestionale.cruscotto.percentuale' | transloco: { valore: indicatore.valore } }}
+              }
+              @default {
+                {{ indicatore.valore }}
+              }
+            }
+          </strong>
+          <span>
+            {{
+              'gestionale.cruscotto.andamento.indicatori.' + indicatore.chiave
+                | transloco: valori.occupazione.riepilogo
+            }}
+          </span>
+          @if (indicatore.variazione === null) {
+            <span class="variazione tenue piccolo">
+              {{ 'gestionale.cruscotto.andamento.senzaConfronto' | transloco }}
+            </span>
+          } @else {
+            <span
+              class="variazione piccolo"
+              [attr.data-segno]="
+                indicatore.variazione > 0 ? 'su' : indicatore.variazione < 0 ? 'giu' : 'pari'
+              "
+            >
+              {{
+                'gestionale.cruscotto.andamento.variazione'
+                  | transloco: { valore: testoVariazione(indicatore.variazione) }
+              }}
+            </span>
+          }
+        </li>
+      }
+    </ul>
+
+    @if (grafici(); as grafici) {
+      <div class="pannelli">
+        <section class="scheda" aria-labelledby="andamento-occupazione">
+          <h3 class="titolo-scheda" id="andamento-occupazione">
+            {{ 'gestionale.cruscotto.andamento.grafici.occupazione' | transloco }}
+          </h3>
+          <app-grafico-barre
+            formato="percentuale"
+            [massimo]="100"
+            [titolo]="'gestionale.cruscotto.andamento.grafici.occupazione' | transloco"
+            [barre]="grafici.occupazione"
+          />
+        </section>
+
+        <section class="scheda" aria-labelledby="andamento-ricavi">
+          <h3 class="titolo-scheda" id="andamento-ricavi">
+            {{ 'gestionale.cruscotto.andamento.grafici.ricavi' | transloco }}
+          </h3>
+          <app-grafico-barre
+            formato="prezzo"
+            [titolo]="'gestionale.cruscotto.andamento.grafici.ricavi' | transloco"
+            [barre]="grafici.ricavi"
+          />
+        </section>
+
+        <section class="scheda" aria-labelledby="andamento-settimana">
+          <h3 class="titolo-scheda" id="andamento-settimana">
+            {{ 'gestionale.cruscotto.andamento.grafici.settimana' | transloco }}
+          </h3>
+          <app-grafico-barre
+            formato="percentuale"
+            [massimo]="100"
+            [titolo]="'gestionale.cruscotto.andamento.grafici.settimana' | transloco"
+            [barre]="grafici.settimana"
+          />
+        </section>
+
+        <section class="scheda" aria-labelledby="andamento-tipologie">
+          <h3 class="titolo-scheda" id="andamento-tipologie">
+            {{ 'gestionale.cruscotto.andamento.tipologie' | transloco }}
+          </h3>
+          <p class="tenue piccolo">{{ 'gestionale.cruscotto.andamento.arrivati' | transloco }}</p>
+          <ng-container
+            *ngTemplateOutlet="classifica; context: { $implicit: valori.ricavi.per_tipologia }"
+          />
+        </section>
+
+        <section class="scheda" aria-labelledby="andamento-camere">
+          <h3 class="titolo-scheda" id="andamento-camere">
+            {{ 'gestionale.cruscotto.andamento.camere' | transloco }}
+          </h3>
+          <p class="tenue piccolo">{{ 'gestionale.cruscotto.andamento.arrivati' | transloco }}</p>
+          <ng-container
+            *ngTemplateOutlet="classifica; context: { $implicit: valori.ricavi.per_camera }"
+          />
+        </section>
+
+        <section class="scheda larga" aria-labelledby="andamento-canali">
+          <h3 class="titolo-scheda" id="andamento-canali">
+            {{ 'gestionale.cruscotto.andamento.canali' | transloco }}
+          </h3>
+          <p class="tenue piccolo">{{ 'gestionale.cruscotto.andamento.canaliNota' | transloco }}</p>
+          <ul class="canali">
+            @for (canale of valori.canali; track canale.canale) {
+              <li class="canale">
+                <strong>{{ 'gestionale.canali.' + canale.canale | transloco }}</strong>
+                <dl class="dati piccolo">
+                  @for (campo of campiCanale; track campo) {
+                    <div>
+                      <dt>
+                        {{ 'gestionale.cruscotto.andamento.campiCanale.' + campo | transloco }}
+                      </dt>
+                      <dd>
+                        @if (campo === 'valore') {
+                          {{ canale.valore | prezzo }}
+                        } @else {
+                          {{ testoNumero(canale[campo]) }}
+                        }
+                      </dd>
+                    </div>
+                  }
+                </dl>
+              </li>
+            } @empty {
+              <li class="stato-vuoto">
+                {{ 'gestionale.cruscotto.andamento.vuotoCanali' | transloco }}
+              </li>
+            }
+          </ul>
+        </section>
+      </div>
+    }
+  } @else if (dati.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>
+
+<ng-template #classifica let-righe>
+  <ol class="classifica">
+    @for (riga of righe; track $index) {
+      <li>
+        <div class="riga">
+          <span>
+            {{ riga.nome ?? ('gestionale.cruscotto.andamento.camera' | transloco: riga) }}
+          </span>
+          <strong>{{ riga.valore | prezzo }}</strong>
+        </div>
+        <span class="quota"><span [style.inline-size.%]="quota(riga.valore)"></span></span>
+        <span class="tenue piccolo">
+          {{ 'gestionale.cruscotto.andamento.dettaglioRicavo' | transloco: riga }}
+        </span>
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.cruscotto.andamento.vuoto' | transloco }}</li>
+    }
+  </ol>
+</ng-template>

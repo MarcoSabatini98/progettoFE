@@ -987,6 +987,50 @@
         "recensioni_da_moderare": "Recensioni da moderare",
         "incassato_mese": "Incassato dal primo del mese",
         "prenotato_da_inizio_mese": "Venduto con arrivo nel mese"
+      },
+      "andamento": {
+        "titolo": "Andamento",
+        "periodo": "Periodo",
+        "report": "Scarica report PDF",
+        "periodi": {
+          "settimana": "Questa settimana",
+          "settimanaScorsa": "Settimana scorsa",
+          "mese": "Questo mese",
+          "meseScorso": "Mese scorso",
+          "anno": "Quest'anno"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Occupazione",
+          "ricavo_camere": "Ricavo camere",
+          "adr": "Prezzo medio a notte (ADR)",
+          "revpar": "Ricavo per camera disponibile (RevPAR)",
+          "notti_vendute": "Notti vendute su {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} sul periodo prima",
+        "senzaConfronto": "Nessun dato nel periodo prima",
+        "grafici": {
+          "occupazione": "Occupazione",
+          "ricavi": "Ricavi camere",
+          "settimana": "Occupazione per giorno della settimana"
+        },
+        "tipologie": "Ricavi per tipologia",
+        "camere": "Ricavi per camera",
+        "camera": "Camera {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} prenotazioni · {{ notti }} notti",
+        "arrivati": "Soggiorni con arrivo nel periodo.",
+        "canali": "Canali di vendita",
+        "canaliNota": "Prenotazioni create nel periodo.",
+        "campiCanale": {
+          "prenotazioni": "Prenotazioni",
+          "cancellate": "Cancellate",
+          "no_show": "No-show",
+          "notti": "Notti vendute",
+          "valore": "Valore venduto",
+          "durata_media": "Notti per prenotazione",
+          "anticipo_medio_giorni": "Giorni di anticipo in media"
+        },
+        "vuoto": "Nessun soggiorno nel periodo.",
+        "vuotoCanali": "Nessuna prenotazione creata nel periodo."
       }
     },
     "chat": {

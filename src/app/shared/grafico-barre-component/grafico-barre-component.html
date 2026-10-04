@@ -1,0 +1,32 @@
+<figure class="grafico">
+  <figcaption class="lettura" aria-live="polite">
+    @if (barre()[scelta()]; as barra) {
+      <span class="tenue">{{ barra.dettaglio }}</span>
+      <strong>
+        @if (formato() === 'prezzo') {
+          {{ barra.valore | prezzo }}
+        } @else {
+          {{ 'gestionale.cruscotto.percentuale' | transloco: { valore: barra.valore } }}
+        }
+      </strong>
+    }
+  </figcaption>
+  <div class="area">
+    <ol class="barre" [attr.aria-label]="titolo()" [style.--barre]="barre().length">
+      @for (barra of barre(); track $index) {
+        <li>
+          <button
+            class="barra"
+            type="button"
+            [attr.aria-label]="barra.dettaglio"
+            [attr.aria-pressed]="$index === scelta()"
+            (click)="scelta.set($index)"
+          >
+            <span class="riempimento" [style.block-size.%]="altezza(barra.valore)"></span>
+          </button>
+          <span class="etichetta" aria-hidden="true">{{ barra.etichetta }}</span>
+        </li>
+      }
+    </ol>
+  </div>
+</figure>
