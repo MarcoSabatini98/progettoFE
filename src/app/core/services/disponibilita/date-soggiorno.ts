@@ -7,11 +7,21 @@ export function dataCalendario(giorno: Date): string {
   return `${giorno.getFullYear()}-${mese}-${numero}`;
 }
 
+/** Data 'AAAA-MM-GG' spostata di quanti giorni (anche indietro). */
+export function spostaData(data: string, giorni: number): string {
+  const giorno = new Date(`${data}T00:00`);
+  giorno.setDate(giorno.getDate() + giorni);
+  return dataCalendario(giorno);
+}
+
 /** Giorno dopo una data 'AAAA-MM-GG': la prima partenza possibile per quell'arrivo. */
 export function giornoDopo(data: string): string {
-  const giorno = new Date(`${data}T00:00`);
-  giorno.setDate(giorno.getDate() + 1);
-  return dataCalendario(giorno);
+  return spostaData(data, 1);
+}
+
+/** Giorni da una data 'AAAA-MM-GG' all'altra. In UTC: l'ora legale non sposta il conto. */
+export function giorniTra(dal: string, al: string): number {
+  return Math.round((Date.parse(al) - Date.parse(dal)) / 86_400_000);
 }
 
 /** Sul gruppo con arrivo e partenza: errore partenzaPrimaArrivo se la partenza non viene dopo. */

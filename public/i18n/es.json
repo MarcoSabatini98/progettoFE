@@ -1193,6 +1193,40 @@
       "salva": "Guardar",
       "salvata": "Cambios guardados.",
       "tutte": "Todos los avisos"
+    },
+    "planning": {
+      "occhiello": "Recepción",
+      "titolo": "Planning de habitaciones",
+      "dal": "Desde",
+      "durata": "Días mostrados",
+      "giorni": "{{ giorni }} días",
+      "precedente": "Periodo anterior",
+      "successivo": "Periodo siguiente",
+      "oggi": "Hoy",
+      "nuova": "Nueva reserva",
+      "legenda": "Leyenda",
+      "chiusa": "Cerrada",
+      "camera": "Habitación",
+      "struttura": "Todo el alojamiento",
+      "aiutoTrascina": "Arrastra una estancia a otra habitación u otros días (en el móvil, mantén pulsado). Solo se mueven las que aún no han empezado.",
+      "proposta": "¿Mover {{ codice }} a la habitación {{ camera }}, del {{ arrivo }} al {{ partenza }}? El precio se recalculará.",
+      "sposta": "Mover",
+      "spostata": "Reserva {{ codice }} movida.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "No hay habitaciones que mostrar.",
+      "nuovaChiusura": "Cerrar habitación o alojamiento",
+      "modificaChiusura": "Editar cierre",
+      "aiutoChiusura": "Los días cerrados no se pueden reservar. Las reservas existentes se mantienen: aparecen abajo.",
+      "campi": {
+        "camera": "Habitación",
+        "dal": "Cerrada desde",
+        "riapre": "Reabre el",
+        "motivo": "Motivo"
+      },
+      "conflitti": "Estas reservas caen en el cierre:",
+      "salva": "Guardar",
+      "chiudi": "Cerrar",
+      "riapri": "Reabrir"
     }
   },
   "anagrafica": {

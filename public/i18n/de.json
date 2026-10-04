@@ -1193,6 +1193,40 @@
       "salva": "Speichern",
       "salvata": "Änderungen gespeichert.",
       "tutte": "Alle Meldungen"
+    },
+    "planning": {
+      "occhiello": "Rezeption",
+      "titolo": "Zimmerplan",
+      "dal": "Ab",
+      "durata": "Angezeigte Tage",
+      "giorni": "{{ giorni }} Tage",
+      "precedente": "Vorheriger Zeitraum",
+      "successivo": "Nächster Zeitraum",
+      "oggi": "Heute",
+      "nuova": "Neue Buchung",
+      "legenda": "Legende",
+      "chiusa": "Geschlossen",
+      "camera": "Zimmer",
+      "struttura": "Gesamte Unterkunft",
+      "aiutoTrascina": "Ziehe einen Aufenthalt auf ein anderes Zimmer oder andere Tage (am Handy gedrückt halten). Nur noch nicht begonnene Aufenthalte lassen sich verschieben.",
+      "proposta": "{{ codice }} in Zimmer {{ camera }} verschieben, vom {{ arrivo }} bis {{ partenza }}? Der Preis wird neu berechnet.",
+      "sposta": "Verschieben",
+      "spostata": "Buchung {{ codice }} verschoben.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "Keine Zimmer anzuzeigen.",
+      "nuovaChiusura": "Zimmer oder Unterkunft schließen",
+      "modificaChiusura": "Schließung bearbeiten",
+      "aiutoChiusura": "Geschlossene Tage sind nicht buchbar. Bestehende Buchungen bleiben: Sie stehen unten.",
+      "campi": {
+        "camera": "Zimmer",
+        "dal": "Geschlossen ab",
+        "riapre": "Öffnet wieder am",
+        "motivo": "Grund"
+      },
+      "conflitti": "Diese Buchungen fallen in die Schließung:",
+      "salva": "Speichern",
+      "chiudi": "Schließen",
+      "riapri": "Wieder öffnen"
     }
   },
   "anagrafica": {

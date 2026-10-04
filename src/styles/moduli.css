@@ -94,6 +94,11 @@ input[type='radio'] {
   color: var(--bb-ok);
 }
 
+.esito-avviso {
+  background: var(--bb-avviso-tenue);
+  color: var(--bb-testo);
+}
+
 /* Modulo dentro una scheda: campi in colonna. */
 .modulo-scheda {
   display: grid;

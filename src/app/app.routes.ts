@@ -61,6 +61,15 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'planning',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/planning-component/planning-component').then(
+            (m) => m.PlanningComponent,
+          ),
+      },
+      {
         // Stesso percorso del sito, con i campi della reception (canale, stato, note interne).
         path: 'prenotazioni/nuova',
         canActivate: [ruoloGuard],
