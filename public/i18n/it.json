@@ -965,7 +965,18 @@
       "nessunaVoce": "Nessuna voce.",
       "nuovaVoce": "Nuova voce",
       "aggiungiVoce": "Aggiungi voce",
-      "eliminaVoce": "Elimina {{ voce }}"
+      "eliminaVoce": "Elimina {{ voce }}",
+      "vista": "Vista",
+      "viste": {
+        "stato": "Per stato",
+        "addetto": "Per addetto"
+      },
+      "aiutoTrascina": "Trascina una camera in un’altra colonna (sul telefono tienila premuta), oppure scegli dal menu sotto la camera.",
+      "spostaIn": "Sposta in…",
+      "assegnaA": "Assegna a…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Completate",
+      "camera": "camera {{ numero }}"
     },
     "cruscotto": {
       "occhiello": "Direzione",

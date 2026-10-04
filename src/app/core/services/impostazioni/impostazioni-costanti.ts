@@ -12,6 +12,7 @@ export const CHIAVI_IMPOSTAZIONI = {
   orarioCheckout: 'orario_checkout',
   lingueAttive: 'lingue_attive',
   valuta: 'valuta',
+  ispezionePulizie: 'pulizie_richiedi_ispezione',
 } as const;
 
 /** Valuta dei prezzi se l'impostazione manca (ISO 4217). */

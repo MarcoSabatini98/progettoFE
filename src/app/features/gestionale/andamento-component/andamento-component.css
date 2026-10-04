@@ -11,25 +11,6 @@
   gap: var(--bb-spazio-3);
 }
 
-/* Sul telefono i periodi scorrono di lato invece di andare a capo. */
-.periodi {
-  display: flex;
-  gap: var(--bb-spazio-2);
-  overflow-x: auto;
-  border-bottom: 1px solid var(--bb-linea);
-}
-
-.periodi button {
-  flex: none;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-}
-
-.periodi [aria-pressed='true'] {
-  color: var(--bb-brand-testo);
-  border-bottom-color: currentColor;
-}
-
 .variazione[data-segno='su'] {
   color: var(--bb-ok);
 }

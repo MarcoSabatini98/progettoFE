@@ -1,0 +1,52 @@
+<div class="tabellone" cdkDropListGroup>
+  @for (colonna of colonne(); track colonna.chiave) {
+    <section class="colonna" [attr.aria-labelledby]="'colonna-' + colonna.chiave">
+      <h2 class="sezione-titolo" [id]="'colonna-' + colonna.chiave">
+        {{ colonna.titolo | transloco: colonna.parametri }}
+        <span class="conteggio">{{ colonna.attivita.length }}</span>
+      </h2>
+      <ul
+        class="elenco"
+        cdkDropList
+        [cdkDropListData]="colonna.chiave"
+        [cdkDropListEnterPredicate]="accetta"
+        (cdkDropListDropped)="lascia($event)"
+      >
+        @for (riga of colonna.attivita; track riga.id) {
+          @let verso = destinazioni()(riga);
+          <li
+            class="attivita"
+            cdkDrag
+            [cdkDragData]="riga"
+            [cdkDragDisabled]="!verso.length"
+            [cdkDragStartDelay]="ritardo"
+          >
+            <app-riga-pulizia [attivita]="riga" />
+            @if (verso.length) {
+              <select
+                #menu
+                class="sposta"
+                [attr.aria-label]="
+                  (azione() | transloco) +
+                  ' ' +
+                  ('gestionale.pulizie.camera' | transloco: riga.camera)
+                "
+                (change)="scegli(riga, menu)"
+              >
+                <option value="">{{ azione() | transloco }}</option>
+                @for (chiave of verso; track chiave) {
+                  @let meta = perChiave().get(chiave);
+                  @if (meta) {
+                    <option [value]="chiave">{{ meta.titolo | transloco: meta.parametri }}</option>
+                  }
+                }
+              </select>
+            }
+          </li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'gestionale.pulizie.vuoto' | transloco }}</li>
+        }
+      </ul>
+    </section>
+  }
+</div>

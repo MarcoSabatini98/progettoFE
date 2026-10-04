@@ -256,3 +256,22 @@
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
+
+/* Linguette (periodi, viste): sul telefono scorrono di lato invece di andare a capo. */
+.linguette {
+  display: flex;
+  gap: var(--bb-spazio-2);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.linguette button {
+  flex: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.linguette [aria-pressed='true'] {
+  color: var(--bb-brand-testo);
+  border-bottom-color: currentColor;
+}
