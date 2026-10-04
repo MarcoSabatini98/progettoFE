@@ -17,6 +17,7 @@ select {
   min-height: 2.5rem;
   padding-inline-start: calc(var(--bb-spazio-3) + 1.125rem + var(--bb-spazio-2));
   border-radius: var(--bb-pulsante-raggio);
-  background: var(--bb-incavo);
+  /* Solo il colore: background azzererebbe la freccia di moduli.css. */
+  background-color: var(--bb-incavo);
   cursor: pointer;
 }
