@@ -196,6 +196,25 @@ export const routes: Routes = [
             (m) => m.GestioneFaqComponent,
           ),
       },
+      {
+        path: 'recensioni',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.RECENSIONI_MODERA] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/moderazione-component/moderazione-component').then(
+            (m) => m.ModerazioneComponent,
+          ),
+      },
+      // Link della notifica di una recensione nuova.
+      {
+        path: 'recensioni/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.RECENSIONI_MODERA] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/moderazione-recensione-component/moderazione-recensione-component').then(
+            (m) => m.ModerazioneRecensioneComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

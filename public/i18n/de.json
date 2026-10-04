@@ -1538,6 +1538,53 @@
       "ordineAiuto": "Kleinere Nummern kommen zuerst.",
       "senzaCategoria": "Ohne Kategorie",
       "nascosta": "ausgeblendet"
+    },
+    "recensioni": {
+      "occhiello": "Gäste",
+      "titolo": "Bewertungen",
+      "tutte": "Alle Bewertungen",
+      "filtri": {
+        "stato": "Status",
+        "tutte": "Alle Status",
+        "negative": "Nur negative"
+      },
+      "stati": {
+        "in_attesa": "Ausstehend",
+        "pubblicata": "Veröffentlicht",
+        "rifiutata": "Abgelehnt"
+      },
+      "totale": "Bewertungen: {{ totale }}",
+      "vuoto": "Keine Bewertungen mit diesen Filtern.",
+      "senzaTesto": "Nur Note, ohne Kommentar",
+      "senzaTitolo": "Bewertung ohne Titel",
+      "senzaCommento": "Der Gast hat nur eine Note abgegeben.",
+      "anonima": "Wird auf der Website ohne Namen des Gastes angezeigt.",
+      "campi": {
+        "prenotazione": "Buchung",
+        "soggiorno": "Aufenthalt",
+        "paese": "Land",
+        "moderata": "Moderiert",
+        "commento": "Kommentar",
+        "risposta": "Antwort der Unterkunft"
+      },
+      "moderazione": "Moderation",
+      "moderazioneAiuto": {
+        "in_attesa": "Noch nicht auf der Website: veröffentlichen oder ablehnen.",
+        "pubblicata": "Auf der Website sichtbar.",
+        "rifiutata": "Erscheint nicht auf der Website."
+      },
+      "rispostaAiuto": "Erscheint auf der Website unter der Bewertung. Leer lassen, um sie zu entfernen.",
+      "azioni": {
+        "pubblicata": "Veröffentlichen",
+        "rifiutata": "Ablehnen",
+        "rispondi": "Antwort speichern"
+      },
+      "esiti": {
+        "pubblicata": "Bewertung veröffentlicht.",
+        "rifiutata": "Bewertung abgelehnt.",
+        "risposta": "Antwort gespeichert.",
+        "rispostaTolta": "Antwort entfernt."
+      }
     }
   },
   "anagrafica": {

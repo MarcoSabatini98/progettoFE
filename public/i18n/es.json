@@ -1538,6 +1538,53 @@
       "ordineAiuto": "Los números más bajos van primero.",
       "senzaCategoria": "Sin categoría",
       "nascosta": "oculta"
+    },
+    "recensioni": {
+      "occhiello": "Huéspedes",
+      "titolo": "Reseñas",
+      "tutte": "Todas las reseñas",
+      "filtri": {
+        "stato": "Estado",
+        "tutte": "Todos los estados",
+        "negative": "Solo negativas"
+      },
+      "stati": {
+        "in_attesa": "Pendiente",
+        "pubblicata": "Publicada",
+        "rifiutata": "Rechazada"
+      },
+      "totale": "Reseñas: {{ totale }}",
+      "vuoto": "No hay reseñas con estos filtros.",
+      "senzaTesto": "Solo puntuación, sin comentario",
+      "senzaTitolo": "Reseña sin título",
+      "senzaCommento": "El huésped solo dejó la puntuación.",
+      "anonima": "Aparece en el sitio sin el nombre del huésped.",
+      "campi": {
+        "prenotazione": "Reserva",
+        "soggiorno": "Estancia",
+        "paese": "País",
+        "moderata": "Moderada",
+        "commento": "Comentario",
+        "risposta": "Respuesta del alojamiento"
+      },
+      "moderazione": "Moderación",
+      "moderazioneAiuto": {
+        "in_attesa": "Aún no está en el sitio: publícala o recházala.",
+        "pubblicata": "Visible en el sitio.",
+        "rifiutata": "No aparece en el sitio."
+      },
+      "rispostaAiuto": "Aparece en el sitio debajo de la reseña. Déjala vacía para quitarla.",
+      "azioni": {
+        "pubblicata": "Publicar",
+        "rifiutata": "Rechazar",
+        "rispondi": "Guardar respuesta"
+      },
+      "esiti": {
+        "pubblicata": "Reseña publicada.",
+        "rifiutata": "Reseña rechazada.",
+        "risposta": "Respuesta guardada.",
+        "rispostaTolta": "Respuesta quitada."
+      }
     }
   },
   "anagrafica": {

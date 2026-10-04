@@ -1538,6 +1538,53 @@
       "ordineAiuto": "I numeri più bassi vengono prima.",
       "senzaCategoria": "Senza categoria",
       "nascosta": "nascosta"
+    },
+    "recensioni": {
+      "occhiello": "Ospiti",
+      "titolo": "Recensioni",
+      "tutte": "Tutte le recensioni",
+      "filtri": {
+        "stato": "Stato",
+        "tutte": "Tutti gli stati",
+        "negative": "Solo negative"
+      },
+      "stati": {
+        "in_attesa": "In attesa",
+        "pubblicata": "Pubblicata",
+        "rifiutata": "Rifiutata"
+      },
+      "totale": "Recensioni: {{ totale }}",
+      "vuoto": "Nessuna recensione con questi filtri.",
+      "senzaTesto": "Solo voto, senza commento",
+      "senzaTitolo": "Recensione senza titolo",
+      "senzaCommento": "L'ospite ha lasciato solo il voto.",
+      "anonima": "Sul sito compare senza il nome dell'ospite.",
+      "campi": {
+        "prenotazione": "Prenotazione",
+        "soggiorno": "Soggiorno",
+        "paese": "Paese",
+        "moderata": "Moderata",
+        "commento": "Commento",
+        "risposta": "Risposta della struttura"
+      },
+      "moderazione": "Moderazione",
+      "moderazioneAiuto": {
+        "in_attesa": "Non è ancora sul sito: pubblicala o rifiutala.",
+        "pubblicata": "È visibile sul sito.",
+        "rifiutata": "Non compare sul sito."
+      },
+      "rispostaAiuto": "Compare sul sito sotto la recensione. Lasciala vuota per toglierla.",
+      "azioni": {
+        "pubblicata": "Pubblica",
+        "rifiutata": "Rifiuta",
+        "rispondi": "Salva risposta"
+      },
+      "esiti": {
+        "pubblicata": "Recensione pubblicata.",
+        "rifiutata": "Recensione rifiutata.",
+        "risposta": "Risposta salvata.",
+        "rispostaTolta": "Risposta tolta."
+      }
     }
   },
   "anagrafica": {

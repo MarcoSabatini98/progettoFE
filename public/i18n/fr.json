@@ -1538,6 +1538,53 @@
       "ordineAiuto": "Les plus petits numéros passent en premier.",
       "senzaCategoria": "Sans catégorie",
       "nascosta": "masquée"
+    },
+    "recensioni": {
+      "occhiello": "Clients",
+      "titolo": "Avis",
+      "tutte": "Tous les avis",
+      "filtri": {
+        "stato": "Statut",
+        "tutte": "Tous les statuts",
+        "negative": "Négatifs uniquement"
+      },
+      "stati": {
+        "in_attesa": "En attente",
+        "pubblicata": "Publié",
+        "rifiutata": "Refusé"
+      },
+      "totale": "Avis : {{ totale }}",
+      "vuoto": "Aucun avis avec ces filtres.",
+      "senzaTesto": "Note seule, sans commentaire",
+      "senzaTitolo": "Avis sans titre",
+      "senzaCommento": "Le client n'a laissé que la note.",
+      "anonima": "Affiché sur le site sans le nom du client.",
+      "campi": {
+        "prenotazione": "Réservation",
+        "soggiorno": "Séjour",
+        "paese": "Pays",
+        "moderata": "Modéré",
+        "commento": "Commentaire",
+        "risposta": "Réponse de l'établissement"
+      },
+      "moderazione": "Modération",
+      "moderazioneAiuto": {
+        "in_attesa": "Pas encore sur le site : publiez-le ou refusez-le.",
+        "pubblicata": "Visible sur le site.",
+        "rifiutata": "N'apparaît pas sur le site."
+      },
+      "rispostaAiuto": "Affichée sur le site sous l'avis. Laissez-la vide pour la retirer.",
+      "azioni": {
+        "pubblicata": "Publier",
+        "rifiutata": "Refuser",
+        "rispondi": "Enregistrer la réponse"
+      },
+      "esiti": {
+        "pubblicata": "Avis publié.",
+        "rifiutata": "Avis refusé.",
+        "risposta": "Réponse enregistrée.",
+        "rispostaTolta": "Réponse retirée."
+      }
     }
   },
   "anagrafica": {
