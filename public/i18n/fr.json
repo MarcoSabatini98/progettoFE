@@ -188,7 +188,7 @@
     "CAMERA_NON_TROVATA": "Chambre introuvable.",
     "SALDO_APERTO": "Il reste un solde à encaisser.",
     "DATI_ALLOGGIATI_INCOMPLETI": "Complétez les données des clients avant l’envoi.",
-    "DATI_CLIENTE_PROTETTI": "Seul le client peut modifier ses données personnelles.",
+    "DATI_CLIENTE_PROTETTI": "Les données personnelles du client se modifient depuis sa fiche client.",
     "OSPITE_CON_SOGGIORNI": "Le client a des séjours enregistrés : ses données doivent être conservées.",
     "OSPITE_NON_TROVATO": "Client introuvable.",
     "DATO_DUPLICATO": "Cette donnée existe déjà.",
@@ -224,7 +224,9 @@
     "OPERATORE_NON_VALIDO": "Cet utilisateur ne peut pas gérer l'assistance.",
     "STATO_PRESENZA_NON_VALIDO": "Statut non valide.",
     "SEGNALAZIONE_NON_TROVATA": "Signalement introuvable.",
-    "SEGNALAZIONE_CHIUSA": "Le signalement est clos : rouvrez-le pour le modifier."
+    "SEGNALAZIONE_CHIUSA": "Le signalement est clos : rouvrez-le pour le modifier.",
+    "EMAIL_ACCESSO_CLIENTE": "Seul le client peut modifier son e-mail de connexion.",
+    "OSPITE_CLIENTE": "La fiche d'un client inscrit se supprime avec son compte."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -751,7 +753,8 @@
       "tipoDocumento": "Requis uniquement pour qui voyage seul ou mène le groupe.",
       "paese": "Code à deux lettres, ex. IT.",
       "salva": "Enregistrer l’identité",
-      "salvata": "Identité enregistrée."
+      "salvata": "Identité enregistrée.",
+      "emailCliente": "C'est l'e-mail avec lequel le client se connecte : il le modifie depuis son profil."
     },
     "ospiti": {
       "occhiello": "Gestion",

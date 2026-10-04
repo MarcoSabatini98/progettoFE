@@ -40,9 +40,14 @@ describe('OspiteInterface', () => {
     expect(SESSI).toContain(ospite.sesso);
   });
 
-  it('la scheda dello staff dice cosa manca per la schedina', () => {
-    const scheda: SchedaOspiteInterface = { ...ospite, campi_mancanti: ['data_nascita'] };
+  it('la scheda dello staff dice cosa manca per la schedina e se è un cliente registrato', () => {
+    const scheda: SchedaOspiteInterface = {
+      ...ospite,
+      campi_mancanti: ['data_nascita'],
+      cliente_registrato: true,
+    };
 
     expect(scheda.campi_mancanti).toEqual(['data_nascita']);
+    expect(scheda.cliente_registrato).toBe(true);
   });
 });

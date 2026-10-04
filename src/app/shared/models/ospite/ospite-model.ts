@@ -63,6 +63,8 @@ export interface OspiteInterface {
 /** Scheda dello staff: con i campi che mancano per la schedina Alloggiati Web. */
 export interface SchedaOspiteInterface extends OspiteInterface {
   campi_mancanti: (keyof OspiteInterface)[];
+  /** Anagrafica di un account cliente: l'email è quella con cui accede e non si cambia qui. */
+  cliente_registrato: boolean;
 }
 
 /** Dati anagrafici e del documento: gli stessi per gli ospiti e per il profilo del cliente. */

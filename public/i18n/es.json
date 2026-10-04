@@ -188,7 +188,7 @@
     "CAMERA_NON_TROVATA": "Habitación no encontrada.",
     "SALDO_APERTO": "Queda un saldo por cobrar.",
     "DATI_ALLOGGIATI_INCOMPLETI": "Completa los datos de los huéspedes antes del envío.",
-    "DATI_CLIENTE_PROTETTI": "Solo el cliente puede modificar sus datos personales.",
+    "DATI_CLIENTE_PROTETTI": "Los datos personales del cliente se modifican desde su ficha de huésped.",
     "OSPITE_CON_SOGGIORNI": "El huésped tiene estancias registradas: sus datos deben conservarse.",
     "OSPITE_NON_TROVATO": "Huésped no encontrado.",
     "DATO_DUPLICATO": "El dato ya existe.",
@@ -224,7 +224,9 @@
     "OPERATORE_NON_VALIDO": "Este usuario no puede atender la asistencia.",
     "STATO_PRESENZA_NON_VALIDO": "Estado no válido.",
     "SEGNALAZIONE_NON_TROVATA": "Aviso no encontrado.",
-    "SEGNALAZIONE_CHIUSA": "El aviso está cerrado: reábrelo para modificarlo."
+    "SEGNALAZIONE_CHIUSA": "El aviso está cerrado: reábrelo para modificarlo.",
+    "EMAIL_ACCESSO_CLIENTE": "Solo el cliente puede cambiar su correo de acceso.",
+    "OSPITE_CLIENTE": "La ficha de un cliente registrado se elimina junto con su cuenta."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -751,7 +753,8 @@
       "tipoDocumento": "Solo para quien viaja solo o dirige el grupo.",
       "paese": "Código de dos letras, p. ej. IT.",
       "salva": "Guardar datos",
-      "salvata": "Datos guardados."
+      "salvata": "Datos guardados.",
+      "emailCliente": "Es el correo con el que el cliente accede: lo cambia desde su perfil."
     },
     "ospiti": {
       "occhiello": "Gestión",
