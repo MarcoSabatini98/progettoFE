@@ -1,0 +1,70 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.contenuti.eventi">
+  <ng-template #riga let-evento>
+    <strong>{{ evento.titolo }}</strong>
+    <span class="piccolo"> {{ evento.data_inizio | data }} – {{ evento.data_fine | data }} </span>
+    <span class="piccolo tenue">
+      {{ 'gestionale.contenuti.eventi.tipi.' + evento.tipo | transloco }} ·
+      {{ 'gestionale.contenuti.eventi.impatto' | transloco: { impatto: evento.impatto } }}
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta()
+          ? 'gestionale.contenuti.eventi.modifica'
+          : 'gestionale.contenuti.eventi.nuova'
+        ) | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.contenuti.eventi.campi.titolo' | transloco"
+      [errore]="errori.campo(controlli.titolo)"
+    >
+      <input type="text" formControlName="titolo" [maxLength]="limiti.titolo" required />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.contenuti.eventi.campi.tipo' | transloco">
+      <select formControlName="tipo">
+        @for (tipo of tipi; track tipo) {
+          <option [value]="tipo">
+            {{ 'gestionale.contenuti.eventi.tipi.' + tipo | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.contenuti.eventi.campi.data_inizio' | transloco"
+        [errore]="errori.campo(controlli.data_inizio)"
+      >
+        <input type="date" formControlName="data_inizio" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.contenuti.eventi.campi.data_fine' | transloco"
+        [errore]="errori.campo(controlli.data_fine)"
+      >
+        <input
+          type="date"
+          formControlName="data_fine"
+          [min]="controlli.data_inizio.value"
+          required
+        />
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.contenuti.eventi.campi.impatto' | transloco"
+      [aiuto]="'gestionale.contenuti.eventi.impattoAiuto' | transloco"
+      [errore]="errori.campo(controlli.impatto)"
+    >
+      <input type="number" formControlName="impatto" min="1" [max]="limiti.impatto" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.contenuti.eventi.campi.note' | transloco"
+      [errore]="errori.campo(controlli.note)"
+    >
+      <textarea formControlName="note" rows="3" [maxLength]="limiti.note"></textarea>
+    </app-campo>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+</app-listino>

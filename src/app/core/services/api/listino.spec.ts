@@ -116,4 +116,23 @@ describe('Listino', () => {
     expect(richieste.elimina).toHaveBeenCalledWith(3);
     expect(listino.scelta()).toBeNull();
   });
+
+  it('nuova da: una voce nuova che parte dai valori dati, poi una nuova torna all’inizio', async () => {
+    listino.scegli(voce);
+    await stabile();
+    listino.nuovaDa({ nome: 'Estate 2027' });
+    await stabile();
+
+    expect(listino.scelta()).toBeNull();
+    expect(modulo.getRawValue()).toEqual({
+      nome: 'Estate 2027',
+      note: '',
+      prezzo: null,
+      extra: [],
+    });
+
+    listino.scegli(null);
+    await stabile();
+    expect(modulo.getRawValue().nome).toBe('Nuova');
+  });
 });

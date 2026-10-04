@@ -17,6 +17,7 @@ import { DataPipe } from '../../../shared/pipes/data-pipe';
 import { VariazionePipe } from '../../../shared/pipes/variazione-pipe';
 import { AzioniListinoComponent } from '../azioni-listino-component/azioni-listino-component';
 import { ListinoComponent } from '../listino-component/listino-component';
+import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
 /** Promozioni: sconto automatico per i soggiorni in un periodo, prenotati in una finestra. */
 @Component({
@@ -29,6 +30,7 @@ import { ListinoComponent } from '../listino-component/listino-component';
     AzioniListinoComponent,
     VariazionePipe,
     DataPipe,
+    TraduzioniComponent,
   ],
   templateUrl: './promozioni-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

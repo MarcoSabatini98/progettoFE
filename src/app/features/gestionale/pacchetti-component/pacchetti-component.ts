@@ -18,6 +18,7 @@ import { AzioniListinoComponent } from '../azioni-listino-component/azioni-listi
 import { GalleriaMediaComponent } from '../galleria-media-component/galleria-media-component';
 import { ListinoComponent } from '../listino-component/listino-component';
 import { ServiziPacchettoComponent } from '../servizi-pacchetto-component/servizi-pacchetto-component';
+import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
 /** Pacchetti: soggiorno e servizi a prezzo fisso, con le foto mostrate sul sito. */
 @Component({
@@ -31,6 +32,7 @@ import { ServiziPacchettoComponent } from '../servizi-pacchetto-component/serviz
     ServiziPacchettoComponent,
     GalleriaMediaComponent,
     PrezzoPipe,
+    TraduzioniComponent,
   ],
   templateUrl: './pacchetti-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

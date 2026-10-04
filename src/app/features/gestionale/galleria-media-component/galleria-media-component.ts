@@ -13,7 +13,7 @@ import { EntitaMedia, MediaInterface } from '../../../shared/models/media/media-
 import { MediaPipe } from '../../../shared/pipes/media-pipe';
 
 /**
- * Foto di una tipologia o di una camera: carica (anche più file insieme, in coda),
+ * Foto di una tipologia, di un pacchetto o del sito: carica (anche più file insieme, in coda),
  * testo alternativo, ordine ed eliminazione dopo conferma. La prima è la copertina.
  */
 @Component({
@@ -29,12 +29,15 @@ export class GalleriaMediaComponent {
   private readonly errori = inject(ErroriService);
 
   readonly entita = input.required<EntitaMedia>();
-  readonly entitaId = input.required<number>();
+  /** null = foto del sito (home, struttura), non di un record. */
+  readonly entitaId = input<number | null>(null);
   readonly media = input.required<MediaInterface[]>();
   /** Testo alternativo delle foto nuove, poi si cambia foto per foto. */
   readonly descrizione = input.required<string>();
   /** Caricate, riordinate, descritte o eliminate: chi lo usa rilegge la scheda. */
   readonly cambiati = output();
+  /** Chiave dei testi in testa: titolo e aiuto. */
+  readonly chiave = input('gestionale.foto');
 
   protected readonly formati = FORMATI_MEDIA;
   protected readonly lunghezzaTesto = LUNGHEZZA_TESTO_ALTERNATIVO;

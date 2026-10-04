@@ -1,0 +1,43 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.contenuti.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.contenuti.titolo' | transloco }}</h1>
+  <div
+    class="linguette"
+    role="group"
+    [attr.aria-label]="'gestionale.contenuti.sezioni' | transloco"
+  >
+    @for (voce of sezioni; track voce) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="sezione() === voce"
+        (click)="sezione.set(voce)"
+      >
+        {{ 'gestionale.contenuti.sezione.' + voce | transloco }}
+      </button>
+    }
+  </div>
+</header>
+
+@switch (sezione()) {
+  @case ('foto') {
+    <div class="griglia-prenotazione">
+      @for (galleria of gallerie; track galleria.entita) {
+        @let chiave = 'gestionale.contenuti.foto.' + galleria.entita;
+        <app-galleria-media
+          [entita]="galleria.entita"
+          [media]="galleria.media.hasValue() ? galleria.media.value() : []"
+          [chiave]="chiave"
+          [descrizione]="chiave + '.titolo' | transloco"
+          (cambiati)="galleria.media.reload()"
+        />
+      }
+    </div>
+  }
+  @case ('documenti') {
+    <app-documenti-legali />
+  }
+  @case ('eventi') {
+    <app-eventi />
+  }
+}
