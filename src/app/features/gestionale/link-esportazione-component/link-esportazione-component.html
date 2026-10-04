@@ -1,0 +1,68 @@
+<section class="scheda" [attr.aria-label]="'gestionale.calendari.esporta.titolo' | transloco">
+  <h2 class="titolo-scheda">{{ 'gestionale.calendari.esporta.titolo' | transloco }}</h2>
+  <p class="tenue">{{ 'gestionale.calendari.esporta.aiuto' | transloco }}</p>
+  @if (link.hasValue()) {
+    <ul class="elenco">
+      @for (camera of link.value(); track camera.camera_id) {
+        @let titolo = 'gestionale.camere.titoloCamera' | transloco: { numero: camera.numero };
+        <li class="camera">
+          <h3>
+            {{ titolo }}
+            @if (camera.nome) {
+              <span class="tenue piccolo">· {{ camera.nome }}</span>
+            }
+          </h3>
+          @if (camera.url; as url) {
+            <app-link-copiabile [url]="url" [etichetta]="titolo" />
+          } @else {
+            <p class="piccolo tenue">{{ 'gestionale.calendari.esporta.senzaLink' | transloco }}</p>
+          }
+          @if (richiesta() === camera.camera_id && errore()) {
+            <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+          }
+          @if (daConfermare() === camera.camera_id) {
+            <p class="esito esito-avviso" role="alert">
+              {{ 'gestionale.calendari.esporta.avviso' | transloco }}
+            </p>
+            <div class="azioni">
+              <button
+                class="pulsante pulsante-pericolo"
+                type="button"
+                [disabled]="inCorso()"
+                (click)="nuovoLink(camera.camera_id)"
+              >
+                {{ 'gestionale.calendari.esporta.conferma' | transloco }}
+              </button>
+              <button class="pulsante pulsante-fantasma" type="button" (click)="chiedi(null)">
+                {{ 'gestionale.listino.annulla' | transloco }}
+              </button>
+            </div>
+          } @else if (camera.url) {
+            <button
+              class="pulsante pulsante-fantasma"
+              type="button"
+              (click)="chiedi(camera.camera_id)"
+            >
+              <app-icona nome="autorenew" />
+              {{ 'gestionale.calendari.esporta.nuovo' | transloco }}
+            </button>
+          } @else {
+            <button
+              class="pulsante pulsante-secondario"
+              type="button"
+              [disabled]="inCorso()"
+              (click)="nuovoLink(camera.camera_id)"
+            >
+              <app-icona nome="link" />
+              {{ 'gestionale.calendari.esporta.crea' | transloco }}
+            </button>
+          }
+        </li>
+      } @empty {
+        <li class="stato-vuoto">{{ 'gestionale.calendari.esporta.vuoto' | transloco }}</li>
+      }
+    </ul>
+  } @else if (link.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>

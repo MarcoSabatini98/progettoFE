@@ -3,7 +3,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { ErroriService } from '../../../core/services/errori/errori-service';
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import {
   GIORNI_SETTIMANA,
   LIMITI_TARIFFE,

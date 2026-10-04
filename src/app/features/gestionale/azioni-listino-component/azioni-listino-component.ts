@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 
 /** Fondo del modulo di una voce del listino: errore del backend, salva e annulla. */

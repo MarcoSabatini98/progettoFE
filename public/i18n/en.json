@@ -229,7 +229,8 @@
     "OSPITE_CLIENTE": "A registered customer's record is deleted together with their account.",
     "PULIZIA_NON_RINVIABILE": "Only unfinished cleanings can be postponed.",
     "PULIZIA_IN_CORSO": "Finish the room you already have first.",
-    "NESSUNA_PULIZIA_LIBERA": "There are no free rooms to clean."
+    "NESSUNA_PULIZIA_LIBERA": "There are no free rooms to clean.",
+    "CALENDARIO_DISATTIVATO": "The calendar is disabled: enable it to sync it."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1228,14 +1229,16 @@
       "chiudi": "Close",
       "riapri": "Reopen"
     },
+    "listino": {
+      "salva": "Save",
+      "crea": "Create",
+      "annulla": "Cancel",
+      "salvata": "Changes saved."
+    },
     "tariffe": {
       "occhiello": "Price list",
       "titolo": "Rates",
       "sezioni": "Price list sections",
-      "salvata": "Changes saved.",
-      "salva": "Save",
-      "crea": "Create",
-      "annulla": "Cancel",
       "disattivato": "Disabled",
       "tutteLeTipologie": "All room types",
       "vuotoSenzaLimite": "Empty = no limit.",
@@ -1370,6 +1373,51 @@
         "aNotte": "{{ importo }} per guest per night",
         "importoAiuto": "Per guest, per night.",
         "esenzioneAiuto": "Empty = no age exemption."
+      }
+    },
+    "calendari": {
+      "occhiello": "Channels",
+      "titolo": "Calendars",
+      "sezioni": "Calendar sections",
+      "sezione": {
+        "importa": "Import",
+        "esporta": "Export"
+      },
+      "campi": {
+        "camera": "Room",
+        "scegliCamera": "Choose the room",
+        "canale": "Channel",
+        "nome": "Name",
+        "url": "Channel iCal link",
+        "attivo": "Active"
+      },
+      "esterni": {
+        "titolo": "Channel calendars",
+        "aiuto": "Every 15 minutes the dates booked on the channels are blocked here too, room by room.",
+        "nuova": "New calendar",
+        "modifica": "Edit calendar",
+        "vuoto": "No calendar connected.",
+        "elimina": "Delete calendar",
+        "eliminaAiuto": "The dates blocked by this calendar become free again.",
+        "eliminaConferma": "Yes, delete",
+        "disattivato": "disabled",
+        "maiSincronizzato": "Never synced",
+        "errori": "{{ errori }} errors in a row",
+        "urlAiuto": "You'll find it in the channel's calendar settings (iCal export).",
+        "attivoAiuto": "While disabled, its blocked dates are free until you enable it again.",
+        "sincronizza": "Sync now",
+        "sincronizzaAiuto": "Reads the channel's calendar right away, without waiting for the next round.",
+        "sincronizzato": "Synced: {{ eventi }} bookings read"
+      },
+      "esporta": {
+        "titolo": "Links for the channels",
+        "aiuto": "Paste each room link into the channel: it will see the dates already booked here.",
+        "vuoto": "No rooms.",
+        "senzaLink": "This room doesn't have a link yet.",
+        "crea": "Create link",
+        "nuovo": "New link",
+        "avviso": "The current link stops working right away: you will have to paste the new one into every channel.",
+        "conferma": "Yes, new link"
       }
     }
   },

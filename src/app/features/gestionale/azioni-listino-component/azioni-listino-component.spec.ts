@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import { AzioniListinoComponent } from './azioni-listino-component';
 
 const voce = { id: 1, nome: 'Estate' };
@@ -47,7 +47,7 @@ describe('AzioniListinoComponent', () => {
 
     const pulsanti = elemento.querySelectorAll('button');
     expect(pulsanti).toHaveLength(1);
-    expect(pulsanti[0].textContent).toContain('gestionale.tariffe.crea');
+    expect(pulsanti[0].textContent).toContain('gestionale.listino.crea');
   });
 
   it('con una scelta salva, e annulla la toglie', async () => {
@@ -56,7 +56,7 @@ describe('AzioniListinoComponent', () => {
     await fixture.whenStable();
 
     const [salva, annulla] = Array.from(elemento.querySelectorAll('button'));
-    expect(salva.textContent).toContain('gestionale.tariffe.salva');
+    expect(salva.textContent).toContain('gestionale.listino.salva');
     annulla.click();
     await fixture.whenStable();
 

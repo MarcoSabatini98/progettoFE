@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { Listino } from '../../../core/services/tariffe/listino';
+import { Listino } from '../../../core/services/api/listino';
 import { ListinoComponent } from './listino-component';
 
 interface Voce {

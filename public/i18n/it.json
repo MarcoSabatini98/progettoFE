@@ -229,7 +229,8 @@
     "OSPITE_CLIENTE": "L'anagrafica di un cliente registrato si elimina con il suo account.",
     "PULIZIA_NON_RINVIABILE": "Si rinviano solo le pulizie non ancora finite.",
     "PULIZIA_IN_CORSO": "Finisci prima la camera che hai già.",
-    "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire."
+    "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire.",
+    "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1228,14 +1229,16 @@
       "chiudi": "Chiudi",
       "riapri": "Riapri"
     },
+    "listino": {
+      "salva": "Salva",
+      "crea": "Crea",
+      "annulla": "Annulla",
+      "salvata": "Modifiche salvate."
+    },
     "tariffe": {
       "occhiello": "Listino",
       "titolo": "Tariffe",
       "sezioni": "Sezioni del listino",
-      "salvata": "Modifiche salvate.",
-      "salva": "Salva",
-      "crea": "Crea",
-      "annulla": "Annulla",
       "disattivato": "Disattivato",
       "tutteLeTipologie": "Tutte le tipologie",
       "vuotoSenzaLimite": "Vuoto = nessun limite.",
@@ -1370,6 +1373,51 @@
         "aNotte": "{{ importo }} a notte per ospite",
         "importoAiuto": "Per ospite e per notte.",
         "esenzioneAiuto": "Vuoto = nessuna esenzione per età."
+      }
+    },
+    "calendari": {
+      "occhiello": "Portali",
+      "titolo": "Calendari",
+      "sezioni": "Sezioni dei calendari",
+      "sezione": {
+        "importa": "Da importare",
+        "esporta": "Da esportare"
+      },
+      "campi": {
+        "camera": "Camera",
+        "scegliCamera": "Scegli la camera",
+        "canale": "Portale",
+        "nome": "Nome",
+        "url": "Link iCal del portale",
+        "attivo": "Attivo"
+      },
+      "esterni": {
+        "titolo": "Calendari dei portali",
+        "aiuto": "Ogni 15 minuti le date occupate sui portali si bloccano anche qui, camera per camera.",
+        "nuova": "Nuovo calendario",
+        "modifica": "Modifica calendario",
+        "vuoto": "Nessun calendario collegato.",
+        "elimina": "Elimina calendario",
+        "eliminaAiuto": "Le date bloccate da questo calendario tornano libere.",
+        "eliminaConferma": "Sì, elimina",
+        "disattivato": "disattivato",
+        "maiSincronizzato": "Mai sincronizzato",
+        "errori": "{{ errori }} errori di fila",
+        "urlAiuto": "Lo trovi nelle impostazioni del calendario sul portale (esportazione iCal).",
+        "attivoAiuto": "Disattivato, le sue date bloccate tornano libere finché non lo riattivi.",
+        "sincronizza": "Sincronizza ora",
+        "sincronizzaAiuto": "Legge subito il calendario del portale, senza aspettare il prossimo giro.",
+        "sincronizzato": "Sincronizzato: {{ eventi }} prenotazioni lette"
+      },
+      "esporta": {
+        "titolo": "Link per i portali",
+        "aiuto": "Copia il link di ogni camera nel portale: così vede le date già occupate qui.",
+        "vuoto": "Nessuna camera.",
+        "senzaLink": "Questa camera non ha ancora un link.",
+        "crea": "Crea link",
+        "nuovo": "Nuovo link",
+        "avviso": "Il link attuale smette subito di funzionare: dovrai incollare quello nuovo in ogni portale.",
+        "conferma": "Sì, nuovo link"
       }
     }
   },

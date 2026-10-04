@@ -229,7 +229,8 @@
     "OSPITE_CLIENTE": "Die Daten eines registrierten Kunden werden zusammen mit seinem Konto gelöscht.",
     "PULIZIA_NON_RINVIABILE": "Nur nicht abgeschlossene Reinigungen können verschoben werden.",
     "PULIZIA_IN_CORSO": "Beende zuerst das Zimmer, das du schon hast.",
-    "NESSUNA_PULIZIA_LIBERA": "Es gibt keine freien Zimmer zum Reinigen."
+    "NESSUNA_PULIZIA_LIBERA": "Es gibt keine freien Zimmer zum Reinigen.",
+    "CALENDARIO_DISATTIVATO": "Der Kalender ist deaktiviert: Aktivieren Sie ihn, um ihn zu synchronisieren."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1228,14 +1229,16 @@
       "chiudi": "Schließen",
       "riapri": "Wieder öffnen"
     },
+    "listino": {
+      "salva": "Speichern",
+      "crea": "Anlegen",
+      "annulla": "Abbrechen",
+      "salvata": "Änderungen gespeichert."
+    },
     "tariffe": {
       "occhiello": "Preisliste",
       "titolo": "Preise",
       "sezioni": "Bereiche der Preisliste",
-      "salvata": "Änderungen gespeichert.",
-      "salva": "Speichern",
-      "crea": "Anlegen",
-      "annulla": "Abbrechen",
       "disattivato": "Deaktiviert",
       "tutteLeTipologie": "Alle Zimmertypen",
       "vuotoSenzaLimite": "Leer = keine Begrenzung.",
@@ -1370,6 +1373,51 @@
         "aNotte": "{{ importo }} pro Gast und Nacht",
         "importoAiuto": "Pro Gast und Nacht.",
         "esenzioneAiuto": "Leer = keine Altersbefreiung."
+      }
+    },
+    "calendari": {
+      "occhiello": "Portale",
+      "titolo": "Kalender",
+      "sezioni": "Kalenderbereiche",
+      "sezione": {
+        "importa": "Importieren",
+        "esporta": "Exportieren"
+      },
+      "campi": {
+        "camera": "Zimmer",
+        "scegliCamera": "Zimmer wählen",
+        "canale": "Portal",
+        "nome": "Name",
+        "url": "iCal-Link des Portals",
+        "attivo": "Aktiv"
+      },
+      "esterni": {
+        "titolo": "Kalender der Portale",
+        "aiuto": "Alle 15 Minuten werden die auf den Portalen gebuchten Tage auch hier gesperrt, Zimmer für Zimmer.",
+        "nuova": "Neuer Kalender",
+        "modifica": "Kalender bearbeiten",
+        "vuoto": "Kein Kalender verbunden.",
+        "elimina": "Kalender löschen",
+        "eliminaAiuto": "Die von diesem Kalender gesperrten Tage werden wieder frei.",
+        "eliminaConferma": "Ja, löschen",
+        "disattivato": "deaktiviert",
+        "maiSincronizzato": "Nie synchronisiert",
+        "errori": "{{ errori }} Fehler in Folge",
+        "urlAiuto": "Sie finden ihn in den Kalendereinstellungen des Portals (iCal-Export).",
+        "attivoAiuto": "Deaktiviert sind seine gesperrten Tage frei, bis Sie ihn wieder aktivieren.",
+        "sincronizza": "Jetzt synchronisieren",
+        "sincronizzaAiuto": "Liest den Kalender des Portals sofort, ohne auf die nächste Runde zu warten.",
+        "sincronizzato": "Synchronisiert: {{ eventi }} Buchungen gelesen"
+      },
+      "esporta": {
+        "titolo": "Links für die Portale",
+        "aiuto": "Fügen Sie den Link jedes Zimmers im Portal ein: So sieht es die hier bereits belegten Tage.",
+        "vuoto": "Keine Zimmer.",
+        "senzaLink": "Dieses Zimmer hat noch keinen Link.",
+        "crea": "Link erstellen",
+        "nuovo": "Neuer Link",
+        "avviso": "Der aktuelle Link funktioniert sofort nicht mehr: Sie müssen den neuen in jedes Portal einfügen.",
+        "conferma": "Ja, neuer Link"
       }
     }
   },

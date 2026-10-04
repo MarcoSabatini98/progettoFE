@@ -229,7 +229,8 @@
     "OSPITE_CLIENTE": "La fiche d'un client inscrit se supprime avec son compte.",
     "PULIZIA_NON_RINVIABILE": "Seuls les nettoyages non terminés peuvent être reportés.",
     "PULIZIA_IN_CORSO": "Terminez d’abord la chambre que vous avez déjà.",
-    "NESSUNA_PULIZIA_LIBERA": "Aucune chambre libre à nettoyer."
+    "NESSUNA_PULIZIA_LIBERA": "Aucune chambre libre à nettoyer.",
+    "CALENDARIO_DISATTIVATO": "Le calendrier est désactivé : réactivez-le pour le synchroniser."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -1228,14 +1229,16 @@
       "chiudi": "Fermer",
       "riapri": "Rouvrir"
     },
+    "listino": {
+      "salva": "Enregistrer",
+      "crea": "Créer",
+      "annulla": "Annuler",
+      "salvata": "Modifications enregistrées."
+    },
     "tariffe": {
       "occhiello": "Grille tarifaire",
       "titolo": "Tarifs",
       "sezioni": "Sections de la grille",
-      "salvata": "Modifications enregistrées.",
-      "salva": "Enregistrer",
-      "crea": "Créer",
-      "annulla": "Annuler",
       "disattivato": "Désactivé",
       "tutteLeTipologie": "Tous les types de chambre",
       "vuotoSenzaLimite": "Vide = aucune limite.",
@@ -1370,6 +1373,51 @@
         "aNotte": "{{ importo }} par nuit et par personne",
         "importoAiuto": "Par personne et par nuit.",
         "esenzioneAiuto": "Vide = aucune exonération selon l’âge."
+      }
+    },
+    "calendari": {
+      "occhiello": "Plateformes",
+      "titolo": "Calendriers",
+      "sezioni": "Sections des calendriers",
+      "sezione": {
+        "importa": "À importer",
+        "esporta": "À exporter"
+      },
+      "campi": {
+        "camera": "Chambre",
+        "scegliCamera": "Choisissez la chambre",
+        "canale": "Plateforme",
+        "nome": "Nom",
+        "url": "Lien iCal de la plateforme",
+        "attivo": "Actif"
+      },
+      "esterni": {
+        "titolo": "Calendriers des plateformes",
+        "aiuto": "Toutes les 15 minutes, les dates réservées sur les plateformes sont bloquées ici aussi, chambre par chambre.",
+        "nuova": "Nouveau calendrier",
+        "modifica": "Modifier le calendrier",
+        "vuoto": "Aucun calendrier connecté.",
+        "elimina": "Supprimer le calendrier",
+        "eliminaAiuto": "Les dates bloquées par ce calendrier redeviennent libres.",
+        "eliminaConferma": "Oui, supprimer",
+        "disattivato": "désactivé",
+        "maiSincronizzato": "Jamais synchronisé",
+        "errori": "{{ errori }} erreurs d’affilée",
+        "urlAiuto": "Vous le trouverez dans les paramètres du calendrier sur la plateforme (export iCal).",
+        "attivoAiuto": "Désactivé, ses dates bloquées sont libres jusqu’à ce que vous le réactiviez.",
+        "sincronizza": "Synchroniser",
+        "sincronizzaAiuto": "Lit tout de suite le calendrier de la plateforme, sans attendre le prochain passage.",
+        "sincronizzato": "Synchronisé : {{ eventi }} réservations lues"
+      },
+      "esporta": {
+        "titolo": "Liens pour les plateformes",
+        "aiuto": "Collez le lien de chaque chambre sur la plateforme : elle verra les dates déjà occupées ici.",
+        "vuoto": "Aucune chambre.",
+        "senzaLink": "Cette chambre n’a pas encore de lien.",
+        "crea": "Créer le lien",
+        "nuovo": "Nouveau lien",
+        "avviso": "Le lien actuel cesse aussitôt de fonctionner : il faudra coller le nouveau sur chaque plateforme.",
+        "conferma": "Oui, nouveau lien"
       }
     }
   },

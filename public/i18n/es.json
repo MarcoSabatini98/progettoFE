@@ -229,7 +229,8 @@
     "OSPITE_CLIENTE": "La ficha de un cliente registrado se elimina junto con su cuenta.",
     "PULIZIA_NON_RINVIABILE": "Solo se pueden aplazar las limpiezas no terminadas.",
     "PULIZIA_IN_CORSO": "Termina primero la habitación que ya tienes.",
-    "NESSUNA_PULIZIA_LIBERA": "No hay habitaciones libres para limpiar."
+    "NESSUNA_PULIZIA_LIBERA": "No hay habitaciones libres para limpiar.",
+    "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1228,14 +1229,16 @@
       "chiudi": "Cerrar",
       "riapri": "Reabrir"
     },
+    "listino": {
+      "salva": "Guardar",
+      "crea": "Crear",
+      "annulla": "Cancelar",
+      "salvata": "Cambios guardados."
+    },
     "tariffe": {
       "occhiello": "Lista de precios",
       "titolo": "Tarifas",
       "sezioni": "Secciones de la lista",
-      "salvata": "Cambios guardados.",
-      "salva": "Guardar",
-      "crea": "Crear",
-      "annulla": "Cancelar",
       "disattivato": "Desactivado",
       "tutteLeTipologie": "Todos los tipos de habitación",
       "vuotoSenzaLimite": "Vacío = sin límite.",
@@ -1370,6 +1373,51 @@
         "aNotte": "{{ importo }} por huésped y noche",
         "importoAiuto": "Por huésped y por noche.",
         "esenzioneAiuto": "Vacío = sin exención por edad."
+      }
+    },
+    "calendari": {
+      "occhiello": "Portales",
+      "titolo": "Calendarios",
+      "sezioni": "Secciones de los calendarios",
+      "sezione": {
+        "importa": "Importar",
+        "esporta": "Exportar"
+      },
+      "campi": {
+        "camera": "Habitación",
+        "scegliCamera": "Elige la habitación",
+        "canale": "Portal",
+        "nome": "Nombre",
+        "url": "Enlace iCal del portal",
+        "attivo": "Activo"
+      },
+      "esterni": {
+        "titolo": "Calendarios de los portales",
+        "aiuto": "Cada 15 minutos las fechas reservadas en los portales se bloquean también aquí, habitación por habitación.",
+        "nuova": "Nuevo calendario",
+        "modifica": "Editar calendario",
+        "vuoto": "Ningún calendario conectado.",
+        "elimina": "Eliminar calendario",
+        "eliminaAiuto": "Las fechas bloqueadas por este calendario vuelven a quedar libres.",
+        "eliminaConferma": "Sí, eliminar",
+        "disattivato": "desactivado",
+        "maiSincronizzato": "Nunca sincronizado",
+        "errori": "{{ errori }} errores seguidos",
+        "urlAiuto": "Lo encuentras en los ajustes del calendario del portal (exportación iCal).",
+        "attivoAiuto": "Desactivado, sus fechas bloqueadas quedan libres hasta que lo vuelvas a activar.",
+        "sincronizza": "Sincronizar ahora",
+        "sincronizzaAiuto": "Lee el calendario del portal enseguida, sin esperar a la próxima ronda.",
+        "sincronizzato": "Sincronizado: {{ eventi }} reservas leídas"
+      },
+      "esporta": {
+        "titolo": "Enlaces para los portales",
+        "aiuto": "Pega el enlace de cada habitación en el portal: así verá las fechas ya ocupadas aquí.",
+        "vuoto": "Ninguna habitación.",
+        "senzaLink": "Esta habitación aún no tiene enlace.",
+        "crea": "Crear enlace",
+        "nuovo": "Nuevo enlace",
+        "avviso": "El enlace actual deja de funcionar enseguida: tendrás que pegar el nuevo en cada portal.",
+        "conferma": "Sí, nuevo enlace"
       }
     }
   },

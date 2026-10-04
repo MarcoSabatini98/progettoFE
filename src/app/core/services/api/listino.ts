@@ -4,12 +4,12 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 import { Observable, finalize } from 'rxjs';
 
-import { campiCambiati, valoriModulo } from '../api/campi-cambiati';
+import { campiCambiati, valoriModulo } from './campi-cambiati';
 import { AvvisiService } from '../avvisi/avvisi-service';
 import { ErroriService } from '../errori/errori-service';
 
 /**
- * Chiamate di una sezione del listino (piani, stagioni, promozioni...).
+ * Chiamate di un listino: elenco di voci da creare, modificare ed eliminare (piani, calendari...).
  * Scritte come metodi così un Listino<Piano, PianoCrea> vale anche come Listino<Piano, unknown>.
  */
 export interface RichiesteListino<T, C> {
@@ -23,7 +23,7 @@ export interface RichiesteListino<T, C> {
 export type AdattaVoce<T> = (voce: T) => Record<string, unknown>;
 
 /**
- * Stato di una sezione del listino: elenco, voce scelta (null = nuova) e salvataggio.
+ * Stato di un listino: elenco, voce scelta (null = nuova) e salvataggio.
  * Il modulo segue la scelta: la voce scelta lo compila, una nuova lo riporta ai valori iniziali.
  * Si crea in un campo del componente, perché usa inject.
  */
@@ -85,7 +85,7 @@ export class Listino<T extends { id: number }, C> {
     this.errore.set('');
     richiesta.pipe(finalize(() => this.inCorso.set(false))).subscribe({
       next: (voce) => {
-        this.avvisi.mostra(this.transloco.translate('gestionale.tariffe.salvata'), 'successo');
+        this.avvisi.mostra(this.transloco.translate('gestionale.listino.salvata'), 'successo');
         this.scegli(voce);
         this.elenco.reload();
       },
