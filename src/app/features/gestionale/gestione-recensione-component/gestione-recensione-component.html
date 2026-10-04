@@ -1,0 +1,36 @@
+<h2 class="titolo-scheda">{{ 'gestionale.recensioni.moderazione' | transloco }}</h2>
+<p class="tenue">
+  {{ 'gestionale.recensioni.moderazioneAiuto.' + recensione().stato | transloco }}
+</p>
+<div class="azioni">
+  @for (esito of esiti(); track esito) {
+    <button
+      class="pulsante"
+      [class.pulsante-primario]="esito === 'pubblicata'"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="modera(esito)"
+    >
+      <app-icona [nome]="esito === 'pubblicata' ? 'publish' : 'block'" />
+      {{ 'gestionale.recensioni.azioni.' + esito | transloco }}
+    </button>
+  }
+</div>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="rispondi()" novalidate>
+  <app-campo
+    [etichetta]="'gestionale.recensioni.campi.risposta' | transloco"
+    [aiuto]="'gestionale.recensioni.rispostaAiuto' | transloco"
+    [errore]="errori.campo(modulo.controls.risposta)"
+  >
+    <textarea formControlName="risposta" rows="5" [maxLength]="lunghezza"></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.recensioni.azioni.rispondi' | transloco }}
+    </button>
+  </div>
+</form>

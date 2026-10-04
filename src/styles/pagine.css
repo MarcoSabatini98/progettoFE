@@ -177,7 +177,8 @@
 
 .stato-prenotazione[data-stato='cancellata'],
 .stato-prenotazione[data-stato='no_show'],
-.stato-prenotazione[data-stato='urgente'] {
+.stato-prenotazione[data-stato='urgente'],
+.stato-prenotazione[data-stato='rifiutata'] {
   background: var(--bb-errore-tenue);
   color: var(--bb-testo);
 }
@@ -185,7 +186,8 @@
 .stato-prenotazione[data-stato='confermata'],
 .stato-prenotazione[data-stato='in_soggiorno'],
 .stato-prenotazione[data-stato='verificata'],
-.stato-prenotazione[data-stato='risolta'] {
+.stato-prenotazione[data-stato='risolta'],
+.stato-prenotazione[data-stato='pubblicata'] {
   background: var(--bb-ok-tenue);
   color: var(--bb-testo);
 }

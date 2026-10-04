@@ -1538,6 +1538,53 @@
       "ordineAiuto": "Lower numbers come first.",
       "senzaCategoria": "No category",
       "nascosta": "hidden"
+    },
+    "recensioni": {
+      "occhiello": "Guests",
+      "titolo": "Reviews",
+      "tutte": "All reviews",
+      "filtri": {
+        "stato": "Status",
+        "tutte": "All statuses",
+        "negative": "Negative only"
+      },
+      "stati": {
+        "in_attesa": "Pending",
+        "pubblicata": "Published",
+        "rifiutata": "Rejected"
+      },
+      "totale": "Reviews: {{ totale }}",
+      "vuoto": "No reviews match these filters.",
+      "senzaTesto": "Rating only, no comment",
+      "senzaTitolo": "Untitled review",
+      "senzaCommento": "The guest left only a rating.",
+      "anonima": "Shown on the website without the guest's name.",
+      "campi": {
+        "prenotazione": "Booking",
+        "soggiorno": "Stay",
+        "paese": "Country",
+        "moderata": "Moderated",
+        "commento": "Comment",
+        "risposta": "Property reply"
+      },
+      "moderazione": "Moderation",
+      "moderazioneAiuto": {
+        "in_attesa": "Not on the website yet: publish or reject it.",
+        "pubblicata": "Visible on the website.",
+        "rifiutata": "Not shown on the website."
+      },
+      "rispostaAiuto": "Shown on the website below the review. Leave it empty to remove it.",
+      "azioni": {
+        "pubblicata": "Publish",
+        "rifiutata": "Reject",
+        "rispondi": "Save reply"
+      },
+      "esiti": {
+        "pubblicata": "Review published.",
+        "rifiutata": "Review rejected.",
+        "risposta": "Reply saved.",
+        "rispostaTolta": "Reply removed."
+      }
     }
   },
   "anagrafica": {

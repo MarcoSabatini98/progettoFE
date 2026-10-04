@@ -115,8 +115,14 @@ export const LUNGHEZZA_NUMERO_DOCUMENTO = 30;
 /** Voti delle recensioni, da 1 a 5 (recensioni.validator.js). */
 export const VOTI_RECENSIONE = [1, 2, 3, 4, 5] as const;
 
+/** Voto fino al quale una recensione è negativa (come l'avviso del backend). */
+export const VOTO_NEGATIVO = 2;
+
+/** Esiti della moderazione: in attesa ci si torna solo con una recensione nuova. */
+export const STATI_MODERAZIONE = ['pubblicata', 'rifiutata'] as const;
+
 /** Lunghezze massime di titolo e commento (recensioni.validator.js). */
-export const LUNGHEZZA_RECENSIONE = { titolo: 150, commento: 5000 } as const;
+export const LUNGHEZZA_RECENSIONE = { titolo: 150, commento: 5000, risposta: 5000 } as const;
 
 /** Voti di dettaglio facoltativi di una recensione, nell'ordine del modulo. */
 export const CATEGORIE_VOTO = [
