@@ -8,6 +8,10 @@ export const LIMITI_CONTENUTI = {
   note: 5000,
   impatto: 10,
   traduzione: 100_000,
+  domanda: 255,
+  risposta: 10_000,
+  categoria: 50,
+  ordine: 32_767,
 } as const;
 
 /** Impatto di un evento nuovo: a metà scala. */

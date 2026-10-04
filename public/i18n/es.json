@@ -1512,6 +1512,32 @@
         "domanda": "Pregunta",
         "risposta": "Respuesta"
       }
+    },
+    "faq": {
+      "occhiello": "Sitio",
+      "titolo": "Preguntas frecuentes",
+      "elenco": {
+        "titolo": "Preguntas",
+        "aiuto": "Ordenadas por categoría y luego por número, como en el sitio.",
+        "nuova": "Nueva pregunta",
+        "vuoto": "No hay preguntas frecuentes.",
+        "elimina": "Eliminar pregunta",
+        "eliminaAiuto": "Desaparece del sitio junto con sus traducciones.",
+        "eliminaConferma": "Sí, eliminar"
+      },
+      "modifica": "Editar pregunta",
+      "nuova": "Nueva pregunta",
+      "campi": {
+        "domanda": "Pregunta",
+        "risposta": "Respuesta",
+        "categoria": "Categoría",
+        "ordine": "Orden",
+        "pubblicata": "Visible en el sitio"
+      },
+      "categoriaAiuto": "Agrupa las preguntas en el sitio (p. ej. Llegada, Desayuno).",
+      "ordineAiuto": "Los números más bajos van primero.",
+      "senzaCategoria": "Sin categoría",
+      "nascosta": "oculta"
     }
   },
   "anagrafica": {

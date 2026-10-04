@@ -1512,6 +1512,32 @@
         "domanda": "Domanda",
         "risposta": "Risposta"
       }
+    },
+    "faq": {
+      "occhiello": "Sito",
+      "titolo": "Domande frequenti",
+      "elenco": {
+        "titolo": "Domande",
+        "aiuto": "In ordine di categoria e poi di numero, come sul sito.",
+        "nuova": "Nuova domanda",
+        "vuoto": "Nessuna domanda frequente.",
+        "elimina": "Elimina domanda",
+        "eliminaAiuto": "Sparisce dal sito insieme alle sue traduzioni.",
+        "eliminaConferma": "Sì, elimina"
+      },
+      "modifica": "Modifica domanda",
+      "nuova": "Nuova domanda",
+      "campi": {
+        "domanda": "Domanda",
+        "risposta": "Risposta",
+        "categoria": "Categoria",
+        "ordine": "Ordine",
+        "pubblicata": "Visibile sul sito"
+      },
+      "categoriaAiuto": "Raggruppa le domande sul sito (es. Arrivo, Colazione).",
+      "ordineAiuto": "I numeri più bassi vengono prima.",
+      "senzaCategoria": "Senza categoria",
+      "nascosta": "nascosta"
     }
   },
   "anagrafica": {

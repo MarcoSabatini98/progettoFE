@@ -1512,6 +1512,32 @@
         "domanda": "Frage",
         "risposta": "Antwort"
       }
+    },
+    "faq": {
+      "occhiello": "Website",
+      "titolo": "Häufige Fragen",
+      "elenco": {
+        "titolo": "Fragen",
+        "aiuto": "Nach Kategorie und dann nach Nummer sortiert, wie auf der Website.",
+        "nuova": "Neue Frage",
+        "vuoto": "Keine häufigen Fragen.",
+        "elimina": "Frage löschen",
+        "eliminaAiuto": "Sie verschwindet samt Übersetzungen von der Website.",
+        "eliminaConferma": "Ja, löschen"
+      },
+      "modifica": "Frage bearbeiten",
+      "nuova": "Neue Frage",
+      "campi": {
+        "domanda": "Frage",
+        "risposta": "Antwort",
+        "categoria": "Kategorie",
+        "ordine": "Reihenfolge",
+        "pubblicata": "Auf der Website sichtbar"
+      },
+      "categoriaAiuto": "Gruppiert die Fragen auf der Website (z. B. Anreise, Frühstück).",
+      "ordineAiuto": "Kleinere Nummern kommen zuerst.",
+      "senzaCategoria": "Ohne Kategorie",
+      "nascosta": "ausgeblendet"
     }
   },
   "anagrafica": {

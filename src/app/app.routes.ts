@@ -187,6 +187,15 @@ export const routes: Routes = [
             (m) => m.ContenutiComponent,
           ),
       },
+      {
+        path: 'faq',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.FAQ_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/gestione-faq-component/gestione-faq-component').then(
+            (m) => m.GestioneFaqComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',
