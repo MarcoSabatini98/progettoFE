@@ -2077,5 +2077,30 @@
     },
     "scegli": "Choose…",
     "luogoRilascio": "Italian municipality or foreign country."
+  },
+  "notifiche": {
+    "apri": "Notifications, {{ totale }} unread",
+    "titolo": "Notifications",
+    "segnaTutte": "Mark all as read",
+    "nessuna": "No notifications",
+    "elimina": "Delete notification",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web: {{ totale }} stays to send within 24 hours of arrival",
+      "overbooking": "Overbooking in room {{ camera }} ({{ canale }}) from {{ inizio }} to {{ fine }}",
+      "calendario_non_sincronizzato": "The {{ canale }} calendar is not syncing",
+      "assistenza_richiesta": "New support request",
+      "assistenza_passata": "A support conversation was passed to you",
+      "fatture_ferme_sdi": "Invoices stuck at SDI: {{ da_inviare }} to send, {{ scartate }} rejected",
+      "guasto_camera": "Fault in room {{ camera }}: {{ titolo }}",
+      "guasto": "Fault: {{ titolo }}",
+      "guasto_assegnato": "Assigned to you: {{ titolo }}",
+      "guasto_risolto": "Resolved: {{ titolo }}",
+      "rimborsi_da_fare": "Refunds due: {{ totale }}",
+      "partenze_saldo_aperto": "Departures to close: {{ totale }} with an open balance",
+      "pulizia_assegnata": "Cleaning assigned: room {{ camera }} on {{ data }}",
+      "camera_da_ispezionare": "Room {{ camera }} to inspect",
+      "recensione_nuova": "New review: {{ voto }}/5",
+      "tassa_in_scadenza": "Tourist tax: \"{{ nome }}\" ends on {{ data }} and there is no other one"
+    }
   }
 }

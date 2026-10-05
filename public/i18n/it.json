@@ -2077,5 +2077,30 @@
     },
     "scegli": "Scegli…",
     "luogoRilascio": "Comune italiano o stato estero."
+  },
+  "notifiche": {
+    "apri": "Notifiche, {{ totale }} non lette",
+    "titolo": "Notifiche",
+    "segnaTutte": "Segna tutte come lette",
+    "nessuna": "Nessuna notifica",
+    "elimina": "Elimina notifica",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web: {{ totale }} soggiorni da inviare entro 24 ore dall'arrivo",
+      "overbooking": "Overbooking camera {{ camera }} ({{ canale }}) dal {{ inizio }} al {{ fine }}",
+      "calendario_non_sincronizzato": "Il calendario {{ canale }} non si sincronizza",
+      "assistenza_richiesta": "Nuova richiesta di assistenza",
+      "assistenza_passata": "Ti è stata passata una conversazione di assistenza",
+      "fatture_ferme_sdi": "Fatture ferme allo SDI: {{ da_inviare }} da inviare, {{ scartate }} scartate",
+      "guasto_camera": "Guasto camera {{ camera }}: {{ titolo }}",
+      "guasto": "Guasto: {{ titolo }}",
+      "guasto_assegnato": "Ti è stata assegnata: {{ titolo }}",
+      "guasto_risolto": "Risolta: {{ titolo }}",
+      "rimborsi_da_fare": "Rimborsi da fare: {{ totale }}",
+      "partenze_saldo_aperto": "Partenze da chiudere: {{ totale }} con saldo aperto",
+      "pulizia_assegnata": "Pulizia assegnata: camera {{ camera }} per il {{ data }}",
+      "camera_da_ispezionare": "Camera {{ camera }} da ispezionare",
+      "recensione_nuova": "Nuova recensione: {{ voto }}/5",
+      "tassa_in_scadenza": "Tassa di soggiorno: \"{{ nome }}\" finisce il {{ data }} e non ce n'è un'altra"
+    }
   }
 }

@@ -7,6 +7,7 @@ import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazio
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { PERCORSO_STAFF } from '../../core/services/navigazione/navigazione-costanti';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
+import { CampanellaComponent } from '../../shared/campanella-component/campanella-component';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { MediaPipe } from '../../shared/pipes/media-pipe';
@@ -26,6 +27,7 @@ import { chiudiPopover } from '../chiudi-popover';
     RouterOutlet,
     TranslocoPipe,
     IconaComponent,
+    CampanellaComponent,
     MenuUtenteComponent,
     SelettoreLinguaComponent,
     SelettoreTemaComponent,

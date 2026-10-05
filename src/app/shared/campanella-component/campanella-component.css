@@ -1,0 +1,119 @@
+/* Popover nativo sotto la barra: tutta larghezza su mobile, a destra da desktop. */
+:host {
+  display: inline-block;
+}
+
+.attivatore {
+  position: relative;
+}
+
+.contatore {
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-end: 2px;
+  min-inline-size: 1.125rem;
+  padding-inline: 4px;
+  border-radius: 999px;
+  background: var(--bb-errore);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.125rem;
+  text-align: center;
+}
+
+.pannello {
+  inset: calc(var(--altezza-barra, 3.5rem) + var(--bb-spazio-2)) var(--bb-spazio-2) auto auto;
+  inline-size: min(24rem, calc(100vw - 2 * var(--bb-spazio-2)));
+  max-block-size: min(32rem, calc(100dvh - var(--altezza-barra, 3.5rem) - 2 * var(--bb-spazio-4)));
+  margin: 0;
+  padding: var(--bb-spazio-3);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  box-shadow: var(--bb-ombra);
+  overflow-y: auto;
+}
+
+.pannello-intestazione {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-2);
+  padding-block-end: var(--bb-spazio-2);
+}
+
+.notifiche {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notifica {
+  --colore-notifica: var(--bb-info);
+
+  display: flex;
+  align-items: flex-start;
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.notifica[data-priorita='successo'] {
+  --colore-notifica: var(--bb-ok);
+}
+
+.notifica[data-priorita='avviso'] {
+  --colore-notifica: var(--bb-avviso);
+}
+
+.notifica[data-priorita='errore'] {
+  --colore-notifica: var(--bb-errore);
+}
+
+.notifica.non-letta {
+  background: var(--bb-brand-tenue);
+}
+
+.notifica-apri {
+  display: flex;
+  flex: 1;
+  gap: var(--bb-spazio-3);
+  min-width: 0;
+  padding: var(--bb-spazio-3);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.notifica-apri:hover {
+  background: var(--bb-incavo);
+}
+
+.notifica-icona {
+  flex-shrink: 0;
+  color: var(--colore-notifica);
+  --icona-dimensione: 1.25rem;
+}
+
+.notifica-corpo {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.notifica-titolo {
+  font-size: 0.875rem;
+}
+
+.non-letta .notifica-titolo {
+  font-weight: 600;
+}
+
+.notifica-testo {
+  overflow-wrap: anywhere;
+}

@@ -7,12 +7,20 @@ import { PaginaInterface, ParametriPaginaInterface } from '../pagina/pagina-mode
 export type TipoNotifica = (typeof TIPI_NOTIFICA)[number];
 export type PrioritaNotifica = (typeof PRIORITA_NOTIFICA)[number];
 
+/** Valori da inserire nel titolo tradotto (camera, totale, date 'AAAA-MM-GG'...). */
+export type ParametriNotifica = Record<string, string | number>;
+
 export interface NotificaInterface {
   id: number;
   utente_id: number;
   tipo: TipoNotifica;
   priorita: PrioritaNotifica;
+  /** Con parametri traduce il titolo: notifiche.codici.<codice>. */
+  codice: string;
+  parametri: ParametriNotifica | null;
+  /** Lo stesso titolo in italiano, scritto dal server. */
   titolo: string;
+  /** Solo dati (codici, messaggi): non si traduce. */
   testo: string | null;
   /** Percorso del sito da aprire al clic (es. '/staff/prenotazioni/12'). */
   link: string | null;

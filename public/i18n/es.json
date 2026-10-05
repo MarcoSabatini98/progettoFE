@@ -2077,5 +2077,30 @@
     },
     "scegli": "Elegir…",
     "luogoRilascio": "Municipio italiano o país extranjero."
+  },
+  "notifiche": {
+    "apri": "Notificaciones, {{ totale }} sin leer",
+    "titolo": "Notificaciones",
+    "segnaTutte": "Marcar todas como leídas",
+    "nessuna": "Ninguna notificación",
+    "elimina": "Eliminar notificación",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web: {{ totale }} estancias por enviar en 24 horas desde la llegada",
+      "overbooking": "Overbooking habitación {{ camera }} ({{ canale }}) del {{ inizio }} al {{ fine }}",
+      "calendario_non_sincronizzato": "El calendario {{ canale }} no se sincroniza",
+      "assistenza_richiesta": "Nueva solicitud de asistencia",
+      "assistenza_passata": "Te han pasado una conversación de asistencia",
+      "fatture_ferme_sdi": "Facturas detenidas en el SDI: {{ da_inviare }} por enviar, {{ scartate }} rechazadas",
+      "guasto_camera": "Avería habitación {{ camera }}: {{ titolo }}",
+      "guasto": "Avería: {{ titolo }}",
+      "guasto_assegnato": "Asignada a ti: {{ titolo }}",
+      "guasto_risolto": "Resuelta: {{ titolo }}",
+      "rimborsi_da_fare": "Reembolsos pendientes: {{ totale }}",
+      "partenze_saldo_aperto": "Salidas por cerrar: {{ totale }} con saldo abierto",
+      "pulizia_assegnata": "Limpieza asignada: habitación {{ camera }} el {{ data }}",
+      "camera_da_ispezionare": "Habitación {{ camera }} por inspeccionar",
+      "recensione_nuova": "Nueva reseña: {{ voto }}/5",
+      "tassa_in_scadenza": "Tasa turística: «{{ nome }}» termina el {{ data }} y no hay otra"
+    }
   }
 }

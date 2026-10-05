@@ -2077,5 +2077,30 @@
     },
     "scegli": "Choisir…",
     "luogoRilascio": "Commune italienne ou pays étranger."
+  },
+  "notifiche": {
+    "apri": "Notifications, {{ totale }} non lues",
+    "titolo": "Notifications",
+    "segnaTutte": "Tout marquer comme lu",
+    "nessuna": "Aucune notification",
+    "elimina": "Supprimer la notification",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web : {{ totale }} séjours à envoyer dans les 24 heures suivant l'arrivée",
+      "overbooking": "Surréservation chambre {{ camera }} ({{ canale }}) du {{ inizio }} au {{ fine }}",
+      "calendario_non_sincronizzato": "Le calendrier {{ canale }} ne se synchronise pas",
+      "assistenza_richiesta": "Nouvelle demande d'assistance",
+      "assistenza_passata": "Une conversation d'assistance vous a été transmise",
+      "fatture_ferme_sdi": "Factures bloquées au SDI : {{ da_inviare }} à envoyer, {{ scartate }} rejetées",
+      "guasto_camera": "Panne chambre {{ camera }} : {{ titolo }}",
+      "guasto": "Panne : {{ titolo }}",
+      "guasto_assegnato": "Assignée à vous : {{ titolo }}",
+      "guasto_risolto": "Résolue : {{ titolo }}",
+      "rimborsi_da_fare": "Remboursements à faire : {{ totale }}",
+      "partenze_saldo_aperto": "Départs à clôturer : {{ totale }} avec un solde ouvert",
+      "pulizia_assegnata": "Ménage assigné : chambre {{ camera }} le {{ data }}",
+      "camera_da_ispezionare": "Chambre {{ camera }} à inspecter",
+      "recensione_nuova": "Nouvel avis : {{ voto }}/5",
+      "tassa_in_scadenza": "Taxe de séjour : « {{ nome }} » se termine le {{ data }} et il n'y en a pas d'autre"
+    }
   }
 }

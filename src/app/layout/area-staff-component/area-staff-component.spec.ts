@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { NEVER, of } from 'rxjs';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
@@ -8,7 +9,9 @@ import { PresenzeService } from '../../core/services/chat/presenze-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { NotificheService } from '../../core/services/notifiche/notifiche-service';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
+import { SocketService } from '../../core/services/socket/socket-service';
 import { GruppoMenuInterface } from '../../shared/models/voce-menu/voce-menu-model';
 import { AreaStaffComponent } from './area-staff-component';
 
@@ -35,6 +38,11 @@ describe('AreaStaffComponent', () => {
         { provide: NavigazioneService, useValue: { menuStaff, staff: signal(true) } },
         { provide: AuthService, useValue: { utente: signal(null) } },
         { provide: PresenzeService, useValue: {} },
+        {
+          provide: NotificheService,
+          useValue: { elencaNotifiche: () => of({ elementi: [], non_lette: 0 }) },
+        },
+        { provide: SocketService, useValue: { ascolta: () => NEVER } },
         {
           provide: ImpostazioniService,
           useValue: {
@@ -72,6 +80,10 @@ describe('AreaStaffComponent', () => {
         voce.getAttribute('href'),
       ),
     ).toEqual(['/staff/pulizie', '/staff/chat']);
+  });
+
+  it('mostra la campanella delle notifiche nella barra', async () => {
+    expect((await crea()).querySelector('.barra app-campanella')).not.toBeNull();
   });
 
   it('il pulsante della barra apre il menu come popover', async () => {
