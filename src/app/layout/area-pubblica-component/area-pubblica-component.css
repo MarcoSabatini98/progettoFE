@@ -51,6 +51,15 @@
   font-size: 0.875rem;
 }
 
+/* Il logo caricato nelle impostazioni prende il posto dell'arco. */
+.marchio-logo {
+  flex-shrink: 0;
+  block-size: 2.75rem;
+  inline-size: auto;
+  max-inline-size: 8rem;
+  object-fit: contain;
+}
+
 .marchio-nome {
   overflow: hidden;
   font-family: var(--bb-font-titoli);

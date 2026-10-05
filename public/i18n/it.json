@@ -250,7 +250,9 @@
     "RUOLO_NON_MODIFICABILE": "L'amministratore ha sempre tutti i permessi.",
     "RUOLO_NON_TROVATO": "Ruolo non trovato.",
     "PERMESSO_SCONOSCIUTO": "Uno dei permessi non esiste più: ricarica la pagina.",
-    "RUOLO_NON_STAFF": "La chat interna è solo per lo staff."
+    "RUOLO_NON_STAFF": "La chat interna è solo per lo staff.",
+    "IMPOSTAZIONE_NON_VALIDA": "Uno dei valori non è nel formato giusto.",
+    "IMPOSTAZIONE_SCONOSCIUTA": "Una delle impostazioni non esiste più: ricarica la pagina."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1978,6 +1980,63 @@
         "id_transazione": "Transazione",
         "stato_sdi": "Stato SDI",
         "numero": "Numero"
+      }
+    },
+    "impostazioni": {
+      "titolo": "Impostazioni",
+      "introduzione": "Dati della struttura, orari, regole e aspetto del sito. Ogni gruppo si salva per conto suo; il sito si aggiorna subito.",
+      "salva": "Salva",
+      "salvate": "Impostazioni salvate",
+      "temaAiuto": "Chi visita il sito può sempre cambiarlo sul suo dispositivo.",
+      "logo": {
+        "titolo": "Logo",
+        "aiuto": "Compare nella testata del sito e del gestionale al posto delle iniziali. Si usa la prima immagine.",
+        "descrizione": "Logo della struttura"
+      },
+      "gruppi": {
+        "struttura": "Struttura",
+        "soggiorno": "Soggiorno",
+        "prenotazioni": "Prenotazioni",
+        "fiscale": "Fisco e pagamenti",
+        "fedelta": "Fedeltà",
+        "pulizie": "Pulizie",
+        "localizzazione": "Lingue e fuso orario",
+        "chat": "Chat",
+        "aspetto": "Aspetto del sito"
+      },
+      "chiavi": {
+        "struttura_nome": "Nome",
+        "struttura_ragione_sociale": "Ragione sociale",
+        "struttura_partita_iva": "Partita IVA",
+        "struttura_codice_fiscale": "Codice fiscale",
+        "struttura_regime_fiscale": "Regime fiscale (es. RF01)",
+        "struttura_indirizzo": "Indirizzo",
+        "struttura_cap": "CAP",
+        "struttura_comune": "Comune",
+        "struttura_provincia": "Provincia (sigla)",
+        "struttura_email": "Email",
+        "struttura_telefono": "Telefono",
+        "struttura_cin": "CIN",
+        "struttura_iban": "IBAN",
+        "struttura_intestatario_conto": "Intestatario del conto",
+        "orario_checkin": "Check-in dalle",
+        "orario_checkout": "Check-out entro le",
+        "prenotazioni_scadenza_ore": "Ore per pagare una prenotazione in attesa",
+        "blocco_checkout_minuti": "Minuti di blocco della camera dopo il check-out",
+        "valuta": "Valuta (es. EUR)",
+        "iva_soggiorno": "IVA sul soggiorno (%)",
+        "iva_servizi": "IVA sui servizi (%)",
+        "limite_contanti": "Limite pagamenti in contanti",
+        "fedelta_punti_per_notte": "Punti fedeltà per notte",
+        "pulizie_richiedi_ispezione": "Le camere pulite vanno ispezionate",
+        "pulizie_autoassegna": "Assegna le pulizie a turno ogni mattina",
+        "fuso_orario": "Fuso orario",
+        "lingua_predefinita": "Lingua predefinita",
+        "lingue_attive": "Lingue del sito",
+        "chat_conservazione_giorni": "Giorni di conservazione delle chat chiuse",
+        "chat_riepilogo_email_minuti": "Minuti tra due email di messaggi non letti",
+        "aspetto_colore": "Colore principale",
+        "aspetto_tema": "Tema predefinito"
       }
     }
   },

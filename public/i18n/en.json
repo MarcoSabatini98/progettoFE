@@ -250,7 +250,9 @@
     "RUOLO_NON_MODIFICABILE": "The administrator always has every permission.",
     "RUOLO_NON_TROVATO": "Role not found.",
     "PERMESSO_SCONOSCIUTO": "One of the permissions no longer exists: reload the page.",
-    "RUOLO_NON_STAFF": "The internal chat is for staff only."
+    "RUOLO_NON_STAFF": "The internal chat is for staff only.",
+    "IMPOSTAZIONE_NON_VALIDA": "One of the values is not in the right format.",
+    "IMPOSTAZIONE_SCONOSCIUTA": "One of the settings no longer exists: reload the page."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1978,6 +1980,63 @@
         "id_transazione": "Transaction",
         "stato_sdi": "SDI status",
         "numero": "Number"
+      }
+    },
+    "impostazioni": {
+      "titolo": "Settings",
+      "introduzione": "Property details, times, rules and look of the site. Each group is saved on its own; the site updates straight away.",
+      "salva": "Save",
+      "salvate": "Settings saved",
+      "temaAiuto": "Visitors can always change it on their own device.",
+      "logo": {
+        "titolo": "Logo",
+        "aiuto": "Shown in the header of the site and of the back office instead of the initials. The first image is used.",
+        "descrizione": "Property logo"
+      },
+      "gruppi": {
+        "struttura": "Property",
+        "soggiorno": "Stay",
+        "prenotazioni": "Bookings",
+        "fiscale": "Tax and payments",
+        "fedelta": "Loyalty",
+        "pulizie": "Housekeeping",
+        "localizzazione": "Languages and time zone",
+        "chat": "Chat",
+        "aspetto": "Site look"
+      },
+      "chiavi": {
+        "struttura_nome": "Name",
+        "struttura_ragione_sociale": "Company name",
+        "struttura_partita_iva": "VAT number",
+        "struttura_codice_fiscale": "Tax code",
+        "struttura_regime_fiscale": "Tax regime (e.g. RF01)",
+        "struttura_indirizzo": "Address",
+        "struttura_cap": "Postcode",
+        "struttura_comune": "Town",
+        "struttura_provincia": "Province (code)",
+        "struttura_email": "Email",
+        "struttura_telefono": "Phone",
+        "struttura_cin": "CIN",
+        "struttura_iban": "IBAN",
+        "struttura_intestatario_conto": "Account holder",
+        "orario_checkin": "Check-in from",
+        "orario_checkout": "Check-out by",
+        "prenotazioni_scadenza_ore": "Hours to pay a pending booking",
+        "blocco_checkout_minuti": "Minutes the room stays blocked after check-out",
+        "valuta": "Currency (e.g. EUR)",
+        "iva_soggiorno": "VAT on the stay (%)",
+        "iva_servizi": "VAT on services (%)",
+        "limite_contanti": "Cash payment limit",
+        "fedelta_punti_per_notte": "Loyalty points per night",
+        "pulizie_richiedi_ispezione": "Cleaned rooms must be inspected",
+        "pulizie_autoassegna": "Assign housekeeping in turns every morning",
+        "fuso_orario": "Time zone",
+        "lingua_predefinita": "Default language",
+        "lingue_attive": "Site languages",
+        "chat_conservazione_giorni": "Days closed chats are kept",
+        "chat_riepilogo_email_minuti": "Minutes between two unread-message emails",
+        "aspetto_colore": "Main colour",
+        "aspetto_tema": "Default theme"
       }
     }
   },

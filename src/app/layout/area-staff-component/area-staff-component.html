@@ -11,7 +11,12 @@
   >
     <app-icona nome="menu" />
   </button>
-  <a class="marchio" [routerLink]="percorsoStaff">{{ nome() }}</a>
+  <a class="marchio" [routerLink]="percorsoStaff">
+    @if (logo(); as percorso) {
+      <img class="marchio-logo" [src]="percorso | media" alt="" />
+    }
+    <span class="marchio-nome">{{ nome() }}</span>
+  </a>
   <app-menu-utente area="staff" />
 </header>
 

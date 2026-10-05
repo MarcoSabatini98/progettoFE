@@ -298,6 +298,16 @@ export const routes: Routes = [
             (m) => m.RegistroComponent,
           ),
       },
+      // Dati della struttura, orari, regole, aspetto del sito e logo.
+      {
+        path: 'impostazioni',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.IMPOSTAZIONI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/impostazioni-component/impostazioni-component').then(
+            (m) => m.ImpostazioniComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

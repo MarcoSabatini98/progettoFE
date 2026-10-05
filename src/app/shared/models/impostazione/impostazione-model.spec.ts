@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import { TIPI_IMPOSTAZIONE } from '../../../core/services/sistema/sistema-costanti';
-import { ImpostazioneInterface } from './impostazione-model';
+import { CAMPI_IMPOSTAZIONI_SPECIALI } from '../../../core/services/impostazioni/impostazioni-costanti';
+import { CampoImpostazione, ImpostazioneInterface } from './impostazione-model';
 
 describe('ImpostazioneInterface', () => {
   it("accetta un'impostazione numerica già convertita", () => {
@@ -18,5 +19,19 @@ describe('ImpostazioneInterface', () => {
 
     expect(TIPI_IMPOSTAZIONE).toContain(impostazione.tipo);
     expect(impostazione.valore).toBe(14);
+  });
+});
+
+describe('CampoImpostazione', () => {
+  it('comprende i controlli appositi e quelli dei tipi', () => {
+    const campi: CampoImpostazione[] = [
+      ...Object.values(CAMPI_IMPOSTAZIONI_SPECIALI),
+      'spunta',
+      'numero',
+      'testo',
+    ];
+
+    expect(campi).toContain('colore');
+    expect(campi).toContain('lingue');
   });
 });

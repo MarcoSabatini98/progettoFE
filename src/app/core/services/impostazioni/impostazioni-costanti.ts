@@ -13,7 +13,21 @@ export const CHIAVI_IMPOSTAZIONI = {
   lingueAttive: 'lingue_attive',
   valuta: 'valuta',
   ispezionePulizie: 'pulizie_richiedi_ispezione',
+  colore: 'aspetto_colore',
+  tema: 'aspetto_tema',
+  logo: 'aspetto_logo',
+  linguaPredefinita: 'lingua_predefinita',
 } as const;
+
+/** Campi del gestionale con un controllo apposito; gli altri seguono il tipo dell'impostazione. */
+export const CAMPI_IMPOSTAZIONI_SPECIALI = {
+  [CHIAVI_IMPOSTAZIONI.colore]: 'colore',
+  [CHIAVI_IMPOSTAZIONI.tema]: 'tema',
+  [CHIAVI_IMPOSTAZIONI.orarioCheckin]: 'orario',
+  [CHIAVI_IMPOSTAZIONI.orarioCheckout]: 'orario',
+  [CHIAVI_IMPOSTAZIONI.linguaPredefinita]: 'lingua',
+  [CHIAVI_IMPOSTAZIONI.lingueAttive]: 'lingue',
+} as const satisfies Record<string, string>;
 
 /** Valuta dei prezzi se l'impostazione manca (ISO 4217). */
 export const VALUTA_PREDEFINITA = 'EUR';

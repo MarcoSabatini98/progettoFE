@@ -56,6 +56,17 @@ describe('AreaPubblicaComponent', () => {
     expect(elemento.querySelector('a[href="mailto:info@example.com"]')).not.toBeNull();
   });
 
+  it('con il logo caricato lo mostra al posto delle iniziali', async () => {
+    impostazioni[CHIAVI_IMPOSTAZIONI.logo] = 'media/logo.webp';
+    const elemento = await crea();
+    delete impostazioni[CHIAVI_IMPOSTAZIONI.logo];
+
+    expect(elemento.querySelector('.marchio img')?.getAttribute('src')).toContain(
+      'media/logo.webp',
+    );
+    expect(elemento.querySelector('.marchio-arco')).toBeNull();
+  });
+
   it('collega privacy, termini e cookie policy', async () => {
     const elemento = await crea();
 
