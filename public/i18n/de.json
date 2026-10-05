@@ -2077,5 +2077,30 @@
     },
     "scegli": "Auswählen…",
     "luogoRilascio": "Italienische Gemeinde oder ausländischer Staat."
+  },
+  "notifiche": {
+    "apri": "Benachrichtigungen, {{ totale }} ungelesen",
+    "titolo": "Benachrichtigungen",
+    "segnaTutte": "Alle als gelesen markieren",
+    "nessuna": "Keine Benachrichtigungen",
+    "elimina": "Benachrichtigung löschen",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web: {{ totale }} Aufenthalte innerhalb von 24 Stunden nach Anreise zu senden",
+      "overbooking": "Überbuchung Zimmer {{ camera }} ({{ canale }}) vom {{ inizio }} bis {{ fine }}",
+      "calendario_non_sincronizzato": "Der Kalender {{ canale }} synchronisiert nicht",
+      "assistenza_richiesta": "Neue Supportanfrage",
+      "assistenza_passata": "Ein Supportgespräch wurde an dich übergeben",
+      "fatture_ferme_sdi": "Beim SDI festhängende Rechnungen: {{ da_inviare }} zu senden, {{ scartate }} abgelehnt",
+      "guasto_camera": "Defekt Zimmer {{ camera }}: {{ titolo }}",
+      "guasto": "Defekt: {{ titolo }}",
+      "guasto_assegnato": "Dir zugewiesen: {{ titolo }}",
+      "guasto_risolto": "Behoben: {{ titolo }}",
+      "rimborsi_da_fare": "Offene Erstattungen: {{ totale }}",
+      "partenze_saldo_aperto": "Abzuschließende Abreisen: {{ totale }} mit offenem Saldo",
+      "pulizia_assegnata": "Reinigung zugewiesen: Zimmer {{ camera }} am {{ data }}",
+      "camera_da_ispezionare": "Zimmer {{ camera }} zu prüfen",
+      "recensione_nuova": "Neue Bewertung: {{ voto }}/5",
+      "tassa_in_scadenza": "Kurtaxe: „{{ nome }}\" endet am {{ data }} und es gibt keine weitere"
+    }
   }
 }
