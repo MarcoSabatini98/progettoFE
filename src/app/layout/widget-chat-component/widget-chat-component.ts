@@ -78,9 +78,11 @@ export class WidgetChatComponent {
     params: () => (this.avviato() ? String(this.auth.utente()?.id ?? '') : undefined),
     stream: () =>
       this.auth.token()
-        ? this.chat
-            .elencaConversazioni({ stato: 'aperta' })
-            .pipe(map((pagina) => pagina.elementi[0] ?? null))
+        ? this.chat.elencaConversazioni({ stato: 'aperta' }).pipe(
+            map((pagina) => pagina.elementi[0] ?? null),
+            // Token del visitatore non più valido (già dimenticato): si riparte dal modulo.
+            catchError(() => of(null)),
+          )
         : of(null),
   });
   protected readonly conversazione = linkedSignal(() => this.aperta.value() ?? null);

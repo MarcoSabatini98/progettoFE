@@ -5,6 +5,7 @@ import { Socket, io } from 'socket.io-client';
 import { environment } from '../../../../environments/environment';
 import { ErroreApiInterface } from '../../../shared/models/errore-api/errore-api-model';
 import { EsitoSocketInterface } from '../../../shared/models/esito-socket/esito-socket-model';
+import { TOKEN_CHAT_NON_VALIDO } from '../auth/auth-costanti';
 import { AuthService } from '../auth/auth-service';
 
 /** Oltre questa attesa la conferma del server si considera persa. */
@@ -95,6 +96,9 @@ export class SocketService {
     socket.on('connect_error', (errore: Error & { data?: ErroreApiInterface }) => {
       if (errore.data?.codice === TOKEN_SCADUTO) {
         this.ricollega(socket);
+      } else if (errore.data?.codice === TOKEN_CHAT_NON_VALIDO) {
+        // Visitatore sconosciuto al server: col prossimo token si riapre.
+        this.auth.dimenticaTokenChat();
       }
     });
     return socket;

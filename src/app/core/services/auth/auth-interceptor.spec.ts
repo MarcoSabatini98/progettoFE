@@ -119,6 +119,18 @@ describe('authInterceptor', () => {
     expect(codice).toBe('PASSWORD_ERRATA');
   });
 
+  it('dimentica il token del visitatore che il server non riconosce più', () => {
+    const auth = TestBed.inject(AuthService);
+    auth.impostaTokenChat('chat-vecchio');
+    http.get(`${API}/conversazioni`).subscribe({ error: () => undefined });
+
+    backend
+      .expectOne(`${API}/conversazioni`)
+      .flush(erroreApi('TOKEN_CHAT_NON_VALIDO'), NON_AUTORIZZATO);
+    backend.expectNone(`${API}/auth/rinnovo`);
+    expect(auth.token()).toBeNull();
+  });
+
   it('senza sessione un 401 passa senza rinnovo', () => {
     let stato = 0;
     http.get(`${API}/prenotazioni/mie`).subscribe({ error: (errore) => (stato = errore.status) });
