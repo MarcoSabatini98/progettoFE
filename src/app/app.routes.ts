@@ -260,6 +260,24 @@ export const routes: Routes = [
             (m) => m.SchedaFatturaComponent,
           ),
       },
+      {
+        path: 'utenti',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.UTENTI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/utenti-component/utenti-component').then(
+            (m) => m.UtentiComponent,
+          ),
+      },
+      {
+        path: 'utenti/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.UTENTI_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-utente-component/scheda-utente-component').then(
+            (m) => m.SchedaUtenteComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

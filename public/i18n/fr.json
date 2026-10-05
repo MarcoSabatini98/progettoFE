@@ -241,7 +241,12 @@
     "FATTURA_VUOTA": "La facture n’a pas de montants.",
     "RIGHE_MANCANTI": "La facture doit avoir au moins une ligne.",
     "NON_STORNABILE": "Seule une facture émise peut être annulée.",
-    "FATTURA_NON_EMESSA": "La facture n’est pas encore émise."
+    "FATTURA_NON_EMESSA": "La facture n’est pas encore émise.",
+    "ULTIMO_ADMIN": "Il doit rester au moins un administrateur actif.",
+    "AUTO_DECLASSAMENTO": "Vous ne pouvez pas vous retirer le rôle d'administrateur.",
+    "AUTO_ELIMINAZIONE": "Vous ne pouvez pas supprimer votre compte d'ici.",
+    "RUOLO_NON_ASSEGNABILE": "Ce rôle ne peut pas être attribué.",
+    "RUOLO_CLIENTE": "Un compte client reste un compte client."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -1790,6 +1795,50 @@
           "ultimo_minuto": "Moins de {{ valore }} jours restants",
           "evento": "Événement : {{ valore }}"
         }
+      }
+    },
+    "utenti": {
+      "titolo": "Utilisateurs",
+      "introduzione": "Les comptes du personnel et des clients. Le nouveau personnel se crée ici, les clients s'inscrivent sur le site.",
+      "cerca": "Rechercher par prénom, nom ou e-mail",
+      "attivi": "Actifs",
+      "disattivati": "Désactivés",
+      "disattivato": "Désactivé",
+      "account": "Comptes",
+      "totale": "Comptes trouvés : {{ totale }}",
+      "vuoto": "Aucun compte avec ces filtres.",
+      "tutti": "Tous les utilisateurs",
+      "campi": {
+        "nome": "Prénom",
+        "cognome": "Nom",
+        "email": "E-mail",
+        "telefono": "Téléphone",
+        "ruolo": "Rôle",
+        "attivo": "Compte actif"
+      },
+      "nuovo": {
+        "titolo": "Nouveau membre du personnel",
+        "aiuto": "Le compte est actif tout de suite : communiquez vous-même le mot de passe, il pourra le changer depuis son profil.",
+        "crea": "Créer le compte"
+      },
+      "dati": "Données du compte",
+      "schedaOspite": "Ouvrir la fiche client",
+      "ruoloAiuto": "Changer de rôle ferme ses sessions ouvertes.",
+      "attivoAiuto": "Un compte désactivé ne peut pas se connecter ; ses sessions ouvertes sont fermées.",
+      "salva": "Enregistrer",
+      "salvato": "Compte mis à jour.",
+      "accessi": {
+        "titolo": "Accès",
+        "creato": "Créé le",
+        "verificata": "E-mail vérifié",
+        "ultimo": "Dernière connexion",
+        "no": "Non",
+        "mai": "Jamais"
+      },
+      "elimina": {
+        "titolo": "Supprimer le compte",
+        "aiuto": "Il ne pourra plus se connecter. Réservations, factures et données d'identité sont conservées pour les obligations légales.",
+        "conferma": "Oui, supprimer"
       }
     }
   },

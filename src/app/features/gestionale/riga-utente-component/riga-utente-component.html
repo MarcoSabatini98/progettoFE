@@ -1,0 +1,16 @@
+@let dati = utente();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">{{ dati.nome + ' ' + dati.cognome | iniziali }}</span>
+  <span class="cosa">
+    <strong>{{ dati.cognome }} {{ dati.nome }}</strong>
+    <span class="tenue piccolo">{{ dati.email }}</span>
+  </span>
+  <span class="etichette">
+    <span class="stato-prenotazione">{{ 'gestionale.ruoli.' + dati.ruolo | transloco }}</span>
+    @if (!dati.attivo) {
+      <span class="stato-prenotazione" data-stato="disattivato">
+        {{ 'gestionale.utenti.disattivato' | transloco }}
+      </span>
+    }
+  </span>
+</a>

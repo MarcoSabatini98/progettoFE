@@ -103,6 +103,8 @@ export const PERCORSI_STAFF = {
   /** Seguito dall'id per la scheda: /staff/fatture/<id> (link nelle notifiche). */
   fatture: `${PERCORSO_STAFF}/fatture`,
   report: `${PERCORSO_STAFF}/report`,
+  /** Seguito dall'id per la scheda: /staff/utenti/3. */
+  utenti: `${PERCORSO_STAFF}/utenti`,
 } as const;
 
 /**
@@ -245,7 +247,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.utenti',
-        percorso: `${PERCORSO_STAFF}/utenti`,
+        percorso: PERCORSI_STAFF.utenti,
         icona: 'manage_accounts',
         permessi: [PERMESSI.UTENTI_GESTISCI],
       },

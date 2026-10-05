@@ -241,7 +241,12 @@
     "FATTURA_VUOTA": "Die Rechnung hat keine Beträge.",
     "RIGHE_MANCANTI": "Die Rechnung braucht mindestens eine Position.",
     "NON_STORNABILE": "Nur eine ausgestellte Rechnung kann storniert werden.",
-    "FATTURA_NON_EMESSA": "Die Rechnung ist noch nicht ausgestellt."
+    "FATTURA_NON_EMESSA": "Die Rechnung ist noch nicht ausgestellt.",
+    "ULTIMO_ADMIN": "Mindestens ein aktiver Administrator muss bleiben.",
+    "AUTO_DECLASSAMENTO": "Sie können sich die Administratorrolle nicht selbst entziehen.",
+    "AUTO_ELIMINAZIONE": "Ihr eigenes Konto können Sie hier nicht löschen.",
+    "RUOLO_NON_ASSEGNABILE": "Diese Rolle kann nicht vergeben werden.",
+    "RUOLO_CLIENTE": "Ein Gastkonto bleibt ein Gastkonto."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1790,6 +1795,50 @@
           "ultimo_minuto": "Weniger als {{ valore }} Tage bis dahin",
           "evento": "Veranstaltung: {{ valore }}"
         }
+      }
+    },
+    "utenti": {
+      "titolo": "Benutzer",
+      "introduzione": "Die Konten von Personal und Gästen. Neues Personal wird hier angelegt, Gäste registrieren sich auf der Website.",
+      "cerca": "Nach Vorname, Nachname oder E-Mail suchen",
+      "attivi": "Aktiv",
+      "disattivati": "Deaktiviert",
+      "disattivato": "Deaktiviert",
+      "account": "Konten",
+      "totale": "Gefundene Konten: {{ totale }}",
+      "vuoto": "Keine Konten mit diesen Filtern.",
+      "tutti": "Alle Benutzer",
+      "campi": {
+        "nome": "Vorname",
+        "cognome": "Nachname",
+        "email": "E-Mail",
+        "telefono": "Telefon",
+        "ruolo": "Rolle",
+        "attivo": "Konto aktiv"
+      },
+      "nuovo": {
+        "titolo": "Neues Personalmitglied",
+        "aiuto": "Das Konto ist sofort aktiv: Teilen Sie das Passwort selbst mit, es kann im Profil geändert werden.",
+        "crea": "Konto anlegen"
+      },
+      "dati": "Kontodaten",
+      "schedaOspite": "Gästekartei öffnen",
+      "ruoloAiuto": "Ein Rollenwechsel beendet alle offenen Sitzungen.",
+      "attivoAiuto": "Ein deaktiviertes Konto kann sich nicht anmelden; offene Sitzungen werden beendet.",
+      "salva": "Speichern",
+      "salvato": "Konto aktualisiert.",
+      "accessi": {
+        "titolo": "Zugriffe",
+        "creato": "Angelegt am",
+        "verificata": "E-Mail bestätigt",
+        "ultimo": "Letzte Anmeldung",
+        "no": "Nein",
+        "mai": "Nie"
+      },
+      "elimina": {
+        "titolo": "Konto löschen",
+        "aiuto": "Eine Anmeldung ist dann nicht mehr möglich. Buchungen, Rechnungen und Gästedaten bleiben aus rechtlichen Gründen erhalten.",
+        "conferma": "Ja, löschen"
       }
     }
   },

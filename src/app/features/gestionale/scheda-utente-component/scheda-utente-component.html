@@ -1,0 +1,60 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.utenti.tutti' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'gestionale.ruoli.' + dati.ruolo | transloco }}</p>
+    <h1>{{ dati.nome }} {{ dati.cognome }}</h1>
+    <p class="introduzione">{{ dati.email }}</p>
+  </header>
+
+  <div class="griglia-prenotazione">
+    <app-dati-utente [utente]="dati" (salvato)="scheda.reload()" />
+    <section class="scheda" aria-labelledby="utente-accessi">
+      <h2 class="titolo-scheda" id="utente-accessi">
+        {{ 'gestionale.utenti.accessi.titolo' | transloco }}
+      </h2>
+      <dl class="dati">
+        <div>
+          <dt>{{ 'gestionale.utenti.accessi.creato' | transloco }}</dt>
+          <dd>{{ dati.creato_il | data }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'gestionale.utenti.accessi.verificata' | transloco }}</dt>
+          <dd>
+            {{
+              dati.email_verificata_il
+                ? (dati.email_verificata_il | data)
+                : ('gestionale.utenti.accessi.no' | transloco)
+            }}
+          </dd>
+        </div>
+        <div>
+          <dt>{{ 'gestionale.utenti.accessi.ultimo' | transloco }}</dt>
+          <dd>
+            {{
+              dati.ultimo_accesso_il
+                ? (dati.ultimo_accesso_il | data: 'ora')
+                : ('gestionale.utenti.accessi.mai' | transloco)
+            }}
+          </dd>
+        </div>
+      </dl>
+    </section>
+    @if (!proprio()) {
+      <app-elimina
+        [titolo]="'gestionale.utenti.elimina.titolo' | transloco"
+        [aiuto]="'gestionale.utenti.elimina.aiuto' | transloco"
+        [conferma]="'gestionale.utenti.elimina.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
+    }
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

@@ -241,7 +241,12 @@
     "FATTURA_VUOTA": "La fattura non ha importi.",
     "RIGHE_MANCANTI": "La fattura deve avere almeno una riga.",
     "NON_STORNABILE": "Si storna solo una fattura emessa.",
-    "FATTURA_NON_EMESSA": "La fattura non è ancora emessa."
+    "FATTURA_NON_EMESSA": "La fattura non è ancora emessa.",
+    "ULTIMO_ADMIN": "Deve restare almeno un amministratore attivo.",
+    "AUTO_DECLASSAMENTO": "Non puoi togliere a te stesso il ruolo di amministratore.",
+    "AUTO_ELIMINAZIONE": "Non puoi eliminare il tuo account da qui.",
+    "RUOLO_NON_ASSEGNABILE": "Questo ruolo non si può assegnare.",
+    "RUOLO_CLIENTE": "Un account cliente resta cliente."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1790,6 +1795,50 @@
           "ultimo_minuto": "Mancano meno di {{ valore }} giorni",
           "evento": "Evento: {{ valore }}"
         }
+      }
+    },
+    "utenti": {
+      "titolo": "Utenti",
+      "introduzione": "Gli account dello staff e dei clienti. Lo staff nuovo si crea da qui, i clienti si registrano dal sito.",
+      "cerca": "Cerca per nome, cognome o email",
+      "attivi": "Attivi",
+      "disattivati": "Disattivati",
+      "disattivato": "Disattivato",
+      "account": "Account",
+      "totale": "Account trovati: {{ totale }}",
+      "vuoto": "Nessun account con questi filtri.",
+      "tutti": "Tutti gli utenti",
+      "campi": {
+        "nome": "Nome",
+        "cognome": "Cognome",
+        "email": "Email",
+        "telefono": "Telefono",
+        "ruolo": "Ruolo",
+        "attivo": "Account attivo"
+      },
+      "nuovo": {
+        "titolo": "Nuovo membro dello staff",
+        "aiuto": "L'account è subito attivo: comunica tu la password, potrà cambiarla dal suo profilo.",
+        "crea": "Crea account"
+      },
+      "dati": "Dati dell'account",
+      "schedaOspite": "Apri la scheda ospite",
+      "ruoloAiuto": "Cambiando ruolo le sue sessioni aperte si chiudono.",
+      "attivoAiuto": "Un account disattivato non può accedere; le sue sessioni aperte si chiudono.",
+      "salva": "Salva",
+      "salvato": "Account aggiornato.",
+      "accessi": {
+        "titolo": "Accessi",
+        "creato": "Creato il",
+        "verificata": "Email verificata",
+        "ultimo": "Ultimo accesso",
+        "no": "No",
+        "mai": "Mai"
+      },
+      "elimina": {
+        "titolo": "Elimina account",
+        "aiuto": "Non potrà più accedere. Prenotazioni, fatture e anagrafica restano per gli obblighi di legge.",
+        "conferma": "Sì, elimina"
       }
     }
   },
