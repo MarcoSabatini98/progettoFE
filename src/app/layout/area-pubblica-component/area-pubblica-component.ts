@@ -10,6 +10,7 @@ import {
   PERCORSI_PUBBLICI,
 } from '../../core/services/navigazione/navigazione-costanti';
 import { TIPI_DOCUMENTO_LEGALE } from '../../core/services/sistema/sistema-costanti';
+import { CampanellaComponent } from '../../shared/campanella-component/campanella-component';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { InizialiPipe } from '../../shared/pipes/iniziali-pipe';
@@ -31,6 +32,7 @@ import { chiudiPopover } from '../chiudi-popover';
     RouterOutlet,
     TranslocoPipe,
     IconaComponent,
+    CampanellaComponent,
     InizialiPipe,
     MenuUtenteComponent,
     SelettoreLinguaComponent,

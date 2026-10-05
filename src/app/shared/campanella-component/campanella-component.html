@@ -1,7 +1,7 @@
 <button
   type="button"
   class="pulsante pulsante-fantasma pulsante-icona attivatore"
-  popovertarget="notifiche-staff"
+  popovertarget="notifiche"
   [attr.aria-label]="'notifiche.apri' | transloco: { totale: nonLette() }"
 >
   <app-icona nome="notifications" />
@@ -11,7 +11,7 @@
 </button>
 
 <section
-  id="notifiche-staff"
+  id="notifiche"
   #pannello
   class="pannello"
   popover
@@ -32,7 +32,8 @@
   }
 
   <ul class="notifiche">
-    @for (notifica of notifiche(); track notifica.id) {
+    @for (voce of voci(); track voce.notifica.id) {
+      @let notifica = voce.notifica;
       <li
         class="notifica"
         [class.non-letta]="!notifica.letta_il"
@@ -42,7 +43,7 @@
           <app-icona class="notifica-icona" [nome]="icone[notifica.tipo]" />
           <span class="notifica-corpo">
             <span class="notifica-titolo">
-              {{ 'notifiche.codici.' + notifica.codice | transloco: parametri(notifica) }}
+              {{ voce.chiave | transloco: voce.valori }}
             </span>
             @if (notifica.testo) {
               <span class="notifica-testo tenue piccolo">{{ notifica.testo }}</span>
