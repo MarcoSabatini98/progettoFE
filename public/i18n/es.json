@@ -54,7 +54,8 @@
       "ruoli": "Roles y permisos",
       "registro": "Registro de actividad",
       "impostazioni": "Ajustes",
-      "oggi": "Hoy"
+      "oggi": "Hoy",
+      "servizi": "Servicios"
     },
     "sito": {
       "aria": "Menú del sitio",
@@ -1620,6 +1621,38 @@
         "annulla": "Cobro anulado.",
         "rimborsa": "Reembolso registrado."
       }
+    },
+    "servizi": {
+      "occhiello": "Alojamiento",
+      "titolo": "Servicios",
+      "elenco": {
+        "titolo": "Catálogo",
+        "aiuto": "Las dotaciones se marcan en las habitaciones, los extras se compran con la reserva.",
+        "nuova": "Nuevo servicio",
+        "vuoto": "Ningún servicio.",
+        "elimina": "Eliminar servicio",
+        "eliminaAiuto": "Desaparece de habitaciones, paquetes y web; las reservas ya hechas lo conservan.",
+        "eliminaConferma": "¿Eliminar el servicio?"
+      },
+      "nuovo": "Nuevo servicio",
+      "modifica": "Editar servicio",
+      "tipi": {
+        "dotazione": "Dotación",
+        "extra": "Extra"
+      },
+      "campi": {
+        "nome": "Nombre",
+        "tipo": "Tipo",
+        "descrizione": "Descripción",
+        "icona": "Icono",
+        "prezzo": "Precio",
+        "calcolo_prezzo": "El precio se aplica",
+        "aliquota_iva": "Tipo de IVA (%)",
+        "ordine": "Orden",
+        "attivo": "Activo"
+      },
+      "iconaAiuto": "Nombre de un icono Material Symbols, p. ej. wifi o local_parking.",
+      "aliquotaAiuto": "Vacío: se aplica el tipo predeterminado de los ajustes."
     },
     "fatture": {
       "titolo": "Facturas",

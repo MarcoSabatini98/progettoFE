@@ -54,7 +54,8 @@
       "ruoli": "Rôles et autorisations",
       "registro": "Journal d’activité",
       "impostazioni": "Paramètres",
-      "oggi": "Aujourd’hui"
+      "oggi": "Aujourd’hui",
+      "servizi": "Services"
     },
     "sito": {
       "aria": "Menu du site",
@@ -1620,6 +1621,38 @@
         "annulla": "Encaissement annulé.",
         "rimborsa": "Remboursement enregistré."
       }
+    },
+    "servizi": {
+      "occhiello": "Établissement",
+      "titolo": "Services",
+      "elenco": {
+        "titolo": "Catalogue",
+        "aiuto": "Les équipements se cochent sur les chambres, les extras s’achètent avec la réservation.",
+        "nuova": "Nouveau service",
+        "vuoto": "Aucun service.",
+        "elimina": "Supprimer le service",
+        "eliminaAiuto": "Il disparaît des chambres, des forfaits et du site ; les réservations déjà faites le gardent.",
+        "eliminaConferma": "Supprimer le service ?"
+      },
+      "nuovo": "Nouveau service",
+      "modifica": "Modifier le service",
+      "tipi": {
+        "dotazione": "Équipement",
+        "extra": "Extra"
+      },
+      "campi": {
+        "nome": "Nom",
+        "tipo": "Type",
+        "descrizione": "Description",
+        "icona": "Icône",
+        "prezzo": "Prix",
+        "calcolo_prezzo": "Le prix s’applique",
+        "aliquota_iva": "Taux de TVA (%)",
+        "ordine": "Ordre",
+        "attivo": "Actif"
+      },
+      "iconaAiuto": "Nom d’une icône Material Symbols, ex. wifi ou local_parking.",
+      "aliquotaAiuto": "Vide : le taux par défaut des paramètres s’applique."
     },
     "fatture": {
       "titolo": "Factures",

@@ -86,13 +86,15 @@
     <app-azioni-listino [listino]="listino" />
   </form>
   @if (listino.scelta(); as pacchetto) {
-    <app-galleria-media
-      entita="pacchetto"
-      [entitaId]="pacchetto.id"
-      [media]="media()"
-      [descrizione]="pacchetto.nome"
-      (cambiati)="listino.elenco.reload()"
-    />
+    @if (gestisceFoto()) {
+      <app-galleria-media
+        entita="pacchetto"
+        [entitaId]="pacchetto.id"
+        [media]="media()"
+        [descrizione]="pacchetto.nome"
+        (cambiati)="listino.elenco.reload()"
+      />
+    }
     <app-traduzioni entita="pacchetto" [entitaId]="pacchetto.id" />
   }
 </app-listino>

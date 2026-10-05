@@ -54,7 +54,8 @@
       "ruoli": "Ruoli e permessi",
       "registro": "Registro attività",
       "impostazioni": "Impostazioni",
-      "oggi": "Oggi"
+      "oggi": "Oggi",
+      "servizi": "Servizi"
     },
     "sito": {
       "aria": "Menu del sito",
@@ -1620,6 +1621,38 @@
         "annulla": "Incasso annullato.",
         "rimborsa": "Rimborso registrato."
       }
+    },
+    "servizi": {
+      "occhiello": "Struttura",
+      "titolo": "Servizi",
+      "elenco": {
+        "titolo": "Catalogo",
+        "aiuto": "Le dotazioni si spuntano nelle camere, gli extra si acquistano con la prenotazione.",
+        "nuova": "Nuovo servizio",
+        "vuoto": "Nessun servizio.",
+        "elimina": "Elimina servizio",
+        "eliminaAiuto": "Sparisce da camere, pacchetti e sito; le prenotazioni già fatte restano.",
+        "eliminaConferma": "Eliminare il servizio?"
+      },
+      "nuovo": "Nuovo servizio",
+      "modifica": "Modifica servizio",
+      "tipi": {
+        "dotazione": "Dotazione",
+        "extra": "Extra"
+      },
+      "campi": {
+        "nome": "Nome",
+        "tipo": "Tipo",
+        "descrizione": "Descrizione",
+        "icona": "Icona",
+        "prezzo": "Prezzo",
+        "calcolo_prezzo": "Il prezzo vale",
+        "aliquota_iva": "Aliquota IVA (%)",
+        "ordine": "Ordine",
+        "attivo": "Attivo"
+      },
+      "iconaAiuto": "Nome di un’icona Material Symbols, es. wifi o local_parking.",
+      "aliquotaAiuto": "Vuota: vale quella predefinita delle impostazioni."
     },
     "fatture": {
       "titolo": "Fatture",

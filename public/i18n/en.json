@@ -54,7 +54,8 @@
       "ruoli": "Roles and permissions",
       "registro": "Activity log",
       "impostazioni": "Settings",
-      "oggi": "Today"
+      "oggi": "Today",
+      "servizi": "Services"
     },
     "sito": {
       "aria": "Site menu",
@@ -1620,6 +1621,38 @@
         "annulla": "Payment voided.",
         "rimborsa": "Refund recorded."
       }
+    },
+    "servizi": {
+      "occhiello": "Property",
+      "titolo": "Services",
+      "elenco": {
+        "titolo": "Catalogue",
+        "aiuto": "Amenities are ticked on rooms, extras are bought with the booking.",
+        "nuova": "New service",
+        "vuoto": "No services.",
+        "elimina": "Delete service",
+        "eliminaAiuto": "It disappears from rooms, packages and the website; existing bookings keep it.",
+        "eliminaConferma": "Delete the service?"
+      },
+      "nuovo": "New service",
+      "modifica": "Edit service",
+      "tipi": {
+        "dotazione": "Amenity",
+        "extra": "Extra"
+      },
+      "campi": {
+        "nome": "Name",
+        "tipo": "Type",
+        "descrizione": "Description",
+        "icona": "Icon",
+        "prezzo": "Price",
+        "calcolo_prezzo": "Price applies",
+        "aliquota_iva": "VAT rate (%)",
+        "ordine": "Order",
+        "attivo": "Active"
+      },
+      "iconaAiuto": "Name of a Material Symbols icon, e.g. wifi or local_parking.",
+      "aliquotaAiuto": "Empty: the default rate from the settings applies."
     },
     "fatture": {
       "titolo": "Invoices",

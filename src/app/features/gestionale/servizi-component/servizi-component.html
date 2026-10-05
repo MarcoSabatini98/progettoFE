@@ -1,0 +1,119 @@
+@let controlli = modulo.controls;
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.servizi.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.servizi.titolo' | transloco }}</h1>
+</header>
+
+<app-listino [listino]="listino" chiave="gestionale.servizi.elenco">
+  <ng-template #riga let-servizio>
+    <strong>
+      <app-icona [nome]="servizio.icona || iconaPredefinita" />
+      {{ servizio.nome }}
+    </strong>
+    <span class="piccolo">
+      {{ 'gestionale.servizi.tipi.' + servizio.tipo | transloco }}
+      @if (servizio.tipo === 'extra') {
+        · {{ servizio.prezzo | prezzo }}
+        {{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}
+      }
+    </span>
+    @if (!servizio.attivo) {
+      <span class="piccolo tenue">{{ 'gestionale.tariffe.disattivato' | transloco }}</span>
+    }
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta() ? 'gestionale.servizi.modifica' : 'gestionale.servizi.nuovo') | transloco
+      }}
+    </h2>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.servizi.campi.nome' | transloco"
+        [errore]="errori.campo(controlli.nome)"
+      >
+        <input type="text" formControlName="nome" [maxLength]="lunghezze.nome" required />
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.servizi.campi.tipo' | transloco">
+        <select formControlName="tipo">
+          @for (tipo of tipi; track tipo) {
+            <option [value]="tipo">{{ 'gestionale.servizi.tipi.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.servizi.campi.descrizione' | transloco"
+      [errore]="errori.campo(controlli.descrizione)"
+    >
+      <textarea
+        formControlName="descrizione"
+        rows="3"
+        [maxLength]="lunghezze.descrizione"
+      ></textarea>
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.servizi.campi.icona' | transloco"
+      [aiuto]="'gestionale.servizi.iconaAiuto' | transloco"
+      [errore]="errori.campo(controlli.icona)"
+    >
+      <input type="text" formControlName="icona" [maxLength]="lunghezze.icona" />
+    </app-campo>
+    @if (controlli.tipo.value === 'extra') {
+      <div class="campi-coppia">
+        <app-campo
+          [etichetta]="'gestionale.servizi.campi.prezzo' | transloco"
+          [errore]="errori.campo(controlli.prezzo)"
+        >
+          <input type="number" formControlName="prezzo" min="0" step="0.01" />
+        </app-campo>
+        <app-campo [etichetta]="'gestionale.servizi.campi.calcolo_prezzo' | transloco">
+          <select formControlName="calcolo_prezzo">
+            @for (calcolo of calcoli; track calcolo) {
+              <option [value]="calcolo">{{ 'camere.calcolo.' + calcolo | transloco }}</option>
+            }
+          </select>
+        </app-campo>
+      </div>
+      <app-campo
+        [etichetta]="'gestionale.servizi.campi.aliquota_iva' | transloco"
+        [aiuto]="'gestionale.servizi.aliquotaAiuto' | transloco"
+        [errore]="errori.campo(controlli.aliquota_iva)"
+      >
+        <input
+          type="number"
+          formControlName="aliquota_iva"
+          min="0"
+          [max]="limiti.aliquota"
+          step="0.01"
+        />
+      </app-campo>
+    }
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.servizi.campi.ordine' | transloco"
+        [errore]="errori.campo(controlli.ordine)"
+      >
+        <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
+      </app-campo>
+      <label class="spunta">
+        <input type="checkbox" formControlName="attivo" />
+        {{ 'gestionale.servizi.campi.attivo' | transloco }}
+      </label>
+    </div>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+  @if (listino.scelta(); as servizio) {
+    @if (gestisceFoto()) {
+      <app-galleria-media
+        entita="servizio"
+        [entitaId]="servizio.id"
+        [media]="media()"
+        [descrizione]="servizio.nome"
+        (cambiati)="dettaglio.reload()"
+      />
+    }
+    <app-traduzioni entita="servizio" [entitaId]="servizio.id" />
+  }
+</app-listino>
