@@ -1,6 +1,7 @@
 import { of } from 'rxjs';
 import { describe, expect, it, vi } from 'vitest';
 
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { CamereService } from '../../../core/services/camere/camere-service';
 import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
 import { apriSezione } from '../listino-component/sezione-listino-test';
@@ -19,7 +20,7 @@ describe('PacchettiComponent', () => {
     media: [{ id: 1, percorso: 'media/romantico.jpg', testo_alternativo: 'Terrazza' }],
   };
 
-  async function apri() {
+  async function apri(gestisceContenuti = true) {
     const tariffe = {
       elencaPacchetti: vi.fn(() => of([pacchetto])),
       creaPacchetto: vi.fn(() => of(pacchetto)),
@@ -32,6 +33,7 @@ describe('PacchettiComponent', () => {
     const sezione = await apriSezione(PacchettiComponent, tariffe, { tipologie: [] }, [
       { provide: CamereService, useValue: camere },
       { provide: ContenutiService, useValue: {} },
+      { provide: AuthService, useValue: { haPermessi: () => gestisceContenuti } },
     ]);
     return { ...sezione, tariffe };
   }
@@ -67,5 +69,13 @@ describe('PacchettiComponent', () => {
         servizi: [{ servizio_id: 9, quantita: 1 }],
       }),
     );
+  });
+
+  it('senza il permesso sui contenuti la galleria non compare', async () => {
+    const { elemento, scegli } = await apri(false);
+
+    await scegli();
+
+    expect(elemento.querySelector('app-galleria-media')).toBeNull();
   });
 });
