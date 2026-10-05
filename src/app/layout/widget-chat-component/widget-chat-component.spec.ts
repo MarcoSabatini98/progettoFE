@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Subject, of } from 'rxjs';
+import { Subject, of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
@@ -135,6 +135,26 @@ describe('WidgetChatComponent', () => {
     expect(chat.segnaLetto).toHaveBeenCalledWith(UUID);
     expect(elemento.querySelector('app-messaggio-chat')?.classList).not.toContain('mio');
     expect(elemento.querySelector('[formControlName="nome"]')).toBeNull();
+  });
+
+  it('col token del visitatore non più valido riparte dal modulo e chiede un token nuovo', async () => {
+    auth.token.set('token-vecchio');
+    chat.elencaConversazioni.mockImplementation(() => {
+      auth.token.set(null); // lo fa l'interceptor sul 401
+      return throwError(() => new Error('401'));
+    });
+    const { elemento, stabile, alterna } = await crea();
+    await alterna();
+
+    expect(elemento.querySelector('form.avvio')).not.toBeNull();
+    const testo = elemento.querySelector<HTMLTextAreaElement>('[formControlName="testo"]')!;
+    testo.value = 'Ciao';
+    testo.dispatchEvent(new Event('input'));
+    elemento.querySelector<HTMLFormElement>('form')!.dispatchEvent(new Event('submit'));
+    await stabile();
+
+    expect(chat.creaVisitatore).toHaveBeenCalled();
+    expect(chat.apriAssistenza).toHaveBeenCalledWith({ testo: 'Ciao' });
   });
 
   it('una risposta a riquadro chiuso accende il pallino, aprendo si legge', async () => {

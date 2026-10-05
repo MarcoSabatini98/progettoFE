@@ -24,6 +24,7 @@ const finto = (() => {
 describe('SocketService', () => {
   const token = signal<string | null>('token-staff');
   const rinnova = vi.fn(() => of({}));
+  const dimenticaTokenChat = vi.fn();
   let service: SocketService;
 
   beforeEach(() => {
@@ -32,7 +33,10 @@ describe('SocketService', () => {
     token.set('token-staff');
     TestBed.configureTestingModule({
       providers: [
-        { provide: AuthService, useValue: { token, collegato: () => true, rinnova } },
+        {
+          provide: AuthService,
+          useValue: { token, collegato: () => true, rinnova, dimenticaTokenChat },
+        },
         { provide: APRI_SOCKET, useValue: finto.io },
       ],
     });
@@ -74,6 +78,16 @@ describe('SocketService', () => {
 
     expect(rinnova).toHaveBeenCalled();
     expect(finto.socket.connect).toHaveBeenCalled();
+  });
+
+  it('dimentica il token del visitatore rifiutato senza riprovare', () => {
+    service.ascolta('messaggio').subscribe();
+    finto.socket.connect.mockClear();
+
+    finto.ascoltatori.get('connect_error')?.({ data: { codice: 'TOKEN_CHAT_NON_VALIDO' } });
+
+    expect(dimenticaTokenChat).toHaveBeenCalled();
+    expect(finto.socket.connect).not.toHaveBeenCalled();
   });
 
   it("si scollega all'uscita dall'account", () => {

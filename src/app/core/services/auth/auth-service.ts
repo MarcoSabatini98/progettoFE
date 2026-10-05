@@ -205,6 +205,15 @@ export class AuthService {
     this.archivio.scrivi(CHIAVI_ARCHIVIO.tokenChat, token);
   }
 
+  /**
+   * DIMENTICA TOKEN CHAT
+   * Il server non riconosce più il visitatore: al prossimo messaggio ne nasce uno nuovo.
+   */
+  dimenticaTokenChat(): void {
+    this.tokenChat.set(null);
+    this.archivio.elimina(CHIAVI_ARCHIVIO.tokenChat);
+  }
+
   private apri(url: string, corpo: unknown): Observable<UtenteSessioneInterface> {
     return this.http.post<RispostaApiInterface<SessioneInterface>>(url, corpo).pipe(
       map((res) => {

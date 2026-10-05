@@ -157,5 +157,9 @@ describe('AuthService', () => {
     service.impostaTokenChat('chat-2');
     expect(service.token()).toBe('chat-2');
     expect(localStorage.getItem(CHIAVI_ARCHIVIO.tokenChat)).toBe('chat-2');
+
+    service.dimenticaTokenChat();
+    expect(service.token()).toBeNull();
+    expect(localStorage.getItem(CHIAVI_ARCHIVIO.tokenChat)).toBeNull();
   });
 });
