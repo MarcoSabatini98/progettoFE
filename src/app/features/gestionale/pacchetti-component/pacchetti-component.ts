@@ -2,8 +2,10 @@ import { ChangeDetectionStrategy, Component, computed, inject, input } from '@an
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { Listino } from '../../../core/services/api/listino';
+import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { LIMITI_TARIFFE } from '../../../core/services/tariffe/tariffe-costanti';
 import { TariffeService } from '../../../core/services/tariffe/tariffe-service';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
@@ -39,9 +41,15 @@ import { TraduzioniComponent } from '../traduzioni-component/traduzioni-componen
 })
 export class PacchettiComponent {
   private readonly tariffe = inject(TariffeService);
+  private readonly auth = inject(AuthService);
   protected readonly errori = inject(ErroriService);
 
   readonly tipologie = input.required<TipologiaCameraInterface[]>();
+
+  /** Le foto le gestisce chi gestisce i contenuti: per gli altri il backend le rifiuta. */
+  protected readonly gestisceFoto = computed(() =>
+    this.auth.haPermessi([PERMESSI.CONTENUTI_GESTISCI]),
+  );
 
   protected readonly limiti = LIMITI_TARIFFE;
   protected readonly modulo = inject(NonNullableFormBuilder).group({
