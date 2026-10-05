@@ -233,7 +233,14 @@
     "CALENDARIO_DISATTIVATO": "The calendar is disabled: enable it to sync it.",
     "GIA_PUBBLICATO": "The document is already published: create a new version.",
     "LINGUA_NON_ATTIVA": "This language is not enabled on the website.",
-    "CAMPO_NON_TRADUCIBILE": "This field cannot be translated."
+    "CAMPO_NON_TRADUCIBILE": "This field cannot be translated.",
+    "NON_FATTURABILE": "The booking has nothing to invoice yet.",
+    "FATTURA_NON_TROVATA": "Invoice not found.",
+    "FATTURA_NON_MODIFICABILE": "The invoice is already issued: correct it with a credit note.",
+    "FATTURA_VUOTA": "The invoice has no amounts.",
+    "RIGHE_MANCANTI": "The invoice needs at least one line.",
+    "NON_STORNABILE": "Only an issued invoice can be reversed.",
+    "FATTURA_NON_EMESSA": "The invoice has not been issued yet."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1612,6 +1619,106 @@
       "esiti": {
         "annulla": "Payment voided.",
         "rimborsa": "Refund recorded."
+      }
+    },
+    "fatture": {
+      "titolo": "Invoices",
+      "introduzione": "Drafts are created from the booking page.",
+      "cerca": "Search by recipient, tax code or VAT number",
+      "anno": "Year",
+      "totale": "Documents found: {{ totale }}",
+      "vuoto": "No invoices match these filters.",
+      "tutte": "All invoices",
+      "tipi": {
+        "TD01": "Invoice",
+        "TD04": "Credit note"
+      },
+      "stati": {
+        "bozza": "Draft",
+        "da_inviare": "To send",
+        "inviata": "Sent",
+        "consegnata": "Delivered",
+        "mancata_consegna": "Not delivered",
+        "scartata": "Rejected by SDI",
+        "accettata": "Accepted",
+        "rifiutata": "Refused"
+      },
+      "prenotazione": "Booking",
+      "origine": "Reversed invoice",
+      "apri": "Open",
+      "imponibile": "Taxable amount",
+      "imposta": "VAT",
+      "esente": "Non-taxable",
+      "totaleDocumento": "Total",
+      "nessunaPrenotazione": "No invoices for this booking.",
+      "altroIntestatario": "Bill someone else (e.g. a company)",
+      "creaBozza": "Create invoice draft",
+      "salvata": "Draft saved.",
+      "emessa": "Invoice issued and sent to the customer.",
+      "intestatario": {
+        "titolo": "Bill to",
+        "aiuto": "Individual: first name, last name and tax code. Company: name and VAT number.",
+        "denominazione": "Company name",
+        "nome": "First name",
+        "cognome": "Last name",
+        "codice_fiscale": "Tax code",
+        "partita_iva": "VAT number",
+        "indirizzo": "Address",
+        "cap": "Postcode",
+        "comune": "Town",
+        "provincia": "Province (code)",
+        "nazione": "Country (code)",
+        "codice_destinatario": "Recipient code",
+        "codiceAiuto": "0000000 if delivered by PEC or to the tax drawer.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Lines",
+        "aiuto": "Prices excluding VAT; a negative price is a discount.",
+        "descrizione": "Description",
+        "quantita": "Quantity",
+        "prezzo": "Unit price",
+        "aliquota": "VAT (%)",
+        "natura": "VAT nature",
+        "naturaAiuto": "Only with 0% VAT, e.g. N1 or N2.2.",
+        "togli": "Remove line",
+        "aggiungi": "Add line"
+      },
+      "bozza": {
+        "titolo": "Edit draft",
+        "salva": "Save draft",
+        "emetti": "Issue invoice",
+        "emettiAiuto": "Assigns the number, generates XML and PDF and emails the PDF to the customer. It can’t be edited afterwards.",
+        "salvaPrima": "Save your changes before issuing.",
+        "emettiConferma": "Yes, issue"
+      },
+      "elimina": {
+        "titolo": "Delete draft",
+        "aiuto": "Drafts have no number: deleting one leaves no gap in the numbering.",
+        "conferma": "Yes, delete"
+      },
+      "sdi": {
+        "titolo": "Exchange System (SDI)",
+        "aiuto": "Record the transmission status and the SDI receipt here.",
+        "id": "SDI identifier",
+        "esito": "SDI outcome",
+        "salva": "Save outcome",
+        "salvato": "SDI outcome saved."
+      },
+      "file": {
+        "titolo": "Files",
+        "aiuto": "Regenerate them after fixing the property’s tax details.",
+        "pdf": "Download PDF",
+        "xml": "Download XML",
+        "rigenera": "Regenerate files",
+        "rigenerati": "Files regenerated."
+      },
+      "nota": {
+        "titolo": "Credit note",
+        "aiuto": "Reverses the whole invoice: the note is issued at once and sent to the customer.",
+        "motivo": "Reason",
+        "storna": "Reverse with a credit note",
+        "conferma": "Yes, issue the note"
       }
     }
   },

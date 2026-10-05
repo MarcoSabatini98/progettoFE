@@ -233,7 +233,14 @@
     "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo.",
     "GIA_PUBBLICATO": "El documento ya está publicado: crea una nueva versión.",
     "LINGUA_NON_ATTIVA": "Este idioma no está activo en el sitio.",
-    "CAMPO_NON_TRADUCIBILE": "Este campo no se traduce."
+    "CAMPO_NON_TRADUCIBILE": "Este campo no se traduce.",
+    "NON_FATTURABILE": "La reserva aún no tiene nada que facturar.",
+    "FATTURA_NON_TROVATA": "Factura no encontrada.",
+    "FATTURA_NON_MODIFICABILE": "La factura ya está emitida: se corrige con una nota de crédito.",
+    "FATTURA_VUOTA": "La factura no tiene importes.",
+    "RIGHE_MANCANTI": "La factura debe tener al menos una línea.",
+    "NON_STORNABILE": "Solo se anula una factura emitida.",
+    "FATTURA_NON_EMESSA": "La factura aún no está emitida."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1612,6 +1619,106 @@
       "esiti": {
         "annulla": "Cobro anulado.",
         "rimborsa": "Reembolso registrado."
+      }
+    },
+    "fatture": {
+      "titolo": "Facturas",
+      "introduzione": "Los borradores se crean desde la ficha de la reserva.",
+      "cerca": "Buscar por destinatario, código fiscal o NIF-IVA",
+      "anno": "Año",
+      "totale": "Documentos encontrados: {{ totale }}",
+      "vuoto": "Ninguna factura con estos filtros.",
+      "tutte": "Todas las facturas",
+      "tipi": {
+        "TD01": "Factura",
+        "TD04": "Nota de crédito"
+      },
+      "stati": {
+        "bozza": "Borrador",
+        "da_inviare": "Por enviar",
+        "inviata": "Enviada",
+        "consegnata": "Entregada",
+        "mancata_consegna": "No entregada",
+        "scartata": "Rechazada por el SDI",
+        "accettata": "Aceptada",
+        "rifiutata": "Rehusada"
+      },
+      "prenotazione": "Reserva",
+      "origine": "Factura anulada",
+      "apri": "Abrir",
+      "imponibile": "Base imponible",
+      "imposta": "IVA",
+      "esente": "No sujeto",
+      "totaleDocumento": "Total",
+      "nessunaPrenotazione": "Ninguna factura para esta reserva.",
+      "altroIntestatario": "Facturar a otro (p. ej. una empresa)",
+      "creaBozza": "Crear borrador de factura",
+      "salvata": "Borrador guardado.",
+      "emessa": "Factura emitida y enviada al cliente.",
+      "intestatario": {
+        "titolo": "Destinatario",
+        "aiuto": "Particular: nombre, apellidos y código fiscal. Empresa: razón social y NIF-IVA.",
+        "denominazione": "Razón social",
+        "nome": "Nombre",
+        "cognome": "Apellidos",
+        "codice_fiscale": "Código fiscal",
+        "partita_iva": "NIF-IVA",
+        "indirizzo": "Dirección",
+        "cap": "Código postal",
+        "comune": "Municipio",
+        "provincia": "Provincia (sigla)",
+        "nazione": "País (sigla)",
+        "codice_destinatario": "Código de destinatario",
+        "codiceAiuto": "0000000 si llega por PEC o al buzón fiscal.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Líneas",
+        "aiuto": "Precios sin IVA; un precio negativo es un descuento.",
+        "descrizione": "Descripción",
+        "quantita": "Cantidad",
+        "prezzo": "Precio unitario",
+        "aliquota": "IVA (%)",
+        "natura": "Naturaleza IVA",
+        "naturaAiuto": "Solo con IVA 0, p. ej. N1 o N2.2.",
+        "togli": "Quitar línea",
+        "aggiungi": "Añadir línea"
+      },
+      "bozza": {
+        "titolo": "Editar borrador",
+        "salva": "Guardar borrador",
+        "emetti": "Emitir factura",
+        "emettiAiuto": "Asigna el número, genera XML y PDF y envía el PDF al cliente. Después ya no se modifica.",
+        "salvaPrima": "Guarda los cambios antes de emitir.",
+        "emettiConferma": "Sí, emitir"
+      },
+      "elimina": {
+        "titolo": "Eliminar borrador",
+        "aiuto": "El borrador no tiene número: eliminarlo no deja huecos en la numeración.",
+        "conferma": "Sí, eliminar"
+      },
+      "sdi": {
+        "titolo": "Sistema de Intercambio (SDI)",
+        "aiuto": "Registra aquí el estado de la transmisión y el recibo del SDI.",
+        "id": "Identificador SDI",
+        "esito": "Resultado SDI",
+        "salva": "Guardar resultado",
+        "salvato": "Resultado SDI guardado."
+      },
+      "file": {
+        "titolo": "Archivos",
+        "aiuto": "Regenéralos tras corregir los datos fiscales del alojamiento.",
+        "pdf": "Descargar PDF",
+        "xml": "Descargar XML",
+        "rigenera": "Regenerar archivos",
+        "rigenerati": "Archivos regenerados."
+      },
+      "nota": {
+        "titolo": "Nota de crédito",
+        "aiuto": "Anula toda la factura: la nota se emite al momento y se envía al cliente.",
+        "motivo": "Motivo",
+        "storna": "Anular con nota de crédito",
+        "conferma": "Sí, emitir la nota"
       }
     }
   },

@@ -1,0 +1,89 @@
+@let modulo = gruppo();
+@let controlli = modulo.controls;
+<fieldset class="modulo-scheda" [formGroup]="modulo">
+  <legend>{{ 'gestionale.fatture.intestatario.titolo' | transloco }}</legend>
+  <p class="tenue piccolo">{{ 'gestionale.fatture.intestatario.aiuto' | transloco }}</p>
+  <app-campo
+    [etichetta]="'gestionale.fatture.intestatario.denominazione' | transloco"
+    [errore]="errori.campo(controlli.denominazione)"
+  >
+    <input formControlName="denominazione" [maxLength]="lunghezza.denominazione" />
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input formControlName="nome" autocomplete="off" [maxLength]="lunghezza.nome" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.cognome' | transloco"
+      [errore]="errori.campo(controlli.cognome)"
+    >
+      <input formControlName="cognome" autocomplete="off" [maxLength]="lunghezza.nome" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.codice_fiscale' | transloco"
+      [errore]="errori.campo(controlli.codice_fiscale)"
+    >
+      <input formControlName="codice_fiscale" [maxLength]="lunghezza.codiceFiscale" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.partita_iva' | transloco"
+      [errore]="errori.campo(controlli.partita_iva)"
+    >
+      <input formControlName="partita_iva" [maxLength]="lunghezza.partitaIva" />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.fatture.intestatario.indirizzo' | transloco"
+    [errore]="errori.campo(controlli.indirizzo)"
+  >
+    <input formControlName="indirizzo" [maxLength]="lunghezza.indirizzo" />
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.cap' | transloco"
+      [errore]="errori.campo(controlli.cap)"
+    >
+      <input formControlName="cap" inputmode="numeric" [maxLength]="lunghezza.cap" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.comune' | transloco"
+      [errore]="errori.campo(controlli.comune)"
+    >
+      <input formControlName="comune" [maxLength]="lunghezza.comune" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.provincia' | transloco"
+      [errore]="errori.campo(controlli.provincia)"
+    >
+      <input formControlName="provincia" maxlength="2" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.nazione' | transloco"
+      [errore]="errori.campo(controlli.nazione)"
+    >
+      <input formControlName="nazione" maxlength="2" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.codice_destinatario' | transloco"
+      [aiuto]="'gestionale.fatture.intestatario.codiceAiuto' | transloco"
+      [errore]="errori.campo(controlli.codice_destinatario)"
+    >
+      <input formControlName="codice_destinatario" maxlength="7" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.intestatario.pec' | transloco"
+      [errore]="errori.campo(controlli.pec)"
+    >
+      <input type="email" formControlName="pec" [maxLength]="lunghezza.pec" />
+    </app-campo>
+  </div>
+</fieldset>

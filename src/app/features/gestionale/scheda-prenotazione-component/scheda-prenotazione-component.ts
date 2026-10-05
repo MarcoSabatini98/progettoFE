@@ -30,6 +30,7 @@ import { StatoPrenotazione } from '../../../shared/models/prenotazione/prenotazi
 import { DataPipe } from '../../../shared/pipes/data-pipe';
 import { PrezzoPipe } from '../../../shared/pipes/prezzo-pipe';
 import { AzioniPrenotazioneComponent } from '../azioni-prenotazione-component/azioni-prenotazione-component';
+import { FatturePrenotazioneComponent } from '../fatture-prenotazione-component/fatture-prenotazione-component';
 import { IncassiPrenotazioneComponent } from '../incassi-prenotazione-component/incassi-prenotazione-component';
 import { LinkCheckinComponent } from '../link-checkin-component/link-checkin-component';
 import { ModificaPrenotazioneComponent } from '../modifica-prenotazione-component/modifica-prenotazione-component';
@@ -41,7 +42,7 @@ const STATI_PRIMA_ARRIVO: readonly StatoPrenotazione[] = STATI_MODIFICABILI_CLIE
 
 /**
  * Prenotazione vista dallo staff: passi di stato, dati di gestione, modifiche, extra,
- * ospiti, incassi, link del check-in online e cancellazione, ognuno secondo i permessi.
+ * ospiti, incassi, fatture, link del check-in online e cancellazione, ognuno secondo i permessi.
  */
 @Component({
   selector: 'app-scheda-prenotazione',
@@ -55,6 +56,7 @@ const STATI_PRIMA_ARRIVO: readonly StatoPrenotazione[] = STATI_MODIFICABILI_CLIE
     ContoPrenotazioneComponent,
     DettagliPrenotazioneComponent,
     ExtraPrenotazioneComponent,
+    FatturePrenotazioneComponent,
     IconaComponent,
     IncassiPrenotazioneComponent,
     LinkCheckinComponent,
@@ -82,6 +84,7 @@ export class SchedaPrenotazioneComponent {
     checkIn: this.auth.haPermessi([PERMESSI.CHECKIN_GESTISCI]),
     incassi: this.auth.haPermessi([PERMESSI.PAGAMENTI_LEGGI]),
     ospiti: this.auth.haPermessi([PERMESSI.OSPITI_GESTISCI]),
+    fatture: this.auth.haPermessi([PERMESSI.FATTURE_GESTISCI]),
   };
   protected readonly prenotazione = rxResource({
     params: () => this.id(),

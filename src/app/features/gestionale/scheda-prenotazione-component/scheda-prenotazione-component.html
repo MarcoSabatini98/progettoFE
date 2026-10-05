@@ -121,6 +121,9 @@
         (aggiornata)="prenotazione.reload()"
       />
     }
+    @if (puo.fatture) {
+      <app-fatture-prenotazione [prenotazioneId]="dati.id" />
+    }
     @if (puo.checkIn && primaArrivo()) {
       <app-link-checkin [prenotazioneId]="dati.id" />
     }

@@ -224,6 +224,24 @@ export const routes: Routes = [
             (m) => m.PagamentiComponent,
           ),
       },
+      {
+        path: 'fatture',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.FATTURE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/fatture-component/fatture-component').then(
+            (m) => m.FattureComponent,
+          ),
+      },
+      {
+        path: 'fatture/:id',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.FATTURE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/scheda-fattura-component/scheda-fattura-component').then(
+            (m) => m.SchedaFatturaComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',
