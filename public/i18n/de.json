@@ -246,7 +246,11 @@
     "AUTO_DECLASSAMENTO": "Sie können sich die Administratorrolle nicht selbst entziehen.",
     "AUTO_ELIMINAZIONE": "Ihr eigenes Konto können Sie hier nicht löschen.",
     "RUOLO_NON_ASSEGNABILE": "Diese Rolle kann nicht vergeben werden.",
-    "RUOLO_CLIENTE": "Ein Gastkonto bleibt ein Gastkonto."
+    "RUOLO_CLIENTE": "Ein Gastkonto bleibt ein Gastkonto.",
+    "RUOLO_NON_MODIFICABILE": "Der Administrator hat immer alle Berechtigungen.",
+    "RUOLO_NON_TROVATO": "Rolle nicht gefunden.",
+    "PERMESSO_SCONOSCIUTO": "Eine der Berechtigungen gibt es nicht mehr: Seite neu laden.",
+    "RUOLO_NON_STAFF": "Der interne Chat ist nur für das Personal."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1839,6 +1843,97 @@
         "titolo": "Konto löschen",
         "aiuto": "Eine Anmeldung ist dann nicht mehr möglich. Buchungen, Rechnungen und Gästedaten bleiben aus rechtlichen Gründen erhalten.",
         "conferma": "Ja, löschen"
+      }
+    },
+    "permessi": {
+      "titolo": "Rollen und Berechtigungen",
+      "introduzione": "Was jede Personalrolle darf und wer wem im internen Chat schreiben kann.",
+      "permessi": "Berechtigungen",
+      "admin": "Der Administrator hat immer alle Berechtigungen. Änderungen gelten sofort für alle mit dieser Rolle.",
+      "salva": "Berechtigungen speichern",
+      "salvati": "Berechtigungen gespeichert.",
+      "moduli": {
+        "camere": "Zimmer",
+        "tariffe": "Preise und Kalender",
+        "prenotazioni": "Buchungen",
+        "ospiti": "Gäste",
+        "pagamenti": "Zahlungen und Rechnungen",
+        "pulizie": "Reinigung und Wartung",
+        "recensioni": "Bewertungen",
+        "chat": "Kundenservice",
+        "contenuti": "Website-Inhalte",
+        "utenti": "Benutzer",
+        "impostazioni": "Einstellungen",
+        "analytics": "Berichte"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Zimmer, Zimmertypen und Leistungen verwalten"
+        },
+        "tariffe": {
+          "gestisci": "Zeiträume, Tarife, Aktionen, Rabattcodes und Kurtaxe verwalten"
+        },
+        "calendari": {
+          "gestisci": "Gesperrte Tage und externe Kalender verwalten"
+        },
+        "prenotazioni": {
+          "leggi": "Alle Buchungen sehen",
+          "gestisci": "Buchungen anlegen, ändern und stornieren"
+        },
+        "checkin": {
+          "gestisci": "An- und Abreisen, Gästedaten und Ausweise erfassen"
+        },
+        "ospiti": {
+          "gestisci": "Gästekartei verwalten"
+        },
+        "alloggiati": {
+          "invia": "Meldescheine an Alloggiati Web senden"
+        },
+        "pagamenti": {
+          "leggi": "Zahlungen sehen",
+          "registra": "Zahlungen vor Ort und Erstattungen erfassen"
+        },
+        "fatture": {
+          "gestisci": "Rechnungen und Gutschriften ausstellen"
+        },
+        "pulizie": {
+          "leggi": "Reinigungen sehen",
+          "esegui": "Eigene Reinigungen aktualisieren",
+          "gestisci": "Reinigungen zuweisen und prüfen"
+        },
+        "manutenzione": {
+          "segnala": "Defekte und Probleme melden",
+          "gestisci": "Wartungsmeldungen bearbeiten"
+        },
+        "recensioni": {
+          "modera": "Bewertungen veröffentlichen, ablehnen und beantworten"
+        },
+        "chat": {
+          "assistenza": "Kunden und Besuchern im Chat antworten"
+        },
+        "faq": {
+          "gestisci": "FAQ verwalten"
+        },
+        "contenuti": {
+          "gestisci": "Bilder, Texte, Übersetzungen und Rechtstexte verwalten"
+        },
+        "utenti": {
+          "gestisci": "Konten von Personal und Kunden verwalten"
+        },
+        "impostazioni": {
+          "gestisci": "Einstellungen der Unterkunft ändern"
+        },
+        "analytics": {
+          "leggi": "Statistiken und Berichte sehen"
+        }
+      },
+      "chat": {
+        "titolo": "Interner Chat",
+        "aiuto": "Wähle, wer sich schreiben darf: Eine Regel gilt in beide Richtungen. Kollegen mit derselben Rolle sprechen in der Gruppe ihres Teams.",
+        "colleghi": "Unter {{ ruolo }}",
+        "coppia": "{{ a }} und {{ b }}",
+        "salva": "Regeln speichern",
+        "salvate": "Chat-Regeln gespeichert."
       }
     }
   },
