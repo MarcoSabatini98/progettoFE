@@ -134,6 +134,15 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'servizi',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.CAMERE_GESTISCI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/servizi-component/servizi-component').then(
+            (m) => m.ServiziComponent,
+          ),
+      },
+      {
         path: 'pulizie',
         canActivate: [ruoloGuard],
         data: { permessi: [PERMESSI.PULIZIE_LEGGI] } satisfies RequisitiAccessoInterface,

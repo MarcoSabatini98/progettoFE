@@ -54,7 +54,8 @@
       "ruoli": "Rollen und Rechte",
       "registro": "Aktivitätsprotokoll",
       "impostazioni": "Einstellungen",
-      "oggi": "Heute"
+      "oggi": "Heute",
+      "servizi": "Leistungen"
     },
     "sito": {
       "aria": "Website-Menü",
@@ -1613,6 +1614,38 @@
         "annulla": "Zahlung storniert.",
         "rimborsa": "Erstattung erfasst."
       }
+    },
+    "servizi": {
+      "occhiello": "Unterkunft",
+      "titolo": "Leistungen",
+      "elenco": {
+        "titolo": "Katalog",
+        "aiuto": "Ausstattungen werden bei den Zimmern angehakt, Extras mit der Buchung gekauft.",
+        "nuova": "Neue Leistung",
+        "vuoto": "Keine Leistungen.",
+        "elimina": "Leistung löschen",
+        "eliminaAiuto": "Sie verschwindet aus Zimmern, Paketen und Website; bestehende Buchungen behalten sie.",
+        "eliminaConferma": "Leistung löschen?"
+      },
+      "nuovo": "Neue Leistung",
+      "modifica": "Leistung bearbeiten",
+      "tipi": {
+        "dotazione": "Ausstattung",
+        "extra": "Extra"
+      },
+      "campi": {
+        "nome": "Name",
+        "tipo": "Art",
+        "descrizione": "Beschreibung",
+        "icona": "Symbol",
+        "prezzo": "Preis",
+        "calcolo_prezzo": "Preis gilt",
+        "aliquota_iva": "MwSt.-Satz (%)",
+        "ordine": "Reihenfolge",
+        "attivo": "Aktiv"
+      },
+      "iconaAiuto": "Name eines Material-Symbols-Icons, z. B. wifi oder local_parking.",
+      "aliquotaAiuto": "Leer: Es gilt der Standardsatz aus den Einstellungen."
     }
   },
   "anagrafica": {
