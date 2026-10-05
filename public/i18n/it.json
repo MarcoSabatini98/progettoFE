@@ -1753,6 +1753,44 @@
         "storna": "Storna con nota di credito",
         "conferma": "Sì, emetti la nota"
       }
+    },
+    "report": {
+      "titolo": "Report",
+      "introduzione": "Prezzi suggeriti per i prossimi giorni e i conti dell'anno: incassi e imposta di soggiorno.",
+      "contiAnno": "Conti del {{ anno }}",
+      "anno": "Anno",
+      "mese": "Mese",
+      "totale": "Totale",
+      "vuoto": "Nessun movimento nel {{ anno }}.",
+      "incassi": {
+        "titolo": "Incassi per metodo",
+        "nota": "Importi netti: i rimborsi sono già sottratti."
+      },
+      "tassa": {
+        "titolo": "Imposta di soggiorno",
+        "nota": "Mese per mese, per la dichiarazione al Comune.",
+        "prenotazioni": "Prenotazioni",
+        "ospiti": "Ospiti",
+        "notti": "Notti",
+        "tassa": "Imposta"
+      },
+      "suggerimenti": {
+        "titolo": "Prezzi suggeriti",
+        "introduzione": "Prossimi 30 giorni, solo quelli da ritoccare. Decidi tu se cambiare il listino.",
+        "tipologia": "Tipologia",
+        "aiutoTipologia": "Scegline una per vedere il prezzo suggerito.",
+        "tutte": "Tutte",
+        "occupazione": "Già venduto",
+        "prezzo": "Prezzo suggerito",
+        "vuoto": "Nei prossimi 30 giorni nessun prezzo da ritoccare.",
+        "motivi": {
+          "occupazione_alta": "Occupazione oltre il {{ valore }}%: domanda forte",
+          "occupazione_buona": "Occupazione oltre il {{ valore }}%: buona domanda",
+          "occupazione_bassa": "Occupazione sotto il {{ valore }}%",
+          "ultimo_minuto": "Mancano meno di {{ valore }} giorni",
+          "evento": "Evento: {{ valore }}"
+        }
+      }
     }
   },
   "anagrafica": {

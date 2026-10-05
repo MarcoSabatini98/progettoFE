@@ -284,3 +284,39 @@
   color: var(--bb-brand-testo);
   border-bottom-color: currentColor;
 }
+
+/* Tabelle di numeri (report): sul telefono scorrono di lato, la prima colonna resta ferma. */
+.tabella-scorrevole {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.tabella {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tabella th,
+.tabella td {
+  padding: var(--bb-spazio-2) var(--bb-spazio-3);
+  border-bottom: 1px solid var(--bb-linea);
+  text-align: end;
+}
+
+.tabella th:first-child {
+  position: sticky;
+  inset-inline-start: 0;
+  background: var(--bb-superficie);
+  text-align: start;
+}
+
+.tabella thead th {
+  color: var(--bb-testo-tenue);
+  font-weight: 600;
+}
+
+.tabella tfoot {
+  font-weight: 700;
+}

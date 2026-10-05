@@ -102,6 +102,7 @@ export const PERCORSI_STAFF = {
   pagamenti: `${PERCORSO_STAFF}/pagamenti`,
   /** Seguito dall'id per la scheda: /staff/fatture/<id> (link nelle notifiche). */
   fatture: `${PERCORSO_STAFF}/fatture`,
+  report: `${PERCORSO_STAFF}/report`,
 } as const;
 
 /**
@@ -238,7 +239,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
     voci: [
       {
         etichetta: 'menu.voci.report',
-        percorso: `${PERCORSO_STAFF}/report`,
+        percorso: PERCORSI_STAFF.report,
         icona: 'monitoring',
         permessi: [PERMESSI.ANALYTICS_LEGGI],
       },

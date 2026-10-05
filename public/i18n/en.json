@@ -1753,6 +1753,44 @@
         "storna": "Reverse with a credit note",
         "conferma": "Yes, issue the note"
       }
+    },
+    "report": {
+      "titolo": "Reports",
+      "introduzione": "Suggested prices for the coming days and the year's figures: takings and tourist tax.",
+      "contiAnno": "{{ anno }} figures",
+      "anno": "Year",
+      "mese": "Month",
+      "totale": "Total",
+      "vuoto": "No movements in {{ anno }}.",
+      "incassi": {
+        "titolo": "Takings by method",
+        "nota": "Net amounts: refunds already deducted."
+      },
+      "tassa": {
+        "titolo": "Tourist tax",
+        "nota": "Month by month, for the return to the municipality.",
+        "prenotazioni": "Bookings",
+        "ospiti": "Guests",
+        "notti": "Nights",
+        "tassa": "Tax"
+      },
+      "suggerimenti": {
+        "titolo": "Suggested prices",
+        "introduzione": "Next 30 days, only those worth adjusting. You decide whether to change the rates.",
+        "tipologia": "Room type",
+        "aiutoTipologia": "Pick one to see the suggested price.",
+        "tutte": "All",
+        "occupazione": "Already sold",
+        "prezzo": "Suggested price",
+        "vuoto": "No prices to adjust in the next 30 days.",
+        "motivi": {
+          "occupazione_alta": "Occupancy above {{ valore }}%: strong demand",
+          "occupazione_buona": "Occupancy above {{ valore }}%: good demand",
+          "occupazione_bassa": "Occupancy below {{ valore }}%",
+          "ultimo_minuto": "Less than {{ valore }} days to go",
+          "evento": "Event: {{ valore }}"
+        }
+      }
     }
   },
   "anagrafica": {

@@ -1,0 +1,45 @@
+<section class="scheda" aria-labelledby="tassa-anno-titolo">
+  <h3 class="titolo-scheda" id="tassa-anno-titolo">
+    {{ 'gestionale.report.tassa.titolo' | transloco }}
+  </h3>
+  <p class="tenue piccolo">{{ 'gestionale.report.tassa.nota' | transloco }}</p>
+
+  @if (mesi.hasValue()) {
+    @if (mesi.value().length) {
+      <div class="tabella-scorrevole" [attr.aria-busy]="mesi.isLoading()">
+        <table class="tabella">
+          <thead>
+            <tr>
+              <th scope="col">{{ 'gestionale.report.mese' | transloco }}</th>
+              @for (campo of campi; track campo) {
+                <th scope="col">{{ 'gestionale.report.tassa.' + campo | transloco }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (riga of mesi.value(); track riga.mese) {
+              <tr>
+                <th scope="row">{{ riga.mese + '-01' | data: 'mese' }}</th>
+                @for (campo of campi; track campo) {
+                  <td>{{ campo === 'tassa' ? (riga[campo] | prezzo) : riga[campo] }}</td>
+                }
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">{{ 'gestionale.report.totale' | transloco }}</th>
+              @for (totale of totali(); track $index) {
+                <td>{{ campi[$index] === 'tassa' ? (totale | prezzo) : totale }}</td>
+              }
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    } @else {
+      <p class="stato-vuoto">{{ 'gestionale.report.vuoto' | transloco: { anno: anno() } }}</p>
+    }
+  } @else if (mesi.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>

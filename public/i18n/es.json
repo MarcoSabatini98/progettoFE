@@ -1753,6 +1753,44 @@
         "storna": "Anular con nota de crédito",
         "conferma": "Sí, emitir la nota"
       }
+    },
+    "report": {
+      "titolo": "Informes",
+      "introduzione": "Precios sugeridos para los próximos días y las cuentas del año: cobros y tasa turística.",
+      "contiAnno": "Cuentas de {{ anno }}",
+      "anno": "Año",
+      "mese": "Mes",
+      "totale": "Total",
+      "vuoto": "Ningún movimiento en {{ anno }}.",
+      "incassi": {
+        "titolo": "Cobros por método",
+        "nota": "Importes netos: reembolsos ya descontados."
+      },
+      "tassa": {
+        "titolo": "Tasa turística",
+        "nota": "Mes a mes, para la declaración al ayuntamiento.",
+        "prenotazioni": "Reservas",
+        "ospiti": "Huéspedes",
+        "notti": "Noches",
+        "tassa": "Tasa"
+      },
+      "suggerimenti": {
+        "titolo": "Precios sugeridos",
+        "introduzione": "Próximos 30 días, solo los que conviene ajustar. Tú decides si cambiar las tarifas.",
+        "tipologia": "Tipo de habitación",
+        "aiutoTipologia": "Elige uno para ver el precio sugerido.",
+        "tutte": "Todos",
+        "occupazione": "Ya vendido",
+        "prezzo": "Precio sugerido",
+        "vuoto": "Ningún precio que ajustar en los próximos 30 días.",
+        "motivi": {
+          "occupazione_alta": "Ocupación superior al {{ valore }} %: demanda fuerte",
+          "occupazione_buona": "Ocupación superior al {{ valore }} %: buena demanda",
+          "occupazione_bassa": "Ocupación inferior al {{ valore }} %",
+          "ultimo_minuto": "Faltan menos de {{ valore }} días",
+          "evento": "Evento: {{ valore }}"
+        }
+      }
     }
   },
   "anagrafica": {

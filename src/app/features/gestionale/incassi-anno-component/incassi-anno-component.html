@@ -1,0 +1,48 @@
+<section class="scheda" aria-labelledby="incassi-anno-titolo">
+  <h3 class="titolo-scheda" id="incassi-anno-titolo">
+    {{ 'gestionale.report.incassi.titolo' | transloco }}
+  </h3>
+  <p class="tenue piccolo">{{ 'gestionale.report.incassi.nota' | transloco }}</p>
+
+  @if (tabella(); as dati) {
+    @if (dati.righe.length) {
+      <div class="tabella-scorrevole" [attr.aria-busy]="incassi.isLoading()">
+        <table class="tabella">
+          <thead>
+            <tr>
+              <th scope="col">{{ 'gestionale.report.mese' | transloco }}</th>
+              @for (metodo of dati.metodi; track metodo) {
+                <th scope="col">{{ 'gestionale.metodi.' + metodo | transloco }}</th>
+              }
+              <th scope="col">{{ 'gestionale.report.totale' | transloco }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (riga of dati.righe; track riga.mese) {
+              <tr>
+                <th scope="row">{{ riga.mese + '-01' | data: 'mese' }}</th>
+                @for (netto of riga.celle; track $index) {
+                  <td>{{ netto | prezzo }}</td>
+                }
+                <td>{{ riga.totale | prezzo }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">{{ 'gestionale.report.totale' | transloco }}</th>
+              @for (netto of dati.totali; track $index) {
+                <td>{{ netto | prezzo }}</td>
+              }
+              <td>{{ dati.totale | prezzo }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    } @else {
+      <p class="stato-vuoto">{{ 'gestionale.report.vuoto' | transloco: { anno: anno() } }}</p>
+    }
+  } @else if (incassi.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>

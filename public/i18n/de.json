@@ -1753,6 +1753,44 @@
         "storna": "Mit Gutschrift stornieren",
         "conferma": "Ja, Gutschrift ausstellen"
       }
+    },
+    "report": {
+      "titolo": "Berichte",
+      "introduzione": "Preisvorschläge für die nächsten Tage und die Zahlen des Jahres: Einnahmen und Kurtaxe.",
+      "contiAnno": "Zahlen {{ anno }}",
+      "anno": "Jahr",
+      "mese": "Monat",
+      "totale": "Summe",
+      "vuoto": "Keine Bewegungen im Jahr {{ anno }}.",
+      "incassi": {
+        "titolo": "Einnahmen nach Zahlungsart",
+        "nota": "Nettobeträge: Erstattungen bereits abgezogen."
+      },
+      "tassa": {
+        "titolo": "Kurtaxe",
+        "nota": "Monat für Monat, für die Meldung an die Gemeinde.",
+        "prenotazioni": "Buchungen",
+        "ospiti": "Gäste",
+        "notti": "Nächte",
+        "tassa": "Taxe"
+      },
+      "suggerimenti": {
+        "titolo": "Preisvorschläge",
+        "introduzione": "Die nächsten 30 Tage, nur die anzupassenden. Ob du die Preise änderst, entscheidest du.",
+        "tipologia": "Zimmertyp",
+        "aiutoTipologia": "Wähle einen, um den vorgeschlagenen Preis zu sehen.",
+        "tutte": "Alle",
+        "occupazione": "Bereits verkauft",
+        "prezzo": "Vorgeschlagener Preis",
+        "vuoto": "In den nächsten 30 Tagen keine Preise anzupassen.",
+        "motivi": {
+          "occupazione_alta": "Auslastung über {{ valore }} %: starke Nachfrage",
+          "occupazione_buona": "Auslastung über {{ valore }} %: gute Nachfrage",
+          "occupazione_bassa": "Auslastung unter {{ valore }} %",
+          "ultimo_minuto": "Weniger als {{ valore }} Tage bis dahin",
+          "evento": "Veranstaltung: {{ valore }}"
+        }
+      }
     }
   },
   "anagrafica": {

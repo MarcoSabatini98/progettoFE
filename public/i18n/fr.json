@@ -1753,6 +1753,44 @@
         "storna": "Annuler par un avoir",
         "conferma": "Oui, émettre l’avoir"
       }
+    },
+    "report": {
+      "titolo": "Rapports",
+      "introduzione": "Prix suggérés pour les prochains jours et les comptes de l'année : encaissements et taxe de séjour.",
+      "contiAnno": "Comptes {{ anno }}",
+      "anno": "Année",
+      "mese": "Mois",
+      "totale": "Total",
+      "vuoto": "Aucun mouvement en {{ anno }}.",
+      "incassi": {
+        "titolo": "Encaissements par moyen",
+        "nota": "Montants nets : remboursements déjà déduits."
+      },
+      "tassa": {
+        "titolo": "Taxe de séjour",
+        "nota": "Mois par mois, pour la déclaration à la commune.",
+        "prenotazioni": "Réservations",
+        "ospiti": "Clients",
+        "notti": "Nuits",
+        "tassa": "Taxe"
+      },
+      "suggerimenti": {
+        "titolo": "Prix suggérés",
+        "introduzione": "Les 30 prochains jours, seulement ceux à ajuster. À vous de décider de modifier les tarifs.",
+        "tipologia": "Type de chambre",
+        "aiutoTipologia": "Choisissez-en un pour voir le prix suggéré.",
+        "tutte": "Tous",
+        "occupazione": "Déjà vendu",
+        "prezzo": "Prix suggéré",
+        "vuoto": "Aucun prix à ajuster dans les 30 prochains jours.",
+        "motivi": {
+          "occupazione_alta": "Occupation au-delà de {{ valore }} % : forte demande",
+          "occupazione_buona": "Occupation au-delà de {{ valore }} % : bonne demande",
+          "occupazione_bassa": "Occupation sous {{ valore }} %",
+          "ultimo_minuto": "Moins de {{ valore }} jours restants",
+          "evento": "Événement : {{ valore }}"
+        }
+      }
     }
   },
   "anagrafica": {
