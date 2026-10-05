@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ChatService } from '../../../core/services/chat/chat-service';
-import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { SocketService } from '../../../core/services/socket/socket-service';
-import { MessaggioInterface } from '../../../shared/models/messaggio/messaggio-model';
+import { ChatService } from '../../core/services/chat/chat-service';
+import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { SocketService } from '../../core/services/socket/socket-service';
+import { MessaggioInterface } from '../models/messaggio/messaggio-model';
 import { ScriviMessaggioComponent } from './scrivi-messaggio-component';
 
 describe('ScriviMessaggioComponent', () => {

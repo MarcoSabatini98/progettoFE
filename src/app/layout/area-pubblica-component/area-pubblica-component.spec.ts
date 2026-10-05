@@ -1,13 +1,15 @@
 import { signal } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { DeferBlockState, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { NEVER, of } from 'rxjs';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
+import { ChatService } from '../../core/services/chat/chat-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { MENU_PUBBLICO } from '../../core/services/navigazione/navigazione-costanti';
+import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { NotificheService } from '../../core/services/notifiche/notifiche-service';
 import { SocketService } from '../../core/services/socket/socket-service';
@@ -21,11 +23,13 @@ describe('AreaPubblicaComponent', () => {
   };
 
   const collegato = signal(false);
+  const staff = signal(false);
 
-  beforeEach(() => {
+  beforeEach(async () => {
     collegato.set(false);
+    staff.set(false);
     TestBed.configureTestingModule({
-      imports: [traduzioniTest()],
+      imports: [traduzioniTest(), AreaPubblicaComponent],
       providers: [
         provideRouter([]),
         {
@@ -36,7 +40,12 @@ describe('AreaPubblicaComponent', () => {
             indirizzo: signal('Via Roma 1, 07100 Sassari (SS)'),
           },
         },
-        { provide: AuthService, useValue: { collegato, utente: signal(null) } },
+        {
+          provide: AuthService,
+          useValue: { collegato, utente: signal(null), token: signal(null) },
+        },
+        { provide: NavigazioneService, useValue: { staff } },
+        { provide: ChatService, useValue: {} },
         {
           provide: NotificheService,
           useValue: { elencaNotifiche: () => of({ elementi: [], non_lette: 0 }) },
@@ -44,11 +53,16 @@ describe('AreaPubblicaComponent', () => {
         { provide: SocketService, useValue: { ascolta: () => NEVER } },
       ],
     });
+    // Il widget della chat è in un @defer.
+    await TestBed.compileComponents();
   });
 
   async function crea() {
     const fixture = TestBed.createComponent(AreaPubblicaComponent);
     await fixture.whenStable();
+    for (const blocco of await fixture.getDeferBlocks()) {
+      await blocco.render(DeferBlockState.Complete);
+    }
     return fixture.nativeElement as HTMLElement;
   }
 
@@ -113,5 +127,12 @@ describe('AreaPubblicaComponent', () => {
     expect(elemento.querySelector('app-campanella')).not.toBeNull();
     expect(elemento.querySelector('app-menu-utente')).not.toBeNull();
     expect(elemento.querySelector('a[href="/accesso"]')).toBeNull();
+  });
+
+  it('offre la chat di assistenza a visitatori e clienti, non allo staff', async () => {
+    expect((await crea()).querySelector('app-widget-chat')).not.toBeNull();
+
+    staff.set(true);
+    expect((await crea()).querySelector('app-widget-chat')).toBeNull();
   });
 });

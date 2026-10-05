@@ -2112,5 +2112,23 @@
       "fattura_emessa": "Rechnung {{ numero }} verfügbar",
       "nuova_promozione": "Neues Angebot: {{ nome }}, Aufenthalte vom {{ inizio }} bis {{ fine }}"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Schreiben Sie uns",
+      "chiudi": "Chat schließen",
+      "titolo": "Kundenservice",
+      "online": "Wir sind online",
+      "offline": "Wir sind gerade nicht online: Wir antworten so bald wie möglich",
+      "introduzione": "Wie können wir helfen?",
+      "nome": "Name (optional)",
+      "email": "E-Mail (optional)",
+      "emailAiuto": "Damit Sie die Antwort auch nach dem Schließen der Seite erhalten",
+      "messaggio": "Nachricht",
+      "invia": "Senden",
+      "chiusa": "Unterhaltung beendet.",
+      "nuova": "Neue Unterhaltung",
+      "nuovi": "Neue Nachrichten"
+    }
   }
 }

@@ -9,6 +9,7 @@ import {
   MENU_PUBBLICO,
   PERCORSI_PUBBLICI,
 } from '../../core/services/navigazione/navigazione-costanti';
+import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { TIPI_DOCUMENTO_LEGALE } from '../../core/services/sistema/sistema-costanti';
 import { CampanellaComponent } from '../../shared/campanella-component/campanella-component';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
@@ -18,11 +19,13 @@ import { MediaPipe } from '../../shared/pipes/media-pipe';
 import { SelettoreLinguaComponent } from '../../shared/selettore-lingua-component/selettore-lingua-component';
 import { SelettoreTemaComponent } from '../../shared/selettore-tema-component/selettore-tema-component';
 import { chiudiPopover } from '../chiudi-popover';
+import { WidgetChatComponent } from '../widget-chat-component/widget-chat-component';
 
 /**
  * Guscio del sito pubblico e del portale cliente: testata con il menu del sito
  * (a cassetto da mobile, in riga da desktop), contenuto, piè di pagina
- * con i dati obbligatori della struttura (indirizzo, contatti, CIN).
+ * con i dati obbligatori della struttura (indirizzo, contatti, CIN) e la chat
+ * di assistenza per visitatori e clienti (lo staff risponde dal gestionale).
  */
 @Component({
   selector: 'app-area-pubblica',
@@ -38,6 +41,7 @@ import { chiudiPopover } from '../chiudi-popover';
     SelettoreLinguaComponent,
     SelettoreTemaComponent,
     MediaPipe,
+    WidgetChatComponent,
   ],
   templateUrl: './area-pubblica-component.html',
   styleUrl: './area-pubblica-component.css',
@@ -47,6 +51,7 @@ import { chiudiPopover } from '../chiudi-popover';
 export class AreaPubblicaComponent {
   private readonly impostazioni = inject(ImpostazioniService);
   protected readonly auth = inject(AuthService);
+  protected readonly navigazione = inject(NavigazioneService);
   protected readonly percorsi = PERCORSI_PUBBLICI;
   protected readonly documentiLegali = TIPI_DOCUMENTO_LEGALE;
   protected readonly menuSito = MENU_PUBBLICO;

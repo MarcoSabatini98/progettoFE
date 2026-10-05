@@ -2112,5 +2112,23 @@
       "fattura_emessa": "Invoice {{ numero }} available",
       "nuova_promozione": "New offer: {{ nome }}, stays from {{ inizio }} to {{ fine }}"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Chat with us",
+      "chiudi": "Close chat",
+      "titolo": "Support",
+      "online": "We're online",
+      "offline": "We're offline right now: we'll reply as soon as possible",
+      "introduzione": "How can we help?",
+      "nome": "Name (optional)",
+      "email": "Email (optional)",
+      "emailAiuto": "To get the reply even if you close the page",
+      "messaggio": "Message",
+      "invia": "Send",
+      "chiusa": "Conversation closed.",
+      "nuova": "New conversation",
+      "nuovi": "New messages"
+    }
   }
 }

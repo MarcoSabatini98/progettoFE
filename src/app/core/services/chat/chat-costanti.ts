@@ -15,6 +15,8 @@ export const GRUPPI_SQUADRA = {
 } as const;
 
 export const TESTO_MAX = 4000;
+/** Nome lasciato dal visitatore senza account, come il backend. */
+export const NOME_VISITATORE_MAX = 100;
 export const TITOLO_MAX = 150;
 export const ALLEGATI_MAX = 5;
 

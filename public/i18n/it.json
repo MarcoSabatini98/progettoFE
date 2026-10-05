@@ -2112,5 +2112,23 @@
       "fattura_emessa": "Fattura {{ numero }} disponibile",
       "nuova_promozione": "Nuova offerta: {{ nome }}, soggiorni dal {{ inizio }} al {{ fine }}"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Scrivici",
+      "chiudi": "Chiudi la chat",
+      "titolo": "Assistenza",
+      "online": "Siamo online",
+      "offline": "Ora non siamo online: ti rispondiamo appena possibile",
+      "introduzione": "Come possiamo aiutarti?",
+      "nome": "Nome (facoltativo)",
+      "email": "Email (facoltativa)",
+      "emailAiuto": "Per avere la risposta anche se chiudi la pagina",
+      "messaggio": "Messaggio",
+      "invia": "Invia",
+      "chiusa": "Conversazione chiusa.",
+      "nuova": "Nuova conversazione",
+      "nuovi": "Nuovi messaggi"
+    }
   }
 }
