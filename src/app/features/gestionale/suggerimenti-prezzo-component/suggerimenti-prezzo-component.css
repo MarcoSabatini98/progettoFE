@@ -1,0 +1,25 @@
+.riga {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+.percentuale {
+  font-variant-numeric: tabular-nums;
+}
+
+.percentuale[data-segno='su'] {
+  color: var(--bb-ok);
+}
+
+.percentuale[data-segno='giu'] {
+  color: var(--bb-errore);
+}
+
+.motivi {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding-inline-start: var(--bb-spazio-4);
+  color: var(--bb-testo-tenue);
+}

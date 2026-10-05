@@ -8,7 +8,14 @@ describe('SuggerimentoPrezzoInterface', () => {
       giorno: '2026-12-31',
       occupazione_percentuale: 90,
       percentuale: 15,
-      motivi: [{ percentuale: 15, motivo: 'Occupazione alta' }],
+      motivi: [
+        {
+          codice: 'occupazione_alta',
+          valore: 90,
+          percentuale: 15,
+          motivo: 'Occupazione oltre il 90%: domanda forte',
+        },
+      ],
       prezzo_suggerito: null,
     };
 

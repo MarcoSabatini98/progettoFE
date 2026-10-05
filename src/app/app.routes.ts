@@ -43,6 +43,15 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'report',
+        canActivate: [ruoloGuard],
+        data: { permessi: [PERMESSI.ANALYTICS_LEGGI] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/report-component/report-component').then(
+            (m) => m.ReportComponent,
+          ),
+      },
+      {
         path: 'oggi',
         canActivate: [ruoloGuard],
         data: { permessi: [PERMESSI.PRENOTAZIONI_LEGGI] } satisfies RequisitiAccessoInterface,

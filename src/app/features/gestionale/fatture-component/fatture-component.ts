@@ -4,7 +4,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime, map } from 'rxjs';
 
-import { ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
+import { ANNO_COMPLETO, ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { FattureService } from '../../../core/services/fatture/fatture-service';
 import { STATI_SDI } from '../../../core/services/pagamenti/pagamenti-costanti';
@@ -14,8 +14,6 @@ import { PaginazioneComponent } from '../../../shared/paginazione-component/pagi
 import { RigaFatturaComponent } from '../riga-fattura-component/riga-fattura-component';
 
 const FATTURE_PER_PAGINA = 20;
-/** L'anno parte solo intero: mentre si scrive "202" non si cerca. */
-const ANNO_COMPLETO = /^\d{4}$/;
 
 /**
  * Fatture e note di credito, le più recenti in cima, cercate per intestatario e filtrate
