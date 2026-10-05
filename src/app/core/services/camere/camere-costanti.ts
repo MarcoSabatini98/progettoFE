@@ -43,3 +43,8 @@ export const LIMITI_CAMERE = {
   pianoMin: -128,
   pianoMax: 127,
 } as const;
+
+export const LUNGHEZZA_SERVIZIO = { nome: 100, descrizione: 255, icona: 50 } as const;
+
+/** Prezzo (DECIMAL 10,2), aliquota IVA in percentuale e ordine (SMALLINT). */
+export const LIMITI_SERVIZIO = { prezzo: 99_999_999.99, aliquota: 100, ordine: 65_535 } as const;
