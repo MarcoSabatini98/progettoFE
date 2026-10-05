@@ -12,6 +12,7 @@ export const TIPI_NOTIFICA = [
   'manutenzione',
   'chat',
   'recensione',
+  'promozione',
   'sistema',
 ] as const;
 

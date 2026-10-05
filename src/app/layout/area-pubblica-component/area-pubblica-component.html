@@ -40,6 +40,7 @@
 
     <div class="testata-azioni">
       @if (auth.collegato()) {
+        <app-campanella />
         <app-menu-utente area="pubblica" />
       } @else {
         <a class="pulsante pulsante-secondario" [routerLink]="percorsi.accesso">

@@ -14,6 +14,7 @@ export const ICONE_NOTIFICA: Record<TipoNotifica, string> = {
   manutenzione: 'build',
   chat: 'chat',
   recensione: 'reviews',
+  promozione: 'sell',
   sistema: 'info',
 };
 

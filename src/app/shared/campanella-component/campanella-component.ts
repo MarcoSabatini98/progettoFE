@@ -20,7 +20,8 @@ import { IconaComponent } from '../icona-component/icona-component';
 import { DataPipe } from '../pipes/data-pipe';
 
 /**
- * Campanella del gestionale: contatore delle non lette e ultime notifiche in un popover.
+ * Campanella di chi ha fatto l'accesso (staff e clienti): contatore delle non lette
+ * e ultime notifiche in un popover.
  * Le nuove arrivano dal socket; al clic la notifica diventa letta e apre il suo link.
  */
 @Component({
@@ -48,6 +49,14 @@ export class CampanellaComponent {
   protected readonly nonLette = linkedSignal(() =>
     this.elenco.hasValue() ? this.elenco.value().non_lette : 0,
   );
+  /** Ogni notifica con la chiave del titolo tradotto e i suoi parametri. */
+  protected readonly voci = computed(() =>
+    this.notifiche().map((notifica) => ({
+      notifica,
+      chiave: `notifiche.codici.${notifica.codice}`,
+      valori: this.parametri(notifica),
+    })),
+  );
   protected readonly contatore = computed(() =>
     this.nonLette() > MASSIMO_CONTATORE_NOTIFICHE
       ? `${MASSIMO_CONTATORE_NOTIFICHE}+`
@@ -65,7 +74,7 @@ export class CampanellaComponent {
   }
 
   /** Parametri del titolo tradotto, con le date nella lingua del sito. */
-  protected parametri(notifica: NotificaInterface): ParametriNotifica {
+  private parametri(notifica: NotificaInterface): ParametriNotifica {
     const parametri = { ...notifica.parametri };
     for (const chiave of PARAMETRI_DATA_NOTIFICA) {
       if (typeof parametri[chiave] === 'string') {
