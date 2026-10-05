@@ -5,7 +5,11 @@
 <header class="testata">
   <div class="testata-interno">
     <a class="marchio" [routerLink]="percorsi.home">
-      <span class="marchio-arco" aria-hidden="true">{{ nome() | iniziali }}</span>
+      @if (logo(); as percorso) {
+        <img class="marchio-logo" [src]="percorso | media" alt="" />
+      } @else {
+        <span class="marchio-arco" aria-hidden="true">{{ nome() | iniziali }}</span>
+      }
       <span class="marchio-nome">{{ nome() }}</span>
     </a>
 

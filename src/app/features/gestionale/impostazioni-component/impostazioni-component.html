@@ -1,0 +1,27 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.impostazioni.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.impostazioni.introduzione' | transloco }}</p>
+</header>
+
+@if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+<div class="griglia-prenotazione" [attr.aria-busy]="elenco.isLoading()">
+  @if (puoLogo) {
+    <app-galleria-media
+      entita="logo"
+      chiave="gestionale.impostazioni.logo"
+      [media]="logo.hasValue() ? logo.value() : []"
+      [descrizione]="'gestionale.impostazioni.logo.descrizione' | transloco"
+      (cambiati)="logoCambiato()"
+    />
+  }
+  @for (gruppo of gruppi(); track gruppo.nome) {
+    <app-gruppo-impostazioni
+      [gruppo]="gruppo.nome"
+      [voci]="gruppo.voci"
+      (salvate)="aggiornaSito()"
+    />
+  }
+</div>

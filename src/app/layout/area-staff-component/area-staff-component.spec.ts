@@ -5,12 +5,18 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
 import { PresenzeService } from '../../core/services/chat/presenze-service';
+import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazioni-costanti';
+import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { GruppoMenuInterface } from '../../shared/models/voce-menu/voce-menu-model';
 import { AreaStaffComponent } from './area-staff-component';
 
 describe('AreaStaffComponent', () => {
+  const impostazioni: Record<string, string> = {
+    [CHIAVI_IMPOSTAZIONI.nome]: 'Casa del Mare',
+    [CHIAVI_IMPOSTAZIONI.logo]: 'media/logo.webp',
+  };
   const menuStaff = signal<GruppoMenuInterface[]>([
     {
       etichetta: 'menu.gruppi.oggi',
@@ -29,8 +35,22 @@ describe('AreaStaffComponent', () => {
         { provide: NavigazioneService, useValue: { menuStaff, staff: signal(true) } },
         { provide: AuthService, useValue: { utente: signal(null) } },
         { provide: PresenzeService, useValue: {} },
+        {
+          provide: ImpostazioniService,
+          useValue: {
+            pubbliche: signal({}),
+            testo: (chiave: string) => impostazioni[chiave] ?? '',
+          },
+        },
       ],
     });
+  });
+
+  it('mostra nome e logo della struttura nella barra', async () => {
+    const marchio = (await crea()).querySelector('.marchio');
+
+    expect(marchio?.textContent).toContain('Casa del Mare');
+    expect(marchio?.querySelector('img')?.getAttribute('src')).toContain('media/logo.webp');
   });
 
   async function crea() {

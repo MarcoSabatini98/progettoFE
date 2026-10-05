@@ -107,6 +107,7 @@ export const PERCORSI_STAFF = {
   utenti: `${PERCORSO_STAFF}/utenti`,
   ruoli: `${PERCORSO_STAFF}/ruoli`,
   registro: `${PERCORSO_STAFF}/registro`,
+  impostazioni: `${PERCORSO_STAFF}/impostazioni`,
 } as const;
 
 /**
@@ -267,7 +268,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.impostazioni',
-        percorso: `${PERCORSO_STAFF}/impostazioni`,
+        percorso: PERCORSI_STAFF.impostazioni,
         icona: 'settings',
         permessi: [PERMESSI.IMPOSTAZIONI_GESTISCI],
       },

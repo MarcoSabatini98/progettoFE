@@ -24,12 +24,26 @@
 }
 
 .marchio {
+  display: flex;
   flex: 1;
+  align-items: center;
+  gap: var(--bb-spazio-2);
   min-width: 0;
-  overflow: hidden;
   color: var(--bb-testo);
   font-weight: 600;
   text-decoration: none;
+}
+
+.marchio-logo {
+  flex-shrink: 0;
+  block-size: 2rem;
+  inline-size: auto;
+  max-inline-size: 6rem;
+  object-fit: contain;
+}
+
+.marchio-nome {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

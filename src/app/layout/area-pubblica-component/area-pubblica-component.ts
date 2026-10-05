@@ -13,6 +13,7 @@ import { TIPI_DOCUMENTO_LEGALE } from '../../core/services/sistema/sistema-costa
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { InizialiPipe } from '../../shared/pipes/iniziali-pipe';
+import { MediaPipe } from '../../shared/pipes/media-pipe';
 import { SelettoreLinguaComponent } from '../../shared/selettore-lingua-component/selettore-lingua-component';
 import { SelettoreTemaComponent } from '../../shared/selettore-tema-component/selettore-tema-component';
 import { chiudiPopover } from '../chiudi-popover';
@@ -34,6 +35,7 @@ import { chiudiPopover } from '../chiudi-popover';
     MenuUtenteComponent,
     SelettoreLinguaComponent,
     SelettoreTemaComponent,
+    MediaPipe,
   ],
   templateUrl: './area-pubblica-component.html',
   styleUrl: './area-pubblica-component.css',
@@ -49,6 +51,7 @@ export class AreaPubblicaComponent {
   protected readonly chiudiMenu = chiudiPopover;
 
   protected readonly nome = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.nome));
+  protected readonly logo = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.logo));
   protected readonly email = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.email));
   protected readonly telefono = computed(() =>
     this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.telefono),

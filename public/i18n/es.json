@@ -250,7 +250,9 @@
     "RUOLO_NON_MODIFICABILE": "El administrador siempre tiene todos los permisos.",
     "RUOLO_NON_TROVATO": "Rol no encontrado.",
     "PERMESSO_SCONOSCIUTO": "Uno de los permisos ya no existe: recarga la página.",
-    "RUOLO_NON_STAFF": "El chat interno es solo para el personal."
+    "RUOLO_NON_STAFF": "El chat interno es solo para el personal.",
+    "IMPOSTAZIONE_NON_VALIDA": "Uno de los valores no tiene el formato correcto.",
+    "IMPOSTAZIONE_SCONOSCIUTA": "Uno de los ajustes ya no existe: recarga la página."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1978,6 +1980,63 @@
         "id_transazione": "Transacción",
         "stato_sdi": "Estado SDI",
         "numero": "Número"
+      }
+    },
+    "impostazioni": {
+      "titolo": "Ajustes",
+      "introduzione": "Datos del alojamiento, horarios, reglas y aspecto del sitio. Cada grupo se guarda por separado; el sitio se actualiza al momento.",
+      "salva": "Guardar",
+      "salvate": "Ajustes guardados",
+      "temaAiuto": "Quien visita el sitio siempre puede cambiarlo en su dispositivo.",
+      "logo": {
+        "titolo": "Logotipo",
+        "aiuto": "Aparece en la cabecera del sitio y de la gestión en lugar de las iniciales. Se usa la primera imagen.",
+        "descrizione": "Logotipo del alojamiento"
+      },
+      "gruppi": {
+        "struttura": "Alojamiento",
+        "soggiorno": "Estancia",
+        "prenotazioni": "Reservas",
+        "fiscale": "Impuestos y pagos",
+        "fedelta": "Fidelidad",
+        "pulizie": "Limpieza",
+        "localizzazione": "Idiomas y zona horaria",
+        "chat": "Chat",
+        "aspetto": "Aspecto del sitio"
+      },
+      "chiavi": {
+        "struttura_nome": "Nombre",
+        "struttura_ragione_sociale": "Razón social",
+        "struttura_partita_iva": "NIF-IVA",
+        "struttura_codice_fiscale": "Código fiscal",
+        "struttura_regime_fiscale": "Régimen fiscal (p. ej. RF01)",
+        "struttura_indirizzo": "Dirección",
+        "struttura_cap": "Código postal",
+        "struttura_comune": "Municipio",
+        "struttura_provincia": "Provincia (sigla)",
+        "struttura_email": "Correo electrónico",
+        "struttura_telefono": "Teléfono",
+        "struttura_cin": "CIN",
+        "struttura_iban": "IBAN",
+        "struttura_intestatario_conto": "Titular de la cuenta",
+        "orario_checkin": "Check-in desde las",
+        "orario_checkout": "Check-out antes de las",
+        "prenotazioni_scadenza_ore": "Horas para pagar una reserva pendiente",
+        "blocco_checkout_minuti": "Minutos de bloqueo de la habitación tras el check-out",
+        "valuta": "Moneda (p. ej. EUR)",
+        "iva_soggiorno": "IVA de la estancia (%)",
+        "iva_servizi": "IVA de los servicios (%)",
+        "limite_contanti": "Límite de pagos en efectivo",
+        "fedelta_punti_per_notte": "Puntos de fidelidad por noche",
+        "pulizie_richiedi_ispezione": "Las habitaciones limpias deben inspeccionarse",
+        "pulizie_autoassegna": "Asignar la limpieza por turnos cada mañana",
+        "fuso_orario": "Zona horaria",
+        "lingua_predefinita": "Idioma predeterminado",
+        "lingue_attive": "Idiomas del sitio",
+        "chat_conservazione_giorni": "Días que se conservan los chats cerrados",
+        "chat_riepilogo_email_minuti": "Minutos entre dos correos de mensajes no leídos",
+        "aspetto_colore": "Color principal",
+        "aspetto_tema": "Tema predeterminado"
       }
     }
   },

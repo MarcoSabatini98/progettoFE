@@ -9,6 +9,7 @@ import { PERCORSO_STAFF } from '../../core/services/navigazione/navigazione-cost
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
+import { MediaPipe } from '../../shared/pipes/media-pipe';
 import { SelettoreLinguaComponent } from '../../shared/selettore-lingua-component/selettore-lingua-component';
 import { SelettoreTemaComponent } from '../../shared/selettore-tema-component/selettore-tema-component';
 import { chiudiPopover } from '../chiudi-popover';
@@ -28,6 +29,7 @@ import { chiudiPopover } from '../chiudi-popover';
     MenuUtenteComponent,
     SelettoreLinguaComponent,
     SelettoreTemaComponent,
+    MediaPipe,
   ],
   templateUrl: './area-staff-component.html',
   styleUrl: './area-staff-component.css',
@@ -39,6 +41,7 @@ export class AreaStaffComponent {
   protected readonly navigazione = inject(NavigazioneService);
   protected readonly percorsoStaff = PERCORSO_STAFF;
   protected readonly nome = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.nome));
+  protected readonly logo = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.logo));
   protected readonly chiudiMenu = chiudiPopover;
 
   constructor() {
