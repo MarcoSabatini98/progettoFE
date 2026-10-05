@@ -182,7 +182,8 @@
 .stato-prenotazione[data-stato='scartata'],
 .stato-prenotazione[data-stato='mancata_consegna'],
 .stato-prenotazione[data-stato='fallito'],
-.stato-prenotazione[data-stato='annullato'] {
+.stato-prenotazione[data-stato='annullato'],
+.stato-prenotazione[data-stato='disattivato'] {
   background: var(--bb-errore-tenue);
   color: var(--bb-testo);
 }

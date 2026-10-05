@@ -241,7 +241,12 @@
     "FATTURA_VUOTA": "The invoice has no amounts.",
     "RIGHE_MANCANTI": "The invoice needs at least one line.",
     "NON_STORNABILE": "Only an issued invoice can be reversed.",
-    "FATTURA_NON_EMESSA": "The invoice has not been issued yet."
+    "FATTURA_NON_EMESSA": "The invoice has not been issued yet.",
+    "ULTIMO_ADMIN": "At least one active administrator must remain.",
+    "AUTO_DECLASSAMENTO": "You cannot remove the administrator role from yourself.",
+    "AUTO_ELIMINAZIONE": "You cannot delete your own account from here.",
+    "RUOLO_NON_ASSEGNABILE": "This role cannot be assigned.",
+    "RUOLO_CLIENTE": "A guest account stays a guest account."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1790,6 +1795,50 @@
           "ultimo_minuto": "Less than {{ valore }} days to go",
           "evento": "Event: {{ valore }}"
         }
+      }
+    },
+    "utenti": {
+      "titolo": "Users",
+      "introduzione": "Staff and guest accounts. New staff are created here; guests sign up on the website.",
+      "cerca": "Search by first name, last name or email",
+      "attivi": "Active",
+      "disattivati": "Deactivated",
+      "disattivato": "Deactivated",
+      "account": "Accounts",
+      "totale": "Accounts found: {{ totale }}",
+      "vuoto": "No accounts match these filters.",
+      "tutti": "All users",
+      "campi": {
+        "nome": "First name",
+        "cognome": "Last name",
+        "email": "Email",
+        "telefono": "Phone",
+        "ruolo": "Role",
+        "attivo": "Account active"
+      },
+      "nuovo": {
+        "titolo": "New staff member",
+        "aiuto": "The account is active right away: share the password yourself, they can change it from their profile.",
+        "crea": "Create account"
+      },
+      "dati": "Account details",
+      "schedaOspite": "Open guest record",
+      "ruoloAiuto": "Changing the role signs them out of all open sessions.",
+      "attivoAiuto": "A deactivated account cannot sign in; its open sessions are closed.",
+      "salva": "Save",
+      "salvato": "Account updated.",
+      "accessi": {
+        "titolo": "Access",
+        "creato": "Created on",
+        "verificata": "Email verified",
+        "ultimo": "Last sign-in",
+        "no": "No",
+        "mai": "Never"
+      },
+      "elimina": {
+        "titolo": "Delete account",
+        "aiuto": "They will no longer be able to sign in. Bookings, invoices and guest details are kept as required by law.",
+        "conferma": "Yes, delete"
       }
     }
   },

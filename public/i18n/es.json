@@ -241,7 +241,12 @@
     "FATTURA_VUOTA": "La factura no tiene importes.",
     "RIGHE_MANCANTI": "La factura debe tener al menos una línea.",
     "NON_STORNABILE": "Solo se anula una factura emitida.",
-    "FATTURA_NON_EMESSA": "La factura aún no está emitida."
+    "FATTURA_NON_EMESSA": "La factura aún no está emitida.",
+    "ULTIMO_ADMIN": "Debe quedar al menos un administrador activo.",
+    "AUTO_DECLASSAMENTO": "No puedes quitarte a ti mismo el rol de administrador.",
+    "AUTO_ELIMINAZIONE": "No puedes eliminar tu propia cuenta desde aquí.",
+    "RUOLO_NON_ASSEGNABILE": "Este rol no se puede asignar.",
+    "RUOLO_CLIENTE": "Una cuenta de cliente sigue siendo de cliente."
   },
   "nuovaPassword": {
     "password": "Nueva contraseña",
@@ -1790,6 +1795,50 @@
           "ultimo_minuto": "Faltan menos de {{ valore }} días",
           "evento": "Evento: {{ valore }}"
         }
+      }
+    },
+    "utenti": {
+      "titolo": "Usuarios",
+      "introduzione": "Las cuentas del personal y de los clientes. El personal nuevo se crea aquí; los clientes se registran en la web.",
+      "cerca": "Buscar por nombre, apellido o email",
+      "attivi": "Activos",
+      "disattivati": "Desactivados",
+      "disattivato": "Desactivado",
+      "account": "Cuentas",
+      "totale": "Cuentas encontradas: {{ totale }}",
+      "vuoto": "No hay cuentas con estos filtros.",
+      "tutti": "Todos los usuarios",
+      "campi": {
+        "nome": "Nombre",
+        "cognome": "Apellido",
+        "email": "Email",
+        "telefono": "Teléfono",
+        "ruolo": "Rol",
+        "attivo": "Cuenta activa"
+      },
+      "nuovo": {
+        "titolo": "Nuevo miembro del personal",
+        "aiuto": "La cuenta queda activa enseguida: comunica tú la contraseña, podrá cambiarla desde su perfil.",
+        "crea": "Crear cuenta"
+      },
+      "dati": "Datos de la cuenta",
+      "schedaOspite": "Abrir la ficha del huésped",
+      "ruoloAiuto": "Al cambiar de rol se cierran sus sesiones abiertas.",
+      "attivoAiuto": "Una cuenta desactivada no puede entrar; sus sesiones abiertas se cierran.",
+      "salva": "Guardar",
+      "salvato": "Cuenta actualizada.",
+      "accessi": {
+        "titolo": "Accesos",
+        "creato": "Creada el",
+        "verificata": "Email verificado",
+        "ultimo": "Último acceso",
+        "no": "No",
+        "mai": "Nunca"
+      },
+      "elimina": {
+        "titolo": "Eliminar cuenta",
+        "aiuto": "Ya no podrá entrar. Reservas, facturas y datos personales se conservan por obligación legal.",
+        "conferma": "Sí, eliminar"
       }
     }
   },
