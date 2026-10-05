@@ -1,0 +1,131 @@
+<h2 class="titolo-scheda">{{ 'gestionale.fatture.bozza.titolo' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <app-intestatario-fattura [gruppo]="modulo.controls.cliente" />
+
+  <fieldset class="modulo-scheda" formArrayName="righe">
+    <legend>{{ 'gestionale.fatture.righe.titolo' | transloco }}</legend>
+    <p class="tenue piccolo">{{ 'gestionale.fatture.righe.aiuto' | transloco }}</p>
+    @for (riga of righe.controls; track riga; let indice = $index) {
+      @let campi = riga.controls;
+      <div class="scheda modulo-scheda" [formGroupName]="indice">
+        <app-campo
+          [etichetta]="'gestionale.fatture.righe.descrizione' | transloco"
+          [errore]="errori.campo(campi.descrizione)"
+        >
+          <input formControlName="descrizione" [maxLength]="lunghezza.descrizione" />
+        </app-campo>
+        <div class="campi-coppia">
+          <app-campo
+            [etichetta]="'gestionale.fatture.righe.quantita' | transloco"
+            [errore]="errori.campo(campi.quantita)"
+          >
+            <input
+              type="number"
+              formControlName="quantita"
+              step="0.01"
+              [min]="limiti.quantita"
+              [max]="limiti.importo"
+            />
+          </app-campo>
+          <app-campo
+            [etichetta]="'gestionale.fatture.righe.prezzo' | transloco"
+            [errore]="errori.campo(campi.prezzo_unitario)"
+          >
+            <input
+              type="number"
+              formControlName="prezzo_unitario"
+              step="0.01"
+              [min]="-limiti.importo"
+              [max]="limiti.importo"
+            />
+          </app-campo>
+        </div>
+        <div class="campi-coppia">
+          <app-campo
+            [etichetta]="'gestionale.fatture.righe.aliquota' | transloco"
+            [errore]="errori.campo(campi.aliquota_iva)"
+          >
+            <input
+              type="number"
+              formControlName="aliquota_iva"
+              step="0.01"
+              min="0"
+              [max]="limiti.aliquota"
+            />
+          </app-campo>
+          <app-campo
+            [etichetta]="'gestionale.fatture.righe.natura' | transloco"
+            [aiuto]="'gestionale.fatture.righe.naturaAiuto' | transloco"
+            [errore]="errori.campo(campi.natura)"
+          >
+            <input formControlName="natura" [maxLength]="lunghezza.natura" />
+          </app-campo>
+        </div>
+        @if (righe.length > 1) {
+          <div class="azioni">
+            <button class="pulsante pulsante-fantasma" type="button" (click)="togli(indice)">
+              <app-icona nome="delete" />
+              {{ 'gestionale.fatture.righe.togli' | transloco }}
+            </button>
+          </div>
+        }
+      </div>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-secondario" type="button" (click)="aggiungi()">
+        <app-icona nome="add" />
+        {{ 'gestionale.fatture.righe.aggiungi' | transloco }}
+      </button>
+    </div>
+  </fieldset>
+
+  <app-campo
+    [etichetta]="'gestionale.campi.note' | transloco"
+    [errore]="errori.campo(modulo.controls.note)"
+  >
+    <textarea formControlName="note" rows="3" [maxLength]="lunghezza.note"></textarea>
+  </app-campo>
+
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.fatture.bozza.salva' | transloco }}
+    </button>
+  </div>
+</form>
+
+<h3>{{ 'gestionale.fatture.bozza.emetti' | transloco }}</h3>
+<p class="tenue">
+  {{
+    (modulo.dirty ? 'gestionale.fatture.bozza.salvaPrima' : 'gestionale.fatture.bozza.emettiAiuto')
+      | transloco
+  }}
+</p>
+<div class="azioni">
+  @if (daEmettere()) {
+    <button
+      class="pulsante pulsante-primario"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="emetti()"
+    >
+      {{ 'gestionale.fatture.bozza.emettiConferma' | transloco }}
+    </button>
+    <button class="pulsante pulsante-fantasma" type="button" (click)="daEmettere.set(false)">
+      {{ 'portale.documenti.annulla' | transloco }}
+    </button>
+  } @else {
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="modulo.dirty"
+      (click)="daEmettere.set(true)"
+    >
+      <app-icona nome="send" />
+      {{ 'gestionale.fatture.bozza.emetti' | transloco }}
+    </button>
+  }
+</div>

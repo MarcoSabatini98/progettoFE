@@ -5,6 +5,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { CamereService } from '../../../core/services/camere/camere-service';
+import { FattureService } from '../../../core/services/fatture/fatture-service';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
@@ -52,6 +53,13 @@ describe('SchedaPrenotazioneComponent', () => {
           provide: CamereService,
           useValue: { elencaServizi: () => of([]), elencaCamere: () => of([]) },
         },
+        {
+          provide: FattureService,
+          useValue: {
+            elencaFatture: () =>
+              of({ elementi: [], totale: 0, pagina: 1, perPagina: 20, pagine: 0 }),
+          },
+        },
         { provide: OspitiService, useValue: { elencaOspitiPrenotazione: () => of([]) } },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
@@ -77,12 +85,13 @@ describe('SchedaPrenotazioneComponent', () => {
     expect(elemento.textContent).toContain('Cliente abituale');
   });
 
-  it('con i permessi propone modifica, ospiti, incassi, link di check-in e cancellazione', async () => {
+  it('con i permessi propone modifica, ospiti, incassi, fatture, link di check-in e cancellazione', async () => {
     const elemento = await crea(true);
 
     for (const selettore of [
       'app-modifica-prenotazione',
       'app-incassi-prenotazione',
+      'app-fatture-prenotazione',
       'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',
@@ -97,6 +106,7 @@ describe('SchedaPrenotazioneComponent', () => {
     for (const selettore of [
       'app-modifica-prenotazione',
       'app-incassi-prenotazione',
+      'app-fatture-prenotazione',
       'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',

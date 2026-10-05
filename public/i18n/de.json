@@ -234,7 +234,14 @@
     "CALENDARIO_DISATTIVATO": "Der Kalender ist deaktiviert: Aktivieren Sie ihn, um ihn zu synchronisieren.",
     "GIA_PUBBLICATO": "Das Dokument ist bereits veröffentlicht: Legen Sie eine neue Version an.",
     "LINGUA_NON_ATTIVA": "Diese Sprache ist auf der Website nicht aktiv.",
-    "CAMPO_NON_TRADUCIBILE": "Dieses Feld wird nicht übersetzt."
+    "CAMPO_NON_TRADUCIBILE": "Dieses Feld wird nicht übersetzt.",
+    "NON_FATTURABILE": "Die Buchung hat noch nichts abzurechnen.",
+    "FATTURA_NON_TROVATA": "Rechnung nicht gefunden.",
+    "FATTURA_NON_MODIFICABILE": "Die Rechnung ist schon ausgestellt: Korrektur per Gutschrift.",
+    "FATTURA_VUOTA": "Die Rechnung hat keine Beträge.",
+    "RIGHE_MANCANTI": "Die Rechnung braucht mindestens eine Position.",
+    "NON_STORNABILE": "Nur eine ausgestellte Rechnung kann storniert werden.",
+    "FATTURA_NON_EMESSA": "Die Rechnung ist noch nicht ausgestellt."
   },
   "nuovaPassword": {
     "password": "Neues Passwort",
@@ -1646,6 +1653,106 @@
       },
       "iconaAiuto": "Name eines Material-Symbols-Icons, z. B. wifi oder local_parking.",
       "aliquotaAiuto": "Leer: Es gilt der Standardsatz aus den Einstellungen."
+    },
+    "fatture": {
+      "titolo": "Rechnungen",
+      "introduzione": "Entwürfe entstehen auf der Seite der Buchung.",
+      "cerca": "Nach Empfänger, Steuernummer oder USt-IdNr. suchen",
+      "anno": "Jahr",
+      "totale": "Gefundene Belege: {{ totale }}",
+      "vuoto": "Keine Rechnungen mit diesen Filtern.",
+      "tutte": "Alle Rechnungen",
+      "tipi": {
+        "TD01": "Rechnung",
+        "TD04": "Gutschrift"
+      },
+      "stati": {
+        "bozza": "Entwurf",
+        "da_inviare": "Zu senden",
+        "inviata": "Gesendet",
+        "consegnata": "Zugestellt",
+        "mancata_consegna": "Nicht zugestellt",
+        "scartata": "Vom SDI abgewiesen",
+        "accettata": "Angenommen",
+        "rifiutata": "Abgelehnt"
+      },
+      "prenotazione": "Buchung",
+      "origine": "Stornierte Rechnung",
+      "apri": "Öffnen",
+      "imponibile": "Nettobetrag",
+      "imposta": "MwSt.",
+      "esente": "Nicht steuerbar",
+      "totaleDocumento": "Gesamt",
+      "nessunaPrenotazione": "Keine Rechnungen für diese Buchung.",
+      "altroIntestatario": "An jemand anderen ausstellen (z. B. eine Firma)",
+      "creaBozza": "Rechnungsentwurf erstellen",
+      "salvata": "Entwurf gespeichert.",
+      "emessa": "Rechnung ausgestellt und an den Kunden gesendet.",
+      "intestatario": {
+        "titolo": "Rechnungsempfänger",
+        "aiuto": "Privatperson: Vorname, Nachname und Steuernummer. Firma: Firmenname und USt-IdNr.",
+        "denominazione": "Firmenname",
+        "nome": "Vorname",
+        "cognome": "Nachname",
+        "codice_fiscale": "Steuernummer",
+        "partita_iva": "USt-IdNr.",
+        "indirizzo": "Adresse",
+        "cap": "PLZ",
+        "comune": "Ort",
+        "provincia": "Provinz (Kürzel)",
+        "nazione": "Land (Kürzel)",
+        "codice_destinatario": "Empfängercode",
+        "codiceAiuto": "0000000 bei Zustellung per PEC oder ins Steuerpostfach.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Positionen",
+        "aiuto": "Preise ohne MwSt.; ein negativer Preis ist ein Rabatt.",
+        "descrizione": "Beschreibung",
+        "quantita": "Menge",
+        "prezzo": "Einzelpreis",
+        "aliquota": "MwSt. (%)",
+        "natura": "MwSt.-Art",
+        "naturaAiuto": "Nur bei 0 % MwSt., z. B. N1 oder N2.2.",
+        "togli": "Position entfernen",
+        "aggiungi": "Position hinzufügen"
+      },
+      "bozza": {
+        "titolo": "Entwurf bearbeiten",
+        "salva": "Entwurf speichern",
+        "emetti": "Rechnung ausstellen",
+        "emettiAiuto": "Vergibt die Nummer, erzeugt XML und PDF und sendet das PDF an den Kunden. Danach nicht mehr änderbar.",
+        "salvaPrima": "Speichere die Änderungen vor dem Ausstellen.",
+        "emettiConferma": "Ja, ausstellen"
+      },
+      "elimina": {
+        "titolo": "Entwurf löschen",
+        "aiuto": "Der Entwurf hat keine Nummer: Löschen hinterlässt keine Lücke in der Nummerierung.",
+        "conferma": "Ja, löschen"
+      },
+      "sdi": {
+        "titolo": "Austauschsystem (SDI)",
+        "aiuto": "Hier den Übermittlungsstatus und die SDI-Quittung erfassen.",
+        "id": "SDI-Kennung",
+        "esito": "SDI-Ergebnis",
+        "salva": "Ergebnis speichern",
+        "salvato": "SDI-Ergebnis gespeichert."
+      },
+      "file": {
+        "titolo": "Dateien",
+        "aiuto": "Neu erzeugen, nachdem die Steuerdaten der Unterkunft korrigiert wurden.",
+        "pdf": "PDF herunterladen",
+        "xml": "XML herunterladen",
+        "rigenera": "Dateien neu erzeugen",
+        "rigenerati": "Dateien neu erzeugt."
+      },
+      "nota": {
+        "titolo": "Gutschrift",
+        "aiuto": "Storniert die ganze Rechnung: Die Gutschrift wird sofort ausgestellt und an den Kunden gesendet.",
+        "motivo": "Grund",
+        "storna": "Mit Gutschrift stornieren",
+        "conferma": "Ja, Gutschrift ausstellen"
+      }
     }
   },
   "anagrafica": {

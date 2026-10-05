@@ -179,6 +179,8 @@
 .stato-prenotazione[data-stato='no_show'],
 .stato-prenotazione[data-stato='urgente'],
 .stato-prenotazione[data-stato='rifiutata'],
+.stato-prenotazione[data-stato='scartata'],
+.stato-prenotazione[data-stato='mancata_consegna'],
 .stato-prenotazione[data-stato='fallito'],
 .stato-prenotazione[data-stato='annullato'] {
   background: var(--bb-errore-tenue);
@@ -190,7 +192,9 @@
 .stato-prenotazione[data-stato='verificata'],
 .stato-prenotazione[data-stato='risolta'],
 .stato-prenotazione[data-stato='pubblicata'],
-.stato-prenotazione[data-stato='completato'] {
+.stato-prenotazione[data-stato='completato'],
+.stato-prenotazione[data-stato='consegnata'],
+.stato-prenotazione[data-stato='accettata'] {
   background: var(--bb-ok-tenue);
   color: var(--bb-testo);
 }

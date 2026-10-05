@@ -1,0 +1,163 @@
+<a class="indietro" [routerLink]="percorsi.fatture">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.fatture.tutte' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+  @let bozza = dati.stato_sdi === 'bozza';
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'gestionale.fatture.tipi.' + dati.tipo_documento | transloco }}</p>
+    <h1>
+      @if (dati.numero) {
+        {{
+          'portale.fatture.' + dati.tipo_documento
+            | transloco: { numero: dati.sezionale + dati.numero, anno: dati.anno }
+        }}
+      } @else {
+        {{ 'gestionale.fatture.stati.bozza' | transloco }}
+      }
+    </h1>
+    <p class="introduzione">
+      {{ dati.data_emissione | data: 'giorno' }} · {{ dati.totale | prezzo }}
+    </p>
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato_sdi">
+      {{ 'gestionale.fatture.stati.' + dati.stato_sdi | transloco }}
+    </span>
+  </header>
+
+  <div class="griglia-prenotazione">
+    <section class="scheda" aria-labelledby="fattura-intestatario">
+      <h2 class="titolo-scheda" id="fattura-intestatario">
+        {{ 'gestionale.fatture.intestatario.titolo' | transloco }}
+      </h2>
+      <p>
+        <strong>
+          {{
+            dati.cliente_denominazione ??
+              (dati.cliente_nome ?? '') + ' ' + (dati.cliente_cognome ?? '')
+          }}
+        </strong>
+        <br />
+        {{ dati.cliente_indirizzo }}, {{ dati.cliente_cap }} {{ dati.cliente_comune }}
+        {{ dati.cliente_provincia }} · {{ dati.cliente_nazione }}
+      </p>
+      <dl class="dati">
+        @if (dati.cliente_partita_iva) {
+          <div>
+            <dt>{{ 'gestionale.fatture.intestatario.partita_iva' | transloco }}</dt>
+            <dd>{{ dati.cliente_partita_iva }}</dd>
+          </div>
+        }
+        @if (dati.cliente_codice_fiscale) {
+          <div>
+            <dt>{{ 'gestionale.fatture.intestatario.codice_fiscale' | transloco }}</dt>
+            <dd>{{ dati.cliente_codice_fiscale }}</dd>
+          </div>
+        }
+        <div>
+          <dt>{{ 'gestionale.fatture.intestatario.codice_destinatario' | transloco }}</dt>
+          <dd>{{ dati.codice_destinatario }}</dd>
+        </div>
+        @if (dati.pec) {
+          <div>
+            <dt>{{ 'gestionale.fatture.intestatario.pec' | transloco }}</dt>
+            <dd>{{ dati.pec }}</dd>
+          </div>
+        }
+        @if (dati.prenotazione_id) {
+          <div>
+            <dt>{{ 'gestionale.fatture.prenotazione' | transloco }}</dt>
+            <dd>
+              <a [routerLink]="[percorsi.prenotazioni, dati.prenotazione_id]">
+                {{ 'gestionale.fatture.apri' | transloco }}
+              </a>
+            </dd>
+          </div>
+        }
+        @if (dati.fattura_origine_id) {
+          <div>
+            <dt>{{ 'gestionale.fatture.origine' | transloco }}</dt>
+            <dd>
+              <a [routerLink]="[percorsi.fatture, dati.fattura_origine_id]">
+                {{ 'gestionale.fatture.apri' | transloco }}
+              </a>
+            </dd>
+          </div>
+        }
+        @if (dati.id_sdi) {
+          <div>
+            <dt>{{ 'gestionale.fatture.sdi.id' | transloco }}</dt>
+            <dd>{{ dati.id_sdi }}</dd>
+          </div>
+        }
+      </dl>
+    </section>
+
+    <section class="scheda" aria-labelledby="fattura-righe">
+      <h2 class="titolo-scheda" id="fattura-righe">
+        {{ 'gestionale.fatture.righe.titolo' | transloco }}
+      </h2>
+      <dl class="dati">
+        @for (riga of dati.righe ?? []; track riga.id) {
+          <div>
+            <dt>
+              {{ riga.descrizione }}
+              <span class="piccolo">
+                · {{ riga.quantita }} × {{ riga.prezzo_unitario | prezzo }} ·
+                {{ riga.natura || riga.aliquota_iva + '%' }}
+              </span>
+            </dt>
+            <dd>{{ riga.totale | prezzo }}</dd>
+          </div>
+        }
+        <div>
+          <dt>{{ 'gestionale.fatture.imponibile' | transloco }}</dt>
+          <dd>{{ dati.imponibile | prezzo }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'gestionale.fatture.imposta' | transloco }}</dt>
+          <dd>{{ dati.imposta | prezzo }}</dd>
+        </div>
+        @if (+dati.importo_esente) {
+          <div>
+            <dt>{{ 'gestionale.fatture.esente' | transloco }}</dt>
+            <dd>{{ dati.importo_esente | prezzo }}</dd>
+          </div>
+        }
+        <div>
+          <dt>{{ 'gestionale.fatture.totaleDocumento' | transloco }}</dt>
+          <dd>{{ dati.totale | prezzo }}</dd>
+        </div>
+      </dl>
+      @if (dati.note) {
+        <h3>{{ 'gestionale.campi.note' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.note }}</p>
+      }
+      @if (dati.esito_sdi) {
+        <h3>{{ 'gestionale.fatture.sdi.esito' | transloco }}</h3>
+        <p class="testo-libero">{{ dati.esito_sdi }}</p>
+      }
+    </section>
+
+    @if (bozza) {
+      <app-bozza-fattura [fattura]="dati" (aggiornata)="scheda.reload()" />
+      <app-elimina
+        [titolo]="'gestionale.fatture.elimina.titolo' | transloco"
+        [aiuto]="'gestionale.fatture.elimina.aiuto' | transloco"
+        [conferma]="'gestionale.fatture.elimina.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="apri()"
+      />
+    } @else {
+      <app-file-fattura [fattura]="dati" (aggiornata)="scheda.reload()" />
+      <app-sdi-fattura [fattura]="dati" (aggiornata)="scheda.reload()" />
+      @if (dati.tipo_documento === 'TD01') {
+        <app-nota-di-credito [fattura]="dati" (creata)="apri($event)" />
+      }
+    }
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

@@ -1,0 +1,28 @@
+<h2 class="titolo-scheda">{{ 'gestionale.fatture.file.titolo' | transloco }}</h2>
+<p class="tenue">{{ 'gestionale.fatture.file.aiuto' | transloco }}</p>
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+<div class="azioni">
+  @for (tipo of tipi; track tipo) {
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="inCorso()"
+      (click)="scarica(tipo)"
+    >
+      <app-icona nome="download" />
+      {{ 'gestionale.fatture.file.' + tipo | transloco }}
+    </button>
+  }
+  <button
+    class="pulsante pulsante-fantasma"
+    type="button"
+    [disabled]="inCorso()"
+    (click)="rigenera()"
+  >
+    <app-icona nome="refresh" />
+    {{ 'gestionale.fatture.file.rigenera' | transloco }}
+  </button>
+</div>

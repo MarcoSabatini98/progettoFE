@@ -234,7 +234,14 @@
     "CALENDARIO_DISATTIVATO": "Le calendrier est désactivé : réactivez-le pour le synchroniser.",
     "GIA_PUBBLICATO": "Le document est déjà publié : créez une nouvelle version.",
     "LINGUA_NON_ATTIVA": "Cette langue n’est pas active sur le site.",
-    "CAMPO_NON_TRADUCIBILE": "Ce champ ne se traduit pas."
+    "CAMPO_NON_TRADUCIBILE": "Ce champ ne se traduit pas.",
+    "NON_FATTURABILE": "La réservation n’a encore rien à facturer.",
+    "FATTURA_NON_TROVATA": "Facture introuvable.",
+    "FATTURA_NON_MODIFICABILE": "La facture est déjà émise : corrigez-la par un avoir.",
+    "FATTURA_VUOTA": "La facture n’a pas de montants.",
+    "RIGHE_MANCANTI": "La facture doit avoir au moins une ligne.",
+    "NON_STORNABILE": "Seule une facture émise peut être annulée.",
+    "FATTURA_NON_EMESSA": "La facture n’est pas encore émise."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -1646,6 +1653,106 @@
       },
       "iconaAiuto": "Nom d’une icône Material Symbols, ex. wifi ou local_parking.",
       "aliquotaAiuto": "Vide : le taux par défaut des paramètres s’applique."
+    },
+    "fatture": {
+      "titolo": "Factures",
+      "introduzione": "Les brouillons se créent depuis la fiche de la réservation.",
+      "cerca": "Rechercher par destinataire, code fiscal ou numéro de TVA",
+      "anno": "Année",
+      "totale": "Documents trouvés : {{ totale }}",
+      "vuoto": "Aucune facture avec ces filtres.",
+      "tutte": "Toutes les factures",
+      "tipi": {
+        "TD01": "Facture",
+        "TD04": "Avoir"
+      },
+      "stati": {
+        "bozza": "Brouillon",
+        "da_inviare": "À envoyer",
+        "inviata": "Envoyée",
+        "consegnata": "Remise",
+        "mancata_consegna": "Non remise",
+        "scartata": "Rejetée par le SDI",
+        "accettata": "Acceptée",
+        "rifiutata": "Refusée"
+      },
+      "prenotazione": "Réservation",
+      "origine": "Facture annulée",
+      "apri": "Ouvrir",
+      "imponibile": "Montant HT",
+      "imposta": "TVA",
+      "esente": "Non imposable",
+      "totaleDocumento": "Total",
+      "nessunaPrenotazione": "Aucune facture pour cette réservation.",
+      "altroIntestatario": "Facturer quelqu’un d’autre (ex. une entreprise)",
+      "creaBozza": "Créer un brouillon de facture",
+      "salvata": "Brouillon enregistré.",
+      "emessa": "Facture émise et envoyée au client.",
+      "intestatario": {
+        "titolo": "Destinataire",
+        "aiuto": "Particulier : prénom, nom et code fiscal. Entreprise : raison sociale et numéro de TVA.",
+        "denominazione": "Raison sociale",
+        "nome": "Prénom",
+        "cognome": "Nom",
+        "codice_fiscale": "Code fiscal",
+        "partita_iva": "Numéro de TVA",
+        "indirizzo": "Adresse",
+        "cap": "Code postal",
+        "comune": "Commune",
+        "provincia": "Province (sigle)",
+        "nazione": "Pays (sigle)",
+        "codice_destinatario": "Code destinataire",
+        "codiceAiuto": "0000000 si elle arrive par PEC ou dans l’espace fiscal.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Lignes",
+        "aiuto": "Prix hors TVA ; un prix négatif est une remise.",
+        "descrizione": "Description",
+        "quantita": "Quantité",
+        "prezzo": "Prix unitaire",
+        "aliquota": "TVA (%)",
+        "natura": "Nature TVA",
+        "naturaAiuto": "Seulement avec TVA 0, ex. N1 ou N2.2.",
+        "togli": "Retirer la ligne",
+        "aggiungi": "Ajouter une ligne"
+      },
+      "bozza": {
+        "titolo": "Modifier le brouillon",
+        "salva": "Enregistrer le brouillon",
+        "emetti": "Émettre la facture",
+        "emettiAiuto": "Attribue le numéro, génère XML et PDF et envoie le PDF au client. Elle ne se modifie plus ensuite.",
+        "salvaPrima": "Enregistrez les modifications avant d’émettre.",
+        "emettiConferma": "Oui, émettre"
+      },
+      "elimina": {
+        "titolo": "Supprimer le brouillon",
+        "aiuto": "Le brouillon n’a pas de numéro : le supprimer ne laisse pas de trou dans la numérotation.",
+        "conferma": "Oui, supprimer"
+      },
+      "sdi": {
+        "titolo": "Système d’échange (SDI)",
+        "aiuto": "Enregistrez ici l’état de la transmission et le reçu du SDI.",
+        "id": "Identifiant SDI",
+        "esito": "Résultat SDI",
+        "salva": "Enregistrer le résultat",
+        "salvato": "Résultat SDI enregistré."
+      },
+      "file": {
+        "titolo": "Fichiers",
+        "aiuto": "Régénérez-les après avoir corrigé les données fiscales de l’établissement.",
+        "pdf": "Télécharger le PDF",
+        "xml": "Télécharger le XML",
+        "rigenera": "Régénérer les fichiers",
+        "rigenerati": "Fichiers régénérés."
+      },
+      "nota": {
+        "titolo": "Avoir",
+        "aiuto": "Annule toute la facture : l’avoir est émis tout de suite et envoyé au client.",
+        "motivo": "Motif",
+        "storna": "Annuler par un avoir",
+        "conferma": "Oui, émettre l’avoir"
+      }
     }
   },
   "anagrafica": {

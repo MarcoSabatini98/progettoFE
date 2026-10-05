@@ -40,3 +40,37 @@ export const STATI_SDI = [
   'accettata',
   'rifiutata',
 ] as const;
+
+/** Intestatario, note, righe ed esito SDI di una fattura (fatture.validator.js). */
+export const LUNGHEZZE_FATTURA = {
+  denominazione: 255,
+  nome: 100,
+  codiceFiscale: 16,
+  partitaIva: 20,
+  indirizzo: 255,
+  cap: 10,
+  comune: 100,
+  pec: 255,
+  note: 5000,
+  descrizione: 255,
+  natura: 5,
+  idSdi: 50,
+  esitoSdi: 10_000,
+} as const;
+
+/** Importo massimo di una riga (DECIMAL 10,2), anche in negativo per gli sconti. */
+export const IMPORTO_MASSIMO_RIGA = 99_999_999.99;
+
+/** Aliquota IVA in percentuale. */
+export const ALIQUOTA_MASSIMA = 100;
+
+/** Provincia e nazione (ISO 3166-1 alpha-2): due lettere. */
+export const FORMATO_SIGLA = /^[A-Za-z]{2}$/;
+
+/** Codice destinatario SDI: sette caratteri. */
+export const FORMATO_CODICE_DESTINATARIO = /^[A-Za-z0-9]{7}$/;
+
+// ─── Solo frontend ───
+
+/** Nuovo intestatario: in Italia, fattura nel cassetto fiscale o alla PEC. */
+export const INTESTATARIO_PREDEFINITO = { nazione: 'IT', codice_destinatario: '0000000' } as const;

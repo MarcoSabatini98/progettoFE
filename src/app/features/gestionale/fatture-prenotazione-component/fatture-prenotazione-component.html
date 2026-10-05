@@ -1,0 +1,34 @@
+<h2 class="titolo-scheda">{{ 'gestionale.fatture.titolo' | transloco }}</h2>
+
+@if (elenco.hasValue()) {
+  <ul class="elenco">
+    @for (fattura of elenco.value().elementi; track fattura.id) {
+      <li><app-riga-fattura [fattura]="fattura" /></li>
+    } @empty {
+      <li class="tenue">{{ 'gestionale.fatture.nessunaPrenotazione' | transloco }}</li>
+    }
+  </ul>
+}
+
+<label class="spunta">
+  <input type="checkbox" [formControl]="altroIntestatario" />
+  {{ 'gestionale.fatture.altroIntestatario' | transloco }}
+</label>
+@if (altroIntestatario.value) {
+  <app-intestatario-fattura [gruppo]="intestatario" />
+}
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+<div class="azioni">
+  <button
+    class="pulsante pulsante-secondario"
+    type="button"
+    [disabled]="inCorso()"
+    (click)="crea()"
+  >
+    <app-icona nome="receipt_long" />
+    {{ 'gestionale.fatture.creaBozza' | transloco }}
+  </button>
+</div>

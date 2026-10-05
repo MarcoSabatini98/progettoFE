@@ -234,7 +234,14 @@
     "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo.",
     "GIA_PUBBLICATO": "Il documento è già pubblicato: crea una nuova versione.",
     "LINGUA_NON_ATTIVA": "Questa lingua non è attiva sul sito.",
-    "CAMPO_NON_TRADUCIBILE": "Questo campo non si traduce."
+    "CAMPO_NON_TRADUCIBILE": "Questo campo non si traduce.",
+    "NON_FATTURABILE": "La prenotazione non ha ancora nulla da fatturare.",
+    "FATTURA_NON_TROVATA": "Fattura non trovata.",
+    "FATTURA_NON_MODIFICABILE": "La fattura è già emessa: si corregge con una nota di credito.",
+    "FATTURA_VUOTA": "La fattura non ha importi.",
+    "RIGHE_MANCANTI": "La fattura deve avere almeno una riga.",
+    "NON_STORNABILE": "Si storna solo una fattura emessa.",
+    "FATTURA_NON_EMESSA": "La fattura non è ancora emessa."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1646,6 +1653,106 @@
       },
       "iconaAiuto": "Nome di un’icona Material Symbols, es. wifi o local_parking.",
       "aliquotaAiuto": "Vuota: vale quella predefinita delle impostazioni."
+    },
+    "fatture": {
+      "titolo": "Fatture",
+      "introduzione": "Le bozze nascono dalla scheda della prenotazione.",
+      "cerca": "Cerca per intestatario, codice fiscale o partita IVA",
+      "anno": "Anno",
+      "totale": "Documenti trovati: {{ totale }}",
+      "vuoto": "Nessuna fattura con questi filtri.",
+      "tutte": "Tutte le fatture",
+      "tipi": {
+        "TD01": "Fattura",
+        "TD04": "Nota di credito"
+      },
+      "stati": {
+        "bozza": "Bozza",
+        "da_inviare": "Da inviare",
+        "inviata": "Inviata",
+        "consegnata": "Consegnata",
+        "mancata_consegna": "Mancata consegna",
+        "scartata": "Scartata",
+        "accettata": "Accettata",
+        "rifiutata": "Rifiutata"
+      },
+      "prenotazione": "Prenotazione",
+      "origine": "Fattura stornata",
+      "apri": "Apri",
+      "imponibile": "Imponibile",
+      "imposta": "IVA",
+      "esente": "Non imponibile",
+      "totaleDocumento": "Totale",
+      "nessunaPrenotazione": "Nessuna fattura per questa prenotazione.",
+      "altroIntestatario": "Intesta a un altro (es. un’azienda)",
+      "creaBozza": "Crea bozza di fattura",
+      "salvata": "Bozza salvata.",
+      "emessa": "Fattura emessa e inviata al cliente.",
+      "intestatario": {
+        "titolo": "Intestatario",
+        "aiuto": "Privato: nome, cognome e codice fiscale. Azienda: denominazione e partita IVA.",
+        "denominazione": "Denominazione",
+        "nome": "Nome",
+        "cognome": "Cognome",
+        "codice_fiscale": "Codice fiscale",
+        "partita_iva": "Partita IVA",
+        "indirizzo": "Indirizzo",
+        "cap": "CAP",
+        "comune": "Comune",
+        "provincia": "Provincia (sigla)",
+        "nazione": "Nazione (sigla)",
+        "codice_destinatario": "Codice destinatario",
+        "codiceAiuto": "0000000 se arriva per PEC o nel cassetto fiscale.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Righe",
+        "aiuto": "Prezzi IVA esclusa; un prezzo negativo è uno sconto.",
+        "descrizione": "Descrizione",
+        "quantita": "Quantità",
+        "prezzo": "Prezzo unitario",
+        "aliquota": "IVA (%)",
+        "natura": "Natura IVA",
+        "naturaAiuto": "Solo con IVA 0, es. N1 o N2.2.",
+        "togli": "Togli riga",
+        "aggiungi": "Aggiungi riga"
+      },
+      "bozza": {
+        "titolo": "Modifica bozza",
+        "salva": "Salva bozza",
+        "emetti": "Emetti fattura",
+        "emettiAiuto": "Prende il numero, genera XML e PDF e manda il PDF al cliente. Poi non si modifica più.",
+        "salvaPrima": "Salva le modifiche prima di emettere.",
+        "emettiConferma": "Sì, emetti"
+      },
+      "elimina": {
+        "titolo": "Elimina bozza",
+        "aiuto": "La bozza non ha numero: eliminarla non lascia buchi nella numerazione.",
+        "conferma": "Sì, elimina"
+      },
+      "sdi": {
+        "titolo": "Sistema di Interscambio",
+        "aiuto": "Registra qui lo stato della trasmissione e la ricevuta dello SDI.",
+        "id": "Identificativo SDI",
+        "esito": "Esito SDI",
+        "salva": "Salva esito",
+        "salvato": "Esito SDI salvato."
+      },
+      "file": {
+        "titolo": "File",
+        "aiuto": "Rigenerali dopo aver corretto i dati fiscali della struttura.",
+        "pdf": "Scarica PDF",
+        "xml": "Scarica XML",
+        "rigenera": "Rigenera file",
+        "rigenerati": "File rigenerati."
+      },
+      "nota": {
+        "titolo": "Nota di credito",
+        "aiuto": "Storna tutta la fattura: la nota nasce già emessa e va al cliente.",
+        "motivo": "Motivo",
+        "storna": "Storna con nota di credito",
+        "conferma": "Sì, emetti la nota"
+      }
     }
   },
   "anagrafica": {
