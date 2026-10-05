@@ -1,5 +1,6 @@
 /*
- * Scheda comune alle pagine di accesso, recupero e reimpostazione della password.
+ * Scheda comune alle pagine di accesso, recupero e reimpostazione della password
+ * e ai link delle email (disiscrizione).
  * Ogni pagina la carica con styleUrls insieme al proprio CSS.
  */
 
@@ -42,4 +43,18 @@ form {
   justify-self: center;
   color: var(--bb-brand-testo);
   font-weight: 600;
+}
+
+/* Link dell'email scaduto o alterato. */
+.non-valido {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+  --icona-dimensione: 1.25rem;
+}
+
+.non-valido app-icona {
+  flex: none;
+  color: var(--bb-errore);
 }

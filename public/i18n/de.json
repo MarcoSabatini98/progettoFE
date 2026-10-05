@@ -112,6 +112,13 @@
     "linkNonValido": "Dieser Link ist ungültig. Fordern Sie einen neuen an.",
     "nuovoLink": "Neuen Link anfordern"
   },
+  "disiscrizione": {
+    "titolo": "Abmeldung",
+    "inCorso": "Einen Moment…",
+    "fatto": "Erledigt: Sie erhalten unsere Angebote nicht mehr per E-Mail. E-Mails zu Buchungen und Zahlungen kommen weiterhin an.",
+    "linkNonValido": "Dieser Link ist ungültig. Verwenden Sie den Link am Ende der zuletzt erhaltenen E-Mail.",
+    "profilo": "Es sich in Ihrem Profil anders überlegen"
+  },
   "moduli": {
     "required": "Pflichtfeld.",
     "email": "Geben Sie eine gültige E-Mail ein.",
@@ -301,7 +308,9 @@
     "salvato": "Änderungen gespeichert.",
     "email": "E-Mail",
     "notifiche": "Optionale E-Mails erhalten",
-    "notificheAiuto": "Nachrichtenübersichten und Erinnerungen. Buchungs- und Zahlungsbestätigungen werden immer gesendet."
+    "notificheAiuto": "Nachrichtenübersichten und Erinnerungen. Buchungs- und Zahlungsbestätigungen werden immer gesendet.",
+    "offerte": "Unsere Angebote erhalten",
+    "offerteAiuto": "Rabatte und Aktionen, nur per E-Mail. Sie können sich jederzeit abmelden, auch über den Link am Ende jeder E-Mail."
   },
   "sicurezza": {
     "titolo": "Passwort und Anmeldungen",

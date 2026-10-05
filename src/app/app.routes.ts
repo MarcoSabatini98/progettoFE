@@ -467,6 +467,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'disiscrizione',
+        loadComponent: () =>
+          import('./features/accesso/disiscrizione-component/disiscrizione-component').then(
+            (m) => m.DisiscrizioneComponent,
+          ),
+      },
+      {
         path: 'registrazione',
         loadComponent: () =>
           import('./features/accesso/registrazione-component/registrazione-component').then(

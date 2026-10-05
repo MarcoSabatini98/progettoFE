@@ -128,6 +128,15 @@ describe('AuthService', () => {
     expect(service.utente()?.email_verificata).toBe(true);
   });
 
+  it('la disiscrizione manda il token del link', () => {
+    avvia();
+    service.disiscrivi('uuid.firma').subscribe();
+
+    const richiesta = backend.expectOne(`${API}/disiscrizione`);
+    expect(richiesta.request.body).toEqual({ token: 'uuid.firma' });
+    richiesta.flush({ successo: true, dati: null });
+  });
+
   it('dopo il cambio password bisogna rientrare', () => {
     avvia();
     accedi();

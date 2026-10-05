@@ -112,6 +112,13 @@
     "linkNonValido": "This link is not valid. Request a new one.",
     "nuovoLink": "Request a new link"
   },
+  "disiscrizione": {
+    "titolo": "Unsubscribe",
+    "inCorso": "One moment…",
+    "fatto": "Done: you will no longer receive our offers by email. Emails about bookings and payments will keep arriving.",
+    "linkNonValido": "This link is not valid. Use the one at the bottom of the last email you received.",
+    "profilo": "Change your mind from your profile"
+  },
   "moduli": {
     "required": "Required field.",
     "email": "Enter a valid email.",
@@ -301,7 +308,9 @@
     "salvato": "Changes saved.",
     "email": "Email",
     "notifiche": "Receive optional emails",
-    "notificheAiuto": "Message summaries and reminders. Booking and payment confirmations are always sent."
+    "notificheAiuto": "Message summaries and reminders. Booking and payment confirmations are always sent.",
+    "offerte": "Receive our offers",
+    "offerteAiuto": "Discounts and promotions, by email only. Unsubscribe any time, also from the link at the bottom of every email."
   },
   "sicurezza": {
     "titolo": "Password and sign-in",

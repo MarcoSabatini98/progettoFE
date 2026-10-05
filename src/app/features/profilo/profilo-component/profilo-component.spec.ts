@@ -37,7 +37,13 @@ describe('ProfiloComponent', () => {
           provide: UtentiService,
           useValue: {
             leggiProfilo: () =>
-              of({ nome: 'Anna', cognome: 'Rossi', lingua: 'it', notifiche_email: true }),
+              of({
+                nome: 'Anna',
+                cognome: 'Rossi',
+                lingua: 'it',
+                notifiche_email: true,
+                email_marketing: false,
+              }),
           },
         },
       ],

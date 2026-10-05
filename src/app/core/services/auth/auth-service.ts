@@ -164,6 +164,16 @@ export class AuthService {
   }
 
   /**
+   * DISISCRIZIONE — POST /disiscrizione
+   * Dal link nelle email delle offerte: funziona anche senza accesso.
+   */
+  disiscrivi(token: string): Observable<null> {
+    return this.http
+      .post<RispostaApiInterface<null>>(`${this.apiUrl}/disiscrizione`, { token })
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
    * CAMBIA PASSWORD — PUT /password
    * Il backend chiude tutte le sessioni: si rientra con la nuova password.
    */

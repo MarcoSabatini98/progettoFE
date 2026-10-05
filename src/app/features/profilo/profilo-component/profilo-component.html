@@ -13,7 +13,7 @@
 
 @if (profilo.hasValue()) {
   <app-dati-personali [profilo]="profilo.value()" />
-  <app-preferenze-email [attive]="profilo.value().notifiche_email" />
+  <app-preferenze-email [preferenze]="profilo.value()" />
 } @else if (profilo.error(); as errore) {
   <p class="esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
 }

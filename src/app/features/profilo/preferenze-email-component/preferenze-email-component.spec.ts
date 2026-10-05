@@ -23,23 +23,27 @@ describe('PreferenzeEmailComponent', () => {
     });
   });
 
-  async function cliccaDa(attive: boolean) {
+  /** Clicca la casella n-esima: 0 notifiche, 1 offerte. */
+  async function clicca(indice: number) {
     const fixture = TestBed.createComponent(PreferenzeEmailComponent);
-    fixture.componentRef.setInput('attive', attive);
+    fixture.componentRef.setInput('preferenze', { notifiche_email: true, email_marketing: false });
     await fixture.whenStable();
-    const casella = fixture.nativeElement.querySelector('input') as HTMLInputElement;
-    casella.click();
+    const caselle = fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    caselle[indice].click();
     await fixture.whenStable();
-    return casella;
+    return caselle;
   }
 
-  it('salva subito la nuova scelta', async () => {
-    utenti.aggiornaPreferenzeEmail.mockReturnValue(of({ notifiche_email: false }));
+  it('salva subito la sola voce cambiata', async () => {
+    utenti.aggiornaPreferenzeEmail.mockReturnValue(
+      of({ notifiche_email: true, email_marketing: true }),
+    );
 
-    const casella = await cliccaDa(true);
+    const caselle = await clicca(1);
 
-    expect(utenti.aggiornaPreferenzeEmail).toHaveBeenCalledWith(false);
-    expect(casella.checked).toBe(false);
+    expect(utenti.aggiornaPreferenzeEmail).toHaveBeenCalledWith({ email_marketing: true });
+    expect(caselle[0].checked).toBe(true);
+    expect(caselle[1].checked).toBe(true);
     expect(avvisi.mostra).toHaveBeenCalledWith('Salvato', 'successo');
   });
 
@@ -48,9 +52,10 @@ describe('PreferenzeEmailComponent', () => {
       throwError(() => new HttpErrorResponse({ status: 500 })),
     );
 
-    const casella = await cliccaDa(false);
+    const caselle = await clicca(0);
 
-    expect(casella.checked).toBe(false);
+    expect(utenti.aggiornaPreferenzeEmail).toHaveBeenCalledWith({ notifiche_email: false });
+    expect(caselle[0].checked).toBe(true);
     expect(avvisi.mostra).toHaveBeenCalledWith(expect.any(String), 'errore');
   });
 });

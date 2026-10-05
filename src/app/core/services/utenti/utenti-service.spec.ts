@@ -40,6 +40,15 @@ describe('UtentiService', () => {
     expect(modifiche).toEqual([{ nome: 'Giulia', cognome: 'Rossi', lingua: 'en' }]);
   });
 
+  it('le preferenze email mandano solo la voce cambiata', () => {
+    service.aggiornaPreferenzeEmail({ email_marketing: true }).subscribe();
+
+    const richiesta = backend.expectOne(`${API}/profilo/preferenze-email`);
+    expect(richiesta.request.method).toBe('PATCH');
+    expect(richiesta.request.body).toEqual({ email_marketing: true });
+    richiesta.flush(risposta({ notifiche_email: true, email_marketing: true }));
+  });
+
   it('carica il documento come file', () => {
     const file = new File(['x'], 'carta.pdf', { type: 'application/pdf' });
     service.caricaDocumento(file).subscribe();
