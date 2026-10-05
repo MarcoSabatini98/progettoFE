@@ -48,8 +48,8 @@ import {
 } from '../../../shared/models/evento-chat/evento-chat-model';
 import { MessaggioInterface } from '../../../shared/models/messaggio/messaggio-model';
 import { AzioniConversazioneComponent } from '../azioni-conversazione-component/azioni-conversazione-component';
-import { MessaggioChatComponent } from '../messaggio-chat-component/messaggio-chat-component';
-import { ScriviMessaggioComponent } from '../scrivi-messaggio-component/scrivi-messaggio-component';
+import { MessaggioChatComponent } from '../../../shared/messaggio-chat-component/messaggio-chat-component';
+import { ScriviMessaggioComponent } from '../../../shared/scrivi-messaggio-component/scrivi-messaggio-component';
 
 /**
  * Conversazione aperta nel riquadro della chat: storico a ritroso, messaggi in

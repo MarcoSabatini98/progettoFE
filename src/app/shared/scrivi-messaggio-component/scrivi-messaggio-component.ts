@@ -9,12 +9,12 @@ import {
   EVENTI_SOCKET,
   SCRIVE_OGNI_MS,
   TESTO_MAX,
-} from '../../../core/services/chat/chat-costanti';
-import { ChatService } from '../../../core/services/chat/chat-service';
-import { ErroriService } from '../../../core/services/errori/errori-service';
-import { SocketService } from '../../../core/services/socket/socket-service';
-import { IconaComponent } from '../../../shared/icona-component/icona-component';
-import { MessaggioInterface } from '../../../shared/models/messaggio/messaggio-model';
+} from '../../core/services/chat/chat-costanti';
+import { ChatService } from '../../core/services/chat/chat-service';
+import { ErroriService } from '../../core/services/errori/errori-service';
+import { SocketService } from '../../core/services/socket/socket-service';
+import { IconaComponent } from '../icona-component/icona-component';
+import { MessaggioInterface } from '../models/messaggio/messaggio-model';
 
 /**
  * Casella per scrivere: Invio manda, Maiusc+Invio va a capo. Fino a ALLEGATI_MAX file,

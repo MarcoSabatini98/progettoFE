@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
-import { ChatService } from '../../../core/services/chat/chat-service';
-import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
-import { MessaggioInterface } from '../../../shared/models/messaggio/messaggio-model';
+import { AvvisiService } from '../../core/services/avvisi/avvisi-service';
+import { ChatService } from '../../core/services/chat/chat-service';
+import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { MessaggioInterface } from '../models/messaggio/messaggio-model';
 import { MessaggioChatComponent } from './messaggio-chat-component';
 
 describe('MessaggioChatComponent', () => {

@@ -1,0 +1,99 @@
+@if (aperto()) {
+  <section id="widget-chat" class="riquadro" role="dialog" aria-labelledby="widget-chat-titolo">
+    <header class="intestazione">
+      <h2 id="widget-chat-titolo">{{ 'chat.widget.titolo' | transloco }}</h2>
+      @if (disponibile.hasValue()) {
+        <p class="disponibile piccolo" [class.online]="disponibile.value()">
+          {{ (disponibile.value() ? 'chat.widget.online' : 'chat.widget.offline') | transloco }}
+        </p>
+      }
+    </header>
+
+    @if (conversazione(); as dati) {
+      <!-- column-reverse: la vista resta ancorata in fondo quando arrivano messaggi. -->
+      <div class="messaggi" aria-live="polite">
+        <div class="flusso">
+          @for (messaggio of messaggi(); track messaggio.id) {
+            <app-messaggio-chat
+              [messaggio]="messaggio"
+              [mio]="mio(messaggio)"
+              [citato]="messaggio.risposta_a_id ? perId().get(messaggio.risposta_a_id) : undefined"
+              (rispondi)="rispondiA.set($event)"
+              (modificato)="sostituisci($event)"
+              (eliminato)="togli($event)"
+            />
+          }
+        </div>
+      </div>
+
+      @if (dati.stato === 'chiusa') {
+        <p class="esito">{{ 'chat.widget.chiusa' | transloco }}</p>
+        <button
+          class="pulsante pulsante-secondario"
+          type="button"
+          (click)="conversazione.set(null)"
+        >
+          {{ 'chat.widget.nuova' | transloco }}
+        </button>
+      } @else {
+        <app-scrivi-messaggio
+          [uuid]="dati.uuid"
+          [rispondiA]="rispondiA()"
+          (inviato)="arrivato($event)"
+          (annullaRisposta)="rispondiA.set(null)"
+        />
+      }
+    } @else if (!aperta.isLoading()) {
+      <form class="avvio" [formGroup]="modulo" (ngSubmit)="avvia()" novalidate>
+        <p>{{ 'chat.widget.introduzione' | transloco }}</p>
+        @if (!auth.collegato()) {
+          <app-campo
+            [etichetta]="'chat.widget.nome' | transloco"
+            [errore]="errori.campo(modulo.controls.nome)"
+          >
+            <input type="text" formControlName="nome" autocomplete="name" [maxLength]="nomeMax" />
+          </app-campo>
+          <app-campo
+            [etichetta]="'chat.widget.email' | transloco"
+            [aiuto]="'chat.widget.emailAiuto' | transloco"
+            [errore]="errori.campo(modulo.controls.email)"
+          >
+            <input type="email" formControlName="email" autocomplete="email" />
+          </app-campo>
+        }
+        <app-campo
+          [etichetta]="'chat.widget.messaggio' | transloco"
+          [errore]="errori.campo(modulo.controls.testo)"
+        >
+          <textarea formControlName="testo" rows="3" [maxLength]="testoMax" required></textarea>
+        </app-campo>
+
+        @if (errore()) {
+          <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+        }
+
+        <button
+          class="pulsante pulsante-primario pulsante-intero"
+          type="submit"
+          [disabled]="inCorso()"
+        >
+          {{ 'chat.widget.invia' | transloco }}
+        </button>
+      </form>
+    }
+  </section>
+}
+
+<button
+  class="pulsante pulsante-primario pulsante-icona lancia"
+  type="button"
+  aria-controls="widget-chat"
+  [attr.aria-expanded]="aperto()"
+  [attr.aria-label]="(aperto() ? 'chat.widget.chiudi' : 'chat.widget.apri') | transloco"
+  (click)="alterna()"
+>
+  <app-icona [nome]="aperto() ? 'close' : 'chat'" />
+  @if (nuovi()) {
+    <span class="nuovi" [attr.title]="'chat.widget.nuovi' | transloco"></span>
+  }
+</button>

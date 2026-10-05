@@ -12,15 +12,15 @@ import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } fr
 import { TranslocoPipe } from '@jsverse/transloco';
 import { Observable, finalize } from 'rxjs';
 
-import { salvaFile } from '../../../core/services/api/salva-file';
-import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
-import { TESTO_MAX } from '../../../core/services/chat/chat-costanti';
-import { ChatService } from '../../../core/services/chat/chat-service';
-import { ErroriService } from '../../../core/services/errori/errori-service';
-import { IconaComponent } from '../../../shared/icona-component/icona-component';
-import { MessaggioAllegatoInterface } from '../../../shared/models/messaggio-allegato/messaggio-allegato-model';
-import { MessaggioInterface } from '../../../shared/models/messaggio/messaggio-model';
-import { DataPipe } from '../../../shared/pipes/data-pipe';
+import { salvaFile } from '../../core/services/api/salva-file';
+import { AvvisiService } from '../../core/services/avvisi/avvisi-service';
+import { TESTO_MAX } from '../../core/services/chat/chat-costanti';
+import { ChatService } from '../../core/services/chat/chat-service';
+import { ErroriService } from '../../core/services/errori/errori-service';
+import { IconaComponent } from '../icona-component/icona-component';
+import { MessaggioAllegatoInterface } from '../models/messaggio-allegato/messaggio-allegato-model';
+import { MessaggioInterface } from '../models/messaggio/messaggio-model';
+import { DataPipe } from '../pipes/data-pipe';
 
 /**
  * Un messaggio della conversazione: i propri a destra, modificabili ed eliminabili;

@@ -2102,5 +2102,23 @@
       "recensione_nuova": "Neue Bewertung: {{ voto }}/5",
       "tassa_in_scadenza": "Kurtaxe: „{{ nome }}\" endet am {{ data }} und es gibt keine weitere"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Schreiben Sie uns",
+      "chiudi": "Chat schließen",
+      "titolo": "Kundenservice",
+      "online": "Wir sind online",
+      "offline": "Wir sind gerade nicht online: Wir antworten so bald wie möglich",
+      "introduzione": "Wie können wir helfen?",
+      "nome": "Name (optional)",
+      "email": "E-Mail (optional)",
+      "emailAiuto": "Damit Sie die Antwort auch nach dem Schließen der Seite erhalten",
+      "messaggio": "Nachricht",
+      "invia": "Senden",
+      "chiusa": "Unterhaltung beendet.",
+      "nuova": "Neue Unterhaltung",
+      "nuovi": "Neue Nachrichten"
+    }
   }
 }

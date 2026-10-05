@@ -101,3 +101,10 @@
     </div>
   </div>
 </footer>
+
+<!-- A parte: socket e chat non pesano sul primo caricamento del sito. -->
+@if (!navigazione.staff()) {
+  @defer (on idle) {
+    <app-widget-chat />
+  }
+}

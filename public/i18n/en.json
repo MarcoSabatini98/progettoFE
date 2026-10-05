@@ -2102,5 +2102,23 @@
       "recensione_nuova": "New review: {{ voto }}/5",
       "tassa_in_scadenza": "Tourist tax: \"{{ nome }}\" ends on {{ data }} and there is no other one"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Chat with us",
+      "chiudi": "Close chat",
+      "titolo": "Support",
+      "online": "We're online",
+      "offline": "We're offline right now: we'll reply as soon as possible",
+      "introduzione": "How can we help?",
+      "nome": "Name (optional)",
+      "email": "Email (optional)",
+      "emailAiuto": "To get the reply even if you close the page",
+      "messaggio": "Message",
+      "invia": "Send",
+      "chiusa": "Conversation closed.",
+      "nuova": "New conversation",
+      "nuovi": "New messages"
+    }
   }
 }

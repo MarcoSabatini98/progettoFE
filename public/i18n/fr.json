@@ -2102,5 +2102,23 @@
       "recensione_nuova": "Nouvel avis : {{ voto }}/5",
       "tassa_in_scadenza": "Taxe de séjour : « {{ nome }} » se termine le {{ data }} et il n'y en a pas d'autre"
     }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Écrivez-nous",
+      "chiudi": "Fermer la discussion",
+      "titolo": "Assistance",
+      "online": "Nous sommes en ligne",
+      "offline": "Nous ne sommes pas en ligne : nous vous répondrons dès que possible",
+      "introduzione": "Comment pouvons-nous vous aider ?",
+      "nome": "Nom (facultatif)",
+      "email": "E-mail (facultatif)",
+      "emailAiuto": "Pour recevoir la réponse même si vous fermez la page",
+      "messaggio": "Message",
+      "invia": "Envoyer",
+      "chiusa": "Conversation fermée.",
+      "nuova": "Nouvelle conversation",
+      "nuovi": "Nouveaux messages"
+    }
   }
 }
