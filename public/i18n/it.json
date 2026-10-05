@@ -1935,6 +1935,50 @@
         "salva": "Salva regole",
         "salvate": "Regole della chat salvate."
       }
+    },
+    "registro": {
+      "titolo": "Registro attività",
+      "introduzione": "Chi ha creato, cambiato o eliminato prenotazioni, pagamenti e fatture, e quando. Le modifiche più recenti sono in cima.",
+      "tabella": "Cosa",
+      "azione": "Azione",
+      "tabelle": {
+        "prenotazioni": "Prenotazioni",
+        "pagamenti": "Pagamenti",
+        "fatture": "Fatture"
+      },
+      "azioni": {
+        "inserimento": "Creazione",
+        "modifica": "Modifica",
+        "eliminazione": "Eliminazione"
+      },
+      "record": {
+        "prenotazioni": "Prenotazione n. {{id}}",
+        "pagamenti": "Pagamento n. {{id}}",
+        "fatture": "Fattura n. {{id}}"
+      },
+      "sistema": "Sistema",
+      "totale": "{{totale}} modifiche",
+      "vuoto": "Nessuna modifica con questi filtri.",
+      "storia": "Storia delle modifiche",
+      "campi": {
+        "codice": "Codice",
+        "stato": "Stato",
+        "camera_id": "Camera (n.)",
+        "ospite_id": "Ospite (n.)",
+        "data_arrivo": "Arrivo",
+        "data_partenza": "Partenza",
+        "adulti": "Adulti",
+        "bambini": "Bambini",
+        "totale": "Totale",
+        "penale_applicata": "Penale",
+        "prenotazione_id": "Prenotazione (n.)",
+        "tipo": "Tipo",
+        "metodo": "Metodo",
+        "importo": "Importo",
+        "id_transazione": "Transazione",
+        "stato_sdi": "Stato SDI",
+        "numero": "Numero"
+      }
     }
   },
   "anagrafica": {

@@ -134,6 +134,9 @@
         (cancellata)="prenotazione.reload()"
       />
     }
+    @if (puo.storia) {
+      <app-storia-record class="larga" tabella="prenotazioni" [recordId]="dati.id" />
+    }
   </div>
 } @else if (prenotazione.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

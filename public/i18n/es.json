@@ -1935,6 +1935,50 @@
         "salva": "Guardar reglas",
         "salvate": "Reglas del chat guardadas."
       }
+    },
+    "registro": {
+      "titolo": "Registro de actividad",
+      "introduzione": "Quién creó, modificó o eliminó reservas, pagos y facturas, y cuándo. Los cambios más recientes están arriba.",
+      "tabella": "Qué",
+      "azione": "Acción",
+      "tabelle": {
+        "prenotazioni": "Reservas",
+        "pagamenti": "Pagos",
+        "fatture": "Facturas"
+      },
+      "azioni": {
+        "inserimento": "Creación",
+        "modifica": "Modificación",
+        "eliminazione": "Eliminación"
+      },
+      "record": {
+        "prenotazioni": "Reserva n.º {{id}}",
+        "pagamenti": "Pago n.º {{id}}",
+        "fatture": "Factura n.º {{id}}"
+      },
+      "sistema": "Sistema",
+      "totale": "{{totale}} cambios",
+      "vuoto": "Ningún cambio con estos filtros.",
+      "storia": "Historial de cambios",
+      "campi": {
+        "codice": "Código",
+        "stato": "Estado",
+        "camera_id": "Habitación (n.º)",
+        "ospite_id": "Huésped (n.º)",
+        "data_arrivo": "Llegada",
+        "data_partenza": "Salida",
+        "adulti": "Adultos",
+        "bambini": "Niños",
+        "totale": "Total",
+        "penale_applicata": "Penalización",
+        "prenotazione_id": "Reserva (n.º)",
+        "tipo": "Tipo",
+        "metodo": "Método",
+        "importo": "Importe",
+        "id_transazione": "Transacción",
+        "stato_sdi": "Estado SDI",
+        "numero": "Número"
+      }
     }
   },
   "anagrafica": {

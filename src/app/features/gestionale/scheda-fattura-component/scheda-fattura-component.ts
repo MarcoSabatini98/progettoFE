@@ -3,9 +3,11 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { FattureService } from '../../../core/services/fatture/fatture-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
+import { RUOLI } from '../../../core/services/ruoli/ruoli-costanti';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { FatturaInterface } from '../../../shared/models/fattura/fattura-model';
 import { DataPipe } from '../../../shared/pipes/data-pipe';
@@ -15,6 +17,7 @@ import { EliminaComponent } from '../elimina-component/elimina-component';
 import { FileFatturaComponent } from '../file-fattura-component/file-fattura-component';
 import { NotaDiCreditoComponent } from '../nota-di-credito-component/nota-di-credito-component';
 import { SdiFatturaComponent } from '../sdi-fattura-component/sdi-fattura-component';
+import { StoriaRecordComponent } from '../storia-record-component/storia-record-component';
 
 /**
  * Scheda di una fattura (anche dai link delle notifiche): intestatario, righe e totali.
@@ -34,6 +37,7 @@ import { SdiFatturaComponent } from '../sdi-fattura-component/sdi-fattura-compon
     FileFatturaComponent,
     NotaDiCreditoComponent,
     SdiFatturaComponent,
+    StoriaRecordComponent,
   ],
   templateUrl: './scheda-fattura-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,6 +52,7 @@ export class SchedaFatturaComponent {
   readonly id = input.required({ transform: numberAttribute });
 
   protected readonly percorsi = PERCORSI_STAFF;
+  protected readonly storia = inject(AuthService).haRuolo([RUOLI.ADMIN]);
   protected readonly scheda = rxResource({
     params: () => this.id(),
     stream: ({ params: id }) => this.fatture.leggiFattura(id),

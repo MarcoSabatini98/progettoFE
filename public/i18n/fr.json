@@ -1935,6 +1935,50 @@
         "salva": "Enregistrer les règles",
         "salvate": "Règles du chat enregistrées."
       }
+    },
+    "registro": {
+      "titolo": "Journal d’activité",
+      "introduzione": "Qui a créé, modifié ou supprimé des réservations, des paiements et des factures, et quand. Les modifications les plus récentes sont en haut.",
+      "tabella": "Quoi",
+      "azione": "Action",
+      "tabelle": {
+        "prenotazioni": "Réservations",
+        "pagamenti": "Paiements",
+        "fatture": "Factures"
+      },
+      "azioni": {
+        "inserimento": "Création",
+        "modifica": "Modification",
+        "eliminazione": "Suppression"
+      },
+      "record": {
+        "prenotazioni": "Réservation n° {{id}}",
+        "pagamenti": "Paiement n° {{id}}",
+        "fatture": "Facture n° {{id}}"
+      },
+      "sistema": "Système",
+      "totale": "{{totale}} modifications",
+      "vuoto": "Aucune modification avec ces filtres.",
+      "storia": "Historique des modifications",
+      "campi": {
+        "codice": "Code",
+        "stato": "Statut",
+        "camera_id": "Chambre (n°)",
+        "ospite_id": "Client (n°)",
+        "data_arrivo": "Arrivée",
+        "data_partenza": "Départ",
+        "adulti": "Adultes",
+        "bambini": "Enfants",
+        "totale": "Total",
+        "penale_applicata": "Pénalité",
+        "prenotazione_id": "Réservation (n°)",
+        "tipo": "Type",
+        "metodo": "Moyen",
+        "importo": "Montant",
+        "id_transazione": "Transaction",
+        "stato_sdi": "Statut SDI",
+        "numero": "Numéro"
+      }
     }
   },
   "anagrafica": {

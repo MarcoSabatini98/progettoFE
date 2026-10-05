@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.etichette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+}
+
+.etichette + .tenue {
+  margin: 0;
+}
