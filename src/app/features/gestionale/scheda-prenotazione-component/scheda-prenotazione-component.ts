@@ -20,7 +20,7 @@ import {
   STATI_MODIFICABILI_CLIENTE,
 } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
-import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
+import { PERMESSI, RUOLI } from '../../../core/services/ruoli/ruoli-costanti';
 import { CancellaPrenotazioneComponent } from '../../../shared/cancella-prenotazione-component/cancella-prenotazione-component';
 import { ContoPrenotazioneComponent } from '../../../shared/conto-prenotazione-component/conto-prenotazione-component';
 import { DettagliPrenotazioneComponent } from '../../../shared/dettagli-prenotazione-component/dettagli-prenotazione-component';
@@ -35,6 +35,7 @@ import { IncassiPrenotazioneComponent } from '../incassi-prenotazione-component/
 import { LinkCheckinComponent } from '../link-checkin-component/link-checkin-component';
 import { ModificaPrenotazioneComponent } from '../modifica-prenotazione-component/modifica-prenotazione-component';
 import { OspitiSoggiornoComponent } from '../ospiti-soggiorno-component/ospiti-soggiorno-component';
+import { StoriaRecordComponent } from '../storia-record-component/storia-record-component';
 
 const STATI_IN_CORSO: readonly StatoPrenotazione[] = STATI_ATTIVI;
 /** Prima dell'arrivo: si cancella e si manda il link del check-in online. */
@@ -62,6 +63,7 @@ const STATI_PRIMA_ARRIVO: readonly StatoPrenotazione[] = STATI_MODIFICABILI_CLIE
     LinkCheckinComponent,
     ModificaPrenotazioneComponent,
     OspitiSoggiornoComponent,
+    StoriaRecordComponent,
   ],
   templateUrl: './scheda-prenotazione-component.html',
   styleUrl: './scheda-prenotazione-component.css',
@@ -85,6 +87,7 @@ export class SchedaPrenotazioneComponent {
     incassi: this.auth.haPermessi([PERMESSI.PAGAMENTI_LEGGI]),
     ospiti: this.auth.haPermessi([PERMESSI.OSPITI_GESTISCI]),
     fatture: this.auth.haPermessi([PERMESSI.FATTURE_GESTISCI]),
+    storia: this.auth.haRuolo([RUOLI.ADMIN]),
   };
   protected readonly prenotazione = rxResource({
     params: () => this.id(),

@@ -12,11 +12,12 @@ import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PagamentiService } from '../../../core/services/pagamenti/pagamenti-service';
 import { OspitiService } from '../../../core/services/ospiti/ospiti-service';
 import { PrenotazioniService } from '../../../core/services/prenotazioni/prenotazioni-service';
+import { RegistroService } from '../../../core/services/registro/registro-service';
 import { SchedaPrenotazioneComponent } from './scheda-prenotazione-component';
 
 describe('SchedaPrenotazioneComponent', () => {
   const prenotazioni = { leggiPrenotazione: vi.fn() };
-  const auth = { haPermessi: vi.fn() };
+  const auth = { haPermessi: vi.fn(), haRuolo: vi.fn() };
   const prenotazione = {
     id: 7,
     codice: 'BB-7',
@@ -42,6 +43,12 @@ describe('SchedaPrenotazioneComponent', () => {
         provideRouter([]),
         { provide: PrenotazioniService, useValue: prenotazioni },
         { provide: AuthService, useValue: auth },
+        {
+          provide: RegistroService,
+          useValue: {
+            leggiStoria: () => of({ elementi: [], totale: 0, pagina: 1, perPagina: 10, pagine: 0 }),
+          },
+        },
         {
           provide: PagamentiService,
           useValue: {
@@ -69,6 +76,7 @@ describe('SchedaPrenotazioneComponent', () => {
 
   async function crea(permesso: boolean) {
     auth.haPermessi.mockReturnValue(permesso);
+    auth.haRuolo.mockReturnValue(permesso);
     const fixture = TestBed.createComponent(SchedaPrenotazioneComponent);
     fixture.componentRef.setInput('id', '7');
     await fixture.whenStable();
@@ -85,7 +93,7 @@ describe('SchedaPrenotazioneComponent', () => {
     expect(elemento.textContent).toContain('Cliente abituale');
   });
 
-  it('con i permessi propone modifica, ospiti, incassi, fatture, link di check-in e cancellazione', async () => {
+  it('con i permessi propone modifica, ospiti, incassi, fatture, link di check-in, cancellazione e (admin) storia', async () => {
     const elemento = await crea(true);
 
     for (const selettore of [
@@ -95,6 +103,7 @@ describe('SchedaPrenotazioneComponent', () => {
       'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',
+      'app-storia-record',
     ]) {
       expect(elemento.querySelector(selettore)).not.toBeNull();
     }
@@ -110,6 +119,7 @@ describe('SchedaPrenotazioneComponent', () => {
       'app-ospiti-soggiorno',
       'app-link-checkin',
       'app-cancella-prenotazione',
+      'app-storia-record',
     ]) {
       expect(elemento.querySelector(selettore)).toBeNull();
     }

@@ -288,6 +288,16 @@ export const routes: Routes = [
             (m) => m.RuoliComponent,
           ),
       },
+      // Solo admin: chi ha cambiato cosa in prenotazioni, pagamenti e fatture.
+      {
+        path: 'registro',
+        canActivate: [ruoloGuard],
+        data: { ruoli: [RUOLI.ADMIN] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/registro-component/registro-component').then(
+            (m) => m.RegistroComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

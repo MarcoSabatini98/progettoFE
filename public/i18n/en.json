@@ -1935,6 +1935,50 @@
         "salva": "Save rules",
         "salvate": "Chat rules saved."
       }
+    },
+    "registro": {
+      "titolo": "Activity log",
+      "introduzione": "Who created, changed or deleted bookings, payments and invoices, and when. The most recent changes are at the top.",
+      "tabella": "What",
+      "azione": "Action",
+      "tabelle": {
+        "prenotazioni": "Bookings",
+        "pagamenti": "Payments",
+        "fatture": "Invoices"
+      },
+      "azioni": {
+        "inserimento": "Created",
+        "modifica": "Changed",
+        "eliminazione": "Deleted"
+      },
+      "record": {
+        "prenotazioni": "Booking no. {{id}}",
+        "pagamenti": "Payment no. {{id}}",
+        "fatture": "Invoice no. {{id}}"
+      },
+      "sistema": "System",
+      "totale": "{{totale}} changes",
+      "vuoto": "No changes with these filters.",
+      "storia": "Change history",
+      "campi": {
+        "codice": "Code",
+        "stato": "Status",
+        "camera_id": "Room (no.)",
+        "ospite_id": "Guest (no.)",
+        "data_arrivo": "Arrival",
+        "data_partenza": "Departure",
+        "adulti": "Adults",
+        "bambini": "Children",
+        "totale": "Total",
+        "penale_applicata": "Penalty",
+        "prenotazione_id": "Booking (no.)",
+        "tipo": "Type",
+        "metodo": "Method",
+        "importo": "Amount",
+        "id_transazione": "Transaction",
+        "stato_sdi": "SDI status",
+        "numero": "Number"
+      }
     }
   },
   "anagrafica": {

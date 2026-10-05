@@ -4,15 +4,18 @@ import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
 import { FattureService } from '../../../core/services/fatture/fatture-service';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
+import { RegistroService } from '../../../core/services/registro/registro-service';
 import { SchedaFatturaComponent } from './scheda-fattura-component';
 
 describe('SchedaFatturaComponent', () => {
   const fatture = { leggiFattura: vi.fn(), eliminaBozza: vi.fn() };
+  const auth = { haRuolo: vi.fn() };
   const fattura = {
     id: 9,
     prenotazione_id: 7,
@@ -49,11 +52,19 @@ describe('SchedaFatturaComponent', () => {
 
   beforeEach(() => {
     Object.values(fatture).forEach((spia) => spia.mockReset());
+    auth.haRuolo.mockReturnValue(false);
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [
         provideRouter([]),
         { provide: FattureService, useValue: fatture },
+        { provide: AuthService, useValue: auth },
+        {
+          provide: RegistroService,
+          useValue: {
+            leggiStoria: () => of({ elementi: [], totale: 0, pagina: 1, perPagina: 10, pagine: 0 }),
+          },
+        },
         { provide: AvvisiService, useValue: { mostra: vi.fn() } },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
@@ -104,6 +115,13 @@ describe('SchedaFatturaComponent', () => {
     expect(elemento.querySelector('app-bozza-fattura')).not.toBeNull();
     expect(elemento.querySelector('app-elimina')).not.toBeNull();
     expect(elemento.querySelector('app-file-fattura')).toBeNull();
+  });
+
+  it("la storia delle modifiche la vede solo l'admin", async () => {
+    expect((await crea()).querySelector('app-storia-record')).toBeNull();
+
+    auth.haRuolo.mockReturnValue(true);
+    expect((await crea()).querySelector('app-storia-record')).not.toBeNull();
   });
 
   it('se la fattura non esiste lo dice', async () => {

@@ -1935,6 +1935,50 @@
         "salva": "Regeln speichern",
         "salvate": "Chat-Regeln gespeichert."
       }
+    },
+    "registro": {
+      "titolo": "Aktivitätsprotokoll",
+      "introduzione": "Wer Buchungen, Zahlungen und Rechnungen erstellt, geändert oder gelöscht hat und wann. Die neuesten Änderungen stehen oben.",
+      "tabella": "Was",
+      "azione": "Aktion",
+      "tabelle": {
+        "prenotazioni": "Buchungen",
+        "pagamenti": "Zahlungen",
+        "fatture": "Rechnungen"
+      },
+      "azioni": {
+        "inserimento": "Erstellt",
+        "modifica": "Geändert",
+        "eliminazione": "Gelöscht"
+      },
+      "record": {
+        "prenotazioni": "Buchung Nr. {{id}}",
+        "pagamenti": "Zahlung Nr. {{id}}",
+        "fatture": "Rechnung Nr. {{id}}"
+      },
+      "sistema": "System",
+      "totale": "{{totale}} Änderungen",
+      "vuoto": "Keine Änderungen mit diesen Filtern.",
+      "storia": "Änderungsverlauf",
+      "campi": {
+        "codice": "Code",
+        "stato": "Status",
+        "camera_id": "Zimmer (Nr.)",
+        "ospite_id": "Gast (Nr.)",
+        "data_arrivo": "Anreise",
+        "data_partenza": "Abreise",
+        "adulti": "Erwachsene",
+        "bambini": "Kinder",
+        "totale": "Gesamt",
+        "penale_applicata": "Stornogebühr",
+        "prenotazione_id": "Buchung (Nr.)",
+        "tipo": "Art",
+        "metodo": "Methode",
+        "importo": "Betrag",
+        "id_transazione": "Transaktion",
+        "stato_sdi": "SDI-Status",
+        "numero": "Nummer"
+      }
     }
   },
   "anagrafica": {

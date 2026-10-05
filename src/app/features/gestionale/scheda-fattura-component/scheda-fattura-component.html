@@ -157,6 +157,9 @@
         <app-nota-di-credito [fattura]="dati" (creata)="apri($event)" />
       }
     }
+    @if (storia) {
+      <app-storia-record class="larga" tabella="fatture" [recordId]="dati.id" />
+    }
   </div>
 } @else if (scheda.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

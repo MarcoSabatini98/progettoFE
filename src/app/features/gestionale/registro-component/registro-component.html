@@ -1,0 +1,52 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.registro.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.registro.introduzione' | transloco }}</p>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.registro.tabella' | transloco">
+      <select formControlName="tabella">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (tabella of scelte.tabelle; track tabella) {
+          <option [value]="tabella">
+            {{ 'gestionale.registro.tabelle.' + tabella | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.registro.azione' | transloco">
+      <select formControlName="azione">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (azione of scelte.azioni; track azione) {
+          <option [value]="azione">{{ 'gestionale.registro.azioni.' + azione | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.elenco.dal' | transloco">
+      <input type="date" formControlName="dal" />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.elenco.al' | transloco">
+      <input type="date" formControlName="al" />
+    </app-campo>
+  </form>
+</header>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.registro.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (voce of risultato.elementi; track voce.id) {
+      <li><app-riga-registro [voce]="voce" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.registro.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    (sfoglia)="sfoglia($event)"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
