@@ -2100,7 +2100,17 @@
       "pulizia_assegnata": "Reinigung zugewiesen: Zimmer {{ camera }} am {{ data }}",
       "camera_da_ispezionare": "Zimmer {{ camera }} zu prüfen",
       "recensione_nuova": "Neue Bewertung: {{ voto }}/5",
-      "tassa_in_scadenza": "Kurtaxe: „{{ nome }}\" endet am {{ data }} und es gibt keine weitere"
+      "tassa_in_scadenza": "Kurtaxe: „{{ nome }}\" endet am {{ data }} und es gibt keine weitere",
+      "prenotazione_ricevuta": "Buchung {{ codice }} eingegangen",
+      "prenotazione_confermata": "Buchung {{ codice }} bestätigt",
+      "prenotazione_cancellata": "Buchung {{ codice }} storniert",
+      "promemoria_checkin": "Anreise am {{ data }}: jetzt online einchecken",
+      "invito_recensione": "Wie war Ihr Aufenthalt {{ codice }}? Schreiben Sie eine Bewertung",
+      "link_pagamento": "Zahlung für Buchung {{ codice }} abschließen",
+      "pagamento_ricevuto": "Zahlung von {{ importo }} für {{ codice }} erhalten",
+      "rimborso_eseguito": "Erstattung von {{ importo }} für {{ codice }} durchgeführt",
+      "fattura_emessa": "Rechnung {{ numero }} verfügbar",
+      "nuova_promozione": "Neues Angebot: {{ nome }}, Aufenthalte vom {{ inizio }} bis {{ fine }}"
     }
   },
   "chat": {

@@ -11,6 +11,7 @@ import {
 } from '../../core/services/navigazione/navigazione-costanti';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
 import { TIPI_DOCUMENTO_LEGALE } from '../../core/services/sistema/sistema-costanti';
+import { CampanellaComponent } from '../../shared/campanella-component/campanella-component';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MenuUtenteComponent } from '../../shared/menu-utente-component/menu-utente-component';
 import { InizialiPipe } from '../../shared/pipes/iniziali-pipe';
@@ -34,6 +35,7 @@ import { WidgetChatComponent } from '../widget-chat-component/widget-chat-compon
     RouterOutlet,
     TranslocoPipe,
     IconaComponent,
+    CampanellaComponent,
     InizialiPipe,
     MenuUtenteComponent,
     SelettoreLinguaComponent,

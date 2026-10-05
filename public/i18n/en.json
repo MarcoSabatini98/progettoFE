@@ -2100,7 +2100,17 @@
       "pulizia_assegnata": "Cleaning assigned: room {{ camera }} on {{ data }}",
       "camera_da_ispezionare": "Room {{ camera }} to inspect",
       "recensione_nuova": "New review: {{ voto }}/5",
-      "tassa_in_scadenza": "Tourist tax: \"{{ nome }}\" ends on {{ data }} and there is no other one"
+      "tassa_in_scadenza": "Tourist tax: \"{{ nome }}\" ends on {{ data }} and there is no other one",
+      "prenotazione_ricevuta": "Booking {{ codice }} received",
+      "prenotazione_confermata": "Booking {{ codice }} confirmed",
+      "prenotazione_cancellata": "Booking {{ codice }} cancelled",
+      "promemoria_checkin": "Arriving on {{ data }}: complete online check-in",
+      "invito_recensione": "How was your stay {{ codice }}? Leave a review",
+      "link_pagamento": "Payment to complete for booking {{ codice }}",
+      "pagamento_ricevuto": "Payment of {{ importo }} received for {{ codice }}",
+      "rimborso_eseguito": "Refund of {{ importo }} issued for {{ codice }}",
+      "fattura_emessa": "Invoice {{ numero }} available",
+      "nuova_promozione": "New offer: {{ nome }}, stays from {{ inizio }} to {{ fine }}"
     }
   },
   "chat": {

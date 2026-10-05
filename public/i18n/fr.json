@@ -2100,7 +2100,17 @@
       "pulizia_assegnata": "Ménage assigné : chambre {{ camera }} le {{ data }}",
       "camera_da_ispezionare": "Chambre {{ camera }} à inspecter",
       "recensione_nuova": "Nouvel avis : {{ voto }}/5",
-      "tassa_in_scadenza": "Taxe de séjour : « {{ nome }} » se termine le {{ data }} et il n'y en a pas d'autre"
+      "tassa_in_scadenza": "Taxe de séjour : « {{ nome }} » se termine le {{ data }} et il n'y en a pas d'autre",
+      "prenotazione_ricevuta": "Réservation {{ codice }} reçue",
+      "prenotazione_confermata": "Réservation {{ codice }} confirmée",
+      "prenotazione_cancellata": "Réservation {{ codice }} annulée",
+      "promemoria_checkin": "Arrivée le {{ data }} : faites l’enregistrement en ligne",
+      "invito_recensione": "Comment s’est passé votre séjour {{ codice }} ? Laissez un avis",
+      "link_pagamento": "Paiement à finaliser pour la réservation {{ codice }}",
+      "pagamento_ricevuto": "Paiement de {{ importo }} reçu pour {{ codice }}",
+      "rimborso_eseguito": "Remboursement de {{ importo }} effectué pour {{ codice }}",
+      "fattura_emessa": "Facture {{ numero }} disponible",
+      "nuova_promozione": "Nouvelle offre : {{ nome }}, séjours du {{ inizio }} au {{ fine }}"
     }
   },
   "chat": {

@@ -2100,7 +2100,17 @@
       "pulizia_assegnata": "Pulizia assegnata: camera {{ camera }} per il {{ data }}",
       "camera_da_ispezionare": "Camera {{ camera }} da ispezionare",
       "recensione_nuova": "Nuova recensione: {{ voto }}/5",
-      "tassa_in_scadenza": "Tassa di soggiorno: \"{{ nome }}\" finisce il {{ data }} e non ce n'è un'altra"
+      "tassa_in_scadenza": "Tassa di soggiorno: \"{{ nome }}\" finisce il {{ data }} e non ce n'è un'altra",
+      "prenotazione_ricevuta": "Prenotazione {{ codice }} ricevuta",
+      "prenotazione_confermata": "Prenotazione {{ codice }} confermata",
+      "prenotazione_cancellata": "Prenotazione {{ codice }} cancellata",
+      "promemoria_checkin": "Arrivo il {{ data }}: fai il check-in online",
+      "invito_recensione": "Com'è andato il soggiorno {{ codice }}? Lascia una recensione",
+      "link_pagamento": "Pagamento da completare per la prenotazione {{ codice }}",
+      "pagamento_ricevuto": "Pagamento di {{ importo }} ricevuto per {{ codice }}",
+      "rimborso_eseguito": "Rimborso di {{ importo }} eseguito per {{ codice }}",
+      "fattura_emessa": "Fattura {{ numero }} disponibile",
+      "nuova_promozione": "Nuova offerta: {{ nome }}, soggiorni dal {{ inizio }} al {{ fine }}"
     }
   },
   "chat": {

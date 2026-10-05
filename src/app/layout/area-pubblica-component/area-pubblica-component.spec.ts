@@ -1,7 +1,7 @@
 import { signal } from '@angular/core';
 import { DeferBlockState, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { NEVER } from 'rxjs';
+import { NEVER, of } from 'rxjs';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { AuthService } from '../../core/services/auth/auth-service';
@@ -10,8 +10,9 @@ import { CHIAVI_IMPOSTAZIONI } from '../../core/services/impostazioni/impostazio
 import { ImpostazioniService } from '../../core/services/impostazioni/impostazioni-service';
 import { MENU_PUBBLICO } from '../../core/services/navigazione/navigazione-costanti';
 import { NavigazioneService } from '../../core/services/navigazione/navigazione-service';
-import { SocketService } from '../../core/services/socket/socket-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
+import { NotificheService } from '../../core/services/notifiche/notifiche-service';
+import { SocketService } from '../../core/services/socket/socket-service';
 import { AreaPubblicaComponent } from './area-pubblica-component';
 
 describe('AreaPubblicaComponent', () => {
@@ -21,9 +22,11 @@ describe('AreaPubblicaComponent', () => {
     [CHIAVI_IMPOSTAZIONI.cin]: 'IT090064C2000000001',
   };
 
+  const collegato = signal(false);
   const staff = signal(false);
 
   beforeEach(async () => {
+    collegato.set(false);
     staff.set(false);
     TestBed.configureTestingModule({
       imports: [traduzioniTest(), AreaPubblicaComponent],
@@ -39,10 +42,14 @@ describe('AreaPubblicaComponent', () => {
         },
         {
           provide: AuthService,
-          useValue: { collegato: signal(false), utente: signal(null), token: signal(null) },
+          useValue: { collegato, utente: signal(null), token: signal(null) },
         },
         { provide: NavigazioneService, useValue: { staff } },
         { provide: ChatService, useValue: {} },
+        {
+          provide: NotificheService,
+          useValue: { elencaNotifiche: () => of({ elementi: [], non_lette: 0 }) },
+        },
         { provide: SocketService, useValue: { ascolta: () => NEVER } },
       ],
     });
@@ -110,6 +117,16 @@ describe('AreaPubblicaComponent', () => {
 
     expect(elemento.querySelector('a[href="/accesso"]')).not.toBeNull();
     expect(elemento.querySelector('app-menu-utente')).toBeNull();
+    expect(elemento.querySelector('app-campanella')).toBeNull();
+  });
+
+  it('con la sessione mostra la campanella delle notifiche e il menu utente', async () => {
+    collegato.set(true);
+    const elemento = await crea();
+
+    expect(elemento.querySelector('app-campanella')).not.toBeNull();
+    expect(elemento.querySelector('app-menu-utente')).not.toBeNull();
+    expect(elemento.querySelector('a[href="/accesso"]')).toBeNull();
   });
 
   it('offre la chat di assistenza a visitatori e clienti, non allo staff', async () => {
