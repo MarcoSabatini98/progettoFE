@@ -246,7 +246,11 @@
     "AUTO_DECLASSAMENTO": "Vous ne pouvez pas vous retirer le rôle d'administrateur.",
     "AUTO_ELIMINAZIONE": "Vous ne pouvez pas supprimer votre compte d'ici.",
     "RUOLO_NON_ASSEGNABILE": "Ce rôle ne peut pas être attribué.",
-    "RUOLO_CLIENTE": "Un compte client reste un compte client."
+    "RUOLO_CLIENTE": "Un compte client reste un compte client.",
+    "RUOLO_NON_MODIFICABILE": "L'administrateur a toujours toutes les autorisations.",
+    "RUOLO_NON_TROVATO": "Rôle introuvable.",
+    "PERMESSO_SCONOSCIUTO": "Une des autorisations n'existe plus : rechargez la page.",
+    "RUOLO_NON_STAFF": "Le chat interne est réservé au personnel."
   },
   "nuovaPassword": {
     "password": "Nouveau mot de passe",
@@ -1839,6 +1843,97 @@
         "titolo": "Supprimer le compte",
         "aiuto": "Il ne pourra plus se connecter. Réservations, factures et données d'identité sont conservées pour les obligations légales.",
         "conferma": "Oui, supprimer"
+      }
+    },
+    "permessi": {
+      "titolo": "Rôles et autorisations",
+      "introduzione": "Ce que chaque rôle du personnel peut faire et qui peut écrire à qui dans le chat interne.",
+      "permessi": "Autorisations",
+      "admin": "L'administrateur a toujours toutes les autorisations. Les changements s'appliquent tout de suite à ceux qui ont ce rôle.",
+      "salva": "Enregistrer les autorisations",
+      "salvati": "Autorisations enregistrées.",
+      "moduli": {
+        "camere": "Chambres",
+        "tariffe": "Tarifs et calendriers",
+        "prenotazioni": "Réservations",
+        "ospiti": "Clients",
+        "pagamenti": "Paiements et factures",
+        "pulizie": "Ménage et maintenance",
+        "recensioni": "Avis",
+        "chat": "Assistance clients",
+        "contenuti": "Contenus du site",
+        "utenti": "Utilisateurs",
+        "impostazioni": "Paramètres",
+        "analytics": "Rapports"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Gérer les chambres, les types et les services"
+        },
+        "tariffe": {
+          "gestisci": "Gérer périodes, plans, promotions, codes de réduction et taxe de séjour"
+        },
+        "calendari": {
+          "gestisci": "Gérer les dates bloquées et les calendriers externes"
+        },
+        "prenotazioni": {
+          "leggi": "Voir toutes les réservations",
+          "gestisci": "Créer, modifier et annuler des réservations"
+        },
+        "checkin": {
+          "gestisci": "Enregistrer arrivées et départs, données et documents des clients"
+        },
+        "ospiti": {
+          "gestisci": "Gérer le fichier des clients"
+        },
+        "alloggiati": {
+          "invia": "Envoyer les fiches à Alloggiati Web"
+        },
+        "pagamenti": {
+          "leggi": "Voir les paiements",
+          "registra": "Enregistrer encaissements sur place et remboursements"
+        },
+        "fatture": {
+          "gestisci": "Émettre factures et avoirs"
+        },
+        "pulizie": {
+          "leggi": "Voir le ménage",
+          "esegui": "Mettre à jour son propre ménage",
+          "gestisci": "Attribuer et vérifier le ménage"
+        },
+        "manutenzione": {
+          "segnala": "Signaler pannes et problèmes",
+          "gestisci": "Gérer les signalements de maintenance"
+        },
+        "recensioni": {
+          "modera": "Publier, refuser et répondre aux avis"
+        },
+        "chat": {
+          "assistenza": "Répondre aux clients et visiteurs dans le chat"
+        },
+        "faq": {
+          "gestisci": "Gérer les FAQ"
+        },
+        "contenuti": {
+          "gestisci": "Gérer images, textes, traductions et documents légaux"
+        },
+        "utenti": {
+          "gestisci": "Gérer les comptes du personnel et des clients"
+        },
+        "impostazioni": {
+          "gestisci": "Modifier les paramètres de l'établissement"
+        },
+        "analytics": {
+          "leggi": "Voir statistiques et rapports"
+        }
+      },
+      "chat": {
+        "titolo": "Chat interne",
+        "aiuto": "Cochez qui peut s'écrire : la règle vaut dans les deux sens. Les collègues du même rôle se parlent dans le groupe de leur équipe.",
+        "colleghi": "Entre {{ ruolo }}",
+        "coppia": "{{ a }} et {{ b }}",
+        "salva": "Enregistrer les règles",
+        "salvate": "Règles du chat enregistrées."
       }
     }
   },

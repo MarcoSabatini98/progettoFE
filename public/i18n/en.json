@@ -246,7 +246,11 @@
     "AUTO_DECLASSAMENTO": "You cannot remove the administrator role from yourself.",
     "AUTO_ELIMINAZIONE": "You cannot delete your own account from here.",
     "RUOLO_NON_ASSEGNABILE": "This role cannot be assigned.",
-    "RUOLO_CLIENTE": "A guest account stays a guest account."
+    "RUOLO_CLIENTE": "A guest account stays a guest account.",
+    "RUOLO_NON_MODIFICABILE": "The administrator always has every permission.",
+    "RUOLO_NON_TROVATO": "Role not found.",
+    "PERMESSO_SCONOSCIUTO": "One of the permissions no longer exists: reload the page.",
+    "RUOLO_NON_STAFF": "The internal chat is for staff only."
   },
   "nuovaPassword": {
     "password": "New password",
@@ -1839,6 +1843,97 @@
         "titolo": "Delete account",
         "aiuto": "They will no longer be able to sign in. Bookings, invoices and guest details are kept as required by law.",
         "conferma": "Yes, delete"
+      }
+    },
+    "permessi": {
+      "titolo": "Roles and permissions",
+      "introduzione": "What each staff role can do and who can message whom in the internal chat.",
+      "permessi": "Permissions",
+      "admin": "The administrator always has every permission. Changes apply straight away to everyone with that role.",
+      "salva": "Save permissions",
+      "salvati": "Permissions saved.",
+      "moduli": {
+        "camere": "Rooms",
+        "tariffe": "Rates and calendars",
+        "prenotazioni": "Bookings",
+        "ospiti": "Guests",
+        "pagamenti": "Payments and invoices",
+        "pulizie": "Housekeeping and maintenance",
+        "recensioni": "Reviews",
+        "chat": "Customer support",
+        "contenuti": "Website content",
+        "utenti": "Users",
+        "impostazioni": "Settings",
+        "analytics": "Reports"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Manage rooms, room types and services"
+        },
+        "tariffe": {
+          "gestisci": "Manage periods, plans, promotions, discount codes and tourist tax"
+        },
+        "calendari": {
+          "gestisci": "Manage blocked dates and external calendars"
+        },
+        "prenotazioni": {
+          "leggi": "See all bookings",
+          "gestisci": "Create, edit and cancel bookings"
+        },
+        "checkin": {
+          "gestisci": "Record arrivals and departures, guest details and documents"
+        },
+        "ospiti": {
+          "gestisci": "Manage the guest register"
+        },
+        "alloggiati": {
+          "invia": "Send guest records to Alloggiati Web"
+        },
+        "pagamenti": {
+          "leggi": "See payments",
+          "registra": "Record on-site payments and refunds"
+        },
+        "fatture": {
+          "gestisci": "Issue invoices and credit notes"
+        },
+        "pulizie": {
+          "leggi": "See housekeeping tasks",
+          "esegui": "Update their own housekeeping tasks",
+          "gestisci": "Assign and check housekeeping tasks"
+        },
+        "manutenzione": {
+          "segnala": "Report faults and problems",
+          "gestisci": "Handle maintenance reports"
+        },
+        "recensioni": {
+          "modera": "Publish, reject and reply to reviews"
+        },
+        "chat": {
+          "assistenza": "Answer customers and visitors in chat"
+        },
+        "faq": {
+          "gestisci": "Manage FAQs"
+        },
+        "contenuti": {
+          "gestisci": "Manage images, texts, translations and legal documents"
+        },
+        "utenti": {
+          "gestisci": "Manage staff and customer accounts"
+        },
+        "impostazioni": {
+          "gestisci": "Change the property settings"
+        },
+        "analytics": {
+          "leggi": "See statistics and reports"
+        }
+      },
+      "chat": {
+        "titolo": "Internal chat",
+        "aiuto": "Tick who can message each other: a rule works both ways. Colleagues with the same role talk in their team group.",
+        "colleghi": "Among {{ ruolo }}",
+        "coppia": "{{ a }} and {{ b }}",
+        "salva": "Save rules",
+        "salvate": "Chat rules saved."
       }
     }
   },

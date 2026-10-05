@@ -105,6 +105,7 @@ export const PERCORSI_STAFF = {
   report: `${PERCORSO_STAFF}/report`,
   /** Seguito dall'id per la scheda: /staff/utenti/3. */
   utenti: `${PERCORSO_STAFF}/utenti`,
+  ruoli: `${PERCORSO_STAFF}/ruoli`,
 } as const;
 
 /**
@@ -253,7 +254,7 @@ export const MENU_STAFF: readonly GruppoMenuInterface[] = [
       },
       {
         etichetta: 'menu.voci.ruoli',
-        percorso: `${PERCORSO_STAFF}/ruoli`,
+        percorso: PERCORSI_STAFF.ruoli,
         icona: 'admin_panel_settings',
         ruoli: [RUOLI.ADMIN],
       },

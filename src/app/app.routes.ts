@@ -278,6 +278,16 @@ export const routes: Routes = [
             (m) => m.SchedaUtenteComponent,
           ),
       },
+      // Solo admin: chi cambia i permessi potrebbe darsene di nuovi da solo.
+      {
+        path: 'ruoli',
+        canActivate: [ruoloGuard],
+        data: { ruoli: [RUOLI.ADMIN] } satisfies RequisitiAccessoInterface,
+        loadComponent: () =>
+          import('./features/gestionale/ruoli-component/ruoli-component').then(
+            (m) => m.RuoliComponent,
+          ),
+      },
       // Con l'id (link della notifica di errore) apre quel calendario.
       {
         path: 'calendari',

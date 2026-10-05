@@ -246,7 +246,11 @@
     "AUTO_DECLASSAMENTO": "Non puoi togliere a te stesso il ruolo di amministratore.",
     "AUTO_ELIMINAZIONE": "Non puoi eliminare il tuo account da qui.",
     "RUOLO_NON_ASSEGNABILE": "Questo ruolo non si può assegnare.",
-    "RUOLO_CLIENTE": "Un account cliente resta cliente."
+    "RUOLO_CLIENTE": "Un account cliente resta cliente.",
+    "RUOLO_NON_MODIFICABILE": "L'amministratore ha sempre tutti i permessi.",
+    "RUOLO_NON_TROVATO": "Ruolo non trovato.",
+    "PERMESSO_SCONOSCIUTO": "Uno dei permessi non esiste più: ricarica la pagina.",
+    "RUOLO_NON_STAFF": "La chat interna è solo per lo staff."
   },
   "nuovaPassword": {
     "password": "Nuova password",
@@ -1839,6 +1843,97 @@
         "titolo": "Elimina account",
         "aiuto": "Non potrà più accedere. Prenotazioni, fatture e anagrafica restano per gli obblighi di legge.",
         "conferma": "Sì, elimina"
+      }
+    },
+    "permessi": {
+      "titolo": "Ruoli e permessi",
+      "introduzione": "Cosa può fare ogni ruolo dello staff e chi può scrivere a chi nella chat interna.",
+      "permessi": "Permessi",
+      "admin": "L'amministratore ha sempre tutti i permessi. Le modifiche valgono subito per chi ha quel ruolo.",
+      "salva": "Salva permessi",
+      "salvati": "Permessi salvati.",
+      "moduli": {
+        "camere": "Camere",
+        "tariffe": "Tariffe e calendari",
+        "prenotazioni": "Prenotazioni",
+        "ospiti": "Ospiti",
+        "pagamenti": "Pagamenti e fatture",
+        "pulizie": "Pulizie e manutenzione",
+        "recensioni": "Recensioni",
+        "chat": "Assistenza clienti",
+        "contenuti": "Contenuti del sito",
+        "utenti": "Utenti",
+        "impostazioni": "Impostazioni",
+        "analytics": "Report"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Gestire camere, tipologie e servizi"
+        },
+        "tariffe": {
+          "gestisci": "Gestire periodi, piani, promozioni, codici sconto e tassa di soggiorno"
+        },
+        "calendari": {
+          "gestisci": "Gestire date bloccate e calendari esterni"
+        },
+        "prenotazioni": {
+          "leggi": "Vedere tutte le prenotazioni",
+          "gestisci": "Creare, modificare e cancellare prenotazioni"
+        },
+        "checkin": {
+          "gestisci": "Registrare arrivi e partenze, dati e documenti degli ospiti"
+        },
+        "ospiti": {
+          "gestisci": "Gestire l'anagrafica ospiti"
+        },
+        "alloggiati": {
+          "invia": "Inviare le schedine ad Alloggiati Web"
+        },
+        "pagamenti": {
+          "leggi": "Vedere i pagamenti",
+          "registra": "Registrare incassi in struttura e rimborsi"
+        },
+        "fatture": {
+          "gestisci": "Emettere fatture e note di credito"
+        },
+        "pulizie": {
+          "leggi": "Vedere le pulizie",
+          "esegui": "Aggiornare le proprie pulizie",
+          "gestisci": "Assegnare e verificare le pulizie"
+        },
+        "manutenzione": {
+          "segnala": "Segnalare guasti e problemi",
+          "gestisci": "Gestire le segnalazioni di manutenzione"
+        },
+        "recensioni": {
+          "modera": "Pubblicare, rifiutare e rispondere alle recensioni"
+        },
+        "chat": {
+          "assistenza": "Rispondere a clienti e visitatori in chat"
+        },
+        "faq": {
+          "gestisci": "Gestire le FAQ"
+        },
+        "contenuti": {
+          "gestisci": "Gestire immagini, testi, traduzioni e documenti legali"
+        },
+        "utenti": {
+          "gestisci": "Gestire gli account dello staff e dei clienti"
+        },
+        "impostazioni": {
+          "gestisci": "Modificare le impostazioni della struttura"
+        },
+        "analytics": {
+          "leggi": "Vedere statistiche e report"
+        }
+      },
+      "chat": {
+        "titolo": "Chat interna",
+        "aiuto": "Spunta chi può scriversi: la regola vale nei due sensi. I colleghi dello stesso ruolo si parlano nel gruppo della squadra.",
+        "colleghi": "Tra {{ ruolo }}",
+        "coppia": "{{ a }} e {{ b }}",
+        "salva": "Salva regole",
+        "salvate": "Regole della chat salvate."
       }
     }
   },
