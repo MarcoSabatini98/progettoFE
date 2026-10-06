@@ -90,6 +90,8 @@ describe('AreaPubblicaComponent', () => {
       'media/logo.webp',
     );
     expect(elemento.querySelector('.marchio-arco')).toBeNull();
+    expect(elemento.querySelector('.marchio-nome')).toBeNull();
+    expect(elemento.querySelector('.marchio img')?.getAttribute('alt')).toBe('Casa del Mare');
     expect(elemento.querySelector('.piede-logo')?.getAttribute('src')).toContain('media/logo.webp');
   });
 

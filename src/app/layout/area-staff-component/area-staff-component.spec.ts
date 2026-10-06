@@ -54,11 +54,22 @@ describe('AreaStaffComponent', () => {
     });
   });
 
-  it('mostra nome e logo della struttura nella barra', async () => {
+  it('con il logo nella barra mostra solo quello, il nome resta come testo alternativo', async () => {
     const marchio = (await crea()).querySelector('.marchio');
 
-    expect(marchio?.textContent).toContain('Casa del Mare');
     expect(marchio?.querySelector('img')?.getAttribute('src')).toContain('media/logo.webp');
+    expect(marchio?.querySelector('img')?.getAttribute('alt')).toBe('Casa del Mare');
+    expect(marchio?.querySelector('.marchio-nome')).toBeNull();
+  });
+
+  it('senza logo mostra il nome della struttura', async () => {
+    const logo = impostazioni[CHIAVI_IMPOSTAZIONI.logo];
+    delete impostazioni[CHIAVI_IMPOSTAZIONI.logo];
+    const marchio = (await crea()).querySelector('.marchio');
+    impostazioni[CHIAVI_IMPOSTAZIONI.logo] = logo;
+
+    expect(marchio?.querySelector('img')).toBeNull();
+    expect(marchio?.textContent).toContain('Casa del Mare');
   });
 
   async function crea() {
