@@ -67,7 +67,12 @@
 <footer class="piede">
   <div class="piede-interno">
     <div class="piede-struttura">
-      <p class="piede-nome">{{ nome() }}</p>
+      <p class="piede-nome">
+        @if (logo(); as percorso) {
+          <img class="piede-logo" [src]="percorso | media" alt="" loading="lazy" />
+        }
+        {{ nome() }}
+      </p>
       @if (indirizzo()) {
         <p class="piede-riga">
           <app-icona nome="location_on" />

@@ -14,8 +14,8 @@ describe('GalleriaMediaComponent', () => {
     eliminaMedia: vi.fn(),
   };
   const media = [
-    { id: 4, percorso: 'media/a.jpg', testo_alternativo: 'Letto' },
-    { id: 5, percorso: 'media/b.jpg', testo_alternativo: 'Bagno' },
+    { id: 4, percorso: 'media/a.jpg', tipo_mime: 'image/jpeg', testo_alternativo: 'Letto' },
+    { id: 5, percorso: 'media/b.jpg', tipo_mime: 'image/jpeg', testo_alternativo: 'Bagno' },
   ];
 
   beforeEach(() => {
@@ -106,7 +106,7 @@ describe('GalleriaMediaComponent', () => {
     fixture.componentRef.setInput('entita', 'home');
     fixture.componentRef.setInput('media', []);
     fixture.componentRef.setInput('descrizione', 'Home');
-    fixture.componentRef.setInput('chiave', 'gestionale.contenuti.foto.home');
+    fixture.componentRef.setInput('chiave', 'gestionale.impostazioni.sfondo');
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const campo = elemento.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -115,9 +115,25 @@ describe('GalleriaMediaComponent', () => {
     campo.dispatchEvent(new Event('change'));
     await fixture.whenStable();
 
-    expect(elemento.textContent).toContain('gestionale.contenuti.foto.home.titolo');
+    expect(elemento.textContent).toContain('gestionale.impostazioni.sfondo.titolo');
     expect(contenuti.caricaMedia).toHaveBeenCalledWith(
       expect.objectContaining({ entita: 'home', entita_id: null, ordine: 0 }),
     );
+  });
+
+  it('solo foto di norma; con conVideo accetta MP4 e WebM e li mostra come video', async () => {
+    const { fixture, elemento } = await crea();
+    const campo = elemento.querySelector<HTMLInputElement>('input[type="file"]')!;
+    expect(campo.accept).not.toContain('video');
+
+    fixture.componentRef.setInput('conVideo', true);
+    fixture.componentRef.setInput('media', [
+      { id: 6, percorso: 'media/v.mp4', tipo_mime: 'video/mp4', testo_alternativo: 'Mare' },
+    ]);
+    await fixture.whenStable();
+
+    expect(campo.accept).toContain('video/mp4');
+    expect(elemento.querySelector('video')?.getAttribute('aria-label')).toBe('Mare');
+    expect(elemento.querySelector('.foto img')).toBeNull();
   });
 });

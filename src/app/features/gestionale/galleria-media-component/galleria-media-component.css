@@ -27,7 +27,7 @@
   gap: var(--bb-spazio-3);
 }
 
-.elemento img {
+.anteprima {
   width: 100%;
   aspect-ratio: 3 / 2;
   border-radius: var(--bb-raggio-piccolo);

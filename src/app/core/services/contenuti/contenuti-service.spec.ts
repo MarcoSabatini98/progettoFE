@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
 import { configuraHttpTest, risposta } from '../api/configura-http-test';
-import { ContenutiService } from './contenuti-service';
+import { ContenutiService, eVideo } from './contenuti-service';
 
 const API = `${environment.apiUrl}/contenuti`;
 
@@ -62,5 +62,12 @@ describe('ContenutiService', () => {
     const richiesta = backend.expectOne(`${API}/documenti-legali/7/pubblicazione`);
     expect(richiesta.request.method).toBe('POST');
     richiesta.flush(risposta({}));
+  });
+});
+
+describe('eVideo', () => {
+  it('riconosce i video dal tipo MIME', () => {
+    expect(eVideo({ tipo_mime: 'video/mp4' })).toBe(true);
+    expect(eVideo({ tipo_mime: 'image/webp' })).toBe(false);
   });
 });

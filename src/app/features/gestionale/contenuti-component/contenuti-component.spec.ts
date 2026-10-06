@@ -39,11 +39,11 @@ describe('ContenutiComponent', () => {
     return { elemento, linguetta };
   }
 
-  it('apre sulle foto: una galleria per la home e una per la struttura', async () => {
+  it('apre sulle foto: la galleria della struttura (la home sta nelle impostazioni)', async () => {
     const { elemento } = await crea();
 
-    expect(elemento.querySelectorAll('app-galleria-media')).toHaveLength(2);
-    expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home' });
+    expect(elemento.querySelectorAll('app-galleria-media')).toHaveLength(1);
+    expect(contenuti.elencaMedia).not.toHaveBeenCalledWith({ entita: 'home' });
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'struttura' });
   });
 

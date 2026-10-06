@@ -17,6 +17,7 @@ export const ENTITA_MEDIA = [
   'pacchetto',
   'struttura',
   'home',
+  'home_scuro',
   'logo',
   'varie',
 ] as const;
@@ -28,6 +29,9 @@ export const ICONA_SERVIZIO_PREDEFINITA = 'check_circle';
 
 /** Foto accettate dal backend (JPG, PNG, WEBP). */
 export const FORMATI_MEDIA = 'image/jpeg,image/png,image/webp';
+
+/** Video accettati dal backend dove sono ammessi (sfondo della home). */
+export const FORMATI_VIDEO = 'video/mp4,video/webm';
 
 export const LUNGHEZZA_TESTO_ALTERNATIVO = 255;
 

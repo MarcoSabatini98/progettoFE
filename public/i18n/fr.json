@@ -85,7 +85,11 @@
     "recensioni": "Ils parlent de nous",
     "media": "{{ media }}/5 sur {{ numero }} avis",
     "tutteRecensioni": "Lire tous les avis",
-    "prenota": "Réservez votre séjour"
+    "prenota": "Réservez votre séjour",
+    "video": {
+      "pausa": "Mettre en pause la vidéo d’arrière-plan",
+      "riproduci": "Lire la vidéo d’arrière-plan"
+    }
   },
   "accesso": {
     "titolo": "Se connecter",
@@ -1472,10 +1476,6 @@
         "eventi": "Événements locaux"
       },
       "foto": {
-        "home": {
-          "titolo": "Couverture de l’accueil",
-          "aiuto": "JPEG, PNG ou WebP. La première ouvre la page d’accueil."
-        },
         "struttura": {
           "titolo": "Galerie de l’établissement",
           "aiuto": "JPEG, PNG ou WebP. Espaces communs, extérieurs et alentours."
@@ -2010,7 +2010,7 @@
       "temaAiuto": "Les visiteurs peuvent toujours le changer sur leur appareil.",
       "logo": {
         "titolo": "Logo",
-        "aiuto": "Affiché dans l'en-tête du site et de la gestion à la place des initiales. La première image est utilisée.",
+        "aiuto": "Affiché dans l'arche de l'accueil, dans l'en-tête, dans le pied de page et comme icône de l'onglet du navigateur. De préférence un PNG carré à fond transparent. La première image est utilisée.",
         "descrizione": "Logo de l'établissement"
       },
       "gruppi": {
@@ -2057,6 +2057,18 @@
         "chat_riepilogo_email_minuti": "Minutes entre deux e-mails de messages non lus",
         "aspetto_colore": "Couleur principale",
         "aspetto_tema": "Thème par défaut"
+      },
+      "sfondo": {
+        "home": {
+          "titolo": "Arrière-plan de l’accueil · thème clair",
+          "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 50 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son. Sans arrière-plan sombre, il sert aussi au thème sombre.",
+          "descrizione": "Arrière-plan de l’accueil"
+        },
+        "home_scuro": {
+          "titolo": "Arrière-plan de l’accueil · thème sombre",
+          "aiuto": "Comme l’arrière-plan clair, mais pour qui utilise le thème sombre. S’il manque, le clair est utilisé.",
+          "descrizione": "Arrière-plan de l’accueil"
+        }
       }
     }
   },

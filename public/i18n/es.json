@@ -85,7 +85,11 @@
     "recensioni": "Lo que dicen de nosotros",
     "media": "{{ media }}/5 de {{ numero }} opiniones",
     "tutteRecensioni": "Leer todas las opiniones",
-    "prenota": "Reserva tu estancia"
+    "prenota": "Reserva tu estancia",
+    "video": {
+      "pausa": "Pausar el vídeo de fondo",
+      "riproduci": "Reproducir el vídeo de fondo"
+    }
   },
   "accesso": {
     "titolo": "Iniciar sesión",
@@ -1472,10 +1476,6 @@
         "eventi": "Eventos en la zona"
       },
       "foto": {
-        "home": {
-          "titolo": "Portada de inicio",
-          "aiuto": "JPEG, PNG o WebP. La primera abre la página de inicio."
-        },
         "struttura": {
           "titolo": "Galería del alojamiento",
           "aiuto": "JPEG, PNG o WebP. Zonas comunes, exteriores y alrededores."
@@ -2010,7 +2010,7 @@
       "temaAiuto": "Quien visita el sitio siempre puede cambiarlo en su dispositivo.",
       "logo": {
         "titolo": "Logotipo",
-        "aiuto": "Aparece en la cabecera del sitio y de la gestión en lugar de las iniciales. Se usa la primera imagen.",
+        "aiuto": "Aparece en el arco de inicio, en la cabecera, en el pie de página y como icono de la pestaña del navegador. Mejor un PNG cuadrado con fondo transparente. Se usa la primera imagen.",
         "descrizione": "Logotipo del alojamiento"
       },
       "gruppi": {
@@ -2057,6 +2057,18 @@
         "chat_riepilogo_email_minuti": "Minutos entre dos correos de mensajes no leídos",
         "aspetto_colore": "Color principal",
         "aspetto_tema": "Tema predeterminado"
+      },
+      "sfondo": {
+        "home": {
+          "titolo": "Fondo de inicio · tema claro",
+          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 50 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido. Sin fondo oscuro, se usa también con el tema oscuro.",
+          "descrizione": "Fondo de inicio"
+        },
+        "home_scuro": {
+          "titolo": "Fondo de inicio · tema oscuro",
+          "aiuto": "Como el fondo claro, pero para quien usa el tema oscuro. Si falta, se usa el claro.",
+          "descrizione": "Fondo de inicio"
+        }
       }
     }
   },

@@ -1,11 +1,12 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { environment } from '../../../../environments/environment';
 import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
 import { ImpostazioniService } from '../impostazioni/impostazioni-service';
-import { ATTRIBUTO_TEMA, TESTO_SU_BRAND } from './tema-costanti';
-import { TemaService, testoSuBrand } from './tema-service';
+import { ATTRIBUTO_TEMA, BRAND_PREDEFINITO, TESTO_SU_BRAND } from './tema-costanti';
+import { TemaService, iconaIniziali, testoSuBrand } from './tema-service';
 
 describe('TemaService', () => {
   const radice = document.documentElement;
@@ -16,6 +17,9 @@ describe('TemaService', () => {
     pubbliche.set({});
     radice.removeAttribute(ATTRIBUTO_TEMA);
     radice.removeAttribute('style');
+    if (!document.querySelector('link[rel="icon"]')) {
+      document.head.append(Object.assign(document.createElement('link'), { rel: 'icon' }));
+    }
     TestBed.configureTestingModule({
       providers: [
         {
@@ -72,6 +76,28 @@ describe('TemaService', () => {
     expect(radice.getAttribute(ATTRIBUTO_TEMA)).toBe('chiaro');
   });
 
+  describe('scuro', () => {
+    afterEach(() => vi.unstubAllGlobals());
+
+    it('vale col tema scelto, e con "sistema" segue il dispositivo anche quando cambia', () => {
+      let cambia: (evento: { matches: boolean }) => void = () => undefined;
+      vi.stubGlobal('matchMedia', () => ({
+        matches: true,
+        addEventListener: (_: string, ascolta: typeof cambia) => (cambia = ascolta),
+      }));
+      const service = crea();
+      expect(service.scuro()).toBe(true);
+
+      cambia({ matches: false });
+      expect(service.scuro()).toBe(false);
+
+      service.imposta('scuro');
+      expect(service.scuro()).toBe(true);
+      service.imposta('chiaro');
+      expect(service.scuro()).toBe(false);
+    });
+  });
+
   it('ignora un tema della struttura non valido', () => {
     pubbliche.set({ aspetto_tema: 'blu' });
     expect(crea().preferenza()).toBe('sistema');
@@ -88,6 +114,26 @@ describe('TemaService', () => {
     pubbliche.set({ aspetto_colore: 'verde' });
     TestBed.tick();
     expect(radice.style.getPropertyValue('--bb-brand')).toBe('');
+  });
+
+  it('la favicon è il logo; senza logo le iniziali nel colore della struttura', () => {
+    const icona = () => document.querySelector<HTMLLinkElement>('link[rel="icon"]')!.href;
+    pubbliche.set({ struttura_nome: 'Hotel Prova', aspetto_colore: '#123456' });
+    crea();
+    expect(icona()).toBe(iconaIniziali('HP', '#123456'));
+
+    pubbliche.set({ struttura_nome: 'Hotel Prova', aspetto_logo: 'media/logo.png' });
+    TestBed.tick();
+    expect(icona()).toContain(`${environment.mediaUrl}/media/logo.png`);
+  });
+});
+
+describe('iconaIniziali', () => {
+  it("disegna l'arco con le iniziali, testo XML sicuro", () => {
+    const svg = decodeURIComponent(iconaIniziali('B&', BRAND_PREDEFINITO));
+    expect(svg.startsWith('data:image/svg+xml,<svg')).toBe(true);
+    expect(svg).toContain(`fill="${BRAND_PREDEFINITO}"`);
+    expect(svg).toContain('>B&#38;</text>');
   });
 });
 

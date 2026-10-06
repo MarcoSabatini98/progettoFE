@@ -8,7 +8,7 @@
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
 }
 <div class="griglia-prenotazione" [attr.aria-busy]="elenco.isLoading()">
-  @if (puoLogo) {
+  @if (puoImmagini) {
     <app-galleria-media
       entita="logo"
       chiave="gestionale.impostazioni.logo"
@@ -16,6 +16,17 @@
       [descrizione]="'gestionale.impostazioni.logo.descrizione' | transloco"
       (cambiati)="logoCambiato()"
     />
+    @for (sfondo of sfondi; track sfondo.entita) {
+      @let chiave = 'gestionale.impostazioni.sfondo.' + sfondo.entita;
+      <app-galleria-media
+        [entita]="sfondo.entita"
+        [chiave]="chiave"
+        [conVideo]="true"
+        [media]="sfondo.media.hasValue() ? sfondo.media.value() : []"
+        [descrizione]="chiave + '.descrizione' | transloco"
+        (cambiati)="sfondo.media.reload()"
+      />
+    }
   }
   @for (gruppo of gruppi(); track gruppo.nome) {
     <app-gruppo-impostazioni

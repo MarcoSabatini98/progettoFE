@@ -12,7 +12,7 @@ const SEZIONI = ['foto', 'documenti', 'eventi'] as const;
 type Sezione = (typeof SEZIONI)[number];
 
 /**
- * Contenuti del sito: foto della home e della struttura, documenti legali, eventi in zona.
+ * Contenuti del sito: foto della struttura, documenti legali, eventi in zona.
  * Le traduzioni stanno nella scheda di ogni record (pacchetti, promozioni, tipologie).
  */
 @Component({

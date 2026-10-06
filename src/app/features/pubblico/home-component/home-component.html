@@ -1,13 +1,39 @@
 <section class="copertina">
-  <div class="arco">
-    @if (copertina(); as foto) {
-      <img
-        [src]="foto.percorso | media"
-        [alt]="foto.testo_alternativo"
-        [attr.width]="foto.larghezza"
-        [attr.height]="foto.altezza"
-        fetchpriority="high"
-      />
+  <!-- Sfondo decorativo a tutto schermo: il contenuto resta leggibile sopra il velo. -->
+  @if (sfondo(); as media) {
+    @if (video()) {
+      <video
+        #filmato
+        class="sfondo"
+        [muted]="true"
+        [autoplay]="!riduciMovimento"
+        [src]="media.percorso | media"
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+        (play)="inPausa.set(false)"
+        (pause)="inPausa.set(true)"
+      ></video>
+      <button
+        type="button"
+        class="pulsante pulsante-secondario pulsante-icona pausa"
+        [attr.aria-label]="(inPausa() ? 'home.video.riproduci' : 'home.video.pausa') | transloco"
+        (click)="alternaVideo()"
+      >
+        <app-icona [nome]="inPausa() ? 'play_arrow' : 'pause'" />
+      </button>
+    } @else {
+      <img class="sfondo" [src]="media.percorso | media" alt="" fetchpriority="high" />
+    }
+  }
+
+  <!-- L'arco è il logo della struttura; senza logo restano le iniziali del nome. -->
+  <div class="arco" [class.arco-logo]="logo()">
+    @if (logo(); as percorso) {
+      <img [src]="percorso | media" alt="" fetchpriority="high" />
+    } @else {
+      <span class="arco-iniziali" aria-hidden="true">{{ nome() | iniziali }}</span>
     }
   </div>
   <div class="copertina-testo">

@@ -85,7 +85,11 @@
     "recensioni": "Das sagen unsere Gäste",
     "media": "{{ media }}/5 aus {{ numero }} Bewertungen",
     "tutteRecensioni": "Alle Bewertungen lesen",
-    "prenota": "Aufenthalt buchen"
+    "prenota": "Aufenthalt buchen",
+    "video": {
+      "pausa": "Hintergrundvideo anhalten",
+      "riproduci": "Hintergrundvideo abspielen"
+    }
   },
   "accesso": {
     "titolo": "Anmelden",
@@ -1472,10 +1476,6 @@
         "eventi": "Veranstaltungen vor Ort"
       },
       "foto": {
-        "home": {
-          "titolo": "Titelbild der Startseite",
-          "aiuto": "JPEG, PNG oder WebP. Das erste eröffnet die Startseite."
-        },
         "struttura": {
           "titolo": "Galerie der Unterkunft",
           "aiuto": "JPEG, PNG oder WebP. Gemeinschaftsräume, Außenbereiche und Umgebung."
@@ -2010,7 +2010,7 @@
       "temaAiuto": "Besucher können es auf ihrem Gerät jederzeit ändern.",
       "logo": {
         "titolo": "Logo",
-        "aiuto": "Erscheint statt der Initialen im Kopf der Website und der Verwaltung. Verwendet wird das erste Bild.",
+        "aiuto": "Erscheint im Bogen der Startseite, im Kopf, in der Fußzeile und als Symbol im Browser-Tab. Am besten ein quadratisches PNG mit transparentem Hintergrund. Verwendet wird das erste Bild.",
         "descrizione": "Logo der Unterkunft"
       },
       "gruppi": {
@@ -2057,6 +2057,18 @@
         "chat_riepilogo_email_minuti": "Minuten zwischen zwei E-Mails zu ungelesenen Nachrichten",
         "aspetto_colore": "Hauptfarbe",
         "aspetto_tema": "Standarddesign"
+      },
+      "sfondo": {
+        "home": {
+          "titolo": "Hintergrund der Startseite · helles Design",
+          "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 50 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton. Ohne dunklen Hintergrund gilt er auch im dunklen Design.",
+          "descrizione": "Hintergrund der Startseite"
+        },
+        "home_scuro": {
+          "titolo": "Hintergrund der Startseite · dunkles Design",
+          "aiuto": "Wie der helle Hintergrund, aber für das dunkle Design. Fehlt er, wird der helle verwendet.",
+          "descrizione": "Hintergrund der Startseite"
+        }
       }
     }
   },
