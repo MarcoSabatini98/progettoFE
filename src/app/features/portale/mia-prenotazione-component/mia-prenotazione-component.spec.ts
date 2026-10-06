@@ -124,9 +124,9 @@ describe('MiaPrenotazioneComponent', () => {
     pagamenti.avviaOnline.mockReturnValue(of({ url: '#pagamento' }));
     const { clicca } = await crea('in_attesa');
 
-    await clicca('.metodi button');
+    await clicca('.paga');
 
-    expect(pagamenti.avviaOnline).toHaveBeenCalledWith(7, { metodo: 'stripe' }, true);
+    expect(pagamenti.avviaOnline).toHaveBeenCalledWith(7, { metodo: 'stripe', importo: 90 }, true);
   });
 
   it('prenotazione di altri: spiega perché non si apre', async () => {

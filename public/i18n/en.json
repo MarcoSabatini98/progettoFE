@@ -487,12 +487,32 @@
     "scade": "Complete payment by {{ ora }}, otherwise the booking expires.",
     "pagato": "Already paid",
     "saldo": "Balance due",
-    "daPagare": "Due now: {{ importo }}",
-    "metodi": {
-      "stripe": "Pay by card",
-      "paypal": "Pay with PayPal"
+    "pagamento": {
+      "titolo": "Payment",
+      "quanto": "How much you pay now",
+      "acconto": "Deposit only: {{ importo }}",
+      "accontoAiuto": "You pay the rest at the property, on arrival.",
+      "tutto": "Everything now: {{ importo }}",
+      "tuttoAiuto": "Nothing to pay on arrival.",
+      "nullaOra": "Nothing to pay now: you pay the balance of {{ importo }} at the property, on arrival. If you prefer, you can pay it now.",
+      "come": "How you pay",
+      "paga": "Pay {{ importo }}",
+      "sicuro": "Secure payment: you complete it on the protected Stripe or PayPal page, and your card details never pass through us.",
+      "bonificoEntro": "The transfer must reach us by {{ data }}, otherwise the booking expires: if your bank allows it, use an instant transfer.",
+      "resto": "You pay the rest, {{ importo }}, at the property on arrival.",
+      "nessunMetodo": "Online payment is not available: contact the property to find out how to pay."
     },
-    "bonifico": "Or by bank transfer",
+    "metodi": {
+      "stripe": "Card",
+      "paypal": "PayPal",
+      "bonifico": "Bank transfer"
+    },
+    "metodiAiuto": {
+      "stripe": "Credit, debit or prepaid. Also Google Pay, Apple Pay and Klarna, where available.",
+      "paypal": "With your PayPal account.",
+      "bonifico": "From your bank, with the details we show you."
+    },
+    "importo": "Amount",
     "iban": "IBAN",
     "intestatario": "Account holder",
     "causale": "Reference",
