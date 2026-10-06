@@ -257,14 +257,20 @@
   list-style: none;
 }
 
+/*
+ * La cifra si misura sulla tessera, non sulla finestra: su desktop le tessere
+ * restano strette e un importo lungo a 2rem usciva dal bordo.
+ */
 .tessera {
+  container-type: inline-size;
   height: 100%;
   gap: var(--bb-spazio-1);
   padding: var(--bb-spazio-4);
+  overflow-wrap: anywhere;
 }
 
 .valore {
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-size: clamp(1rem, 14cqi, 2rem);
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
