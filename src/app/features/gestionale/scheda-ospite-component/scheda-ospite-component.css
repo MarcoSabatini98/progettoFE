@@ -6,9 +6,14 @@ h2:not(.titolo-scheda) {
 .mancanti {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--bb-spazio-1) var(--bb-spazio-3);
+  gap: var(--bb-spazio-1) var(--bb-spazio-6);
   margin: var(--bb-spazio-2) 0 0;
-  padding-inline-start: var(--bb-spazio-4);
+  padding: 0;
+}
+
+/* Pallino dentro la voce: in riga non finisce sopra la voce precedente. */
+.mancanti li {
+  list-style-position: inside;
 }
 
 .soggiorni {
