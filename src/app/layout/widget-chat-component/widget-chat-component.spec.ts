@@ -7,6 +7,7 @@ import { AuthService } from '../../core/services/auth/auth-service';
 import { AvvisiService } from '../../core/services/avvisi/avvisi-service';
 import { EVENTI_SOCKET } from '../../core/services/chat/chat-costanti';
 import { ChatService } from '../../core/services/chat/chat-service';
+import { ContenutiService } from '../../core/services/contenuti/contenuti-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { SocketService } from '../../core/services/socket/socket-service';
 import { MessaggioInterface } from '../../shared/models/messaggio/messaggio-model';
@@ -71,6 +72,13 @@ describe('WidgetChatComponent', () => {
         { provide: AuthService, useValue: auth },
         { provide: AvvisiService, useValue: { mostra: vi.fn() } },
         {
+          provide: ContenutiService,
+          useValue: {
+            elencaFaqPubbliche: () =>
+              of([{ id: 1, categoria: null, domanda: 'Orari?', risposta: 'Dalle 14' }]),
+          },
+        },
+        {
           provide: SocketService,
           useValue: { ascolta: evento, emetti: () => of({ successo: true }) },
         },
@@ -95,6 +103,23 @@ describe('WidgetChatComponent', () => {
 
     expect(elemento.querySelector('.riquadro')).toBeNull();
     expect(chat.assistenzaDisponibile).not.toHaveBeenCalled();
+  });
+
+  it('dal collegamento apre le FAQ al posto della chat e ci torna', async () => {
+    const { elemento, stabile, alterna } = await crea();
+    await alterna();
+    const scheda = () => elemento.querySelector<HTMLButtonElement>('.scheda-faq')!;
+
+    scheda().click();
+    await stabile();
+    expect(elemento.querySelector('app-elenco-faq summary')?.textContent).toContain('Orari?');
+    expect(elemento.querySelector('form.avvio')).toBeNull();
+    expect(scheda().textContent).toContain('chat.widget.tornaChat');
+
+    scheda().click();
+    await stabile();
+    expect(elemento.querySelector('app-elenco-faq')).toBeNull();
+    expect(elemento.querySelector('form.avvio')).not.toBeNull();
   });
 
   it('il visitatore lascia nome ed email e apre la conversazione col primo messaggio', async () => {
