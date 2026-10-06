@@ -2172,7 +2172,9 @@
       "invia": "Senden",
       "chiusa": "Unterhaltung beendet.",
       "nuova": "Neue Unterhaltung",
-      "nuovi": "Neue Nachrichten"
+      "nuovi": "Neue Nachrichten",
+      "leggiFaq": "Häufige Fragen lesen",
+      "tornaChat": "Zurück zum Chat"
     }
   }
 }

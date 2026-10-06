@@ -7,9 +7,15 @@
           {{ (disponibile.value() ? 'chat.widget.online' : 'chat.widget.offline') | transloco }}
         </p>
       }
+      <button class="scheda-faq" type="button" (click)="faq.update((aperte) => !aperte)">
+        <app-icona [nome]="faq() ? 'arrow_back' : 'help'" />
+        {{ (faq() ? 'chat.widget.tornaChat' : 'chat.widget.leggiFaq') | transloco }}
+      </button>
     </header>
 
-    @if (conversazione(); as dati) {
+    @if (faq()) {
+      <app-elenco-faq [livello]="3" />
+    } @else if (conversazione(); as dati) {
       <!-- column-reverse: la vista resta ancorata in fondo quando arrivano messaggi. -->
       <div class="messaggi" aria-live="polite">
         <div class="flusso">

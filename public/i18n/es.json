@@ -2172,7 +2172,9 @@
       "invia": "Enviar",
       "chiusa": "Conversación cerrada.",
       "nuova": "Nueva conversación",
-      "nuovi": "Mensajes nuevos"
+      "nuovi": "Mensajes nuevos",
+      "leggiFaq": "Leer las preguntas frecuentes",
+      "tornaChat": "Volver al chat"
     }
   }
 }

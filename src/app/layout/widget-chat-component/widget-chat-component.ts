@@ -22,6 +22,7 @@ import { ErroriService } from '../../core/services/errori/errori-service';
 import { LinguaService } from '../../core/services/lingua/lingua-service';
 import { SocketService } from '../../core/services/socket/socket-service';
 import { CampoComponent } from '../../shared/campo-component/campo-component';
+import { ElencoFaqComponent } from '../../shared/elenco-faq-component/elenco-faq-component';
 import { IconaComponent } from '../../shared/icona-component/icona-component';
 import { MessaggioChatComponent } from '../../shared/messaggio-chat-component/messaggio-chat-component';
 import {
@@ -37,7 +38,8 @@ import { ScriviMessaggioComponent } from '../../shared/scrivi-messaggio-componen
  * Chat di assistenza del sito: pulsante in basso a destra e riquadro sopra.
  * Il visitatore senza account lascia, se vuole, nome ed email; il cliente
  * collegato scrive e basta. Riprende la conversazione ancora aperta e segnala
- * le risposte arrivate a riquadro chiuso.
+ * le risposte arrivate a riquadro chiuso. Dall'intestazione si leggono le FAQ
+ * senza lasciare il riquadro.
  */
 @Component({
   selector: 'app-widget-chat',
@@ -45,6 +47,7 @@ import { ScriviMessaggioComponent } from '../../shared/scrivi-messaggio-componen
     ReactiveFormsModule,
     TranslocoPipe,
     CampoComponent,
+    ElencoFaqComponent,
     IconaComponent,
     MessaggioChatComponent,
     ScriviMessaggioComponent,
@@ -63,6 +66,8 @@ export class WidgetChatComponent {
   protected readonly testoMax = TESTO_MAX;
   protected readonly nomeMax = NOME_VISITATORE_MAX;
   protected readonly aperto = signal(false);
+  /** Al posto della chat, le domande frequenti. */
+  protected readonly faq = signal(false);
   /** Dal primo clic lo stato resta caricato anche a riquadro chiuso. */
   private readonly avviato = signal(false);
   protected readonly nuovi = signal(false);

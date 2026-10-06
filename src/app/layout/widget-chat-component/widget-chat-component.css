@@ -54,6 +54,24 @@
   margin: 0;
 }
 
+/* Collegamento alle FAQ: testo sottolineato, non un pulsante pieno. */
+.scheda-faq {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--bb-spazio-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bb-brand-testo);
+  font: inherit;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  --icona-dimensione: 1rem;
+}
+
 .disponibile {
   color: var(--bb-testo-tenue);
 }

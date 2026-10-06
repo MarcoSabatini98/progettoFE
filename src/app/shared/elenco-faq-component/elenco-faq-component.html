@@ -1,0 +1,24 @@
+@for (gruppo of gruppi(); track gruppo.categoria) {
+  <section class="gruppo">
+    @if (gruppo.categoria) {
+      <p class="categoria" role="heading" [attr.aria-level]="livello()">
+        {{ gruppo.categoria }}
+      </p>
+    }
+    <div class="domande">
+      @for (domanda of gruppo.domande; track domanda.id) {
+        <details class="domanda">
+          <summary>
+            {{ domanda.domanda }}
+            <app-icona nome="keyboard_arrow_down" />
+          </summary>
+          <p class="testo-libero">{{ domanda.risposta }}</p>
+        </details>
+      }
+    </div>
+  </section>
+} @empty {
+  @if (!faq.isLoading()) {
+    <p class="stato-vuoto">{{ (faq.error() ? 'errori.generico' : 'faq.nessuna') | transloco }}</p>
+  }
+}
