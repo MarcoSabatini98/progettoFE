@@ -76,6 +76,23 @@ describe('CercaLuogoComponent', () => {
     expect(alloggiati.cercaLuoghi).toHaveBeenCalledTimes(1);
   });
 
+  it('con una data cerca i luoghi in vigore a quella data', async () => {
+    const fixture = TestBed.createComponent(CercaLuogoComponent);
+    fixture.componentRef.setInput('etichetta', 'Comune di nascita');
+    fixture.componentRef.setInput('inVigoreIl', '1950-03-01');
+    await fixture.whenStable();
+    const campo = (fixture.nativeElement as HTMLElement).querySelector('input')!;
+    campo.value = 'Rom';
+    campo.dispatchEvent(new Event('input'));
+    await fixture.whenStable();
+
+    expect(alloggiati.cercaLuoghi).toHaveBeenCalledWith({
+      cerca: 'Rom',
+      tipo: undefined,
+      in_vigore_il: '1950-03-01',
+    });
+  });
+
   it('toglie dalla ricerca i caratteri che il backend rifiuta', async () => {
     const { scrivi } = await crea();
 

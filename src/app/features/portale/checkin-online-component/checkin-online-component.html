@@ -106,6 +106,7 @@
             <app-cerca-luogo
               tipo="comune"
               [etichetta]="'anagrafica.campi.comune_nascita_codice' | transloco"
+              [inVigoreIl]="riga.value.data_nascita"
               (scelto)="scegliComuneNascita(indice, $event)"
             />
           }

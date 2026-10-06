@@ -12,11 +12,15 @@ export interface AlloggiatiLuogoInterface {
   soppresso_il: string | null;
 }
 
-/** Luogo trovato dalla ricerca pubblica: solo quelli ancora validi. */
+/** Luogo trovato dalla ricerca pubblica: in vigore oggi o alla data chiesta. */
 export type LuogoTrovatoInterface = Omit<AlloggiatiLuogoInterface, 'soppresso_il'>;
 
-/** cerca: inizio del nome, almeno 2 lettere. */
+/**
+ * cerca: inizio del nome, almeno 2 lettere.
+ * in_vigore_il: AAAA-MM-GG; senza, solo i luoghi in vigore oggi.
+ */
 export interface FiltriLuoghi {
   cerca: string;
   tipo?: TipoLuogo;
+  in_vigore_il?: string;
 }
