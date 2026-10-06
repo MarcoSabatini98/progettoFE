@@ -2061,7 +2061,7 @@
       "sfondo": {
         "home": {
           "titolo": "Sfondo della home · tema chiaro",
-          "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 20 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio. Senza sfondo scuro vale anche col tema scuro.",
+          "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 50 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio. Senza sfondo scuro vale anche col tema scuro.",
           "descrizione": "Sfondo della home"
         },
         "home_scuro": {

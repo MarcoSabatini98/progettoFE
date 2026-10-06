@@ -2061,7 +2061,7 @@
       "sfondo": {
         "home": {
           "titolo": "Hintergrund der Startseite · helles Design",
-          "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 20 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton. Ohne dunklen Hintergrund gilt er auch im dunklen Design.",
+          "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 50 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton. Ohne dunklen Hintergrund gilt er auch im dunklen Design.",
           "descrizione": "Hintergrund der Startseite"
         },
         "home_scuro": {

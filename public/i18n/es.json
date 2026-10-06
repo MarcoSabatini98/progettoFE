@@ -2061,7 +2061,7 @@
       "sfondo": {
         "home": {
           "titolo": "Fondo de inicio · tema claro",
-          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 20 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido. Sin fondo oscuro, se usa también con el tema oscuro.",
+          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 50 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido. Sin fondo oscuro, se usa también con el tema oscuro.",
           "descrizione": "Fondo de inicio"
         },
         "home_scuro": {
