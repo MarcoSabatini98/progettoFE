@@ -1,14 +1,29 @@
+/*
+ * Etichetta, controllo e nota occupano tre righe della griglia in cui sta il
+ * campo (subgrid): affiancati, se un'etichetta va a capo i controlli restano
+ * comunque alla stessa altezza. Fuori da una griglia è una colonna normale.
+ */
 :host {
   display: grid;
-  gap: var(--bb-spazio-1);
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: var(--bb-spazio-2);
+  align-content: start;
+  min-width: 0;
 }
 
+/* Senza nota niente terza riga, che aggiungerebbe spazio sotto il campo. */
+:host:not(:has(.campo-nota)) {
+  grid-row: span 2;
+}
+
+/* La label resta nel DOM (cliccarla porta al controllo) ma non fa da scatola. */
 .campo {
-  display: grid;
-  gap: var(--bb-spazio-2);
+  display: contents;
 }
 
 .campo-etichetta {
+  align-self: end;
   font-size: 0.875rem;
   font-weight: 600;
 }
