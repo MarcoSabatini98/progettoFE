@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   input,
   output,
   signal,
+  untracked,
 } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { switchMap, timer } from 'rxjs';
@@ -26,6 +28,7 @@ let prossimoElenco = 0;
 /**
  * Campo per scegliere un comune o uno stato dalla tabella di Alloggiati Web:
  * si scrive l'inizio del nome e si sceglie tra i suggerimenti (datalist nativo).
+ * Vale anche il nome scritto per intero, maiuscole o no, se un solo luogo lo porta.
  * Emette il luogo scelto, o null finché il testo non corrisponde a un suggerimento.
  */
 @Component({
@@ -64,15 +67,37 @@ export class CercaLuogoComponent {
     this.ricerca.hasValue() ? this.ricerca.value() : [],
   );
 
+  constructor() {
+    // Il nome scritto prima che arrivassero i suggerimenti vale appena arrivano.
+    effect(() => {
+      const luogo = this.trova(this.testo());
+      if (luogo && !untracked(this.luogo)) this.scegli(luogo);
+    });
+  }
+
   /** I comuni con la provincia: ce ne sono di omonimi. */
   protected nome(luogo: LuogoTrovatoInterface): string {
     return luogo.provincia ? `${luogo.descrizione} (${luogo.provincia})` : luogo.descrizione;
   }
 
   protected scrivi(valore: string): void {
-    const luogo = this.suggerimenti().find((voce) => this.nome(voce) === valore) ?? null;
-    this.luogo.set(luogo);
+    // Prima di cambiare testo: con il testo riparte la ricerca e i suggerimenti si svuotano.
+    const luogo = this.trova(valore);
     this.testo.set(valore);
+    this.scegli(luogo);
+  }
+
+  /** Il suggerimento con quel nome, con o senza provincia; null se nessuno o più d'uno. */
+  private trova(valore: string): LuogoTrovatoInterface | null {
+    const cercato = valore.trim().toLocaleUpperCase();
+    const trovati = this.suggerimenti().filter((voce) =>
+      [this.nome(voce), voce.descrizione].some((nome) => nome.toLocaleUpperCase() === cercato),
+    );
+    return trovati.length === 1 ? trovati[0] : null;
+  }
+
+  private scegli(luogo: LuogoTrovatoInterface | null): void {
+    this.luogo.set(luogo);
     this.scelto.emit(luogo);
   }
 

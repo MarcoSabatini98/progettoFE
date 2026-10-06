@@ -76,6 +76,23 @@ describe('CercaLuogoComponent', () => {
     expect(alloggiati.cercaLuoghi).toHaveBeenCalledTimes(1);
   });
 
+  it('accetta il nome scritto per intero in minuscolo, anche prima dei suggerimenti', async () => {
+    const { scelti, scrivi } = await crea();
+
+    await scrivi('roma');
+
+    expect(scelti).toEqual([null, roma]);
+  });
+
+  it('con due luoghi omonimi senza provincia non sceglie', async () => {
+    alloggiati.cercaLuoghi.mockReturnValue(of([roma, { ...roma, codice: '1', provincia: 'XX' }]));
+    const { scelti, scrivi } = await crea();
+
+    await scrivi('Roma');
+
+    expect(scelti).toEqual([null]);
+  });
+
   it('con una data cerca i luoghi in vigore a quella data', async () => {
     const fixture = TestBed.createComponent(CercaLuogoComponent);
     fixture.componentRef.setInput('etichetta', 'Comune di nascita');
