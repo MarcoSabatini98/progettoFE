@@ -80,6 +80,7 @@
     <app-cerca-luogo
       tipo="comune"
       [etichetta]="'anagrafica.campi.comune_nascita_codice' | transloco"
+      [inVigoreIl]="modulo.controls.data_nascita.value"
       [valore]="dati.comune_nascita?.descrizione ?? ''"
       (scelto)="scegliComuneNascita($event)"
     />

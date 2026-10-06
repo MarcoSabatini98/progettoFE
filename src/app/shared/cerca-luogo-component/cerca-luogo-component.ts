@@ -42,6 +42,11 @@ export class CercaLuogoComponent {
   /** Senza tipo cerca sia comuni sia stati. */
   readonly tipo = input<TipoLuogo>();
   readonly aiuto = input('');
+  /**
+   * Data (AAAA-MM-GG) in cui il luogo doveva esistere. Per la nascita: chi è
+   * nato in un comune poi soppresso va registrato con quello.
+   */
+  readonly inVigoreIl = input<string>();
   /** Nome del luogo già registrato: si vede nel campo, senza cercarlo. */
   readonly valore = input('');
   readonly scelto = output<LuogoTrovatoInterface | null>();
@@ -75,6 +80,6 @@ export class CercaLuogoComponent {
   private filtri() {
     const cerca = this.testo().replace(NON_CERCABILI, '').trim();
     if (this.luogo() || cerca.length < LETTERE_MINIME_RICERCA) return undefined;
-    return { cerca, tipo: this.tipo() };
+    return { cerca, tipo: this.tipo(), in_vigore_il: this.inVigoreIl() || undefined };
   }
 }
