@@ -4,7 +4,8 @@
   margin: 0;
   padding: 3px;
   border: 1px solid var(--bb-linea);
-  border-radius: var(--bb-pulsante-raggio);
+  /* Tondo anche nel gestionale, come il menu utente accanto. */
+  border-radius: 999px;
   background: var(--bb-incavo);
 }
 
@@ -13,7 +14,7 @@
   place-items: center;
   inline-size: 2.25rem;
   block-size: 2rem;
-  border-radius: var(--bb-pulsante-raggio);
+  border-radius: 999px;
   color: var(--bb-testo-tenue);
   cursor: pointer;
   transition:
