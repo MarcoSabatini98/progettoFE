@@ -113,17 +113,24 @@ describe('AreaPubblicaComponent', () => {
     expect(elemento.querySelector('[popovertarget="menu-sito"]')).not.toBeNull();
   });
 
-  it('senza sessione offre il pulsante di accesso', async () => {
+  it('senza sessione offre il pulsante di accesso, con il tema alla sua sinistra', async () => {
     const elemento = await crea();
+
+    expect(elemento.querySelector('.testata-azioni > :first-child')?.tagName).toBe(
+      'APP-SELETTORE-TEMA',
+    );
+    expect(elemento.querySelector('.piede app-selettore-tema')).toBeNull();
 
     expect(elemento.querySelector('a[href="/accesso"]')).not.toBeNull();
     expect(elemento.querySelector('app-menu-utente')).toBeNull();
     expect(elemento.querySelector('app-campanella')).toBeNull();
   });
 
-  it('con la sessione mostra la campanella delle notifiche e il menu utente', async () => {
+  it('con la sessione mostra tema, campanella delle notifiche e menu utente', async () => {
     collegato.set(true);
     const elemento = await crea();
+
+    expect(elemento.querySelector('app-selettore-tema + app-campanella')).not.toBeNull();
 
     expect(elemento.querySelector('app-campanella')).not.toBeNull();
     expect(elemento.querySelector('app-menu-utente')).not.toBeNull();
