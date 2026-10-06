@@ -6,11 +6,22 @@ import { AuthService } from '../../../core/services/auth/auth-service';
 import { SFONDI_HOME } from '../../../core/services/contenuti/contenuti-costanti';
 import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
+import {
+  GRUPPO_IMMAGINI,
+  ORDINE_GRUPPI_IMPOSTAZIONI,
+  ORDINE_VOCI_IMPOSTAZIONI,
+} from '../../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { PERMESSI } from '../../../core/services/ruoli/ruoli-costanti';
 import { ImpostazioneInterface } from '../../../shared/models/impostazione/impostazione-model';
 import { GalleriaMediaComponent } from '../galleria-media-component/galleria-media-component';
 import { GruppoImpostazioniComponent } from '../gruppo-impostazioni-component/gruppo-impostazioni-component';
+
+/** Posizione nell'elenco; chi non c'è va in fondo. */
+const posizione = (elenco: readonly string[], valore: string) => {
+  const indice = elenco.indexOf(valore);
+  return indice < 0 ? elenco.length : indice;
+};
 
 /**
  * Impostazioni della struttura, un modulo per gruppo, logo e sfondo della home.
@@ -20,6 +31,7 @@ import { GruppoImpostazioniComponent } from '../gruppo-impostazioni-component/gr
   selector: 'app-impostazioni',
   imports: [TranslocoPipe, GalleriaMediaComponent, GruppoImpostazioniComponent],
   templateUrl: './impostazioni-component.html',
+  styleUrl: './impostazioni-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },
 })
@@ -46,10 +58,19 @@ export class ImpostazioniComponent {
     }),
   }));
 
-  /** Gruppi nell'ordine in cui arrivano, ognuno con le sue voci. */
+  protected readonly gruppoImmagini = GRUPPO_IMMAGINI;
+
+  /** Gruppi e voci nell'ordine del gestionale, non in quello alfabetico del backend. */
   protected readonly gruppi = computed(() => {
+    const voci = [...(this.elenco.hasValue() ? this.elenco.value() : [])].sort(
+      (a, b) =>
+        posizione(ORDINE_GRUPPI_IMPOSTAZIONI, a.gruppo) -
+          posizione(ORDINE_GRUPPI_IMPOSTAZIONI, b.gruppo) ||
+        posizione(ORDINE_VOCI_IMPOSTAZIONI, a.chiave) -
+          posizione(ORDINE_VOCI_IMPOSTAZIONI, b.chiave),
+    );
     const gruppi = new Map<string, ImpostazioneInterface[]>();
-    for (const voce of this.elenco.hasValue() ? this.elenco.value() : []) {
+    for (const voce of voci) {
       gruppi.set(voce.gruppo, [...(gruppi.get(voce.gruppo) ?? []), voce]);
     }
     return [...gruppi].map(([nome, voci]) => ({ nome, voci }));
