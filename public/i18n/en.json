@@ -1968,7 +1968,9 @@
         "coppia": "{{ a }} and {{ b }}",
         "salva": "Save rules",
         "salvate": "Chat rules saved."
-      }
+      },
+      "ruolo": "Role",
+      "ruoloAiuto": "Choose a role: the permissions it already has are ticked."
     },
     "registro": {
       "titolo": "Activity log",

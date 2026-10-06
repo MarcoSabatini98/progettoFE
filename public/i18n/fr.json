@@ -1968,7 +1968,9 @@
         "coppia": "{{ a }} et {{ b }}",
         "salva": "Enregistrer les règles",
         "salvate": "Règles du chat enregistrées."
-      }
+      },
+      "ruolo": "Rôle",
+      "ruoloAiuto": "Choisissez un rôle : les autorisations qu’il possède déjà sont cochées."
     },
     "registro": {
       "titolo": "Journal d’activité",

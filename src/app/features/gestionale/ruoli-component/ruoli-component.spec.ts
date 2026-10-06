@@ -49,7 +49,7 @@ describe('RuoliComponent', () => {
   it('modifica i permessi dei soli ruoli assegnabili e la chat dello staff', async () => {
     const elemento = await crea();
 
-    expect(elemento.querySelectorAll('app-permessi-ruolo')).toHaveLength(3);
+    expect(elemento.querySelectorAll('app-permessi-ruolo option')).toHaveLength(3);
     // 4 ruoli dello staff: 10 coppie, il cliente resta fuori.
     expect(elemento.querySelectorAll('app-regole-chat input[type=checkbox]')).toHaveLength(10);
   });

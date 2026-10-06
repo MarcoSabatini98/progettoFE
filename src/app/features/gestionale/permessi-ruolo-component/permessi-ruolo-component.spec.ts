@@ -16,13 +16,17 @@ describe('PermessiRuoloComponent', () => {
     { codice: 'pulizie.esegui', modulo: 'pulizie', descrizione: '' },
     { codice: 'chat.assistenza', modulo: 'chat', descrizione: '' },
   ];
-  const ruolo = {
-    codice: 'housekeeper',
-    nome: 'Addetto pulizie',
+  const ruolo = (codice: string, permessi: string[]) => ({
+    codice,
+    nome: codice,
     descrizione: null,
     staff: true,
-    permessi: ['pulizie.leggi'],
-  };
+    permessi,
+  });
+  const ruoliModificabili = [
+    ruolo('housekeeper', ['pulizie.leggi']),
+    ruolo('receptionist', ['chat.assistenza', 'pulizie.esegui']),
+  ];
 
   beforeEach(() => {
     ruoli.impostaPermessi.mockReset();
@@ -38,7 +42,7 @@ describe('PermessiRuoloComponent', () => {
 
   async function crea() {
     const fixture = TestBed.createComponent(PermessiRuoloComponent);
-    fixture.componentRef.setInput('ruolo', ruolo);
+    fixture.componentRef.setInput('ruoli', ruoliModificabili);
     fixture.componentRef.setInput('catalogo', catalogo);
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
@@ -47,7 +51,13 @@ describe('PermessiRuoloComponent', () => {
       elemento.querySelector('form')!.dispatchEvent(new Event('submit'));
       await fixture.whenStable();
     };
-    return { elemento, caselle, salva };
+    const scegli = async (codice: string) => {
+      const select = elemento.querySelector('select')!;
+      select.value = codice;
+      select.dispatchEvent(new Event('change'));
+      await fixture.whenStable();
+    };
+    return { elemento, caselle, salva, scegli };
   }
 
   it('raggruppa i permessi per modulo e spunta quelli del ruolo', async () => {
@@ -55,6 +65,28 @@ describe('PermessiRuoloComponent', () => {
 
     expect(elemento.querySelectorAll('legend')).toHaveLength(2);
     expect(caselle().map((casella) => casella.checked)).toEqual([true, false, false]);
+  });
+
+  it('scegliendo il ruolo spunta i permessi che ha', async () => {
+    const { elemento, caselle, scegli } = await crea();
+
+    expect(elemento.querySelectorAll('option')).toHaveLength(2);
+    await scegli('receptionist');
+
+    expect(caselle().map((casella) => casella.checked)).toEqual([false, true, true]);
+  });
+
+  it('dopo il salvataggio, tornando sul ruolo, si vedono i permessi salvati', async () => {
+    ruoli.impostaPermessi.mockReturnValue(of(['chat.assistenza']));
+    const { caselle, salva, scegli } = await crea();
+
+    caselle()[0].click();
+    caselle()[2].click();
+    await salva();
+    await scegli('receptionist');
+    await scegli('housekeeper');
+
+    expect(caselle().map((casella) => casella.checked)).toEqual([false, false, true]);
   });
 
   it('salva le caselle spuntate', async () => {
