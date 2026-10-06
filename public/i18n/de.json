@@ -85,7 +85,11 @@
     "recensioni": "Das sagen unsere Gäste",
     "media": "{{ media }}/5 aus {{ numero }} Bewertungen",
     "tutteRecensioni": "Alle Bewertungen lesen",
-    "prenota": "Aufenthalt buchen"
+    "prenota": "Aufenthalt buchen",
+    "video": {
+      "pausa": "Hintergrundvideo anhalten",
+      "riproduci": "Hintergrundvideo abspielen"
+    }
   },
   "accesso": {
     "titolo": "Anmelden",
@@ -1473,8 +1477,8 @@
       },
       "foto": {
         "home": {
-          "titolo": "Titelbild der Startseite",
-          "aiuto": "JPEG, PNG oder WebP. Das erste eröffnet die Startseite."
+          "titolo": "Hintergrund der Startseite",
+          "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 20 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton."
         },
         "struttura": {
           "titolo": "Galerie der Unterkunft",
@@ -2010,7 +2014,7 @@
       "temaAiuto": "Besucher können es auf ihrem Gerät jederzeit ändern.",
       "logo": {
         "titolo": "Logo",
-        "aiuto": "Erscheint statt der Initialen im Kopf der Website und der Verwaltung. Verwendet wird das erste Bild.",
+        "aiuto": "Erscheint im Bogen der Startseite, im Kopf, in der Fußzeile und als Symbol im Browser-Tab. Am besten ein quadratisches PNG mit transparentem Hintergrund. Verwendet wird das erste Bild.",
         "descrizione": "Logo der Unterkunft"
       },
       "gruppi": {

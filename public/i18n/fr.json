@@ -85,7 +85,11 @@
     "recensioni": "Ils parlent de nous",
     "media": "{{ media }}/5 sur {{ numero }} avis",
     "tutteRecensioni": "Lire tous les avis",
-    "prenota": "Réservez votre séjour"
+    "prenota": "Réservez votre séjour",
+    "video": {
+      "pausa": "Mettre en pause la vidéo d’arrière-plan",
+      "riproduci": "Lire la vidéo d’arrière-plan"
+    }
   },
   "accesso": {
     "titolo": "Se connecter",
@@ -1473,8 +1477,8 @@
       },
       "foto": {
         "home": {
-          "titolo": "Couverture de l’accueil",
-          "aiuto": "JPEG, PNG ou WebP. La première ouvre la page d’accueil."
+          "titolo": "Arrière-plan de l’accueil",
+          "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 20 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son."
         },
         "struttura": {
           "titolo": "Galerie de l’établissement",
@@ -2010,7 +2014,7 @@
       "temaAiuto": "Les visiteurs peuvent toujours le changer sur leur appareil.",
       "logo": {
         "titolo": "Logo",
-        "aiuto": "Affiché dans l'en-tête du site et de la gestion à la place des initiales. La première image est utilisée.",
+        "aiuto": "Affiché dans l'arche de l'accueil, dans l'en-tête, dans le pied de page et comme icône de l'onglet du navigateur. De préférence un PNG carré à fond transparent. La première image est utilisée.",
         "descrizione": "Logo de l'établissement"
       },
       "gruppi": {

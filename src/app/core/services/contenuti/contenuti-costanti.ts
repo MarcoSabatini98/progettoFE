@@ -20,5 +20,8 @@ export const IMPATTO_PREDEFINITO = 5;
 /** Foto del sito, non legate a un record: copertina della home e galleria della struttura. */
 export const FOTO_SITO = ['home', 'struttura'] as const satisfies readonly EntitaMedia[];
 
+/** Dove si può caricare anche un video (come ENTITA_CON_VIDEO del backend). */
+export const ENTITA_CON_VIDEO: readonly EntitaMedia[] = ['home'];
+
 /** Campi tradotti in un'area di testo: gli altri stanno su una riga. */
 export const CAMPI_LUNGHI: readonly string[] = ['descrizione', 'risposta'];

@@ -85,7 +85,11 @@
     "recensioni": "Dicono di noi",
     "media": "{{ media }}/5 su {{ numero }} recensioni",
     "tutteRecensioni": "Leggi tutte le recensioni",
-    "prenota": "Prenota il tuo soggiorno"
+    "prenota": "Prenota il tuo soggiorno",
+    "video": {
+      "pausa": "Metti in pausa il video di sfondo",
+      "riproduci": "Riproduci il video di sfondo"
+    }
   },
   "accesso": {
     "titolo": "Accedi",
@@ -1473,8 +1477,8 @@
       },
       "foto": {
         "home": {
-          "titolo": "Copertina della home",
-          "aiuto": "JPEG, PNG o WebP. La prima apre la home page."
+          "titolo": "Sfondo della home",
+          "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 20 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio."
         },
         "struttura": {
           "titolo": "Galleria della struttura",
@@ -2010,7 +2014,7 @@
       "temaAiuto": "Chi visita il sito può sempre cambiarlo sul suo dispositivo.",
       "logo": {
         "titolo": "Logo",
-        "aiuto": "Compare nella testata del sito e del gestionale al posto delle iniziali. Si usa la prima immagine.",
+        "aiuto": "Compare nell'arco della home, nella testata, nel piè di pagina e come icona della scheda del browser. Meglio un PNG quadrato con lo sfondo trasparente. Si usa la prima immagine.",
         "descrizione": "Logo della struttura"
       },
       "gruppi": {

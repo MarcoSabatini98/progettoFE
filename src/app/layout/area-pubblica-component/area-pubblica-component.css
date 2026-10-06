@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--bb-spazio-4);
-  min-height: 4rem;
+  min-height: var(--bb-testata);
 }
 
 .marchio {
@@ -180,6 +180,8 @@
 .contenuto {
   flex: 1;
   outline: none;
+  /* Gli sfondi a tutta larghezza (copertina della home) non fanno scorrere di lato. */
+  overflow-x: clip;
 }
 
 .piede {
@@ -201,8 +203,18 @@
 }
 
 .piede-nome {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
   font-family: var(--bb-font-titoli);
   font-size: 1.25rem;
+}
+
+.piede-logo {
+  block-size: 3rem;
+  inline-size: auto;
+  max-inline-size: 9rem;
+  object-fit: contain;
 }
 
 .piede-riga {

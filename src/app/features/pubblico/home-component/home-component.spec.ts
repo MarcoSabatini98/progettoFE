@@ -20,7 +20,9 @@ describe('HomeComponent', () => {
   const contenuti = { elencaMedia: vi.fn() };
   const recensioni = { leggiValutazioni: vi.fn(), elencaPubbliche: vi.fn() };
   const foto = (entita: string) =>
-    [{ id: 1, percorso: `${entita}.jpg`, testo_alternativo: entita }] as MediaInterface[];
+    [
+      { id: 1, percorso: `${entita}.jpg`, tipo_mime: 'image/jpeg', testo_alternativo: entita },
+    ] as MediaInterface[];
   const tipologia = (id: number) =>
     ({ id, nome: `Camera ${id}`, slug: `camera-${id}` }) as TipologiaCameraInterface;
 
@@ -76,11 +78,48 @@ describe('HomeComponent', () => {
     expect(elemento.querySelector('.orari')).toBeNull();
   });
 
-  it('mette la foto della home nell’arco e quelle della struttura in galleria', async () => {
+  it('mette la foto della home come sfondo decorativo e quelle della struttura in galleria', async () => {
     const elemento = await crea({});
 
-    expect(elemento.querySelector('.arco img')?.getAttribute('alt')).toBe('home');
+    const sfondo = elemento.querySelector('img.sfondo');
+    expect(sfondo?.getAttribute('src')).toContain('home.jpg');
+    expect(sfondo?.getAttribute('alt')).toBe('');
+    expect(elemento.querySelector('.pausa')).toBeNull();
     expect(elemento.querySelector('app-galleria img')?.getAttribute('alt')).toBe('struttura');
+  });
+
+  it("nell'arco il logo della struttura, senza logo le iniziali del nome", async () => {
+    const elemento = await crea({ [CHIAVI_IMPOSTAZIONI.nome]: 'Casa del Mare' });
+    expect(elemento.querySelector('.arco-iniziali')?.textContent).toBe('CD');
+    expect(elemento.querySelector('.arco img')).toBeNull();
+
+    TestBed.resetTestingModule();
+    const conLogo = await crea({ [CHIAVI_IMPOSTAZIONI.logo]: 'media/logo.png' });
+    expect(conLogo.querySelector('.arco-logo img')?.getAttribute('src')).toContain(
+      'media/logo.png',
+    );
+    expect(conLogo.querySelector('.arco-iniziali')).toBeNull();
+  });
+
+  it('un video di sfondo parte muto e si può mettere in pausa', async () => {
+    const play = vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue();
+    contenuti.elencaMedia.mockImplementation(({ entita }) =>
+      of(entita === 'home' ? [{ id: 2, percorso: 'v.mp4', tipo_mime: 'video/mp4' }] : []),
+    );
+    const elemento = await crea({});
+    const video = elemento.querySelector<HTMLVideoElement>('video.sfondo')!;
+    const pulsante = elemento.querySelector<HTMLButtonElement>('.pausa')!;
+
+    expect(video.muted).toBe(true);
+    expect(pulsante.getAttribute('aria-label')).toBe('home.video.riproduci');
+    pulsante.click();
+    expect(play).toHaveBeenCalled();
+
+    video.dispatchEvent(new Event('play'));
+    await new Promise((fine) => setTimeout(fine));
+    TestBed.tick();
+    expect(pulsante.getAttribute('aria-label')).toBe('home.video.pausa');
+    play.mockRestore();
   });
 
   it('mostra tutte le tipologie nel carosello e le ultime recensioni con la media', async () => {
@@ -103,7 +142,7 @@ describe('HomeComponent', () => {
 
     const elemento = await crea({});
 
-    expect(elemento.querySelector('.arco img')).toBeNull();
+    expect(elemento.querySelector('.sfondo')).toBeNull();
     expect(elemento.querySelectorAll('.sezione')).toHaveLength(0);
   });
 });

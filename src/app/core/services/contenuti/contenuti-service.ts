@@ -39,6 +39,14 @@ import { creaFormDati } from '../api/form-dati';
 import { creaParametri } from '../api/parametri-http';
 
 /**
+ * È VIDEO
+ * Il media va mostrato con <video> invece che con <img>.
+ */
+export function eVideo(media: Pick<MediaInterface, 'tipo_mime'>): boolean {
+  return media.tipo_mime.startsWith('video/');
+}
+
+/**
  * Contenuti del sito: immagini, FAQ, documenti legali, eventi in zona e traduzioni.
  */
 @Injectable({

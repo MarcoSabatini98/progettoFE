@@ -45,6 +45,10 @@ describe('ContenutiComponent', () => {
     expect(elemento.querySelectorAll('app-galleria-media')).toHaveLength(2);
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home' });
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'struttura' });
+    // Il video si carica solo come sfondo della home.
+    const [home, struttura] = elemento.querySelectorAll<HTMLInputElement>('input[type="file"]');
+    expect(home.accept).toContain('video/mp4');
+    expect(struttura.accept).not.toContain('video');
   });
 
   it('le linguette cambiano sezione', async () => {

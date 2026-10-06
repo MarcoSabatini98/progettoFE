@@ -21,7 +21,9 @@ describe('SchedaTipologiaCameraComponent', () => {
     ospiti_max: 2,
     ordine: 0,
     attiva: true,
-    media: [{ id: 4, percorso: 'media/a.jpg', testo_alternativo: 'Letto' }],
+    media: [
+      { id: 4, percorso: 'media/a.jpg', tipo_mime: 'image/jpeg', testo_alternativo: 'Letto' },
+    ],
   };
 
   beforeEach(() => {

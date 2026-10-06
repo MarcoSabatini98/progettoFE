@@ -85,7 +85,11 @@
     "recensioni": "Lo que dicen de nosotros",
     "media": "{{ media }}/5 de {{ numero }} opiniones",
     "tutteRecensioni": "Leer todas las opiniones",
-    "prenota": "Reserva tu estancia"
+    "prenota": "Reserva tu estancia",
+    "video": {
+      "pausa": "Pausar el vídeo de fondo",
+      "riproduci": "Reproducir el vídeo de fondo"
+    }
   },
   "accesso": {
     "titolo": "Iniciar sesión",
@@ -1473,8 +1477,8 @@
       },
       "foto": {
         "home": {
-          "titolo": "Portada de inicio",
-          "aiuto": "JPEG, PNG o WebP. La primera abre la página de inicio."
+          "titolo": "Fondo de inicio",
+          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 20 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido."
         },
         "struttura": {
           "titolo": "Galería del alojamiento",
@@ -2010,7 +2014,7 @@
       "temaAiuto": "Quien visita el sitio siempre puede cambiarlo en su dispositivo.",
       "logo": {
         "titolo": "Logotipo",
-        "aiuto": "Aparece en la cabecera del sitio y de la gestión en lugar de las iniciales. Se usa la primera imagen.",
+        "aiuto": "Aparece en el arco de inicio, en la cabecera, en el pie de página y como icono de la pestaña del navegador. Mejor un PNG cuadrado con fondo transparente. Se usa la primera imagen.",
         "descrizione": "Logotipo del alojamiento"
       },
       "gruppi": {

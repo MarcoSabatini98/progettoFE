@@ -17,7 +17,14 @@ describe('PacchettiComponent', () => {
     attivo: true,
     ordine: 0,
     servizi: [{ id: 9, nome: 'Cena', PacchettoServizio: { quantita: 2 } }],
-    media: [{ id: 1, percorso: 'media/romantico.jpg', testo_alternativo: 'Terrazza' }],
+    media: [
+      {
+        id: 1,
+        percorso: 'media/romantico.jpg',
+        tipo_mime: 'image/jpeg',
+        testo_alternativo: 'Terrazza',
+      },
+    ],
   };
 
   async function apri(gestisceContenuti = true) {

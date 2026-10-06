@@ -8,7 +8,7 @@
     class="visivamente-nascosto"
     type="file"
     multiple
-    [accept]="formati"
+    [accept]="formati()"
     [disabled]="inCorso()"
     (change)="carica($event)"
   />
@@ -21,7 +21,23 @@
 <ol class="foto" [attr.aria-busy]="inCorso()">
   @for (foto of media(); track foto.id; let primo = $first, ultimo = $last, indice = $index) {
     <li class="elemento">
-      <img [src]="foto.percorso | media" [alt]="foto.testo_alternativo" loading="lazy" />
+      @if (eVideo(foto)) {
+        <video
+          class="anteprima"
+          [src]="foto.percorso | media"
+          [attr.aria-label]="foto.testo_alternativo"
+          [muted]="true"
+          controls
+          preload="metadata"
+        ></video>
+      } @else {
+        <img
+          class="anteprima"
+          [src]="foto.percorso | media"
+          [alt]="foto.testo_alternativo"
+          loading="lazy"
+        />
+      }
       <div class="dettagli">
         @if (primo) {
           <span class="copertina piccolo">{{ 'gestionale.foto.copertina' | transloco }}</span>

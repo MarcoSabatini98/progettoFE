@@ -18,3 +18,9 @@ export const ICONE_TEMA = {
   chiaro: 'light_mode',
   scuro: 'dark_mode',
 } as const satisfies Record<(typeof PREFERENZE_TEMA)[number], string>;
+
+/** Colore della struttura di partenza, lo stesso --bb-brand di src/styles/token.css. */
+export const BRAND_PREDEFINITO = '#5e6b3a';
+
+/** Icone della scheda del browser e della schermata home del telefono (src/index.html). */
+export const SELETTORE_ICONE = 'link[rel~="icon"], link[rel="apple-touch-icon"]';

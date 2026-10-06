@@ -1,12 +1,21 @@
-import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { Observable, concatMap, from, last } from 'rxjs';
 
 import {
   FORMATI_MEDIA,
+  FORMATI_VIDEO,
   LUNGHEZZA_TESTO_ALTERNATIVO,
 } from '../../../core/services/camere/camere-costanti';
-import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
+import { ContenutiService, eVideo } from '../../../core/services/contenuti/contenuti-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { EntitaMedia, MediaInterface } from '../../../shared/models/media/media-model';
@@ -38,8 +47,13 @@ export class GalleriaMediaComponent {
   readonly cambiati = output();
   /** Chiave dei testi in testa: titolo e aiuto. */
   readonly chiave = input('gestionale.foto');
+  /** Accetta anche video MP4 e WebM (solo dove il backend li ammette). */
+  readonly conVideo = input(false);
 
-  protected readonly formati = FORMATI_MEDIA;
+  protected readonly formati = computed(() =>
+    this.conVideo() ? `${FORMATI_MEDIA},${FORMATI_VIDEO}` : FORMATI_MEDIA,
+  );
+  protected readonly eVideo = eVideo;
   protected readonly lunghezzaTesto = LUNGHEZZA_TESTO_ALTERNATIVO;
   protected readonly inCorso = signal(false);
   protected readonly errore = signal('');

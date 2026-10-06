@@ -39,7 +39,14 @@ describe('ServiziComponent', () => {
     camere.leggiServizio.mockReturnValue(
       of({
         ...colazione,
-        media: [{ id: 1, percorso: 'media/colazione.jpg', testo_alternativo: 'Buffet' }],
+        media: [
+          {
+            id: 1,
+            percorso: 'media/colazione.jpg',
+            tipo_mime: 'image/jpeg',
+            testo_alternativo: 'Buffet',
+          },
+        ],
       }),
     );
   });
