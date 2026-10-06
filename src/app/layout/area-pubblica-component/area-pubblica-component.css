@@ -72,13 +72,18 @@
   --icona-dimensione: 1.125rem;
 }
 
+/* Pulsanti della testata alti come quelli del gestionale: stessa barra nelle due aree. */
 .testata-azioni {
   display: flex;
   align-items: center;
   gap: var(--bb-spazio-2);
+  --bb-controllo-altezza: 2.5rem;
 }
 
-/* Mobile: cassetto da destra, aperto dal pulsante menu. */
+/*
+ * Menu del sito: cassetto che entra da destra, a ogni larghezza.
+ * Aperto, la pagina sotto resta ferma dov'era (vedi base.css).
+ */
 .menu-sito {
   inset: 0 0 0 auto;
   inline-size: min(18rem, 85vw);
@@ -92,10 +97,36 @@
   background: var(--bb-superficie);
   color: var(--bb-testo);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  translate: 100% 0;
+  transition:
+    translate var(--bb-durata) var(--bb-curva),
+    overlay var(--bb-durata) allow-discrete,
+    display var(--bb-durata) allow-discrete;
+}
+
+.menu-sito:popover-open {
+  translate: 0 0;
+
+  @starting-style {
+    translate: 100% 0;
+  }
 }
 
 .menu-sito::backdrop {
+  background: rgb(0 0 0 / 0);
+  transition:
+    background-color var(--bb-durata),
+    overlay var(--bb-durata) allow-discrete,
+    display var(--bb-durata) allow-discrete;
+}
+
+.menu-sito:popover-open::backdrop {
   background: rgb(0 0 0 / 0.4);
+
+  @starting-style {
+    background: rgb(0 0 0 / 0);
+  }
 }
 
 .menu-sito ul {
@@ -127,54 +158,6 @@
 .voce-attiva {
   background: var(--bb-brand-tenue);
   color: var(--bb-brand-testo);
-}
-
-/* Desktop: il popover resta chiuso ma visibile, in riga nella testata. */
-@media (width >= 58.75rem) {
-  .apri-menu {
-    display: none;
-  }
-
-  .menu-sito {
-    position: static;
-    display: block;
-    inline-size: auto;
-    block-size: auto;
-    margin-inline: auto;
-    padding: 0;
-    border: 0;
-    background: none;
-    overflow: visible;
-  }
-
-  .menu-sito ul {
-    display: flex;
-    gap: var(--bb-spazio-1);
-  }
-
-  /* Puntino tra una voce e l'altra, centrato nello spazio che le separa. */
-  .menu-sito li {
-    display: flex;
-    align-items: center;
-    gap: var(--bb-spazio-1);
-  }
-
-  .menu-sito li + li::before {
-    content: '';
-    inline-size: 0.25rem;
-    block-size: 0.25rem;
-    border-radius: 50%;
-    background: color-mix(in oklch, var(--bb-testo-tenue) 55%, transparent);
-  }
-
-  .voce {
-    min-height: 2.25rem;
-    font-size: 0.9375rem;
-  }
-
-  .voce app-icona {
-    display: none;
-  }
 }
 
 .contenuto {

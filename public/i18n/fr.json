@@ -11,7 +11,8 @@
   "layout": {
     "saltaAlContenuto": "Aller au contenu",
     "cin": "CIN",
-    "documentiLegali": "Documents légaux"
+    "documentiLegali": "Documents légaux",
+    "paginaInArrivo": "Nous préparons cette page : revenez bientôt."
   },
   "menu": {
     "accedi": "Se connecter",
@@ -60,11 +61,12 @@
     "sito": {
       "aria": "Menu du site",
       "camere": "Chambres",
+      "struttura": "L'établissement",
+      "attivita": "Les activités",
       "offerte": "Offres",
       "recensioni": "Avis",
       "faq": "Questions fréquentes",
-      "contatti": "Contact",
-      "prenota": "Réserver"
+      "contatti": "Contact"
     }
   },
   "avvisi": {
@@ -358,6 +360,16 @@
     "nonTrovata": "Chambre introuvable",
     "nonTrovataTesto": "Cette chambre n’existe pas ou n’est plus disponible.",
     "prenota": "Voir les disponibilités"
+  },
+  "struttura": {
+    "occhiello": "Qui sommes-nous",
+    "titolo": "L'établissement",
+    "introduzione": "Nos espaces, nos services et notre histoire."
+  },
+  "attivita": {
+    "occhiello": "Alentours",
+    "titolo": "Les activités",
+    "introduzione": "Que faire dans les environs, fêtes et événements locaux, informations utiles pour venir et activités sur place."
   },
   "offerte": {
     "occhiello": "Pour vous",

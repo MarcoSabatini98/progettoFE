@@ -134,6 +134,8 @@
   min-width: 0;
   padding: var(--bb-spazio-4);
   outline: none;
+  /* La pagina non scorre mai di lato: tabelle e grafici larghi scorrono dentro di sé. */
+  overflow-x: clip;
 }
 
 @media (width >= 58.75rem) {

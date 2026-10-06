@@ -11,7 +11,8 @@
   "layout": {
     "saltaAlContenuto": "Skip to content",
     "cin": "CIN",
-    "documentiLegali": "Legal documents"
+    "documentiLegali": "Legal documents",
+    "paginaInArrivo": "We're preparing this page: check back soon."
   },
   "menu": {
     "accedi": "Sign in",
@@ -60,11 +61,12 @@
     "sito": {
       "aria": "Site menu",
       "camere": "Rooms",
+      "struttura": "The property",
+      "attivita": "Activities",
       "offerte": "Offers",
       "recensioni": "Reviews",
       "faq": "FAQ",
-      "contatti": "Contact",
-      "prenota": "Book"
+      "contatti": "Contact"
     }
   },
   "avvisi": {
@@ -358,6 +360,16 @@
     "nonTrovata": "Room not found",
     "nonTrovataTesto": "This room does not exist or is no longer available.",
     "prenota": "Check availability"
+  },
+  "struttura": {
+    "occhiello": "About us",
+    "titolo": "The property",
+    "introduzione": "Our spaces, services and story."
+  },
+  "attivita": {
+    "occhiello": "Surroundings",
+    "titolo": "Activities",
+    "introduzione": "Things to do nearby, local festivals and events, useful travel information and activities at the property."
   },
   "offerte": {
     "occhiello": "For you",

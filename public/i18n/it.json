@@ -11,7 +11,8 @@
   "layout": {
     "saltaAlContenuto": "Vai al contenuto",
     "cin": "CIN",
-    "documentiLegali": "Documenti legali"
+    "documentiLegali": "Documenti legali",
+    "paginaInArrivo": "Stiamo preparando questa pagina: torna a trovarci presto."
   },
   "menu": {
     "accedi": "Accedi",
@@ -60,11 +61,12 @@
     "sito": {
       "aria": "Menu del sito",
       "camere": "Camere",
+      "struttura": "Struttura",
+      "attivita": "Le attività",
       "offerte": "Offerte",
       "recensioni": "Recensioni",
       "faq": "Domande frequenti",
-      "contatti": "Contatti",
-      "prenota": "Prenota"
+      "contatti": "Contatti"
     }
   },
   "avvisi": {
@@ -358,6 +360,16 @@
     "nonTrovata": "Camera non trovata",
     "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
     "prenota": "Verifica disponibilità"
+  },
+  "struttura": {
+    "occhiello": "Chi siamo",
+    "titolo": "La struttura",
+    "introduzione": "Gli spazi, i servizi e la storia della nostra casa."
+  },
+  "attivita": {
+    "occhiello": "Dintorni",
+    "titolo": "Le attività",
+    "introduzione": "Cosa fare nei dintorni, feste ed eventi della zona, informazioni utili per arrivare e le attività in struttura."
   },
   "offerte": {
     "occhiello": "Per te",

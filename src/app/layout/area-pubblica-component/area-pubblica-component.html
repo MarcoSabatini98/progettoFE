@@ -6,11 +6,11 @@
   <div class="testata-interno">
     <a class="marchio" [routerLink]="percorsi.home">
       @if (logo(); as percorso) {
-        <img class="marchio-logo" [src]="percorso | media" alt="" />
+        <img class="marchio-logo" [src]="percorso | media" [alt]="nome()" />
       } @else {
         <span class="marchio-arco" aria-hidden="true">{{ nome() | iniziali }}</span>
+        <span class="marchio-nome">{{ nome() }}</span>
       }
-      <span class="marchio-nome">{{ nome() }}</span>
     </a>
 
     <nav

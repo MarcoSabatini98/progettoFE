@@ -11,7 +11,8 @@
   "layout": {
     "saltaAlContenuto": "Zum Inhalt springen",
     "cin": "CIN",
-    "documentiLegali": "Rechtliche Dokumente"
+    "documentiLegali": "Rechtliche Dokumente",
+    "paginaInArrivo": "Diese Seite ist in Vorbereitung: Schauen Sie bald wieder vorbei."
   },
   "menu": {
     "accedi": "Anmelden",
@@ -60,11 +61,12 @@
     "sito": {
       "aria": "Website-Menü",
       "camere": "Zimmer",
+      "struttura": "Die Unterkunft",
+      "attivita": "Aktivitäten",
       "offerte": "Angebote",
       "recensioni": "Bewertungen",
       "faq": "Häufige Fragen",
-      "contatti": "Kontakt",
-      "prenota": "Buchen"
+      "contatti": "Kontakt"
     }
   },
   "avvisi": {
@@ -358,6 +360,16 @@
     "nonTrovata": "Zimmer nicht gefunden",
     "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar.",
     "prenota": "Verfügbarkeit prüfen"
+  },
+  "struttura": {
+    "occhiello": "Über uns",
+    "titolo": "Die Unterkunft",
+    "introduzione": "Unsere Räume, Leistungen und Geschichte."
+  },
+  "attivita": {
+    "occhiello": "Umgebung",
+    "titolo": "Aktivitäten",
+    "introduzione": "Ausflugsziele in der Nähe, Feste und Veranstaltungen der Region, nützliche Infos zur Anreise und Aktivitäten im Haus."
   },
   "offerte": {
     "occhiello": "Für Sie",

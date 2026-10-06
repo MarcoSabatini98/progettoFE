@@ -23,7 +23,7 @@ import { WidgetChatComponent } from '../widget-chat-component/widget-chat-compon
 
 /**
  * Guscio del sito pubblico e del portale cliente: testata con il menu del sito
- * (a cassetto da mobile, in riga da desktop), contenuto, piè di pagina
+ * (a cassetto da destra, a ogni larghezza), contenuto, piè di pagina
  * con i dati obbligatori della struttura (indirizzo, contatti, CIN) e la chat
  * di assistenza per visitatori e clienti (lo staff risponde dal gestionale).
  */

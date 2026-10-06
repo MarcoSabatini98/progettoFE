@@ -13,9 +13,10 @@
   </button>
   <a class="marchio" [routerLink]="percorsoStaff">
     @if (logo(); as percorso) {
-      <img class="marchio-logo" [src]="percorso | media" alt="" />
+      <img class="marchio-logo" [src]="percorso | media" [alt]="nome()" />
+    } @else {
+      <span class="marchio-nome">{{ nome() }}</span>
     }
-    <span class="marchio-nome">{{ nome() }}</span>
   </a>
   <app-selettore-tema />
   <app-campanella />

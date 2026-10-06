@@ -1,6 +1,10 @@
+/*
+ * La larghezza la decide il contenitore, mai le barre: con un mese di colonne
+ * il grafico scorre al suo interno invece di allargare la pagina sul telefono.
+ */
 :host {
   display: block;
-  min-inline-size: 0;
+  contain: inline-size;
 }
 
 .grafico {
