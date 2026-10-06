@@ -1476,10 +1476,6 @@
         "eventi": "Local events"
       },
       "foto": {
-        "home": {
-          "titolo": "Home page background",
-          "aiuto": "Full-screen photo (JPEG, PNG or WebP) or video (MP4 or WebM, up to 20 MB) behind the cover. The first one is used: a short, landscape video without sound works best."
-        },
         "struttura": {
           "titolo": "Property gallery",
           "aiuto": "JPEG, PNG or WebP. Common areas, outdoors and surroundings."
@@ -2061,6 +2057,11 @@
         "chat_riepilogo_email_minuti": "Minutes between two unread-message emails",
         "aspetto_colore": "Main colour",
         "aspetto_tema": "Default theme"
+      },
+      "sfondo": {
+        "titolo": "Home page background",
+        "aiuto": "Full-screen photo (JPEG, PNG or WebP) or video (MP4 or WebM, up to 20 MB) behind the cover. The first one is used: a short, landscape video without sound works best.",
+        "descrizione": "Home page background"
       }
     }
   },

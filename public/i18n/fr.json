@@ -1476,10 +1476,6 @@
         "eventi": "Événements locaux"
       },
       "foto": {
-        "home": {
-          "titolo": "Arrière-plan de l’accueil",
-          "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 20 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son."
-        },
         "struttura": {
           "titolo": "Galerie de l’établissement",
           "aiuto": "JPEG, PNG ou WebP. Espaces communs, extérieurs et alentours."
@@ -2061,6 +2057,11 @@
         "chat_riepilogo_email_minuti": "Minutes entre deux e-mails de messages non lus",
         "aspetto_colore": "Couleur principale",
         "aspetto_tema": "Thème par défaut"
+      },
+      "sfondo": {
+        "titolo": "Arrière-plan de l’accueil",
+        "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 20 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son.",
+        "descrizione": "Arrière-plan de l’accueil"
       }
     }
   },

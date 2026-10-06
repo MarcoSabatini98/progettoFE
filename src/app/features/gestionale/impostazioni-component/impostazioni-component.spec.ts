@@ -46,7 +46,7 @@ describe('ImpostazioniComponent', () => {
     return { fixture, elemento: fixture.nativeElement as HTMLElement };
   }
 
-  it('un modulo per gruppo, nell’ordine in cui arrivano, e il logo', async () => {
+  it('un modulo per gruppo, nell’ordine in cui arrivano, il logo e lo sfondo della home', async () => {
     const { elemento } = await crea();
 
     const gruppi = [...elemento.querySelectorAll('app-gruppo-impostazioni h2')];
@@ -56,10 +56,14 @@ describe('ImpostazioniComponent', () => {
     ]);
     expect(elemento.querySelectorAll('app-gruppo-impostazioni input')).toHaveLength(3);
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'logo' });
-    expect(elemento.querySelector('app-galleria-media')).not.toBeNull();
+    expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home' });
+    const [, sfondo] = elemento.querySelectorAll<HTMLInputElement>(
+      'app-galleria-media input[type="file"]',
+    );
+    expect(sfondo.accept).toContain('video/mp4');
   });
 
-  it('senza permesso sui contenuti niente logo', async () => {
+  it('senza permesso sui contenuti niente logo né sfondo', async () => {
     auth.haPermessi.mockReturnValue(false);
     const { elemento } = await crea();
 

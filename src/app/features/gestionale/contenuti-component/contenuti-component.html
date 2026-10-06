@@ -28,7 +28,6 @@
           [entita]="galleria.entita"
           [media]="galleria.media.hasValue() ? galleria.media.value() : []"
           [chiave]="chiave"
-          [conVideo]="galleria.conVideo"
           [descrizione]="chiave + '.titolo' | transloco"
           (cambiati)="galleria.media.reload()"
         />

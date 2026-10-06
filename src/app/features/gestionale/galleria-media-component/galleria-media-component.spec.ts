@@ -106,7 +106,7 @@ describe('GalleriaMediaComponent', () => {
     fixture.componentRef.setInput('entita', 'home');
     fixture.componentRef.setInput('media', []);
     fixture.componentRef.setInput('descrizione', 'Home');
-    fixture.componentRef.setInput('chiave', 'gestionale.contenuti.foto.home');
+    fixture.componentRef.setInput('chiave', 'gestionale.impostazioni.sfondo');
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const campo = elemento.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -115,7 +115,7 @@ describe('GalleriaMediaComponent', () => {
     campo.dispatchEvent(new Event('change'));
     await fixture.whenStable();
 
-    expect(elemento.textContent).toContain('gestionale.contenuti.foto.home.titolo');
+    expect(elemento.textContent).toContain('gestionale.impostazioni.sfondo.titolo');
     expect(contenuti.caricaMedia).toHaveBeenCalledWith(
       expect.objectContaining({ entita: 'home', entita_id: null, ordine: 0 }),
     );

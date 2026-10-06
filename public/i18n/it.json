@@ -1476,10 +1476,6 @@
         "eventi": "Eventi in zona"
       },
       "foto": {
-        "home": {
-          "titolo": "Sfondo della home",
-          "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 20 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio."
-        },
         "struttura": {
           "titolo": "Galleria della struttura",
           "aiuto": "JPEG, PNG o WebP. Spazi comuni, esterni e dintorni."
@@ -2061,6 +2057,11 @@
         "chat_riepilogo_email_minuti": "Minuti tra due email di messaggi non letti",
         "aspetto_colore": "Colore principale",
         "aspetto_tema": "Tema predefinito"
+      },
+      "sfondo": {
+        "titolo": "Sfondo della home",
+        "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 20 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio.",
+        "descrizione": "Sfondo della home"
       }
     }
   },

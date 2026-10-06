@@ -12,7 +12,7 @@ import { GalleriaMediaComponent } from '../galleria-media-component/galleria-med
 import { GruppoImpostazioniComponent } from '../gruppo-impostazioni-component/gruppo-impostazioni-component';
 
 /**
- * Impostazioni della struttura, un modulo per gruppo, e logo del sito.
+ * Impostazioni della struttura, un modulo per gruppo, logo e sfondo della home.
  * Dopo ogni salvataggio il sito rilegge le pubbliche: nome, colore e tema cambiano subito.
  */
 @Component({
@@ -27,14 +27,19 @@ export class ImpostazioniComponent {
   private readonly contenuti = inject(ContenutiService);
   protected readonly errori = inject(ErroriService);
 
-  /** Il logo è un'immagine del sito: serve anche il permesso sui contenuti. */
-  protected readonly puoLogo = inject(AuthService).haPermessi([PERMESSI.CONTENUTI_GESTISCI]);
+  /** Logo e sfondo sono media del sito: serve anche il permesso sui contenuti. */
+  protected readonly puoImmagini = inject(AuthService).haPermessi([PERMESSI.CONTENUTI_GESTISCI]);
   protected readonly elenco = rxResource({
     stream: () => this.impostazioni.elencaImpostazioni(),
   });
   protected readonly logo = rxResource({
-    params: () => this.puoLogo || undefined,
+    params: () => this.puoImmagini || undefined,
     stream: () => this.contenuti.elencaMedia({ entita: 'logo' }),
+  });
+  /** Foto o video a tutto schermo dietro la copertina della home. */
+  protected readonly sfondo = rxResource({
+    params: () => this.puoImmagini || undefined,
+    stream: () => this.contenuti.elencaMedia({ entita: 'home' }),
   });
 
   /** Gruppi nell'ordine in cui arrivano, ognuno con le sue voci. */

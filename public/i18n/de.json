@@ -1476,10 +1476,6 @@
         "eventi": "Veranstaltungen vor Ort"
       },
       "foto": {
-        "home": {
-          "titolo": "Hintergrund der Startseite",
-          "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 20 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton."
-        },
         "struttura": {
           "titolo": "Galerie der Unterkunft",
           "aiuto": "JPEG, PNG oder WebP. Gemeinschaftsräume, Außenbereiche und Umgebung."
@@ -2061,6 +2057,11 @@
         "chat_riepilogo_email_minuti": "Minuten zwischen zwei E-Mails zu ungelesenen Nachrichten",
         "aspetto_colore": "Hauptfarbe",
         "aspetto_tema": "Standarddesign"
+      },
+      "sfondo": {
+        "titolo": "Hintergrund der Startseite",
+        "aiuto": "Foto (JPEG, PNG oder WebP) oder Video (MP4 oder WebM, bis 20 MB) bildschirmfüllend hinter dem Titelbereich. Verwendet wird das erste: am besten ein kurzes Querformat-Video ohne Ton.",
+        "descrizione": "Hintergrund der Startseite"
       }
     }
   },

@@ -1476,10 +1476,6 @@
         "eventi": "Eventos en la zona"
       },
       "foto": {
-        "home": {
-          "titolo": "Fondo de inicio",
-          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 20 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido."
-        },
         "struttura": {
           "titolo": "Galería del alojamiento",
           "aiuto": "JPEG, PNG o WebP. Zonas comunes, exteriores y alrededores."
@@ -2061,6 +2057,11 @@
         "chat_riepilogo_email_minuti": "Minutos entre dos correos de mensajes no leídos",
         "aspetto_colore": "Color principal",
         "aspetto_tema": "Tema predeterminado"
+      },
+      "sfondo": {
+        "titolo": "Fondo de inicio",
+        "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 20 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido.",
+        "descrizione": "Fondo de inicio"
       }
     }
   },
