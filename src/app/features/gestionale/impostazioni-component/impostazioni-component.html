@@ -16,14 +16,17 @@
       [descrizione]="'gestionale.impostazioni.logo.descrizione' | transloco"
       (cambiati)="logoCambiato()"
     />
-    <app-galleria-media
-      entita="home"
-      chiave="gestionale.impostazioni.sfondo"
-      [conVideo]="true"
-      [media]="sfondo.hasValue() ? sfondo.value() : []"
-      [descrizione]="'gestionale.impostazioni.sfondo.descrizione' | transloco"
-      (cambiati)="sfondo.reload()"
-    />
+    @for (sfondo of sfondi; track sfondo.entita) {
+      @let chiave = 'gestionale.impostazioni.sfondo.' + sfondo.entita;
+      <app-galleria-media
+        [entita]="sfondo.entita"
+        [chiave]="chiave"
+        [conVideo]="true"
+        [media]="sfondo.media.hasValue() ? sfondo.media.value() : []"
+        [descrizione]="chiave + '.descrizione' | transloco"
+        (cambiati)="sfondo.media.reload()"
+      />
+    }
   }
   @for (gruppo of gruppi(); track gruppo.nome) {
     <app-gruppo-impostazioni

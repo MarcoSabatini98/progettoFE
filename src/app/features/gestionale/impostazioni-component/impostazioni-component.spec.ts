@@ -57,10 +57,12 @@ describe('ImpostazioniComponent', () => {
     expect(elemento.querySelectorAll('app-gruppo-impostazioni input')).toHaveLength(3);
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'logo' });
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home' });
-    const [, sfondo] = elemento.querySelectorAll<HTMLInputElement>(
+    expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home_scuro' });
+    const [, chiaro, scuro] = elemento.querySelectorAll<HTMLInputElement>(
       'app-galleria-media input[type="file"]',
     );
-    expect(sfondo.accept).toContain('video/mp4');
+    expect(chiaro.accept).toContain('video/mp4');
+    expect(scuro.accept).toContain('video/mp4');
   });
 
   it('senza permesso sui contenuti niente logo né sfondo', async () => {

@@ -2059,9 +2059,16 @@
         "aspetto_tema": "Thème par défaut"
       },
       "sfondo": {
-        "titolo": "Arrière-plan de l’accueil",
-        "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 20 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son.",
-        "descrizione": "Arrière-plan de l’accueil"
+        "home": {
+          "titolo": "Arrière-plan de l’accueil · thème clair",
+          "aiuto": "Photo (JPEG, PNG ou WebP) ou vidéo (MP4 ou WebM, jusqu’à 20 Mo) en plein écran derrière la couverture. La première est utilisée : de préférence une vidéo courte, horizontale et sans son. Sans arrière-plan sombre, il sert aussi au thème sombre.",
+          "descrizione": "Arrière-plan de l’accueil"
+        },
+        "home_scuro": {
+          "titolo": "Arrière-plan de l’accueil · thème sombre",
+          "aiuto": "Comme l’arrière-plan clair, mais pour qui utilise le thème sombre. S’il manque, le clair est utilisé.",
+          "descrizione": "Arrière-plan de l’accueil"
+        }
       }
     }
   },

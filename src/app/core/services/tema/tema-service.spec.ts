@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { environment } from '../../../../environments/environment';
 import { CHIAVI_ARCHIVIO } from '../archivio/archivio-costanti';
@@ -74,6 +74,28 @@ describe('TemaService', () => {
     service.imposta('chiaro');
     TestBed.tick();
     expect(radice.getAttribute(ATTRIBUTO_TEMA)).toBe('chiaro');
+  });
+
+  describe('scuro', () => {
+    afterEach(() => vi.unstubAllGlobals());
+
+    it('vale col tema scelto, e con "sistema" segue il dispositivo anche quando cambia', () => {
+      let cambia: (evento: { matches: boolean }) => void = () => undefined;
+      vi.stubGlobal('matchMedia', () => ({
+        matches: true,
+        addEventListener: (_: string, ascolta: typeof cambia) => (cambia = ascolta),
+      }));
+      const service = crea();
+      expect(service.scuro()).toBe(true);
+
+      cambia({ matches: false });
+      expect(service.scuro()).toBe(false);
+
+      service.imposta('scuro');
+      expect(service.scuro()).toBe(true);
+      service.imposta('chiaro');
+      expect(service.scuro()).toBe(false);
+    });
   });
 
   it('ignora un tema della struttura non valido', () => {

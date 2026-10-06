@@ -17,6 +17,7 @@ export const ENTITA_MEDIA = [
   'pacchetto',
   'struttura',
   'home',
+  'home_scuro',
   'logo',
   'varie',
 ] as const;

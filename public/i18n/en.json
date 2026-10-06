@@ -2059,9 +2059,16 @@
         "aspetto_tema": "Default theme"
       },
       "sfondo": {
-        "titolo": "Home page background",
-        "aiuto": "Full-screen photo (JPEG, PNG or WebP) or video (MP4 or WebM, up to 20 MB) behind the cover. The first one is used: a short, landscape video without sound works best.",
-        "descrizione": "Home page background"
+        "home": {
+          "titolo": "Home page background · light theme",
+          "aiuto": "Full-screen photo (JPEG, PNG or WebP) or video (MP4 or WebM, up to 20 MB) behind the cover. The first one is used: a short, landscape video without sound works best. Without a dark background it is used with the dark theme too.",
+          "descrizione": "Home page background"
+        },
+        "home_scuro": {
+          "titolo": "Home page background · dark theme",
+          "aiuto": "Like the light background, but for visitors using the dark theme. If missing, the light one is used.",
+          "descrizione": "Home page background"
+        }
       }
     }
   },

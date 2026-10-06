@@ -12,6 +12,7 @@ import {
   BRAND_PREDEFINITO,
   COLORE_ESADECIMALE,
   PREFERENZE_TEMA,
+  SCHEMA_SCURO,
   SELETTORE_ICONE,
   SOGLIA_BRAND_CHIARO,
   TESTO_SU_BRAND,
@@ -51,6 +52,8 @@ export class TemaService {
   private readonly impostazioni = inject(ImpostazioniService);
   private readonly documento = inject(DOCUMENT);
   private readonly radice = this.documento.documentElement;
+  private readonly schemaScuro = this.documento.defaultView?.matchMedia?.(SCHEMA_SCURO);
+  private readonly sistemaScuro = signal(this.schemaScuro?.matches ?? false);
   private readonly sceltaLocale = signal<PreferenzaTema | null>(
     this.archivio.leggi(CHIAVI_ARCHIVIO.tema, PREFERENZE_TEMA),
   );
@@ -82,10 +85,17 @@ export class TemaService {
    */
   readonly preferenza = computed(() => this.sceltaLocale() ?? this.predefinita() ?? 'sistema');
 
+  /** Tema scuro in uso: scelto, oppure "sistema" con il dispositivo in scuro. */
+  readonly scuro = computed(() => {
+    const preferenza = this.preferenza();
+    return preferenza === 'scuro' || (preferenza === 'sistema' && this.sistemaScuro());
+  });
+
   constructor() {
     effect(() => this.applica(this.preferenza()));
     effect(() => this.applicaBrand(this.brand()));
     effect(() => this.applicaIcona(this.icona()));
+    this.schemaScuro?.addEventListener('change', (evento) => this.sistemaScuro.set(evento.matches));
   }
 
   /**

@@ -10,15 +10,18 @@ import {
 } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { CamereService } from '../../../core/services/camere/camere-service';
+import { SFONDI_HOME } from '../../../core/services/contenuti/contenuti-costanti';
 import { ContenutiService, eVideo } from '../../../core/services/contenuti/contenuti-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazione-costanti';
 import { RecensioniService } from '../../../core/services/recensioni/recensioni-service';
+import { TemaService } from '../../../core/services/tema/tema-service';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { InizialiPipe } from '../../../shared/pipes/iniziali-pipe';
 import { MediaPipe } from '../../../shared/pipes/media-pipe';
@@ -82,8 +85,13 @@ export class HomeComponent {
   protected readonly inPausa = signal(true);
   private readonly filmato = viewChild<ElementRef<HTMLVideoElement>>('filmato');
 
+  private readonly tema = inject(TemaService);
   private readonly fotoSfondo = rxResource({
-    stream: () => this.contenuti.elencaMedia({ entita: 'home' }),
+    stream: () =>
+      forkJoin({
+        chiaro: this.contenuti.elencaMedia({ entita: SFONDI_HOME.chiaro }),
+        scuro: this.contenuti.elencaMedia({ entita: SFONDI_HOME.scuro }),
+      }),
   });
   private readonly fotoStrutturaRisorsa = rxResource({
     stream: () => this.contenuti.elencaMedia({ entita: 'struttura' }),
@@ -99,10 +107,15 @@ export class HomeComponent {
     stream: () => this.recensioni.elencaPubbliche({ pagina: 1, perPagina: ANTEPRIME_HOME }),
   });
 
-  /** Il primo media della home fa da sfondo; senza, resta il colore della pagina. */
-  protected readonly sfondo = computed(() =>
-    this.fotoSfondo.hasValue() ? this.fotoSfondo.value()[0] : undefined,
-  );
+  /**
+   * Fa da sfondo il primo media del tema in uso, o in mancanza quello dell'altro tema;
+   * senza nessuno resta il colore della pagina.
+   */
+  protected readonly sfondo = computed(() => {
+    if (!this.fotoSfondo.hasValue()) return undefined;
+    const { chiaro, scuro } = this.fotoSfondo.value();
+    return this.tema.scuro() ? (scuro[0] ?? chiaro[0]) : (chiaro[0] ?? scuro[0]);
+  });
   protected readonly video = computed(() => {
     const media = this.sfondo();
     return !!media && eVideo(media);

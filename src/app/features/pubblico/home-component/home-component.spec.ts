@@ -1,3 +1,4 @@
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
@@ -10,6 +11,7 @@ import { ImpostazioniService } from '../../../core/services/impostazioni/imposta
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { RecensioniService } from '../../../core/services/recensioni/recensioni-service';
+import { TemaService } from '../../../core/services/tema/tema-service';
 import { MediaInterface } from '../../../shared/models/media/media-model';
 import { RecensionePubblicaInterface } from '../../../shared/models/recensione/recensione-model';
 import { TipologiaCameraInterface } from '../../../shared/models/tipologia-camera/tipologia-camera-model';
@@ -19,6 +21,7 @@ describe('HomeComponent', () => {
   const camere = { elencaTipologiePubbliche: vi.fn() };
   const contenuti = { elencaMedia: vi.fn() };
   const recensioni = { leggiValutazioni: vi.fn(), elencaPubbliche: vi.fn() };
+  const scuro = signal(false);
   const foto = (entita: string) =>
     [
       { id: 1, percorso: `${entita}.jpg`, tipo_mime: 'image/jpeg', testo_alternativo: entita },
@@ -27,6 +30,7 @@ describe('HomeComponent', () => {
     ({ id, nome: `Camera ${id}`, slug: `camera-${id}` }) as TipologiaCameraInterface;
 
   beforeEach(() => {
+    scuro.set(false);
     camere.elencaTipologiePubbliche.mockReturnValue(of([1, 2, 3, 4].map(tipologia)));
     contenuti.elencaMedia.mockImplementation(({ entita }) => of(foto(entita)));
     recensioni.leggiValutazioni.mockReturnValue(of({ media: '4.50', numero_recensioni: 8 }));
@@ -44,6 +48,7 @@ describe('HomeComponent', () => {
         { provide: ContenutiService, useValue: contenuti },
         { provide: RecensioniService, useValue: recensioni },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
+        { provide: TemaService, useValue: { scuro } },
         {
           provide: ImpostazioniService,
           useValue: { testo: (chiave: string) => impostazioni[chiave] ?? '' },
@@ -86,6 +91,25 @@ describe('HomeComponent', () => {
     expect(sfondo?.getAttribute('alt')).toBe('');
     expect(elemento.querySelector('.pausa')).toBeNull();
     expect(elemento.querySelector('app-galleria img')?.getAttribute('alt')).toBe('struttura');
+  });
+
+  it('col tema scuro lo sfondo scuro, se manca quello chiaro', async () => {
+    scuro.set(true);
+    const elemento = await crea({});
+    const sfondo = () => elemento.querySelector('img.sfondo')?.getAttribute('src');
+    expect(sfondo()).toContain('home_scuro.jpg');
+
+    scuro.set(false);
+    TestBed.tick();
+    expect(sfondo()).toContain('home.jpg');
+
+    TestBed.resetTestingModule();
+    contenuti.elencaMedia.mockImplementation(({ entita }) =>
+      of(entita === 'home_scuro' ? [] : foto(entita)),
+    );
+    scuro.set(true);
+    const senzaScuro = await crea({});
+    expect(senzaScuro.querySelector('img.sfondo')?.getAttribute('src')).toContain('home.jpg');
   });
 
   it("nell'arco il logo della struttura, senza logo le iniziali del nome", async () => {

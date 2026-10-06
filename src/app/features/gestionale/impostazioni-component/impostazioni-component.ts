@@ -3,6 +3,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
+import { SFONDI_HOME } from '../../../core/services/contenuti/contenuti-costanti';
 import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
@@ -36,11 +37,14 @@ export class ImpostazioniComponent {
     params: () => this.puoImmagini || undefined,
     stream: () => this.contenuti.elencaMedia({ entita: 'logo' }),
   });
-  /** Foto o video a tutto schermo dietro la copertina della home. */
-  protected readonly sfondo = rxResource({
-    params: () => this.puoImmagini || undefined,
-    stream: () => this.contenuti.elencaMedia({ entita: 'home' }),
-  });
+  /** Foto o video a tutto schermo dietro la copertina della home: uno per tema. */
+  protected readonly sfondi = Object.values(SFONDI_HOME).map((entita) => ({
+    entita,
+    media: rxResource({
+      params: () => this.puoImmagini || undefined,
+      stream: () => this.contenuti.elencaMedia({ entita }),
+    }),
+  }));
 
   /** Gruppi nell'ordine in cui arrivano, ognuno con le sue voci. */
   protected readonly gruppi = computed(() => {

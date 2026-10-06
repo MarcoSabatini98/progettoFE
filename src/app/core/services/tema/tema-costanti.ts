@@ -1,5 +1,8 @@
 export const PREFERENZE_TEMA = ['sistema', 'chiaro', 'scuro'] as const;
 
+/** Tema scuro del dispositivo, quello che segue la preferenza "sistema". */
+export const SCHEMA_SCURO = '(prefers-color-scheme: dark)';
+
 /** Attributo sull'elemento html che forza il tema (vedi src/styles/token.css). */
 export const ATTRIBUTO_TEMA = 'data-tema';
 
