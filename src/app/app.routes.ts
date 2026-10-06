@@ -399,6 +399,20 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'struttura',
+        loadComponent: () =>
+          import('./features/pubblico/struttura-component/struttura-component').then(
+            (m) => m.StrutturaComponent,
+          ),
+      },
+      {
+        path: 'attivita',
+        loadComponent: () =>
+          import('./features/pubblico/attivita-component/attivita-component').then(
+            (m) => m.AttivitaComponent,
+          ),
+      },
+      {
         path: 'offerte',
         loadComponent: () =>
           import('./features/pubblico/offerte-component/offerte-component').then(

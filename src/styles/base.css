@@ -8,6 +8,16 @@
 
 html {
   text-size-adjust: 100%;
+  /* Lo spazio della barra di scorrimento resta: bloccando lo scorrimento la pagina non si sposta. */
+  scrollbar-gutter: stable;
+}
+
+/*
+ * Con un menu a cassetto aperto la pagina sotto non scorre e resta esattamente
+ * dov'era: niente position: fixed sul body, che la riporterebbe in cima.
+ */
+html:has(:is(.menu-sito, .binario):popover-open) {
+  overflow: hidden;
 }
 
 body,

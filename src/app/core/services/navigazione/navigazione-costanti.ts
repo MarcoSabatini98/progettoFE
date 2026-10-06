@@ -23,6 +23,8 @@ export const PERCORSI_PUBBLICI = {
   prenotazioni: '/prenotazioni',
   /** Seguito dallo slug per il dettaglio: /camere/doppia-vista-mare. */
   camere: '/camere',
+  struttura: '/struttura',
+  attivita: '/attivita',
   offerte: '/offerte',
   recensioni: '/recensioni',
   faq: '/faq',
@@ -62,11 +64,11 @@ export const MENU_PORTALE: readonly VoceMenuInterface[] = [
 
 /** Menu del sito pubblico, nell'ordine della testata. */
 export const MENU_PUBBLICO: readonly VoceMenuInterface[] = [
-  { etichetta: 'menu.sito.prenota', percorso: PERCORSI_PUBBLICI.prenota, icona: 'event_available' },
   { etichetta: 'menu.sito.camere', percorso: PERCORSI_PUBBLICI.camere, icona: 'bed' },
+  { etichetta: 'menu.sito.struttura', percorso: PERCORSI_PUBBLICI.struttura, icona: 'villa' },
+  { etichetta: 'menu.sito.attivita', percorso: PERCORSI_PUBBLICI.attivita, icona: 'explore' },
   { etichetta: 'menu.sito.offerte', percorso: PERCORSI_PUBBLICI.offerte, icona: 'sell' },
   { etichetta: 'menu.sito.recensioni', percorso: PERCORSI_PUBBLICI.recensioni, icona: 'reviews' },
-  { etichetta: 'menu.sito.faq', percorso: PERCORSI_PUBBLICI.faq, icona: 'help' },
   { etichetta: 'menu.sito.contatti', percorso: PERCORSI_PUBBLICI.contatti, icona: 'mail' },
 ];
 
