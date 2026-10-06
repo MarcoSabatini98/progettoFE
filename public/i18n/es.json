@@ -1968,7 +1968,9 @@
         "coppia": "{{ a }} y {{ b }}",
         "salva": "Guardar reglas",
         "salvate": "Reglas del chat guardadas."
-      }
+      },
+      "ruolo": "Rol",
+      "ruoloAiuto": "Elige un rol: se marcan los permisos que ya tiene."
     },
     "registro": {
       "titolo": "Registro de actividad",

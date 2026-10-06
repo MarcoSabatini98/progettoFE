@@ -1968,7 +1968,9 @@
         "coppia": "{{ a }} und {{ b }}",
         "salva": "Regeln speichern",
         "salvate": "Chat-Regeln gespeichert."
-      }
+      },
+      "ruolo": "Rolle",
+      "ruoloAiuto": "Wähle eine Rolle: Die Berechtigungen, die sie bereits hat, sind angehakt."
     },
     "registro": {
       "titolo": "Aktivitätsprotokoll",

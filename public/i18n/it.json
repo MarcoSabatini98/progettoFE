@@ -1968,7 +1968,9 @@
         "coppia": "{{ a }} e {{ b }}",
         "salva": "Salva regole",
         "salvate": "Regole della chat salvate."
-      }
+      },
+      "ruolo": "Ruolo",
+      "ruoloAiuto": "Scegli un ruolo: sono spuntati i permessi che ha già."
     },
     "registro": {
       "titolo": "Registro attività",

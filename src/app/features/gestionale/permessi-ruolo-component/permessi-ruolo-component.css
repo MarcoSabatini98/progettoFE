@@ -1,0 +1,33 @@
+/* Un riquadro per modulo, a colonne che si incastrano: niente buchi tra moduli di lunghezza diversa. */
+.moduli {
+  columns: 3 16rem;
+  column-gap: var(--bb-spazio-4);
+}
+
+.moduli > fieldset {
+  break-inside: avoid;
+  gap: 0;
+  margin-block-end: var(--bb-spazio-4);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+/* La legenda dentro il bordo, non a cavallo come fa il browser. */
+.moduli legend {
+  float: inline-start;
+  inline-size: 100%;
+  margin-block-end: var(--bb-spazio-2);
+}
+
+/* Spunte fitte, casella sempre intera e allineata alla prima riga del testo. */
+.moduli .spunta {
+  align-items: start;
+  min-height: 0;
+  padding-block: var(--bb-spazio-1);
+}
+
+.moduli .spunta input {
+  flex-shrink: 0;
+  margin-block-start: 0.2em;
+}

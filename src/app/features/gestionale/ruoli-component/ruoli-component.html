@@ -11,11 +11,7 @@
       {{ 'gestionale.permessi.permessi' | transloco }}
     </h2>
     <p class="tenue">{{ 'gestionale.permessi.admin' | transloco }}</p>
-    <div class="griglia-prenotazione">
-      @for (ruolo of modificabili(); track ruolo.codice) {
-        <app-permessi-ruolo [ruolo]="ruolo" [catalogo]="valore.matrice.permessi" />
-      }
-    </div>
+    <app-permessi-ruolo [ruoli]="modificabili()" [catalogo]="valore.matrice.permessi" />
   </section>
 
   <section class="sezione" aria-labelledby="ruoli-chat">
