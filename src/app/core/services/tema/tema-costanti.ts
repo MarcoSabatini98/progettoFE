@@ -15,12 +15,14 @@ export const SOGLIA_BRAND_CHIARO = 0.6;
 /** Testo sui pulsanti e sugli sfondi del colore della struttura. */
 export const TESTO_SU_BRAND = { chiaro: '#fff', scuro: '#1b211e' } as const;
 
-/** Icona Material Symbols di ogni preferenza nel selettore del tema. */
+/**
+ * Scelte dell'interruttore nella barra in alto, con la loro icona Material Symbols.
+ * "Automatico" resta solo nelle impostazioni: senza una scelta il sito segue già il dispositivo.
+ */
 export const ICONE_TEMA = {
-  sistema: 'contrast',
   chiaro: 'light_mode',
   scuro: 'dark_mode',
-} as const satisfies Record<(typeof PREFERENZE_TEMA)[number], string>;
+} as const satisfies Partial<Record<(typeof PREFERENZE_TEMA)[number], string>>;
 
 /** Colore della struttura di partenza, lo stesso --bb-brand di src/styles/token.css. */
 export const BRAND_PREDEFINITO = '#5e6b3a';

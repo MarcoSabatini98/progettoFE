@@ -39,6 +39,7 @@
     </nav>
 
     <div class="testata-azioni">
+      <app-selettore-tema />
       @if (auth.collegato()) {
         <app-campanella />
         <app-menu-utente area="pubblica" />
@@ -103,7 +104,6 @@
 
     <div class="piede-preferenze">
       <app-selettore-lingua />
-      <app-selettore-tema />
     </div>
   </div>
 </footer>

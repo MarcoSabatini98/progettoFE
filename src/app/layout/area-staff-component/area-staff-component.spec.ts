@@ -82,8 +82,10 @@ describe('AreaStaffComponent', () => {
     ).toEqual(['/staff/pulizie', '/staff/chat']);
   });
 
-  it('mostra la campanella delle notifiche nella barra', async () => {
-    expect((await crea()).querySelector('.barra app-campanella')).not.toBeNull();
+  it('mostra tema e campanella delle notifiche nella barra', async () => {
+    const elemento = await crea();
+    expect(elemento.querySelector('.barra app-selettore-tema + app-campanella')).not.toBeNull();
+    expect(elemento.querySelector('.binario app-selettore-tema')).toBeNull();
   });
 
   it('il pulsante della barra apre il menu come popover', async () => {

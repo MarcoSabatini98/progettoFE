@@ -1,15 +1,22 @@
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
-import { PREFERENZE_TEMA } from '../../core/services/tema/tema-costanti';
 import { TemaService } from '../../core/services/tema/tema-service';
 import { SelettoreTemaComponent } from './selettore-tema-component';
 
 describe('SelettoreTemaComponent', () => {
+  const scuro = signal(false);
+  const tema = { scuro, imposta: vi.fn() };
+
   beforeEach(() => {
-    localStorage.clear();
-    TestBed.configureTestingModule({ imports: [traduzioniTest()] });
+    scuro.set(false);
+    tema.imposta.mockReset();
+    TestBed.configureTestingModule({
+      imports: [traduzioniTest()],
+      providers: [{ provide: TemaService, useValue: tema }],
+    });
   });
 
   async function crea() {
@@ -21,20 +28,22 @@ describe('SelettoreTemaComponent', () => {
     return { fixture, radio };
   }
 
-  it('offre una scelta per preferenza e segna quella attiva', async () => {
-    const { radio } = await crea();
+  it('solo chiaro e scuro, segnato quello in uso anche senza una scelta', async () => {
+    const { fixture, radio } = await crea();
+    expect(radio().map((r) => r.value)).toEqual(['chiaro', 'scuro']);
+    expect(radio().find((r) => r.checked)?.value).toBe('chiaro');
 
-    expect(radio().map((r) => r.value)).toEqual([...PREFERENZE_TEMA]);
-    expect(radio().find((r) => r.checked)?.value).toBe('sistema');
+    // Dispositivo passato in scuro: l'interruttore lo segue.
+    scuro.set(true);
+    await fixture.whenStable();
+    expect(radio().find((r) => r.checked)?.value).toBe('scuro');
   });
 
   it('applica il tema scelto', async () => {
-    const { fixture, radio } = await crea();
+    const { radio } = await crea();
 
-    radio()[2].click();
-    await fixture.whenStable();
+    radio()[1].click();
 
-    expect(TestBed.inject(TemaService).preferenza()).toBe('scuro');
-    expect(radio()[2].checked).toBe(true);
+    expect(tema.imposta).toHaveBeenCalledWith('scuro');
   });
 });
