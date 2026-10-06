@@ -487,12 +487,32 @@
     "scade": "Réglez avant le {{ ora }}, sinon la réservation expire.",
     "pagato": "Déjà payé",
     "saldo": "Reste à payer",
-    "daPagare": "À payer maintenant : {{ importo }}",
-    "metodi": {
-      "stripe": "Payer par carte",
-      "paypal": "Payer avec PayPal"
+    "pagamento": {
+      "titolo": "Paiement",
+      "quanto": "Combien vous payez maintenant",
+      "acconto": "Seulement l’acompte : {{ importo }}",
+      "accontoAiuto": "Vous réglez le reste sur place, à l’arrivée.",
+      "tutto": "Tout maintenant : {{ importo }}",
+      "tuttoAiuto": "Rien à payer à l’arrivée.",
+      "nullaOra": "Rien à payer maintenant : vous réglez le solde de {{ importo }} sur place, à l’arrivée. Si vous préférez, vous pouvez le payer dès maintenant.",
+      "come": "Comment vous payez",
+      "paga": "Payer {{ importo }}",
+      "sicuro": "Paiement sécurisé : vous le finalisez sur la page protégée de Stripe ou PayPal, et les données de votre carte ne passent pas par nous.",
+      "bonificoEntro": "Le virement doit nous parvenir avant le {{ data }}, sinon la réservation expire : si votre banque le permet, faites un virement instantané.",
+      "resto": "Vous réglez le reste, {{ importo }}, sur place à l’arrivée.",
+      "nessunMetodo": "Le paiement en ligne n’est pas disponible : contactez l’établissement pour savoir comment payer."
     },
-    "bonifico": "Ou par virement",
+    "metodi": {
+      "stripe": "Carte",
+      "paypal": "PayPal",
+      "bonifico": "Virement bancaire"
+    },
+    "metodiAiuto": {
+      "stripe": "Crédit, débit ou prépayée. Aussi Google Pay, Apple Pay et Klarna, si disponibles.",
+      "paypal": "Avec votre compte PayPal.",
+      "bonifico": "Depuis votre banque, avec les coordonnées affichées."
+    },
+    "importo": "Montant",
     "iban": "IBAN",
     "intestatario": "Titulaire",
     "causale": "Motif du virement",

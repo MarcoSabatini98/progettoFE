@@ -487,12 +487,32 @@
     "scade": "Completa il pagamento entro il {{ ora }}, altrimenti la prenotazione scade.",
     "pagato": "Già pagato",
     "saldo": "Da saldare",
-    "daPagare": "Da pagare ora: {{ importo }}",
-    "metodi": {
-      "stripe": "Paga con carta",
-      "paypal": "Paga con PayPal"
+    "pagamento": {
+      "titolo": "Pagamento",
+      "quanto": "Quanto paghi ora",
+      "acconto": "Solo l'acconto: {{ importo }}",
+      "accontoAiuto": "Il resto lo paghi in struttura, all’arrivo.",
+      "tutto": "Tutto ora: {{ importo }}",
+      "tuttoAiuto": "All’arrivo non devi pagare nulla.",
+      "nullaOra": "Ora non devi pagare nulla: il saldo di {{ importo }} lo paghi in struttura, all’arrivo. Se preferisci, puoi pagarlo già adesso.",
+      "come": "Come paghi",
+      "paga": "Paga {{ importo }}",
+      "sicuro": "Pagamento sicuro: lo completi sulla pagina protetta di Stripe o PayPal e i dati della tua carta non passano da noi.",
+      "bonificoEntro": "Il bonifico deve arrivarci entro il {{ data }}, altrimenti la prenotazione scade: se la tua banca lo permette, fai un bonifico istantaneo.",
+      "resto": "Il resto, {{ importo }}, lo paghi in struttura all’arrivo.",
+      "nessunMetodo": "Il pagamento online non è disponibile: contatta la struttura per sapere come pagare."
     },
-    "bonifico": "Oppure con bonifico",
+    "metodi": {
+      "stripe": "Carta",
+      "paypal": "PayPal",
+      "bonifico": "Bonifico bancario"
+    },
+    "metodiAiuto": {
+      "stripe": "Credito, debito o prepagata. Anche Google Pay, Apple Pay e Klarna, se disponibili.",
+      "paypal": "Con il tuo conto PayPal.",
+      "bonifico": "Dalla tua banca, con i dati che ti mostriamo."
+    },
+    "importo": "Importo",
     "iban": "IBAN",
     "intestatario": "Intestatario",
     "causale": "Causale",

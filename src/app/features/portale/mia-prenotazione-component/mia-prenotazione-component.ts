@@ -22,7 +22,7 @@ import { ContoPrenotazioneComponent } from '../../../shared/conto-prenotazione-c
 import { DettagliPrenotazioneComponent } from '../../../shared/dettagli-prenotazione-component/dettagli-prenotazione-component';
 import { ExtraPrenotazioneComponent } from '../../../shared/extra-prenotazione-component/extra-prenotazione-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
-import { MetodoOnline } from '../../../shared/models/pagamento/pagamento-model';
+import { PagaOnlinePayload } from '../../../shared/models/pagamento/pagamento-model';
 import { StatoPrenotazione } from '../../../shared/models/prenotazione/prenotazione-model';
 import { RecensioneCreaPayload } from '../../../shared/models/recensione/recensione-model';
 import { ModuloRecensioneComponent } from '../../../shared/modulo-recensione-component/modulo-recensione-component';
@@ -73,8 +73,8 @@ export class MiaPrenotazioneComponent {
     () => this.dati.hasValue() && STATI_MODIFICABILI.includes(this.dati.value().prenotazione.stato),
   );
 
-  protected readonly avvia = (metodo: MetodoOnline) =>
-    this.pagamenti.avviaOnline(this.id(), { metodo }, true);
+  protected readonly avvia = (pagamento: PagaOnlinePayload) =>
+    this.pagamenti.avviaOnline(this.id(), pagamento, true);
 
   protected readonly recensisci = (dati: RecensioneCreaPayload) =>
     this.recensioni.creaRecensione(this.id(), dati);

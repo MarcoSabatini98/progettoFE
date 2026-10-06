@@ -487,12 +487,32 @@
     "scade": "Zahlen Sie bis {{ ora }}, sonst verfällt die Buchung.",
     "pagato": "Bereits bezahlt",
     "saldo": "Offener Betrag",
-    "daPagare": "Jetzt zu zahlen: {{ importo }}",
-    "metodi": {
-      "stripe": "Mit Karte zahlen",
-      "paypal": "Mit PayPal zahlen"
+    "pagamento": {
+      "titolo": "Zahlung",
+      "quanto": "Wie viel Sie jetzt zahlen",
+      "acconto": "Nur die Anzahlung: {{ importo }}",
+      "accontoAiuto": "Den Rest zahlen Sie vor Ort bei der Ankunft.",
+      "tutto": "Alles jetzt: {{ importo }}",
+      "tuttoAiuto": "Bei der Ankunft ist nichts zu zahlen.",
+      "nullaOra": "Jetzt ist nichts zu zahlen: Den Restbetrag von {{ importo }} zahlen Sie vor Ort bei der Ankunft. Wenn Sie möchten, können Sie ihn auch jetzt zahlen.",
+      "come": "Wie Sie zahlen",
+      "paga": "{{ importo }} zahlen",
+      "sicuro": "Sichere Zahlung: Sie schließen sie auf der geschützten Seite von Stripe oder PayPal ab, und Ihre Kartendaten laufen nicht über uns.",
+      "bonificoEntro": "Die Überweisung muss bis {{ data }} bei uns eingehen, sonst verfällt die Buchung: Wenn Ihre Bank es erlaubt, nutzen Sie eine Echtzeitüberweisung.",
+      "resto": "Den Rest, {{ importo }}, zahlen Sie vor Ort bei der Ankunft.",
+      "nessunMetodo": "Online-Zahlung ist nicht verfügbar: Kontaktieren Sie die Unterkunft, um zu erfahren, wie Sie zahlen können."
     },
-    "bonifico": "Oder per Überweisung",
+    "metodi": {
+      "stripe": "Karte",
+      "paypal": "PayPal",
+      "bonifico": "Banküberweisung"
+    },
+    "metodiAiuto": {
+      "stripe": "Kredit-, Debit- oder Prepaidkarte. Auch Google Pay, Apple Pay und Klarna, sofern verfügbar.",
+      "paypal": "Mit Ihrem PayPal-Konto.",
+      "bonifico": "Von Ihrer Bank, mit den angezeigten Daten."
+    },
+    "importo": "Betrag",
     "iban": "IBAN",
     "intestatario": "Kontoinhaber",
     "causale": "Verwendungszweck",

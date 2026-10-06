@@ -487,12 +487,32 @@
     "scade": "Completa el pago antes del {{ ora }}; si no, la reserva caduca.",
     "pagato": "Ya pagado",
     "saldo": "Pendiente",
-    "daPagare": "A pagar ahora: {{ importo }}",
-    "metodi": {
-      "stripe": "Pagar con tarjeta",
-      "paypal": "Pagar con PayPal"
+    "pagamento": {
+      "titolo": "Pago",
+      "quanto": "Cuánto pagas ahora",
+      "acconto": "Solo el depósito: {{ importo }}",
+      "accontoAiuto": "El resto lo pagas en el alojamiento, a la llegada.",
+      "tutto": "Todo ahora: {{ importo }}",
+      "tuttoAiuto": "A la llegada no tienes que pagar nada.",
+      "nullaOra": "Ahora no tienes que pagar nada: el saldo de {{ importo }} lo pagas en el alojamiento, a la llegada. Si lo prefieres, puedes pagarlo ya.",
+      "come": "Cómo pagas",
+      "paga": "Pagar {{ importo }}",
+      "sicuro": "Pago seguro: lo completas en la página protegida de Stripe o PayPal y los datos de tu tarjeta no pasan por nosotros.",
+      "bonificoEntro": "La transferencia debe llegarnos antes del {{ data }}, si no la reserva caduca: si tu banco lo permite, haz una transferencia inmediata.",
+      "resto": "El resto, {{ importo }}, lo pagas en el alojamiento a la llegada.",
+      "nessunMetodo": "El pago online no está disponible: contacta con el alojamiento para saber cómo pagar."
     },
-    "bonifico": "O por transferencia",
+    "metodi": {
+      "stripe": "Tarjeta",
+      "paypal": "PayPal",
+      "bonifico": "Transferencia bancaria"
+    },
+    "metodiAiuto": {
+      "stripe": "Crédito, débito o prepago. También Google Pay, Apple Pay y Klarna, si están disponibles.",
+      "paypal": "Con tu cuenta PayPal.",
+      "bonifico": "Desde tu banco, con los datos que te mostramos."
+    },
+    "importo": "Importe",
     "iban": "IBAN",
     "intestatario": "Titular",
     "causale": "Concepto",

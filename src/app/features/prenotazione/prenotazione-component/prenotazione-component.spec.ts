@@ -96,8 +96,8 @@ describe('PrenotazioneComponent', () => {
     expect(elemento.querySelector('.stato-prenotazione')?.textContent).toContain(
       'prenotazione.stati.in_attesa',
     );
-    expect(elemento.querySelectorAll('.metodi button')).toHaveLength(2);
-    expect(elemento.querySelector('.iban')?.textContent).toContain('IT60X0542811101000000123456');
+    expect(elemento.querySelectorAll('input[name="metodo"]')).toHaveLength(3);
+    expect(elemento.querySelector('.paga')).not.toBeNull();
   });
 
   it('senza email la chiede prima di aprire la prenotazione', async () => {
@@ -132,8 +132,12 @@ describe('PrenotazioneComponent', () => {
     pagamenti.pagaPerCodice.mockReturnValue(of({ url: '#pagamento' }));
     const { elemento, clicca } = await crea({ email: accesso.email });
 
-    await clicca('.metodi button');
-    expect(pagamenti.pagaPerCodice).toHaveBeenCalledWith({ ...accesso, metodo: 'stripe' });
+    await clicca('.paga');
+    expect(pagamenti.pagaPerCodice).toHaveBeenCalledWith({
+      ...accesso,
+      metodo: 'stripe',
+      importo: 90,
+    });
     expect(window.location.hash).toBe('#pagamento');
 
     pagamenti.pagaPerCodice.mockReturnValue(
@@ -145,8 +149,13 @@ describe('PrenotazioneComponent', () => {
           }),
       ),
     );
-    await clicca('.metodi button:last-child');
-    expect(pagamenti.pagaPerCodice).toHaveBeenLastCalledWith({ ...accesso, metodo: 'paypal' });
+    await clicca('input[name="metodo"][value="paypal"]');
+    await clicca('.paga');
+    expect(pagamenti.pagaPerCodice).toHaveBeenLastCalledWith({
+      ...accesso,
+      metodo: 'paypal',
+      importo: 90,
+    });
     expect(elemento.querySelector('.pagamento [role="alert"]')?.textContent).toContain(
       'Già pagata',
     );

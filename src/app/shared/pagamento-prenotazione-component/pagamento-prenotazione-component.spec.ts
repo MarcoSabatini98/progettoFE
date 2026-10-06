@@ -33,10 +33,11 @@ describe('PagamentoPrenotazioneComponent', () => {
     });
   });
 
-  async function crea(dati: RiepilogoPagamentoInterface) {
+  async function crea(dati: RiepilogoPagamentoInterface, scadeIl: string | null = null) {
     const fixture = TestBed.createComponent(PagamentoPrenotazioneComponent);
     fixture.componentRef.setInput('riepilogo', dati);
     fixture.componentRef.setInput('avvia', avvia);
+    fixture.componentRef.setInput('scadeIl', scadeIl);
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const clicca = async (selettore: string) => {
@@ -46,21 +47,26 @@ describe('PagamentoPrenotazioneComponent', () => {
     return { elemento, clicca };
   }
 
-  it('mostra metodi online e bonifico', async () => {
-    const { elemento } = await crea(riepilogo);
-
-    expect(elemento.querySelectorAll('.metodi button')).toHaveLength(2);
-    expect(elemento.querySelector('.iban')?.textContent).toContain('IT60X0542811101000000123456');
-  });
-
-  it('pagare porta al provider, o spiega perché non si può', async () => {
+  it('sceglie quanto e come pagare: acconto con carta, poi tutto con PayPal', async () => {
     avvia.mockReturnValue(of({ url: '#provider' }));
     const { elemento, clicca } = await crea(riepilogo);
 
-    await clicca('.metodi button');
-    expect(avvia).toHaveBeenCalledWith('stripe');
+    expect(elemento.querySelectorAll('input[name="quanto"]')).toHaveLength(2);
+    expect(elemento.querySelectorAll('input[name="metodo"]')).toHaveLength(3);
+    expect(elemento.querySelector('.resto')).not.toBeNull();
+
+    await clicca('.paga');
+    expect(avvia).toHaveBeenCalledWith({ metodo: 'stripe', importo: 90 });
     expect(window.location.hash).toBe('#provider');
 
+    await clicca('input[name="quanto"][value="300"]');
+    await clicca('input[name="metodo"][value="paypal"]');
+    expect(elemento.querySelector('.resto')).toBeNull();
+    await clicca('.paga');
+    expect(avvia).toHaveBeenLastCalledWith({ metodo: 'paypal', importo: 300 });
+  });
+
+  it('se il provider rifiuta spiega perché', async () => {
     avvia.mockReturnValue(
       throwError(
         () =>
@@ -70,16 +76,41 @@ describe('PagamentoPrenotazioneComponent', () => {
           }),
       ),
     );
-    await clicca('.metodi button:last-child');
-    expect(avvia).toHaveBeenLastCalledWith('paypal');
+    const { elemento, clicca } = await crea(riepilogo);
+
+    await clicca('.paga');
     expect(elemento.querySelector('[role="alert"]')?.textContent).toContain('Già pagata');
   });
 
-  it('saldato dice che è tutto pagato; con saldo in struttura si nasconde', async () => {
+  it('bonifico: mostra i dati e la scadenza al posto del pulsante', async () => {
+    const { elemento, clicca } = await crea(riepilogo, '2030-06-30T10:15:00');
+
+    await clicca('input[name="metodo"][value="bonifico"]');
+
+    expect(elemento.querySelector('.paga')).toBeNull();
+    expect(elemento.querySelector('.iban')?.textContent).toContain('IT60X0542811101000000123456');
+    expect(elemento.querySelector('.scadenza')).not.toBeNull();
+  });
+
+  it('senza metodi attivi dice di contattare la struttura', async () => {
+    const { elemento } = await crea({ ...riepilogo, metodi_online: [], bonifico: null });
+
+    expect(elemento.querySelector('.paga')).toBeNull();
+    expect(elemento.querySelector('.esito-avviso')).not.toBeNull();
+  });
+
+  it('saldato dice che è tutto pagato; senza acconto propone il saldo, da pagare anche in struttura', async () => {
     const pagato = await crea({ ...riepilogo, da_pagare_ora: 0, saldo: 0 });
     expect(pagato.elemento.querySelector('.esito-ok')).not.toBeNull();
 
     const inStruttura = await crea({ ...riepilogo, da_pagare_ora: 0, saldo: 210 });
-    expect(inStruttura.elemento.hidden).toBe(true);
+    expect(inStruttura.elemento.hidden).toBe(false);
+    expect(inStruttura.elemento.querySelector('input[name="quanto"]')).toBeNull();
+    expect(inStruttura.elemento.querySelector('.esito-avviso')).not.toBeNull();
+  });
+
+  it('pagamento in eccesso: non mostra nulla', async () => {
+    const { elemento } = await crea({ ...riepilogo, da_pagare_ora: 0, saldo: -20 });
+    expect(elemento.hidden).toBe(true);
   });
 });

@@ -14,7 +14,7 @@ import { RecensioniService } from '../../../core/services/recensioni/recensioni-
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
 import { ContoPrenotazioneComponent } from '../../../shared/conto-prenotazione-component/conto-prenotazione-component';
 import { DettagliPrenotazioneComponent } from '../../../shared/dettagli-prenotazione-component/dettagli-prenotazione-component';
-import { MetodoOnline } from '../../../shared/models/pagamento/pagamento-model';
+import { PagaOnlinePayload } from '../../../shared/models/pagamento/pagamento-model';
 import { RecensioneCreaPayload } from '../../../shared/models/recensione/recensione-model';
 import { ModuloRecensioneComponent } from '../../../shared/modulo-recensione-component/modulo-recensione-component';
 import { PagamentoPrenotazioneComponent } from '../../../shared/pagamento-prenotazione-component/pagamento-prenotazione-component';
@@ -72,8 +72,8 @@ export class PrenotazioneComponent {
   });
 
   /** Apre Stripe o PayPal a nome di chi ha aperto la prenotazione. */
-  protected readonly avvia = (metodo: MetodoOnline) =>
-    this.pagamenti.pagaPerCodice({ ...this.accesso(), metodo });
+  protected readonly avvia = (pagamento: PagaOnlinePayload) =>
+    this.pagamenti.pagaPerCodice({ ...this.accesso(), ...pagamento });
 
   protected readonly recensisci = (dati: RecensioneCreaPayload) =>
     this.recensioni.creaRecensionePerCodice({ ...this.accesso(), ...dati });

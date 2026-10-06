@@ -10,7 +10,12 @@
   <div class="griglia-prenotazione">
     <app-dettagli-prenotazione [prenotazione]="prenotazione" />
     <app-conto-prenotazione [importi]="prenotazione" [pagamento]="pagamento" />
-    <app-pagamento-prenotazione class="larga" [riepilogo]="pagamento" [avvia]="avvia" />
+    <app-pagamento-prenotazione
+      class="larga"
+      [riepilogo]="pagamento"
+      [scadeIl]="prenotazione.scade_il"
+      [avvia]="avvia"
+    />
     @if (prenotazione.stato === 'conclusa') {
       <app-modulo-recensione class="larga" [invia]="recensisci" />
     }
