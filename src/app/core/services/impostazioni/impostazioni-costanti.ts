@@ -29,5 +29,39 @@ export const CAMPI_IMPOSTAZIONI_SPECIALI = {
   [CHIAVI_IMPOSTAZIONI.lingueAttive]: 'lingue',
 } as const satisfies Record<string, string>;
 
+/** Ordine delle schede nel gestionale; i gruppi non elencati vanno in fondo. */
+export const ORDINE_GRUPPI_IMPOSTAZIONI = [
+  'struttura',
+  'aspetto',
+  'localizzazione',
+  'soggiorno',
+  'prenotazioni',
+  'fiscale',
+  'fedelta',
+  'pulizie',
+  'chat',
+];
+
+/** Ordine delle voci dentro la scheda; le altre seguono in ordine alfabetico. */
+export const ORDINE_VOCI_IMPOSTAZIONI = [
+  'struttura_nome',
+  'struttura_ragione_sociale',
+  'struttura_codice_fiscale',
+  'struttura_cin',
+  'struttura_partita_iva',
+  'struttura_regime_fiscale',
+  'struttura_indirizzo',
+  'struttura_comune',
+  'struttura_provincia',
+  'struttura_cap',
+  'struttura_telefono',
+  'struttura_email',
+  'struttura_intestatario_conto',
+  'struttura_iban',
+];
+
+/** Scheda dopo cui stanno logo e sfondi della home: sono parte dell'aspetto. */
+export const GRUPPO_IMMAGINI = 'aspetto';
+
 /** Valuta dei prezzi se l'impostazione manca (ISO 4217). */
 export const VALUTA_PREDEFINITA = 'EUR';

@@ -20,9 +20,10 @@ describe('ImpostazioniComponent', () => {
   beforeEach(() => {
     impostazioni.elencaImpostazioni.mockReturnValue(
       of([
-        voce('struttura_nome', 'struttura'),
+        voce('aspetto_colore', 'aspetto'),
         voce('orario_checkin', 'soggiorno'),
         voce('struttura_cin', 'struttura'),
+        voce('struttura_nome', 'struttura'),
       ]),
     );
     impostazioni.leggiPubbliche.mockReset();
@@ -46,15 +47,29 @@ describe('ImpostazioniComponent', () => {
     return { fixture, elemento: fixture.nativeElement as HTMLElement };
   }
 
-  it('un modulo per gruppo, nell’ordine in cui arrivano, il logo e lo sfondo della home', async () => {
+  it('un modulo per gruppo nell’ordine del gestionale, logo e sfondi dopo l’aspetto', async () => {
     const { elemento } = await crea();
 
+    const schede = [...elemento.querySelectorAll('.schede > *')];
+    expect(schede.map((scheda) => scheda.tagName.toLowerCase())).toEqual([
+      'app-gruppo-impostazioni',
+      'app-gruppo-impostazioni',
+      'app-galleria-media',
+      'app-galleria-media',
+      'app-galleria-media',
+      'app-gruppo-impostazioni',
+    ]);
     const gruppi = [...elemento.querySelectorAll('app-gruppo-impostazioni h2')];
     expect(gruppi.map((titolo) => titolo.textContent?.trim())).toEqual([
       'gestionale.impostazioni.gruppi.struttura',
+      'gestionale.impostazioni.gruppi.aspetto',
       'gestionale.impostazioni.gruppi.soggiorno',
     ]);
-    expect(elemento.querySelectorAll('app-gruppo-impostazioni input')).toHaveLength(3);
+    const struttura = [...schede[0].querySelectorAll('app-campo')];
+    expect(struttura.map((campo) => campo.textContent?.trim())).toEqual([
+      'gestionale.impostazioni.chiavi.struttura_nome',
+      'gestionale.impostazioni.chiavi.struttura_cin',
+    ]);
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'logo' });
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home' });
     expect(contenuti.elencaMedia).toHaveBeenCalledWith({ entita: 'home_scuro' });
