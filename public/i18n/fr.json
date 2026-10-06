@@ -1819,13 +1819,13 @@
       },
       "suggerimenti": {
         "titolo": "Prix suggérés",
-        "introduzione": "Les 30 prochains jours, seulement ceux à ajuster. À vous de décider de modifier les tarifs.",
+        "introduzione": "Les dates des 30 prochains jours où il convient de revoir le prix, selon l'occupation et les événements. Les tarifs ne changent jamais d'eux-mêmes : c'est vous qui décidez d'appliquer ou non une suggestion.",
         "tipologia": "Type de chambre",
         "aiutoTipologia": "Choisissez-en un pour voir le prix suggéré.",
         "tutte": "Tous",
         "occupazione": "Déjà vendu",
         "prezzo": "Prix suggéré",
-        "vuoto": "Aucun prix à ajuster dans les 30 prochains jours.",
+        "vuoto": "Aucun prix à revoir dans les 30 prochains jours.",
         "motivi": {
           "occupazione_alta": "Occupation au-delà de {{ valore }} % : forte demande",
           "occupazione_buona": "Occupation au-delà de {{ valore }} % : bonne demande",

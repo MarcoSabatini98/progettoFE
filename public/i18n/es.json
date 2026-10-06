@@ -1819,13 +1819,13 @@
       },
       "suggerimenti": {
         "titolo": "Precios sugeridos",
-        "introduzione": "Próximos 30 días, solo los que conviene ajustar. Tú decides si cambiar las tarifas.",
+        "introduzione": "Las fechas de los próximos 30 días en las que conviene revisar el precio, según la ocupación y los eventos. Las tarifas nunca cambian solas: tú decides si aplicar una sugerencia.",
         "tipologia": "Tipo de habitación",
         "aiutoTipologia": "Elige uno para ver el precio sugerido.",
         "tutte": "Todos",
         "occupazione": "Ya vendido",
         "prezzo": "Precio sugerido",
-        "vuoto": "Ningún precio que ajustar en los próximos 30 días.",
+        "vuoto": "No hay precios que revisar en los próximos 30 días.",
         "motivi": {
           "occupazione_alta": "Ocupación superior al {{ valore }} %: demanda fuerte",
           "occupazione_buona": "Ocupación superior al {{ valore }} %: buena demanda",
