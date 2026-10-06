@@ -1,3 +1,8 @@
+/* Il titolo a metà altezza del campo accanto, non sulla riga del suo aiuto. */
+.strumenti > .sezione-titolo {
+  align-self: center;
+}
+
 .riga {
   display: flex;
   justify-content: space-between;

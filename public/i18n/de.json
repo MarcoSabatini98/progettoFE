@@ -1819,13 +1819,13 @@
       },
       "suggerimenti": {
         "titolo": "Preisvorschläge",
-        "introduzione": "Die nächsten 30 Tage, nur die anzupassenden. Ob du die Preise änderst, entscheidest du.",
+        "introduzione": "Die Tage der nächsten 30, an denen sich eine Preisanpassung lohnt, je nach Auslastung und Veranstaltungen. Die Preise ändern sich nie von selbst: Du entscheidest, ob du einen Vorschlag übernimmst.",
         "tipologia": "Zimmertyp",
         "aiutoTipologia": "Wähle einen, um den vorgeschlagenen Preis zu sehen.",
         "tutte": "Alle",
         "occupazione": "Bereits verkauft",
         "prezzo": "Vorgeschlagener Preis",
-        "vuoto": "In den nächsten 30 Tagen keine Preise anzupassen.",
+        "vuoto": "In den nächsten 30 Tagen gibt es keine Preise zu überprüfen.",
         "motivi": {
           "occupazione_alta": "Auslastung über {{ valore }} %: starke Nachfrage",
           "occupazione_buona": "Auslastung über {{ valore }} %: gute Nachfrage",

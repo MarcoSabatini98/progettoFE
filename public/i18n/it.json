@@ -1819,13 +1819,13 @@
       },
       "suggerimenti": {
         "titolo": "Prezzi suggeriti",
-        "introduzione": "Prossimi 30 giorni, solo quelli da ritoccare. Decidi tu se cambiare il listino.",
+        "introduzione": "Le date dei prossimi 30 giorni in cui conviene rivedere il prezzo, in base a occupazione ed eventi. Il listino non cambia da solo: sei tu a decidere se applicare il suggerimento.",
         "tipologia": "Tipologia",
         "aiutoTipologia": "Scegline una per vedere il prezzo suggerito.",
         "tutte": "Tutte",
         "occupazione": "Già venduto",
         "prezzo": "Prezzo suggerito",
-        "vuoto": "Nei prossimi 30 giorni nessun prezzo da ritoccare.",
+        "vuoto": "Nei prossimi 30 giorni non ci sono prezzi da rivedere.",
         "motivi": {
           "occupazione_alta": "Occupazione oltre il {{ valore }}%: domanda forte",
           "occupazione_buona": "Occupazione oltre il {{ valore }}%: buona domanda",

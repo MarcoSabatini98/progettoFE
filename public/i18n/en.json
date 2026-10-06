@@ -1819,13 +1819,13 @@
       },
       "suggerimenti": {
         "titolo": "Suggested prices",
-        "introduzione": "Next 30 days, only those worth adjusting. You decide whether to change the rates.",
+        "introduzione": "Dates in the next 30 days where the price is worth reviewing, based on occupancy and events. Rates never change on their own: you decide whether to apply a suggestion.",
         "tipologia": "Room type",
         "aiutoTipologia": "Pick one to see the suggested price.",
         "tutte": "All",
         "occupazione": "Already sold",
         "prezzo": "Suggested price",
-        "vuoto": "No prices to adjust in the next 30 days.",
+        "vuoto": "No prices to review in the next 30 days.",
         "motivi": {
           "occupazione_alta": "Occupancy above {{ valore }}%: strong demand",
           "occupazione_buona": "Occupancy above {{ valore }}%: good demand",
