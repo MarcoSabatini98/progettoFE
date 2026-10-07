@@ -27,6 +27,9 @@ export const LIMITI_TARIFFE = {
   utilizziPerUtente: 65_535,
 } as const;
 
+/** Sul sito un'offerta mostra 'Ultimi N giorni' da quando ne mancano tanti alla fine. */
+export const GIORNI_SCADENZA_VICINA = 7;
+
 export const FORMATO_CODICE_SCONTO = /^[A-Z0-9_-]+$/;
 
 /** Giorni di una stagione come bit: lun=1, mar=2 ... dom=64 (127 = tutti). */

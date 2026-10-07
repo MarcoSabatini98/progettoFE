@@ -386,7 +386,7 @@
   "offerte": {
     "occhiello": "Per te",
     "titolo": "Offerte",
-    "introduzione": "Pacchetti con servizi inclusi e promozioni sui soggiorni.",
+    "introduzione": "Promozioni sui soggiorni e pacchetti con servizi inclusi.",
     "nessuna": "Al momento non ci sono offerte attive.",
     "pacchetti": "Pacchetti",
     "promozioni": "Promozioni",
@@ -398,7 +398,10 @@
     "incluso": "Incluso",
     "scontoPercentuale": "-{{ valore }}%",
     "scontoImporto": "-{{ valore }}",
-    "soggiorni": "Soggiorni dal {{ dal }} al {{ al }}"
+    "soggiorni": "Soggiorni dal {{ dal }} al {{ al }}",
+    "prenota": "Prenota",
+    "ultimoGiorno": "Ultimo giorno",
+    "ultimiGiorni": "Ultimi {{ numero }} giorni"
   },
   "recensioni": {
     "occhiello": "Esperienze degli ospiti",

@@ -386,7 +386,7 @@
   "offerte": {
     "occhiello": "For you",
     "titolo": "Offers",
-    "introduzione": "Packages with included services and deals on stays.",
+    "introduzione": "Deals on stays and packages with services included.",
     "nessuna": "There are no active offers right now.",
     "pacchetti": "Packages",
     "promozioni": "Deals",
@@ -398,7 +398,10 @@
     "incluso": "Included",
     "scontoPercentuale": "-{{ valore }}%",
     "scontoImporto": "-{{ valore }}",
-    "soggiorni": "Stays from {{ dal }} to {{ al }}"
+    "soggiorni": "Stays from {{ dal }} to {{ al }}",
+    "prenota": "Book now",
+    "ultimoGiorno": "Last day",
+    "ultimiGiorni": "Last {{ numero }} days"
   },
   "recensioni": {
     "occhiello": "Guest experiences",
