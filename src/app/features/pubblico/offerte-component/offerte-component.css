@@ -1,5 +1,19 @@
+/* Schede in colonna: il pulsante Prenota resta in fondo anche nelle schede più corte. */
 .offerta {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+}
+
+.offerta-corpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--bb-spazio-3);
+}
+
+.offerta-corpo > * {
+  margin: 0;
 }
 
 /* La foto occupa tutta la larghezza della scheda, sopra il testo. */
@@ -22,7 +36,8 @@ h3 {
 }
 
 .sconto {
-  justify-self: start;
+  align-self: start;
+  margin: 0 0 var(--bb-spazio-3);
   padding: var(--bb-spazio-1) var(--bb-spazio-3);
   border-radius: 999px;
   background: var(--bb-brand);
@@ -30,11 +45,24 @@ h3 {
   font-weight: 700;
 }
 
+.scadenza {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-avviso-tenue);
+  color: var(--bb-avviso);
+  font-size: 0.875rem;
+  font-weight: 600;
+  --icona-dimensione: 1rem;
+}
+
 .condizioni,
 .incluso {
   display: grid;
   gap: var(--bb-spazio-1);
-  margin: 0;
   padding: 0;
   list-style: none;
   color: var(--bb-testo-tenue);
@@ -55,4 +83,56 @@ h3 {
 
 .incluso app-icona {
   color: var(--bb-brand-testo);
+}
+
+.prenota {
+  align-self: start;
+  margin-top: auto;
+}
+
+/* Vetrina: la prima offerta di ogni sezione su tutta la riga, più grande. */
+.vetrina {
+  grid-column: 1 / -1;
+  border-color: var(--bb-brand-bordo);
+}
+
+.vetrina h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Senza foto la promozione in vetrina mostra lo sconto in grande. */
+.vetrina .sconto {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  padding: var(--bb-spazio-6);
+  border-radius: var(--bb-raggio);
+  font-family: var(--bb-font-titoli);
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  line-height: 1;
+}
+
+@media (width >= 58.75rem) {
+  /* Foto o sconto a sinistra, testo a destra; un pacchetto senza foto resta su una colonna. */
+  .vetrina:has(> .offerta-foto, > .sconto) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: var(--bb-spazio-8);
+  }
+
+  .vetrina .offerta-foto {
+    inline-size: calc(100% + var(--bb-spazio-6));
+    block-size: calc(100% + 2 * var(--bb-spazio-6));
+    min-block-size: 20rem;
+    aspect-ratio: auto;
+    margin: calc(-1 * var(--bb-spazio-6)) 0 calc(-1 * var(--bb-spazio-6))
+      calc(-1 * var(--bb-spazio-6));
+  }
+
+  .vetrina .sconto {
+    margin: 0;
+    min-block-size: 14rem;
+    font-size: 5rem;
+  }
 }

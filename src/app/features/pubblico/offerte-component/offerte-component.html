@@ -8,78 +8,13 @@
   <p class="stato-vuoto">{{ (errore() ? 'errori.generico' : 'offerte.nessuna') | transloco }}</p>
 }
 
-@if (elencoPacchetti().length) {
-  <section class="sezione">
-    <h2 class="sezione-titolo">{{ 'offerte.pacchetti' | transloco }}</h2>
-    <ul class="griglia-schede">
-      @for (pacchetto of elencoPacchetti(); track pacchetto.id) {
-        @let foto = pacchetto.media?.[0];
-        <li class="scheda offerta">
-          @if (foto) {
-            <img
-              class="offerta-foto"
-              [src]="foto.percorso | media"
-              [alt]="foto.testo_alternativo"
-              [attr.width]="foto.larghezza"
-              [attr.height]="foto.altezza"
-              loading="lazy"
-            />
-          }
-          <h3>{{ pacchetto.nome }}</h3>
-          <p class="offerta-prezzo">{{ pacchetto.prezzo | prezzo }}</p>
-          @if (pacchetto.descrizione) {
-            <p class="testo-libero">{{ pacchetto.descrizione }}</p>
-          }
-
-          <ul class="condizioni">
-            @if (pacchetto.tipologia) {
-              <li>{{ 'offerte.tipologia' | transloco: { nome: pacchetto.tipologia.nome } }}</li>
-            }
-            @if (pacchetto.notti_min) {
-              <li>{{ 'offerte.nottiMin' | transloco: { numero: pacchetto.notti_min } }}</li>
-            }
-            @if (pacchetto.valido_dal && pacchetto.valido_al) {
-              <li>
-                {{
-                  'offerte.periodo'
-                    | transloco
-                      : { dal: (pacchetto.valido_dal | data), al: (pacchetto.valido_al | data) }
-                }}
-              </li>
-            } @else if (pacchetto.valido_dal) {
-              <li>{{ 'offerte.dal' | transloco: { dal: (pacchetto.valido_dal | data) } }}</li>
-            } @else if (pacchetto.valido_al) {
-              <li>{{ 'offerte.fino' | transloco: { al: (pacchetto.valido_al | data) } }}</li>
-            }
-          </ul>
-
-          @if (pacchetto.servizi?.length) {
-            <p class="incluso-titolo">{{ 'offerte.incluso' | transloco }}</p>
-            <ul class="incluso">
-              @for (servizio of pacchetto.servizi; track servizio.id) {
-                @let quantita = servizio.PacchettoServizio.quantita;
-                <li>
-                  <app-icona [nome]="servizio.icona || iconaPredefinita" />
-                  @if (quantita > 1) {
-                    {{ quantita }} ×
-                  }
-                  {{ servizio.nome }}
-                </li>
-              }
-            </ul>
-          }
-        </li>
-      }
-    </ul>
-  </section>
-}
-
+<!-- Prima le promozioni: scadono, i pacchetti restano più a lungo. -->
 @if (elencoPromozioni().length) {
   <section class="sezione">
     <h2 class="sezione-titolo">{{ 'offerte.promozioni' | transloco }}</h2>
     <ul class="griglia-schede">
       @for (promozione of elencoPromozioni(); track promozione.id) {
-        <li class="scheda offerta">
+        <li class="scheda offerta" [class.vetrina]="$first">
           <p class="sconto">
             @if (promozione.tipo_sconto === 'percentuale') {
               {{ 'offerte.scontoPercentuale' | transloco: { valore: (promozione.valore | voto) } }}
@@ -87,30 +22,141 @@
               {{ 'offerte.scontoImporto' | transloco: { valore: (promozione.valore | prezzo) } }}
             }
           </p>
-          <h3>{{ promozione.nome }}</h3>
-          @if (promozione.descrizione) {
-            <p class="testo-libero">{{ promozione.descrizione }}</p>
-          }
-          <ul class="condizioni">
-            <li>
-              {{
-                'offerte.soggiorni'
-                  | transloco
-                    : {
-                        dal: (promozione.soggiorno_dal | data),
-                        al: (promozione.soggiorno_al | data),
-                      }
-              }}
-            </li>
-            @if (promozione.tipologia) {
-              <li>{{ 'offerte.tipologia' | transloco: { nome: promozione.tipologia.nome } }}</li>
+          <div class="offerta-corpo">
+            <ng-container
+              [ngTemplateOutlet]="scadenza"
+              [ngTemplateOutletContext]="{ $implicit: ultimiGiorni(finePromozione(promozione)) }"
+            />
+            <h3>{{ promozione.nome }}</h3>
+            @if (promozione.descrizione) {
+              <p class="testo-libero">{{ promozione.descrizione }}</p>
             }
-            @if (promozione.notti_min) {
-              <li>{{ 'offerte.nottiMin' | transloco: { numero: promozione.notti_min } }}</li>
-            }
-          </ul>
+            <ul class="condizioni">
+              <li>
+                {{
+                  'offerte.soggiorni'
+                    | transloco
+                      : {
+                          dal: (promozione.soggiorno_dal | data),
+                          al: (promozione.soggiorno_al | data),
+                        }
+                }}
+              </li>
+              @if (promozione.tipologia) {
+                <li>{{ 'offerte.tipologia' | transloco: { nome: promozione.tipologia.nome } }}</li>
+              }
+              @if (promozione.notti_min) {
+                <li>{{ 'offerte.nottiMin' | transloco: { numero: promozione.notti_min } }}</li>
+              }
+            </ul>
+            <ng-container
+              [ngTemplateOutlet]="prenota"
+              [ngTemplateOutletContext]="{ $implicit: promozione.tipologia?.slug }"
+            />
+          </div>
         </li>
       }
     </ul>
   </section>
 }
+
+@if (elencoPacchetti().length) {
+  <section class="sezione">
+    <h2 class="sezione-titolo">{{ 'offerte.pacchetti' | transloco }}</h2>
+    <ul class="griglia-schede">
+      @for (pacchetto of elencoPacchetti(); track pacchetto.id) {
+        @let foto = pacchetto.media?.[0];
+        <li class="scheda offerta" [class.vetrina]="$first">
+          @if (foto) {
+            <img
+              class="offerta-foto"
+              [src]="foto.percorso | media"
+              [alt]="foto.testo_alternativo"
+              [attr.width]="foto.larghezza"
+              [attr.height]="foto.altezza"
+              [attr.loading]="$first ? null : 'lazy'"
+            />
+          }
+          <div class="offerta-corpo">
+            <ng-container
+              [ngTemplateOutlet]="scadenza"
+              [ngTemplateOutletContext]="{ $implicit: ultimiGiorni(pacchetto.valido_al) }"
+            />
+            <h3>{{ pacchetto.nome }}</h3>
+            <p class="offerta-prezzo">{{ pacchetto.prezzo | prezzo }}</p>
+            @if (pacchetto.descrizione) {
+              <p class="testo-libero">{{ pacchetto.descrizione }}</p>
+            }
+
+            <ul class="condizioni">
+              @if (pacchetto.tipologia) {
+                <li>{{ 'offerte.tipologia' | transloco: { nome: pacchetto.tipologia.nome } }}</li>
+              }
+              @if (pacchetto.notti_min) {
+                <li>{{ 'offerte.nottiMin' | transloco: { numero: pacchetto.notti_min } }}</li>
+              }
+              @if (pacchetto.valido_dal && pacchetto.valido_al) {
+                <li>
+                  {{
+                    'offerte.periodo'
+                      | transloco
+                        : { dal: (pacchetto.valido_dal | data), al: (pacchetto.valido_al | data) }
+                  }}
+                </li>
+              } @else if (pacchetto.valido_dal) {
+                <li>{{ 'offerte.dal' | transloco: { dal: (pacchetto.valido_dal | data) } }}</li>
+              } @else if (pacchetto.valido_al) {
+                <li>{{ 'offerte.fino' | transloco: { al: (pacchetto.valido_al | data) } }}</li>
+              }
+            </ul>
+
+            @if (pacchetto.servizi?.length) {
+              <p class="incluso-titolo">{{ 'offerte.incluso' | transloco }}</p>
+              <ul class="incluso">
+                @for (servizio of pacchetto.servizi; track servizio.id) {
+                  @let quantita = servizio.PacchettoServizio.quantita;
+                  <li>
+                    <app-icona [nome]="servizio.icona || iconaPredefinita" />
+                    @if (quantita > 1) {
+                      {{ quantita }} ×
+                    }
+                    {{ servizio.nome }}
+                  </li>
+                }
+              </ul>
+            }
+            <ng-container
+              [ngTemplateOutlet]="prenota"
+              [ngTemplateOutletContext]="{ $implicit: pacchetto.tipologia?.slug }"
+            />
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+}
+
+<!-- Etichetta degli ultimi giorni: 0 = l'offerta non finisce a breve. -->
+<ng-template #scadenza let-giorni>
+  @if (giorni) {
+    <p class="scadenza">
+      <app-icona nome="schedule" />
+      {{
+        giorni === 1
+          ? ('offerte.ultimoGiorno' | transloco)
+          : ('offerte.ultimiGiorni' | transloco: { numero: giorni })
+      }}
+    </p>
+  }
+</ng-template>
+
+<!-- Prenota con la tipologia dell'offerta già scelta; il pacchetto si sceglie alla conferma. -->
+<ng-template #prenota let-slug>
+  <a
+    class="pulsante pulsante-primario prenota"
+    [routerLink]="percorsoPrenota"
+    [queryParams]="slug ? { tipologia: slug } : null"
+  >
+    {{ 'offerte.prenota' | transloco }}
+  </a>
+</ng-template>

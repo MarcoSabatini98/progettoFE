@@ -386,7 +386,7 @@
   "offerte": {
     "occhiello": "Für Sie",
     "titolo": "Angebote",
-    "introduzione": "Pakete mit inklusiven Leistungen und Aktionen für Ihren Aufenthalt.",
+    "introduzione": "Aktionen für Aufenthalte und Pakete mit inklusiven Leistungen.",
     "nessuna": "Derzeit gibt es keine aktiven Angebote.",
     "pacchetti": "Pakete",
     "promozioni": "Aktionen",
@@ -398,7 +398,10 @@
     "incluso": "Inklusive",
     "scontoPercentuale": "-{{ valore }} %",
     "scontoImporto": "-{{ valore }}",
-    "soggiorni": "Aufenthalte vom {{ dal }} bis {{ al }}"
+    "soggiorni": "Aufenthalte vom {{ dal }} bis {{ al }}",
+    "prenota": "Buchen",
+    "ultimoGiorno": "Letzter Tag",
+    "ultimiGiorni": "Nur noch {{ numero }} Tage"
   },
   "recensioni": {
     "occhiello": "Erfahrungen unserer Gäste",

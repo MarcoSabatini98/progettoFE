@@ -386,7 +386,7 @@
   "offerte": {
     "occhiello": "Pour vous",
     "titolo": "Offres",
-    "introduzione": "Forfaits avec services inclus et promotions sur les séjours.",
+    "introduzione": "Promotions sur les séjours et forfaits avec services inclus.",
     "nessuna": "Aucune offre active pour le moment.",
     "pacchetti": "Forfaits",
     "promozioni": "Promotions",
@@ -398,7 +398,10 @@
     "incluso": "Inclus",
     "scontoPercentuale": "-{{ valore }} %",
     "scontoImporto": "-{{ valore }}",
-    "soggiorni": "Séjours du {{ dal }} au {{ al }}"
+    "soggiorni": "Séjours du {{ dal }} au {{ al }}",
+    "prenota": "Réserver",
+    "ultimoGiorno": "Dernier jour",
+    "ultimiGiorni": "{{ numero }} derniers jours"
   },
   "recensioni": {
     "occhiello": "Expériences des clients",

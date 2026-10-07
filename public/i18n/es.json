@@ -386,7 +386,7 @@
   "offerte": {
     "occhiello": "Para ti",
     "titolo": "Ofertas",
-    "introduzione": "Paquetes con servicios incluidos y promociones en estancias.",
+    "introduzione": "Promociones en estancias y paquetes con servicios incluidos.",
     "nessuna": "En este momento no hay ofertas activas.",
     "pacchetti": "Paquetes",
     "promozioni": "Promociones",
@@ -398,7 +398,10 @@
     "incluso": "Incluido",
     "scontoPercentuale": "-{{ valore }} %",
     "scontoImporto": "-{{ valore }}",
-    "soggiorni": "Estancias del {{ dal }} al {{ al }}"
+    "soggiorni": "Estancias del {{ dal }} al {{ al }}",
+    "prenota": "Reservar",
+    "ultimoGiorno": "Último día",
+    "ultimiGiorni": "Últimos {{ numero }} días"
   },
   "recensioni": {
     "occhiello": "Experiencias de los huéspedes",
