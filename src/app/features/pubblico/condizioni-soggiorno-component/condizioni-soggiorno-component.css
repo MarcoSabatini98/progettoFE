@@ -1,0 +1,86 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-content: start;
+}
+
+ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+/* Orari: icona, etichetta a sinistra e ora a destra. */
+.orari {
+  gap: var(--bb-spazio-3);
+  --icona-dimensione: 1.5rem;
+}
+
+.orari li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+}
+
+.orari strong {
+  margin-inline-start: auto;
+}
+
+.orari app-icona,
+.regola app-icona {
+  color: var(--bb-brand-testo);
+}
+
+.blocco {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  padding-block-start: var(--bb-spazio-6);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+.tariffe {
+  gap: var(--bb-spazio-4);
+}
+
+.tariffe li {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.nome-tariffa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--bb-spazio-2);
+}
+
+.variazione {
+  padding: 0 var(--bb-spazio-2);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.regola {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bb-spazio-2);
+  --icona-dimensione: 1.125rem;
+}
+
+.descrizione,
+.blocco > p {
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+}

@@ -5,7 +5,6 @@ import type {
 import { DataBloccataInterface } from '../data-bloccata/data-bloccata-model';
 import { MediaInterface } from '../media/media-model';
 import { PrenotazioneInterface } from '../prenotazione/prenotazione-model';
-import { ServizioInterface } from '../servizio/servizio-model';
 import { SituazioneCameraInterface } from '../situazione-camera/situazione-camera-model';
 import { TipologiaCameraInterface } from '../tipologia-camera/tipologia-camera-model';
 
@@ -25,6 +24,8 @@ export interface CameraInterface {
   stato_pulizia: StatoPuliziaCamera;
   /** Token del feed iCal da dare alle OTA. */
   token_ical: string | null;
+  /** Per il sito; null = quella della tipologia. */
+  descrizione: string | null;
   note: string | null;
   creato_il: string;
   aggiornato_il: string;
@@ -32,7 +33,6 @@ export interface CameraInterface {
 
   // ─── Associazioni ───
   tipologia?: TipologiaCameraInterface;
-  servizi?: ServizioInterface[];
   media?: MediaInterface[];
   situazione?: SituazioneCameraInterface | null;
   /** Nel planning: soggiorni e chiusure del periodo. */
@@ -41,10 +41,9 @@ export interface CameraInterface {
 }
 
 export type CameraCreaPayload = Pick<CameraInterface, 'numero' | 'tipologia_id'> &
-  Partial<Pick<CameraInterface, 'nome' | 'piano' | 'ospiti_max' | 'stato' | 'note'>> & {
-    /** Dotazioni: sostituiscono quelle attuali. */
-    servizi?: number[];
-  };
+  Partial<
+    Pick<CameraInterface, 'nome' | 'piano' | 'ospiti_max' | 'stato' | 'descrizione' | 'note'>
+  >;
 
 export type CameraAggiornaPayload = Partial<CameraCreaPayload>;
 

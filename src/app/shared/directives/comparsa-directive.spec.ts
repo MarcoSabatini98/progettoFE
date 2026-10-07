@@ -11,8 +11,16 @@ import { ComparsaDirective } from './comparsa-directive';
 })
 class OspiteComponent {}
 
+@Component({
+  imports: [ComparsaDirective],
+  template: '<p appComparsa="0px 0px -35% 0px">Testo</p>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class CentroComponent {}
+
 describe('ComparsaDirective', () => {
   let avvisa: IntersectionObserverCallback;
+  let opzioni: IntersectionObserverInit | undefined;
   const disconnect = vi.fn();
 
   beforeEach(() => {
@@ -20,8 +28,9 @@ describe('ComparsaDirective', () => {
     vi.stubGlobal(
       'IntersectionObserver',
       class {
-        constructor(callback: IntersectionObserverCallback) {
+        constructor(callback: IntersectionObserverCallback, init?: IntersectionObserverInit) {
           avvisa = callback;
+          opzioni = init;
         }
         observe = vi.fn();
         disconnect = disconnect;
@@ -31,8 +40,8 @@ describe('ComparsaDirective', () => {
 
   afterEach(() => vi.unstubAllGlobals());
 
-  function crea() {
-    const fixture = TestBed.createComponent(OspiteComponent);
+  function crea(ospite: typeof OspiteComponent = OspiteComponent) {
+    const fixture = TestBed.createComponent(ospite);
     fixture.detectChanges();
     return fixture.nativeElement.querySelector('p') as HTMLElement;
   }
@@ -65,5 +74,13 @@ describe('ComparsaDirective', () => {
     entra(false, -300);
 
     expect(elemento.classList).toContain('comparso');
+  });
+
+  it('senza valore osserva tutto lo schermo, con il valore solo la parte indicata', () => {
+    crea();
+    expect(opzioni?.rootMargin).toBeUndefined();
+
+    crea(CentroComponent);
+    expect(opzioni?.rootMargin).toBe('0px 0px -35% 0px');
   });
 });

@@ -56,12 +56,18 @@
     </app-campo>
   </div>
   <app-campo
+    [etichetta]="'gestionale.camere.campi.descrizione' | transloco"
+    [aiuto]="'gestionale.camere.descrizioneAiuto' | transloco"
+    [errore]="errori.campo(controlli.descrizione)"
+  >
+    <textarea formControlName="descrizione" rows="5" [maxLength]="lunghezza.descrizione"></textarea>
+  </app-campo>
+  <app-campo
     [etichetta]="'gestionale.camere.campi.note' | transloco"
     [errore]="errori.campo(controlli.note)"
   >
     <textarea formControlName="note" rows="3" [maxLength]="lunghezza.note"></textarea>
   </app-campo>
-  <app-scelta-dotazioni [controllo]="controlli.servizi" />
   @if (errore(); as testo) {
     <p class="esito esito-errore" role="alert">{{ testo }}</p>
   }

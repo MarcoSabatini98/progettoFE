@@ -41,12 +41,12 @@ describe('CamereService', () => {
     richiesta.flush(risposta([]));
   });
 
-  it('crea la camera con le dotazioni', () => {
-    service.creaCamera({ numero: '101', tipologia_id: 2, servizi: [1, 4] }).subscribe();
+  it('crea la camera', () => {
+    service.creaCamera({ numero: '101', tipologia_id: 2, piano: 1 }).subscribe();
 
     const richiesta = backend.expectOne(API);
     expect(richiesta.request.method).toBe('POST');
-    expect(richiesta.request.body).toEqual({ numero: '101', tipologia_id: 2, servizi: [1, 4] });
+    expect(richiesta.request.body).toEqual({ numero: '101', tipologia_id: 2, piano: 1 });
     richiesta.flush(risposta({}));
   });
 

@@ -1,33 +1,10 @@
-.indietro {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bb-spazio-1);
-  justify-self: start;
-  margin-block-end: calc(-1 * var(--bb-spazio-8));
-  color: var(--bb-testo-tenue);
-  font-size: 0.9375rem;
-  text-decoration: none;
-  --icona-dimensione: 1.125rem;
+/* Tanto spazio tra i riquadri: la card sporge sotto la foto. */
+.riquadri {
+  display: grid;
+  gap: calc(2 * var(--bb-spazio-12));
 }
 
-.indietro:hover {
-  color: var(--bb-testo);
-}
-
+/* Con due pulsanti, prenota va a sinistra e "altre info" resta in basso a destra. */
 .prenota {
-  justify-self: start;
-}
-
-.prezzo {
-  color: var(--bb-brand-testo);
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-.foto {
-  display: block;
-  inline-size: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: var(--bb-raggio);
+  margin-inline-end: auto;
 }

@@ -27,15 +27,15 @@ import {
   StatoCamera,
 } from '../../../shared/models/camera/camera-model';
 import { TipologiaCameraInterface } from '../../../shared/models/tipologia-camera/tipologia-camera-model';
-import { SceltaDotazioniComponent } from '../scelta-dotazioni-component/scelta-dotazioni-component';
 
 /**
- * Dati di una camera fisica: numero, tipologia, piano, stato e dotazioni in più.
+ * Dati di una camera fisica: numero, tipologia, piano, stato e descrizione per il sito.
+ * Le dotazioni sono quelle della tipologia: si scelgono lì.
  * Salva i soli campi cambiati.
  */
 @Component({
   selector: 'app-dati-camera',
-  imports: [ReactiveFormsModule, TranslocoPipe, CampoComponent, SceltaDotazioniComponent],
+  imports: [ReactiveFormsModule, TranslocoPipe, CampoComponent],
   templateUrl: './dati-camera-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'scheda' },
@@ -65,8 +65,8 @@ export class DatiCameraComponent {
       [Validators.min(1), Validators.max(LIMITI_CAMERE.ospitiMax)],
     ],
     stato: ['attiva' as StatoCamera],
+    descrizione: ['', Validators.maxLength(LUNGHEZZA_CAMERA.descrizione)],
     note: ['', Validators.maxLength(LUNGHEZZA_CAMERA.note)],
-    servizi: [[] as number[]],
   });
 
   constructor() {
@@ -105,8 +105,8 @@ export class DatiCameraComponent {
       piano: camera.piano,
       ospiti_max: camera.ospiti_max,
       stato: camera.stato,
+      descrizione: camera.descrizione ?? '',
       note: camera.note ?? '',
-      servizi: (camera.servizi ?? []).map((servizio) => servizio.id),
     });
   }
 }

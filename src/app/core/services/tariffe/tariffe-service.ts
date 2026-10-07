@@ -10,6 +10,7 @@ import {
   CodiceScontoVerificatoInterface,
   FiltriCodiciSconto,
 } from '../../../shared/models/codice-sconto/codice-sconto-model';
+import { CondizioniSoggiornoInterface } from '../../../shared/models/condizioni-soggiorno/condizioni-soggiorno-model';
 import {
   PacchettoAggiornaPayload,
   PacchettoCreaPayload,
@@ -92,6 +93,16 @@ export class TariffeService {
   elencaPacchettiPubblici(): Observable<PacchettoInterface[]> {
     return this.http
       .get<RispostaApiInterface<PacchettoInterface[]>>(`${this.apiUrl}/pacchetti/pubblici`)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * CONDIZIONI DEL SOGGIORNO — GET /soggiorno
+   * Piani attivi con le loro cancellazioni e tassa di soggiorno in vigore oggi.
+   */
+  leggiCondizioniSoggiorno(): Observable<CondizioniSoggiornoInterface> {
+    return this.http
+      .get<RispostaApiInterface<CondizioniSoggiornoInterface>>(`${this.apiUrl}/soggiorno`)
       .pipe(map((res) => res.dati));
   }
 

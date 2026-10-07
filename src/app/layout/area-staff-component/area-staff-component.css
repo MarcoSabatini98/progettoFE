@@ -5,6 +5,8 @@
 :host {
   --larghezza-binario: 16rem;
   --altezza-barra: 3.5rem;
+  /* Chi resta attaccato in alto (es. il conto della prenotazione) si ferma sotto la barra. */
+  --bb-testata: var(--altezza-barra);
 
   display: grid;
   grid-template-rows: var(--altezza-barra) 1fr;

@@ -10,8 +10,9 @@ describe('RicercaSoggiornoComponent', () => {
     TestBed.configureTestingModule({ imports: [traduzioniTest()] });
   });
 
-  async function crea() {
+  async function crea(ospitiMax?: number) {
     const fixture = TestBed.createComponent(RicercaSoggiornoComponent);
+    fixture.componentRef.setInput('ospitiMax', ospitiMax);
     const ricerche: FiltriDisponibilita[] = [];
     fixture.componentInstance.cerca.subscribe((filtri) => ricerche.push(filtri));
     await fixture.whenStable();
@@ -74,5 +75,42 @@ describe('RicercaSoggiornoComponent', () => {
     expect(elemento.querySelector('input[formControlName="partenza"]')?.getAttribute('min')).toBe(
       '2030-07-05',
     );
+  });
+
+  it('una tipologia per una persona riduce i due adulti proposti', async () => {
+    const { elemento } = await crea(1);
+
+    const adulti = elemento.querySelector<HTMLInputElement>('input[formControlName="adulti"]')!;
+    expect(adulti.value).toBe('1');
+    expect(adulti.max).toBe('1');
+    expect(elemento.querySelector('input[formControlName="bambini"]')?.getAttribute('max')).toBe(
+      '0',
+    );
+  });
+
+  it('adulti e bambini insieme non superano il tetto', async () => {
+    const { elemento, ricerche, scrivi, invia } = await crea(3);
+    await scrivi('arrivo', '2030-07-01');
+    await scrivi('partenza', '2030-07-04');
+
+    await scrivi('bambini', '2');
+    for (const campo of elemento.querySelectorAll<HTMLSelectElement>('.eta select')) {
+      campo.selectedIndex = 5;
+      campo.dispatchEvent(new Event('change'));
+    }
+    await invia();
+
+    expect(ricerche).toHaveLength(0);
+    expect(elemento.textContent).toContain('moduli.max');
+    expect(elemento.querySelector('input[formControlName="adulti"]')?.getAttribute('max')).toBe(
+      '1',
+    );
+
+    await scrivi('bambini', '1');
+    elemento.querySelector<HTMLSelectElement>('.eta select')!.selectedIndex = 5;
+    elemento.querySelector('.eta select')!.dispatchEvent(new Event('change'));
+    await invia();
+
+    expect(ricerche).toHaveLength(1);
   });
 });

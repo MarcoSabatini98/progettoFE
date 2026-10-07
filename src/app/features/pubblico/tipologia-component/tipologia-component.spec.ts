@@ -17,19 +17,19 @@ describe('TipologiaComponent', () => {
     nome: 'Doppia vista mare',
     slug: 'doppia-vista-mare',
     descrizione: 'Vista sul golfo.',
-    prezzo_base: 90,
-    ospiti_max: 2,
-    superficie_mq: null,
-    letti: '1 matrimoniale',
-    media: [],
+    media: [{ id: 1, percorso: 'doppia.jpg', testo_alternativo: 'Doppia' }],
     servizi: [{ id: 5, nome: 'Wi-Fi', icona: 'wifi' }],
+    camere: [],
   } as unknown as TipologiaCameraInterface;
-  const foto = (id: number) => ({ id, percorso: `${id}.jpg`, testo_alternativo: `Foto ${id}` });
 
   beforeEach(() => {
     camere.leggiTipologiaPubblica.mockReset();
     TestBed.configureTestingModule({
-      imports: [traduzioniTest()],
+      imports: [
+        traduzioniTest({
+          camera: { numero: 'Camera {{ numero }}', numeroNome: 'Camera {{ numero }} “{{ nome }}”' },
+        }),
+      ],
       providers: [
         provideRouter([]),
         { provide: CamereService, useValue: camere },
@@ -46,54 +46,51 @@ describe('TipologiaComponent', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  it('legge la tipologia dallo slug e ne mostra dettagli e dotazioni', async () => {
+  it('la copertina ha foto, nome e descrizione della tipologia', async () => {
     camere.leggiTipologiaPubblica.mockReturnValue(of(tipologia));
 
     const elemento = await crea();
 
     expect(camere.leggiTipologiaPubblica).toHaveBeenCalledWith('doppia-vista-mare');
-    expect(elemento.querySelector('h1')?.textContent).toBe('Doppia vista mare');
-    expect(elemento.querySelector('.descrizione')?.textContent).toBe('Vista sul golfo.');
-    expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe(
-      '/prenota?tipologia=doppia-vista-mare',
+    expect(elemento.querySelector('.copertina-schermo .sfondo')?.getAttribute('src')).toContain(
+      'doppia.jpg',
     );
-    expect(elemento.querySelectorAll('.dettagli dd')).toHaveLength(2);
-    expect(elemento.querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
-    expect(elemento.querySelector('app-carosello')).toBeNull();
-    expect(elemento.querySelector('app-scheda-tipologia')).toBeNull();
+    expect(elemento.querySelector('h1')?.textContent).toBe('Doppia vista mare');
+    expect(elemento.querySelector('.introduzione')?.textContent).toBe('Vista sul golfo.');
+    expect(elemento.querySelector('.indietro')?.getAttribute('href')).toBe('/camere');
   });
 
-  it('elenca le sue camere, ognuna col link alla propria pagina', async () => {
-    const camera = (id: number, numero: string) => ({ id, numero, piano: 1, servizi: [] });
+  it('un riquadro per camera: numero, nome, dotazioni della tipologia, prenota e altre info', async () => {
+    const camera = (id: number, numero: string, nome: string | null) => ({ id, numero, nome });
     camere.leggiTipologiaPubblica.mockReturnValue(
-      of({ ...tipologia, camere: [camera(2, '102'), camera(3, '103')] }),
+      of({ ...tipologia, camere: [camera(2, '101', 'La splendida'), camera(3, '102', null)] }),
     );
 
     const elemento = await crea();
 
-    const link = [...elemento.querySelectorAll('app-scheda-tipologia h3 a')];
-    expect(link.map((voce) => voce.getAttribute('href'))).toEqual([
-      '/camere/doppia-vista-mare/102',
-      '/camere/doppia-vista-mare/103',
+    const riquadri = [...elemento.querySelectorAll('app-riquadro-camera')];
+    expect(riquadri.map((voce) => voce.querySelector('h2')?.textContent)).toEqual([
+      'Camera 101 “La splendida”',
+      'Camera 102',
+    ]);
+    expect(riquadri[0].querySelector('.descrizione')).toBeNull();
+    expect(riquadri[0].querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
+    const link = [...riquadri[0].querySelectorAll('.azioni a')].map((a) => a.getAttribute('href'));
+    expect(link).toEqual([
+      '/prenota?tipologia=doppia-vista-mare&camera=101',
+      '/camere/doppia-vista-mare/101',
     ]);
   });
 
-  it('più foto scorrono nel carosello', async () => {
-    camere.leggiTipologiaPubblica.mockReturnValue(of({ ...tipologia, media: [foto(1), foto(2)] }));
+  it('senza camere lo dice', async () => {
+    camere.leggiTipologiaPubblica.mockReturnValue(of(tipologia));
 
     const elemento = await crea();
 
-    expect(elemento.querySelectorAll('app-carosello img.foto')).toHaveLength(2);
-    expect(elemento.querySelector('app-carosello .comandi')).not.toBeNull();
-  });
-
-  it('una foto sola resta ferma, senza comandi', async () => {
-    camere.leggiTipologiaPubblica.mockReturnValue(of({ ...tipologia, media: [foto(1)] }));
-
-    const elemento = await crea();
-
-    expect(elemento.querySelector('app-carosello img.foto')?.getAttribute('alt')).toBe('Foto 1');
-    expect(elemento.querySelector('app-carosello .comandi')).toBeNull();
+    expect(elemento.querySelector('app-riquadro-camera')).toBeNull();
+    expect(elemento.querySelector('.stato-vuoto')?.textContent).toContain(
+      'tipologia.nessunaCamera',
+    );
   });
 
   it('con uno slug sconosciuto lo dice e riporta alle camere', async () => {
@@ -102,6 +99,6 @@ describe('TipologiaComponent', () => {
     const elemento = await crea();
 
     expect(elemento.querySelector('h1')?.textContent).toContain('tipologia.nonTrovata');
-    expect(elemento.querySelector('a.indietro')?.getAttribute('href')).toBe('/camere');
+    expect(elemento.querySelector('.pagina-intestazione a')?.getAttribute('href')).toBe('/camere');
   });
 });

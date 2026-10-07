@@ -35,6 +35,15 @@
             [maxLength]="limiti.descrizione"
           ></textarea>
         </app-campo>
+        @if (attuale.chiave === 'camere') {
+          <app-campo
+            [etichetta]="'gestionale.pagine.paragrafo' | transloco"
+            [aiuto]="'gestionale.pagine.paragrafoAiuto' | transloco"
+            [errore]="errori.campo(moduloPagina.controls.testo)"
+          >
+            <textarea formControlName="testo" rows="5" [maxLength]="limiti.paragrafo"></textarea>
+          </app-campo>
+        }
         @if (errore(); as testo) {
           <p class="esito esito-errore" role="alert">{{ testo }}</p>
         }
@@ -57,74 +66,76 @@
   }
 }
 
-<app-listino [listino]="listino" chiave="gestionale.pagine.sezioni">
-  <ng-template #riga let-sezione>
-    <strong>{{ sezione.titolo }}</strong>
-    <span class="piccolo tenue">
-      {{ sezione.ordine }}
-      @if (!sezione.pubblicata) {
-        · {{ 'gestionale.pagine.nascosta' | transloco }}
-      }
-    </span>
-  </ng-template>
+@if (chiave() !== 'camere') {
+  <app-listino [listino]="listino" chiave="gestionale.pagine.sezioni">
+    <ng-template #riga let-sezione>
+      <strong>{{ sezione.titolo }}</strong>
+      <span class="piccolo tenue">
+        {{ sezione.ordine }}
+        @if (!sezione.pubblicata) {
+          · {{ 'gestionale.pagine.nascosta' | transloco }}
+        }
+      </span>
+    </ng-template>
 
-  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
-    <h2 class="titolo-scheda">
-      {{
-        (listino.scelta() ? 'gestionale.pagine.modifica' : 'gestionale.pagine.nuova') | transloco
-      }}
-    </h2>
-    <app-campo
-      [etichetta]="'gestionale.pagine.campi.titolo' | transloco"
-      [errore]="errori.campo(controlli.titolo)"
-    >
-      <input type="text" formControlName="titolo" [maxLength]="limiti.titolo" required />
-    </app-campo>
-    <app-campo
-      [etichetta]="'gestionale.pagine.campi.testo' | transloco"
-      [errore]="errori.campo(controlli.testo)"
-    >
-      <textarea formControlName="testo" rows="8" [maxLength]="limiti.testo" required></textarea>
-    </app-campo>
-    <app-campo
-      [etichetta]="'gestionale.pagine.campi.ordine' | transloco"
-      [aiuto]="'gestionale.pagine.ordineAiuto' | transloco"
-      [errore]="errori.campo(controlli.ordine)"
-    >
-      <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
-    </app-campo>
-    @if (!listino.scelta()) {
+    <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+      <h2 class="titolo-scheda">
+        {{
+          (listino.scelta() ? 'gestionale.pagine.modifica' : 'gestionale.pagine.nuova') | transloco
+        }}
+      </h2>
       <app-campo
-        [etichetta]="'gestionale.pagine.immagine.titolo' | transloco"
-        [aiuto]="'gestionale.pagine.immagine.aiuto' | transloco"
+        [etichetta]="'gestionale.pagine.campi.titolo' | transloco"
+        [errore]="errori.campo(controlli.titolo)"
       >
-        <span class="pulsante pulsante-secondario scegli-immagine">
-          <app-icona nome="add_photo_alternate" />
-          {{ immagine()?.name || ('gestionale.foto.carica' | transloco) }}
-          <input
-            class="visivamente-nascosto"
-            type="file"
-            [accept]="formatiImmagine"
-            (change)="scegliImmagine($event)"
-          />
-        </span>
+        <input type="text" formControlName="titolo" [maxLength]="limiti.titolo" required />
       </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.pagine.campi.testo' | transloco"
+        [errore]="errori.campo(controlli.testo)"
+      >
+        <textarea formControlName="testo" rows="8" [maxLength]="limiti.testo" required></textarea>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.pagine.campi.ordine' | transloco"
+        [aiuto]="'gestionale.pagine.ordineAiuto' | transloco"
+        [errore]="errori.campo(controlli.ordine)"
+      >
+        <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
+      </app-campo>
+      @if (!listino.scelta()) {
+        <app-campo
+          [etichetta]="'gestionale.pagine.immagine.titolo' | transloco"
+          [aiuto]="'gestionale.pagine.immagine.aiuto' | transloco"
+        >
+          <span class="pulsante pulsante-secondario scegli-immagine">
+            <app-icona nome="add_photo_alternate" />
+            {{ immagine()?.name || ('gestionale.foto.carica' | transloco) }}
+            <input
+              class="visivamente-nascosto"
+              type="file"
+              [accept]="formatiImmagine"
+              (change)="scegliImmagine($event)"
+            />
+          </span>
+        </app-campo>
+      }
+      <label class="spunta">
+        <input type="checkbox" formControlName="pubblicata" />
+        {{ 'gestionale.pagine.campi.pubblicata' | transloco }}
+      </label>
+      <app-azioni-listino [listino]="listino" />
+    </form>
+    @if (listino.scelta(); as sezione) {
+      <app-galleria-media
+        entita="sezione"
+        [entitaId]="sezione.id"
+        [media]="mediaScelta()"
+        [descrizione]="sezione.titolo"
+        chiave="gestionale.pagine.immagine"
+        (cambiati)="listino.elenco.reload()"
+      />
+      <app-traduzioni entita="sezione" [entitaId]="sezione.id" />
     }
-    <label class="spunta">
-      <input type="checkbox" formControlName="pubblicata" />
-      {{ 'gestionale.pagine.campi.pubblicata' | transloco }}
-    </label>
-    <app-azioni-listino [listino]="listino" />
-  </form>
-  @if (listino.scelta(); as sezione) {
-    <app-galleria-media
-      entita="sezione"
-      [entitaId]="sezione.id"
-      [media]="mediaScelta()"
-      [descrizione]="sezione.titolo"
-      chiave="gestionale.pagine.immagine"
-      (cambiati)="listino.elenco.reload()"
-    />
-    <app-traduzioni entita="sezione" [entitaId]="sezione.id" />
-  }
-</app-listino>
+  </app-listino>
+}

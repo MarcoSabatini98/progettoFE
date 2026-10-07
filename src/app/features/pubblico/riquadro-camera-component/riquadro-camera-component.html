@@ -1,0 +1,31 @@
+<article class="riquadro" appComparsa="0px 0px -35% 0px">
+  <div class="foto">
+    @if (foto(); as immagine) {
+      <img
+        [src]="immagine.percorso | media"
+        [alt]="immagine.testo_alternativo"
+        [attr.width]="immagine.larghezza"
+        [attr.height]="immagine.altezza"
+        loading="lazy"
+      />
+    }
+  </div>
+
+  <div class="card">
+    <h2>{{ titolo() }}</h2>
+    @if (descrizione()) {
+      <p class="descrizione">{{ descrizione() }}</p>
+    }
+    @if (dotazioni().length) {
+      <ul class="dotazioni">
+        @for (dotazione of dotazioni(); track dotazione.id) {
+          <li>
+            <app-icona [nome]="dotazione.icona || iconaPredefinita" />
+            {{ dotazione.nome }}
+          </li>
+        }
+      </ul>
+    }
+    <div class="azioni"><ng-content /></div>
+  </div>
+</article>

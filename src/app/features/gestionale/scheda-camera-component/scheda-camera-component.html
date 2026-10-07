@@ -24,13 +24,16 @@
     } @else if (elencoTipologie.error(); as errore) {
       <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
     }
-    <app-elimina
-      [titolo]="'gestionale.camere.eliminaCamera' | transloco"
-      [aiuto]="'gestionale.camere.eliminaCameraAiuto' | transloco"
-      [conferma]="'gestionale.camere.conferma' | transloco"
-      [richiesta]="elimina"
-      (eliminato)="tornaAllElenco()"
-    />
+    <div class="colonna">
+      <app-traduzioni entita="camera" [entitaId]="dati.id" />
+      <app-elimina
+        [titolo]="'gestionale.camere.eliminaCamera' | transloco"
+        [aiuto]="'gestionale.camere.eliminaCameraAiuto' | transloco"
+        [conferma]="'gestionale.camere.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
+    </div>
   </div>
 } @else if (scheda.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

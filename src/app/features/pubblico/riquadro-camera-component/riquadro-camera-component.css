@@ -1,0 +1,135 @@
+:host {
+  display: block;
+}
+
+/*
+ * Al telefono foto a tutta larghezza e card un po' rientrata che ne copre il fondo e scende sotto.
+ * Da 48rem, su 12 colonne, la card sta sopra la foto spostata un po' fuori, a lati alterni.
+ */
+.riquadro {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.foto {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--bb-raggio);
+  background: color-mix(in oklch, var(--bb-testo-tenue) 18%, var(--bb-sfondo));
+}
+
+.foto img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* Margine in % della larghezza: la card copre sempre circa il 40% basso della foto. */
+.card {
+  z-index: 1;
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--bb-spazio-3);
+  margin: -50% var(--bb-spazio-4) 0;
+  padding: var(--bb-spazio-6);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+  box-shadow: var(--bb-ombra);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.descrizione {
+  color: var(--bb-testo-tenue);
+  white-space: pre-line;
+}
+
+.dotazioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-2) var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+  --icona-dimensione: 1.125rem;
+}
+
+.dotazioni li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+}
+
+.dotazioni app-icona {
+  color: var(--bb-brand-testo);
+}
+
+/* Il pulsante principale in basso a destra; chi ne passa due sposta l'altro a sinistra. */
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--bb-spazio-3);
+  margin-block-start: var(--bb-spazio-2);
+}
+
+@media (min-width: 48rem) {
+  .riquadro {
+    align-items: end;
+  }
+
+  .foto {
+    grid-column: 2 / 12;
+    aspect-ratio: 16 / 9;
+  }
+
+  .card {
+    grid-row: 1;
+    grid-column: 1 / 6;
+    margin: 0 0 calc(-1 * var(--bb-spazio-8));
+  }
+
+  :host(:nth-child(even)) .card {
+    grid-column: 8 / -1;
+  }
+}
+
+/*
+ * Comparsa: il riquadro resta fermo (sovrascrive .da-comparire di base.css),
+ * foto e card si aprono dal centro salendo un poco; la card un terzo di secondo dopo.
+ */
+.riquadro.da-comparire {
+  opacity: 1;
+  translate: none;
+}
+
+.foto,
+.card {
+  transition:
+    opacity 0.7s var(--bb-curva),
+    scale 0.7s var(--bb-curva),
+    translate 0.7s var(--bb-curva);
+}
+
+.card {
+  transition-delay: 0.3s;
+}
+
+.da-comparire:not(.comparso) :is(.foto, .card) {
+  opacity: 0;
+  scale: 0.92;
+  translate: 0 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition-delay: 0s;
+  }
+}

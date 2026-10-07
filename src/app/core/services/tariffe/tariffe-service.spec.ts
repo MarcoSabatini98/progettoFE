@@ -45,6 +45,16 @@ describe('TariffeService', () => {
     expect(verificato).toMatchObject({ codice: 'ESTATE10' });
   });
 
+  it('legge piani e tassa per il sito', () => {
+    let condizioni: unknown;
+    service.leggiCondizioniSoggiorno().subscribe((dati) => (condizioni = dati));
+
+    const richiesta = backend.expectOne(`${API}/soggiorno`);
+    expect(richiesta.request.method).toBe('GET');
+    richiesta.flush(risposta({ piani: [], tassa: null }));
+    expect(condizioni).toEqual({ piani: [], tassa: null });
+  });
+
   it('filtra i periodi per date', () => {
     service.elencaPeriodi({ dal: '2026-06-01', attivo: true }).subscribe();
 

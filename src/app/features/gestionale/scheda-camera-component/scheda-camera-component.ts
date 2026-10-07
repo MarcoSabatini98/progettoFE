@@ -9,11 +9,19 @@ import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-c
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { DatiCameraComponent } from '../dati-camera-component/dati-camera-component';
 import { EliminaComponent } from '../elimina-component/elimina-component';
+import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
-/** Scheda di una camera fisica per lo staff: dati, tipologia, stato ed eliminazione. */
+/** Scheda di una camera fisica per lo staff: dati, tipologia, stato, traduzioni ed eliminazione. */
 @Component({
   selector: 'app-scheda-camera',
-  imports: [RouterLink, TranslocoPipe, DatiCameraComponent, EliminaComponent, IconaComponent],
+  imports: [
+    RouterLink,
+    TranslocoPipe,
+    DatiCameraComponent,
+    EliminaComponent,
+    IconaComponent,
+    TraduzioniComponent,
+  ],
   templateUrl: './scheda-camera-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },

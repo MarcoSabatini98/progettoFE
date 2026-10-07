@@ -7,7 +7,7 @@
   }
 </a>
 
-@if (vicine().camera; as camera) {
+@if (camera(); as camera) {
   @let tipo = tipologia.value()!;
   @let titolo = camera.nome || ('camera.numero' | transloco: { numero: camera.numero });
 
@@ -55,32 +55,55 @@
         <app-icona nome="event_available" />
         {{ 'camera.prenota' | transloco }}
       </a>
+      @if (inEvidenza().length) {
+        <ul class="dotazioni-brevi" [attr.aria-label]="'tipologia.dotazioni' | transloco">
+          @for (dotazione of inEvidenza(); track dotazione.id) {
+            <li>
+              <app-icona [nome]="dotazione.icona || iconaPredefinita" />
+              {{ dotazione.nome }}
+            </li>
+          }
+        </ul>
+      }
+      @if (altreDotazioni() > 0) {
+        <a class="tutte-dotazioni" [routerLink]="[]" fragment="dotazioni">
+          {{ 'camera.altreDotazioni' | transloco: { numero: altreDotazioni() } }}
+        </a>
+      }
     </header>
   </div>
 
-  <app-dettagli-camera [tipologia]="tipo" [camera]="camera" />
+  <div class="corpo">
+    <app-dettagli-camera [tipologia]="tipo" [camera]="camera" />
+    <app-condizioni-soggiorno class="soggiorno" />
+  </div>
 
-  @if (vicine().precedente || vicine().successiva) {
-    <nav class="vicine" [attr.aria-label]="'camera.altre' | transloco">
-      @if (vicine().precedente; as precedente) {
-        <a
-          class="pulsante pulsante-fantasma precedente"
-          [routerLink]="[percorsoCamere, slug(), precedente.numero]"
-        >
-          <app-icona nome="chevron_left" />
-          {{ precedente.nome || ('camera.numero' | transloco: { numero: precedente.numero }) }}
-        </a>
-      }
-      @if (vicine().successiva; as successiva) {
-        <a
-          class="pulsante pulsante-fantasma successiva"
-          [routerLink]="[percorsoCamere, slug(), successiva.numero]"
-        >
-          {{ successiva.nome || ('camera.numero' | transloco: { numero: successiva.numero }) }}
-          <app-icona nome="chevron_right" />
-        </a>
-      }
-    </nav>
+  <app-servizi-extra />
+
+  @if (altre().length) {
+    <section class="sezione">
+      <h2 class="sezione-titolo">{{ 'camera.altreDi' | transloco: { nome: tipo.nome } }}</h2>
+      <ul class="altre" [attr.aria-label]="'camera.altre' | transloco">
+        @for (altra of altre(); track altra.id) {
+          <li class="altra">
+            <div class="foto">
+              @if (altra.media?.[0] ?? tipo.media?.[0]; as immagine) {
+                <img [src]="immagine.percorso | media" alt="" loading="lazy" />
+              }
+            </div>
+            <h3>
+              <a [routerLink]="[percorsoCamere, slug(), altra.numero]">
+                {{
+                  altra.nome
+                    ? ('camera.numeroNome' | transloco: { numero: altra.numero, nome: altra.nome })
+                    : ('camera.numero' | transloco: { numero: altra.numero })
+                }}
+              </a>
+            </h3>
+          </li>
+        }
+      </ul>
+    </section>
   }
 } @else if (!tipologia.isLoading()) {
   <div class="pagina-intestazione">

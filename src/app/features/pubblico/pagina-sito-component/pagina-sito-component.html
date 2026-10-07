@@ -1,14 +1,10 @@
-<header class="copertina" [class.copertina-schermo]="copertina()">
-  @if (copertina(); as foto) {
-    <img class="sfondo" [src]="foto.percorso | media" alt="" fetchpriority="high" />
-  }
-  <p class="occhiello">{{ chiave() + '.occhiello' | transloco }}</p>
-  <h1>{{ chiave() + '.titolo' | transloco }}</h1>
-  <p class="introduzione">{{ descrizione() || (chiave() + '.introduzione' | transloco) }}</p>
-  @if (copertina() && sezioni().length) {
-    <app-scorri />
-  }
-</header>
+<app-copertina
+  [foto]="copertina()"
+  [occhiello]="chiave() + '.occhiello' | transloco"
+  [titolo]="chiave() + '.titolo' | transloco"
+  [testo]="descrizione() || (chiave() + '.introduzione' | transloco)"
+  [scorri]="sezioni().length > 0"
+/>
 
 @if (pagina.hasValue() && !sezioni().length) {
   <p class="stato-vuoto">{{ 'layout.paginaInArrivo' | transloco }}</p>

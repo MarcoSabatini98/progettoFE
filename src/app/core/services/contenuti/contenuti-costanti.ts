@@ -14,6 +14,8 @@ export const LIMITI_CONTENUTI = {
   ordine: 32_767,
   descrizione: 2_000,
   testo: 10_000,
+  /** Paragrafo sotto la copertina della pagina camere. */
+  paragrafo: 5_000,
 } as const;
 
 /** Impatto di un evento nuovo: a metà scala. */

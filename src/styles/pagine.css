@@ -45,7 +45,7 @@
 }
 
 /*
- * Copertina a tutto schermo (home, struttura, attività): riempie l'altezza visibile
+ * Copertina a tutto schermo (home, struttura, attività, camere): riempie l'altezza visibile
  * sotto la testata e lo .sfondo esce dalla colonna fino ai bordi della finestra
  * (la pagina lo taglia di lato con overflow-x: clip in area-pubblica).
  */

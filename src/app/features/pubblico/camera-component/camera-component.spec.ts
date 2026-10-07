@@ -7,10 +7,11 @@ import { CamereService } from '../../../core/services/camere/camere-service';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
+import { TariffeService } from '../../../core/services/tariffe/tariffe-service';
 import { CameraComponent } from './camera-component';
 
 describe('CameraComponent', () => {
-  const camere = { leggiTipologiaPubblica: vi.fn() };
+  const camere = { leggiTipologiaPubblica: vi.fn(), elencaExtraPubblici: () => of([]) };
   const foto = (id: number) => ({ id, percorso: `${id}.jpg`, testo_alternativo: `Foto ${id}` });
   const camera = (id: number, numero: string, media = [foto(id * 10)]) => ({
     id,
@@ -28,7 +29,11 @@ describe('CameraComponent', () => {
     prezzo_base: 95,
     ospiti_max: 2,
     media: [foto(1), foto(2)],
-    servizi: [],
+    servizi: Array.from({ length: 8 }, (_, indice) => ({
+      id: indice + 1,
+      nome: `Dotazione ${indice + 1}`,
+      icona: null,
+    })),
     camere: [
       camera(2, '102'),
       camera(3, '103', [foto(31), foto(32), foto(33)]),
@@ -46,6 +51,10 @@ describe('CameraComponent', () => {
         { provide: CamereService, useValue: camere },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
+        {
+          provide: TariffeService,
+          useValue: { leggiCondizioniSoggiorno: () => of({ piani: [], tassa: null }) },
+        },
       ],
     });
   });
@@ -91,21 +100,24 @@ describe('CameraComponent', () => {
     expect(elemento.querySelectorAll('.miniatura')).toHaveLength(2);
   });
 
-  it('prenota proprio questa camera e porta alle vicine', async () => {
+  it('prenota proprio questa camera e porta alle altre della tipologia', async () => {
     const { elemento } = await crea('103');
 
     expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe(
       '/prenota?tipologia=doppia&camera=103',
     );
-    expect(elemento.querySelector('a.precedente')?.getAttribute('href')).toBe('/camere/doppia/102');
-    expect(elemento.querySelector('a.successiva')?.getAttribute('href')).toBe('/camere/doppia/201');
+    const altre = [...elemento.querySelectorAll('.altra a')].map((link) =>
+      link.getAttribute('href'),
+    );
+    expect(altre).toEqual(['/camere/doppia/102', '/camere/doppia/201']);
   });
 
-  it('la prima camera non ha la precedente', async () => {
+  it('sotto Prenota le prime dotazioni e il link a tutte le altre', async () => {
     const { elemento } = await crea('102');
 
-    expect(elemento.querySelector('a.precedente')).toBeNull();
-    expect(elemento.querySelector('a.successiva')).not.toBeNull();
+    expect(elemento.querySelectorAll('.dotazioni-brevi li')).toHaveLength(6);
+    expect(elemento.querySelector('.tutte-dotazioni')?.getAttribute('href')).toBe('/#dotazioni');
+    expect(elemento.querySelectorAll('#dotazioni li')).toHaveLength(8);
   });
 
   it('numero o tipologia sconosciuti: non trovata, col link alla tipologia', async () => {
