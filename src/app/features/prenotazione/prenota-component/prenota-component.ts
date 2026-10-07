@@ -3,17 +3,21 @@ import {
   Component,
   DestroyRef,
   booleanAttribute,
+  computed,
   inject,
   input,
   signal,
 } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { finalize } from 'rxjs';
 
+import { CamereService } from '../../../core/services/camere/camere-service';
 import { DisponibilitaService } from '../../../core/services/disponibilita/disponibilita-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
+import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazione-costanti';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { BloccoCameraInterface } from '../../../shared/models/blocco-camera/blocco-camera-model';
 import { FiltriDisponibilita } from '../../../shared/models/disponibilita/disponibilita-model';
@@ -27,12 +31,14 @@ import { RicercaSoggiornoComponent } from '../ricerca-soggiorno-component/ricerc
 
 /**
  * Prenotazione dal sito (/prenota) o dalla reception (/staff/prenotazioni/nuova):
- * ricerca, scelta della tipologia e conferma.
+ * ricerca, scelta della tipologia e conferma. Dalla pagina di una tipologia o di una camera
+ * (?tipologia=doppia&camera=103) mostra solo quella e blocca proprio quella camera.
  * Scegliere blocca una camera per qualche minuto; lasciare la pagina la libera.
  */
 @Component({
   selector: 'app-prenota',
   imports: [
+    RouterLink,
     TranslocoPipe,
     IconaComponent,
     MediaPipe,
@@ -48,10 +54,29 @@ import { RicercaSoggiornoComponent } from '../ricerca-soggiorno-component/ricerc
 export class PrenotaComponent {
   private readonly disponibilita = inject(DisponibilitaService);
   private readonly lingua = inject(LinguaService);
+  private readonly camere = inject(CamereService);
   protected readonly errori = inject(ErroriService);
 
   /** Dai dati della rotta del gestionale. */
   readonly staff = input(false, { transform: booleanAttribute });
+  /** Slug e numero dalla query string del sito. */
+  readonly tipologia = input<string>();
+  readonly camera = input<string>();
+
+  protected readonly percorsoPrenota = PERCORSI_PUBBLICI.prenota;
+  private readonly preferita = rxResource({
+    params: () => {
+      const slug = this.tipologia();
+      return slug ? { slug, lingua: this.lingua.attiva() } : undefined;
+    },
+    stream: ({ params }) => this.camere.leggiTipologiaPubblica(params.slug),
+  });
+  /** Tipologia scelta sul sito ed eventualmente la sua camera. */
+  protected readonly preferenza = computed(() => {
+    if (!this.preferita.hasValue()) return undefined;
+    const tipologia = this.preferita.value();
+    return { tipologia, camera: tipologia.camere?.find((voce) => voce.numero === this.camera()) };
+  });
 
   /** Blocco della sessione: resta anche tornando ai risultati, finché non se ne sceglie un altro. */
   private blocco?: BloccoCameraInterface;
@@ -70,6 +95,11 @@ export class PrenotaComponent {
     stream: ({ params }) =>
       this.disponibilita.cerca({ ...params.filtri, sessione: this.blocco?.sessione }),
   });
+  protected readonly voci = computed(() => {
+    const voci = this.risultati.hasValue() ? this.risultati.value() : [];
+    const id = this.preferenza()?.tipologia.id;
+    return id ? voci.filter((voce) => voce.tipologia.id === id) : voci;
+  });
 
   constructor() {
     inject(DestroyRef).onDestroy(() => this.rilascia());
@@ -85,7 +115,7 @@ export class PrenotaComponent {
 
   /**
    * SCEGLI
-   * Blocca la prima camera libera della tipologia, poi passa alla conferma.
+   * Blocca la camera scelta sul sito o la prima libera della tipologia, poi passa alla conferma.
    */
   scegli(tipologia: TipologiaCameraInterface, preventivo: PreventivoInterface): void {
     const filtri = this.filtri();
@@ -93,12 +123,13 @@ export class PrenotaComponent {
       return;
     }
     const { arrivo, partenza, adulti, bambini = 0 } = filtri;
+    const camera = this.preferenza()?.camera;
     this.inBlocco.set(tipologia.id);
     this.errore.set('');
     this.disponibilita
       .blocca({
         sessione: this.blocco?.sessione,
-        tipologia_id: tipologia.id,
+        ...(camera ? { camera_id: camera.id } : { tipologia_id: tipologia.id }),
         arrivo,
         partenza,
         ospiti: adulti + bambini,

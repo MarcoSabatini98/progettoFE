@@ -1,0 +1,44 @@
+<div class="corpo">
+  @if (tipologia().descrizione) {
+    <p class="testo-libero descrizione">{{ tipologia().descrizione }}</p>
+  }
+
+  <dl class="scheda dettagli">
+    <div>
+      <dt><app-icona nome="group" />{{ 'tipologia.ospiti' | transloco }}</dt>
+      <dd>{{ 'camere.ospitiMax' | transloco: { numero: ospiti() } }}</dd>
+    </div>
+    @if (camera(); as scelta) {
+      <div>
+        <dt><app-icona nome="stairs" />{{ 'tipologia.piano' | transloco }}</dt>
+        <dd>{{ scelta.piano }}</dd>
+      </div>
+    }
+    @if (tipologia().superficie_mq) {
+      <div>
+        <dt><app-icona nome="square_foot" />{{ 'tipologia.superficie' | transloco }}</dt>
+        <dd>{{ 'camere.superficie' | transloco: { mq: tipologia().superficie_mq } }}</dd>
+      </div>
+    }
+    @if (tipologia().letti) {
+      <div>
+        <dt><app-icona nome="bed" />{{ 'tipologia.letti' | transloco }}</dt>
+        <dd>{{ tipologia().letti }}</dd>
+      </div>
+    }
+  </dl>
+</div>
+
+@if (dotazioni().length) {
+  <section class="sezione">
+    <h2 class="sezione-titolo">{{ 'tipologia.dotazioni' | transloco }}</h2>
+    <ul class="dotazioni">
+      @for (dotazione of dotazioni(); track dotazione.id) {
+        <li>
+          <app-icona [nome]="dotazione.icona || iconaPredefinita" />
+          {{ dotazione.nome }}
+        </li>
+      }
+    </ul>
+  </section>
+}

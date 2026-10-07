@@ -29,6 +29,23 @@ describe('ContenutiService', () => {
     richiesta.flush(risposta({}));
   });
 
+  it('legge una pagina del sito nella lingua richiesta', () => {
+    service.leggiPaginaPubblica('struttura', 'de').subscribe();
+
+    const richiesta = backend.expectOne((req) => req.url === `${API}/pagine/struttura/pubblica`);
+    expect(richiesta.request.params.get('lingua')).toBe('de');
+    richiesta.flush(risposta({}));
+  });
+
+  it('crea una sezione sulla pagina indicata', () => {
+    service.creaSezione({ pagina_id: 2, titolo: 'Il giardino', testo: 'Ulivi' }).subscribe();
+
+    const richiesta = backend.expectOne(`${API}/sezioni`);
+    expect(richiesta.request.method).toBe('POST');
+    expect(richiesta.request.body).toMatchObject({ pagina_id: 2 });
+    richiesta.flush(risposta({}));
+  });
+
   it('salva le traduzioni di un record', () => {
     service.salvaTraduzioni('faq', 3, { en: { domanda: 'Check-in time?' } }).subscribe();
 

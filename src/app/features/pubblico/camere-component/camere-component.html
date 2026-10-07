@@ -19,22 +19,39 @@
   }
 </section>
 
+@if (comuni().length) {
+  <section class="sezione comuni">
+    <h2 class="sezione-titolo">{{ 'camere.inTutte' | transloco }}</h2>
+    <ul class="pillole">
+      @for (servizio of comuni(); track servizio.id) {
+        <li>
+          <app-icona [nome]="servizio.icona || iconaPredefinita" />
+          {{ servizio.nome }}
+        </li>
+      }
+    </ul>
+  </section>
+}
+
 @if (extra.hasValue() && extra.value().length) {
   <section class="sezione">
     <div class="pagina-intestazione">
+      <p class="occhiello">{{ 'camere.extraOcchiello' | transloco }}</p>
       <h2 class="sezione-titolo">{{ 'camere.extra' | transloco }}</h2>
       <p class="introduzione">{{ 'camere.extraIntroduzione' | transloco }}</p>
     </div>
     <ul class="griglia-schede">
       @for (servizio of extra.value(); track servizio.id) {
         <li class="scheda servizio">
-          <app-icona class="servizio-icona" [nome]="servizio.icona || iconaPredefinita" />
+          <span class="servizio-icona">
+            <app-icona [nome]="servizio.icona || iconaPredefinita" />
+          </span>
           <h3>{{ servizio.nome }}</h3>
           @if (servizio.descrizione) {
             <p class="servizio-descrizione">{{ servizio.descrizione }}</p>
           }
           <p class="servizio-prezzo">
-            {{ servizio.prezzo | prezzo }}
+            <strong>{{ servizio.prezzo | prezzo }}</strong>
             <span>{{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}</span>
           </p>
         </li>
@@ -42,3 +59,18 @@
     </ul>
   </section>
 }
+
+<section class="sezione chiusura">
+  <h2 class="sezione-titolo">{{ 'camere.chiusuraTitolo' | transloco }}</h2>
+  <p class="introduzione">{{ 'camere.chiusuraTesto' | transloco }}</p>
+  <div class="azioni">
+    <a class="pulsante pulsante-primario" [routerLink]="percorsi.prenota">
+      <app-icona nome="event_available" />
+      {{ 'home.prenota' | transloco }}
+    </a>
+    <a class="pulsante pulsante-fantasma" [routerLink]="percorsi.contatti">
+      <app-icona nome="mail" />
+      {{ 'camere.scrivici' | transloco }}
+    </a>
+  </div>
+</section>

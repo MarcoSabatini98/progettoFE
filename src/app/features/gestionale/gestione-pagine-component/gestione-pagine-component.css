@@ -1,0 +1,11 @@
+.scegli-immagine {
+  justify-self: start;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.scegli-immagine:focus-within {
+  outline: 2px solid var(--bb-brand);
+  outline-offset: 2px;
+}

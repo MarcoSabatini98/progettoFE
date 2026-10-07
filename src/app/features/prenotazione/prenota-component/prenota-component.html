@@ -9,6 +9,24 @@
 @if (scelta(); as scelta) {
   <app-conferma-prenotazione [scelta]="scelta" [staff]="staff()" (cambiaCamera)="cambiaCamera()" />
 } @else {
+  @if (preferenza(); as preferenza) {
+    <p class="scheda preferenza">
+      <app-icona nome="bed" />
+      <span>
+        @if (preferenza.camera; as camera) {
+          {{
+            'prenota.cameraScelta'
+              | transloco
+                : { camera: camera.nome || camera.numero, tipologia: preferenza.tipologia.nome }
+          }}
+        } @else {
+          {{ 'prenota.tipologiaScelta' | transloco: { tipologia: preferenza.tipologia.nome } }}
+        }
+      </span>
+      <a [routerLink]="percorsoPrenota">{{ 'prenota.tutteLeCamere' | transloco }}</a>
+    </p>
+  }
+
   <app-ricerca-soggiorno class="scheda" [inCorso]="risultati.isLoading()" (cerca)="cerca($event)" />
 
   @if (errore()) {
@@ -19,8 +37,8 @@
     <section class="sezione">
       <h2 class="sezione-titolo">{{ 'prenota.risultati' | transloco }}</h2>
       <ul class="risultati">
-        @for (voce of risultati.value(); track voce.tipologia.id) {
-          @let foto = voce.tipologia.media?.[0];
+        @for (voce of voci(); track voce.tipologia.id) {
+          @let foto = preferenza()?.camera?.media?.[0] ?? voce.tipologia.media?.[0];
           <li class="scheda risultato">
             <div class="foto">
               @if (foto) {

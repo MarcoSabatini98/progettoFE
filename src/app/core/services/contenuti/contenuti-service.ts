@@ -29,12 +29,22 @@ import {
   MediaCreaPayload,
   MediaInterface,
 } from '../../../shared/models/media/media-model';
+import {
+  ChiavePagina,
+  PaginaSitoAggiornaPayload,
+  PaginaSitoInterface,
+} from '../../../shared/models/pagina-sito/pagina-sito-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
 import {
   EntitaTraducibile,
   TraduzioniPayload,
   TraduzioniPerLinguaInterface,
 } from '../../../shared/models/traduzione/traduzione-model';
+import {
+  SezioneAggiornaPayload,
+  SezioneCreaPayload,
+  SezioneInterface,
+} from '../../../shared/models/sezione/sezione-model';
 import { creaFormDati } from '../api/form-dati';
 import { creaParametri } from '../api/parametri-http';
 
@@ -47,7 +57,7 @@ export function eVideo(media: Pick<MediaInterface, 'tipo_mime'>): boolean {
 }
 
 /**
- * Contenuti del sito: immagini, FAQ, documenti legali, eventi in zona e traduzioni.
+ * Contenuti del sito: immagini, FAQ, pagine e sezioni, documenti legali, eventi in zona e traduzioni.
  */
 @Injectable({
   providedIn: 'root',
@@ -82,6 +92,18 @@ export class ContenutiService {
         `${this.apiUrl}/documenti-legali/vigente/${tipo}`,
         { params: creaParametri({ lingua }) },
       )
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * PAGINA DEL SITO — GET /pagine/:chiave/pubblica
+   * Copertina, descrizione e sezioni pubblicate.
+   */
+  leggiPaginaPubblica(chiave: ChiavePagina, lingua?: Lingua): Observable<PaginaSitoInterface> {
+    return this.http
+      .get<RispostaApiInterface<PaginaSitoInterface>>(`${this.apiUrl}/pagine/${chiave}/pubblica`, {
+        params: creaParametri({ lingua }),
+      })
       .pipe(map((res) => res.dati));
   }
 
@@ -215,6 +237,55 @@ export class ContenutiService {
   eliminaFaq(id: number): Observable<null> {
     return this.http
       .delete<RispostaApiInterface<null>>(`${this.apiUrl}/faq/${id}`)
+      .pipe(map((res) => res.dati));
+  }
+
+  // ─── Pagine e sezioni ───
+
+  /**
+   * PAGINE — GET /pagine
+   * Tutte, con copertina e sezioni (anche quelle nascoste).
+   */
+  elencaPagine(): Observable<PaginaSitoInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<PaginaSitoInterface[]>>(`${this.apiUrl}/pagine`)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * AGGIORNA PAGINA — PATCH /pagine/:id
+   */
+  aggiornaPagina(id: number, dati: PaginaSitoAggiornaPayload): Observable<PaginaSitoInterface> {
+    return this.http
+      .patch<RispostaApiInterface<PaginaSitoInterface>>(`${this.apiUrl}/pagine/${id}`, dati)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * CREA SEZIONE — POST /sezioni
+   */
+  creaSezione(dati: SezioneCreaPayload): Observable<SezioneInterface> {
+    return this.http
+      .post<RispostaApiInterface<SezioneInterface>>(`${this.apiUrl}/sezioni`, dati)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * AGGIORNA SEZIONE — PATCH /sezioni/:id
+   */
+  aggiornaSezione(id: number, dati: SezioneAggiornaPayload): Observable<SezioneInterface> {
+    return this.http
+      .patch<RispostaApiInterface<SezioneInterface>>(`${this.apiUrl}/sezioni/${id}`, dati)
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * ELIMINA SEZIONE — DELETE /sezioni/:id
+   * Con la sua immagine e le traduzioni.
+   */
+  eliminaSezione(id: number): Observable<null> {
+    return this.http
+      .delete<RispostaApiInterface<null>>(`${this.apiUrl}/sezioni/${id}`)
       .pipe(map((res) => res.dati));
   }
 

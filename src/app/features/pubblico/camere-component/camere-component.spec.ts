@@ -68,6 +68,30 @@ describe('CamereComponent', () => {
     expect(elemento.querySelector('.servizio')).toBeNull();
   });
 
+  it('elenca una volta le dotazioni comuni a tutte le tipologie', async () => {
+    const wifi = { id: 5, nome: 'Wi-Fi' };
+    camere.elencaTipologiePubbliche.mockReturnValue(
+      of([
+        { ...tipologia, servizi: [wifi, { id: 6, nome: 'Balcone' }] },
+        { ...tipologia, id: 2, servizi: [{ id: 7, nome: 'Vasca' }, wifi] },
+      ]),
+    );
+
+    const elemento = await crea();
+
+    const comuni = elemento.querySelectorAll('.pillole li');
+    expect(comuni).toHaveLength(1);
+    expect(comuni[0].textContent).toContain('Wi-Fi');
+  });
+
+  it('chiude invitando a prenotare o a scrivere', async () => {
+    const elemento = await crea();
+
+    const link = [...elemento.querySelectorAll('.chiusura a')].map((a) => a.getAttribute('href'));
+    expect(link).toEqual(['/prenota', '/contatti']);
+    expect(elemento.querySelector('.pillole')).toBeNull();
+  });
+
   it('se il backend non risponde mostra un errore', async () => {
     camere.elencaTipologiePubbliche.mockReturnValue(throwError(() => new Error('500')));
 

@@ -32,4 +32,9 @@ export const CAMPI_TRADUCIBILI = {
   pacchetto: ['nome', 'descrizione'],
   promozione: ['nome', 'descrizione'],
   faq: ['domanda', 'risposta'],
+  pagina: ['descrizione'],
+  sezione: ['titolo', 'testo'],
 } as const;
+
+/** Pagine del sito con copertina e sezioni immagine-testo scritte dallo staff. */
+export const PAGINE_SITO = ['home', 'struttura', 'attivita'] as const;

@@ -12,6 +12,8 @@ export const LIMITI_CONTENUTI = {
   risposta: 10_000,
   categoria: 50,
   ordine: 32_767,
+  descrizione: 2_000,
+  testo: 10_000,
 } as const;
 
 /** Impatto di un evento nuovo: a metà scala. */
@@ -30,4 +32,4 @@ export const SFONDI_HOME = { chiaro: 'home', scuro: 'home_scuro' } as const sati
 >;
 
 /** Campi tradotti in un'area di testo: gli altri stanno su una riga. */
-export const CAMPI_LUNGHI: readonly string[] = ['descrizione', 'risposta'];
+export const CAMPI_LUNGHI: readonly string[] = ['descrizione', 'risposta', 'testo'];

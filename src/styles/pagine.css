@@ -44,6 +44,40 @@
   font-size: 1.125rem;
 }
 
+/*
+ * Copertina a tutto schermo (home, struttura, attività): riempie l'altezza visibile
+ * sotto la testata e lo .sfondo esce dalla colonna fino ai bordi della finestra
+ * (la pagina lo taglia di lato con overflow-x: clip in area-pubblica).
+ */
+.copertina-schermo {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-block-size: calc(100svh - var(--bb-testata));
+  margin-block-start: calc(-1 * var(--bb-spazio-8));
+}
+
+.copertina-schermo > .sfondo,
+.copertina-schermo:has(> .sfondo)::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: calc(50% - 50vw);
+  z-index: -1;
+}
+
+.copertina-schermo > .sfondo {
+  inline-size: 100vw;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+}
+
+/* Velo nel colore della pagina: testi e colori restano quelli di sempre. */
+.copertina-schermo:has(> .sfondo)::after {
+  content: '';
+  background: color-mix(in oklch, var(--bb-sfondo) 65%, transparent);
+}
+
 .sezione {
   display: grid;
   gap: var(--bb-spazio-6);

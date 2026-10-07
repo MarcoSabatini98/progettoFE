@@ -1,38 +1,9 @@
-/*
- * Copertina a tutto schermo: riempie l'altezza visibile sotto la testata e lo
- * sfondo esce dalla colonna fino ai bordi della finestra (la pagina lo taglia
- * di lato con overflow-x: clip in area-pubblica).
- */
+/* Altezza e sfondo a tutto schermo vengono da .copertina-schermo (pagine.css). */
 .copertina {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  align-content: center;
-  gap: var(--bb-spazio-8);
-  min-block-size: calc(100svh - var(--bb-testata));
-  margin-block-start: calc(-1 * var(--bb-spazio-8));
-  padding-block: var(--bb-spazio-8);
-}
-
-.sfondo,
-.copertina:has(.sfondo)::after {
-  position: absolute;
-  inset-block: 0;
-  inset-inline: calc(50% - 50vw);
-  z-index: -1;
-}
-
-.sfondo {
-  inline-size: 100vw;
-  block-size: 100%;
-  max-inline-size: none;
-  object-fit: cover;
-}
-
-/* Velo nel colore della pagina: testi e colori restano quelli di sempre. */
-.copertina:has(.sfondo)::after {
-  content: '';
-  background: color-mix(in oklch, var(--bb-sfondo) 65%, transparent);
+  align-content: start;
+  gap: var(--bb-spazio-6);
+  /* Sotto resta il posto per l'invito a scorrere e il pulsante di pausa. */
+  padding-block: var(--bb-spazio-4) calc(2 * var(--bb-spazio-12));
 }
 
 .pausa {
@@ -46,7 +17,7 @@
   display: grid;
   place-items: center;
   justify-self: center;
-  inline-size: min(100%, 22rem);
+  inline-size: min(55%, 12rem);
   aspect-ratio: 4 / 5;
   border-radius: 999px 999px var(--bb-raggio) var(--bb-raggio);
   background:
@@ -73,6 +44,16 @@
   inline-size: 100%;
   block-size: 100%;
   object-fit: contain;
+}
+
+/* Da telefono il logo prende solo l'altezza che gli serve: niente vuoti sopra e sotto. */
+.arco-logo {
+  aspect-ratio: auto;
+}
+
+.arco-logo img {
+  block-size: auto;
+  max-block-size: 28svh;
 }
 
 .copertina-testo {
@@ -135,10 +116,23 @@ dd {
 @media (width >= 58.75rem) {
   .copertina {
     grid-template-columns: 1fr 1fr;
+    align-content: center;
+    gap: var(--bb-spazio-8);
+    padding-block-start: var(--bb-spazio-8);
   }
 
   .arco {
     order: 1;
+    inline-size: min(100%, 22rem);
+  }
+
+  .arco-logo {
+    aspect-ratio: 4 / 5;
+  }
+
+  .arco-logo img {
+    block-size: 100%;
+    max-block-size: none;
   }
 }
 
@@ -164,9 +158,4 @@ dd {
 
 .media app-icona {
   color: var(--bb-ocra);
-}
-
-/* Spazio per il pulsante di pausa sotto gli orari. */
-.copertina:has(.pausa) {
-  padding-block-end: calc(2 * var(--bb-spazio-12));
 }

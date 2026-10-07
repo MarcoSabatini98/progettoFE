@@ -1,0 +1,98 @@
+/* Foto sopra sul telefono; da desktop foto a sinistra e titolo con prenotazione a destra. */
+.apertura {
+  display: grid;
+  gap: var(--bb-spazio-8);
+  align-items: center;
+}
+
+@media (width >= 58.75rem) {
+  .apertura {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.galleria {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  min-inline-size: 0;
+}
+
+.principale {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--bb-raggio);
+}
+
+/* Le miniature scorrono di lato se non ci stanno tutte. */
+.miniature {
+  display: flex;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+}
+
+.miniature li {
+  flex: 0 0 5.5rem;
+  scroll-snap-align: start;
+}
+
+.miniatura {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--bb-raggio);
+  background: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--bb-durata) var(--bb-curva);
+}
+
+.miniatura:hover,
+.miniatura[aria-pressed='true'] {
+  opacity: 1;
+}
+
+.miniatura[aria-pressed='true'] {
+  border-color: var(--bb-brand);
+}
+
+.miniatura img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.prenota {
+  justify-self: start;
+}
+
+.prezzo {
+  color: var(--bb-brand-testo);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.vicine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+.successiva {
+  margin-inline-start: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .miniatura {
+    transition: none;
+  }
+}

@@ -12,7 +12,8 @@
     "saltaAlContenuto": "Skip to content",
     "cin": "CIN",
     "documentiLegali": "Legal documents",
-    "paginaInArrivo": "We're preparing this page: check back soon."
+    "paginaInArrivo": "We're preparing this page: check back soon.",
+    "scorri": "Keep scrolling"
   },
   "menu": {
     "accedi": "Sign in",
@@ -348,7 +349,12 @@
       "a_notte": "per night",
       "a_persona": "per person",
       "a_persona_notte": "per person per night"
-    }
+    },
+    "inTutte": "In every room",
+    "extraOcchiello": "On request",
+    "chiusuraTitolo": "Found the right room?",
+    "chiusuraTesto": "Pick your dates and check availability now, or write to us with any question.",
+    "scrivici": "Write to us"
   },
   "tipologia": {
     "tutte": "All rooms",
@@ -359,7 +365,10 @@
     "dotazioni": "In the room",
     "nonTrovata": "Room not found",
     "nonTrovataTesto": "This room does not exist or is no longer available.",
-    "prenota": "Check availability"
+    "prenota": "Check availability",
+    "piano": "Floor",
+    "camere": "Choose your room",
+    "camereIntroduzione": "Every room has its own details: have a look and book the one you like best."
   },
   "struttura": {
     "occhiello": "About us",
@@ -447,7 +456,10 @@
     "totale": "{{ prezzo }} for {{ notti }} nights",
     "acconto": "Deposit on booking: {{ prezzo }}",
     "scegli": "Select",
-    "nessunaCamera": "No rooms available for these dates. Try different ones."
+    "nessunaCamera": "No rooms available for these dates. Try different ones.",
+    "cameraScelta": "You are booking room {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "You are looking for a {{ tipologia }} room.",
+    "tutteLeCamere": "Show all rooms"
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Stay",
@@ -1484,6 +1496,7 @@
       "sezioni": "Content sections",
       "sezione": {
         "foto": "Website photos",
+        "pagine": "Site pages",
         "documenti": "Legal documents",
         "eventi": "Local events"
       },
@@ -1561,7 +1574,9 @@
         "descrizione": "Description",
         "letti": "Beds",
         "domanda": "Question",
-        "risposta": "Answer"
+        "risposta": "Answer",
+        "titolo": "Title",
+        "testo": "Text"
       }
     },
     "faq": {
@@ -2084,6 +2099,45 @@
           "descrizione": "Home page background"
         }
       }
+    },
+    "pagine": {
+      "scegli": "Page to edit",
+      "nomi": {
+        "home": "Home",
+        "struttura": "The property",
+        "attivita": "Activities"
+      },
+      "homeAiuto": "Home sections appear at the bottom, after the reviews. Cover photo and texts are in the settings.",
+      "descrizione": "Description",
+      "descrizioneAiuto": "Below the title, over the cover photo. Empty = the default text stays.",
+      "descrizioneSalvata": "Description saved.",
+      "foto": {
+        "titolo": "Cover photo",
+        "aiuto": "JPEG, PNG or WebP. The first one fills the screen at the top of the page."
+      },
+      "immagine": {
+        "titolo": "Section image",
+        "aiuto": "JPEG, PNG or WebP. The first one is used; without an image the text is centred."
+      },
+      "sezioni": {
+        "titolo": "Sections",
+        "aiuto": "Image-text blocks: on the site they alternate right and left.",
+        "nuova": "New section",
+        "vuoto": "No sections.",
+        "elimina": "Delete section",
+        "eliminaAiuto": "The section disappears from the site together with its image.",
+        "eliminaConferma": "Yes, delete"
+      },
+      "modifica": "Edit section",
+      "nuova": "New section",
+      "campi": {
+        "titolo": "Title",
+        "testo": "Text",
+        "ordine": "Order",
+        "pubblicata": "Visible on the site"
+      },
+      "ordineAiuto": "Sections with the lowest number come first.",
+      "nascosta": "hidden"
     }
   },
   "anagrafica": {
@@ -2178,5 +2232,16 @@
       "leggiFaq": "Read the FAQ",
       "tornaChat": "Back to chat"
     }
+  },
+  "camera": {
+    "numero": "Room {{ numero }}",
+    "piano": "Floor {{ piano }}",
+    "tornaA": "All {{ nome }} rooms",
+    "foto": "Photos of {{ nome }}",
+    "mostraFoto": "Show photo {{ numero }}",
+    "prenota": "Book this room",
+    "altre": "Other rooms",
+    "nonTrovata": "Room not found",
+    "nonTrovataTesto": "This room does not exist or is no longer available."
   }
 }

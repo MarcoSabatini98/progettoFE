@@ -19,6 +19,10 @@ export const ENTITA_MEDIA = [
   'home',
   'home_scuro',
   'logo',
+  /** Copertina di una pagina del sito (struttura, attività). */
+  'pagina',
+  /** Immagine di una sezione immagine-testo. */
+  'sezione',
   'varie',
 ] as const;
 

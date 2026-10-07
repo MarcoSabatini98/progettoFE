@@ -13,14 +13,31 @@
 
   <div class="testo">
     <h3>
-      <a [routerLink]="dettaglio()">{{ tipologia().nome }}</a>
+      <a [routerLink]="dettaglio()">
+        @if (camera(); as scelta) {
+          {{ scelta.nome || ('camera.numero' | transloco: { numero: scelta.numero }) }}
+        } @else {
+          {{ tipologia().nome }}
+        }
+      </a>
     </h3>
     <ul class="dettagli">
       <li>
         <app-icona nome="group" />
-        {{ 'camere.ospitiMax' | transloco: { numero: tipologia().ospiti_max } }}
+        {{ 'camere.ospitiMax' | transloco: { numero: ospiti() } }}
       </li>
-      @if (tipologia().superficie_mq) {
+      @if (camera(); as scelta) {
+        <li>
+          <app-icona nome="stairs" />
+          {{ 'camera.piano' | transloco: { piano: scelta.piano } }}
+        </li>
+        @for (servizio of scelta.servizi; track servizio.id) {
+          <li>
+            <app-icona nome="add" />
+            {{ servizio.nome }}
+          </li>
+        }
+      } @else if (tipologia().superficie_mq) {
         <li>
           <app-icona nome="square_foot" />
           {{ 'camere.superficie' | transloco: { mq: tipologia().superficie_mq } }}

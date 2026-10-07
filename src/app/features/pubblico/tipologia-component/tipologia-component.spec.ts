@@ -54,10 +54,28 @@ describe('TipologiaComponent', () => {
     expect(camere.leggiTipologiaPubblica).toHaveBeenCalledWith('doppia-vista-mare');
     expect(elemento.querySelector('h1')?.textContent).toBe('Doppia vista mare');
     expect(elemento.querySelector('.descrizione')?.textContent).toBe('Vista sul golfo.');
-    expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe('/prenota');
+    expect(elemento.querySelector('a.prenota')?.getAttribute('href')).toBe(
+      '/prenota?tipologia=doppia-vista-mare',
+    );
     expect(elemento.querySelectorAll('.dettagli dd')).toHaveLength(2);
     expect(elemento.querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
     expect(elemento.querySelector('app-carosello')).toBeNull();
+    expect(elemento.querySelector('app-scheda-tipologia')).toBeNull();
+  });
+
+  it('elenca le sue camere, ognuna col link alla propria pagina', async () => {
+    const camera = (id: number, numero: string) => ({ id, numero, piano: 1, servizi: [] });
+    camere.leggiTipologiaPubblica.mockReturnValue(
+      of({ ...tipologia, camere: [camera(2, '102'), camera(3, '103')] }),
+    );
+
+    const elemento = await crea();
+
+    const link = [...elemento.querySelectorAll('app-scheda-tipologia h3 a')];
+    expect(link.map((voce) => voce.getAttribute('href'))).toEqual([
+      '/camere/doppia-vista-mare/102',
+      '/camere/doppia-vista-mare/103',
+    ]);
   });
 
   it('più foto scorrono nel carosello', async () => {
