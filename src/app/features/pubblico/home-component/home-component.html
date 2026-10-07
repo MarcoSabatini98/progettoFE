@@ -1,4 +1,4 @@
-<section class="copertina">
+<section class="copertina copertina-schermo">
   <!-- Sfondo decorativo a tutto schermo: il contenuto resta leggibile sopra il velo. -->
   @if (sfondo(); as media) {
     @if (video()) {
@@ -67,6 +67,7 @@
       </dl>
     }
   </div>
+  <app-scorri />
 </section>
 
 @if (fotoStruttura().length) {
@@ -113,3 +114,5 @@
     </a>
   </section>
 }
+
+<app-sezioni [sezioni]="sezioni()" />

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DOCUMENT,
   ElementRef,
   computed,
   inject,
@@ -30,17 +29,16 @@ import { CaroselloComponent } from '../carosello-component/carosello-component';
 import { GalleriaComponent } from '../galleria-component/galleria-component';
 import { SchedaRecensioneComponent } from '../scheda-recensione-component/scheda-recensione-component';
 import { SchedaTipologiaComponent } from '../scheda-tipologia-component/scheda-tipologia-component';
+import { ScorriComponent } from '../scorri-component/scorri-component';
+import { SezioniComponent } from '../sezioni-component/sezioni-component';
 
 /** Recensioni in anteprima: le altre sulla pagina dedicata. */
 const ANTEPRIME_HOME = 3;
 
-/** Chi chiede meno animazioni non si trova il video già in movimento. */
-const MENO_MOVIMENTO = '(prefers-reduced-motion: reduce)';
-
 /**
- * Pagina iniziale del sito: copertina a tutto schermo (foto o video di sfondo, logo nell'arco)
+ * Pagina iniziale del sito: copertina a tutto schermo (foto o video di sfondo, logo nell'arco, invito a scorrere)
  * con nome, località e orari, foto della struttura,
- * camere nel carosello e anteprima delle recensioni. Le sezioni senza contenuti non compaiono.
+ * camere nel carosello, anteprima delle recensioni e sezioni immagine-testo scritte dallo staff. Le sezioni senza contenuti non compaiono.
  */
 @Component({
   selector: 'app-home',
@@ -55,6 +53,8 @@ const MENO_MOVIMENTO = '(prefers-reduced-motion: reduce)';
     GalleriaComponent,
     SchedaRecensioneComponent,
     SchedaTipologiaComponent,
+    ScorriComponent,
+    SezioniComponent,
   ],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
@@ -79,13 +79,13 @@ export class HomeComponent {
   );
   protected readonly logo = computed(() => this.impostazioni.testo(CHIAVI_IMPOSTAZIONI.logo));
 
-  protected readonly riduciMovimento =
-    inject(DOCUMENT).defaultView?.matchMedia?.(MENO_MOVIMENTO).matches ?? false;
   /** Fermo finché il browser non lo avvia davvero (autoplay bloccato o movimento ridotto). */
   protected readonly inPausa = signal(true);
   private readonly filmato = viewChild<ElementRef<HTMLVideoElement>>('filmato');
 
   private readonly tema = inject(TemaService);
+  /** Chi chiede meno animazioni non si trova il video già in movimento. */
+  protected readonly riduciMovimento = this.tema.riduciMovimento;
   private readonly fotoSfondo = rxResource({
     stream: () =>
       forkJoin({
@@ -107,6 +107,11 @@ export class HomeComponent {
     stream: () => this.recensioni.elencaPubbliche({ pagina: 1, perPagina: ANTEPRIME_HOME }),
   });
 
+  private readonly pagina = rxResource({
+    params: () => this.lingua.attiva(),
+    stream: ({ params }) => this.contenuti.leggiPaginaPubblica('home', params),
+  });
+
   /**
    * Fa da sfondo il primo media del tema in uso, o in mancanza quello dell'altro tema;
    * senza nessuno resta il colore della pagina.
@@ -125,6 +130,9 @@ export class HomeComponent {
   );
   protected readonly elencoCamere = computed(() =>
     this.tipologie.hasValue() ? this.tipologie.value() : [],
+  );
+  protected readonly sezioni = computed(() =>
+    this.pagina.hasValue() ? (this.pagina.value().sezioni ?? []) : [],
   );
   protected readonly anteprimaRecensioni = computed(() =>
     this.ultimeRecensioni.hasValue() ? this.ultimeRecensioni.value().elementi : [],

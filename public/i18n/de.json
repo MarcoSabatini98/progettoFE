@@ -12,7 +12,8 @@
     "saltaAlContenuto": "Zum Inhalt springen",
     "cin": "CIN",
     "documentiLegali": "Rechtliche Dokumente",
-    "paginaInArrivo": "Diese Seite ist in Vorbereitung: Schauen Sie bald wieder vorbei."
+    "paginaInArrivo": "Diese Seite ist in Vorbereitung: Schauen Sie bald wieder vorbei.",
+    "scorri": "Weiterscrollen"
   },
   "menu": {
     "accedi": "Anmelden",
@@ -348,7 +349,12 @@
       "a_notte": "pro Nacht",
       "a_persona": "pro Person",
       "a_persona_notte": "pro Person und Nacht"
-    }
+    },
+    "inTutte": "In allen Zimmern",
+    "extraOcchiello": "Auf Anfrage",
+    "chiusuraTitolo": "Das passende Zimmer gefunden?",
+    "chiusuraTesto": "Wählen Sie Ihre Daten und prüfen Sie sofort die Verfügbarkeit, oder schreiben Sie uns bei Fragen.",
+    "scrivici": "Schreiben Sie uns"
   },
   "tipologia": {
     "tutte": "Alle Zimmer",
@@ -359,7 +365,10 @@
     "dotazioni": "Im Zimmer",
     "nonTrovata": "Zimmer nicht gefunden",
     "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar.",
-    "prenota": "Verfügbarkeit prüfen"
+    "prenota": "Verfügbarkeit prüfen",
+    "piano": "Etage",
+    "camere": "Wählen Sie Ihr Zimmer",
+    "camereIntroduzione": "Jedes Zimmer hat seine eigenen Details: Sehen Sie sie sich an und buchen Sie Ihr Lieblingszimmer."
   },
   "struttura": {
     "occhiello": "Über uns",
@@ -447,7 +456,10 @@
     "totale": "{{ prezzo }} für {{ notti }} Nächte",
     "acconto": "Anzahlung bei Buchung: {{ prezzo }}",
     "scegli": "Auswählen",
-    "nessunaCamera": "Keine freien Zimmer für diese Daten. Versuchen Sie andere."
+    "nessunaCamera": "Keine freien Zimmer für diese Daten. Versuchen Sie andere.",
+    "cameraScelta": "Sie buchen Zimmer {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "Sie suchen ein Zimmer {{ tipologia }}.",
+    "tutteLeCamere": "Alle Zimmer anzeigen"
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Aufenthalt",
@@ -1484,6 +1496,7 @@
       "sezioni": "Bereiche der Inhalte",
       "sezione": {
         "foto": "Fotos der Website",
+        "pagine": "Seiten der Website",
         "documenti": "Rechtliche Dokumente",
         "eventi": "Veranstaltungen vor Ort"
       },
@@ -1561,7 +1574,9 @@
         "descrizione": "Beschreibung",
         "letti": "Betten",
         "domanda": "Frage",
-        "risposta": "Antwort"
+        "risposta": "Antwort",
+        "titolo": "Titel",
+        "testo": "Text"
       }
     },
     "faq": {
@@ -2084,6 +2099,45 @@
           "descrizione": "Hintergrund der Startseite"
         }
       }
+    },
+    "pagine": {
+      "scegli": "Zu bearbeitende Seite",
+      "nomi": {
+        "home": "Startseite",
+        "struttura": "Die Unterkunft",
+        "attivita": "Aktivitäten"
+      },
+      "homeAiuto": "Die Abschnitte der Startseite erscheinen unten, nach den Bewertungen. Titelbild und -texte stehen in den Einstellungen.",
+      "descrizione": "Beschreibung",
+      "descrizioneAiuto": "Unter dem Titel, über dem Titelbild. Leer = der Standardtext bleibt.",
+      "descrizioneSalvata": "Beschreibung gespeichert.",
+      "foto": {
+        "titolo": "Titelbild",
+        "aiuto": "JPEG, PNG oder WebP. Das erste füllt den Bildschirm oben auf der Seite."
+      },
+      "immagine": {
+        "titolo": "Bild des Abschnitts",
+        "aiuto": "JPEG, PNG oder WebP. Das erste wird verwendet; ohne Bild steht der Text mittig."
+      },
+      "sezioni": {
+        "titolo": "Abschnitte",
+        "aiuto": "Bild-Text-Blöcke: auf der Website wechseln sie rechts und links.",
+        "nuova": "Neuer Abschnitt",
+        "vuoto": "Keine Abschnitte.",
+        "elimina": "Abschnitt löschen",
+        "eliminaAiuto": "Der Abschnitt verschwindet samt Bild von der Website.",
+        "eliminaConferma": "Ja, löschen"
+      },
+      "modifica": "Abschnitt bearbeiten",
+      "nuova": "Neuer Abschnitt",
+      "campi": {
+        "titolo": "Titel",
+        "testo": "Text",
+        "ordine": "Reihenfolge",
+        "pubblicata": "Auf der Website sichtbar"
+      },
+      "ordineAiuto": "Abschnitte mit der niedrigsten Zahl kommen zuerst.",
+      "nascosta": "ausgeblendet"
     }
   },
   "anagrafica": {
@@ -2178,5 +2232,16 @@
       "leggiFaq": "Häufige Fragen lesen",
       "tornaChat": "Zurück zum Chat"
     }
+  },
+  "camera": {
+    "numero": "Zimmer {{ numero }}",
+    "piano": "Etage {{ piano }}",
+    "tornaA": "Alle Zimmer {{ nome }}",
+    "foto": "Fotos von {{ nome }}",
+    "mostraFoto": "Foto {{ numero }} anzeigen",
+    "prenota": "Dieses Zimmer buchen",
+    "altre": "Weitere Zimmer",
+    "nonTrovata": "Zimmer nicht gefunden",
+    "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar."
   }
 }

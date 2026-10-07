@@ -12,7 +12,8 @@
     "saltaAlContenuto": "Aller au contenu",
     "cin": "CIN",
     "documentiLegali": "Documents légaux",
-    "paginaInArrivo": "Nous préparons cette page : revenez bientôt."
+    "paginaInArrivo": "Nous préparons cette page : revenez bientôt.",
+    "scorri": "Continuez à défiler"
   },
   "menu": {
     "accedi": "Se connecter",
@@ -348,7 +349,12 @@
       "a_notte": "par nuit",
       "a_persona": "par personne",
       "a_persona_notte": "par personne et par nuit"
-    }
+    },
+    "inTutte": "Dans toutes les chambres",
+    "extraOcchiello": "Sur demande",
+    "chiusuraTitolo": "Vous avez trouvé la bonne chambre ?",
+    "chiusuraTesto": "Choisissez vos dates et vérifiez tout de suite la disponibilité, ou écrivez-nous pour toute question.",
+    "scrivici": "Écrivez-nous"
   },
   "tipologia": {
     "tutte": "Toutes les chambres",
@@ -359,7 +365,10 @@
     "dotazioni": "Dans la chambre",
     "nonTrovata": "Chambre introuvable",
     "nonTrovataTesto": "Cette chambre n’existe pas ou n’est plus disponible.",
-    "prenota": "Voir les disponibilités"
+    "prenota": "Voir les disponibilités",
+    "piano": "Étage",
+    "camere": "Choisissez votre chambre",
+    "camereIntroduzione": "Chaque chambre a ses propres détails : découvrez-les et réservez celle que vous préférez."
   },
   "struttura": {
     "occhiello": "Qui sommes-nous",
@@ -447,7 +456,10 @@
     "totale": "{{ prezzo }} pour {{ notti }} nuits",
     "acconto": "Acompte à la réservation : {{ prezzo }}",
     "scegli": "Choisir",
-    "nessunaCamera": "Aucune chambre libre à ces dates. Essayez d’autres dates."
+    "nessunaCamera": "Aucune chambre libre à ces dates. Essayez d’autres dates.",
+    "cameraScelta": "Vous réservez la chambre {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "Vous cherchez une chambre {{ tipologia }}.",
+    "tutteLeCamere": "Afficher toutes les chambres"
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Séjour",
@@ -1484,6 +1496,7 @@
       "sezioni": "Sections des contenus",
       "sezione": {
         "foto": "Photos du site",
+        "pagine": "Pages du site",
         "documenti": "Documents légaux",
         "eventi": "Événements locaux"
       },
@@ -1561,7 +1574,9 @@
         "descrizione": "Description",
         "letti": "Lits",
         "domanda": "Question",
-        "risposta": "Réponse"
+        "risposta": "Réponse",
+        "titolo": "Titre",
+        "testo": "Texte"
       }
     },
     "faq": {
@@ -2084,6 +2099,45 @@
           "descrizione": "Arrière-plan de l’accueil"
         }
       }
+    },
+    "pagine": {
+      "scegli": "Page à modifier",
+      "nomi": {
+        "home": "Accueil",
+        "struttura": "L’établissement",
+        "attivita": "Activités"
+      },
+      "homeAiuto": "Les sections de l’accueil apparaissent en bas, après les avis. Photo et textes de couverture sont dans les paramètres.",
+      "descrizione": "Description",
+      "descrizioneAiuto": "Sous le titre, sur la photo de couverture. Vide = le texte par défaut reste.",
+      "descrizioneSalvata": "Description enregistrée.",
+      "foto": {
+        "titolo": "Photo de couverture",
+        "aiuto": "JPEG, PNG ou WebP. La première remplit l’écran en haut de la page."
+      },
+      "immagine": {
+        "titolo": "Image de la section",
+        "aiuto": "JPEG, PNG ou WebP. La première est utilisée ; sans image le texte est centré."
+      },
+      "sezioni": {
+        "titolo": "Sections",
+        "aiuto": "Blocs image-texte : sur le site ils alternent à droite et à gauche.",
+        "nuova": "Nouvelle section",
+        "vuoto": "Aucune section.",
+        "elimina": "Supprimer la section",
+        "eliminaAiuto": "La section disparaît du site avec son image.",
+        "eliminaConferma": "Oui, supprimer"
+      },
+      "modifica": "Modifier la section",
+      "nuova": "Nouvelle section",
+      "campi": {
+        "titolo": "Titre",
+        "testo": "Texte",
+        "ordine": "Ordre",
+        "pubblicata": "Visible sur le site"
+      },
+      "ordineAiuto": "Les sections avec le plus petit numéro viennent en premier.",
+      "nascosta": "masquée"
     }
   },
   "anagrafica": {
@@ -2178,5 +2232,16 @@
       "leggiFaq": "Lire la FAQ",
       "tornaChat": "Retour au chat"
     }
+  },
+  "camera": {
+    "numero": "Chambre {{ numero }}",
+    "piano": "Étage {{ piano }}",
+    "tornaA": "Toutes les chambres {{ nome }}",
+    "foto": "Photos de {{ nome }}",
+    "mostraFoto": "Afficher la photo {{ numero }}",
+    "prenota": "Réserver cette chambre",
+    "altre": "Autres chambres",
+    "nonTrovata": "Chambre introuvable",
+    "nonTrovataTesto": "Cette chambre n'existe pas ou n'est plus disponible."
   }
 }

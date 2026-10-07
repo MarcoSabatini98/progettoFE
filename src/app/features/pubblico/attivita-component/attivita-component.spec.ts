@@ -1,27 +1,31 @@
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
+import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { AttivitaComponent } from './attivita-component';
 
 describe('AttivitaComponent', () => {
+  const contenuti = { leggiPaginaPubblica: vi.fn(() => of({ sezioni: [] })) };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        traduzioniTest({
-          attivita: { titolo: 'Le attività' },
-          layout: { paginaInArrivo: 'In arrivo' },
-        }),
+      imports: [traduzioniTest({ attivita: { titolo: 'Le attività' } })],
+      providers: [
+        { provide: ContenutiService, useValue: contenuti },
+        { provide: LinguaService, useValue: { attiva: () => 'it' } },
       ],
     });
   });
 
-  it('mostra il titolo e avvisa che i contenuti sono in arrivo', async () => {
+  it('mostra la pagina "attivita" scritta dallo staff', async () => {
     const fixture = TestBed.createComponent(AttivitaComponent);
     await fixture.whenStable();
     const elemento = fixture.nativeElement as HTMLElement;
 
-    expect(elemento.querySelector('h1')?.textContent).toContain('Le attività');
-    expect(elemento.querySelector('.stato-vuoto')?.textContent).toContain('In arrivo');
+    expect(contenuti.leggiPaginaPubblica).toHaveBeenCalledWith('attivita', 'it');
+    expect(elemento.querySelector('h1')?.textContent).toBe('Le attività');
   });
 });

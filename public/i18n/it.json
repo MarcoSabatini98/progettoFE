@@ -12,7 +12,8 @@
     "saltaAlContenuto": "Vai al contenuto",
     "cin": "CIN",
     "documentiLegali": "Documenti legali",
-    "paginaInArrivo": "Stiamo preparando questa pagina: torna a trovarci presto."
+    "paginaInArrivo": "Stiamo preparando questa pagina: torna a trovarci presto.",
+    "scorri": "Continua a scorrere"
   },
   "menu": {
     "accedi": "Accedi",
@@ -348,7 +349,12 @@
       "a_notte": "a notte",
       "a_persona": "a persona",
       "a_persona_notte": "a persona a notte"
-    }
+    },
+    "inTutte": "In tutte le camere",
+    "extraOcchiello": "Su richiesta",
+    "chiusuraTitolo": "Hai trovato la camera giusta?",
+    "chiusuraTesto": "Scegli le date e controlla subito la disponibilità, oppure scrivici per qualsiasi domanda.",
+    "scrivici": "Scrivici"
   },
   "tipologia": {
     "tutte": "Tutte le camere",
@@ -359,7 +365,10 @@
     "dotazioni": "In camera",
     "nonTrovata": "Camera non trovata",
     "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
-    "prenota": "Verifica disponibilità"
+    "prenota": "Verifica disponibilità",
+    "piano": "Piano",
+    "camere": "Scegli la tua camera",
+    "camereIntroduzione": "Ogni camera ha i suoi dettagli: guardale e prenota quella che preferisci."
   },
   "struttura": {
     "occhiello": "Chi siamo",
@@ -447,7 +456,10 @@
     "totale": "{{ prezzo }} per {{ notti }} notti",
     "acconto": "Acconto alla prenotazione: {{ prezzo }}",
     "scegli": "Scegli",
-    "nessunaCamera": "Nessuna camera libera per queste date. Prova a cambiarle."
+    "nessunaCamera": "Nessuna camera libera per queste date. Prova a cambiarle.",
+    "cameraScelta": "Stai prenotando la camera {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "Stai cercando una camera {{ tipologia }}.",
+    "tutteLeCamere": "Mostra tutte le camere"
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Soggiorno",
@@ -1484,6 +1496,7 @@
       "sezioni": "Sezioni dei contenuti",
       "sezione": {
         "foto": "Foto del sito",
+        "pagine": "Pagine del sito",
         "documenti": "Documenti legali",
         "eventi": "Eventi in zona"
       },
@@ -1561,7 +1574,9 @@
         "descrizione": "Descrizione",
         "letti": "Letti",
         "domanda": "Domanda",
-        "risposta": "Risposta"
+        "risposta": "Risposta",
+        "titolo": "Titolo",
+        "testo": "Testo"
       }
     },
     "faq": {
@@ -2084,6 +2099,45 @@
           "descrizione": "Sfondo della home"
         }
       }
+    },
+    "pagine": {
+      "scegli": "Pagina da modificare",
+      "nomi": {
+        "home": "Home",
+        "struttura": "Struttura",
+        "attivita": "Attività"
+      },
+      "homeAiuto": "Le sezioni della home compaiono in fondo, dopo le recensioni. Foto e testi della copertina stanno nelle impostazioni.",
+      "descrizione": "Descrizione",
+      "descrizioneAiuto": "Sotto il titolo, sopra la foto di copertina. Vuota = resta il testo predefinito.",
+      "descrizioneSalvata": "Descrizione salvata.",
+      "foto": {
+        "titolo": "Foto di copertina",
+        "aiuto": "JPEG, PNG o WebP. La prima riempie lo schermo in cima alla pagina."
+      },
+      "immagine": {
+        "titolo": "Immagine della sezione",
+        "aiuto": "JPEG, PNG o WebP. Si usa la prima; senza immagine il testo va al centro."
+      },
+      "sezioni": {
+        "titolo": "Sezioni",
+        "aiuto": "Blocchi immagine-testo: sul sito si alternano a destra e a sinistra.",
+        "nuova": "Nuova sezione",
+        "vuoto": "Nessuna sezione.",
+        "elimina": "Elimina sezione",
+        "eliminaAiuto": "La sezione sparisce dal sito insieme alla sua immagine.",
+        "eliminaConferma": "Sì, elimina"
+      },
+      "modifica": "Modifica sezione",
+      "nuova": "Nuova sezione",
+      "campi": {
+        "titolo": "Titolo",
+        "testo": "Testo",
+        "ordine": "Ordine",
+        "pubblicata": "Visibile sul sito"
+      },
+      "ordineAiuto": "Le sezioni con il numero più basso vengono prima.",
+      "nascosta": "nascosta"
     }
   },
   "anagrafica": {
@@ -2178,5 +2232,16 @@
       "leggiFaq": "Leggi le domande frequenti",
       "tornaChat": "Torna alla chat"
     }
+  },
+  "camera": {
+    "numero": "Camera {{ numero }}",
+    "piano": "Piano {{ piano }}",
+    "tornaA": "Tutte le camere {{ nome }}",
+    "foto": "Foto di {{ nome }}",
+    "mostraFoto": "Mostra la foto {{ numero }}",
+    "prenota": "Prenota questa camera",
+    "altre": "Altre camere",
+    "nonTrovata": "Camera non trovata",
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile."
   }
 }

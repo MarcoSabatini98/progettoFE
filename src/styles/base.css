@@ -10,6 +10,8 @@ html {
   text-size-adjust: 100%;
   /* Lo spazio della barra di scorrimento resta: bloccando lo scorrimento la pagina non si sposta. */
   scrollbar-gutter: stable;
+  /* Chi scorre fino a una sezione non se la trova sotto la testata fissa. */
+  scroll-padding-block-start: var(--bb-testata);
 }
 
 /*

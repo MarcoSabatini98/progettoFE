@@ -19,7 +19,7 @@ import { HomeComponent } from './home-component';
 
 describe('HomeComponent', () => {
   const camere = { elencaTipologiePubbliche: vi.fn() };
-  const contenuti = { elencaMedia: vi.fn() };
+  const contenuti = { elencaMedia: vi.fn(), leggiPaginaPubblica: vi.fn() };
   const recensioni = { leggiValutazioni: vi.fn(), elencaPubbliche: vi.fn() };
   const scuro = signal(false);
   const foto = (entita: string) =>
@@ -33,6 +33,9 @@ describe('HomeComponent', () => {
     scuro.set(false);
     camere.elencaTipologiePubbliche.mockReturnValue(of([1, 2, 3, 4].map(tipologia)));
     contenuti.elencaMedia.mockImplementation(({ entita }) => of(foto(entita)));
+    contenuti.leggiPaginaPubblica.mockReturnValue(
+      of({ sezioni: [{ id: 1, titolo: 'Colazione in terrazza', testo: 'Dolci fatti in casa' }] }),
+    );
     recensioni.leggiValutazioni.mockReturnValue(of({ media: '4.50', numero_recensioni: 8 }));
     recensioni.elencaPubbliche.mockReturnValue(
       of({ elementi: [{ id: 1, voto: 5 } as RecensionePubblicaInterface], pagina: 1, pagine: 3 }),
@@ -157,6 +160,13 @@ describe('HomeComponent', () => {
       '/camere',
       '/recensioni',
     ]);
+  });
+
+  it('in fondo le sezioni della home scritte dallo staff, nella lingua del sito', async () => {
+    const elemento = await crea({});
+
+    expect(contenuti.leggiPaginaPubblica).toHaveBeenCalledWith('home', 'it');
+    expect(elemento.querySelector('app-sezioni h2')?.textContent).toBe('Colazione in terrazza');
   });
 
   it('senza foto, camere e recensioni mostra solo la copertina', async () => {

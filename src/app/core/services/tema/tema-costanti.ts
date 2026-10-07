@@ -3,6 +3,9 @@ export const PREFERENZE_TEMA = ['sistema', 'chiaro', 'scuro'] as const;
 /** Tema scuro del dispositivo, quello che segue la preferenza "sistema". */
 export const SCHEMA_SCURO = '(prefers-color-scheme: dark)';
 
+/** Chi chiede meno animazioni: niente video che parte da solo né scorrimenti animati. */
+export const MENO_MOVIMENTO = '(prefers-reduced-motion: reduce)';
+
 /** Attributo sull'elemento html che forza il tema (vedi src/styles/token.css). */
 export const ATTRIBUTO_TEMA = 'data-tema';
 

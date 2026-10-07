@@ -4,17 +4,20 @@
 </a>
 
 @if (tipologia.hasValue()) {
-  @let camera = tipologia.value();
-  @let foto = camera.media ?? [];
-  @let dotazioni = camera.servizi ?? [];
+  @let attuale = tipologia.value();
+  @let foto = attuale.media ?? [];
 
   <header class="pagina-intestazione">
     <p class="occhiello">{{ 'camere.occhiello' | transloco }}</p>
-    <h1>{{ camera.nome }}</h1>
+    <h1>{{ attuale.nome }}</h1>
     <p class="prezzo">
-      {{ 'camere.prezzoDa' | transloco: { prezzo: (camera.prezzo_base | prezzo) } }}
+      {{ 'camere.prezzoDa' | transloco: { prezzo: (attuale.prezzo_base | prezzo) } }}
     </p>
-    <a class="pulsante pulsante-primario prenota" [routerLink]="percorsoPrenota">
+    <a
+      class="pulsante pulsante-primario prenota"
+      [routerLink]="percorsoPrenota"
+      [queryParams]="{ tipologia: attuale.slug }"
+    >
       <app-icona nome="event_available" />
       {{ 'tipologia.prenota' | transloco }}
     </a>
@@ -23,7 +26,7 @@
   @if (foto.length) {
     <app-carosello
       [elementi]="foto"
-      [etichetta]="'tipologia.foto' | transloco: { nome: camera.nome }"
+      [etichetta]="'tipologia.foto' | transloco: { nome: attuale.nome }"
     >
       <ng-template let-immagine>
         <img
@@ -37,40 +40,17 @@
     </app-carosello>
   }
 
-  <div class="corpo">
-    @if (camera.descrizione) {
-      <p class="testo-libero descrizione">{{ camera.descrizione }}</p>
-    }
+  <app-dettagli-camera [tipologia]="attuale" />
 
-    <dl class="scheda dettagli">
-      <div>
-        <dt><app-icona nome="group" />{{ 'tipologia.ospiti' | transloco }}</dt>
-        <dd>{{ 'camere.ospitiMax' | transloco: { numero: camera.ospiti_max } }}</dd>
-      </div>
-      @if (camera.superficie_mq) {
-        <div>
-          <dt><app-icona nome="square_foot" />{{ 'tipologia.superficie' | transloco }}</dt>
-          <dd>{{ 'camere.superficie' | transloco: { mq: camera.superficie_mq } }}</dd>
-        </div>
-      }
-      @if (camera.letti) {
-        <div>
-          <dt><app-icona nome="bed" />{{ 'tipologia.letti' | transloco }}</dt>
-          <dd>{{ camera.letti }}</dd>
-        </div>
-      }
-    </dl>
-  </div>
-
-  @if (dotazioni.length) {
+  @if (attuale.camere?.length) {
     <section class="sezione">
-      <h2 class="sezione-titolo">{{ 'tipologia.dotazioni' | transloco }}</h2>
-      <ul class="dotazioni">
-        @for (dotazione of dotazioni; track dotazione.id) {
-          <li>
-            <app-icona [nome]="dotazione.icona || iconaPredefinita" />
-            {{ dotazione.nome }}
-          </li>
+      <div class="pagina-intestazione">
+        <h2 class="sezione-titolo">{{ 'tipologia.camere' | transloco }}</h2>
+        <p class="introduzione">{{ 'tipologia.camereIntroduzione' | transloco }}</p>
+      </div>
+      <ul class="griglia-schede">
+        @for (stanza of attuale.camere; track stanza.id) {
+          <li><app-scheda-tipologia [tipologia]="attuale" [camera]="stanza" /></li>
         }
       </ul>
     </section>

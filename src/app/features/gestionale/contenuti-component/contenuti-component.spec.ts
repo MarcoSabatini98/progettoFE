@@ -11,12 +11,14 @@ import { ContenutiComponent } from './contenuti-component';
 describe('ContenutiComponent', () => {
   const contenuti = {
     elencaMedia: vi.fn(),
+    elencaPagine: vi.fn(),
     elencaDocumentiLegali: vi.fn(),
     elencaEventi: vi.fn(),
   };
 
   beforeEach(() => {
     contenuti.elencaMedia.mockReset().mockReturnValue(of([]));
+    contenuti.elencaPagine.mockReturnValue(of([]));
     contenuti.elencaDocumentiLegali.mockReturnValue(of([]));
     contenuti.elencaEventi.mockReturnValue(of([]));
     TestBed.configureTestingModule({
@@ -51,12 +53,15 @@ describe('ContenutiComponent', () => {
     const { elemento, linguetta } = await crea();
 
     await linguetta(1);
-    expect(elemento.querySelector('app-documenti-legali')).not.toBeNull();
+    expect(elemento.querySelector('app-gestione-pagine')).not.toBeNull();
     expect(elemento.querySelector('app-galleria-media')).toBeNull();
 
     await linguetta(2);
+    expect(elemento.querySelector('app-documenti-legali')).not.toBeNull();
+
+    await linguetta(3);
     expect(elemento.querySelector('app-eventi')).not.toBeNull();
-    expect(elemento.querySelectorAll('.linguette button')[2].getAttribute('aria-pressed')).toBe(
+    expect(elemento.querySelectorAll('.linguette button')[3].getAttribute('aria-pressed')).toBe(
       'true',
     );
   });

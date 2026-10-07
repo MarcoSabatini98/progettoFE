@@ -49,10 +49,12 @@ describe('PrenotaComponent', () => {
       non_prenotabile: { codice: 'SOGGIORNO_MINIMO', messaggio: 'Almeno 5 notti' },
     },
   ];
+  const camere = { elencaExtraPubblici: () => of([]), leggiTipologiaPubblica: vi.fn() };
   const blocco = { sessione: 'abc', camera_id: 7, scade_il: '2030-06-30T10:15:00' };
 
   beforeEach(() => {
     Object.values(disponibilita).forEach((spia) => spia.mockReset());
+    camere.leggiTipologiaPubblica.mockReset();
     disponibilita.cerca.mockReturnValue(of(risultati));
     disponibilita.rilascia.mockReturnValue(of(null));
     TestBed.configureTestingModule({
@@ -61,7 +63,7 @@ describe('PrenotaComponent', () => {
         provideRouter([]),
         { provide: DisponibilitaService, useValue: disponibilita },
         { provide: TariffeService, useValue: { elencaPacchettiPubblici: () => of([]) } },
-        { provide: CamereService, useValue: { elencaExtraPubblici: () => of([]) } },
+        { provide: CamereService, useValue: camere },
         { provide: AuthService, useValue: { haRuolo: () => false, utente: () => null } },
         { provide: LinguaService, useValue: { attiva: () => 'it' } },
         { provide: ImpostazioniService, useValue: { testo: () => '' } },
@@ -69,9 +71,11 @@ describe('PrenotaComponent', () => {
     });
   });
 
-  async function crea(staff = false) {
+  async function crea(staff = false, dalSito: { tipologia?: string; camera?: string } = {}) {
     const fixture = TestBed.createComponent(PrenotaComponent);
     fixture.componentRef.setInput('staff', staff);
+    fixture.componentRef.setInput('tipologia', dalSito.tipologia);
+    fixture.componentRef.setInput('camera', dalSito.camera);
     await fixture.whenStable();
     const elemento: HTMLElement = fixture.nativeElement;
     const cerca = async () => {
@@ -172,5 +176,44 @@ describe('PrenotaComponent', () => {
 
     expect(elemento.querySelector('h1')?.textContent).toContain('gestionale.nuova.titolo');
     expect(conferma().componentInstance.staff()).toBe(true);
+  });
+
+  it('dalla pagina di una camera mostra solo la sua tipologia e blocca proprio lei', async () => {
+    camere.leggiTipologiaPubblica.mockReturnValue(
+      of({ ...doppia, slug: 'doppia', camere: [{ id: 3, numero: '103', nome: null }] }),
+    );
+    disponibilita.blocca.mockReturnValue(of(blocco));
+    const { elemento, cerca, scegli } = await crea(false, { tipologia: 'doppia', camera: '103' });
+
+    expect(camere.leggiTipologiaPubblica).toHaveBeenCalledWith('doppia');
+    expect(elemento.querySelector('.preferenza')?.textContent).toContain('prenota.cameraScelta');
+    expect(elemento.querySelector('.preferenza a')?.getAttribute('href')).toBe('/prenota');
+
+    await cerca();
+    expect(elemento.querySelectorAll('.risultato')).toHaveLength(1);
+
+    await scegli();
+    const [dati] = disponibilita.blocca.mock.lastCall!;
+    expect(dati).toMatchObject({ camera_id: 3 });
+    expect(dati).not.toHaveProperty('tipologia_id');
+  });
+
+  it('dalla pagina di una tipologia sceglie la prima camera libera di quella', async () => {
+    camere.leggiTipologiaPubblica.mockReturnValue(of({ ...doppia, camere: [] }));
+    disponibilita.blocca.mockReturnValue(of(blocco));
+    const { elemento, cerca, scegli } = await crea(false, { tipologia: 'doppia' });
+
+    expect(elemento.querySelector('.preferenza')?.textContent).toContain('prenota.tipologiaScelta');
+    await cerca();
+    await scegli();
+
+    expect(disponibilita.blocca).toHaveBeenCalledWith(expect.objectContaining({ tipologia_id: 1 }));
+  });
+
+  it('senza scelte dal sito non legge nessuna tipologia', async () => {
+    const { elemento } = await crea();
+
+    expect(camere.leggiTipologiaPubblica).not.toHaveBeenCalled();
+    expect(elemento.querySelector('.preferenza')).toBeNull();
   });
 });

@@ -11,6 +11,7 @@ import {
   ATTRIBUTO_TEMA,
   BRAND_PREDEFINITO,
   COLORE_ESADECIMALE,
+  MENO_MOVIMENTO,
   PREFERENZE_TEMA,
   SCHEMA_SCURO,
   SELETTORE_ICONE,
@@ -54,6 +55,9 @@ export class TemaService {
   private readonly radice = this.documento.documentElement;
   private readonly schemaScuro = this.documento.defaultView?.matchMedia?.(SCHEMA_SCURO);
   private readonly sistemaScuro = signal(this.schemaScuro?.matches ?? false);
+  /** Il dispositivo chiede meno animazioni. */
+  readonly riduciMovimento =
+    this.documento.defaultView?.matchMedia?.(MENO_MOVIMENTO).matches ?? false;
   private readonly sceltaLocale = signal<PreferenzaTema | null>(
     this.archivio.leggi(CHIAVI_ARCHIVIO.tema, PREFERENZE_TEMA),
   );

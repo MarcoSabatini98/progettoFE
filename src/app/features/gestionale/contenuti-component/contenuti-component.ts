@@ -7,17 +7,25 @@ import { ContenutiService } from '../../../core/services/contenuti/contenuti-ser
 import { DocumentiLegaliComponent } from '../documenti-legali-component/documenti-legali-component';
 import { EventiComponent } from '../eventi-component/eventi-component';
 import { GalleriaMediaComponent } from '../galleria-media-component/galleria-media-component';
+import { GestionePagineComponent } from '../gestione-pagine-component/gestione-pagine-component';
 
-const SEZIONI = ['foto', 'documenti', 'eventi'] as const;
+const SEZIONI = ['foto', 'pagine', 'documenti', 'eventi'] as const;
 type Sezione = (typeof SEZIONI)[number];
 
 /**
- * Contenuti del sito: foto della struttura, documenti legali, eventi in zona.
+ * Contenuti del sito: foto della struttura, pagine (home, struttura, attività), documenti legali,
+ * eventi in zona.
  * Le traduzioni stanno nella scheda di ogni record (pacchetti, promozioni, tipologie).
  */
 @Component({
   selector: 'app-contenuti',
-  imports: [TranslocoPipe, GalleriaMediaComponent, DocumentiLegaliComponent, EventiComponent],
+  imports: [
+    TranslocoPipe,
+    GalleriaMediaComponent,
+    GestionePagineComponent,
+    DocumentiLegaliComponent,
+    EventiComponent,
+  ],
   templateUrl: './contenuti-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },

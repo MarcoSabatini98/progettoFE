@@ -399,6 +399,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'camere/:slug/:numero',
+        loadComponent: () =>
+          import('./features/pubblico/camera-component/camera-component').then(
+            (m) => m.CameraComponent,
+          ),
+      },
+      {
         path: 'struttura',
         loadComponent: () =>
           import('./features/pubblico/struttura-component/struttura-component').then(

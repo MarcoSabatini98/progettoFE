@@ -1,0 +1,88 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-12);
+}
+
+/* Vuoto: nessuno spazio in più nella pagina. */
+:host(:empty) {
+  display: none;
+}
+
+.blocco {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-items: center;
+}
+
+.immagine {
+  inline-size: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--bb-raggio);
+  box-shadow: var(--bb-ombra);
+}
+
+.testo {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  max-inline-size: 36rem;
+}
+
+/* Gli a capo scritti dallo staff restano. */
+.testo p {
+  color: var(--bb-testo-tenue);
+  font-size: 1.0625rem;
+  white-space: pre-line;
+}
+
+@media (width >= 48rem) {
+  .blocco:has(.immagine) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--bb-spazio-12);
+  }
+
+  /* Una sì e una no l'immagine passa a destra. */
+  .blocco:nth-child(even) .immagine {
+    order: 1;
+  }
+}
+
+/* Senza immagine il testo sta al centro. */
+.blocco:not(:has(.immagine)) .testo {
+  justify-self: center;
+  text-align: center;
+}
+
+/*
+ * Ogni sezione compare mentre entra nello schermo: l'immagine arriva dal suo lato,
+ * il testo sale. Dove il browser non lo supporta (o si chiede meno movimento) è già lì.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .immagine,
+    .testo {
+      animation: compare linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+
+    .immagine {
+      --da: translate(-3rem, 0);
+    }
+
+    .blocco:nth-child(even) .immagine {
+      --da: translate(3rem, 0);
+    }
+
+    .testo {
+      --da: translate(0, 2rem);
+    }
+  }
+}
+
+@keyframes compare {
+  from {
+    opacity: 0;
+    transform: var(--da);
+  }
+}

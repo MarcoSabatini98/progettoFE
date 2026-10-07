@@ -1,0 +1,60 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-12);
+}
+
+.corpo {
+  display: grid;
+  gap: var(--bb-spazio-8);
+  align-items: start;
+}
+
+.descrizione {
+  max-width: 44rem;
+  font-size: 1.0625rem;
+}
+
+.dettagli {
+  gap: var(--bb-spazio-4);
+  margin: 0;
+}
+
+dt {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+  --icona-dimensione: 1.125rem;
+}
+
+dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.dotazioni {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: var(--bb-spazio-3) var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dotazioni li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  --icona-dimensione: 1.5rem;
+}
+
+.dotazioni app-icona {
+  color: var(--bb-brand-testo);
+}
+
+@media (width >= 58.75rem) {
+  .corpo {
+    grid-template-columns: 1fr 20rem;
+  }
+}

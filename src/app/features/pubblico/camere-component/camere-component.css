@@ -1,10 +1,45 @@
-.servizio {
+.pillole {
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--bb-spazio-2);
 }
 
-.servizio-icona {
+.pillole li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-2) var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: 999px;
+  background: var(--bb-superficie);
+  --icona-dimensione: 1.25rem;
+}
+
+.pillole app-icona {
   color: var(--bb-brand-testo);
-  --icona-dimensione: 2rem;
+}
+
+.servizio {
+  gap: var(--bb-spazio-3);
+  transition:
+    transform var(--bb-durata) var(--bb-curva),
+    box-shadow var(--bb-durata) var(--bb-curva);
+}
+
+.servizio:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--bb-ombra);
+}
+
+.servizio-icona {
+  display: grid;
+  place-items: center;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  border-radius: 50%;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 1.75rem;
 }
 
 h3 {
@@ -16,11 +51,47 @@ h3 {
 }
 
 .servizio-prezzo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--bb-spazio-2);
   margin-block-start: auto;
-  font-weight: 600;
+  padding-block-start: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.servizio-prezzo strong {
+  color: var(--bb-brand-testo);
+  font-size: 1.25rem;
 }
 
 .servizio-prezzo span {
   color: var(--bb-testo-tenue);
-  font-weight: 400;
+}
+
+.chiusura {
+  display: grid;
+  justify-items: center;
+  gap: var(--bb-spazio-4);
+  padding: var(--bb-spazio-8) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-brand-tenue);
+  text-align: center;
+}
+
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--bb-spazio-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servizio {
+    transition: none;
+  }
+
+  .servizio:hover {
+    transform: none;
+  }
 }

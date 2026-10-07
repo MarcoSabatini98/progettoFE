@@ -1,0 +1,45 @@
+/* Centrato sul bordo inferiore della copertina che lo contiene. */
+:host {
+  position: absolute;
+  inset-block-end: var(--bb-spazio-4);
+  inset-inline: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.scorri {
+  display: grid;
+  justify-items: center;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-2) var(--bb-spazio-3);
+  border: 0;
+  background: none;
+  color: var(--bb-testo-tenue);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: auto;
+  --icona-dimensione: 1.75rem;
+}
+
+/* Respiro verso il basso; base.css lo ferma a chi chiede meno movimento. */
+.scorri app-icona {
+  animation: respiro 2.4s ease-in-out infinite;
+}
+
+@keyframes respiro {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(0.375rem);
+    opacity: 1;
+  }
+}
