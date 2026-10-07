@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   linkedSignal,
   signal,
+  untracked,
 } from '@angular/core';
 import { rxResource, takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -18,6 +20,7 @@ import {
   TESTO_MAX,
 } from '../../core/services/chat/chat-costanti';
 import { ChatService } from '../../core/services/chat/chat-service';
+import { WidgetChatService } from '../../core/services/chat/widget-chat-service';
 import { ErroriService } from '../../core/services/errori/errori-service';
 import { LinguaService } from '../../core/services/lingua/lingua-service';
 import { SocketService } from '../../core/services/socket/socket-service';
@@ -60,15 +63,15 @@ export class WidgetChatComponent {
   private readonly chat = inject(ChatService);
   private readonly socket = inject(SocketService);
   private readonly lingua = inject(LinguaService);
+  private readonly widget = inject(WidgetChatService);
   protected readonly auth = inject(AuthService);
   protected readonly errori = inject(ErroriService);
 
   protected readonly testoMax = TESTO_MAX;
   protected readonly nomeMax = NOME_VISITATORE_MAX;
-  protected readonly aperto = signal(false);
-  /** Al posto della chat, le domande frequenti. */
-  protected readonly faq = signal(false);
-  /** Dal primo clic lo stato resta caricato anche a riquadro chiuso. */
+  protected readonly aperto = this.widget.aperto;
+  protected readonly faq = this.widget.faq;
+  /** Dalla prima apertura lo stato resta caricato anche a riquadro chiuso. */
   private readonly avviato = signal(false);
   protected readonly nuovi = signal(false);
   protected readonly inCorso = signal(false);
@@ -111,6 +114,12 @@ export class WidgetChatComponent {
   });
 
   constructor() {
+    // Aperto dal pulsante o da una pagina che invita a scriverci.
+    effect(() => {
+      if (this.aperto()) {
+        untracked(() => this.alApertura());
+      }
+    });
     this.ascolta<EventoMessaggioInterface>(EVENTI_SOCKET.MESSAGGIO).subscribe((evento) => {
       this.conversazione.set(evento.dettaglio);
       this.arrivato(evento.messaggio);
@@ -131,11 +140,6 @@ export class WidgetChatComponent {
 
   alterna(): void {
     this.aperto.update((aperto) => !aperto);
-    this.avviato.set(true);
-    if (this.aperto()) {
-      this.nuovi.set(false);
-      this.segnaLetto();
-    }
   }
 
   /**
@@ -202,6 +206,13 @@ export class WidgetChatComponent {
     } else {
       this.nuovi.set(true);
     }
+  }
+
+  /** Dalla prima apertura lo stato resta caricato; le risposte arrivate si leggono. */
+  private alApertura(): void {
+    this.avviato.set(true);
+    this.nuovi.set(false);
+    this.segnaLetto();
   }
 
   /** Non vitale: se fallisce resta solo il contatore dei non letti dello staff. */

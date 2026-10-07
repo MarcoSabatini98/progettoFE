@@ -439,7 +439,13 @@
     "telefono": "Telefono",
     "orari": "Orari",
     "checkin": "Check-in dalle {{ orario }}",
-    "checkout": "Check-out entro le {{ orario }}"
+    "checkout": "Check-out entro le {{ orario }}",
+    "chat": {
+      "titolo": "Hai una domanda?",
+      "testo": "Nella chat trovi le domande frequenti: dai prima un'occhiata lì. Se la risposta non c'è, scrivici direttamente in chat e ti rispondiamo noi.",
+      "faq": "Leggi le domande frequenti",
+      "scrivi": "Scrivici in chat"
+    }
   },
   "prenota": {
     "occhiello": "Prenotazione diretta",

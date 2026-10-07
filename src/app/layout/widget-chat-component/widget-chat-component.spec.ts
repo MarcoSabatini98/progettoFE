@@ -7,6 +7,7 @@ import { AuthService } from '../../core/services/auth/auth-service';
 import { AvvisiService } from '../../core/services/avvisi/avvisi-service';
 import { EVENTI_SOCKET } from '../../core/services/chat/chat-costanti';
 import { ChatService } from '../../core/services/chat/chat-service';
+import { WidgetChatService } from '../../core/services/chat/widget-chat-service';
 import { ContenutiService } from '../../core/services/contenuti/contenuti-service';
 import { traduzioniTest } from '../../core/services/lingua/configura-transloco-test';
 import { SocketService } from '../../core/services/socket/socket-service';
@@ -120,6 +121,16 @@ describe('WidgetChatComponent', () => {
     await stabile();
     expect(elemento.querySelector('app-elenco-faq')).toBeNull();
     expect(elemento.querySelector('form.avvio')).not.toBeNull();
+  });
+
+  it('si apre anche da un’altra pagina, direttamente sulle FAQ', async () => {
+    const { elemento, stabile } = await crea();
+
+    TestBed.inject(WidgetChatService).apri(true);
+    await stabile();
+
+    expect(elemento.querySelector('app-elenco-faq summary')?.textContent).toContain('Orari?');
+    expect(chat.assistenzaDisponibile).toHaveBeenCalled();
   });
 
   it('il visitatore lascia nome ed email e apre la conversazione col primo messaggio', async () => {

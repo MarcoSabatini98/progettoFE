@@ -439,7 +439,13 @@
     "telefono": "Telefon",
     "orari": "Zeiten",
     "checkin": "Check-in ab {{ orario }} Uhr",
-    "checkout": "Check-out bis {{ orario }} Uhr"
+    "checkout": "Check-out bis {{ orario }} Uhr",
+    "chat": {
+      "titolo": "Haben Sie eine Frage?",
+      "testo": "Im Chat finden Sie die häufig gestellten Fragen: Schauen Sie dort zuerst nach. Wenn die Antwort nicht dabei ist, schreiben Sie uns direkt im Chat und wir antworten Ihnen.",
+      "faq": "Häufige Fragen lesen",
+      "scrivi": "Im Chat schreiben"
+    }
   },
   "prenota": {
     "occhiello": "Direkt buchen",
