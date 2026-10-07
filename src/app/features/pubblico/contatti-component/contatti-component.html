@@ -44,3 +44,23 @@
     </li>
   }
 </ul>
+
+@if (!navigazione.staff()) {
+  <section class="scheda invito-chat" aria-labelledby="invito-chat-titolo">
+    <app-icona nome="forum" />
+    <div class="invito-testo">
+      <h2 id="invito-chat-titolo">{{ 'contatti.chat.titolo' | transloco }}</h2>
+      <p>{{ 'contatti.chat.testo' | transloco }}</p>
+    </div>
+    <div class="invito-azioni">
+      <button class="pulsante pulsante-secondario" type="button" (click)="widget.apri(true)">
+        <app-icona nome="help" />
+        {{ 'contatti.chat.faq' | transloco }}
+      </button>
+      <button class="pulsante pulsante-primario" type="button" (click)="widget.apri()">
+        <app-icona nome="chat" />
+        {{ 'contatti.chat.scrivi' | transloco }}
+      </button>
+    </div>
+  </section>
+}

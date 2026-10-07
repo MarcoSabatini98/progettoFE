@@ -2,16 +2,19 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { describe, expect, it } from 'vitest';
 
+import { WidgetChatService } from '../../../core/services/chat/widget-chat-service';
 import { CHIAVI_IMPOSTAZIONI } from '../../../core/services/impostazioni/impostazioni-costanti';
 import { ImpostazioniService } from '../../../core/services/impostazioni/impostazioni-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
+import { NavigazioneService } from '../../../core/services/navigazione/navigazione-service';
 import { ContattiComponent } from './contatti-component';
 
 describe('ContattiComponent', () => {
-  async function crea(indirizzo: string, impostazioni: Record<string, string>) {
+  async function crea(indirizzo: string, impostazioni: Record<string, string>, staff = false) {
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [
+        { provide: NavigazioneService, useValue: { staff: signal(staff) } },
         {
           provide: ImpostazioniService,
           useValue: {
@@ -46,5 +49,23 @@ describe('ContattiComponent', () => {
 
     expect(elemento.querySelectorAll('.contatto')).toHaveLength(1);
     expect(elemento.querySelector('.contatto p')?.textContent).toContain('contatti.checkin');
+  });
+
+  it('invita alla chat: le FAQ aprono il riquadro sulle domande frequenti', async () => {
+    const elemento = await crea('', {});
+    const widget = TestBed.inject(WidgetChatService);
+    const pulsanti = elemento.querySelectorAll<HTMLButtonElement>('.invito-chat button');
+
+    pulsanti[0].click();
+    expect([widget.aperto(), widget.faq()]).toEqual([true, true]);
+
+    pulsanti[1].click();
+    expect(widget.faq()).toBe(false);
+  });
+
+  it('allo staff niente invito: risponde dal gestionale', async () => {
+    const elemento = await crea('', {}, true);
+
+    expect(elemento.querySelector('.invito-chat')).toBeNull();
   });
 });
