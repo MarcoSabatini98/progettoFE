@@ -49,12 +49,18 @@ describe('PrenotaComponent', () => {
       non_prenotabile: { codice: 'SOGGIORNO_MINIMO', messaggio: 'Almeno 5 notti' },
     },
   ];
-  const camere = { elencaExtraPubblici: () => of([]), leggiTipologiaPubblica: vi.fn() };
+  const camere = {
+    elencaExtraPubblici: () => of([]),
+    leggiTipologiaPubblica: vi.fn(),
+    elencaTipologiePubbliche: vi.fn(),
+  };
   const blocco = { sessione: 'abc', camera_id: 7, scade_il: '2030-06-30T10:15:00' };
 
   beforeEach(() => {
     Object.values(disponibilita).forEach((spia) => spia.mockReset());
     camere.leggiTipologiaPubblica.mockReset();
+    camere.elencaTipologiePubbliche.mockReset();
+    camere.elencaTipologiePubbliche.mockReturnValue(of([{ ospiti_max: 2 }, { ospiti_max: 4 }]));
     disponibilita.cerca.mockReturnValue(of(risultati));
     disponibilita.rilascia.mockReturnValue(of(null));
     TestBed.configureTestingModule({
@@ -89,7 +95,11 @@ describe('PrenotaComponent', () => {
       await fixture.whenStable();
     };
     const conferma = () => fixture.debugElement.query(By.directive(ConfermaPrenotazioneComponent));
-    return { fixture, elemento, cerca, scegli, conferma };
+    const ospitiMax = () =>
+      fixture.debugElement
+        .query(By.directive(RicercaSoggiornoComponent))
+        .componentInstance.ospitiMax();
+    return { fixture, elemento, cerca, scegli, conferma, ospitiMax };
   }
 
   it('mostra le tipologie libere col prezzo o il motivo per cui non si prenotano', async () => {
@@ -201,19 +211,22 @@ describe('PrenotaComponent', () => {
   it('dalla pagina di una tipologia sceglie la prima camera libera di quella', async () => {
     camere.leggiTipologiaPubblica.mockReturnValue(of({ ...doppia, camere: [] }));
     disponibilita.blocca.mockReturnValue(of(blocco));
-    const { elemento, cerca, scegli } = await crea(false, { tipologia: 'doppia' });
+    const { elemento, cerca, scegli, ospitiMax } = await crea(false, { tipologia: 'doppia' });
 
     expect(elemento.querySelector('.preferenza')?.textContent).toContain('prenota.tipologiaScelta');
+    expect(ospitiMax()).toBe(3);
+    expect(camere.elencaTipologiePubbliche).not.toHaveBeenCalled();
     await cerca();
     await scegli();
 
     expect(disponibilita.blocca).toHaveBeenCalledWith(expect.objectContaining({ tipologia_id: 1 }));
   });
 
-  it('senza scelte dal sito non legge nessuna tipologia', async () => {
-    const { elemento } = await crea();
+  it('senza scelte dal sito il tetto agli ospiti è quello della tipologia più grande', async () => {
+    const { elemento, ospitiMax } = await crea();
 
     expect(camere.leggiTipologiaPubblica).not.toHaveBeenCalled();
+    expect(ospitiMax()).toBe(4);
     expect(elemento.querySelector('.preferenza')).toBeNull();
   });
 });

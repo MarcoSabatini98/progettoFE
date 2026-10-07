@@ -27,7 +27,12 @@
     </p>
   }
 
-  <app-ricerca-soggiorno class="scheda" [inCorso]="risultati.isLoading()" (cerca)="cerca($event)" />
+  <app-ricerca-soggiorno
+    class="scheda"
+    [inCorso]="risultati.isLoading()"
+    [ospitiMax]="ospitiMax()"
+    (cerca)="cerca($event)"
+  />
 
   @if (errore()) {
     <p class="esito esito-errore" role="alert">{{ errore() }}</p>

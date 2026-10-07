@@ -5,13 +5,15 @@ import { SezioneInterface } from '../sezione/sezione-model';
 export type ChiavePagina = (typeof PAGINE_SITO)[number];
 
 /**
- * Pagina del sito (home, struttura, attività): descrizione sotto il titolo, copertina e sezioni.
+ * Pagina del sito (home, struttura, attività, camere): descrizione sotto il titolo, copertina e
+ * sezioni; la pagina camere ha al posto delle sezioni un paragrafo (testo) sotto la copertina.
  * Sul sito arrivano solo le sezioni pubblicate, già tradotte.
  */
 export interface PaginaSitoInterface {
   id: number;
   chiave: ChiavePagina;
   descrizione: string | null;
+  testo: string | null;
   aggiornato_il: string;
 
   // ─── Associazioni ───
@@ -20,7 +22,8 @@ export interface PaginaSitoInterface {
   sezioni?: SezioneInterface[];
 }
 
-/** Vuota = sotto il titolo resta l'introduzione predefinita. */
+/** Descrizione vuota = sotto il titolo resta l'introduzione predefinita. */
 export interface PaginaSitoAggiornaPayload {
   descrizione: string | null;
+  testo?: string | null;
 }

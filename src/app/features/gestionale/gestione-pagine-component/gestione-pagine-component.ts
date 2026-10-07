@@ -30,9 +30,10 @@ import { ListinoComponent } from '../listino-component/listino-component';
 import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
 /**
- * Pagine del sito scritte dallo staff: home, struttura, attività.
- * Struttura e attività hanno descrizione e foto di copertina; tutte hanno le sezioni
- * immagine-testo, alternate sul sito e messe in fila con l'ordine.
+ * Pagine del sito scritte dallo staff: home, struttura, attività, camere.
+ * Tranne la home hanno descrizione e foto di copertina; le sezioni immagine-testo,
+ * alternate sul sito e messe in fila con l'ordine, le hanno tutte tranne camere,
+ * che ha invece un paragrafo sotto la copertina.
  */
 @Component({
   selector: 'app-gestione-pagine',
@@ -98,15 +99,21 @@ export class GestionePagineComponent {
     return sezioni.find((sezione) => sezione.id === id)?.media ?? [];
   });
 
-  /** Descrizione della pagina (struttura, attività): sotto il titolo, sopra la copertina. */
+  /** Descrizione sotto il titolo, sopra la copertina; il paragrafo solo per camere. */
   protected readonly moduloPagina = this.campi.group({
     descrizione: ['', Validators.maxLength(LIMITI_CONTENUTI.descrizione)],
+    testo: ['', Validators.maxLength(LIMITI_CONTENUTI.paragrafo)],
   });
   protected readonly inCorso = signal(false);
   protected readonly errore = signal('');
 
   constructor() {
-    effect(() => this.moduloPagina.reset({ descrizione: this.pagina()?.descrizione ?? '' }));
+    effect(() =>
+      this.moduloPagina.reset({
+        descrizione: this.pagina()?.descrizione ?? '',
+        testo: this.pagina()?.testo ?? '',
+      }),
+    );
   }
 
   /**
@@ -122,15 +129,15 @@ export class GestionePagineComponent {
 
   /**
    * SALVA DESCRIZIONE
-   * Vuota = sul sito torna l'introduzione predefinita.
+   * Descrizione vuota = sul sito torna l'introduzione predefinita; paragrafo vuoto = non c'è.
    */
   salvaDescrizione(id: number): void {
     if (this.moduloPagina.invalid) return;
-    const descrizione = this.moduloPagina.getRawValue().descrizione.trim() || null;
+    const { descrizione, testo } = this.moduloPagina.getRawValue();
     this.inCorso.set(true);
     this.errore.set('');
     this.contenuti
-      .aggiornaPagina(id, { descrizione })
+      .aggiornaPagina(id, { descrizione: descrizione.trim() || null, testo: testo.trim() || null })
       .pipe(finalize(() => this.inCorso.set(false)))
       .subscribe({
         next: () => {

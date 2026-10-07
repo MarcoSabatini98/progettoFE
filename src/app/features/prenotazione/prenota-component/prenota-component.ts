@@ -77,6 +77,20 @@ export class PrenotaComponent {
     const tipologia = this.preferita.value();
     return { tipologia, camera: tipologia.camere?.find((voce) => voce.numero === this.camera()) };
   });
+  /** Senza una tipologia scelta: tutte, per il tetto agli ospiti. */
+  private readonly tipologie = rxResource({
+    params: () => (this.tipologia() ? undefined : this.lingua.attiva()),
+    stream: () => this.camere.elencaTipologiePubbliche(),
+  });
+  /** Ospiti al massimo: quelli della tipologia scelta, altrimenti della più grande. */
+  protected readonly ospitiMax = computed(() => {
+    const scelta = this.preferenza()?.tipologia;
+    if (scelta) return scelta.ospiti_max;
+    const massimi = this.tipologie.hasValue()
+      ? this.tipologie.value().map((tipologia) => tipologia.ospiti_max)
+      : [];
+    return massimi.length ? Math.max(...massimi) : undefined;
+  });
 
   /** Blocco della sessione: resta anche tornando ai risultati, finché non se ne sceglie un altro. */
   private blocco?: BloccoCameraInterface;

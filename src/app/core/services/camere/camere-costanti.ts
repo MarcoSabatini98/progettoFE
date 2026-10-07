@@ -31,6 +31,9 @@ export const ENTITA_MEDIA = [
 /** Icona Material Symbols per i servizi senza icona scelta dallo staff. */
 export const ICONA_SERVIZIO_PREDEFINITA = 'check_circle';
 
+/** Dotazioni mostrate sotto il pulsante Prenota nella pagina di una camera; le altre più sotto. */
+export const DOTAZIONI_IN_EVIDENZA = 6;
+
 /** Foto accettate dal backend (JPG, PNG, WEBP). */
 export const FORMATI_MEDIA = 'image/jpeg,image/png,image/webp';
 
@@ -41,7 +44,7 @@ export const LUNGHEZZA_TESTO_ALTERNATIVO = 255;
 
 export const LUNGHEZZA_TIPOLOGIA = { nome: 100, letti: 100, descrizione: 10_000 } as const;
 
-export const LUNGHEZZA_CAMERA = { numero: 10, nome: 100, note: 5000 } as const;
+export const LUNGHEZZA_CAMERA = { numero: 10, nome: 100, descrizione: 2000, note: 5000 } as const;
 
 /** Limiti delle colonne numeriche del database. */
 export const LIMITI_CAMERE = {

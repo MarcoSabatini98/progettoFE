@@ -8,7 +8,7 @@ import { traduzioniTest } from '../../../core/services/lingua/configura-transloc
 import { DatiCameraComponent } from './dati-camera-component';
 
 describe('DatiCameraComponent', () => {
-  const camere = { aggiornaCamera: vi.fn(), elencaServizi: vi.fn() };
+  const camere = { aggiornaCamera: vi.fn() };
   const camera = {
     id: 4,
     numero: '101',
@@ -17,8 +17,8 @@ describe('DatiCameraComponent', () => {
     piano: 1,
     ospiti_max: null,
     stato: 'attiva',
+    descrizione: 'Vista mare.',
     note: null,
-    servizi: [],
   };
   const tipologie = [
     { id: 1, nome: 'Singola' },
@@ -27,7 +27,6 @@ describe('DatiCameraComponent', () => {
 
   beforeEach(() => {
     Object.values(camere).forEach((spia) => spia.mockReset());
-    camere.elencaServizi.mockReturnValue(of([]));
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [
@@ -78,6 +77,18 @@ describe('DatiCameraComponent', () => {
       stato: 'manutenzione',
     });
     expect(salvata).toHaveBeenCalled();
+  });
+
+  it('svuotare la descrizione torna a quella della tipologia', async () => {
+    camere.aggiornaCamera.mockReturnValue(of({ ...camera, descrizione: null }));
+    const { campo, salva } = await crea();
+
+    expect(campo('descrizione').value).toBe('Vista mare.');
+    campo('descrizione').value = '';
+    campo('descrizione').dispatchEvent(new Event('input'));
+    await salva();
+
+    expect(camere.aggiornaCamera).toHaveBeenCalledWith(4, { descrizione: null });
   });
 
   it('senza numero non salva', async () => {

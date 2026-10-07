@@ -343,10 +343,8 @@
     "successiva": "Foto successiva"
   },
   "camere": {
-    "occhiello": "Soggiorna da noi",
-    "titolo": "Camere",
+    "titolo": "Le camere",
     "introduzione": "Scegli la sistemazione più adatta al tuo viaggio.",
-    "tipologie": "Le sistemazioni",
     "nessuna": "Al momento non ci sono camere prenotabili online.",
     "ospitiMax": "Fino a {{ numero }} ospiti",
     "superficie": "{{ mq }} m²",
@@ -359,25 +357,21 @@
       "a_persona": "a persona",
       "a_persona_notte": "a persona a notte"
     },
-    "inTutte": "In tutte le camere",
     "extraOcchiello": "Su richiesta",
-    "chiusuraTitolo": "Hai trovato la camera giusta?",
-    "chiusuraTesto": "Scegli le date e controlla subito la disponibilità, oppure scrivici per qualsiasi domanda.",
-    "scrivici": "Scrivici"
+    "guarda": "Guarda le camere"
   },
   "tipologia": {
     "tutte": "Tutte le camere",
-    "foto": "Foto di {{ nome }}",
     "ospiti": "Ospiti",
     "superficie": "Superficie",
     "letti": "Letti",
     "dotazioni": "In camera",
     "nonTrovata": "Camera non trovata",
     "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
-    "prenota": "Verifica disponibilità",
+    "prenota": "Prenota",
     "piano": "Piano",
-    "camere": "Scegli la tua camera",
-    "camereIntroduzione": "Ogni camera ha i suoi dettagli: guardale e prenota quella che preferisci."
+    "altreInfo": "Altre info",
+    "nessunaCamera": "Nessuna camera disponibile"
   },
   "struttura": {
     "occhiello": "Chi siamo",
@@ -962,7 +956,8 @@
       "eliminaTipologiaAiuto": "Possibile solo se nessuna camera la usa.",
       "eliminaCamera": "Elimina camera",
       "eliminaCameraAiuto": "Possibile solo se la camera non ha prenotazioni.",
-      "conferma": "Sì, elimina"
+      "conferma": "Sì, elimina",
+      "descrizioneAiuto": "Per il sito. Vuota: si vede quella della tipologia."
     },
     "foto": {
       "titolo": "Foto",
@@ -2114,11 +2109,14 @@
       "nomi": {
         "home": "Home",
         "struttura": "Struttura",
-        "attivita": "Attività"
+        "attivita": "Attività",
+        "camere": "Camere"
       },
       "homeAiuto": "Le sezioni della home compaiono in fondo, dopo le recensioni. Foto e testi della copertina stanno nelle impostazioni.",
       "descrizione": "Descrizione",
       "descrizioneAiuto": "Sotto il titolo, sopra la foto di copertina. Vuota = resta il testo predefinito.",
+      "paragrafo": "Paragrafo",
+      "paragrafoAiuto": "Sotto la copertina, prima delle tipologie. Vuoto = non compare.",
       "descrizioneSalvata": "Descrizione salvata.",
       "foto": {
         "titolo": "Foto di copertina",
@@ -2251,6 +2249,21 @@
     "prenota": "Prenota questa camera",
     "altre": "Altre camere",
     "nonTrovata": "Camera non trovata",
-    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile."
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
+    "numeroNome": "Camera {{ numero }} “{{ nome }}”",
+    "altreDotazioni": "+{{ numero }} altre",
+    "altreDi": "Altre camere {{ nome }}",
+    "soggiorno": {
+      "titolo": "Il soggiorno",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "dalle {{ ora }}",
+      "entro": "entro le {{ ora }}",
+      "tariffe": "Tariffe",
+      "tassa": "Tassa di soggiorno",
+      "tassaImporto": "{{ importo }} a persona per notte.",
+      "tassaNotti": "Si paga per le prime {{ notti }} notti.",
+      "tassaEsenti": "Esenti i minori di {{ eta }} anni."
+    }
   }
 }

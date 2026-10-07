@@ -5,8 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { ChiavePagina } from '../../../shared/models/pagina-sito/pagina-sito-model';
-import { MediaPipe } from '../../../shared/pipes/media-pipe';
-import { ScorriComponent } from '../scorri-component/scorri-component';
+import { CopertinaComponent } from '../copertina-component/copertina-component';
 import { SezioniComponent } from '../sezioni-component/sezioni-component';
 
 /**
@@ -16,9 +15,8 @@ import { SezioniComponent } from '../sezioni-component/sezioni-component';
  */
 @Component({
   selector: 'app-pagina-sito',
-  imports: [TranslocoPipe, MediaPipe, ScorriComponent, SezioniComponent],
+  imports: [TranslocoPipe, CopertinaComponent, SezioniComponent],
   templateUrl: './pagina-sito-component.html',
-  styleUrl: './pagina-sito-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'pagina' },
 })

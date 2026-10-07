@@ -1,0 +1,70 @@
+<h2 class="titolo-scheda">{{ 'camera.soggiorno.titolo' | transloco }}</h2>
+
+@if (checkin() || checkout()) {
+  <ul class="orari">
+    @if (checkin(); as ora) {
+      <li>
+        <app-icona nome="login" />
+        <span>{{ 'camera.soggiorno.checkin' | transloco }}</span>
+        <strong>{{ 'camera.soggiorno.dalle' | transloco: { ora } }}</strong>
+      </li>
+    }
+    @if (checkout(); as ora) {
+      <li>
+        <app-icona nome="logout" />
+        <span>{{ 'camera.soggiorno.checkout' | transloco }}</span>
+        <strong>{{ 'camera.soggiorno.entro' | transloco: { ora } }}</strong>
+      </li>
+    }
+  </ul>
+}
+
+@if (piani().length) {
+  <section class="blocco">
+    <h3>{{ 'camera.soggiorno.tariffe' | transloco }}</h3>
+    <ul class="tariffe">
+      @for (piano of piani(); track piano.id) {
+        <li>
+          <p class="nome-tariffa">
+            <strong>{{ piano.nome }}</strong>
+            @if (piano.variazione) {
+              <span class="variazione">
+                {{
+                  (piano.variazione > 0 ? '+' : '') +
+                    (piano.variazione | variazione: piano.tipo_variazione)
+                }}
+              </span>
+            }
+          </p>
+          <p class="regola">
+            <app-icona [nome]="piano.rimborsabile ? 'event_available' : 'block'" />
+            {{
+              (piano.rimborsabile ? 'conferma.rimborsabile' : 'conferma.nonRimborsabile')
+                | transloco: { ore: piano.ore_cancellazione_gratuita }
+            }}
+          </p>
+          @if (piano.descrizione) {
+            <p class="descrizione">{{ piano.descrizione }}</p>
+          }
+        </li>
+      }
+    </ul>
+  </section>
+}
+
+@if (tassa(); as imposta) {
+  <section class="blocco">
+    <h3>{{ 'camera.soggiorno.tassa' | transloco }}</h3>
+    <p>
+      {{
+        'camera.soggiorno.tassaImporto' | transloco: { importo: (imposta.importo_notte | prezzo) }
+      }}
+      @if (imposta.notti_max) {
+        {{ 'camera.soggiorno.tassaNotti' | transloco: { notti: imposta.notti_max } }}
+      }
+      @if (imposta.eta_esenzione) {
+        {{ 'camera.soggiorno.tassaEsenti' | transloco: { eta: imposta.eta_esenzione } }}
+      }
+    </p>
+  </section>
+}

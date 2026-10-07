@@ -343,10 +343,8 @@
     "successiva": "Foto siguiente"
   },
   "camere": {
-    "occhiello": "Alójate con nosotros",
-    "titolo": "Habitaciones",
+    "titolo": "Las habitaciones",
     "introduzione": "Elige el alojamiento que mejor se adapte a tu viaje.",
-    "tipologie": "Alojamientos",
     "nessuna": "En este momento no hay habitaciones reservables en línea.",
     "ospitiMax": "Hasta {{ numero }} huéspedes",
     "superficie": "{{ mq }} m²",
@@ -359,25 +357,21 @@
       "a_persona": "por persona",
       "a_persona_notte": "por persona y noche"
     },
-    "inTutte": "En todas las habitaciones",
     "extraOcchiello": "Bajo petición",
-    "chiusuraTitolo": "¿Has encontrado la habitación ideal?",
-    "chiusuraTesto": "Elige las fechas y consulta ahora la disponibilidad, o escríbenos para cualquier duda.",
-    "scrivici": "Escríbenos"
+    "guarda": "Ver las habitaciones"
   },
   "tipologia": {
     "tutte": "Todas las habitaciones",
-    "foto": "Fotos de {{ nome }}",
     "ospiti": "Huéspedes",
     "superficie": "Superficie",
     "letti": "Camas",
     "dotazioni": "En la habitación",
     "nonTrovata": "Habitación no encontrada",
     "nonTrovataTesto": "Esta habitación no existe o ya no está disponible.",
-    "prenota": "Ver disponibilidad",
+    "prenota": "Reservar",
     "piano": "Planta",
-    "camere": "Elige tu habitación",
-    "camereIntroduzione": "Cada habitación tiene sus detalles: míralas y reserva la que más te guste."
+    "altreInfo": "Más info",
+    "nessunaCamera": "Ninguna habitación disponible"
   },
   "struttura": {
     "occhiello": "Quiénes somos",
@@ -962,7 +956,8 @@
       "eliminaTipologiaAiuto": "Solo si ninguna habitación lo usa.",
       "eliminaCamera": "Eliminar habitación",
       "eliminaCameraAiuto": "Solo si la habitación no tiene reservas.",
-      "conferma": "Sí, eliminar"
+      "conferma": "Sí, eliminar",
+      "descrizioneAiuto": "Para la web. Vacía: se muestra la del tipo de habitación."
     },
     "foto": {
       "titolo": "Fotos",
@@ -2114,11 +2109,14 @@
       "nomi": {
         "home": "Inicio",
         "struttura": "El alojamiento",
-        "attivita": "Actividades"
+        "attivita": "Actividades",
+        "camere": "Habitaciones"
       },
       "homeAiuto": "Las secciones del inicio aparecen al final, después de las reseñas. Foto y textos de portada están en los ajustes.",
       "descrizione": "Descripción",
       "descrizioneAiuto": "Bajo el título, sobre la foto de portada. Vacía = se mantiene el texto predeterminado.",
+      "paragrafo": "Párrafo",
+      "paragrafoAiuto": "Bajo la portada, antes de los tipos de habitación. Vacío = no aparece.",
       "descrizioneSalvata": "Descripción guardada.",
       "foto": {
         "titolo": "Foto de portada",
@@ -2251,6 +2249,21 @@
     "prenota": "Reservar esta habitación",
     "altre": "Otras habitaciones",
     "nonTrovata": "Habitación no encontrada",
-    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible."
+    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible.",
+    "numeroNome": "Habitación {{ numero }} «{{ nome }}»",
+    "altreDotazioni": "+{{ numero }} más",
+    "altreDi": "Otras habitaciones {{ nome }}",
+    "soggiorno": {
+      "titolo": "Tu estancia",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "desde las {{ ora }}",
+      "entro": "antes de las {{ ora }}",
+      "tariffe": "Tarifas",
+      "tassa": "Tasa turística",
+      "tassaImporto": "{{ importo }} por persona y noche.",
+      "tassaNotti": "Se paga por las primeras {{ notti }} noches.",
+      "tassaEsenti": "Exentos los menores de {{ eta }} años."
+    }
   }
 }

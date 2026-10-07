@@ -343,10 +343,8 @@
     "successiva": "Nächstes Foto"
   },
   "camere": {
-    "occhiello": "Übernachten Sie bei uns",
-    "titolo": "Zimmer",
+    "titolo": "Die Zimmer",
     "introduzione": "Wählen Sie die passende Unterkunft für Ihre Reise.",
-    "tipologie": "Unterkünfte",
     "nessuna": "Derzeit sind keine Zimmer online buchbar.",
     "ospitiMax": "Bis zu {{ numero }} Gäste",
     "superficie": "{{ mq }} m²",
@@ -359,25 +357,21 @@
       "a_persona": "pro Person",
       "a_persona_notte": "pro Person und Nacht"
     },
-    "inTutte": "In allen Zimmern",
     "extraOcchiello": "Auf Anfrage",
-    "chiusuraTitolo": "Das passende Zimmer gefunden?",
-    "chiusuraTesto": "Wählen Sie Ihre Daten und prüfen Sie sofort die Verfügbarkeit, oder schreiben Sie uns bei Fragen.",
-    "scrivici": "Schreiben Sie uns"
+    "guarda": "Zimmer ansehen"
   },
   "tipologia": {
     "tutte": "Alle Zimmer",
-    "foto": "Fotos von {{ nome }}",
     "ospiti": "Gäste",
     "superficie": "Größe",
     "letti": "Betten",
     "dotazioni": "Im Zimmer",
     "nonTrovata": "Zimmer nicht gefunden",
     "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar.",
-    "prenota": "Verfügbarkeit prüfen",
+    "prenota": "Buchen",
     "piano": "Etage",
-    "camere": "Wählen Sie Ihr Zimmer",
-    "camereIntroduzione": "Jedes Zimmer hat seine eigenen Details: Sehen Sie sie sich an und buchen Sie Ihr Lieblingszimmer."
+    "altreInfo": "Mehr Infos",
+    "nessunaCamera": "Keine Zimmer verfügbar"
   },
   "struttura": {
     "occhiello": "Über uns",
@@ -962,7 +956,8 @@
       "eliminaTipologiaAiuto": "Nur möglich, wenn kein Zimmer sie nutzt.",
       "eliminaCamera": "Zimmer löschen",
       "eliminaCameraAiuto": "Nur möglich, wenn das Zimmer keine Buchungen hat.",
-      "conferma": "Ja, löschen"
+      "conferma": "Ja, löschen",
+      "descrizioneAiuto": "Für die Website. Leer: Die der Zimmerkategorie wird angezeigt."
     },
     "foto": {
       "titolo": "Fotos",
@@ -2114,11 +2109,14 @@
       "nomi": {
         "home": "Startseite",
         "struttura": "Die Unterkunft",
-        "attivita": "Aktivitäten"
+        "attivita": "Aktivitäten",
+        "camere": "Zimmer"
       },
       "homeAiuto": "Die Abschnitte der Startseite erscheinen unten, nach den Bewertungen. Titelbild und -texte stehen in den Einstellungen.",
       "descrizione": "Beschreibung",
       "descrizioneAiuto": "Unter dem Titel, über dem Titelbild. Leer = der Standardtext bleibt.",
+      "paragrafo": "Absatz",
+      "paragrafoAiuto": "Unter dem Titelbild, vor den Zimmertypen. Leer = wird nicht angezeigt.",
       "descrizioneSalvata": "Beschreibung gespeichert.",
       "foto": {
         "titolo": "Titelbild",
@@ -2251,6 +2249,21 @@
     "prenota": "Dieses Zimmer buchen",
     "altre": "Weitere Zimmer",
     "nonTrovata": "Zimmer nicht gefunden",
-    "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar."
+    "nonTrovataTesto": "Dieses Zimmer existiert nicht oder ist nicht mehr verfügbar.",
+    "numeroNome": "Zimmer {{ numero }} „{{ nome }}“",
+    "altreDotazioni": "+{{ numero }} weitere",
+    "altreDi": "Weitere Zimmer {{ nome }}",
+    "soggiorno": {
+      "titolo": "Ihr Aufenthalt",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "ab {{ ora }}",
+      "entro": "bis {{ ora }}",
+      "tariffe": "Tarife",
+      "tassa": "Kurtaxe",
+      "tassaImporto": "{{ importo }} pro Person und Nacht.",
+      "tassaNotti": "Fällig für die ersten {{ notti }} Nächte.",
+      "tassaEsenti": "Kinder unter {{ eta }} Jahren sind befreit."
+    }
   }
 }

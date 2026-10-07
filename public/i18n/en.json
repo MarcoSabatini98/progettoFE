@@ -343,10 +343,8 @@
     "successiva": "Next photo"
   },
   "camere": {
-    "occhiello": "Stay with us",
-    "titolo": "Rooms",
+    "titolo": "The rooms",
     "introduzione": "Choose the accommodation that suits your trip.",
-    "tipologie": "Accommodation",
     "nessuna": "There are no rooms available to book online right now.",
     "ospitiMax": "Up to {{ numero }} guests",
     "superficie": "{{ mq }} m²",
@@ -359,25 +357,21 @@
       "a_persona": "per person",
       "a_persona_notte": "per person per night"
     },
-    "inTutte": "In every room",
     "extraOcchiello": "On request",
-    "chiusuraTitolo": "Found the right room?",
-    "chiusuraTesto": "Pick your dates and check availability now, or write to us with any question.",
-    "scrivici": "Write to us"
+    "guarda": "See the rooms"
   },
   "tipologia": {
     "tutte": "All rooms",
-    "foto": "Photos of {{ nome }}",
     "ospiti": "Guests",
     "superficie": "Size",
     "letti": "Beds",
     "dotazioni": "In the room",
     "nonTrovata": "Room not found",
     "nonTrovataTesto": "This room does not exist or is no longer available.",
-    "prenota": "Check availability",
+    "prenota": "Book",
     "piano": "Floor",
-    "camere": "Choose your room",
-    "camereIntroduzione": "Every room has its own details: have a look and book the one you like best."
+    "altreInfo": "More info",
+    "nessunaCamera": "No rooms available"
   },
   "struttura": {
     "occhiello": "About us",
@@ -962,7 +956,8 @@
       "eliminaTipologiaAiuto": "Only possible if no room uses it.",
       "eliminaCamera": "Delete room",
       "eliminaCameraAiuto": "Only possible if the room has no bookings.",
-      "conferma": "Yes, delete"
+      "conferma": "Yes, delete",
+      "descrizioneAiuto": "For the website. Empty: the room type one is shown."
     },
     "foto": {
       "titolo": "Photos",
@@ -2114,11 +2109,14 @@
       "nomi": {
         "home": "Home",
         "struttura": "The property",
-        "attivita": "Activities"
+        "attivita": "Activities",
+        "camere": "Rooms"
       },
       "homeAiuto": "Home sections appear at the bottom, after the reviews. Cover photo and texts are in the settings.",
       "descrizione": "Description",
       "descrizioneAiuto": "Below the title, over the cover photo. Empty = the default text stays.",
+      "paragrafo": "Paragraph",
+      "paragrafoAiuto": "Below the cover, before the room types. Empty = not shown.",
       "descrizioneSalvata": "Description saved.",
       "foto": {
         "titolo": "Cover photo",
@@ -2251,6 +2249,21 @@
     "prenota": "Book this room",
     "altre": "Other rooms",
     "nonTrovata": "Room not found",
-    "nonTrovataTesto": "This room does not exist or is no longer available."
+    "nonTrovataTesto": "This room does not exist or is no longer available.",
+    "numeroNome": "Room {{ numero }} “{{ nome }}”",
+    "altreDotazioni": "+{{ numero }} more",
+    "altreDi": "Other {{ nome }} rooms",
+    "soggiorno": {
+      "titolo": "Your stay",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "from {{ ora }}",
+      "entro": "by {{ ora }}",
+      "tariffe": "Rates",
+      "tassa": "Tourist tax",
+      "tassaImporto": "{{ importo }} per person per night.",
+      "tassaNotti": "Charged for the first {{ notti }} nights.",
+      "tassaEsenti": "Children under {{ eta }} are exempt."
+    }
   }
 }

@@ -80,19 +80,104 @@
   font-weight: 600;
 }
 
-.vicine {
+/* Le prime dotazioni sotto Prenota, in due colonne; il link porta a tutte. */
+.dotazioni-brevi {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bb-spazio-2) var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+  --icona-dimensione: 1.25rem;
+}
+
+.dotazioni-brevi li {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+}
+
+.dotazioni-brevi app-icona {
+  color: var(--bb-brand-testo);
+}
+
+.tutte-dotazioni {
+  justify-self: start;
+  font-weight: 600;
+}
+
+/* Descrizione e dettagli; da desktop le condizioni del soggiorno restano a lato mentre si scorre. */
+.corpo {
+  display: grid;
+  gap: var(--bb-spazio-12);
+  align-items: start;
+}
+
+@media (width >= 58.75rem) {
+  .corpo {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+  }
+
+  .soggiorno {
+    position: sticky;
+    top: calc(var(--bb-testata) + var(--bb-spazio-6));
+  }
+}
+
+/* Le altre camere: schede piccole, tutta la scheda porta alla camera. */
+.altre {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  gap: var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.altra {
+  position: relative;
+  display: grid;
   gap: var(--bb-spazio-3);
 }
 
-.successiva {
-  margin-inline-start: auto;
+.foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--bb-raggio);
+  background: linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
+}
+
+.foto img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  transition: scale var(--bb-durata) var(--bb-curva);
+}
+
+.altra:hover img {
+  scale: 1.04;
+}
+
+.altra h3 {
+  font-size: 1.125rem;
+}
+
+.altra a {
+  color: var(--bb-testo);
+  text-decoration: none;
+}
+
+.altra a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .miniatura {
+  .miniatura,
+  .foto img {
     transition: none;
   }
 }

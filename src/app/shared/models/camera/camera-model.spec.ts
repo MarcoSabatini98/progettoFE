@@ -15,6 +15,7 @@ describe('CameraInterface', () => {
       stato: 'attiva',
       stato_pulizia: 'sporca',
       token_ical: null,
+      descrizione: null,
       note: null,
       creato_il: '2026-09-01T10:00:00.000Z',
       aggiornato_il: '2026-09-01T10:00:00.000Z',

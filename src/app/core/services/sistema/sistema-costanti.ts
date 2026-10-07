@@ -28,13 +28,17 @@ export const TABELLE_REGISTRO = ['prenotazioni', 'pagamenti', 'fatture'] as cons
 /** Campi traducibili per entità: l'italiano resta nella tabella originale. */
 export const CAMPI_TRADUCIBILI = {
   tipologia_camera: ['nome', 'descrizione', 'letti'],
+  camera: ['descrizione'],
   servizio: ['nome', 'descrizione'],
   pacchetto: ['nome', 'descrizione'],
   promozione: ['nome', 'descrizione'],
   faq: ['domanda', 'risposta'],
-  pagina: ['descrizione'],
+  pagina: ['descrizione', 'testo'],
   sezione: ['titolo', 'testo'],
 } as const;
 
-/** Pagine del sito con copertina e sezioni immagine-testo scritte dallo staff. */
-export const PAGINE_SITO = ['home', 'struttura', 'attivita'] as const;
+/**
+ * Pagine del sito con contenuti scritti dallo staff: copertina e sezioni immagine-testo.
+ * Camere: copertina, sottotitolo e un paragrafo sopra le tipologie, senza sezioni.
+ */
+export const PAGINE_SITO = ['home', 'struttura', 'attivita', 'camere'] as const;

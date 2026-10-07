@@ -1,0 +1,13 @@
+@if (foto(); as immagine) {
+  <img class="sfondo" [src]="immagine.percorso | media" alt="" fetchpriority="high" />
+}
+@if (occhiello()) {
+  <p class="occhiello">{{ occhiello() }}</p>
+}
+<h1>{{ titolo() }}</h1>
+@if (testo()) {
+  <p class="introduzione">{{ testo() }}</p>
+}
+@if (foto() && scorri()) {
+  <app-scorri />
+}

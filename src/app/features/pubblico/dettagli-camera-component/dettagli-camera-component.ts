@@ -7,8 +7,10 @@ import { CameraInterface } from '../../../shared/models/camera/camera-model';
 import { TipologiaCameraInterface } from '../../../shared/models/tipologia-camera/tipologia-camera-model';
 
 /**
- * Descrizione, numeri e dotazioni di una tipologia; con la camera anche piano,
- * ospiti propri e le dotazioni che ha in più.
+ * Colonna principale della pagina di una camera: descrizione, numeri in riquadri con
+ * icone grandi e tutte le dotazioni (#dotazioni, dove porta il link "+N altre").
+ * Senza descrizione propria la camera mostra quella della tipologia; le dotazioni
+ * sono sempre quelle della tipologia: ogni sua camera le ha.
  */
 @Component({
   selector: 'app-dettagli-camera',
@@ -26,9 +28,8 @@ export class DettagliCameraComponent {
   protected readonly ospiti = computed(
     () => this.camera()?.ospiti_max ?? this.tipologia().ospiti_max,
   );
-  /** Quelle della tipologia e poi quelle in più della camera, senza ripetizioni. */
-  protected readonly dotazioni = computed(() => {
-    const tutte = [...(this.tipologia().servizi ?? []), ...(this.camera()?.servizi ?? [])];
-    return [...new Map(tutte.map((servizio) => [servizio.id, servizio])).values()];
-  });
+  protected readonly descrizione = computed(
+    () => this.camera()?.descrizione || this.tipologia().descrizione,
+  );
+  protected readonly dotazioni = computed(() => this.tipologia().servizi ?? []);
 }

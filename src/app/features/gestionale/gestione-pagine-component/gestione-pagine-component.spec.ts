@@ -22,6 +22,8 @@ describe('GestionePagineComponent', () => {
   const pagine = [
     { id: 1, chiave: 'home', descrizione: null, media: [], sezioni: [sezione] },
     { id: 2, chiave: 'struttura', descrizione: 'Casa sul mare', media: [], sezioni: [] },
+    { id: 3, chiave: 'attivita', descrizione: null, media: [], sezioni: [] },
+    { id: 4, chiave: 'camere', descrizione: null, testo: null, media: [], sezioni: [] },
   ];
   const contenuti = {
     elencaPagine: vi.fn(),
@@ -115,7 +117,25 @@ describe('GestionePagineComponent', () => {
     await scrivi('descrizione', '  ');
     await invia();
 
-    expect(contenuti.aggiornaPagina).toHaveBeenCalledWith(2, { descrizione: null });
+    expect(contenuti.aggiornaPagina).toHaveBeenCalledWith(2, { descrizione: null, testo: null });
+    expect(elemento.textContent).not.toContain('gestionale.pagine.paragrafo');
+  });
+
+  it('camere: descrizione e paragrafo, foto di copertina, niente sezioni', async () => {
+    const { elemento, pagina, scrivi, invia } = await apri();
+    await pagina(3);
+
+    expect(elemento.querySelector('app-galleria-media')).not.toBeNull();
+    expect(elemento.querySelector('app-listino')).toBeNull();
+    expect(elemento.textContent).toContain('gestionale.pagine.paragrafo');
+
+    await scrivi('testo', ' Ogni camera guarda il golfo. ');
+    await invia();
+
+    expect(contenuti.aggiornaPagina).toHaveBeenCalledWith(4, {
+      descrizione: null,
+      testo: 'Ogni camera guarda il golfo.',
+    });
   });
 
   it('la sezione scelta mostra immagine e traduzioni', async () => {

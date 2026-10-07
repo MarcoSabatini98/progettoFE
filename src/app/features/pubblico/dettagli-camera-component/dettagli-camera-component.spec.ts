@@ -32,18 +32,12 @@ describe('DettagliCameraComponent', () => {
 
     expect(elemento.querySelector('.descrizione')?.textContent).toBe('Vista sul golfo.');
     expect(elemento.querySelectorAll('.dettagli dd')).toHaveLength(2);
+    expect(elemento.querySelector('#dotazioni')).not.toBeNull();
     expect(elemento.querySelector('.dotazioni li')?.textContent).toContain('Wi-Fi');
   });
 
-  it('della camera aggiunge il piano e le dotazioni in più senza doppioni', async () => {
-    const elemento = await crea({
-      piano: 2,
-      ospiti_max: 2,
-      servizi: [
-        { id: 5, nome: 'Wi-Fi' },
-        { id: 8, nome: 'Balcone' },
-      ],
-    } as unknown as CameraInterface);
+  it('della camera aggiunge il piano e tiene le dotazioni della tipologia', async () => {
+    const elemento = await crea({ piano: 2, ospiti_max: 2, descrizione: null } as CameraInterface);
 
     const valori = [...elemento.querySelectorAll('.dettagli dd')].map((voce) => voce.textContent);
     expect(valori).toHaveLength(3);
@@ -51,7 +45,14 @@ describe('DettagliCameraComponent', () => {
     const dotazioni = [...elemento.querySelectorAll('.dotazioni li')].map(
       (voce) => voce.textContent,
     );
-    expect(dotazioni).toHaveLength(2);
-    expect(dotazioni[1]).toContain('Balcone');
+    expect(dotazioni).toHaveLength(1);
+    expect(dotazioni[0]).toContain('Wi-Fi');
+    expect(elemento.querySelector('.descrizione')?.textContent).toBe('Vista sul golfo.');
+  });
+
+  it('la descrizione della camera prende il posto di quella della tipologia', async () => {
+    const elemento = await crea({ piano: 1, descrizione: 'Angolo lettura.' } as CameraInterface);
+
+    expect(elemento.querySelector('.descrizione')?.textContent).toBe('Angolo lettura.');
   });
 });

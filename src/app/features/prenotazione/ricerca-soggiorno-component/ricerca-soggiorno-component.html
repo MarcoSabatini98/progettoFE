@@ -20,7 +20,7 @@
       [etichetta]="'prenota.adulti' | transloco"
       [errore]="errori.campo(modulo.controls.adulti)"
     >
-      <input type="number" formControlName="adulti" min="1" [max]="limiti.adulti" required />
+      <input type="number" formControlName="adulti" min="1" [max]="adultiMax()" required />
     </app-campo>
 
     <app-campo
@@ -28,7 +28,7 @@
       [aiuto]="'prenota.bambiniAiuto' | transloco: { eta: limiti.etaBambini }"
       [errore]="errori.campo(modulo.controls.bambini)"
     >
-      <input type="number" formControlName="bambini" min="0" [max]="limiti.bambini" />
+      <input type="number" formControlName="bambini" min="0" [max]="bambiniMax()" />
     </app-campo>
   </div>
 

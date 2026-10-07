@@ -7,28 +7,17 @@ import { CamereService } from '../../../core/services/camere/camere-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazione-costanti';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
-import { PrezzoPipe } from '../../../shared/pipes/prezzo-pipe';
-import { MediaPipe } from '../../../shared/pipes/media-pipe';
-import { CaroselloComponent } from '../carosello-component/carosello-component';
-import { DettagliCameraComponent } from '../dettagli-camera-component/dettagli-camera-component';
-import { SchedaTipologiaComponent } from '../scheda-tipologia-component/scheda-tipologia-component';
+import { CopertinaComponent } from '../copertina-component/copertina-component';
+import { RiquadroCameraComponent } from '../riquadro-camera-component/riquadro-camera-component';
 
 /**
- * Dettaglio di una tipologia (/camere/:slug): foto nel carosello (ferma se è una sola),
- * descrizione, letti, dotazioni incluse e le sue camere, ognuna con la propria pagina.
+ * Una tipologia (/camere/:slug): copertina con la sua foto, nome e descrizione, poi un
+ * riquadro per ognuna delle sue camere, con le dotazioni della tipologia, la prenotazione
+ * proprio di quella camera e il link alla sua pagina.
  */
 @Component({
   selector: 'app-tipologia',
-  imports: [
-    RouterLink,
-    TranslocoPipe,
-    IconaComponent,
-    MediaPipe,
-    PrezzoPipe,
-    CaroselloComponent,
-    DettagliCameraComponent,
-    SchedaTipologiaComponent,
-  ],
+  imports: [RouterLink, TranslocoPipe, IconaComponent, CopertinaComponent, RiquadroCameraComponent],
   templateUrl: './tipologia-component.html',
   styleUrl: './tipologia-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
