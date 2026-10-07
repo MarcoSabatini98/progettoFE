@@ -37,8 +37,15 @@
 .slide[data-posizione='1'] {
   z-index: 2;
   scale: 0.76;
-  filter: blur(3px);
   opacity: 0.8;
+}
+
+/* Sfocate solo col mouse: da telefono la sfocatura in movimento costa troppo e scatta. */
+@media (hover: hover) and (pointer: fine) {
+  .slide[data-posizione='-1'],
+  .slide[data-posizione='1'] {
+    filter: blur(3px);
+  }
 }
 
 .slide[data-posizione='-2'],

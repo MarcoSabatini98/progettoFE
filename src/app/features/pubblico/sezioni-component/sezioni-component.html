@@ -3,12 +3,13 @@
     @if (sezione.media?.[0]; as foto) {
       <img
         class="immagine"
+        appComparsa
         [src]="foto.percorso | media"
         [alt]="foto.testo_alternativo"
         loading="lazy"
       />
     }
-    <div class="testo">
+    <div class="testo" appComparsa>
       <h2 class="sezione-titolo">{{ sezione.titolo }}</h2>
       <p>{{ sezione.testo }}</p>
     </div>

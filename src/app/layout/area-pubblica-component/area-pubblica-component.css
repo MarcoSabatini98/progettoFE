@@ -9,8 +9,18 @@
   inset-block-start: 0;
   z-index: 40;
   border-block-end: 1px solid var(--bb-linea);
-  background: color-mix(in oklch, var(--bb-sfondo) 88%, transparent);
-  backdrop-filter: blur(12px);
+  background: color-mix(in oklch, var(--bb-sfondo) 96%, transparent);
+}
+
+/*
+ * Vetro smerigliato solo col mouse: da telefono ricalcolare la sfocatura
+ * a ogni passo dello scorrimento (sopra foto e video) fa andare la pagina a scatti.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .testata {
+    background: color-mix(in oklch, var(--bb-sfondo) 88%, transparent);
+    backdrop-filter: blur(12px);
+  }
 }
 
 .testata-interno,

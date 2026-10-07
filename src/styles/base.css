@@ -114,6 +114,21 @@ select {
   white-space: nowrap;
 }
 
+/*
+ * Comparsa a scendere (ComparsaDirective): nascosto finché non entra nello schermo,
+ * poi scivola al suo posto una volta sola. Da dove arriva lo decide --da (di base dal basso).
+ */
+.da-comparire {
+  transition:
+    opacity 0.6s var(--bb-curva),
+    translate 0.6s var(--bb-curva);
+}
+
+.da-comparire:not(.comparso) {
+  opacity: 0;
+  translate: var(--da, 0 2rem);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
