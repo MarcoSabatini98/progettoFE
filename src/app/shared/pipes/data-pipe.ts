@@ -4,13 +4,14 @@ import { LinguaService } from '../../core/services/lingua/lingua-service';
 
 /**
  * Formati disponibili: giorno = "3 ottobre 2026", mese = "ottobre 2026",
- * ora = "3 ottobre, 15:30", settimana = "sab 3" (colonne del planning).
+ * ora = "3 ottobre, 15:30", settimana = "sab 3" (colonne del planning), breve = "3 ott".
  */
 const FORMATI_DATA = {
   giorno: { day: 'numeric', month: 'long', year: 'numeric' },
   mese: { month: 'long', year: 'numeric' },
   ora: { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' },
   settimana: { weekday: 'short', day: 'numeric' },
+  breve: { day: 'numeric', month: 'short' },
 } as const satisfies Record<string, Intl.DateTimeFormatOptions>;
 
 export type FormatoData = keyof typeof FORMATI_DATA;

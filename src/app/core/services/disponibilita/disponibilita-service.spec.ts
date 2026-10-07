@@ -31,6 +31,19 @@ describe('DisponibilitaService', () => {
     richiesta.flush(risposta([]));
   });
 
+  it('legge le notti occupate di una camera nel periodo', () => {
+    let occupate: string[] = [];
+    service.leggiOccupazione({ camera_id: 4 }, '2026-10-01', '2026-12-01').subscribe((notti) => {
+      occupate = notti;
+    });
+
+    const richiesta = backend.expectOne((req) => req.url === `${API}/occupazione`);
+    expect(richiesta.request.params.toString()).toBe('camera_id=4&dal=2026-10-01&al=2026-12-01');
+    richiesta.flush(risposta({ occupate: ['2026-10-09'] }));
+
+    expect(occupate).toEqual(['2026-10-09']);
+  });
+
   it('blocca una camera della tipologia', () => {
     const dati = { tipologia_id: 1, arrivo: '2026-10-01', partenza: '2026-10-03', ospiti: 2 };
     service.blocca(dati).subscribe();

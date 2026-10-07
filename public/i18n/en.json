@@ -462,7 +462,17 @@
     "nessunaCamera": "No rooms available for these dates. Try different ones.",
     "cameraScelta": "You are booking room {{ camera }} ({{ tipologia }}).",
     "tipologiaScelta": "You are looking for a {{ tipologia }} room.",
-    "tutteLeCamere": "Show all rooms"
+    "tutteLeCamere": "Show all rooms",
+    "calendario": {
+      "titolo": "Dates of stay",
+      "sceltaArrivo": "Choose your arrival day.",
+      "sceltaPartenza": "Now choose your departure day.",
+      "notti": "Nights: {{ numero }}",
+      "libero": "Available",
+      "occupato": "Not available",
+      "precedente": "Previous month",
+      "successivo": "Next month"
+    }
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Stay",

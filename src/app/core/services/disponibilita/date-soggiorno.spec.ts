@@ -6,7 +6,9 @@ import {
   giornoDopo,
   giorniTra,
   partenzaDopoArrivo,
+  primoDelMese,
   spostaData,
+  spostaMese,
 } from './date-soggiorno';
 
 describe('date del soggiorno', () => {
@@ -24,6 +26,12 @@ describe('date del soggiorno', () => {
     expect(spostaData('2026-10-20', 14)).toBe('2026-11-03');
     expect(giorniTra('2026-10-20', '2026-11-03')).toBe(14);
     expect(giorniTra('2026-03-30', '2026-03-28')).toBe(-2);
+  });
+
+  it('trova il primo del mese e sposta di mesi anche a cavallo d’anno', () => {
+    expect(primoDelMese('2026-10-27')).toBe('2026-10-01');
+    expect(spostaMese('2026-12-01', 1)).toBe('2027-01-01');
+    expect(spostaMese('2026-01-01', -1)).toBe('2025-12-01');
   });
 
   it('segnala una partenza uguale o precedente all’arrivo', () => {

@@ -1,19 +1,23 @@
 <form class="ricerca" [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
-  <div class="campi-coppia">
-    <app-campo
-      [etichetta]="'prenota.arrivo' | transloco"
-      [errore]="errori.campo(modulo.controls.arrivo)"
-    >
-      <input type="date" formControlName="arrivo" [min]="oggi" required />
-    </app-campo>
-
-    <app-campo
-      [etichetta]="'prenota.partenza' | transloco"
-      [errore]="errori.campo(modulo.controls.partenza) || errori.campo(modulo)"
-    >
-      <input type="date" formControlName="partenza" [min]="partenzaMinima()" required />
-    </app-campo>
-  </div>
+  @let erroreDate =
+    errori.campo(modulo.controls.arrivo) ||
+    errori.campo(modulo.controls.partenza) ||
+    errori.campo(modulo);
+  <fieldset class="date">
+    <legend>{{ 'prenota.calendario.titolo' | transloco }}</legend>
+    <app-calendario-soggiorno
+      [arrivo]="arrivo()"
+      [partenza]="partenza()"
+      [filtri]="occupazione()"
+      (scelta)="scegliDate($event)"
+    />
+    @if (erroreDate) {
+      <p class="campo-errore" role="alert">
+        <app-icona nome="error" />
+        {{ erroreDate }}
+      </p>
+    }
+  </fieldset>
 
   <div class="campi-coppia">
     <app-campo

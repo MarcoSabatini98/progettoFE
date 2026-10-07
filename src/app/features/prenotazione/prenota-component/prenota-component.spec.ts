@@ -20,7 +20,12 @@ import { RicercaSoggiornoComponent } from '../ricerca-soggiorno-component/ricerc
 import { PrenotaComponent } from './prenota-component';
 
 describe('PrenotaComponent', () => {
-  const disponibilita = { cerca: vi.fn(), blocca: vi.fn(), rilascia: vi.fn() };
+  const disponibilita = {
+    cerca: vi.fn(),
+    blocca: vi.fn(),
+    rilascia: vi.fn(),
+    leggiOccupazione: vi.fn(),
+  };
   const filtri = {
     arrivo: '2030-07-01',
     partenza: '2030-07-04',
@@ -63,6 +68,7 @@ describe('PrenotaComponent', () => {
     camere.elencaTipologiePubbliche.mockReturnValue(of([{ ospiti_max: 2 }, { ospiti_max: 4 }]));
     disponibilita.cerca.mockReturnValue(of(risultati));
     disponibilita.rilascia.mockReturnValue(of(null));
+    disponibilita.leggiOccupazione.mockReturnValue(of([]));
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
       providers: [
@@ -199,6 +205,12 @@ describe('PrenotaComponent', () => {
     expect(elemento.querySelector('.preferenza')?.textContent).toContain('prenota.cameraScelta');
     expect(elemento.querySelector('.preferenza a')?.getAttribute('href')).toBe('/prenota');
 
+    expect(disponibilita.leggiOccupazione).toHaveBeenCalledWith(
+      { camera_id: 3, sessione: undefined },
+      expect.any(String),
+      expect.any(String),
+    );
+
     await cerca();
     expect(elemento.querySelectorAll('.risultato')).toHaveLength(1);
 
@@ -216,6 +228,11 @@ describe('PrenotaComponent', () => {
     expect(elemento.querySelector('.preferenza')?.textContent).toContain('prenota.tipologiaScelta');
     expect(ospitiMax()).toBe(3);
     expect(camere.elencaTipologiePubbliche).not.toHaveBeenCalled();
+    expect(disponibilita.leggiOccupazione).toHaveBeenCalledWith(
+      { tipologia_id: 1, sessione: undefined },
+      expect.any(String),
+      expect.any(String),
+    );
     await cerca();
     await scegli();
 
@@ -228,5 +245,6 @@ describe('PrenotaComponent', () => {
     expect(camere.leggiTipologiaPubblica).not.toHaveBeenCalled();
     expect(ospitiMax()).toBe(4);
     expect(elemento.querySelector('.preferenza')).toBeNull();
+    expect(disponibilita.leggiOccupazione).not.toHaveBeenCalled();
   });
 });

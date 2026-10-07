@@ -11,6 +11,10 @@ import {
   DisponibilitaInterface,
   FiltriDisponibilita,
 } from '../../../shared/models/disponibilita/disponibilita-model';
+import {
+  FiltriOccupazione,
+  OccupazioneCameraInterface,
+} from '../../../shared/models/occupazione-camera/occupazione-camera-model';
 import { RispostaApiInterface } from '../../../shared/models/risposta-api/risposta-api-model';
 import { creaParametri } from '../api/parametri-http';
 
@@ -35,6 +39,18 @@ export class DisponibilitaService {
     return this.http
       .get<RispostaApiInterface<DisponibilitaInterface[]>>(this.apiUrl, { params })
       .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * LEGGI OCCUPAZIONE — GET /occupazione
+   * Notti occupate di una camera o di una tipologia in [dal, al), per il calendario.
+   */
+  leggiOccupazione(filtri: FiltriOccupazione, dal: string, al: string): Observable<string[]> {
+    return this.http
+      .get<RispostaApiInterface<OccupazioneCameraInterface>>(`${this.apiUrl}/occupazione`, {
+        params: creaParametri({ ...filtri, dal, al }),
+      })
+      .pipe(map((res) => res.dati.occupate));
   }
 
   /**
