@@ -4,8 +4,15 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { UtentiService } from '../../../core/services/utenti/utenti-service';
+import { PreferenzeEmailInterface } from '../../../shared/models/utente/utente-model';
 
-/** Email facoltative (riepiloghi della chat, promemoria): si salvano al clic. */
+/** Caselle del profilo, nell'ordine in cui compaiono. */
+const VOCI: { campo: keyof PreferenzeEmailInterface; etichetta: string; aiuto: string }[] = [
+  { campo: 'notifiche_email', etichetta: 'profilo.notifiche', aiuto: 'profilo.notificheAiuto' },
+  { campo: 'email_marketing', etichetta: 'profilo.offerte', aiuto: 'profilo.offerteAiuto' },
+];
+
+/** Email facoltative (riepiloghi e promemoria, offerte): si salvano al clic. */
 @Component({
   selector: 'app-preferenze-email',
   imports: [TranslocoPipe],
@@ -19,25 +26,25 @@ export class PreferenzeEmailComponent {
   private readonly errori = inject(ErroriService);
   private readonly transloco = inject(TranslocoService);
 
-  /** Valore salvato nel profilo. */
-  readonly attive = input.required<boolean>();
+  /** Valori salvati nel profilo. */
+  readonly preferenze = input.required<PreferenzeEmailInterface>();
 
-  /** Ultimo valore salvato: parte dal profilo e segue i salvataggi riusciti. */
-  protected readonly salvate = linkedSignal(() => this.attive());
+  protected readonly voci = VOCI;
+  /** Ultimi valori salvati: partono dal profilo e seguono i salvataggi riusciti. */
+  protected readonly salvate = linkedSignal(() => this.preferenze());
 
   /**
    * CAMBIA
-   * Salva subito; se il backend rifiuta la casella torna com'era.
+   * Salva subito la sola voce toccata; se il backend rifiuta la casella torna com'era.
    */
-  protected cambia(casella: HTMLInputElement): void {
-    const attive = casella.checked;
-    this.utenti.aggiornaPreferenzeEmail(attive).subscribe({
-      next: () => {
-        this.salvate.set(attive);
+  protected cambia(campo: keyof PreferenzeEmailInterface, casella: HTMLInputElement): void {
+    this.utenti.aggiornaPreferenzeEmail({ [campo]: casella.checked }).subscribe({
+      next: (salvate) => {
+        this.salvate.set(salvate);
         this.avvisi.mostra(this.transloco.translate('profilo.salvato'), 'successo');
       },
       error: (errore: unknown) => {
-        casella.checked = this.salvate();
+        casella.checked = this.salvate()[campo];
         this.avvisi.mostra(this.errori.messaggio(errore), 'errore');
       },
     });

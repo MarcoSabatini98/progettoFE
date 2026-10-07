@@ -119,6 +119,13 @@
     "linkNonValido": "El enlace no es válido. Solicita uno nuevo.",
     "nuovoLink": "Solicitar un nuevo enlace"
   },
+  "disiscrizione": {
+    "titolo": "Darse de baja",
+    "inCorso": "Un momento…",
+    "fatto": "Hecho: ya no recibirás nuestras ofertas por email. Los emails sobre reservas y pagos seguirán llegando.",
+    "linkNonValido": "El enlace no es válido. Usa el que aparece al final del último email recibido.",
+    "profilo": "Cambia de opinión desde tu perfil"
+  },
   "moduli": {
     "required": "Campo obligatorio.",
     "email": "Introduce un correo válido.",
@@ -308,7 +315,9 @@
     "salvato": "Cambios guardados.",
     "email": "Email",
     "notifiche": "Recibir emails opcionales",
-    "notificheAiuto": "Resúmenes de mensajes y recordatorios. Las confirmaciones de reserva y pago se envían siempre."
+    "notificheAiuto": "Resúmenes de mensajes y recordatorios. Las confirmaciones de reserva y pago se envían siempre.",
+    "offerte": "Recibir nuestras ofertas",
+    "offerteAiuto": "Descuentos y promociones, solo por email. Puedes darte de baja cuando quieras, también desde el enlace al final de cada email."
   },
   "sicurezza": {
     "titolo": "Contraseña y accesos",

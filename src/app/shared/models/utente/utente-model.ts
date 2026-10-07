@@ -17,6 +17,8 @@ export interface UtenteInterface {
   attivo: boolean;
   email_verificata_il: string | null;
   notifiche_email: boolean;
+  /** Offerte via email: stato attuale, la prova del consenso resta nel registro del backend. */
+  email_marketing: boolean;
   punti_fedelta: number;
   ospite_id: number | null;
   ultimo_accesso_il: string | null;
@@ -41,7 +43,8 @@ export type ProfiloAggiornaPayload = Partial<
 /** Membro dello staff in un elenco di scelta (es. addetti delle pulizie). */
 export type AddettoInterface = Pick<UtenteInterface, 'id' | 'nome' | 'cognome' | 'ruolo'>;
 
-export type PreferenzeEmailInterface = Pick<UtenteInterface, 'notifiche_email'>;
+/** Email facoltative che il cliente accende e spegne dal profilo. */
+export type PreferenzeEmailInterface = Pick<UtenteInterface, 'notifiche_email' | 'email_marketing'>;
 
 /** Nuovo account staff: l'admin nasce dal seed, i clienti si registrano da soli. */
 export type UtenteCreaPayload = Pick<UtenteInterface, 'email' | 'nome' | 'cognome'> &

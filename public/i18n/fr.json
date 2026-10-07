@@ -119,6 +119,13 @@
     "linkNonValido": "Ce lien n’est pas valide. Demandez-en un nouveau.",
     "nuovoLink": "Demander un nouveau lien"
   },
+  "disiscrizione": {
+    "titolo": "Désabonnement",
+    "inCorso": "Un instant…",
+    "fatto": "C’est fait : vous ne recevrez plus nos offres par e-mail. Les e-mails sur les réservations et les paiements continueront d’arriver.",
+    "linkNonValido": "Ce lien n’est pas valide. Utilisez celui en bas du dernier e-mail reçu.",
+    "profilo": "Changer d’avis depuis votre profil"
+  },
   "moduli": {
     "required": "Champ obligatoire.",
     "email": "Saisissez un e-mail valide.",
@@ -308,7 +315,9 @@
     "salvato": "Modifications enregistrées.",
     "email": "E-mail",
     "notifiche": "Recevoir les e-mails facultatifs",
-    "notificheAiuto": "Résumés des messages et rappels. Les confirmations de réservation et de paiement sont toujours envoyées."
+    "notificheAiuto": "Résumés des messages et rappels. Les confirmations de réservation et de paiement sont toujours envoyées.",
+    "offerte": "Recevoir nos offres",
+    "offerteAiuto": "Réductions et promotions, uniquement par e-mail. Vous pouvez vous désabonner à tout moment, aussi via le lien en bas de chaque e-mail."
   },
   "sicurezza": {
     "titolo": "Mot de passe et connexions",

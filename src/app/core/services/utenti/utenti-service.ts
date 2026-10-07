@@ -51,11 +51,13 @@ export class UtentiService {
   /**
    * PREFERENZE EMAIL — PATCH /profilo/preferenze-email
    */
-  aggiornaPreferenzeEmail(notificheEmail: boolean): Observable<PreferenzeEmailInterface> {
+  aggiornaPreferenzeEmail(
+    modifiche: Partial<PreferenzeEmailInterface>,
+  ): Observable<PreferenzeEmailInterface> {
     return this.http
       .patch<RispostaApiInterface<PreferenzeEmailInterface>>(
         `${this.apiUrl}/profilo/preferenze-email`,
-        { notifiche_email: notificheEmail },
+        modifiche,
       )
       .pipe(map((res) => res.dati));
   }

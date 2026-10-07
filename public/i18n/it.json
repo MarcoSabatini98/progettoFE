@@ -119,6 +119,13 @@
     "linkNonValido": "Il link non è valido. Chiedine uno nuovo.",
     "nuovoLink": "Chiedi un nuovo link"
   },
+  "disiscrizione": {
+    "titolo": "Disiscrizione",
+    "inCorso": "Un momento…",
+    "fatto": "Fatto: non riceverai più le nostre offerte via email. Le email su prenotazioni e pagamenti continuano ad arrivare.",
+    "linkNonValido": "Il link non è valido. Usa quello in fondo all’ultima email ricevuta.",
+    "profilo": "Cambia idea dal tuo profilo"
+  },
   "moduli": {
     "required": "Campo obbligatorio.",
     "email": "Inserisci un’email valida.",
@@ -308,7 +315,9 @@
     "salvato": "Modifiche salvate.",
     "email": "Email",
     "notifiche": "Ricevi email facoltative",
-    "notificheAiuto": "Riepiloghi dei messaggi e promemoria. Le conferme di prenotazione e pagamento arrivano sempre."
+    "notificheAiuto": "Riepiloghi dei messaggi e promemoria. Le conferme di prenotazione e pagamento arrivano sempre.",
+    "offerte": "Ricevi le nostre offerte",
+    "offerteAiuto": "Sconti e promozioni, solo via email. Ti disiscrivi quando vuoi, anche dal link in fondo a ogni email."
   },
   "sicurezza": {
     "titolo": "Password e accessi",

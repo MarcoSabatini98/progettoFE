@@ -16,6 +16,7 @@ describe('UtenteInterface', () => {
       attivo: true,
       email_verificata_il: '2026-09-01T10:00:00.000Z',
       notifiche_email: true,
+      email_marketing: false,
       punti_fedelta: 120,
       ospite_id: null,
       ultimo_accesso_il: null,

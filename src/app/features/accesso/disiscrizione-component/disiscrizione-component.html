@@ -1,0 +1,25 @@
+<section class="scheda">
+  <header class="intestazione">
+    <h1>{{ 'disiscrizione.titolo' | transloco }}</h1>
+  </header>
+
+  @switch (esito.status()) {
+    @case ('loading') {
+      <p class="introduzione">{{ 'disiscrizione.inCorso' | transloco }}</p>
+    }
+    @case ('resolved') {
+      <p class="esito esito-ok" role="status">{{ 'disiscrizione.fatto' | transloco }}</p>
+      <a class="collegamento" [routerLink]="profilo">{{ 'disiscrizione.profilo' | transloco }}</a>
+    }
+    @default {
+      <p class="non-valido" role="alert">
+        <app-icona nome="error" />
+        {{
+          esito.error()
+            ? errori.messaggio(esito.error())
+            : ('disiscrizione.linkNonValido' | transloco)
+        }}
+      </p>
+    }
+  }
+</section>

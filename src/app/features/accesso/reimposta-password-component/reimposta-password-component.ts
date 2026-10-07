@@ -17,7 +17,7 @@ import { NuovaPasswordComponent } from '../../../shared/nuova-password-component
   selector: 'app-reimposta-password',
   imports: [ReactiveFormsModule, RouterLink, TranslocoPipe, IconaComponent, NuovaPasswordComponent],
   templateUrl: './reimposta-password-component.html',
-  styleUrls: ['../accesso-pagine.css', './reimposta-password-component.css'],
+  styleUrl: '../accesso-pagine.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReimpostaPasswordComponent {

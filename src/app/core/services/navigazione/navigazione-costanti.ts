@@ -14,6 +14,8 @@ export const PERCORSI_PUBBLICI = {
   registrazione: '/registrazione',
   recuperoPassword: '/recupero-password',
   reimpostaPassword: '/reimposta-password',
+  /** Link nelle email delle offerte: /disiscrizione?token=... */
+  disiscrizione: '/disiscrizione',
   areaPersonale: '/area-personale',
   prenota: '/prenota',
   /**
