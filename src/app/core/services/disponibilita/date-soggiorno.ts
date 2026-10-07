@@ -24,6 +24,17 @@ export function giorniTra(dal: string, al: string): number {
   return Math.round((Date.parse(al) - Date.parse(dal)) / 86_400_000);
 }
 
+/** Primo giorno del mese di una data 'AAAA-MM-GG'. */
+export function primoDelMese(data: string): string {
+  return `${data.slice(0, 7)}-01`;
+}
+
+/** Primo giorno del mese spostato di quanti mesi (anche indietro), da un primo del mese. */
+export function spostaMese(mese: string, mesi: number): string {
+  const [anno, numero] = mese.split('-').map(Number);
+  return dataCalendario(new Date(anno, numero - 1 + mesi, 1));
+}
+
 /** Sul gruppo con arrivo e partenza: errore partenzaPrimaArrivo se la partenza non viene dopo. */
 export const partenzaDopoArrivo: ValidatorFn = (
   gruppo: AbstractControl,

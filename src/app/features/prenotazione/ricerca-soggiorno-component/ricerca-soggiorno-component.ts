@@ -17,28 +17,35 @@ import {
 } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 
-import {
-  dataCalendario,
-  giornoDopo,
-  partenzaDopoArrivo,
-} from '../../../core/services/disponibilita/date-soggiorno';
+import { partenzaDopoArrivo } from '../../../core/services/disponibilita/date-soggiorno';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { LIMITI_OSPITI } from '../../../core/services/prenotazioni/prenotazioni-costanti';
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { FiltriDisponibilita } from '../../../shared/models/disponibilita/disponibilita-model';
+import { FiltriOccupazione } from '../../../shared/models/occupazione-camera/occupazione-camera-model';
+import {
+  CalendarioSoggiornoComponent,
+  DateSoggiorno,
+} from '../calendario-soggiorno-component/calendario-soggiorno-component';
 
 /** Adulti proposti all'apertura: la ricerca più comune. */
 const ADULTI_PREDEFINITI = 2;
 
 /**
- * Date e ospiti del soggiorno. Per ogni bambino si chiede l'età, che decide
+ * Date (dal calendario) e ospiti del soggiorno. Per ogni bambino si chiede l'età, che decide
  * l'esenzione dalla tassa di soggiorno. Adulti e bambini insieme non superano
  * ospitiMax: ognuno dei due arriva al massimo a quello che l'altro lascia libero.
  */
 @Component({
   selector: 'app-ricerca-soggiorno',
-  imports: [ReactiveFormsModule, TranslocoPipe, CampoComponent, IconaComponent],
+  imports: [
+    ReactiveFormsModule,
+    TranslocoPipe,
+    CampoComponent,
+    IconaComponent,
+    CalendarioSoggiornoComponent,
+  ],
   templateUrl: './ricerca-soggiorno-component.html',
   styleUrl: './ricerca-soggiorno-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,6 +57,8 @@ export class RicercaSoggiornoComponent {
   readonly inCorso = input(false);
   /** Ospiti massimi della tipologia; finché non si conosce valgono i limiti generali. */
   readonly ospitiMax = input<number>();
+  /** Camera o tipologia scelta sul sito: il calendario ne mostra le notti occupate. */
+  readonly occupazione = input<FiltriOccupazione>();
   readonly cerca = output<FiltriDisponibilita>();
 
   protected readonly limiti = LIMITI_OSPITI;
@@ -58,7 +67,6 @@ export class RicercaSoggiornoComponent {
     { length: LIMITI_OSPITI.etaBambini + 1 },
     (_, eta) => eta,
   );
-  protected readonly oggi = dataCalendario(new Date());
   protected readonly modulo = this.fb.group(
     {
       arrivo: ['', Validators.required],
@@ -76,10 +84,12 @@ export class RicercaSoggiornoComponent {
     { validators: partenzaDopoArrivo },
   );
 
-  private readonly arrivo = toSignal(this.modulo.controls.arrivo.valueChanges, {
+  protected readonly arrivo = toSignal(this.modulo.controls.arrivo.valueChanges, {
     initialValue: '',
   });
-  protected readonly partenzaMinima = computed(() => giornoDopo(this.arrivo() || this.oggi));
+  protected readonly partenza = toSignal(this.modulo.controls.partenza.valueChanges, {
+    initialValue: '',
+  });
   private readonly adulti = toSignal(this.modulo.controls.adulti.valueChanges, {
     initialValue: ADULTI_PREDEFINITI,
   });
@@ -117,6 +127,13 @@ export class RicercaSoggiornoComponent {
     }
     const { eta_bambini, ...resto } = this.modulo.getRawValue();
     this.cerca.emit({ ...resto, eta_bambini: eta_bambini.map(Number) });
+  }
+
+  /** SCEGLI DATE — dal calendario: l'arrivo da solo azzera la partenza. */
+  scegliDate(date: DateSoggiorno): void {
+    this.modulo.patchValue(date);
+    this.modulo.controls.arrivo.markAsTouched();
+    if (date.partenza) this.modulo.controls.partenza.markAsTouched();
   }
 
   /** Massimo di un campo: il tetto meno gli ospiti dell'altro. */

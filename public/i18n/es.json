@@ -462,7 +462,17 @@
     "nessunaCamera": "No hay habitaciones libres en estas fechas. Prueba con otras.",
     "cameraScelta": "Estás reservando la habitación {{ camera }} ({{ tipologia }}).",
     "tipologiaScelta": "Buscas una habitación {{ tipologia }}.",
-    "tutteLeCamere": "Mostrar todas las habitaciones"
+    "tutteLeCamere": "Mostrar todas las habitaciones",
+    "calendario": {
+      "titolo": "Fechas de la estancia",
+      "sceltaArrivo": "Elige el día de llegada.",
+      "sceltaPartenza": "Ahora elige el día de salida.",
+      "notti": "Noches: {{ numero }}",
+      "libero": "Disponible",
+      "occupato": "No disponible",
+      "precedente": "Mes anterior",
+      "successivo": "Mes siguiente"
+    }
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Estancia",

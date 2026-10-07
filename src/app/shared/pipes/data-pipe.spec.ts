@@ -33,6 +33,10 @@ describe('DataPipe', () => {
     expect(pipe.transform('2026-10-03', 'settimana')).toBe('sab 3');
   });
 
+  it('nel formato breve mostra giorno e mese abbreviato', () => {
+    expect(pipe.transform('2026-10-09', 'breve')).toBe('9 ott');
+  });
+
   it('segue la lingua del sito', () => {
     lingua.set('en');
 

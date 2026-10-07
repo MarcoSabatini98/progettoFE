@@ -21,6 +21,7 @@ import { PERCORSI_PUBBLICI } from '../../../core/services/navigazione/navigazion
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { BloccoCameraInterface } from '../../../shared/models/blocco-camera/blocco-camera-model';
 import { FiltriDisponibilita } from '../../../shared/models/disponibilita/disponibilita-model';
+import { FiltriOccupazione } from '../../../shared/models/occupazione-camera/occupazione-camera-model';
 import { PreventivoInterface } from '../../../shared/models/preventivo/preventivo-model';
 import { SceltaSoggiornoInterface } from '../../../shared/models/scelta-soggiorno/scelta-soggiorno-model';
 import { TipologiaCameraInterface } from '../../../shared/models/tipologia-camera/tipologia-camera-model';
@@ -93,7 +94,16 @@ export class PrenotaComponent {
   });
 
   /** Blocco della sessione: resta anche tornando ai risultati, finché non se ne sceglie un altro. */
-  private blocco?: BloccoCameraInterface;
+  private readonly blocco = signal<BloccoCameraInterface | undefined>(undefined);
+  /** Notti occupate nel calendario: della camera scelta o della tipologia; la propria sessione non conta. */
+  protected readonly occupazione = computed<FiltriOccupazione | undefined>(() => {
+    const preferenza = this.preferenza();
+    if (!preferenza) return undefined;
+    const sessione = this.blocco()?.sessione;
+    return preferenza.camera
+      ? { camera_id: preferenza.camera.id, sessione }
+      : { tipologia_id: preferenza.tipologia.id, sessione };
+  });
 
   protected readonly filtri = signal<FiltriDisponibilita | undefined>(undefined);
   protected readonly scelta = signal<SceltaSoggiornoInterface | undefined>(undefined);
@@ -107,7 +117,7 @@ export class PrenotaComponent {
       return filtri && { filtri, lingua: this.lingua.attiva() };
     },
     stream: ({ params }) =>
-      this.disponibilita.cerca({ ...params.filtri, sessione: this.blocco?.sessione }),
+      this.disponibilita.cerca({ ...params.filtri, sessione: this.blocco()?.sessione }),
   });
   protected readonly voci = computed(() => {
     const voci = this.risultati.hasValue() ? this.risultati.value() : [];
@@ -142,7 +152,7 @@ export class PrenotaComponent {
     this.errore.set('');
     this.disponibilita
       .blocca({
-        sessione: this.blocco?.sessione,
+        sessione: this.blocco()?.sessione,
         ...(camera ? { camera_id: camera.id } : { tipologia_id: tipologia.id }),
         arrivo,
         partenza,
@@ -151,7 +161,7 @@ export class PrenotaComponent {
       .pipe(finalize(() => this.inBlocco.set(undefined)))
       .subscribe({
         next: (blocco) => {
-          this.blocco = blocco;
+          this.blocco.set(blocco);
           this.scelta.set({ tipologia, preventivo, filtri, blocco });
         },
         error: (errore: unknown) => this.errore.set(this.errori.messaggio(errore)),
@@ -169,8 +179,9 @@ export class PrenotaComponent {
 
   /** Scade comunque da solo: un errore qui non va mostrato. */
   private rilascia(): void {
-    if (this.blocco) {
-      this.disponibilita.rilascia(this.blocco.sessione).subscribe({ error: () => undefined });
+    const blocco = this.blocco();
+    if (blocco) {
+      this.disponibilita.rilascia(blocco.sessione).subscribe({ error: () => undefined });
     }
   }
 }

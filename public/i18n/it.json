@@ -462,7 +462,17 @@
     "nessunaCamera": "Nessuna camera libera per queste date. Prova a cambiarle.",
     "cameraScelta": "Stai prenotando la camera {{ camera }} ({{ tipologia }}).",
     "tipologiaScelta": "Stai cercando una camera {{ tipologia }}.",
-    "tutteLeCamere": "Mostra tutte le camere"
+    "tutteLeCamere": "Mostra tutte le camere",
+    "calendario": {
+      "titolo": "Date del soggiorno",
+      "sceltaArrivo": "Scegli il giorno di arrivo.",
+      "sceltaPartenza": "Ora scegli il giorno di partenza.",
+      "notti": "Notti: {{ numero }}",
+      "libero": "Disponibile",
+      "occupato": "Non disponibile",
+      "precedente": "Mese precedente",
+      "successivo": "Mese successivo"
+    }
   },
   "riepilogoPrezzo": {
     "importo_soggiorno": "Soggiorno",

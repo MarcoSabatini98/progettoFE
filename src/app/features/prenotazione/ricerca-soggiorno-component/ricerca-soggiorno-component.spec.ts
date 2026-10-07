@@ -1,18 +1,30 @@
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { DisponibilitaService } from '../../../core/services/disponibilita/disponibilita-service';
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { FiltriDisponibilita } from '../../../shared/models/disponibilita/disponibilita-model';
+import { FiltriOccupazione } from '../../../shared/models/occupazione-camera/occupazione-camera-model';
+import { CalendarioSoggiornoComponent } from '../calendario-soggiorno-component/calendario-soggiorno-component';
 import { RicercaSoggiornoComponent } from './ricerca-soggiorno-component';
 
 describe('RicercaSoggiornoComponent', () => {
+  const disponibilita = { leggiOccupazione: vi.fn(() => of<string[]>([])) };
+
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [traduzioniTest()] });
+    disponibilita.leggiOccupazione.mockClear();
+    TestBed.configureTestingModule({
+      imports: [traduzioniTest()],
+      providers: [{ provide: DisponibilitaService, useValue: disponibilita }],
+    });
   });
 
-  async function crea(ospitiMax?: number) {
+  async function crea(ospitiMax?: number, occupazione?: FiltriOccupazione) {
     const fixture = TestBed.createComponent(RicercaSoggiornoComponent);
     fixture.componentRef.setInput('ospitiMax', ospitiMax);
+    fixture.componentRef.setInput('occupazione', occupazione);
     const ricerche: FiltriDisponibilita[] = [];
     fixture.componentInstance.cerca.subscribe((filtri) => ricerche.push(filtri));
     await fixture.whenStable();
@@ -23,18 +35,22 @@ describe('RicercaSoggiornoComponent', () => {
       campo!.dispatchEvent(new Event('input'));
       await fixture.whenStable();
     };
+    const calendario = () => fixture.debugElement.query(By.directive(CalendarioSoggiornoComponent));
+    const date = async (arrivo: string, partenza = '') => {
+      calendario().componentInstance.scelta.emit({ arrivo, partenza });
+      await fixture.whenStable();
+    };
     const invia = async () => {
       elemento.querySelector('form')?.dispatchEvent(new Event('submit'));
       await fixture.whenStable();
     };
-    return { elemento, ricerche, scrivi, invia };
+    return { elemento, ricerche, scrivi, date, calendario, invia };
   }
 
   it('cerca con date e adulti, due adulti se non si cambia', async () => {
-    const { ricerche, scrivi, invia } = await crea();
+    const { ricerche, date, invia } = await crea();
 
-    await scrivi('arrivo', '2030-07-01');
-    await scrivi('partenza', '2030-07-04');
+    await date('2030-07-01', '2030-07-04');
     await invia();
 
     expect(ricerche).toEqual([
@@ -43,9 +59,8 @@ describe('RicercaSoggiornoComponent', () => {
   });
 
   it('chiede l’età di ogni bambino prima di cercare', async () => {
-    const { elemento, ricerche, scrivi, invia } = await crea();
-    await scrivi('arrivo', '2030-07-01');
-    await scrivi('partenza', '2030-07-04');
+    const { elemento, ricerche, scrivi, date, invia } = await crea();
+    await date('2030-07-01', '2030-07-04');
 
     await scrivi('bambini', '2');
     await invia();
@@ -64,17 +79,32 @@ describe('RicercaSoggiornoComponent', () => {
   });
 
   it('non cerca se la partenza non viene dopo l’arrivo', async () => {
-    const { elemento, ricerche, scrivi, invia } = await crea();
+    const { elemento, ricerche, date, invia } = await crea();
 
-    await scrivi('arrivo', '2030-07-04');
-    await scrivi('partenza', '2030-07-04');
+    await date('2030-07-04', '2030-07-04');
     await invia();
 
     expect(ricerche).toHaveLength(0);
     expect(elemento.textContent).toContain('moduli.partenzaPrimaArrivo');
-    expect(elemento.querySelector('input[formControlName="partenza"]')?.getAttribute('min')).toBe(
-      '2030-07-05',
-    );
+  });
+
+  it('con il solo arrivo chiede la partenza e il calendario la riceve', async () => {
+    const { elemento, ricerche, date, calendario, invia } = await crea();
+
+    await date('2030-07-04');
+    await invia();
+
+    expect(ricerche).toHaveLength(0);
+    expect(elemento.querySelector('.campo-errore')?.textContent).toContain('moduli.required');
+    expect(calendario().componentInstance.arrivo()).toBe('2030-07-04');
+    expect(calendario().componentInstance.partenza()).toBe('');
+  });
+
+  it('passa al calendario la camera di cui mostrare le notti occupate', async () => {
+    const { calendario } = await crea(undefined, { camera_id: 4 });
+
+    expect(calendario().componentInstance.filtri()).toEqual({ camera_id: 4 });
+    expect(disponibilita.leggiOccupazione).toHaveBeenCalled();
   });
 
   it('una tipologia per una persona riduce i due adulti proposti', async () => {
@@ -89,9 +119,8 @@ describe('RicercaSoggiornoComponent', () => {
   });
 
   it('adulti e bambini insieme non superano il tetto', async () => {
-    const { elemento, ricerche, scrivi, invia } = await crea(3);
-    await scrivi('arrivo', '2030-07-01');
-    await scrivi('partenza', '2030-07-04');
+    const { elemento, ricerche, scrivi, date, invia } = await crea(3);
+    await date('2030-07-01', '2030-07-04');
 
     await scrivi('bambini', '2');
     for (const campo of elemento.querySelectorAll<HTMLSelectElement>('.eta select')) {
