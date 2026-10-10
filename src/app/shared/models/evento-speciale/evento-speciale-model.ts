@@ -18,6 +18,12 @@ export interface EventoSpecialeInterface {
   aggiornato_il: string;
 }
 
+/** Evento come lo vede il sito: titolo tradotto, senza note né impatto. */
+export type EventoPubblicoInterface = Pick<
+  EventoSpecialeInterface,
+  'id' | 'titolo' | 'tipo' | 'data_inizio' | 'data_fine'
+>;
+
 /** dal/al: 'YYYY-MM-DD', eventi che toccano il periodo. */
 export interface FiltriEventi {
   tipo?: TipoEventoSpeciale;

@@ -35,6 +35,7 @@ export const CAMPI_TRADUCIBILI = {
   faq: ['domanda', 'risposta'],
   pagina: ['descrizione', 'testo'],
   sezione: ['titolo', 'testo'],
+  evento: ['titolo'],
 } as const;
 
 /**

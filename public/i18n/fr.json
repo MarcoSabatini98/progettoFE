@@ -381,7 +381,18 @@
   "attivita": {
     "occhiello": "Alentours",
     "titolo": "Les activités",
-    "introduzione": "Que faire dans les environs, fêtes et événements locaux, informations utiles pour venir et activités sur place."
+    "introduzione": "Que faire dans les environs, fêtes et événements locaux, informations utiles pour venir et activités sur place.",
+    "eventi": {
+      "occhiello": "Aux alentours",
+      "titolo": "Que se passe-t-il aux alentours",
+      "introduzione": "Fêtes, salons et événements des prochains mois : une raison de plus pour choisir vos dates.",
+      "tipi": {
+        "festivita": "Fête",
+        "evento_locale": "Événement local",
+        "fiera": "Salon",
+        "altro": "À ne pas manquer"
+      }
+    }
   },
   "offerte": {
     "occhiello": "Pour vous",

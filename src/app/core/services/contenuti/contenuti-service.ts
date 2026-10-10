@@ -14,6 +14,7 @@ import {
   EventoSpecialeAggiornaPayload,
   EventoSpecialeCreaPayload,
   EventoSpecialeInterface,
+  EventoPubblicoInterface,
   FiltriEventi,
 } from '../../../shared/models/evento-speciale/evento-speciale-model';
 import {
@@ -75,6 +76,18 @@ export class ContenutiService {
   elencaFaqPubbliche(lingua?: Lingua): Observable<FaqInterface[]> {
     return this.http
       .get<RispostaApiInterface<FaqInterface[]>>(`${this.apiUrl}/faq/pubbliche`, {
+        params: creaParametri({ lingua }),
+      })
+      .pipe(map((res) => res.dati));
+  }
+
+  /**
+   * EVENTI PUBBLICI — GET /eventi/pubblici
+   * In corso o nei prossimi giorni, col titolo nella lingua richiesta.
+   */
+  elencaEventiPubblici(lingua?: Lingua): Observable<EventoPubblicoInterface[]> {
+    return this.http
+      .get<RispostaApiInterface<EventoPubblicoInterface[]>>(`${this.apiUrl}/eventi/pubblici`, {
         params: creaParametri({ lingua }),
       })
       .pipe(map((res) => res.dati));

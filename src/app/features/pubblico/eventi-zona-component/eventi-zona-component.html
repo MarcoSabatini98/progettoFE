@@ -1,0 +1,28 @@
+@if (eventi().length) {
+  <section class="sezione" aria-labelledby="eventi-zona-titolo">
+    <header class="pagina-intestazione">
+      <p class="occhiello">{{ 'attivita.eventi.occhiello' | transloco }}</p>
+      <h2 id="eventi-zona-titolo" class="sezione-titolo">
+        {{ 'attivita.eventi.titolo' | transloco }}
+      </h2>
+      <p class="tenue">{{ 'attivita.eventi.introduzione' | transloco }}</p>
+    </header>
+    <ul class="griglia-schede">
+      @for (evento of eventi(); track evento.id) {
+        <li class="scheda evento">
+          <p class="quando">
+            <time [attr.datetime]="evento.data_inizio">{{
+              evento.data_inizio | data: 'breve'
+            }}</time>
+            @if (evento.data_fine !== evento.data_inizio) {
+              –
+              <time [attr.datetime]="evento.data_fine">{{ evento.data_fine | data: 'breve' }}</time>
+            }
+          </p>
+          <h3 class="titolo-scheda">{{ evento.titolo }}</h3>
+          <p class="tenue piccolo">{{ 'attivita.eventi.tipi.' + evento.tipo | transloco }}</p>
+        </li>
+      }
+    </ul>
+  </section>
+}

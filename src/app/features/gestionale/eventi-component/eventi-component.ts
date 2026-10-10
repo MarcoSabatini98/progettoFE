@@ -19,6 +19,7 @@ import {
 import { DataPipe } from '../../../shared/pipes/data-pipe';
 import { AzioniListinoComponent } from '../azioni-listino-component/azioni-listino-component';
 import { ListinoComponent } from '../listino-component/listino-component';
+import { TraduzioniComponent } from '../traduzioni-component/traduzioni-component';
 
 /** Eventi in zona (fiere, feste): alzano la domanda e pesano sul prezzo suggerito. */
 @Component({
@@ -30,6 +31,7 @@ import { ListinoComponent } from '../listino-component/listino-component';
     ListinoComponent,
     AzioniListinoComponent,
     DataPipe,
+    TraduzioniComponent,
   ],
   templateUrl: './eventi-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

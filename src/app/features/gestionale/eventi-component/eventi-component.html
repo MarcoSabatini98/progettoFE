@@ -67,4 +67,7 @@
     </app-campo>
     <app-azioni-listino [listino]="listino" />
   </form>
+  @if (listino.scelta(); as evento) {
+    <app-traduzioni entita="evento" [entitaId]="evento.id" />
+  }
 </app-listino>

@@ -381,7 +381,18 @@
   "attivita": {
     "occhiello": "Dintorni",
     "titolo": "Le attività",
-    "introduzione": "Cosa fare nei dintorni, feste ed eventi della zona, informazioni utili per arrivare e le attività in struttura."
+    "introduzione": "Cosa fare nei dintorni, feste ed eventi della zona, informazioni utili per arrivare e le attività in struttura.",
+    "eventi": {
+      "occhiello": "In zona",
+      "titolo": "Cosa succede in zona",
+      "introduzione": "Feste, fiere ed eventi dei prossimi mesi: un motivo in più per scegliere le date.",
+      "tipi": {
+        "festivita": "Festa",
+        "evento_locale": "Evento locale",
+        "fiera": "Fiera",
+        "altro": "Da non perdere"
+      }
+    }
   },
   "offerte": {
     "occhiello": "Per te",
