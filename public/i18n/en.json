@@ -1339,7 +1339,11 @@
       "salva": "Save",
       "crea": "Create",
       "annulla": "Cancel",
-      "salvata": "Changes saved."
+      "salvata": "Changes saved.",
+      "cerca": "Search",
+      "altre": "Show the rest: {{ totale }}",
+      "archiviate": "Also show inactive and expired: {{ totale }}",
+      "nessuna": "No items found."
     },
     "tariffe": {
       "occhiello": "Price list",

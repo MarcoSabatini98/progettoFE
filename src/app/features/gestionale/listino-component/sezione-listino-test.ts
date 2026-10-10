@@ -6,7 +6,7 @@ import { TariffeService } from '../../../core/services/tariffe/tariffe-service';
 
 /**
  * Solo per i test: apre una sezione del listino col TariffeService finto (altri servizi in providers)
- * e dà le mosse dell'utente (scegliere una voce, scrivere in un campo, inviare).
+ * e dà le mosse dell'utente (scegliere una voce, scrivere in un campo, inviare, vedere le archiviate).
  */
 export async function apriSezione<C>(
   componente: Type<C>,
@@ -35,6 +35,12 @@ export async function apriSezione<C>(
     async scrivi(nome: string, valore: string, evento = 'input') {
       campo(nome).value = valore;
       campo(nome).dispatchEvent(new Event(evento));
+      await fixture.whenStable();
+    },
+    async mostraArchiviate() {
+      const casella = elemento.querySelector<HTMLInputElement>('.archivio input')!;
+      casella.checked = true;
+      casella.dispatchEvent(new Event('change'));
       await fixture.whenStable();
     },
     async invia() {

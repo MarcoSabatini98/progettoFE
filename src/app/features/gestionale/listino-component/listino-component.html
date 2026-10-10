@@ -9,6 +9,24 @@
     </button>
   </div>
   <p class="tenue">{{ chiave() + '.aiuto' | transloco }}</p>
+  @if (conRicerca()) {
+    <form role="search" (submit)="$event.preventDefault()">
+      <app-campo [etichetta]="'gestionale.listino.cerca' | transloco">
+        <input #cerca type="search" [value]="cercato()" (input)="cercato.set(cerca.value)" />
+      </app-campo>
+    </form>
+  }
+  @if (totaleArchiviate()) {
+    <label class="archivio">
+      <input
+        #archivio
+        type="checkbox"
+        [checked]="ancheArchiviate()"
+        (change)="ancheArchiviate.set(archivio.checked)"
+      />
+      {{ 'gestionale.listino.archiviate' | transloco: { totale: totaleArchiviate() } }}
+    </label>
+  }
   @if (voci.elenco.hasValue()) {
     @for (gruppo of gruppi(); track gruppo.titolo) {
       @if (gruppo.titolo) {
@@ -32,7 +50,17 @@
         }
       </ul>
     } @empty {
-      <p class="stato-vuoto">{{ chiave() + '.vuoto' | transloco }}</p>
+      <p class="stato-vuoto">
+        {{
+          (voci.elenco.value().length ? 'gestionale.listino.nessuna' : chiave() + '.vuoto')
+            | transloco
+        }}
+      </p>
+    }
+    @if (altre()) {
+      <button class="pulsante pulsante-fantasma altre" type="button" (click)="tutte.set(true)">
+        {{ 'gestionale.listino.altre' | transloco: { totale: altre() } }}
+      </button>
     }
   } @else if (voci.elenco.error(); as errore) {
     <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

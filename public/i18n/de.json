@@ -1339,7 +1339,11 @@
       "salva": "Speichern",
       "crea": "Anlegen",
       "annulla": "Abbrechen",
-      "salvata": "Änderungen gespeichert."
+      "salvata": "Änderungen gespeichert.",
+      "cerca": "Suchen",
+      "altre": "Weitere anzeigen: {{ totale }}",
+      "archiviate": "Auch deaktivierte und abgelaufene anzeigen: {{ totale }}",
+      "nessuna": "Keine Einträge gefunden."
     },
     "tariffe": {
       "occhiello": "Preisliste",

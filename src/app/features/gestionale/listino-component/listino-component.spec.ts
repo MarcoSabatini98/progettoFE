@@ -6,11 +6,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { traduzioniTest } from '../../../core/services/lingua/configura-transloco-test';
 import { Listino } from '../../../core/services/api/listino';
+import { VOCI_VISIBILI } from '../../../core/services/api/voci-listino';
 import { ListinoComponent } from './listino-component';
 
 interface Voce {
   id: number;
   nome: string;
+  attivo?: boolean;
 }
 
 const richieste = {
@@ -124,5 +126,69 @@ describe('ListinoComponent', () => {
     const elenchi = [...elemento.querySelectorAll('.elenco.griglia')];
     expect(titoli).toEqual(['dotazioni', 'extra']);
     expect(elenchi.map((ul) => ul.querySelectorAll('.voce').length)).toEqual([2, 1]);
+  });
+
+  describe('liste lunghe', () => {
+    const molte = Array.from({ length: 10 }, (_, i) => ({ id: i + 1, nome: `Voce ${i + 1}` }));
+    const contaVoci = (elemento: HTMLElement) => elemento.querySelectorAll('.voce').length;
+
+    it('mostra le prime voci, la ricerca e il pulsante per le altre', async () => {
+      richieste.elenca.mockReturnValue(of(molte));
+      const { fixture, elemento } = await crea();
+
+      expect(contaVoci(elemento)).toBe(VOCI_VISIBILI);
+      expect(elemento.querySelector('input[type=search]')).not.toBeNull();
+      const altre = elemento.querySelector<HTMLButtonElement>('.altre')!;
+      expect(altre.textContent).toContain('gestionale.listino.altre');
+
+      altre.click();
+      await fixture.whenStable();
+
+      expect(contaVoci(elemento)).toBe(10);
+      expect(elemento.querySelector('.altre')).toBeNull();
+    });
+
+    it('la ricerca filtra le voci; senza risultati lo dice', async () => {
+      richieste.elenca.mockReturnValue(of(molte));
+      const { fixture, elemento } = await crea();
+      const cerca = elemento.querySelector<HTMLInputElement>('input[type=search]')!;
+
+      cerca.value = 'voce 10';
+      cerca.dispatchEvent(new Event('input'));
+      await fixture.whenStable();
+      expect(contaVoci(elemento)).toBe(1);
+
+      cerca.value = 'mare';
+      cerca.dispatchEvent(new Event('input'));
+      await fixture.whenStable();
+      expect(elemento.querySelector('.stato-vuoto')?.textContent).toContain(
+        'gestionale.listino.nessuna',
+      );
+    });
+
+    it('poche voci: niente ricerca né pulsante', async () => {
+      const { elemento } = await crea();
+
+      expect(elemento.querySelector('input[type=search]')).toBeNull();
+      expect(elemento.querySelector('.altre')).toBeNull();
+    });
+
+    it('le disattivate restano nascoste finché non si chiede di vederle', async () => {
+      richieste.elenca.mockReturnValue(
+        of([
+          { id: 1, nome: 'Estate', attivo: true },
+          { id: 2, nome: 'Vecchia', attivo: false },
+        ]),
+      );
+      const { fixture, elemento } = await crea();
+      expect(contaVoci(elemento)).toBe(1);
+
+      const casella = elemento.querySelector<HTMLInputElement>('.archivio input')!;
+      casella.checked = true;
+      casella.dispatchEvent(new Event('change'));
+      await fixture.whenStable();
+
+      expect(contaVoci(elemento)).toBe(2);
+    });
   });
 });

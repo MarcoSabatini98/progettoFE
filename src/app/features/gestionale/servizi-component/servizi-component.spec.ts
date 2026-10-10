@@ -64,7 +64,8 @@ describe('ServiziComponent', () => {
     ]);
 
   it('divide extra e dotazioni in due griglie, col prezzo solo sugli extra', async () => {
-    const { elemento } = await apri();
+    const { elemento, mostraArchiviate } = await apri();
+    await mostraArchiviate();
     const voci = elemento.querySelectorAll('.griglia .voce');
     const titoli = [...elemento.querySelectorAll('.gruppo')].map((h3) => h3.textContent?.trim());
 
@@ -93,7 +94,8 @@ describe('ServiziComponent', () => {
   });
 
   it('il servizio scelto mostra foto e traduzioni', async () => {
-    const { elemento, scegli } = await apri();
+    const { elemento, scegli, mostraArchiviate } = await apri();
+    await mostraArchiviate();
 
     await scegli(0);
 
