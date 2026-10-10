@@ -11,7 +11,7 @@
 }
 
 <label class="spunta">
-  <input type="checkbox" [formControl]="altroIntestatario" />
+  <input name="altroIntestatario" type="checkbox" [formControl]="altroIntestatario" />
   {{ 'gestionale.fatture.altroIntestatario' | transloco }}
 </label>
 @if (altroIntestatario.value) {

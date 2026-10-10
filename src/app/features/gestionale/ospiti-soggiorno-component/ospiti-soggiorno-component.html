@@ -33,7 +33,7 @@
           </select>
         </app-campo>
         <label class="spunta">
-          <input type="checkbox" formControlName="esente_tassa" />
+          <input name="esente_tassa" type="checkbox" formControlName="esente_tassa" />
           {{ 'gestionale.ospitiSoggiorno.esente' | transloco }}
         </label>
         @if (riga.controls.esente_tassa.value) {

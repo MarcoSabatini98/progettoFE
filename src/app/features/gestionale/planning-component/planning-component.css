@@ -1,10 +1,18 @@
 /*
  * Una riga per camera, una colonna per giorno: le barre si posano con grid-column.
- * Sul telefono il planning scorre di lato, con le camere sempre visibili a sinistra.
+ * I giorni si dividono la larghezza: 7, 14 o 30 colonne riempiono il riquadro.
+ * Solo sotto la larghezza minima (telefono) il planning scorre di lato, con le camere
+ * sempre visibili a sinistra.
  */
+
+/* Trenta colonne chiedono spazio: il planning usa più larghezza delle altre pagine. */
+:host.pagina {
+  width: min(100% - 2 * var(--bb-margine), 120rem);
+}
+
 .scorrimento {
   --camera: 5.5rem;
-  --giorno: 2.75rem;
+  --giorno: 2.25rem;
 
   overflow-x: auto;
   border: 1px solid var(--bb-linea);
@@ -13,20 +21,20 @@
 }
 
 .planning {
-  min-inline-size: max-content;
+  min-inline-size: calc(var(--camera) + var(--giorni) * var(--giorno));
 }
 
 .riga {
   display: grid;
-  grid-template-columns: var(--camera) repeat(var(--giorni), var(--giorno));
+  grid-template-columns: var(--camera) repeat(var(--giorni), minmax(var(--giorno), 1fr));
   align-items: center;
   min-block-size: 3rem;
   border-block-end: 1px solid var(--bb-linea);
-  /* Righe dei giorni sullo sfondo, così si conta senza intestazione. */
+  /* Righe dei giorni sullo sfondo, così si conta senza intestazione: un giorno è 100% / giorni. */
   background: repeating-linear-gradient(
       to right,
-      transparent 0 calc(var(--giorno) - 1px),
-      var(--bb-linea) calc(var(--giorno) - 1px) var(--giorno)
+      transparent 0 calc(100% / var(--giorni) - 1px),
+      var(--bb-linea) calc(100% / var(--giorni) - 1px) calc(100% / var(--giorni))
     )
     var(--camera) 0 / calc(100% - var(--camera)) 100% no-repeat;
 }
@@ -61,8 +69,10 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Colonne strette: il giorno della settimana va sopra il numero. */
 .giorno {
   text-align: center;
+  line-height: 1.2;
 }
 
 .giorno.oggi {

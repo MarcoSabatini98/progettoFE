@@ -12,7 +12,13 @@
     </span>
     <span class="piccolo tenue">
       @if (calendario.ultima_sincronizzazione_il) {
-        {{ calendario.ultima_sincronizzazione_il | data: 'ora' }} · {{ calendario.ultimo_esito }}
+        {{ calendario.ultima_sincronizzazione_il | data: 'ora' }} ·
+        {{
+          (calendario.errori_consecutivi
+            ? 'gestionale.calendari.esterni.esitoErrore'
+            : 'gestionale.calendari.esterni.esitoOk'
+          ) | transloco
+        }}
       } @else {
         {{ 'gestionale.calendari.esterni.maiSincronizzato' | transloco }}
       }
@@ -79,7 +85,7 @@
       <input type="url" inputmode="url" formControlName="url" [maxLength]="limiti.url" required />
     </app-campo>
     <label class="spunta">
-      <input type="checkbox" formControlName="attivo" />
+      <input name="attivo" type="checkbox" formControlName="attivo" />
       {{ 'gestionale.calendari.campi.attivo' | transloco }}
     </label>
     <p class="piccolo tenue">{{ 'gestionale.calendari.esterni.attivoAiuto' | transloco }}</p>
@@ -92,6 +98,12 @@
       <p>{{ 'gestionale.calendari.esterni.sincronizzaAiuto' | transloco }}</p>
       @if (erroreSincronizzazione(); as testo) {
         <p class="esito esito-errore" role="alert">{{ testo }}</p>
+      }
+      @if (scelto.errori_consecutivi && scelto.ultimo_esito) {
+        <!-- Il motivo tecnico dell'ultimo errore, da girare a chi gestisce il portale. -->
+        <p class="piccolo tenue">
+          {{ 'gestionale.calendari.esterni.dettaglio' | transloco: { testo: scelto.ultimo_esito } }}
+        </p>
       }
       <div class="azioni">
         <button

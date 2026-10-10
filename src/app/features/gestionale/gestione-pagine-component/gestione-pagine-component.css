@@ -1,3 +1,9 @@
+/* Linguette, testi della pagina, traduzioni e sezioni: blocchi staccati. */
+:host {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
 .scegli-immagine {
   justify-self: start;
   max-inline-size: 100%;

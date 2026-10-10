@@ -8,7 +8,13 @@
       <legend>{{ 'recensione.voto' | transloco }}</legend>
       @for (voto of voti; track voto) {
         <label>
-          <input class="visivamente-nascosto" type="radio" formControlName="voto" [value]="voto" />
+          <input
+            name="voto"
+            class="visivamente-nascosto"
+            type="radio"
+            formControlName="voto"
+            [value]="voto"
+          />
           <app-icona nome="star-fill" />
           <span class="visivamente-nascosto">
             {{ 'recensione.stelle' | transloco: { voto: voto, massimo: voti.length } }}
@@ -51,7 +57,7 @@
     </app-campo>
 
     <label class="anonima">
-      <input type="checkbox" formControlName="anonima" />
+      <input name="anonima" type="checkbox" formControlName="anonima" />
       {{ 'recensione.anonima' | transloco }}
     </label>
 

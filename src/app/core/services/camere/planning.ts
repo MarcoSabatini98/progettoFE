@@ -12,6 +12,8 @@ import { STATI_ATTIVI } from '../prenotazioni/prenotazioni-costanti';
 /** Giorni mostrati dal planning (il backend ne accetta al massimo 92). */
 export const DURATE_PLANNING = [7, 14, 30] as const;
 export type DurataPlanning = (typeof DURATE_PLANNING)[number];
+/** All'apertura il planning mostra un mese. */
+export const DURATA_PLANNING_PREDEFINITA: DurataPlanning = 30;
 
 /** Soggiorni che il planning mostra (come il backend): occupano la camera o sono finiti. */
 export const STATI_PLANNING = [...STATI_ATTIVI, 'conclusa'] as const;

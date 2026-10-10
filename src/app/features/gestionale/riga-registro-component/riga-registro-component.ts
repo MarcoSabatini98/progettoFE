@@ -5,6 +5,7 @@ import {
   computed,
   input,
 } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 
@@ -20,10 +21,23 @@ export interface CampoRegistro {
   campo: string;
   prima?: string;
   dopo?: string;
+  /** Prefisso i18n dei valori, per i campi a elenco chiuso (stati, tipi, metodi). */
+  chiave?: string;
 }
 
 /** Valore vuoto nel registro. */
 const VUOTO = '—';
+
+/** Campi a elenco chiuso: il valore salvato (es. in_soggiorno) si mostra tradotto. */
+const VALORI_TRADOTTI: Record<TabellaRegistro, Record<string, string>> = {
+  prenotazioni: { stato: 'prenotazione.stati' },
+  pagamenti: {
+    stato: 'gestionale.statiPagamento',
+    tipo: 'gestionale.tipiPagamento',
+    metodo: 'gestionale.metodi',
+  },
+  fatture: { stato_sdi: 'gestionale.fatture.stati' },
+};
 
 /** I pagamenti non hanno una scheda: si apre la prenotazione a cui appartengono. */
 const SCHEDE: Record<TabellaRegistro, string> = {
@@ -38,7 +52,7 @@ const SCHEDE: Record<TabellaRegistro, string> = {
  */
 @Component({
   selector: 'app-riga-registro',
-  imports: [RouterLink, TranslocoPipe, DataPipe],
+  imports: [NgTemplateOutlet, RouterLink, TranslocoPipe, DataPipe],
   templateUrl: './riga-registro-component.html',
   styleUrl: './riga-registro-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,7 +62,12 @@ export class RigaRegistroComponent {
   readonly voce = input.required<RegistroAttivitaInterface>();
   readonly collegato = input(true, { transform: booleanAttribute });
 
-  protected readonly campi = computed(() => campiToccati(this.voce()));
+  protected readonly vuoto = VUOTO;
+  protected readonly campi = computed(() => {
+    const voce = this.voce();
+    const chiavi = VALORI_TRADOTTI[voce.tabella];
+    return campiToccati(voce).map((riga) => ({ ...riga, chiave: chiavi[riga.campo] }));
+  });
   protected readonly scheda = computed(() => {
     const voce = this.voce();
     const id = voce.tabella === 'pagamenti' ? prenotazioneDelPagamento(voce) : voce.record_id;

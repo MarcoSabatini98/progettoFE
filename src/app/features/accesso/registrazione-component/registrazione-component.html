@@ -61,7 +61,7 @@
       @for (consenso of consensi; track consenso) {
         <div class="consenso">
           <label>
-            <input type="checkbox" [formControlName]="consenso" required />
+            <input [name]="consenso" type="checkbox" [formControlName]="consenso" required />
             {{ 'registrazione.' + consenso | transloco }}
           </label>
           <a [routerLink]="[percorsi.documenti, consenso]" target="_blank">
@@ -75,7 +75,7 @@
 
       <div class="consenso">
         <label>
-          <input type="checkbox" formControlName="marketing" />
+          <input name="marketing" type="checkbox" formControlName="marketing" />
           {{ 'registrazione.marketing' | transloco }}
         </label>
       </div>

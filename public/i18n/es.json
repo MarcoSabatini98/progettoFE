@@ -246,6 +246,7 @@
     "PULIZIA_IN_CORSO": "Termina primero la habitación que ya tienes.",
     "NESSUNA_PULIZIA_LIBERA": "No hay habitaciones libres para limpiar.",
     "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo.",
+    "SINCRONIZZAZIONE_FALLITA": "No se puede leer el calendario del portal: comprueba que el enlace iCal sea correcto y que el portal lo siga publicando.",
     "GIA_PUBBLICATO": "El documento ya está publicado: crea una nueva versión.",
     "LINGUA_NON_ATTIVA": "Este idioma no está activo en el sitio.",
     "CAMPO_NON_TRADUCIBILE": "Este campo no se traduce.",
@@ -1496,11 +1497,14 @@
         "eliminaConferma": "Sí, eliminar",
         "disattivato": "desactivado",
         "maiSincronizzato": "Nunca sincronizado",
+        "esitoOk": "Leído",
+        "esitoErrore": "No leído",
         "errori": "{{ errori }} errores seguidos",
         "urlAiuto": "Lo encuentras en los ajustes del calendario del portal (exportación iCal).",
         "attivoAiuto": "Desactivado, sus fechas bloqueadas quedan libres hasta que lo vuelvas a activar.",
         "sincronizza": "Sincronizar ahora",
         "sincronizzaAiuto": "Lee el calendario del portal enseguida, sin esperar a la próxima ronda.",
+        "dettaglio": "Motivo: {{ testo }}",
         "sincronizzato": "Sincronizado: {{ eventi }} reservas leídas"
       },
       "esporta": {
@@ -1562,7 +1566,7 @@
       },
       "eventi": {
         "titolo": "Eventos en la zona",
-        "aiuto": "Ferias, fiestas y eventos que aumentan la demanda: influyen en el precio sugerido.",
+        "aiuto": "Ferias, fiestas y eventos que atraen gente a la zona. Alimentan el Informe: en sus fechas el precio sugerido sube, tanto más cuanto mayor es el impacto. La tarifa nunca cambia sola.",
         "nuova": "Nuevo evento",
         "vuoto": "Ningún evento.",
         "modifica": "Editar evento",
@@ -1584,7 +1588,7 @@
           "note": "Notas"
         },
         "impatto": "impacto {{ impatto }}/10",
-        "impattoAiuto": "De 1 (algo más de gente) a 10 (todo lleno)."
+        "impattoAiuto": "De 1 (algo más de gente) a 10 (completo): cuanto más alto, más sube el precio sugerido en esas fechas."
       }
     },
     "traduzioni": {
@@ -1722,6 +1726,10 @@
         "dotazione": "Dotación",
         "extra": "Extra"
       },
+      "gruppi": {
+        "dotazione": "Equipamiento",
+        "extra": "Extras de pago"
+      },
       "campi": {
         "nome": "Nombre",
         "tipo": "Tipo",
@@ -1858,7 +1866,7 @@
       },
       "suggerimenti": {
         "titolo": "Precios sugeridos",
-        "introduzione": "Las fechas de los próximos 30 días en las que conviene revisar el precio, según la ocupación y los eventos. Las tarifas nunca cambian solas: tú decides si aplicar una sugerencia.",
+        "introduzione": "Fechas de los próximos 30 días en las que conviene revisar el precio, según la ocupación y los eventos de la zona. Las sugerencias no modifican la tarifa: aplicarlas queda a tu criterio.",
         "tipologia": "Tipo de habitación",
         "aiutoTipologia": "Elige uno para ver el precio sugerido.",
         "tutte": "Todos",

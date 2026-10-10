@@ -40,7 +40,12 @@ describe('GalleriaMediaComponent', () => {
       elemento.querySelectorAll<HTMLButtonElement>(`[aria-label="${etichetta}"]`)[indice].click();
       await fixture.whenStable();
     };
-    return { fixture, elemento, clicca, cambiati };
+    /** Apre la foto in posizione indice cliccando la sua miniatura. */
+    const apri = async (indice: number) => {
+      elemento.querySelectorAll<HTMLButtonElement>('.miniatura')[indice].click();
+      await fixture.whenStable();
+    };
+    return { fixture, elemento, clicca, apri, cambiati };
   }
 
   it('carica più foto in coda, in fondo alla galleria, con la descrizione della scheda', async () => {
@@ -66,8 +71,24 @@ describe('GalleriaMediaComponent', () => {
     expect(cambiati).toHaveBeenCalledOnce();
   });
 
+  it('miniature in griglia, la prima è la copertina; il clic apre la foto e la richiude', async () => {
+    const { elemento, apri } = await crea();
+    const miniature = elemento.querySelectorAll('.miniatura');
+    expect(miniature).toHaveLength(2);
+    expect(miniature[0].querySelector('.copertina')).not.toBeNull();
+    expect(elemento.querySelector('.dettagli')).toBeNull();
+
+    await apri(1);
+    expect(miniature[1].getAttribute('aria-pressed')).toBe('true');
+    expect(elemento.querySelector<HTMLInputElement>('.dettagli input')!.value).toBe('Bagno');
+
+    await apri(1);
+    expect(elemento.querySelector('.dettagli')).toBeNull();
+  });
+
   it('sposta una foto scambiandola con la vicina; la prima non sale', async () => {
-    const { elemento, clicca } = await crea();
+    const { elemento, clicca, apri } = await crea();
+    await apri(0);
     const sali = elemento.querySelectorAll<HTMLButtonElement>(
       '[aria-label="gestionale.foto.prima"]',
     );
@@ -79,7 +100,8 @@ describe('GalleriaMediaComponent', () => {
   });
 
   it('salva il testo alternativo solo se cambiato, vuoto come null', async () => {
-    const { fixture, elemento } = await crea();
+    const { fixture, elemento, apri } = await crea();
+    await apri(0);
     const testo = elemento.querySelector<HTMLInputElement>('input[type="text"]')!;
 
     testo.dispatchEvent(new Event('change'));
@@ -92,9 +114,10 @@ describe('GalleriaMediaComponent', () => {
   });
 
   it('elimina una foto solo dopo la conferma', async () => {
-    const { elemento, clicca } = await crea();
+    const { elemento, clicca, apri } = await crea();
+    await apri(1);
 
-    await clicca('gestionale.foto.elimina', 1);
+    await clicca('gestionale.foto.elimina');
     expect(contenuti.eliminaMedia).not.toHaveBeenCalled();
     elemento.querySelector<HTMLButtonElement>('.pulsante-pericolo')!.click();
 
@@ -133,7 +156,10 @@ describe('GalleriaMediaComponent', () => {
     await fixture.whenStable();
 
     expect(campo.accept).toContain('video/mp4');
-    expect(elemento.querySelector('video')?.getAttribute('aria-label')).toBe('Mare');
+    expect(elemento.querySelector('.miniatura video')).not.toBeNull();
+    elemento.querySelector<HTMLButtonElement>('.miniatura')!.click();
+    await fixture.whenStable();
+    expect(elemento.querySelector('.dettagli video')?.getAttribute('aria-label')).toBe('Mare');
     expect(elemento.querySelector('.foto img')).toBeNull();
   });
 });

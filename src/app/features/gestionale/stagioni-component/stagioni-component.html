@@ -81,6 +81,7 @@
         @for (bit of giorni; track bit) {
           <label class="spunta">
             <input
+              name="giorni_settimana"
               #spunta
               type="checkbox"
               [checked]="haGiorno(bit)"
@@ -112,7 +113,7 @@
       </app-campo>
     </div>
     <label class="spunta">
-      <input type="checkbox" formControlName="attivo" />
+      <input name="attivo" type="checkbox" formControlName="attivo" />
       {{ 'gestionale.tariffe.campi.attivo' | transloco }}
     </label>
     <app-azioni-listino [listino]="listino" />

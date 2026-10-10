@@ -246,6 +246,7 @@
     "PULIZIA_IN_CORSO": "Terminez d’abord la chambre que vous avez déjà.",
     "NESSUNA_PULIZIA_LIBERA": "Aucune chambre libre à nettoyer.",
     "CALENDARIO_DISATTIVATO": "Le calendrier est désactivé : réactivez-le pour le synchroniser.",
+    "SINCRONIZZAZIONE_FALLITA": "Impossible de lire le calendrier du portail : vérifiez que le lien iCal est correct et que le portail le publie toujours.",
     "GIA_PUBBLICATO": "Le document est déjà publié : créez une nouvelle version.",
     "LINGUA_NON_ATTIVA": "Cette langue n’est pas active sur le site.",
     "CAMPO_NON_TRADUCIBILE": "Ce champ ne se traduit pas.",
@@ -1496,11 +1497,14 @@
         "eliminaConferma": "Oui, supprimer",
         "disattivato": "désactivé",
         "maiSincronizzato": "Jamais synchronisé",
+        "esitoOk": "Lu",
+        "esitoErrore": "Non lu",
         "errori": "{{ errori }} erreurs d’affilée",
         "urlAiuto": "Vous le trouverez dans les paramètres du calendrier sur la plateforme (export iCal).",
         "attivoAiuto": "Désactivé, ses dates bloquées sont libres jusqu’à ce que vous le réactiviez.",
         "sincronizza": "Synchroniser",
         "sincronizzaAiuto": "Lit tout de suite le calendrier de la plateforme, sans attendre le prochain passage.",
+        "dettaglio": "Motif : {{ testo }}",
         "sincronizzato": "Synchronisé : {{ eventi }} réservations lues"
       },
       "esporta": {
@@ -1562,7 +1566,7 @@
       },
       "eventi": {
         "titolo": "Événements locaux",
-        "aiuto": "Salons, fêtes et événements qui augmentent la demande : ils pèsent sur le prix suggéré.",
+        "aiuto": "Salons, fêtes et événements qui attirent du monde dans la région. Ils alimentent le Rapport : à leurs dates, le prix suggéré augmente, d'autant plus que l'impact est élevé. La grille tarifaire ne change jamais toute seule.",
         "nuova": "Nouvel événement",
         "vuoto": "Aucun événement.",
         "modifica": "Modifier l’événement",
@@ -1584,7 +1588,7 @@
           "note": "Notes"
         },
         "impatto": "impact {{ impatto }}/10",
-        "impattoAiuto": "De 1 (un peu plus de monde) à 10 (complet)."
+        "impattoAiuto": "De 1 (un peu plus de monde) à 10 (complet) : plus il est élevé, plus le prix suggéré augmente à ces dates."
       }
     },
     "traduzioni": {
@@ -1722,6 +1726,10 @@
         "dotazione": "Équipement",
         "extra": "Extra"
       },
+      "gruppi": {
+        "dotazione": "Équipements",
+        "extra": "Extras payants"
+      },
       "campi": {
         "nome": "Nom",
         "tipo": "Type",
@@ -1858,7 +1866,7 @@
       },
       "suggerimenti": {
         "titolo": "Prix suggérés",
-        "introduzione": "Les dates des 30 prochains jours où il convient de revoir le prix, selon l'occupation et les événements. Les tarifs ne changent jamais d'eux-mêmes : c'est vous qui décidez d'appliquer ou non une suggestion.",
+        "introduzione": "Dates des 30 prochains jours où le prix mérite d'être revu, selon le taux d'occupation et les événements locaux. Les suggestions ne modifient pas la grille tarifaire : leur application reste à votre discrétion.",
         "tipologia": "Type de chambre",
         "aiutoTipologia": "Choisissez-en un pour voir le prix suggéré.",
         "tutte": "Tous",

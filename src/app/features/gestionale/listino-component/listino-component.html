@@ -10,25 +10,30 @@
   </div>
   <p class="tenue">{{ chiave() + '.aiuto' | transloco }}</p>
   @if (voci.elenco.hasValue()) {
-    <ul class="elenco">
-      @for (voce of voci.elenco.value(); track voce.id) {
-        <li>
-          <button
-            class="scheda voce"
-            type="button"
-            [attr.aria-pressed]="scelta?.id === voce.id"
-            (click)="voci.scegli(voce)"
-          >
-            <ng-container
-              [ngTemplateOutlet]="riga()"
-              [ngTemplateOutletContext]="{ $implicit: voce }"
-            />
-          </button>
-        </li>
-      } @empty {
-        <li class="stato-vuoto">{{ chiave() + '.vuoto' | transloco }}</li>
+    @for (gruppo of gruppi(); track gruppo.titolo) {
+      @if (gruppo.titolo) {
+        <h3 class="gruppo">{{ gruppo.titolo | transloco }}</h3>
       }
-    </ul>
+      <ul class="elenco" [class.griglia]="griglia()">
+        @for (voce of gruppo.voci; track voce.id) {
+          <li>
+            <button
+              class="scheda voce"
+              type="button"
+              [attr.aria-pressed]="scelta?.id === voce.id"
+              (click)="voci.scegli(voce)"
+            >
+              <ng-container
+                [ngTemplateOutlet]="riga()"
+                [ngTemplateOutletContext]="{ $implicit: voce }"
+              />
+            </button>
+          </li>
+        }
+      </ul>
+    } @empty {
+      <p class="stato-vuoto">{{ chiave() + '.vuoto' | transloco }}</p>
+    }
   } @else if (voci.elenco.error(); as errore) {
     <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
   }

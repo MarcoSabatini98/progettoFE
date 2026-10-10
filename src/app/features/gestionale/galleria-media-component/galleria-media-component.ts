@@ -24,6 +24,7 @@ import { MediaPipe } from '../../../shared/pipes/media-pipe';
 /**
  * Foto di una tipologia, di un pacchetto o del sito: carica (anche più file insieme, in coda),
  * testo alternativo, ordine ed eliminazione dopo conferma. La prima è la copertina.
+ * Le foto sono una griglia di miniature: cliccandone una si apre la sua scheda sotto.
  */
 @Component({
   selector: 'app-galleria-media',
@@ -59,6 +60,18 @@ export class GalleriaMediaComponent {
   protected readonly errore = signal('');
   /** Foto di cui si chiede conferma prima di eliminarla. */
   protected readonly daEliminare = signal<number | undefined>(undefined);
+  /** Foto aperta sotto la griglia; sparisce da sola se viene eliminata. */
+  protected readonly scelta = signal<number | undefined>(undefined);
+  protected readonly aperta = computed(() => {
+    const indice = this.media().findIndex((foto) => foto.id === this.scelta());
+    return indice < 0 ? null : { foto: this.media()[indice], indice };
+  });
+
+  /** Clic sulla miniatura: apre la foto, o la chiude se era già aperta. */
+  protected apri(id: number): void {
+    this.scelta.update((scelta) => (scelta === id ? undefined : id));
+    this.daEliminare.set(undefined);
+  }
 
   /**
    * CARICA

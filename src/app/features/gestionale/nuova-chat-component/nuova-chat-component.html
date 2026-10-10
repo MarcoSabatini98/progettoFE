@@ -12,6 +12,7 @@
       @for (collega of elenco; track collega.id) {
         <label class="collega">
           <input
+            name="partecipanti"
             #spunta
             type="checkbox"
             [checked]="scelti().includes(collega.id)"

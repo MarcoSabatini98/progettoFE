@@ -26,13 +26,21 @@
 @if (campi().length) {
   <dl class="dati">
     @for (riga of campi(); track riga.campo) {
+      <!-- Il valore di un campo a elenco chiuso si traduce; il vuoto resta un trattino. -->
+      <ng-template #valore let-testo>{{
+        riga.chiave && testo !== vuoto ? (riga.chiave + '.' + testo | transloco) : testo
+      }}</ng-template>
       <div>
         <dt>{{ 'gestionale.registro.campi.' + riga.campo | transloco }}</dt>
         <dd>
           @if (riga.prima !== undefined && riga.dopo !== undefined) {
-            {{ riga.prima }} → {{ riga.dopo }}
+            <ng-container *ngTemplateOutlet="valore; context: { $implicit: riga.prima }" />
+            →
+            <ng-container *ngTemplateOutlet="valore; context: { $implicit: riga.dopo }" />
           } @else {
-            {{ riga.prima ?? riga.dopo }}
+            <ng-container
+              *ngTemplateOutlet="valore; context: { $implicit: riga.prima ?? riga.dopo }"
+            />
           }
         </dd>
       </div>

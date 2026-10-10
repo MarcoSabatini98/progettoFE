@@ -246,6 +246,7 @@
     "PULIZIA_IN_CORSO": "Beende zuerst das Zimmer, das du schon hast.",
     "NESSUNA_PULIZIA_LIBERA": "Es gibt keine freien Zimmer zum Reinigen.",
     "CALENDARIO_DISATTIVATO": "Der Kalender ist deaktiviert: Aktivieren Sie ihn, um ihn zu synchronisieren.",
+    "SINCRONIZZAZIONE_FALLITA": "Der Kalender des Portals konnte nicht gelesen werden: Prüfen Sie, ob der iCal-Link stimmt und das Portal ihn noch veröffentlicht.",
     "GIA_PUBBLICATO": "Das Dokument ist bereits veröffentlicht: Legen Sie eine neue Version an.",
     "LINGUA_NON_ATTIVA": "Diese Sprache ist auf der Website nicht aktiv.",
     "CAMPO_NON_TRADUCIBILE": "Dieses Feld wird nicht übersetzt.",
@@ -1496,11 +1497,14 @@
         "eliminaConferma": "Ja, löschen",
         "disattivato": "deaktiviert",
         "maiSincronizzato": "Nie synchronisiert",
+        "esitoOk": "Gelesen",
+        "esitoErrore": "Nicht gelesen",
         "errori": "{{ errori }} Fehler in Folge",
         "urlAiuto": "Sie finden ihn in den Kalendereinstellungen des Portals (iCal-Export).",
         "attivoAiuto": "Deaktiviert sind seine gesperrten Tage frei, bis Sie ihn wieder aktivieren.",
         "sincronizza": "Jetzt synchronisieren",
         "sincronizzaAiuto": "Liest den Kalender des Portals sofort, ohne auf die nächste Runde zu warten.",
+        "dettaglio": "Grund: {{ testo }}",
         "sincronizzato": "Synchronisiert: {{ eventi }} Buchungen gelesen"
       },
       "esporta": {
@@ -1562,7 +1566,7 @@
       },
       "eventi": {
         "titolo": "Veranstaltungen vor Ort",
-        "aiuto": "Messen, Feste und Veranstaltungen, die die Nachfrage erhöhen: Sie fließen in den Preisvorschlag ein.",
+        "aiuto": "Messen, Feste und Veranstaltungen, die Gäste in die Gegend bringen. Sie fließen in den Bericht ein: An diesen Tagen steigt der vorgeschlagene Preis, umso mehr, je höher die Wirkung ist. Die Preisliste ändert sich nie von selbst.",
         "nuova": "Neue Veranstaltung",
         "vuoto": "Keine Veranstaltungen.",
         "modifica": "Veranstaltung bearbeiten",
@@ -1584,7 +1588,7 @@
           "note": "Notizen"
         },
         "impatto": "Auswirkung {{ impatto }}/10",
-        "impattoAiuto": "Von 1 (etwas mehr Gäste) bis 10 (ausgebucht)."
+        "impattoAiuto": "Von 1 (etwas mehr Gäste) bis 10 (ausgebucht): Je höher der Wert, desto stärker steigt der vorgeschlagene Preis an diesen Tagen."
       }
     },
     "traduzioni": {
@@ -1722,6 +1726,10 @@
         "dotazione": "Ausstattung",
         "extra": "Extra"
       },
+      "gruppi": {
+        "dotazione": "Ausstattung",
+        "extra": "Kostenpflichtige Extras"
+      },
       "campi": {
         "nome": "Name",
         "tipo": "Art",
@@ -1858,7 +1866,7 @@
       },
       "suggerimenti": {
         "titolo": "Preisvorschläge",
-        "introduzione": "Die Tage der nächsten 30, an denen sich eine Preisanpassung lohnt, je nach Auslastung und Veranstaltungen. Die Preise ändern sich nie von selbst: Du entscheidest, ob du einen Vorschlag übernimmst.",
+        "introduzione": "Termine der nächsten 30 Tage, an denen sich eine Preisprüfung lohnt, basierend auf Auslastung und Veranstaltungen in der Umgebung. Die Vorschläge ändern die Preisliste nicht: Ob Sie sie übernehmen, entscheiden Sie.",
         "tipologia": "Zimmertyp",
         "aiutoTipologia": "Wähle einen, um den vorgeschlagenen Preis zu sehen.",
         "tutte": "Alle",

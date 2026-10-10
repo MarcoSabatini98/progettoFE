@@ -38,7 +38,14 @@
   <label class="pulsante pulsante-icona allega">
     <app-icona nome="attach_file" />
     <span class="visivamente-nascosto">{{ 'gestionale.chat.scrivi.allega' | transloco }}</span>
-    <input #scelta class="visivamente-nascosto" type="file" multiple (change)="allega(scelta)" />
+    <input
+      name="allegati"
+      #scelta
+      class="visivamente-nascosto"
+      type="file"
+      multiple
+      (change)="allega(scelta)"
+    />
   </label>
   <label class="visivamente-nascosto" for="scrivi-testo">
     {{ 'gestionale.chat.scrivi.testo' | transloco }}

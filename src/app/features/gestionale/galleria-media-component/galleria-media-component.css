@@ -14,48 +14,90 @@
   cursor: progress;
 }
 
+/* Le colonne seguono lo spazio del riquadro, non dello schermo: 3 in una mezza colonna, 6 a tutta larghezza. */
+:host {
+  container-type: inline-size;
+}
+
 .foto {
   display: grid;
-  gap: var(--bb-spazio-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--bb-spazio-2);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.elemento {
-  display: grid;
-  gap: var(--bb-spazio-3);
+.foto > .stato-vuoto {
+  grid-column: 1 / -1;
+}
+
+@container (width >= 40rem) {
+  .foto {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.miniatura {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--bb-raggio-piccolo);
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.miniatura:hover,
+.miniatura[aria-pressed='true'] {
+  border-color: var(--bb-brand-testo);
 }
 
 .anteprima {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  border-radius: var(--bb-raggio-piccolo);
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
   object-fit: cover;
 }
 
-.dettagli {
-  display: grid;
-  align-content: start;
-  gap: var(--bb-spazio-2);
-}
-
+/* Etichette sopra la miniatura: copertina in basso, segno del video al centro. */
 .copertina {
-  justify-self: start;
-  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  position: absolute;
+  inset-inline-start: var(--bb-spazio-1);
+  inset-block-end: var(--bb-spazio-1);
+  padding: 0 var(--bb-spazio-2);
   border-radius: 999px;
   background: var(--bb-brand-tenue);
   color: var(--bb-brand-testo);
   font-weight: 600;
 }
 
+.video {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  color: var(--bb-superficie);
+  --icona-dimensione: 2rem;
+}
+
+.dettagli {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  padding-block-start: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.grande {
+  inline-size: 100%;
+  max-block-size: 18rem;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--bb-raggio-piccolo);
+  object-fit: cover;
+}
+
 .campo-testo {
   display: grid;
   gap: var(--bb-spazio-1);
-}
-
-@media (width >= 40rem) {
-  .elemento {
-    grid-template-columns: 12rem 1fr;
-  }
 }

@@ -60,6 +60,9 @@ export class ServiziComponent {
   protected readonly lunghezze = LUNGHEZZA_SERVIZIO;
   protected readonly limiti = LIMITI_SERVIZIO;
   protected readonly iconaPredefinita = ICONA_SERVIZIO_PREDEFINITA;
+  /** Dotazioni ed extra in due griglie separate. */
+  protected readonly gruppoServizio = (servizio: ServizioInterface) =>
+    `gestionale.servizi.gruppi.${servizio.tipo}`;
   protected readonly modulo = inject(NonNullableFormBuilder).group({
     nome: ['', [Validators.required, Validators.maxLength(LUNGHEZZA_SERVIZIO.nome)]],
     tipo: ['dotazione' as TipoServizio, Validators.required],

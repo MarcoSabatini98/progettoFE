@@ -75,8 +75,8 @@ describe('PlanningComponent', () => {
   it('una riga per camera con i soggiorni sui loro giorni e la struttura chiusa', async () => {
     const { elemento } = await crea();
 
-    expect(camereService.leggiPlanning).toHaveBeenCalledWith({ dal: oggi, al: tra(14) });
-    expect(elemento.querySelectorAll('.giorno')).toHaveLength(14);
+    expect(camereService.leggiPlanning).toHaveBeenCalledWith({ dal: oggi, al: tra(30) });
+    expect(elemento.querySelectorAll('.giorno')).toHaveLength(30);
     const barra = elemento.querySelector<HTMLElement>('a.barra')!;
     expect(barra.dataset['stato']).toBe('confermata');
     expect(barra.style.gridColumn).toBe('3 / 5');
@@ -92,7 +92,7 @@ describe('PlanningComponent', () => {
       .click();
     await fixture.whenStable();
 
-    expect(camereService.leggiPlanning).toHaveBeenLastCalledWith({ dal: tra(14), al: tra(28) });
+    expect(camereService.leggiPlanning).toHaveBeenLastCalledWith({ dal: tra(30), al: tra(60) });
   });
 
   it('trascinato su un altra camera e un giorno dopo chiede conferma e poi salva', async () => {

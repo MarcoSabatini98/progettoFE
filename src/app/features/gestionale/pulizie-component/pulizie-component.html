@@ -7,7 +7,13 @@
     </app-campo>
     @if (addetto) {
       <label class="spunta">
-        <input #solo type="checkbox" [checked]="mie()" (change)="mie.set(solo.checked)" />
+        <input
+          name="solo_mie"
+          #solo
+          type="checkbox"
+          [checked]="mie()"
+          (change)="mie.set(solo.checked)"
+        />
         {{ 'gestionale.pulizie.soloMie' | transloco }}
       </label>
     }

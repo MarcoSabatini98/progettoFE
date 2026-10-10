@@ -63,13 +63,18 @@ describe('ServiziComponent', () => {
       },
     ]);
 
-  it('elenca i servizi con tipo, prezzo degli extra e stato', async () => {
+  it('divide extra e dotazioni in due griglie, col prezzo solo sugli extra', async () => {
     const { elemento } = await apri();
-    const voci = elemento.querySelectorAll('.voce');
+    const voci = elemento.querySelectorAll('.griglia .voce');
+    const titoli = [...elemento.querySelectorAll('.gruppo')].map((h3) => h3.textContent?.trim());
+
+    expect(titoli).toEqual([
+      'gestionale.servizi.gruppi.extra',
+      'gestionale.servizi.gruppi.dotazione',
+    ]);
 
     expect(voci[0].textContent).toContain('camere.calcolo.a_persona_notte');
     expect(voci[0].textContent).toContain('gestionale.tariffe.disattivato');
-    expect(voci[1].textContent).toContain('gestionale.servizi.tipi.dotazione');
     expect(voci[1].textContent).not.toContain('camere.calcolo');
   });
 
@@ -93,7 +98,9 @@ describe('ServiziComponent', () => {
     await scegli(0);
 
     expect(camere.leggiServizio).toHaveBeenCalledWith(3);
-    expect(elemento.querySelector('app-galleria-media img')?.getAttribute('alt')).toBe('Buffet');
+    expect(
+      elemento.querySelector('app-galleria-media .miniatura')?.getAttribute('aria-label'),
+    ).toBe('Buffet');
     expect(elemento.querySelector('app-traduzioni')).not.toBeNull();
   });
 
