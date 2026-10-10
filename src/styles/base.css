@@ -22,6 +22,32 @@ html:has(:is(.menu-sito, .binario):popover-open) {
   overflow: hidden;
 }
 
+/*
+ * Barre di scorrimento fini e semitrasparenti, col cursore nel colore del tema.
+ * Ogni elemento legge i token della propria area, così segue chiaro e scuro.
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--bb-brand-testo) 50%, transparent) transparent;
+}
+
+/* Safari non conosce scrollbar-color: stesse barre con gli pseudo-elementi webkit. */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--bb-brand-testo) 50%, transparent);
+  }
+}
+
 body,
 .area-pubblica,
 .area-gestionale {

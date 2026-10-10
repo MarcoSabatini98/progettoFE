@@ -391,7 +391,7 @@
         "festivita": "Fiesta",
         "evento_locale": "Evento local",
         "fiera": "Feria",
-        "altro": "No te lo pierdas"
+        "altro": "Evento"
       }
     }
   },
@@ -2231,7 +2231,7 @@
     "nessuna": "Ninguna notificación",
     "elimina": "Eliminar notificación",
     "codici": {
-      "alloggiati_da_inviare": "Alloggiati Web: {{ totale }} estancias por enviar en 24 horas desde la llegada",
+      "alloggiati_da_inviare": "Alloggiati Web, estancias por enviar en 24 horas desde la llegada: {{ totale }}",
       "overbooking": "Overbooking habitación {{ camera }} ({{ canale }}) del {{ inizio }} al {{ fine }}",
       "calendario_non_sincronizzato": "El calendario {{ canale }} no se sincroniza",
       "assistenza_richiesta": "Nueva solicitud de asistencia",

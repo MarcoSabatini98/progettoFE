@@ -10,7 +10,6 @@
   overflow-x: auto;
   padding-block-end: var(--bb-spazio-2);
   border-block-end: 1px solid var(--bb-linea);
-  scrollbar-width: thin;
 }
 
 .scheda-link {
