@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -6,6 +6,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime } from 'rxjs';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
@@ -24,8 +25,6 @@ import {
   StatoPrenotazione,
 } from '../../../shared/models/prenotazione/prenotazione-model';
 import { RigaPrenotazioneComponent } from '../riga-prenotazione-component/riga-prenotazione-component';
-
-const PRENOTAZIONI_PER_PAGINA = 20;
 
 /** Tutte le prenotazioni, filtrate per testo, stato, canale e periodo di arrivo. */
 @Component({
@@ -67,19 +66,11 @@ export class PrenotazioniComponent {
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando filtri si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.scelti, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.scelti);
   protected readonly elenco = rxResource({
     params: () => this.parametri(),
     stream: ({ params }) => this.prenotazioni.elencaPrenotazioni(params),
   });
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 
   /** Lo stato può arrivare da un link, come quello del cruscotto (?stato=in_attesa). */
   private statoIniziale(): StatoPrenotazione | '' {
@@ -94,8 +85,8 @@ export class PrenotazioniComponent {
       ...resto,
       stato: stato ? [stato] : [],
       canale: canale || undefined,
-      pagina: this.pagina(),
-      perPagina: PRENOTAZIONI_PER_PAGINA,
+      pagina: this.pagine.pagina(),
+      perPagina: this.pagine.perPagina(),
     };
   }
 }

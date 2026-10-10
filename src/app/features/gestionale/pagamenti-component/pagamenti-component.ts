@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { map } from 'rxjs';
 
 import { giornoDopo } from '../../../core/services/disponibilita/date-soggiorno';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import {
   METODI_PAGAMENTO,
@@ -21,8 +22,6 @@ import {
 } from '../../../shared/models/pagamento/pagamento-model';
 import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import { RigaPagamentoComponent } from '../riga-pagamento-component/riga-pagamento-component';
-
-const PAGAMENTI_PER_PAGINA = 20;
 
 /**
  * Tutti i movimenti di denaro, i più recenti in cima, filtrati per periodo, stato,
@@ -62,19 +61,11 @@ export class PagamentiComponent {
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando i filtri si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.scelti, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.scelti);
   protected readonly elenco = rxResource({
     params: () => this.parametri(),
     stream: ({ params }) => this.pagamenti.elencaPagamenti(params),
   });
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 
   // Il backend esclude il giorno «al»: per chi sceglie le date è compreso.
   private parametri(): FiltriPagamenti {
@@ -85,8 +76,8 @@ export class PagamentiComponent {
       stato: stato ? [stato] : [],
       metodo: metodo ? [metodo] : [],
       tipo: tipo ? [tipo] : [],
-      pagina: this.pagina(),
-      perPagina: PAGAMENTI_PER_PAGINA,
+      pagina: this.pagine.pagina(),
+      perPagina: this.pagine.perPagina(),
     };
   }
 }

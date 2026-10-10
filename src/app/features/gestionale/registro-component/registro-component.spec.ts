@@ -28,7 +28,7 @@ describe('RegistroComponent', () => {
     ],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
   const tutto = { tabella: undefined, azione: undefined, dal: undefined, al: undefined };
@@ -62,7 +62,7 @@ describe('RegistroComponent', () => {
   it('parte da tutte le modifiche, le più recenti in cima', async () => {
     const { elemento } = await crea();
 
-    expect(registro.elencaAttivita).toHaveBeenCalledWith({ ...tutto, pagina: 1, perPagina: 20 });
+    expect(registro.elencaAttivita).toHaveBeenCalledWith({ ...tutto, pagina: 1, perPagina: 10 });
     expect(elemento.querySelectorAll('app-riga-registro')).toHaveLength(1);
   });
 
@@ -80,7 +80,7 @@ describe('RegistroComponent', () => {
       dal: '2030-06-01',
       al: '2030-07-01',
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
   });
 

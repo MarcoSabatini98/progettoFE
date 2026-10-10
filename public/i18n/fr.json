@@ -726,6 +726,7 @@
       "totale": "Réservations trouvées : {{ totale }}",
       "nessuna": "Aucune réservation avec ces filtres.",
       "pagine": "Pages",
+      "righe": "Lignes par page",
       "precedente": "Précédente",
       "successiva": "Suivante",
       "pagina": "Page {{ pagina }} sur {{ pagine }}"

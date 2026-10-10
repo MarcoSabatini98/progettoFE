@@ -17,7 +17,7 @@ describe('OspitiComponent', () => {
     ospiti.elencaOspiti.mockReset();
     ospiti.creaOspite.mockReset();
     ospiti.elencaOspiti.mockReturnValue(
-      of({ elementi: [anna], totale: 41, pagina: 1, perPagina: 20, pagine: 3 }),
+      of({ elementi: [anna], totale: 41, pagina: 1, perPagina: 10, pagine: 3 }),
     );
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
@@ -49,7 +49,7 @@ describe('OspitiComponent', () => {
   it('elenca gli ospiti con il link alla scheda', async () => {
     const { elemento } = await crea();
 
-    expect(ospiti.elencaOspiti).toHaveBeenCalledWith({ cerca: '', pagina: 1, perPagina: 20 });
+    expect(ospiti.elencaOspiti).toHaveBeenCalledWith({ cerca: '', pagina: 1, perPagina: 10 });
     const riga = elemento.querySelector('.elenco a')!;
     expect(riga.textContent).toContain('Verdi Anna');
     expect(riga.getAttribute('href')).toBe('/staff/ospiti/3');
@@ -57,7 +57,7 @@ describe('OspitiComponent', () => {
 
   it('cercando riparte dalla prima pagina', async () => {
     const { fixture, elemento, scrivi } = await crea();
-    elemento.querySelectorAll<HTMLButtonElement>('.pagine button')[1].click();
+    elemento.querySelector<HTMLButtonElement>('.pagine > button:last-of-type')!.click();
     await attendi(fixture);
     expect(ospiti.elencaOspiti).toHaveBeenLastCalledWith(expect.objectContaining({ pagina: 2 }));
 
@@ -66,7 +66,7 @@ describe('OspitiComponent', () => {
     expect(ospiti.elencaOspiti).toHaveBeenLastCalledWith({
       cerca: 'ver',
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
   });
 

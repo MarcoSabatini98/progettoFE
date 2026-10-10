@@ -726,6 +726,7 @@
       "totale": "Gefundene Buchungen: {{ totale }}",
       "nessuna": "Keine Buchungen mit diesen Filtern.",
       "pagine": "Seiten",
+      "righe": "Zeilen pro Seite",
       "precedente": "Zurück",
       "successiva": "Weiter",
       "pagina": "Seite {{ pagina }} von {{ pagine }}"

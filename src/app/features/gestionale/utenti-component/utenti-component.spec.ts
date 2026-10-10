@@ -23,10 +23,10 @@ describe('UtentiComponent', () => {
     ],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
-  const tutti = { cerca: undefined, ruolo: undefined, attivo: undefined, pagina: 1, perPagina: 20 };
+  const tutti = { cerca: undefined, ruolo: undefined, attivo: undefined, pagina: 1, perPagina: 10 };
 
   beforeEach(() => {
     vi.useFakeTimers();

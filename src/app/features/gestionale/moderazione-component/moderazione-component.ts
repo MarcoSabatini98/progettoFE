@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { map } from 'rxjs';
 
 import { ErroriService } from '../../../core/services/errori/errori-service';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import {
   STATI_RECENSIONE,
   VOTO_NEGATIVO,
@@ -14,8 +15,6 @@ import { CampoComponent } from '../../../shared/campo-component/campo-component'
 import { StatoRecensione } from '../../../shared/models/recensione/recensione-model';
 import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import { RigaRecensioneComponent } from '../riga-recensione-component/riga-recensione-component';
-
-const RECENSIONI_PER_PAGINA = 20;
 
 /**
  * Moderazione delle recensioni: si parte da quelle in attesa, le più recenti in cima.
@@ -48,25 +47,17 @@ export class ModerazioneComponent {
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando i filtri si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.scelti, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.scelti);
   protected readonly elenco = rxResource({
     params: () => {
       const { stato, negative } = this.scelti();
       return {
         stato: stato || undefined,
         voto_max: negative ? VOTO_NEGATIVO : undefined,
-        pagina: this.pagina(),
-        perPagina: RECENSIONI_PER_PAGINA,
+        pagina: this.pagine.pagina(),
+        perPagina: this.pagine.perPagina(),
       };
     },
     stream: ({ params }) => this.recensioni.elencaRecensioni(params),
   });
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 }

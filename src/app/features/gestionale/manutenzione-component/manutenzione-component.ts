@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { map } from 'rxjs';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { ManutenzioneService } from '../../../core/services/manutenzione/manutenzione-service';
 import { PRIORITA, STATI_SEGNALAZIONE } from '../../../core/services/pulizie/pulizie-costanti';
@@ -18,8 +19,6 @@ import {
 import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import { NuovaSegnalazioneComponent } from '../nuova-segnalazione-component/nuova-segnalazione-component';
 import { RigaSegnalazioneComponent } from '../riga-segnalazione-component/riga-segnalazione-component';
-
-const SEGNALAZIONI_PER_PAGINA = 20;
 
 /** Le aperte (aperta o in corso), tutte, o un solo stato. */
 type Vista = 'aperte' | 'tutte' | StatoSegnalazione;
@@ -64,7 +63,7 @@ export class ManutenzioneComponent {
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando i filtri si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.scelti, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.scelti);
   protected readonly elenco = rxResource({
     params: () => {
       const { vista, priorita, mie } = this.scelti();
@@ -72,18 +71,10 @@ export class ManutenzioneComponent {
         ...filtroVista(vista),
         priorita: priorita || undefined,
         mie: mie || undefined,
-        pagina: this.pagina(),
-        perPagina: SEGNALAZIONI_PER_PAGINA,
+        pagina: this.pagine.pagina(),
+        perPagina: this.pagine.perPagina(),
       };
     },
     stream: ({ params }) => this.manutenzione.elencaSegnalazioni(params),
   });
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 }

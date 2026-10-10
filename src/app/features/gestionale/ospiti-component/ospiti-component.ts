@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import {
   FormControl,
@@ -11,6 +11,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime, finalize } from 'rxjs';
 
 import { ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { PERCORSI_STAFF } from '../../../core/services/navigazione/navigazione-costanti';
 import { OspitiService } from '../../../core/services/ospiti/ospiti-service';
@@ -18,8 +19,6 @@ import { LUNGHEZZA_DATI_PERSONALI } from '../../../core/services/utenti/utenti-c
 import { CampoComponent } from '../../../shared/campo-component/campo-component';
 import { IconaComponent } from '../../../shared/icona-component/icona-component';
 import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
-
-const OSPITI_PER_PAGINA = 20;
 
 /** Anagrafiche degli ospiti: ricerca, elenco a pagine e creazione di una nuova. */
 @Component({
@@ -51,9 +50,13 @@ export class OspitiComponent {
     },
   );
   /** Cambiando ricerca si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.cercato, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.cercato);
   protected readonly elenco = rxResource({
-    params: () => ({ cerca: this.cercato(), pagina: this.pagina(), perPagina: OSPITI_PER_PAGINA }),
+    params: () => ({
+      cerca: this.cercato(),
+      pagina: this.pagine.pagina(),
+      perPagina: this.pagine.perPagina(),
+    }),
     stream: ({ params }) => this.ospiti.elencaOspiti(params),
   });
   protected readonly nuovo = inject(NonNullableFormBuilder).group({
@@ -62,14 +65,6 @@ export class OspitiComponent {
   });
   protected readonly inCorso = signal(false);
   protected readonly errore = signal('');
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 
   /**
    * CREA

@@ -12,7 +12,8 @@
   <app-paginazione
     [risultato]="risultato"
     [occupato]="storia.isLoading()"
-    (sfoglia)="sfoglia($event)"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
   />
 } @else if (storia.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
