@@ -391,7 +391,7 @@
         "festivita": "Fête",
         "evento_locale": "Événement local",
         "fiera": "Salon",
-        "altro": "À ne pas manquer"
+        "altro": "Événement"
       }
     }
   },
@@ -2231,7 +2231,7 @@
     "nessuna": "Aucune notification",
     "elimina": "Supprimer la notification",
     "codici": {
-      "alloggiati_da_inviare": "Alloggiati Web : {{ totale }} séjours à envoyer dans les 24 heures suivant l'arrivée",
+      "alloggiati_da_inviare": "Alloggiati Web, séjours à envoyer dans les 24 heures suivant l'arrivée : {{ totale }}",
       "overbooking": "Surréservation chambre {{ camera }} ({{ canale }}) du {{ inizio }} au {{ fine }}",
       "calendario_non_sincronizzato": "Le calendrier {{ canale }} ne se synchronise pas",
       "assistenza_richiesta": "Nouvelle demande d'assistance",
