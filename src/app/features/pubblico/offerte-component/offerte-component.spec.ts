@@ -77,15 +77,15 @@ describe('OfferteComponent', () => {
     expect(elemento.querySelectorAll('.offerta')).toHaveLength(2);
   });
 
-  it('prima le promozioni, poi i pacchetti; la prima di ogni sezione in vetrina', async () => {
+  it('prima le promozioni, poi i pacchetti; in vetrina solo la prima promozione', async () => {
     tariffe.elencaPacchettiPubblici.mockReturnValue(of([pacchetto, { ...pacchetto, id: 2 }]));
 
     const elemento = await crea();
 
     const titoli = [...elemento.querySelectorAll('.sezione-titolo')].map((h2) => h2.textContent);
     expect(titoli).toEqual(['offerte.promozioni', 'offerte.pacchetti']);
-    expect(elemento.querySelectorAll('.vetrina')).toHaveLength(2);
-    expect(elemento.querySelectorAll('.offerta:not(.vetrina)')).toHaveLength(1);
+    expect(elemento.querySelectorAll('.vetrina')).toHaveLength(1);
+    expect(elemento.querySelectorAll('.offerta:not(.vetrina)')).toHaveLength(2);
   });
 
   it('Prenota porta alla tipologia dell’offerta, se ne ha una', async () => {

@@ -84,38 +84,6 @@
   gap: var(--bb-spazio-3);
 }
 
-.puntini {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Area di tocco ampia, puntino piccolo al centro. */
-.puntino {
-  display: grid;
-  place-items: center;
-  inline-size: 1.75rem;
-  block-size: 1.75rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.puntino::before {
-  content: '';
-  inline-size: 0.5rem;
-  block-size: 0.5rem;
-  border-radius: 999px;
-  background: var(--bb-linea);
-  transition: inline-size var(--bb-durata) var(--bb-curva);
-}
-
-.puntino[aria-current='true']::before {
-  inline-size: 1.25rem;
-  background: var(--bb-brand);
-}
-
 @media (width >= 58.75rem) {
   .palco {
     --passo: 68%;
@@ -131,8 +99,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide,
-  .puntino::before {
+  .slide {
     transition: none;
   }
 }

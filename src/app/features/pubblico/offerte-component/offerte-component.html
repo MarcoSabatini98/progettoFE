@@ -12,7 +12,7 @@
 @if (elencoPromozioni().length) {
   <section class="sezione">
     <h2 class="sezione-titolo">{{ 'offerte.promozioni' | transloco }}</h2>
-    <ul class="griglia-schede">
+    <ul class="griglia-schede offerte">
       @for (promozione of elencoPromozioni(); track promozione.id) {
         <li class="scheda offerta" [class.vetrina]="$first">
           <p class="sconto">
@@ -63,10 +63,10 @@
 @if (elencoPacchetti().length) {
   <section class="sezione">
     <h2 class="sezione-titolo">{{ 'offerte.pacchetti' | transloco }}</h2>
-    <ul class="griglia-schede">
+    <ul class="griglia-schede offerte">
       @for (pacchetto of elencoPacchetti(); track pacchetto.id) {
         @let foto = pacchetto.media?.[0];
-        <li class="scheda offerta" [class.vetrina]="$first">
+        <li class="scheda offerta">
           @if (foto) {
             <img
               class="offerta-foto"

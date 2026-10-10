@@ -86,3 +86,41 @@
 .pulsante-intero {
   width: 100%;
 }
+
+/* Puntini di caroselli e gallerie: area di tocco ampia, puntino piccolo al centro. */
+.puntini {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.puntino {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.puntino::before {
+  content: '';
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 999px;
+  background: var(--bb-linea);
+  transition: inline-size var(--bb-durata) var(--bb-curva);
+}
+
+.puntino[aria-current='true']::before {
+  inline-size: 1.25rem;
+  background: var(--bb-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .puntino::before {
+    transition: none;
+  }
+}
