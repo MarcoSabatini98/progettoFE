@@ -4,6 +4,7 @@
     @let ruoloA = 'gestionale.ruoli.' + coppia[0] | transloco;
     <label class="spunta">
       <input
+        name="regole"
         #casella
         type="checkbox"
         [checked]="scelte().has(chiave(coppia[0], coppia[1]))"

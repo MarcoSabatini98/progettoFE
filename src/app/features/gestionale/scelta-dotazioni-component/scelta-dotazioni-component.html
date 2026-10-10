@@ -5,6 +5,7 @@
       @for (dotazione of dotazioni.value(); track dotazione.id) {
         <label class="spunta">
           <input
+            name="dotazioni"
             #spunta
             type="checkbox"
             [checked]="scelte().includes(dotazione.id)"

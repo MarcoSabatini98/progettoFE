@@ -31,6 +31,14 @@ describe('CampoComponent', () => {
     expect(etichetta.control?.tagName).toBe('INPUT');
   });
 
+  it('dà al controllo un id unico, se non ce l’ha', async () => {
+    const primo = (await crea()).nativeElement.querySelector('input') as HTMLInputElement;
+    const secondo = (await crea()).nativeElement.querySelector('input') as HTMLInputElement;
+
+    expect(primo.id).toMatch(/^campo-\d+$/);
+    expect(secondo.id).not.toBe(primo.id);
+  });
+
   it("mostra l'aiuto finché non c'è un errore", async () => {
     const fixture = await crea();
     const nota = () => fixture.nativeElement.querySelector('.campo-nota') as HTMLElement;

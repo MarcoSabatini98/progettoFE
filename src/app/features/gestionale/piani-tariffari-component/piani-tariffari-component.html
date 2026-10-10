@@ -55,7 +55,7 @@
       </app-campo>
     </div>
     <label class="spunta">
-      <input type="checkbox" formControlName="rimborsabile" />
+      <input name="rimborsabile" type="checkbox" formControlName="rimborsabile" />
       {{ 'gestionale.tariffe.campi.rimborsabile' | transloco }}
     </label>
     <div class="campi-coppia">
@@ -92,11 +92,11 @@
       </app-campo>
     </div>
     <label class="spunta">
-      <input type="checkbox" formControlName="predefinito" />
+      <input name="predefinito" type="checkbox" formControlName="predefinito" />
       {{ 'gestionale.tariffe.campi.predefinito' | transloco }}
     </label>
     <label class="spunta">
-      <input type="checkbox" formControlName="attivo" />
+      <input name="attivo" type="checkbox" formControlName="attivo" />
       {{ 'gestionale.tariffe.campi.attivo' | transloco }}
     </label>
     <app-azioni-listino [listino]="listino" />

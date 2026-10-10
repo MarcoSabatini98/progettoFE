@@ -3,6 +3,7 @@
 @for (voce of voci; track voce.campo) {
   <label class="interruttore">
     <input
+      name="preferenze_email"
       #casella
       type="checkbox"
       [checked]="salvate()[voce.campo]"

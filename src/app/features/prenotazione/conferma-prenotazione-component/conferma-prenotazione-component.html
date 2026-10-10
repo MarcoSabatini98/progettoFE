@@ -107,6 +107,7 @@
             @for (servizio of extra.value(); track servizio.id) {
               <label class="casella">
                 <input
+                  name="servizi"
                   #casella
                   type="checkbox"
                   [checked]="opzioni.controls.servizi.value.includes(servizio.id)"

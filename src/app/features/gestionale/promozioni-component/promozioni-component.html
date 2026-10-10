@@ -120,7 +120,7 @@
       <input type="number" formControlName="notti_min" min="1" [max]="limiti.piccolo" />
     </app-campo>
     <label class="spunta">
-      <input type="checkbox" formControlName="attiva" />
+      <input name="attiva" type="checkbox" formControlName="attiva" />
       {{ 'gestionale.tariffe.campi.attiva' | transloco }}
     </label>
     <app-azioni-listino [listino]="listino" />

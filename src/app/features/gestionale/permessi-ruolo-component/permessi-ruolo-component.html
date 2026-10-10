@@ -16,6 +16,7 @@
         @for (permesso of gruppo.permessi; track permesso.codice) {
           <label class="spunta">
             <input
+              name="permessi"
               #casella
               type="checkbox"
               [checked]="scelti().has(permesso.codice)"

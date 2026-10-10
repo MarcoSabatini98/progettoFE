@@ -24,6 +24,7 @@
             <app-riga-pulizia [attivita]="riga" [tempi]="tempi()" />
             @if (verso.length) {
               <select
+                name="sposta_pulizia"
                 #menu
                 class="sposta"
                 [attr.aria-label]="
