@@ -1,8 +1,11 @@
+import { signal } from '@angular/core';
 import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
 import { ContenutiService } from '../../../core/services/contenuti/contenuti-service';
+import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { apriSezione } from '../listino-component/sezione-listino-test';
 import { EventiComponent } from './eventi-component';
 
@@ -21,18 +24,25 @@ describe('EventiComponent', () => {
     creaEvento: vi.fn(),
     aggiornaEvento: vi.fn(),
     eliminaEvento: vi.fn(),
+    leggiTraduzioni: vi.fn(),
   };
 
   beforeEach(() => {
     Object.values(contenuti).forEach((spia) => spia.mockReset());
     contenuti.elencaEventi.mockReturnValue(of([evento]));
     contenuti.creaEvento.mockReturnValue(of(evento));
+    contenuti.leggiTraduzioni.mockReturnValue(of({}));
   });
 
   const apri = () =>
     apriSezione(EventiComponent, {}, {}, [
       { provide: ContenutiService, useValue: contenuti },
       { provide: AvvisiService, useValue: { mostra: vi.fn() } },
+      { provide: AuthService, useValue: { haPermessi: () => true } },
+      {
+        provide: LinguaService,
+        useValue: { disponibili: signal(['it', 'en']), attiva: () => 'it' },
+      },
     ]);
 
   it('elenca gli eventi col loro peso', async () => {
@@ -63,6 +73,15 @@ describe('EventiComponent', () => {
         impatto: 6,
       }),
     );
+  });
+
+  it("l'evento scelto si traduce: il titolo va sul sito", async () => {
+    const { elemento, scegli } = await apri();
+
+    await scegli(0);
+
+    expect(elemento.querySelector('app-traduzioni')).not.toBeNull();
+    expect(contenuti.leggiTraduzioni).toHaveBeenCalledWith('evento', 3);
   });
 
   it('senza titolo non crea', async () => {

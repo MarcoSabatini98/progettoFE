@@ -29,6 +29,14 @@ describe('ContenutiService', () => {
     richiesta.flush(risposta({}));
   });
 
+  it('legge gli eventi in zona nella lingua richiesta', () => {
+    service.elencaEventiPubblici('fr').subscribe();
+
+    const richiesta = backend.expectOne((req) => req.url === `${API}/eventi/pubblici`);
+    expect(richiesta.request.params.get('lingua')).toBe('fr');
+    richiesta.flush(risposta([]));
+  });
+
   it('legge una pagina del sito nella lingua richiesta', () => {
     service.leggiPaginaPubblica('struttura', 'de').subscribe();
 

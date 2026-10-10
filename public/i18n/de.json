@@ -382,7 +382,18 @@
   "attivita": {
     "occhiello": "Umgebung",
     "titolo": "Aktivitäten",
-    "introduzione": "Ausflugsziele in der Nähe, Feste und Veranstaltungen der Region, nützliche Infos zur Anreise und Aktivitäten im Haus."
+    "introduzione": "Ausflugsziele in der Nähe, Feste und Veranstaltungen der Region, nützliche Infos zur Anreise und Aktivitäten im Haus.",
+    "eventi": {
+      "occhiello": "In der Nähe",
+      "titolo": "Was in der Nähe los ist",
+      "introduzione": "Feste, Messen und Veranstaltungen der nächsten Monate: ein Grund mehr, Ihre Reisedaten zu wählen.",
+      "tipi": {
+        "festivita": "Feiertag",
+        "evento_locale": "Lokale Veranstaltung",
+        "fiera": "Messe",
+        "altro": "Nicht verpassen"
+      }
+    }
   },
   "offerte": {
     "occhiello": "Für Sie",

@@ -382,7 +382,18 @@
   "attivita": {
     "occhiello": "Surroundings",
     "titolo": "Activities",
-    "introduzione": "Things to do nearby, local festivals and events, useful travel information and activities at the property."
+    "introduzione": "Things to do nearby, local festivals and events, useful travel information and activities at the property.",
+    "eventi": {
+      "occhiello": "Nearby",
+      "titolo": "What’s on nearby",
+      "introduzione": "Festivals, fairs and events in the coming months: one more reason to pick your dates.",
+      "tipi": {
+        "festivita": "Holiday",
+        "evento_locale": "Local event",
+        "fiera": "Fair",
+        "altro": "Not to be missed"
+      }
+    }
   },
   "offerte": {
     "occhiello": "For you",

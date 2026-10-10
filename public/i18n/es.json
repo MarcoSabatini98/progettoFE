@@ -382,7 +382,18 @@
   "attivita": {
     "occhiello": "Alrededores",
     "titolo": "Actividades",
-    "introduzione": "Qué hacer cerca, fiestas y eventos de la zona, información útil para llegar y actividades en el alojamiento."
+    "introduzione": "Qué hacer cerca, fiestas y eventos de la zona, información útil para llegar y actividades en el alojamiento.",
+    "eventi": {
+      "occhiello": "En la zona",
+      "titolo": "Qué pasa en la zona",
+      "introduzione": "Fiestas, ferias y eventos de los próximos meses: un motivo más para elegir tus fechas.",
+      "tipi": {
+        "festivita": "Fiesta",
+        "evento_locale": "Evento local",
+        "fiera": "Feria",
+        "altro": "No te lo pierdas"
+      }
+    }
   },
   "offerte": {
     "occhiello": "Para ti",
