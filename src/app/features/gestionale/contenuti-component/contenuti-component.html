@@ -21,7 +21,8 @@
 
 @switch (sezione()) {
   @case ('foto') {
-    <div class="griglia-prenotazione">
+    <!-- Una galleria sotto l'altra, a tutta larghezza: sei miniature per riga. -->
+    <div class="colonna">
       @for (galleria of gallerie; track galleria.entita) {
         @let chiave = 'gestionale.contenuti.foto.' + galleria.entita;
         <app-galleria-media

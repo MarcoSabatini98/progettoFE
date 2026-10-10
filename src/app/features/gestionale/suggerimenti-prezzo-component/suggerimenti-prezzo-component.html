@@ -18,7 +18,7 @@
   <p class="tenue">{{ 'gestionale.report.suggerimenti.introduzione' | transloco }}</p>
 
   @if (suggerimenti.hasValue()) {
-    <ul class="griglia-schede" [attr.aria-busy]="suggerimenti.isLoading()">
+    <ul class="griglia-schede giorni" [attr.aria-busy]="suggerimenti.isLoading()">
       @for (giorno of giorni(); track giorno.giorno) {
         <li class="scheda">
           <div class="riga">

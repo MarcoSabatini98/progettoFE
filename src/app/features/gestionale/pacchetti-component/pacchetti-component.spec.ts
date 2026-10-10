@@ -56,7 +56,9 @@ describe('PacchettiComponent', () => {
     expect(elemento.querySelector<HTMLInputElement>('.servizi input[type="number"]')!.value).toBe(
       '2',
     );
-    expect(elemento.querySelector('app-galleria-media img')?.getAttribute('alt')).toBe('Terrazza');
+    expect(
+      elemento.querySelector('app-galleria-media .miniatura')?.getAttribute('aria-label'),
+    ).toBe('Terrazza');
   });
 
   it('un pacchetto nuovo non ha foto e manda i servizi scelti', async () => {

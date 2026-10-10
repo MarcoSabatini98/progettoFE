@@ -246,6 +246,7 @@
     "PULIZIA_IN_CORSO": "Finisci prima la camera che hai già.",
     "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire.",
     "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo.",
+    "SINCRONIZZAZIONE_FALLITA": "Il calendario del portale non si legge: controlla che il link iCal sia giusto e che il portale lo pubblichi ancora.",
     "GIA_PUBBLICATO": "Il documento è già pubblicato: crea una nuova versione.",
     "LINGUA_NON_ATTIVA": "Questa lingua non è attiva sul sito.",
     "CAMPO_NON_TRADUCIBILE": "Questo campo non si traduce.",
@@ -1496,11 +1497,14 @@
         "eliminaConferma": "Sì, elimina",
         "disattivato": "disattivato",
         "maiSincronizzato": "Mai sincronizzato",
+        "esitoOk": "Letto",
+        "esitoErrore": "Non letto",
         "errori": "{{ errori }} errori di fila",
         "urlAiuto": "Lo trovi nelle impostazioni del calendario sul portale (esportazione iCal).",
         "attivoAiuto": "Disattivato, le sue date bloccate tornano libere finché non lo riattivi.",
         "sincronizza": "Sincronizza ora",
         "sincronizzaAiuto": "Legge subito il calendario del portale, senza aspettare il prossimo giro.",
+        "dettaglio": "Motivo: {{ testo }}",
         "sincronizzato": "Sincronizzato: {{ eventi }} prenotazioni lette"
       },
       "esporta": {
@@ -1562,7 +1566,7 @@
       },
       "eventi": {
         "titolo": "Eventi in zona",
-        "aiuto": "Fiere, feste ed eventi che alzano la domanda: pesano sul prezzo suggerito.",
+        "aiuto": "Fiere, feste ed eventi che portano gente in zona. Servono al Report: nelle loro date il prezzo suggerito sale, tanto più quanto è alto l'impatto. Il listino non cambia da solo.",
         "nuova": "Nuovo evento",
         "vuoto": "Nessun evento.",
         "modifica": "Modifica evento",
@@ -1584,7 +1588,7 @@
           "note": "Note"
         },
         "impatto": "impatto {{ impatto }}/10",
-        "impattoAiuto": "Da 1 (poca gente in più) a 10 (tutto pieno)."
+        "impattoAiuto": "Da 1 (poca gente in più) a 10 (tutto pieno): più è alto, più sale il prezzo suggerito in quelle date."
       }
     },
     "traduzioni": {
@@ -1722,6 +1726,10 @@
         "dotazione": "Dotazione",
         "extra": "Extra"
       },
+      "gruppi": {
+        "dotazione": "Dotazioni",
+        "extra": "Extra a pagamento"
+      },
       "campi": {
         "nome": "Nome",
         "tipo": "Tipo",
@@ -1858,7 +1866,7 @@
       },
       "suggerimenti": {
         "titolo": "Prezzi suggeriti",
-        "introduzione": "Le date dei prossimi 30 giorni in cui conviene rivedere il prezzo, in base a occupazione ed eventi. Il listino non cambia da solo: sei tu a decidere se applicare il suggerimento.",
+        "introduzione": "Date dei prossimi 30 giorni in cui il prezzo merita una revisione, in base all'occupazione e agli eventi in zona. I suggerimenti non modificano il listino: l'applicazione resta a tua discrezione.",
         "tipologia": "Tipologia",
         "aiutoTipologia": "Scegline una per vedere il prezzo suggerito.",
         "tutte": "Tutte",

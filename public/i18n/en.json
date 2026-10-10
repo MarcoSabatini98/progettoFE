@@ -246,6 +246,7 @@
     "PULIZIA_IN_CORSO": "Finish the room you already have first.",
     "NESSUNA_PULIZIA_LIBERA": "There are no free rooms to clean.",
     "CALENDARIO_DISATTIVATO": "The calendar is disabled: enable it to sync it.",
+    "SINCRONIZZAZIONE_FALLITA": "The channel calendar could not be read: check that the iCal link is correct and that the channel still publishes it.",
     "GIA_PUBBLICATO": "The document is already published: create a new version.",
     "LINGUA_NON_ATTIVA": "This language is not enabled on the website.",
     "CAMPO_NON_TRADUCIBILE": "This field cannot be translated.",
@@ -1496,11 +1497,14 @@
         "eliminaConferma": "Yes, delete",
         "disattivato": "disabled",
         "maiSincronizzato": "Never synced",
+        "esitoOk": "Read",
+        "esitoErrore": "Not read",
         "errori": "{{ errori }} errors in a row",
         "urlAiuto": "You'll find it in the channel's calendar settings (iCal export).",
         "attivoAiuto": "While disabled, its blocked dates are free until you enable it again.",
         "sincronizza": "Sync now",
         "sincronizzaAiuto": "Reads the channel's calendar right away, without waiting for the next round.",
+        "dettaglio": "Reason: {{ testo }}",
         "sincronizzato": "Synced: {{ eventi }} bookings read"
       },
       "esporta": {
@@ -1562,7 +1566,7 @@
       },
       "eventi": {
         "titolo": "Local events",
-        "aiuto": "Fairs, festivals and events that raise demand: they weigh on the suggested price.",
+        "aiuto": "Fairs, festivals and events that bring people to the area. They feed the Report: on their dates the suggested price goes up, the more so the higher the impact. The price list never changes on its own.",
         "nuova": "New event",
         "vuoto": "No events.",
         "modifica": "Edit event",
@@ -1584,7 +1588,7 @@
           "note": "Notes"
         },
         "impatto": "impact {{ impatto }}/10",
-        "impattoAiuto": "From 1 (a few more people) to 10 (fully booked)."
+        "impattoAiuto": "From 1 (a few more people) to 10 (fully booked): the higher it is, the more the suggested price rises on those dates."
       }
     },
     "traduzioni": {
@@ -1722,6 +1726,10 @@
         "dotazione": "Amenity",
         "extra": "Extra"
       },
+      "gruppi": {
+        "dotazione": "Amenities",
+        "extra": "Paid extras"
+      },
       "campi": {
         "nome": "Name",
         "tipo": "Type",
@@ -1858,7 +1866,7 @@
       },
       "suggerimenti": {
         "titolo": "Suggested prices",
-        "introduzione": "Dates in the next 30 days where the price is worth reviewing, based on occupancy and events. Rates never change on their own: you decide whether to apply a suggestion.",
+        "introduzione": "Dates in the next 30 days where the price deserves a review, based on occupancy and local events. Suggestions never change the price list: applying them is up to you.",
         "tipologia": "Room type",
         "aiutoTipologia": "Pick one to see the suggested price.",
         "tutte": "All",

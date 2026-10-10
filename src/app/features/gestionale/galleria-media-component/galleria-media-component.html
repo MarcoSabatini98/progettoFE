@@ -5,6 +5,7 @@
   <app-icona nome="add_photo_alternate" />
   {{ 'gestionale.foto.carica' | transloco }}
   <input
+    name="media"
     class="visivamente-nascosto"
     type="file"
     multiple
@@ -19,89 +20,108 @@
 }
 
 <ol class="foto" [attr.aria-busy]="inCorso()">
-  @for (foto of media(); track foto.id; let primo = $first, ultimo = $last, indice = $index) {
-    <li class="elemento">
-      @if (eVideo(foto)) {
-        <video
-          class="anteprima"
-          [src]="foto.percorso | media"
-          [attr.aria-label]="foto.testo_alternativo"
-          [muted]="true"
-          controls
-          preload="metadata"
-        ></video>
-      } @else {
-        <img
-          class="anteprima"
-          [src]="foto.percorso | media"
-          [alt]="foto.testo_alternativo"
-          loading="lazy"
-        />
-      }
-      <div class="dettagli">
+  @for (foto of media(); track foto.id; let primo = $first) {
+    <li>
+      <button
+        class="miniatura"
+        type="button"
+        [attr.aria-pressed]="scelta() === foto.id"
+        [attr.aria-label]="foto.testo_alternativo"
+        (click)="apri(foto.id)"
+      >
+        @if (eVideo(foto)) {
+          <video
+            class="anteprima"
+            [src]="foto.percorso | media"
+            [muted]="true"
+            preload="metadata"
+          ></video>
+          <app-icona class="video" nome="play_arrow" />
+        } @else {
+          <img class="anteprima" [src]="foto.percorso | media" alt="" loading="lazy" />
+        }
         @if (primo) {
           <span class="copertina piccolo">{{ 'gestionale.foto.copertina' | transloco }}</span>
         }
-        <label class="campo-testo">
-          <span class="piccolo">{{ 'gestionale.foto.testoAlternativo' | transloco }}</span>
-          <input
-            #testo
-            type="text"
-            [value]="foto.testo_alternativo"
-            [maxLength]="lunghezzaTesto"
-            [disabled]="inCorso()"
-            (change)="descrivi(foto, testo.value)"
-          />
-        </label>
-        <div class="azioni">
-          <button
-            class="pulsante pulsante-fantasma pulsante-icona"
-            type="button"
-            [attr.aria-label]="'gestionale.foto.prima' | transloco"
-            [disabled]="primo || inCorso()"
-            (click)="sposta(indice, -1)"
-          >
-            <app-icona nome="arrow_upward" />
-          </button>
-          <button
-            class="pulsante pulsante-fantasma pulsante-icona"
-            type="button"
-            [attr.aria-label]="'gestionale.foto.dopo' | transloco"
-            [disabled]="ultimo || inCorso()"
-            (click)="sposta(indice, 1)"
-          >
-            <app-icona nome="arrow_downward" />
-          </button>
-          @if (daEliminare() === foto.id) {
-            <button
-              class="pulsante pulsante-pericolo"
-              type="button"
-              [disabled]="inCorso()"
-              (click)="elimina(foto.id)"
-            >
-              {{ 'gestionale.foto.conferma' | transloco }}
-            </button>
-            <button
-              class="pulsante pulsante-fantasma"
-              type="button"
-              (click)="daEliminare.set(undefined)"
-            >
-              {{ 'portale.documenti.annulla' | transloco }}
-            </button>
-          } @else {
-            <button
-              class="pulsante pulsante-fantasma pulsante-icona"
-              type="button"
-              [attr.aria-label]="'gestionale.foto.elimina' | transloco"
-              (click)="daEliminare.set(foto.id)"
-            >
-              <app-icona nome="delete" />
-            </button>
-          }
-        </div>
-      </div>
+      </button>
     </li>
   } @empty {
     <li class="stato-vuoto">{{ 'gestionale.foto.nessuna' | transloco }}</li>
   }
 </ol>
+
+@if (aperta(); as voce) {
+  @let foto = voce.foto;
+  <div class="dettagli">
+    @if (eVideo(foto)) {
+      <video
+        class="grande"
+        [src]="foto.percorso | media"
+        [attr.aria-label]="foto.testo_alternativo"
+        [muted]="true"
+        controls
+        preload="metadata"
+      ></video>
+    } @else {
+      <img class="grande" [src]="foto.percorso | media" [alt]="foto.testo_alternativo" />
+    }
+    <label class="campo-testo">
+      <span class="piccolo">{{ 'gestionale.foto.testoAlternativo' | transloco }}</span>
+      <input
+        #testo
+        type="text"
+        name="testo_alternativo"
+        [value]="foto.testo_alternativo"
+        [maxLength]="lunghezzaTesto"
+        [disabled]="inCorso()"
+        (change)="descrivi(foto, testo.value)"
+      />
+    </label>
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-fantasma pulsante-icona"
+        type="button"
+        [attr.aria-label]="'gestionale.foto.prima' | transloco"
+        [disabled]="voce.indice === 0 || inCorso()"
+        (click)="sposta(voce.indice, -1)"
+      >
+        <app-icona nome="arrow_back" />
+      </button>
+      <button
+        class="pulsante pulsante-fantasma pulsante-icona"
+        type="button"
+        [attr.aria-label]="'gestionale.foto.dopo' | transloco"
+        [disabled]="voce.indice === media().length - 1 || inCorso()"
+        (click)="sposta(voce.indice, 1)"
+      >
+        <app-icona nome="arrow_forward" />
+      </button>
+      @if (daEliminare() === foto.id) {
+        <button
+          class="pulsante pulsante-pericolo"
+          type="button"
+          [disabled]="inCorso()"
+          (click)="elimina(foto.id)"
+        >
+          {{ 'gestionale.foto.conferma' | transloco }}
+        </button>
+        <button
+          class="pulsante pulsante-fantasma"
+          type="button"
+          (click)="daEliminare.set(undefined)"
+        >
+          {{ 'portale.documenti.annulla' | transloco }}
+        </button>
+      } @else {
+        <button
+          class="pulsante pulsante-fantasma pulsante-icona"
+          type="button"
+          [attr.aria-label]="'gestionale.foto.elimina' | transloco"
+          (click)="daEliminare.set(foto.id)"
+        >
+          <app-icona nome="delete" />
+        </button>
+      }
+    </div>
+  </div>
+}

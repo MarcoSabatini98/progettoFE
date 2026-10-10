@@ -49,7 +49,7 @@ describe('CalendariEsterniComponent', () => {
     const voce = elemento.querySelector('.voce')!.textContent;
     expect(voce).toContain('Airbnb 101');
     expect(voce).toContain('gestionale.canali.airbnb');
-    expect(voce).toContain('OK: 3 eventi');
+    expect(voce).toContain('gestionale.calendari.esterni.esitoErrore');
     expect(voce).toContain('gestionale.calendari.esterni.errori');
   });
 

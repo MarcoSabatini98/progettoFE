@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/services/auth/auth-guard';
 import { ruoloGuard } from './core/services/auth/ruolo-guard';
 import { NavigazioneService } from './core/services/navigazione/navigazione-service';
+import { MANTIENI_SCORRIMENTO } from './core/services/navigazione/scorrimento-service';
 import { PERMESSI, RUOLI, RUOLI_STAFF } from './core/services/ruoli/ruoli-costanti';
 import { AreaPubblicaComponent } from './layout/area-pubblica-component/area-pubblica-component';
 import { AreaStaffComponent } from './layout/area-staff-component/area-staff-component';
@@ -349,6 +350,8 @@ export const routes: Routes = [
       {
         // Chat interna: tutto lo staff. L'assistenza si vede solo con CHAT_ASSISTENZA.
         path: 'chat',
+        // Aprendo una conversazione l'elenco resta dov'è.
+        data: { [MANTIENI_SCORRIMENTO]: true },
         loadComponent: () =>
           import('./features/gestionale/chat-component/chat-component').then(
             (m) => m.ChatComponent,

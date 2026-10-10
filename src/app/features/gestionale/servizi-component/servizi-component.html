@@ -4,19 +4,23 @@
   <h1>{{ 'gestionale.servizi.titolo' | transloco }}</h1>
 </header>
 
-<app-listino [listino]="listino" chiave="gestionale.servizi.elenco">
+<app-listino
+  [listino]="listino"
+  chiave="gestionale.servizi.elenco"
+  [gruppo]="gruppoServizio"
+  griglia
+>
   <ng-template #riga let-servizio>
     <strong>
       <app-icona [nome]="servizio.icona || iconaPredefinita" />
       {{ servizio.nome }}
     </strong>
-    <span class="piccolo">
-      {{ 'gestionale.servizi.tipi.' + servizio.tipo | transloco }}
-      @if (servizio.tipo === 'extra') {
-        · {{ servizio.prezzo | prezzo }}
+    @if (servizio.tipo === 'extra') {
+      <span class="piccolo">
+        {{ servizio.prezzo | prezzo }}
         {{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}
-      }
-    </span>
+      </span>
+    }
     @if (!servizio.attivo) {
       <span class="piccolo tenue">{{ 'gestionale.tariffe.disattivato' | transloco }}</span>
     }
@@ -98,7 +102,7 @@
         <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
       </app-campo>
       <label class="spunta">
-        <input type="checkbox" formControlName="attivo" />
+        <input name="attivo" type="checkbox" formControlName="attivo" />
         {{ 'gestionale.servizi.campi.attivo' | transloco }}
       </label>
     </div>

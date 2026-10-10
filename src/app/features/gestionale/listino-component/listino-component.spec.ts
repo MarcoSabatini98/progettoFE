@@ -24,7 +24,13 @@ const richieste = {
   imports: [ListinoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-listino [listino]="listino" chiave="prova" [eliminabile]="eliminabile()">
+    <app-listino
+      [listino]="listino"
+      chiave="prova"
+      [eliminabile]="eliminabile()"
+      [gruppo]="gruppo()"
+      [griglia]="griglia()"
+    >
       <ng-template #riga let-voce>{{ voce.nome }}</ng-template>
       <p class="modulo">modulo</p>
     </app-listino>
@@ -32,6 +38,8 @@ const richieste = {
 })
 class OspiteComponent {
   readonly eliminabile = signal(true);
+  readonly gruppo = signal<((voce: Voce) => string) | undefined>(undefined);
+  readonly griglia = signal(false);
   readonly modulo = new FormGroup({ nome: new FormControl('', { nonNullable: true }) });
   readonly listino = new Listino<Voce, unknown>(richieste as never, this.modulo);
 }
@@ -97,5 +105,24 @@ describe('ListinoComponent', () => {
     await fixture.whenStable();
 
     expect(elemento.textContent).not.toContain('prova.elimina');
+  });
+
+  it('con i gruppi divide le voci sotto i titoli, nell’ordine della prima di ciascuno', async () => {
+    richieste.elenca.mockReturnValue(
+      of([
+        { id: 1, nome: 'Wi-Fi' },
+        { id: 2, nome: 'Colazione' },
+        { id: 3, nome: 'Aria condizionata' },
+      ]),
+    );
+    const { fixture, elemento } = await crea();
+    fixture.componentInstance.gruppo.set((voce) => (voce.id === 2 ? 'extra' : 'dotazioni'));
+    fixture.componentInstance.griglia.set(true);
+    await fixture.whenStable();
+
+    const titoli = [...elemento.querySelectorAll('.gruppo')].map((h3) => h3.textContent?.trim());
+    const elenchi = [...elemento.querySelectorAll('.elenco.griglia')];
+    expect(titoli).toEqual(['dotazioni', 'extra']);
+    expect(elenchi.map((ul) => ul.querySelectorAll('.voce').length)).toEqual([2, 1]);
   });
 });

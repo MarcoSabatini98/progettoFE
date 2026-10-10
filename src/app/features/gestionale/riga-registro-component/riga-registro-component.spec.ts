@@ -41,7 +41,10 @@ describe('RigaRegistroComponent', () => {
 
     expect(elemento.textContent).toContain('gestionale.registro.azioni.modifica');
     expect(elemento.textContent).toContain('Rossi Anna');
-    expect(elemento.textContent).toContain('in_attesa → confermata');
+    expect(elemento.textContent?.replace(/\s+/g, ' ')).toContain(
+      'prenotazione.stati.in_attesa → prenotazione.stati.confermata',
+    );
+    expect(elemento.textContent).toContain('200 → —');
     expect(elemento.textContent).not.toContain('gestionale.registro.campi.adulti');
     expect(elemento.querySelector('a[href="/staff/prenotazioni/7"]')).not.toBeNull();
   });

@@ -27,6 +27,7 @@ import { CalendariService } from '../../../core/services/calendari/calendari-ser
 import { CamereService } from '../../../core/services/camere/camere-service';
 import {
   DURATE_PLANNING,
+  DURATA_PLANNING_PREDEFINITA,
   DurataPlanning,
   STATI_PLANNING,
   STATI_SPOSTABILI,
@@ -100,7 +101,7 @@ export class PlanningComponent {
   protected readonly chiudere = this.auth.haPermessi([PERMESSI.CALENDARI_GESTISCI]);
   protected readonly oggi = dataCalendario(new Date());
   protected readonly dal = signal(this.oggi);
-  protected readonly durata = signal<DurataPlanning>(14);
+  protected readonly durata = signal<DurataPlanning>(DURATA_PLANNING_PREDEFINITA);
   protected readonly periodo = computed(() => periodoPlanning(this.dal(), this.durata()));
   protected readonly giorni = computed(() => giorniPeriodo(this.periodo()));
 
