@@ -726,6 +726,7 @@
       "totale": "Reservas encontradas: {{ totale }}",
       "nessuna": "Ninguna reserva con estos filtros.",
       "pagine": "Páginas",
+      "righe": "Filas por página",
       "precedente": "Anterior",
       "successiva": "Siguiente",
       "pagina": "Página {{ pagina }} de {{ pagine }}"

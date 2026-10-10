@@ -133,8 +133,14 @@
             {{ 'gestionale.cruscotto.andamento.camere' | transloco }}
           </h3>
           <p class="tenue piccolo">{{ 'gestionale.cruscotto.andamento.arrivati' | transloco }}</p>
+          @let paginaCamere = camere();
           <ng-container
-            *ngTemplateOutlet="classifica; context: { $implicit: valori.ricavi.per_camera }"
+            *ngTemplateOutlet="classifica; context: { $implicit: paginaCamere.elementi }"
+          />
+          <app-paginazione
+            [risultato]="paginaCamere"
+            [(pagina)]="pagineCamere.pagina"
+            [(perPagina)]="pagineCamere.perPagina"
           />
         </section>
 
@@ -183,15 +189,15 @@
     @for (riga of righe; track $index) {
       <li>
         <div class="riga">
-          <span>
+          <span class="nome">
             {{ riga.nome ?? ('gestionale.cruscotto.andamento.camera' | transloco: riga) }}
+            <span class="tenue piccolo">
+              {{ 'gestionale.cruscotto.andamento.dettaglioRicavo' | transloco: riga }}
+            </span>
           </span>
           <strong>{{ riga.valore | prezzo }}</strong>
         </div>
         <span class="quota"><span [style.inline-size.%]="quota(riga.valore)"></span></span>
-        <span class="tenue piccolo">
-          {{ 'gestionale.cruscotto.andamento.dettaglioRicavo' | transloco: riga }}
-        </span>
       </li>
     } @empty {
       <li class="stato-vuoto">{{ 'gestionale.cruscotto.andamento.vuoto' | transloco }}</li>

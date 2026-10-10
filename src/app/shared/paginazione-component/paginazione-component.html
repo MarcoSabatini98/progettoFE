@@ -1,26 +1,63 @@
 @let pagine = risultato();
-@if (pagine.pagine > 1) {
-  <nav class="pagine" [attr.aria-label]="'gestionale.elenco.pagine' | transloco">
-    <button
-      class="pulsante pulsante-secondario"
-      type="button"
-      [disabled]="pagine.pagina <= 1 || occupato()"
-      (click)="sfoglia.emit(-1)"
-    >
-      <app-icona nome="chevron_left" />
-      {{ 'gestionale.elenco.precedente' | transloco }}
-    </button>
-    <span>
-      {{ 'gestionale.elenco.pagina' | transloco: { pagina: pagine.pagina, pagine: pagine.pagine } }}
-    </span>
-    <button
-      class="pulsante pulsante-secondario"
-      type="button"
-      [disabled]="pagine.pagina >= pagine.pagine || occupato()"
-      (click)="sfoglia.emit(1)"
-    >
-      {{ 'gestionale.elenco.successiva' | transloco }}
-      <app-icona nome="chevron_right" />
-    </button>
-  </nav>
+@if (pagine.totale > righe[0]) {
+  <div class="paginazione">
+    <div class="righe">
+      <label [for]="idRighe">{{ 'gestionale.elenco.righe' | transloco }}</label>
+      <select [id]="idRighe" name="perPagina" (change)="scegliRighe($event)">
+        @for (numero of righe; track numero) {
+          <option [value]="numero" [selected]="numero === perPagina()">{{ numero }}</option>
+        }
+      </select>
+    </div>
+
+    @if (pagine.pagine > 1) {
+      <nav class="pagine" [attr.aria-label]="'gestionale.elenco.pagine' | transloco">
+        <button
+          class="pulsante pulsante-secondario pulsante-icona"
+          type="button"
+          [attr.aria-label]="'gestionale.elenco.precedente' | transloco"
+          [disabled]="pagine.pagina <= 1 || occupato()"
+          (click)="pagina.set(pagine.pagina - 1)"
+        >
+          <app-icona nome="chevron_left" />
+        </button>
+
+        <ol class="numeri">
+          @for (numero of numeri(); track $index) {
+            <li>
+              @if (numero === null) {
+                <span class="puntini" aria-hidden="true">…</span>
+              } @else {
+                <button
+                  class="pulsante pulsante-fantasma numero"
+                  type="button"
+                  [class.attuale]="numero === pagine.pagina"
+                  [attr.aria-current]="numero === pagine.pagina ? 'page' : null"
+                  [disabled]="occupato()"
+                  (click)="pagina.set(numero)"
+                >
+                  {{ numero }}
+                </button>
+              }
+            </li>
+          }
+        </ol>
+        <span class="riassunto">
+          {{
+            'gestionale.elenco.pagina' | transloco: { pagina: pagine.pagina, pagine: pagine.pagine }
+          }}
+        </span>
+
+        <button
+          class="pulsante pulsante-secondario pulsante-icona"
+          type="button"
+          [attr.aria-label]="'gestionale.elenco.successiva' | transloco"
+          [disabled]="pagine.pagina >= pagine.pagine || occupato()"
+          (click)="pagina.set(pagine.pagina + 1)"
+        >
+          <app-icona nome="chevron_right" />
+        </button>
+      </nav>
+    }
+  </div>
 }

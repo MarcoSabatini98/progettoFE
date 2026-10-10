@@ -17,6 +17,11 @@ import {
 } from '../../../core/services/analytics/andamento';
 import { AnalyticsService } from '../../../core/services/analytics/analytics-service';
 import { salvaFile } from '../../../core/services/api/salva-file';
+import {
+  RIGHE_PER_PAGINA,
+  paginaLocale,
+  statoPagine,
+} from '../../../core/services/api/stato-pagine';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { LinguaService } from '../../../core/services/lingua/lingua-service';
 import { GraficoBarreComponent } from '../../../shared/grafico-barre-component/grafico-barre-component';
@@ -27,6 +32,7 @@ import {
 } from '../../../shared/models/barra-grafico/barra-grafico-model';
 import { ReportOccupazioneInterface } from '../../../shared/models/report-occupazione/report-occupazione-model';
 import { StatisticaCanaleInterface } from '../../../shared/models/statistica-canale/statistica-canale-model';
+import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import { PrezzoPipe } from '../../../shared/pipes/prezzo-pipe';
 
 type Riepilogo = ReportOccupazioneInterface['riepilogo'];
@@ -65,7 +71,14 @@ const UN_LUNEDI = new Date(2024, 0, 1);
  */
 @Component({
   selector: 'app-andamento',
-  imports: [NgTemplateOutlet, TranslocoPipe, GraficoBarreComponent, IconaComponent, PrezzoPipe],
+  imports: [
+    NgTemplateOutlet,
+    TranslocoPipe,
+    GraficoBarreComponent,
+    IconaComponent,
+    PaginazioneComponent,
+    PrezzoPipe,
+  ],
   templateUrl: './andamento-component.html',
   styleUrl: './andamento-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -93,6 +106,14 @@ export class AndamentoComponent {
         canali: this.analytics.elencaCanali(filtri),
       }).pipe(map((dati) => ({ ...dati, mensile: perMese(params) })));
     },
+  });
+
+  /** Ricavi per camera dal più alto: con tante camere si sfogliano, 5 alla volta di partenza. */
+  protected readonly pagineCamere = statoPagine(this.periodo, RIGHE_PER_PAGINA[0]);
+  protected readonly camere = computed(() => {
+    const righe = this.dati.hasValue() ? this.dati.value().ricavi.per_camera : [];
+    const ordinate = [...righe].sort((a, b) => b.valore - a.valore);
+    return paginaLocale(ordinate, this.pagineCamere.pagina(), this.pagineCamere.perPagina());
   });
 
   private readonly formati = computed(() => {

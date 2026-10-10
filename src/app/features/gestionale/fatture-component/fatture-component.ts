@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime, map } from 'rxjs';
 
 import { ANNO_COMPLETO, ATTESA_RICERCA_MS } from '../../../core/services/api/api-costanti';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { ErroriService } from '../../../core/services/errori/errori-service';
 import { FattureService } from '../../../core/services/fatture/fatture-service';
 import { STATI_SDI } from '../../../core/services/pagamenti/pagamenti-costanti';
@@ -12,8 +13,6 @@ import { CampoComponent } from '../../../shared/campo-component/campo-component'
 import { FiltriFatture, StatoSdi } from '../../../shared/models/fattura/fattura-model';
 import { PaginazioneComponent } from '../../../shared/paginazione-component/paginazione-component';
 import { RigaFatturaComponent } from '../riga-fattura-component/riga-fattura-component';
-
-const FATTURE_PER_PAGINA = 20;
 
 /**
  * Fatture e note di credito, le più recenti in cima, cercate per intestatario e filtrate
@@ -50,19 +49,11 @@ export class FattureComponent {
     { initialValue: this.filtri.getRawValue() },
   );
   /** Cambiando i filtri si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({ source: this.scelti, computation: () => 1 });
+  protected readonly pagine = statoPagine(this.scelti);
   protected readonly elenco = rxResource({
     params: () => this.parametri(),
     stream: ({ params }) => this.fatture.elencaFatture(params),
   });
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
-  }
 
   private parametri(): FiltriFatture {
     const { cerca, stato, anno } = this.scelti();
@@ -70,8 +61,8 @@ export class FattureComponent {
       cerca: cerca.trim() || undefined,
       stato_sdi: stato ? [stato] : [],
       anno: ANNO_COMPLETO.test(String(anno)) ? Number(anno) : undefined,
-      pagina: this.pagina(),
-      perPagina: FATTURE_PER_PAGINA,
+      pagina: this.pagine.pagina(),
+      perPagina: this.pagine.perPagina(),
     };
   }
 }

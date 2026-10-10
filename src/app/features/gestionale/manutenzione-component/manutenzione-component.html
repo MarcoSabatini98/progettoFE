@@ -47,7 +47,8 @@
   <app-paginazione
     [risultato]="risultato"
     [occupato]="elenco.isLoading()"
-    (sfoglia)="sfoglia($event)"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
   />
 } @else if (elenco.error(); as errore) {
   <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

@@ -21,7 +21,7 @@ describe('ManutenzioneComponent', () => {
     ],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
 
@@ -66,7 +66,7 @@ describe('ManutenzioneComponent', () => {
       priorita: undefined,
       mie: undefined,
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
     expect(elemento.querySelectorAll('app-riga-segnalazione')).toHaveLength(1);
     expect(elemento.querySelector('app-nuova-segnalazione')).not.toBeNull();
@@ -88,7 +88,7 @@ describe('ManutenzioneComponent', () => {
       priorita: 'urgente',
       mie: true,
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
 
     await scegli(fixture, stato, 'tutte');

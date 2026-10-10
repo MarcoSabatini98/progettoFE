@@ -726,6 +726,7 @@
       "totale": "Bookings found: {{ totale }}",
       "nessuna": "No bookings match these filters.",
       "pagine": "Pages",
+      "righe": "Rows per page",
       "precedente": "Previous",
       "successiva": "Next",
       "pagina": "Page {{ pagina }} of {{ pagine }}"

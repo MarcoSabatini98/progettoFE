@@ -27,7 +27,7 @@ describe('PagamentiComponent', () => {
     ],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
   const tutti = { dal: undefined, al: undefined, stato: [], metodo: [], tipo: [] };
@@ -62,7 +62,7 @@ describe('PagamentiComponent', () => {
   it('parte da tutti i movimenti, i più recenti in cima', async () => {
     const { elemento } = await crea();
 
-    expect(pagamenti.elencaPagamenti).toHaveBeenCalledWith({ ...tutti, pagina: 1, perPagina: 20 });
+    expect(pagamenti.elencaPagamenti).toHaveBeenCalledWith({ ...tutti, pagina: 1, perPagina: 10 });
     expect(elemento.querySelectorAll('app-riga-pagamento')).toHaveLength(1);
   });
 
@@ -79,7 +79,7 @@ describe('PagamentiComponent', () => {
       al: '2030-07-01',
       stato: ['annullato'],
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
   });
 

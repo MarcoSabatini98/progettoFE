@@ -15,7 +15,7 @@ describe('ModerazioneComponent', () => {
     elementi: [{ id: 1, voto: 5, titolo: 'Ottimo', stato: 'in_attesa', creato_il: '2030-06-01' }],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
 
@@ -45,7 +45,7 @@ describe('ModerazioneComponent', () => {
       stato: 'in_attesa',
       voto_max: undefined,
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
     expect(elemento.querySelectorAll('app-riga-recensione')).toHaveLength(1);
   });
@@ -63,7 +63,7 @@ describe('ModerazioneComponent', () => {
       stato: undefined,
       voto_max: 2,
       pagina: 1,
-      perPagina: 20,
+      perPagina: 10,
     });
   });
 

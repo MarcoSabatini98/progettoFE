@@ -28,10 +28,10 @@ describe('FattureComponent', () => {
     ],
     totale: 1,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   };
-  const tutte = { cerca: undefined, stato_sdi: [], anno: undefined, pagina: 1, perPagina: 20 };
+  const tutte = { cerca: undefined, stato_sdi: [], anno: undefined, pagina: 1, perPagina: 10 };
 
   beforeEach(() => {
     vi.useFakeTimers();

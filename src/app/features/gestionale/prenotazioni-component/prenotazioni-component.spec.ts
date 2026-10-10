@@ -26,7 +26,7 @@ describe('PrenotazioniComponent', () => {
     vi.useFakeTimers();
     prenotazioni.elencaPrenotazioni.mockReset();
     prenotazioni.elencaPrenotazioni.mockReturnValue(
-      of({ elementi: [prenotazione], totale: 41, pagina: 1, perPagina: 20, pagine: 3 }),
+      of({ elementi: [prenotazione], totale: 41, pagina: 1, perPagina: 10, pagine: 3 }),
     );
     TestBed.configureTestingModule({
       imports: [traduzioniTest()],
@@ -58,14 +58,14 @@ describe('PrenotazioniComponent', () => {
     const { elemento } = await crea();
 
     expect(prenotazioni.elencaPrenotazioni).toHaveBeenCalledWith(
-      expect.objectContaining({ pagina: 1, perPagina: 20, ordine: 'desc', stato: [] }),
+      expect.objectContaining({ pagina: 1, perPagina: 10, ordine: 'desc', stato: [] }),
     );
     expect(elemento.querySelectorAll('app-riga-prenotazione')).toHaveLength(1);
   });
 
   it('i filtri arrivano all’API e riportano alla prima pagina', async () => {
     const { fixture, elemento } = await crea();
-    elemento.querySelectorAll<HTMLButtonElement>('.pagine button')[1].click();
+    elemento.querySelector<HTMLButtonElement>('.pagine > button:last-of-type')!.click();
     await attendi(fixture);
     expect(prenotazioni.elencaPrenotazioni).toHaveBeenLastCalledWith(
       expect.objectContaining({ pagina: 2 }),
@@ -84,7 +84,8 @@ describe('PrenotazioniComponent', () => {
   it('sulla prima pagina non si torna indietro', async () => {
     const { elemento } = await crea();
 
-    const [precedente, successiva] = elemento.querySelectorAll<HTMLButtonElement>('.pagine button');
+    const precedente = elemento.querySelector<HTMLButtonElement>('.pagine > button:first-of-type')!;
+    const successiva = elemento.querySelector<HTMLButtonElement>('.pagine > button:last-of-type')!;
     expect(precedente.disabled).toBe(true);
     expect(successiva.disabled).toBe(false);
   });

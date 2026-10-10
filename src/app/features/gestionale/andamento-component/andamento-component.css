@@ -38,7 +38,7 @@
 .classifica,
 .canali {
   display: grid;
-  gap: var(--bb-spazio-4);
+  gap: var(--bb-spazio-3);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -51,9 +51,18 @@
 
 .riga {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   gap: var(--bb-spazio-3);
   font-variant-numeric: tabular-nums;
+}
+
+/* Nome e dettaglio sulla stessa riga: la classifica resta bassa anche con tante camere. */
+.nome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--bb-spazio-2);
 }
 
 /* Barra della quota sul totale del periodo. */

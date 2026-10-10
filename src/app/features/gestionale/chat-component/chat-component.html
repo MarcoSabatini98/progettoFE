@@ -74,7 +74,8 @@
       <app-paginazione
         [risultato]="risultato"
         [occupato]="conversazioni.isLoading()"
-        (sfoglia)="sfoglia($event)"
+        [(pagina)]="pagine.pagina"
+        [(perPagina)]="pagine.perPagina"
       />
     } @else if (conversazioni.error(); as errore) {
       <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>

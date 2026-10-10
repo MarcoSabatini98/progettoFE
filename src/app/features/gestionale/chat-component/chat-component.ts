@@ -1,17 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  linkedSignal,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { rxResource, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { debounceTime, merge } from 'rxjs';
 
 import { AuthService } from '../../../core/services/auth/auth-service';
+import { statoPagine } from '../../../core/services/api/stato-pagine';
 import { AvvisiService } from '../../../core/services/avvisi/avvisi-service';
 import {
   EVENTI_SOCKET,
@@ -74,10 +68,7 @@ export class ChatComponent {
   protected readonly stato = signal<StatoConversazione>('aperta');
   protected readonly assegnate = signal<FiltriConversazioni['assegnate']>(undefined);
   /** Cambiando filtro si riparte dalla prima pagina. */
-  protected readonly pagina = linkedSignal({
-    source: () => [this.tipo(), this.stato(), this.assegnate()],
-    computation: () => 1,
-  });
+  protected readonly pagine = statoPagine(() => [this.tipo(), this.stato(), this.assegnate()]);
   /** C'è una conversazione (o la nuova chat) nel riquadro di destra. */
   protected readonly aperta = signal(false);
   protected readonly conversazioni = rxResource({
@@ -85,7 +76,8 @@ export class ChatComponent {
       tipo: this.tipo(),
       stato: this.stato(),
       assegnate: this.tipo() === 'assistenza' ? this.assegnate() : undefined,
-      pagina: this.pagina(),
+      pagina: this.pagine.pagina(),
+      perPagina: this.pagine.perPagina(),
     }),
     stream: ({ params }) => this.chat.elencaConversazioni(params),
   });
@@ -111,14 +103,6 @@ export class ChatComponent {
         this.conversazioni.reload();
         this.nonLetti.reload();
       });
-  }
-
-  /**
-   * SFOGLIA
-   * Avanti o indietro di una pagina.
-   */
-  sfoglia(passo: number): void {
-    this.pagina.update((numero) => numero + passo);
   }
 
   /**

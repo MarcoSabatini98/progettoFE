@@ -22,7 +22,7 @@ describe('ChatComponent', () => {
     elementi: titoli.map((titolo, i) => ({ uuid: `u${i}`, tipo: 'staff', titolo })),
     totale: titoli.length,
     pagina: 1,
-    perPagina: 20,
+    perPagina: 10,
     pagine: 1,
   });
 
@@ -69,6 +69,7 @@ describe('ChatComponent', () => {
       stato: 'aperta',
       assegnate: undefined,
       pagina: 1,
+      perPagina: 10,
     });
     expect(elemento.querySelectorAll('app-riga-conversazione')).toHaveLength(1);
     const badge = Array.from(elemento.querySelectorAll('.schede .conteggio')).map((b) =>
