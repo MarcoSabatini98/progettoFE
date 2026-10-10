@@ -16,11 +16,12 @@
   margin: 0;
 }
 
-/* La foto occupa tutta la larghezza della scheda, sopra il testo. */
+/* La foto occupa tutta la larghezza della scheda, sopra il testo: bassa, non ruba la scheda. */
 .offerta-foto {
   inline-size: calc(100% + 2 * var(--bb-spazio-6));
   max-inline-size: none;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
+  max-block-size: 13.75rem;
   margin: calc(-1 * var(--bb-spazio-6)) calc(-1 * var(--bb-spazio-6)) var(--bb-spazio-2);
   object-fit: cover;
 }
@@ -90,7 +91,7 @@ h3 {
   margin-top: auto;
 }
 
-/* Vetrina: la prima offerta di ogni sezione su tutta la riga, più grande. */
+/* Vetrina: la prima promozione su tutta la riga, con lo sconto in grande. */
 .vetrina {
   grid-column: 1 / -1;
   border-color: var(--bb-brand-bordo);
@@ -100,7 +101,6 @@ h3 {
   font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
-/* Senza foto la promozione in vetrina mostra lo sconto in grande. */
 .vetrina .sconto {
   align-self: stretch;
   display: grid;
@@ -113,21 +113,16 @@ h3 {
 }
 
 @media (width >= 58.75rem) {
-  /* Foto o sconto a sinistra, testo a destra; un pacchetto senza foto resta su una colonna. */
-  .vetrina:has(> .offerta-foto, > .sconto) {
+  .offerte {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Sconto a sinistra, testo a destra. */
+  .vetrina {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
     gap: var(--bb-spazio-8);
-  }
-
-  .vetrina .offerta-foto {
-    inline-size: calc(100% + var(--bb-spazio-6));
-    block-size: calc(100% + 2 * var(--bb-spazio-6));
-    min-block-size: 20rem;
-    aspect-ratio: auto;
-    margin: calc(-1 * var(--bb-spazio-6)) 0 calc(-1 * var(--bb-spazio-6))
-      calc(-1 * var(--bb-spazio-6));
   }
 
   .vetrina .sconto {
