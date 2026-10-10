@@ -1,6 +1,5 @@
 :host {
   display: grid;
-  gap: var(--bb-spazio-12);
 }
 
 /* Vuoto: nessuno spazio in più nella pagina. */
@@ -8,24 +7,46 @@
   display: none;
 }
 
+/* Fasce alternate: una sezione sì e una no sul fondo chiaro, così la pagina ha un ritmo. */
 .blocco {
   display: grid;
-  gap: var(--bb-spazio-6);
+  gap: var(--bb-spazio-8);
   align-items: center;
+  padding: var(--bb-spazio-6);
+  border-radius: var(--bb-raggio);
 }
 
+.blocco:nth-child(odd) {
+  background: var(--bb-superficie);
+}
+
+/* Dietro la foto una sagoma nel colore del brand, spostata verso l'esterno. */
 .immagine {
+  --sagoma: var(--bb-spazio-4);
+
   inline-size: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--bb-raggio);
-  box-shadow: var(--bb-ombra);
+  box-shadow:
+    var(--sagoma) var(--sagoma) 0 var(--bb-brand-tenue),
+    var(--bb-ombra);
 }
 
 .testo {
   display: grid;
   gap: var(--bb-spazio-4);
   max-inline-size: 36rem;
+}
+
+/* Tratto breve sotto il titolo. */
+.testo h2::after {
+  content: '';
+  display: block;
+  inline-size: var(--bb-spazio-12);
+  block-size: 2px;
+  margin-block-start: var(--bb-spazio-4);
+  background: var(--bb-brand-testo);
 }
 
 /* Gli a capo scritti dallo staff restano. */
@@ -36,21 +57,38 @@
 }
 
 @media (width >= 48rem) {
+  .blocco {
+    padding: var(--bb-spazio-12);
+  }
+
+  /* La foto è più larga del testo; una sì e una no passa a destra. */
   .blocco:has(.immagine) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 7fr 5fr;
     gap: var(--bb-spazio-12);
   }
 
-  /* Una sì e una no l'immagine passa a destra. */
+  .blocco:nth-child(even):has(.immagine) {
+    grid-template-columns: 5fr 7fr;
+  }
+
   .blocco:nth-child(even) .immagine {
     order: 1;
+    --sagoma-x: calc(var(--sagoma) * -1);
+
+    box-shadow:
+      var(--sagoma-x) var(--sagoma) 0 var(--bb-brand-tenue),
+      var(--bb-ombra);
   }
 }
 
-/* Senza immagine il testo sta al centro. */
+/* Senza immagine il testo sta al centro, tratto compreso. */
 .blocco:not(:has(.immagine)) .testo {
   justify-self: center;
   text-align: center;
+}
+
+.blocco:not(:has(.immagine)) .testo h2::after {
+  margin-inline: auto;
 }
 
 /* Comparsa (ComparsaDirective): l'immagine arriva dal suo lato, il testo sale dal basso. */
