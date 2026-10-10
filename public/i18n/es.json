@@ -1339,7 +1339,11 @@
       "salva": "Guardar",
       "crea": "Crear",
       "annulla": "Cancelar",
-      "salvata": "Cambios guardados."
+      "salvata": "Cambios guardados.",
+      "cerca": "Buscar",
+      "altre": "Mostrar el resto: {{ totale }}",
+      "archiviate": "Mostrar también desactivados y caducados: {{ totale }}",
+      "nessuna": "No se han encontrado elementos."
     },
     "tariffe": {
       "occhiello": "Lista de precios",

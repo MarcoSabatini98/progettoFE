@@ -1339,7 +1339,11 @@
       "salva": "Enregistrer",
       "crea": "Créer",
       "annulla": "Annuler",
-      "salvata": "Modifications enregistrées."
+      "salvata": "Modifications enregistrées.",
+      "cerca": "Rechercher",
+      "altre": "Afficher les autres : {{ totale }}",
+      "archiviate": "Afficher aussi les désactivés et expirés : {{ totale }}",
+      "nessuna": "Aucun élément trouvé."
     },
     "tariffe": {
       "occhiello": "Grille tarifaire",

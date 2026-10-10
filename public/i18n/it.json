@@ -1339,7 +1339,11 @@
       "salva": "Salva",
       "crea": "Crea",
       "annulla": "Annulla",
-      "salvata": "Modifiche salvate."
+      "salvata": "Modifiche salvate.",
+      "cerca": "Cerca",
+      "altre": "Mostra le altre: {{ totale }}",
+      "archiviate": "Mostra anche disattivate e scadute: {{ totale }}",
+      "nessuna": "Nessuna voce trovata."
     },
     "tariffe": {
       "occhiello": "Listino",

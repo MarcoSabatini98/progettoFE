@@ -41,3 +41,14 @@
   padding: var(--bb-spazio-3);
   align-content: start;
 }
+
+.archivio {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  font-size: 0.875rem;
+}
+
+.altre {
+  justify-self: start;
+}

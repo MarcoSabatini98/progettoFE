@@ -10,7 +10,7 @@ describe('CodiciScontoComponent', () => {
     codice: 'ESTATE26',
     tipo_sconto: 'percentuale',
     valore: '10.00',
-    valido_al: '2026-09-30',
+    valido_al: '2099-09-30',
     utilizzi_max: 50,
     utilizzi: 12,
     attivo: true,
