@@ -5,7 +5,7 @@ import { SezioneInterface } from '../../../shared/models/sezione/sezione-model';
 import { MediaPipe } from '../../../shared/pipes/media-pipe';
 
 /**
- * Sezioni immagine-testo scritte dallo staff: l'immagine si alterna a sinistra e a destra
+ * Sezioni immagine-testo scritte dallo staff, a fasce alternate: l'immagine si alterna a sinistra e a destra
  * e ogni sezione compare scendendo, una volta sola. Senza immagine resta il solo testo.
  */
 @Component({
