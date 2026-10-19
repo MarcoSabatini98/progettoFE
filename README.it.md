@@ -1,6 +1,6 @@
 # progettoFE
 
-[English](README.md) · **Italiano**
+[English](README.md) · **Italiano** · API backend: [progettoBE](https://github.com/MarcoSabatini98/progettoBE)
 
 Client web di una piattaforma gestionale white-label per piccoli hotel e B&B. Una sola app
 Angular fa girare il sito pubblico della struttura con la prenotazione online, il portale
