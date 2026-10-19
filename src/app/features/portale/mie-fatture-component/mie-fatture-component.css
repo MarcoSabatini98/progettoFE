@@ -1,0 +1,24 @@
+.fatture {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Da telefono in colonna, da desktop su una riga: dati, totale, pulsante. */
+.fattura {
+  align-items: center;
+}
+
+.totale {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+@media (width >= 40rem) {
+  .fattura {
+    grid-template-columns: 1fr auto auto;
+    gap: var(--bb-spazio-6);
+  }
+}

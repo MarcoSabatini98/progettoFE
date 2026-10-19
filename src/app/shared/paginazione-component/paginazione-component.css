@@ -1,0 +1,80 @@
+/* Larga: righe a sinistra, pagine a destra. Stretta (telefono, colonne): pagine sopra, righe sotto. */
+:host {
+  display: block;
+  container-type: inline-size;
+}
+
+.paginazione {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+.righe {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+  font-size: var(--bb-controllo-testo);
+}
+
+.righe select {
+  width: auto;
+}
+
+.pagine {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  margin-inline-start: auto;
+}
+
+.numeri {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.numero {
+  min-width: var(--bb-controllo-altezza);
+  padding: 0 var(--bb-spazio-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.numero.attuale {
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+}
+
+.puntini {
+  padding: 0 var(--bb-spazio-1);
+  color: var(--bb-testo-tenue);
+}
+
+.riassunto {
+  display: none;
+  padding: 0 var(--bb-spazio-2);
+  white-space: nowrap;
+}
+
+@container (max-width: 34rem) {
+  .paginazione {
+    flex-direction: column-reverse;
+  }
+
+  .pagine {
+    margin-inline-start: 0;
+  }
+
+  .numeri {
+    display: none;
+  }
+
+  .riassunto {
+    display: inline;
+  }
+}

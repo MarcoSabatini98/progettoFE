@@ -1,0 +1,96 @@
+<section class="scheda">
+  <header class="intestazione">
+    <h1>{{ 'registrazione.titolo' | transloco }}</h1>
+    <p class="introduzione">{{ 'registrazione.introduzione' | transloco }}</p>
+  </header>
+
+  <form [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'registrazione.nome' | transloco"
+        [errore]="errori.campo(modulo.controls.nome)"
+      >
+        <input
+          type="text"
+          formControlName="nome"
+          autocomplete="given-name"
+          [maxLength]="lunghezza.nome"
+          required
+        />
+      </app-campo>
+
+      <app-campo
+        [etichetta]="'registrazione.cognome' | transloco"
+        [errore]="errori.campo(modulo.controls.cognome)"
+      >
+        <input
+          type="text"
+          formControlName="cognome"
+          autocomplete="family-name"
+          [maxLength]="lunghezza.cognome"
+          required
+        />
+      </app-campo>
+    </div>
+
+    <app-campo
+      [etichetta]="'registrazione.email' | transloco"
+      [errore]="errori.campo(modulo.controls.email)"
+    >
+      <input type="email" formControlName="email" autocomplete="email" required />
+    </app-campo>
+
+    <app-campo
+      [etichetta]="'registrazione.telefono' | transloco"
+      [aiuto]="'registrazione.facoltativo' | transloco"
+      [errore]="errori.campo(modulo.controls.telefono)"
+    >
+      <input
+        type="tel"
+        formControlName="telefono"
+        autocomplete="tel"
+        [maxLength]="lunghezza.telefono"
+      />
+    </app-campo>
+
+    <app-nuova-password [gruppo]="modulo.controls.password" />
+
+    <fieldset class="consensi">
+      <legend class="visivamente-nascosto">{{ 'registrazione.consensi' | transloco }}</legend>
+
+      @for (consenso of consensi; track consenso) {
+        <div class="consenso">
+          <label>
+            <input [name]="consenso" type="checkbox" [formControlName]="consenso" required />
+            {{ 'registrazione.' + consenso | transloco }}
+          </label>
+          <a [routerLink]="[percorsi.documenti, consenso]" target="_blank">
+            {{ 'registrazione.leggi' | transloco }}
+          </a>
+          @if (errori.campo(modulo.controls[consenso]); as testo) {
+            <p class="consenso-errore">{{ testo }}</p>
+          }
+        </div>
+      }
+
+      <div class="consenso">
+        <label>
+          <input name="marketing" type="checkbox" formControlName="marketing" />
+          {{ 'registrazione.marketing' | transloco }}
+        </label>
+      </div>
+    </fieldset>
+
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+
+    <button class="pulsante pulsante-primario pulsante-intero" type="submit" [disabled]="inCorso()">
+      {{ 'registrazione.crea' | transloco }}
+    </button>
+  </form>
+
+  <a class="collegamento" [routerLink]="percorsi.accesso">
+    {{ 'registrazione.haiAccount' | transloco }}
+  </a>
+</section>

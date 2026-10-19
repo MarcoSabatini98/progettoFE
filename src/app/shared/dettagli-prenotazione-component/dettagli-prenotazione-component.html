@@ -1,0 +1,28 @@
+@let dati = prenotazione();
+<p class="stato-prenotazione" [attr.data-stato]="dati.stato">
+  {{ 'prenotazione.stati.' + dati.stato | transloco }}
+</p>
+<dl class="dati">
+  <div>
+    <dt>{{ 'prenotazione.camera' | transloco }}</dt>
+    <dd>{{ dati.camera?.tipologia?.nome }}</dd>
+  </div>
+  <div>
+    <dt>{{ 'prenotazione.arrivo' | transloco }}</dt>
+    <dd>{{ dati.data_arrivo | data: 'giorno' }}</dd>
+  </div>
+  <div>
+    <dt>{{ 'prenotazione.partenza' | transloco }}</dt>
+    <dd>{{ dati.data_partenza | data: 'giorno' }}</dd>
+  </div>
+  <div>
+    <dt>{{ 'prenotazione.ospiti' | transloco }}</dt>
+    <dd>{{ 'conferma.ospiti' | transloco: { adulti: dati.adulti, bambini: dati.bambini } }}</dd>
+  </div>
+</dl>
+@if (dati.stato === 'in_attesa' && dati.scade_il) {
+  <p class="scadenza" role="status">
+    <app-icona nome="timer" />
+    {{ 'prenotazione.scade' | transloco: { ora: (dati.scade_il | data: 'ora') } }}
+  </p>
+}

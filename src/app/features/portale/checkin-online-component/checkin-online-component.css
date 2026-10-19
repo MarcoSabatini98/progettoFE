@@ -1,0 +1,34 @@
+.ospite {
+  margin: 0;
+  min-width: 0;
+}
+
+.aiuto {
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+form > .pulsante {
+  justify-self: start;
+}
+
+.registrato {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.mancanti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mancanti li {
+  padding: 0.125rem var(--bb-spazio-2);
+  border-radius: 999px;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-testo);
+}

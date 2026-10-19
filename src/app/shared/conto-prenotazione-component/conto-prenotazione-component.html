@@ -1,0 +1,12 @@
+<h2 class="titolo-scheda">{{ 'conferma.conto' | transloco }}</h2>
+<app-riepilogo-prezzo [importi]="importi()" />
+<dl class="dati saldo">
+  <div>
+    <dt>{{ 'prenotazione.pagato' | transloco }}</dt>
+    <dd>{{ pagato() | prezzo }}</dd>
+  </div>
+  <div>
+    <dt>{{ 'prenotazione.saldo' | transloco }}</dt>
+    <dd>{{ pagamento().saldo | prezzo }}</dd>
+  </div>
+</dl>

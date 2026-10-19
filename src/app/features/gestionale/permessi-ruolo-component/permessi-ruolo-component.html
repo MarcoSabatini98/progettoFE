@@ -1,0 +1,39 @@
+<form class="modulo-scheda" (submit)="$event.preventDefault(); salva()">
+  <app-campo
+    [etichetta]="'gestionale.permessi.ruolo' | transloco"
+    [aiuto]="'gestionale.permessi.ruoloAiuto' | transloco"
+  >
+    <select #scelta [value]="codice()" (change)="codice.set(scelta.value)">
+      @for (voce of ruoli(); track voce.codice) {
+        <option [value]="voce.codice">{{ 'gestionale.ruoli.' + voce.codice | transloco }}</option>
+      }
+    </select>
+  </app-campo>
+  <div class="moduli">
+    @for (gruppo of moduli(); track gruppo.modulo) {
+      <fieldset class="modulo-scheda">
+        <legend>{{ 'gestionale.permessi.moduli.' + gruppo.modulo | transloco }}</legend>
+        @for (permesso of gruppo.permessi; track permesso.codice) {
+          <label class="spunta">
+            <input
+              name="permessi"
+              #casella
+              type="checkbox"
+              [checked]="scelti().has(permesso.codice)"
+              (change)="segna(permesso.codice, casella.checked)"
+            />
+            {{ 'gestionale.permessi.voci.' + permesso.codice | transloco }}
+          </label>
+        }
+      </fieldset>
+    }
+  </div>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.permessi.salva' | transloco }}
+    </button>
+  </div>
+</form>

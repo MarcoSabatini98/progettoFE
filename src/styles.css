@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* Font ospitati in locale (niente CDN esterni: GDPR). */
+@import '@fontsource-variable/figtree';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import '@fontsource/young-serif';
+
+@import './styles/token.css';
+@import './styles/base.css';
+@import './styles/pulsanti.css';
+@import './styles/moduli.css';
+@import './styles/pagine.css';

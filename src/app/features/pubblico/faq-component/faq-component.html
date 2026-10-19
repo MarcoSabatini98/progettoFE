@@ -1,0 +1,14 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'faq.occhiello' | transloco }}</p>
+  <h1>{{ 'faq.titolo' | transloco }}</h1>
+</header>
+
+<app-elenco-faq />
+
+<aside class="scheda altre-domande">
+  <h2>{{ 'faq.altraDomanda' | transloco }}</h2>
+  <p>{{ 'faq.scrivici' | transloco }}</p>
+  <a class="pulsante pulsante-primario" [routerLink]="contatti">
+    {{ 'faq.contatti' | transloco }}
+  </a>
+</aside>

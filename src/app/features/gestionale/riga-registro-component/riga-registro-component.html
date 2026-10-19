@@ -1,0 +1,49 @@
+@let dati = voce();
+@let utente = dati.utente;
+<p class="etichette">
+  <span class="stato-prenotazione" [attr.data-stato]="dati.azione">
+    {{ 'gestionale.registro.azioni.' + dati.azione | transloco }}
+  </span>
+  @if (scheda(); as percorso) {
+    <a [routerLink]="percorso">
+      {{ 'gestionale.registro.record.' + dati.tabella | transloco: { id: dati.record_id } }}
+    </a>
+  } @else {
+    <span>{{
+      'gestionale.registro.record.' + dati.tabella | transloco: { id: dati.record_id }
+    }}</span>
+  }
+</p>
+<p class="tenue piccolo">
+  <time [attr.datetime]="dati.creato_il">{{ dati.creato_il | data: 'ora' }}</time>
+  ·
+  @if (utente) {
+    {{ utente.cognome }} {{ utente.nome }}
+  } @else {
+    {{ 'gestionale.registro.sistema' | transloco }}
+  }
+</p>
+@if (campi().length) {
+  <dl class="dati">
+    @for (riga of campi(); track riga.campo) {
+      <!-- Il valore di un campo a elenco chiuso si traduce; il vuoto resta un trattino. -->
+      <ng-template #valore let-testo>{{
+        riga.chiave && testo !== vuoto ? (riga.chiave + '.' + testo | transloco) : testo
+      }}</ng-template>
+      <div>
+        <dt>{{ 'gestionale.registro.campi.' + riga.campo | transloco }}</dt>
+        <dd>
+          @if (riga.prima !== undefined && riga.dopo !== undefined) {
+            <ng-container *ngTemplateOutlet="valore; context: { $implicit: riga.prima }" />
+            →
+            <ng-container *ngTemplateOutlet="valore; context: { $implicit: riga.dopo }" />
+          } @else {
+            <ng-container
+              *ngTemplateOutlet="valore; context: { $implicit: riga.prima ?? riga.dopo }"
+            />
+          }
+        </dd>
+      </div>
+    }
+  </dl>
+}

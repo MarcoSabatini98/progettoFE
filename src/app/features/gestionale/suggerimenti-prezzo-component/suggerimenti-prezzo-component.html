@@ -1,0 +1,68 @@
+<section class="sezione" aria-labelledby="suggerimenti-titolo">
+  <div class="strumenti">
+    <h2 class="sezione-titolo" id="suggerimenti-titolo">
+      {{ 'gestionale.report.suggerimenti.titolo' | transloco }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.report.suggerimenti.tipologia' | transloco"
+      [aiuto]="'gestionale.report.suggerimenti.aiutoTipologia' | transloco"
+    >
+      <select [formControl]="campoTipologia">
+        <option [ngValue]="null">{{ 'gestionale.report.suggerimenti.tutte' | transloco }}</option>
+        @for (tipologia of tipologie.value(); track tipologia.id) {
+          <option [ngValue]="tipologia.id">{{ tipologia.nome }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <p class="tenue">{{ 'gestionale.report.suggerimenti.introduzione' | transloco }}</p>
+
+  @if (suggerimenti.hasValue()) {
+    <ul class="griglia-schede giorni" [attr.aria-busy]="suggerimenti.isLoading()">
+      @for (giorno of giorni(); track giorno.giorno) {
+        <li class="scheda">
+          <div class="riga">
+            <strong>{{ giorno.giorno | data }}</strong>
+            <strong
+              class="percentuale"
+              [attr.data-segno]="
+                giorno.percentuale > 0 ? 'su' : giorno.percentuale < 0 ? 'giu' : 'pari'
+              "
+            >
+              {{ testoPercentuale(giorno.percentuale) }}
+            </strong>
+          </div>
+          <dl class="dati">
+            <div>
+              <dt>{{ 'gestionale.report.suggerimenti.occupazione' | transloco }}</dt>
+              <dd>
+                {{
+                  'gestionale.cruscotto.percentuale'
+                    | transloco: { valore: giorno.occupazione_percentuale }
+                }}
+              </dd>
+            </div>
+            @if (giorno.prezzo_suggerito !== null) {
+              <div>
+                <dt>{{ 'gestionale.report.suggerimenti.prezzo' | transloco }}</dt>
+                <dd>{{ giorno.prezzo_suggerito | prezzo }}</dd>
+              </div>
+            }
+          </dl>
+          <ul class="motivi piccolo">
+            @for (motivo of giorno.motivi; track motivo.codice) {
+              <li>
+                {{ 'gestionale.report.suggerimenti.motivi.' + motivo.codice | transloco: motivo }}
+                ({{ testoPercentuale(motivo.percentuale) }})
+              </li>
+            }
+          </ul>
+        </li>
+      } @empty {
+        <li class="stato-vuoto">{{ 'gestionale.report.suggerimenti.vuoto' | transloco }}</li>
+      }
+    </ul>
+  } @else if (suggerimenti.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>

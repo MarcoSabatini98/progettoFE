@@ -1,0 +1,13 @@
+.nuova {
+  justify-self: start;
+}
+
+.filtri {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--bb-spazio-3);
+}
+
+.filtri .larga {
+  grid-column: 1 / -1;
+}

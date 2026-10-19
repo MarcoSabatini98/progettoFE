@@ -1,0 +1,54 @@
+.intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+/* Ogni voce è una scheda cliccabile: la scelta ha il bordo del brand. */
+.voce {
+  inline-size: 100%;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-4);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.voce:hover,
+.voce[aria-pressed='true'] {
+  border-color: var(--bb-brand-testo);
+}
+
+.voce[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 1px var(--bb-brand-testo);
+}
+
+.gruppo {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Schede piccole su più colonne: tre nella colonna di un desktop, due da telefono. */
+.griglia {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+}
+
+.griglia .voce {
+  block-size: 100%;
+  padding: var(--bb-spazio-3);
+  align-content: start;
+}
+
+.archivio {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  font-size: 0.875rem;
+}
+
+.altre {
+  justify-self: start;
+}

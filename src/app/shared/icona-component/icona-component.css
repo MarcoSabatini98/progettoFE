@@ -1,0 +1,9 @@
+/* Dimensione regolabile dal contenitore con --icona-dimensione. */
+:host {
+  display: inline-block;
+  flex-shrink: 0;
+  inline-size: var(--icona-dimensione, 1.25rem);
+  block-size: var(--icona-dimensione, 1.25rem);
+  background-color: currentColor;
+  mask: var(--icona-sorgente) center / contain no-repeat;
+}

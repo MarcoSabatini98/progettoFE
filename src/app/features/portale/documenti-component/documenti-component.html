@@ -1,0 +1,12 @@
+<h2 class="sezione-titolo">{{ 'portale.documenti.titolo' | transloco }}</h2>
+<p>{{ 'portale.documenti.testo' | transloco }}</p>
+
+@if (profilo.error()) {
+  <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+} @else if (profilo.hasValue()) {
+  <app-documenti-identita
+    [documenti]="profilo.value().anagrafica?.documenti ?? []"
+    [azioni]="azioni"
+    (cambiati)="profilo.reload()"
+  />
+}

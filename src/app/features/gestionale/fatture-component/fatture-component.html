@@ -1,0 +1,43 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.pagamenti.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.fatture.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.fatture.introduzione' | transloco }}</p>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.fatture.cerca' | transloco">
+      <input type="search" formControlName="cerca" />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+      <select formControlName="stato">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (stato of stati; track stato) {
+          <option [value]="stato">{{ 'gestionale.fatture.stati.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.fatture.anno' | transloco">
+      <input type="number" formControlName="anno" inputmode="numeric" />
+    </app-campo>
+  </form>
+</header>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.fatture.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (fattura of risultato.elementi; track fattura.id) {
+      <li><app-riga-fattura [fattura]="fattura" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.fatture.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

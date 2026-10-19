@@ -1,0 +1,52 @@
+<div
+  #striscia
+  class="striscia"
+  role="region"
+  tabindex="0"
+  [attr.aria-label]="etichetta()"
+  (scroll)="misura()"
+>
+  @for (foto of media(); track foto.id; let prima = $first) {
+    <img
+      [src]="foto.percorso | media"
+      [alt]="foto.testo_alternativo"
+      [attr.width]="foto.larghezza"
+      [attr.height]="foto.altezza"
+      [attr.loading]="prima ? null : 'lazy'"
+    />
+  }
+</div>
+
+@if (pagine() > 1) {
+  <div class="comandi">
+    <button
+      type="button"
+      class="pulsante pulsante-secondario pulsante-icona"
+      [attr.aria-label]="'galleria.precedente' | transloco"
+      (click)="scorri(-1)"
+    >
+      <app-icona nome="chevron_left" />
+    </button>
+    <div class="puntini">
+      @for (pagina of schermate(); track pagina) {
+        <button
+          type="button"
+          class="puntino"
+          [attr.aria-current]="pagina === attiva() || null"
+          [attr.aria-label]="
+            'carosello.slide' | transloco: { numero: pagina + 1, totale: pagine() }
+          "
+          (click)="vai(pagina)"
+        ></button>
+      }
+    </div>
+    <button
+      type="button"
+      class="pulsante pulsante-secondario pulsante-icona"
+      [attr.aria-label]="'galleria.successiva' | transloco"
+      (click)="scorri(1)"
+    >
+      <app-icona nome="chevron_right" />
+    </button>
+  </div>
+}

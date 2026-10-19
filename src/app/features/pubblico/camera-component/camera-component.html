@@ -1,0 +1,113 @@
+<a class="indietro" [routerLink]="[percorsoCamere, slug()]">
+  <app-icona nome="arrow_back" />
+  @if (tipologia.hasValue()) {
+    {{ 'camera.tornaA' | transloco: { nome: tipologia.value().nome } }}
+  } @else {
+    {{ 'tipologia.tutte' | transloco }}
+  }
+</a>
+
+@if (camera(); as camera) {
+  @let tipo = tipologia.value()!;
+  @let titolo = camera.nome || ('camera.numero' | transloco: { numero: camera.numero });
+
+  <div class="apertura">
+    <div class="galleria">
+      @if (foto()[attiva()]; as immagine) {
+        <img
+          class="principale"
+          [src]="immagine.percorso | media"
+          [alt]="immagine.testo_alternativo"
+          [attr.width]="immagine.larghezza"
+          [attr.height]="immagine.altezza"
+        />
+      }
+      @if (foto().length > 1) {
+        <ul class="miniature" [attr.aria-label]="'camera.foto' | transloco: { nome: titolo }">
+          @for (immagine of foto(); track immagine.id; let indice = $index) {
+            <li>
+              <button
+                class="miniatura"
+                type="button"
+                [attr.aria-pressed]="indice === attiva()"
+                [attr.aria-label]="'camera.mostraFoto' | transloco: { numero: indice + 1 }"
+                (click)="attiva.set(indice)"
+              >
+                <img [src]="immagine.percorso | media" alt="" loading="lazy" />
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <header class="pagina-intestazione">
+      <p class="occhiello">{{ tipo.nome }}</p>
+      <h1>{{ titolo }}</h1>
+      <p class="prezzo">
+        {{ 'camere.prezzoDa' | transloco: { prezzo: (tipo.prezzo_base | prezzo) } }}
+      </p>
+      <a
+        class="pulsante pulsante-primario prenota"
+        [routerLink]="percorsoPrenota"
+        [queryParams]="{ tipologia: tipo.slug, camera: camera.numero }"
+      >
+        <app-icona nome="event_available" />
+        {{ 'camera.prenota' | transloco }}
+      </a>
+      @if (inEvidenza().length) {
+        <ul class="dotazioni-brevi" [attr.aria-label]="'tipologia.dotazioni' | transloco">
+          @for (dotazione of inEvidenza(); track dotazione.id) {
+            <li>
+              <app-icona [nome]="dotazione.icona || iconaPredefinita" />
+              {{ dotazione.nome }}
+            </li>
+          }
+        </ul>
+      }
+      @if (altreDotazioni() > 0) {
+        <a class="tutte-dotazioni" [routerLink]="[]" fragment="dotazioni">
+          {{ 'camera.altreDotazioni' | transloco: { numero: altreDotazioni() } }}
+        </a>
+      }
+    </header>
+  </div>
+
+  <div class="corpo">
+    <app-dettagli-camera [tipologia]="tipo" [camera]="camera" />
+    <app-condizioni-soggiorno class="soggiorno" />
+  </div>
+
+  <app-servizi-extra />
+
+  @if (altre().length) {
+    <section class="sezione">
+      <h2 class="sezione-titolo">{{ 'camera.altreDi' | transloco: { nome: tipo.nome } }}</h2>
+      <ul class="altre" [attr.aria-label]="'camera.altre' | transloco">
+        @for (altra of altre(); track altra.id) {
+          <li class="altra">
+            <div class="foto">
+              @if (altra.media?.[0] ?? tipo.media?.[0]; as immagine) {
+                <img [src]="immagine.percorso | media" alt="" loading="lazy" />
+              }
+            </div>
+            <h3>
+              <a [routerLink]="[percorsoCamere, slug(), altra.numero]">
+                {{
+                  altra.nome
+                    ? ('camera.numeroNome' | transloco: { numero: altra.numero, nome: altra.nome })
+                    : ('camera.numero' | transloco: { numero: altra.numero })
+                }}
+              </a>
+            </h3>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+} @else if (!tipologia.isLoading()) {
+  <div class="pagina-intestazione">
+    <h1>{{ 'camera.nonTrovata' | transloco }}</h1>
+    <p class="introduzione">{{ 'camera.nonTrovataTesto' | transloco }}</p>
+  </div>
+}

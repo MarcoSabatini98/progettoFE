@@ -1,0 +1,141 @@
+/*
+ * Campi dei moduli: stile sugli elementi nativi, così ogni input del sito è uguale.
+ * Etichetta, aiuto ed errore li aggiunge app-campo.
+ */
+
+:where(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+  width: 100%;
+  min-height: var(--bb-controllo-altezza);
+  padding: 0 var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  /* Sotto i 16px Safari su iPhone ingrandisce la pagina al tocco. */
+  font-size: max(1rem, var(--bb-controllo-testo));
+  transition:
+    border-color var(--bb-durata),
+    box-shadow var(--bb-durata);
+}
+
+@media (width >= 58.75rem) {
+  :where(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+    font-size: var(--bb-controllo-testo);
+  }
+}
+
+textarea {
+  padding-block: var(--bb-spazio-3);
+  resize: vertical;
+}
+
+/*
+ * Freccia nostra al posto di quella nativa, che in tema scuro al passaggio del
+ * mouse il browser schiarisce con colori suoi: questa è del colore del testo.
+ */
+select {
+  appearance: none;
+  padding-inline-end: calc(var(--bb-spazio-4) + 1rem);
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    right calc(var(--bb-spazio-4) + 5px) center,
+    right var(--bb-spazio-4) center;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+:where(input, select, textarea):focus-visible {
+  outline: none;
+  border-color: var(--bb-brand-testo);
+  box-shadow: 0 0 0 4px var(--bb-brand-tenue);
+}
+
+/* Errore solo dopo che l'utente ha toccato il campo (classi di Angular Forms). */
+:where(input, select, textarea).ng-invalid.ng-touched {
+  border-color: var(--bb-errore);
+  box-shadow: 0 0 0 4px var(--bb-errore-tenue);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--bb-brand);
+}
+
+/* Due campi affiancati da tablet in su, uno sotto l'altro sul telefono. */
+.campi-coppia {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+@media (width >= 30rem) {
+  .campi-coppia {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Una spunta accanto a un campo sta all'altezza del suo controllo, non dell'etichetta. */
+.campi-coppia > .spunta {
+  grid-row: span 2;
+  align-self: end;
+}
+
+/* Esito di un invio, sotto il modulo o al posto suo. */
+.esito {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.esito-errore {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+}
+
+.esito-ok {
+  background: var(--bb-ok-tenue);
+  color: var(--bb-ok);
+}
+
+.esito-avviso {
+  background: var(--bb-avviso-tenue);
+  color: var(--bb-testo);
+}
+
+/* Modulo dentro una scheda: campi in colonna. */
+.modulo-scheda {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+/* Pulsanti affiancati che vanno a capo sul telefono. */
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}
+
+/* Casella di spunta con la sua etichetta accanto. */
+.spunta {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  min-height: var(--bb-controllo-altezza);
+  cursor: pointer;
+}
+
+/* Gruppo di campi col suo titolo, senza la cornice del browser. */
+fieldset.modulo-scheda {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+fieldset.modulo-scheda > legend {
+  padding: 0;
+  font-weight: 600;
+}

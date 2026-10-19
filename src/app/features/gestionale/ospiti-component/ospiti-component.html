@@ -1,0 +1,74 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.ospiti.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.ospiti.titolo' | transloco }}</h1>
+</header>
+
+<form role="search" (submit)="$event.preventDefault()">
+  <app-campo [etichetta]="'gestionale.ospiti.cerca' | transloco">
+    <input type="search" [formControl]="cerca" />
+  </app-campo>
+</form>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.ospiti.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (ospite of risultato.elementi; track ospite.id) {
+      <li>
+        <a class="scheda scheda-link" [routerLink]="[scheda, ospite.id]">
+          <strong>{{ ospite.cognome }} {{ ospite.nome }}</strong>
+          @if (ospite.email || ospite.telefono) {
+            <span class="tenue piccolo">
+              {{ ospite.email }}
+              @if (ospite.email && ospite.telefono) {
+                ·
+              }
+              {{ ospite.telefono }}
+            </span>
+          }
+        </a>
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.ospiti.nessuno' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+<section class="scheda" aria-labelledby="nuovo-ospite">
+  <h2 class="titolo-scheda" id="nuovo-ospite">{{ 'gestionale.ospiti.nuovo' | transloco }}</h2>
+  <form class="modulo-scheda" [formGroup]="nuovo" (ngSubmit)="crea()" novalidate>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'anagrafica.campi.nome' | transloco"
+        [errore]="errori.campo(nuovo.controls.nome)"
+      >
+        <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'anagrafica.campi.cognome' | transloco"
+        [errore]="errori.campo(nuovo.controls.cognome)"
+      >
+        <input type="text" formControlName="cognome" [maxLength]="lunghezza.cognome" required />
+      </app-campo>
+    </div>
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        <app-icona nome="person_add" />
+        {{ 'gestionale.ospiti.crea' | transloco }}
+      </button>
+    </div>
+  </form>
+</section>

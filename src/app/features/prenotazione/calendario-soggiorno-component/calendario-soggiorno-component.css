@@ -1,0 +1,185 @@
+/* Due mesi affiancati se c'è spazio, altrimenti uno: decide la larghezza del calendario. */
+:host {
+  display: block;
+  container-type: inline-size;
+}
+
+.calendario {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.riepilogo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+}
+
+.istruzione {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--bb-testo-tenue);
+}
+
+.mesi {
+  position: relative;
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+.mese + .mese {
+  display: none;
+}
+
+@container (width >= 36rem) {
+  .mesi {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mese + .mese {
+    display: block;
+  }
+}
+
+.mese-titolo {
+  margin: 0 0 var(--bb-spazio-2);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.freccia {
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bb-testo);
+  cursor: pointer;
+}
+
+.freccia:hover:enabled {
+  background: var(--bb-brand-tenue);
+}
+
+.freccia:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.precedente {
+  inset-inline-start: 0;
+}
+
+.successivo {
+  inset-inline-end: 0;
+}
+
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.nome-giorno {
+  padding-block: var(--bb-spazio-1);
+  font-size: 0.75rem;
+  color: var(--bb-testo-tenue);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.giorno {
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bb-testo);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    background-color var(--bb-durata),
+    border-color var(--bb-durata);
+}
+
+.giorno:hover:enabled {
+  border-color: var(--bb-brand-bordo);
+}
+
+.giorno:focus-visible {
+  outline: 2px solid var(--bb-brand-testo);
+  outline-offset: 2px;
+}
+
+/* Divieto: giorni passati e notti occupate. */
+.giorno:disabled {
+  color: var(--bb-testo-tenue);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Libero e occupato valgono anche per i campioni della legenda. */
+.libero {
+  border-color: var(--bb-ok);
+  background: var(--bb-ok-tenue);
+}
+
+.occupato,
+.giorno.occupato:disabled {
+  border-color: var(--bb-errore);
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+  opacity: 1;
+}
+
+.in-soggiorno {
+  border-color: var(--bb-brand-bordo);
+  background: var(--bb-brand-tenue);
+  color: var(--bb-testo);
+}
+
+/* La partenza scelta sulla prima notte occupata resta comunque in evidenza. */
+.giorno.scelto,
+.giorno.scelto:disabled {
+  border-color: var(--bb-brand);
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--bb-testo-tenue);
+}
+
+.legenda li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+}
+
+.campione {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+}

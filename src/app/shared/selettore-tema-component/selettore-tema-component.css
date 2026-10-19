@@ -1,0 +1,39 @@
+.selettore-tema {
+  display: inline-flex;
+  gap: 2px;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid var(--bb-linea);
+  /* Tondo anche nel gestionale, come il menu utente accanto. */
+  border-radius: 999px;
+  background: var(--bb-incavo);
+}
+
+.opzione {
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2rem;
+  border-radius: 999px;
+  color: var(--bb-testo-tenue);
+  cursor: pointer;
+  transition:
+    background-color var(--bb-durata),
+    color var(--bb-durata);
+  --icona-dimensione: 1.125rem;
+}
+
+.opzione:hover {
+  color: var(--bb-testo);
+}
+
+.opzione:has(:checked) {
+  background: var(--bb-superficie);
+  color: var(--bb-brand-testo);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.opzione:has(:focus-visible) {
+  outline: 2px solid var(--bb-brand-testo);
+  outline-offset: 1px;
+}

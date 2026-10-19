@@ -1,0 +1,116 @@
+<button type="button" class="salta" (click)="contenuto.focus()">
+  {{ 'layout.saltaAlContenuto' | transloco }}
+</button>
+
+<header class="testata">
+  <div class="testata-interno">
+    <a class="marchio" [routerLink]="percorsi.home">
+      @if (logo(); as percorso) {
+        <img class="marchio-logo" [src]="percorso | media" [alt]="nome()" />
+      } @else {
+        <span class="marchio-arco" aria-hidden="true">{{ nome() | iniziali }}</span>
+        <span class="marchio-nome">{{ nome() }}</span>
+      }
+    </a>
+
+    <nav
+      id="menu-sito"
+      #cassetto
+      class="menu-sito"
+      popover
+      [attr.aria-label]="'menu.sito.aria' | transloco"
+    >
+      <ul>
+        @for (voce of menuSito; track voce.percorso) {
+          <li>
+            <a
+              class="voce"
+              [routerLink]="voce.percorso"
+              routerLinkActive="voce-attiva"
+              ariaCurrentWhenActive="page"
+              (click)="chiudiMenu(cassetto)"
+            >
+              <app-icona [nome]="voce.icona" />
+              {{ voce.etichetta | transloco }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="testata-azioni">
+      <app-selettore-tema />
+      @if (auth.collegato()) {
+        <app-campanella />
+        <app-menu-utente area="pubblica" />
+      } @else {
+        <a class="pulsante pulsante-secondario" [routerLink]="percorsi.accesso">
+          <app-icona nome="login" />
+          {{ 'menu.accedi' | transloco }}
+        </a>
+      }
+      <button
+        type="button"
+        class="pulsante pulsante-fantasma pulsante-icona apri-menu"
+        popovertarget="menu-sito"
+        [attr.aria-label]="'menu.apri' | transloco"
+      >
+        <app-icona nome="menu" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<main #contenuto class="contenuto" tabindex="-1">
+  <router-outlet />
+</main>
+
+<footer class="piede">
+  <div class="piede-interno">
+    <div class="piede-struttura">
+      <p class="piede-nome">
+        @if (logo(); as percorso) {
+          <img class="piede-logo" [src]="percorso | media" alt="" loading="lazy" />
+        }
+        {{ nome() }}
+      </p>
+      @if (indirizzo()) {
+        <p class="piede-riga">
+          <app-icona nome="location_on" />
+          {{ indirizzo() }}
+        </p>
+      }
+      @if (email()) {
+        <p class="piede-riga">
+          <app-icona nome="mail" />
+          <a [href]="'mailto:' + email()">{{ email() }}</a>
+        </p>
+      }
+      @if (telefono()) {
+        <p class="piede-riga">
+          <app-icona nome="call" />
+          <a [href]="'tel:' + telefono()">{{ telefono() }}</a>
+        </p>
+      }
+      @if (cin()) {
+        <p class="piede-cin">{{ 'layout.cin' | transloco }} {{ cin() }}</p>
+      }
+      <nav class="piede-legale" [attr.aria-label]="'layout.documentiLegali' | transloco">
+        @for (tipo of documentiLegali; track tipo) {
+          <a [routerLink]="[percorsi.documenti, tipo]">{{ 'documenti.' + tipo | transloco }}</a>
+        }
+      </nav>
+    </div>
+
+    <div class="piede-preferenze">
+      <app-selettore-lingua />
+    </div>
+  </div>
+</footer>
+
+<!-- A parte: socket e chat non pesano sul primo caricamento del sito. -->
+@if (!navigazione.staff()) {
+  @defer (on idle) {
+    <app-widget-chat />
+  }
+}

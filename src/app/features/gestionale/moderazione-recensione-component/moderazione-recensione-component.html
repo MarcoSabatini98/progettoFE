@@ -1,0 +1,76 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.recensioni.tutte' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ dati.ospite?.nome }} {{ dati.ospite?.cognome }}</p>
+    <h1>{{ dati.titolo || ('gestionale.recensioni.senzaTitolo' | transloco) }}</h1>
+    <p class="introduzione">
+      <app-icona nome="star-fill" />
+      <span class="visivamente-nascosto">{{ 'recensioni.voto' | transloco }}</span>
+      {{ dati.voto }}/5 · {{ dati.creato_il | data: 'ora' }} · {{ dati.lingua | uppercase }}
+    </p>
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.recensioni.stati.' + dati.stato | transloco }}
+    </span>
+  </header>
+
+  <dl class="dati">
+    @if (dati.prenotazione; as prenotazione) {
+      <div>
+        <dt>{{ 'gestionale.recensioni.campi.prenotazione' | transloco }}</dt>
+        <dd>
+          <a [routerLink]="[prenotazioni, prenotazione.id]">{{ prenotazione.codice }}</a>
+        </dd>
+      </div>
+      <div>
+        <dt>{{ 'gestionale.recensioni.campi.soggiorno' | transloco }}</dt>
+        <dd>{{ prenotazione.data_arrivo | data }} – {{ prenotazione.data_partenza | data }}</dd>
+      </div>
+    }
+    @if (dati.ospite?.paese; as paese) {
+      <div>
+        <dt>{{ 'gestionale.recensioni.campi.paese' | transloco }}</dt>
+        <dd>{{ paese | paese }}</dd>
+      </div>
+    }
+    @for (dettaglio of voti(); track dettaglio.categoria) {
+      <div>
+        <dt>{{ 'recensioni.categorie.media_' + dettaglio.categoria | transloco }}</dt>
+        <dd>{{ dettaglio.voto }}/5</dd>
+      </div>
+    }
+    @if (dati.moderata_il) {
+      <div>
+        <dt>{{ 'gestionale.recensioni.campi.moderata' | transloco }}</dt>
+        <dd>
+          {{ dati.moderata_il | data: 'ora' }}
+          @if (dati.moderatore; as moderatore) {
+            · {{ moderatore.nome }} {{ moderatore.cognome }}
+          }
+        </dd>
+      </div>
+    }
+  </dl>
+
+  <div class="griglia-prenotazione">
+    <section class="scheda" aria-labelledby="recensione-commento">
+      <h2 class="titolo-scheda" id="recensione-commento">
+        {{ 'gestionale.recensioni.campi.commento' | transloco }}
+      </h2>
+      <p class="testo-libero">
+        {{ dati.commento || ('gestionale.recensioni.senzaCommento' | transloco) }}
+      </p>
+      @if (dati.anonima) {
+        <p class="tenue piccolo">{{ 'gestionale.recensioni.anonima' | transloco }}</p>
+      }
+    </section>
+    <app-gestione-recensione [recensione]="dati" (salvata)="scheda.set($event)" />
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

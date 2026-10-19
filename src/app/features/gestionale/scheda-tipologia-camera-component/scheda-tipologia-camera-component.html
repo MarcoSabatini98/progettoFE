@@ -1,0 +1,46 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.camere.tutte' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'gestionale.camere.occhielloTipologia' | transloco }}</p>
+    <h1>{{ dati.nome }}</h1>
+    @if (dati.attiva) {
+      <a class="introduzione" [routerLink]="[sito, dati.slug]" target="_blank">
+        {{ 'gestionale.camere.vediSulSito' | transloco }}
+      </a>
+    } @else {
+      <p class="introduzione">{{ 'gestionale.camere.nonSulSito' | transloco }}</p>
+    }
+  </header>
+
+  <div class="griglia-prenotazione">
+    <app-dati-tipologia [tipologia]="dati" (salvata)="scheda.set($event)" />
+
+    <div class="colonna">
+      @if (gestisceFoto()) {
+        <app-galleria-media
+          entita="tipologia_camera"
+          [entitaId]="dati.id"
+          [media]="dati.media ?? []"
+          [descrizione]="dati.nome"
+          (cambiati)="scheda.reload()"
+        />
+      }
+      <app-traduzioni entita="tipologia_camera" [entitaId]="dati.id" />
+      <app-elimina
+        [titolo]="'gestionale.camere.eliminaTipologia' | transloco"
+        [aiuto]="'gestionale.camere.eliminaTipologiaAiuto' | transloco"
+        [conferma]="'gestionale.camere.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
+    </div>
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

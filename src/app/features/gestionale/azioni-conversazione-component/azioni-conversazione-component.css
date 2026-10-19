@@ -1,0 +1,15 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.pannello {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--bb-spazio-2);
+}
+
+.pannello app-campo {
+  flex: 1 1 12rem;
+}

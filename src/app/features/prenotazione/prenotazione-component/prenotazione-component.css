@@ -1,0 +1,8 @@
+.accesso {
+  max-width: 32rem;
+}
+
+.accesso form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}

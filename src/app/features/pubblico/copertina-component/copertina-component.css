@@ -1,0 +1,22 @@
+/* Titolo e testo al centro, sopra la foto se c'è. */
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  justify-items: center;
+  text-align: center;
+}
+
+:host(.copertina-schermo) {
+  align-content: center;
+  /* Sotto resta il posto per l'invito a scorrere. */
+  padding-block: var(--bb-spazio-12) calc(2 * var(--bb-spazio-12));
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+}
+
+.introduzione {
+  max-inline-size: 40rem;
+  white-space: pre-line;
+}

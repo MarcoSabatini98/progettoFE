@@ -1,0 +1,33 @@
+@let contenuto = testi();
+<app-copertina
+  [foto]="contenuto?.media?.[0]"
+  [titolo]="'camere.titolo' | transloco"
+  [testo]="contenuto?.descrizione || ('camere.introduzione' | transloco)"
+/>
+
+@if (contenuto?.testo; as paragrafo) {
+  <p class="paragrafo">{{ paragrafo }}</p>
+}
+
+<section class="riquadri" [attr.aria-busy]="tipologie.isLoading()">
+  @if (tipologie.error()) {
+    <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+  } @else if (tipologie.hasValue()) {
+    @for (tipologia of tipologie.value(); track tipologia.id) {
+      <app-riquadro-camera
+        [titolo]="tipologia.nome"
+        [descrizione]="tipologia.descrizione"
+        [foto]="tipologia.media?.[0]"
+        [dotazioni]="tipologia.servizi ?? []"
+      >
+        <a class="pulsante pulsante-primario" [routerLink]="[percorsoCamere, tipologia.slug]">
+          {{ 'camere.guarda' | transloco }}
+        </a>
+      </app-riquadro-camera>
+    } @empty {
+      <p class="stato-vuoto">{{ 'camere.nessuna' | transloco }}</p>
+    }
+  }
+</section>
+
+<app-servizi-extra />

@@ -1,0 +1,51 @@
+@if (tipologia.hasValue()) {
+  @let attuale = tipologia.value();
+  <app-copertina
+    [foto]="attuale.media?.[0]"
+    [titolo]="attuale.nome"
+    [testo]="attuale.descrizione"
+  />
+
+  <a class="indietro" [routerLink]="percorsoCamere">
+    <app-icona nome="arrow_back" />
+    {{ 'tipologia.tutte' | transloco }}
+  </a>
+
+  <section class="riquadri">
+    @for (camera of attuale.camere; track camera.id) {
+      <app-riquadro-camera
+        [titolo]="
+          camera.nome
+            ? ('camera.numeroNome' | transloco: { numero: camera.numero, nome: camera.nome })
+            : ('camera.numero' | transloco: { numero: camera.numero })
+        "
+        [foto]="camera.media?.[0]"
+        [dotazioni]="attuale.servizi ?? []"
+      >
+        <a
+          class="pulsante pulsante-secondario prenota"
+          [routerLink]="percorsoPrenota"
+          [queryParams]="{ tipologia: attuale.slug, camera: camera.numero }"
+        >
+          {{ 'tipologia.prenota' | transloco }}
+        </a>
+        <a
+          class="pulsante pulsante-primario"
+          [routerLink]="[percorsoCamere, attuale.slug, camera.numero]"
+        >
+          {{ 'tipologia.altreInfo' | transloco }}
+        </a>
+      </app-riquadro-camera>
+    } @empty {
+      <p class="stato-vuoto">{{ 'tipologia.nessunaCamera' | transloco }}</p>
+    }
+  </section>
+} @else if (!tipologia.isLoading()) {
+  <div class="pagina-intestazione">
+    <h1>{{ 'tipologia.nonTrovata' | transloco }}</h1>
+    <p class="introduzione">{{ 'tipologia.nonTrovataTesto' | transloco }}</p>
+    <a class="pulsante pulsante-secondario" [routerLink]="percorsoCamere">
+      {{ 'tipologia.tutte' | transloco }}
+    </a>
+  </div>
+}

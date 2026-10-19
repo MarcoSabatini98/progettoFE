@@ -1,0 +1,133 @@
+/* Schede in colonna: il pulsante Prenota resta in fondo anche nelle schede più corte. */
+.offerta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.offerta-corpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--bb-spazio-3);
+}
+
+.offerta-corpo > * {
+  margin: 0;
+}
+
+/* La foto occupa tutta la larghezza della scheda, sopra il testo: bassa, non ruba la scheda. */
+.offerta-foto {
+  inline-size: calc(100% + 2 * var(--bb-spazio-6));
+  max-inline-size: none;
+  aspect-ratio: 16 / 10;
+  max-block-size: 13.75rem;
+  margin: calc(-1 * var(--bb-spazio-6)) calc(-1 * var(--bb-spazio-6)) var(--bb-spazio-2);
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+.offerta-prezzo {
+  color: var(--bb-brand-testo);
+  font-family: var(--bb-font-titoli);
+  font-size: 1.75rem;
+}
+
+.sconto {
+  align-self: start;
+  margin: 0 0 var(--bb-spazio-3);
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+  font-weight: 700;
+}
+
+.scadenza {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-avviso-tenue);
+  color: var(--bb-avviso);
+  font-size: 0.875rem;
+  font-weight: 600;
+  --icona-dimensione: 1rem;
+}
+
+.condizioni,
+.incluso {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+}
+
+.incluso-titolo {
+  font-weight: 600;
+}
+
+.incluso li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo);
+  --icona-dimensione: 1.125rem;
+}
+
+.incluso app-icona {
+  color: var(--bb-brand-testo);
+}
+
+.prenota {
+  align-self: start;
+  margin-top: auto;
+}
+
+/* Vetrina: la prima promozione su tutta la riga, con lo sconto in grande. */
+.vetrina {
+  grid-column: 1 / -1;
+  border-color: var(--bb-brand-bordo);
+}
+
+.vetrina h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.vetrina .sconto {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  padding: var(--bb-spazio-6);
+  border-radius: var(--bb-raggio);
+  font-family: var(--bb-font-titoli);
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  line-height: 1;
+}
+
+@media (width >= 58.75rem) {
+  .offerte {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Sconto a sinistra, testo a destra. */
+  .vetrina {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: var(--bb-spazio-8);
+  }
+
+  .vetrina .sconto {
+    margin: 0;
+    min-block-size: 14rem;
+    font-size: 5rem;
+  }
+}

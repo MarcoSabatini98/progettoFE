@@ -1,0 +1,55 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'recensioni.occhiello' | transloco }}</p>
+  <h1>{{ 'recensioni.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'recensioni.introduzione' | transloco }}</p>
+</header>
+
+@if (valutazioni.hasValue() && valutazioni.value().numero_recensioni) {
+  @let medie = valutazioni.value();
+  <section class="scheda riepilogo">
+    <h2 class="visivamente-nascosto">{{ 'recensioni.riepilogo' | transloco }}</h2>
+    <div class="media">
+      <p class="media-valore">{{ medie.media | voto }}<span>/5</span></p>
+      <p class="media-numero">
+        {{ 'recensioni.numero' | transloco: { numero: medie.numero_recensioni } }}
+      </p>
+    </div>
+
+    @if (categorie().length) {
+      <dl class="categorie">
+        @for (voce of categorie(); track voce.categoria) {
+          <div class="categoria">
+            <dt>{{ 'recensioni.categorie.' + voce.categoria | transloco }}</dt>
+            <dd>
+              <span class="barra" aria-hidden="true">
+                <span [style.inline-size.%]="percentuale(voce.media)"></span>
+              </span>
+              {{ voce.media | voto }}
+            </dd>
+          </div>
+        }
+      </dl>
+    }
+  </section>
+}
+
+<section class="sezione" [attr.aria-busy]="elenco.risorsa.isLoading()">
+  <h2 class="visivamente-nascosto">{{ 'recensioni.elenco' | transloco }}</h2>
+  <ul class="griglia-schede">
+    @for (recensione of elenco.mostrate(); track recensione.id) {
+      <li><app-scheda-recensione [recensione]="recensione" /></li>
+    } @empty {
+      @if (elenco.risorsa.error()) {
+        <li class="stato-vuoto">{{ 'errori.generico' | transloco }}</li>
+      } @else if (!elenco.risorsa.isLoading()) {
+        <li class="stato-vuoto">{{ 'recensioni.nessuna' | transloco }}</li>
+      }
+    }
+  </ul>
+
+  @if (elenco.altre()) {
+    <button type="button" class="pulsante pulsante-secondario altre" (click)="elenco.mostraAltre()">
+      {{ 'recensioni.altre' | transloco }}
+    </button>
+  }
+</section>

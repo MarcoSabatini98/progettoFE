@@ -1,0 +1,72 @@
+<h2 class="titolo-scheda">{{ 'recensione.titolo' | transloco }}</h2>
+
+@if (inviata()) {
+  <p class="esito esito-ok" role="status">{{ 'recensione.grazie' | transloco }}</p>
+} @else {
+  <form [formGroup]="modulo" (ngSubmit)="inviaRecensione()" novalidate>
+    <fieldset class="stelle">
+      <legend>{{ 'recensione.voto' | transloco }}</legend>
+      @for (voto of voti; track voto) {
+        <label>
+          <input
+            name="voto"
+            class="visivamente-nascosto"
+            type="radio"
+            formControlName="voto"
+            [value]="voto"
+          />
+          <app-icona nome="star-fill" />
+          <span class="visivamente-nascosto">
+            {{ 'recensione.stelle' | transloco: { voto: voto, massimo: voti.length } }}
+          </span>
+        </label>
+      }
+      @if (errori.campo(modulo.controls.voto); as testo) {
+        <p class="errore-voto" role="alert">{{ testo }}</p>
+      }
+    </fieldset>
+
+    <fieldset class="dettagli">
+      <legend>{{ 'recensione.dettagli' | transloco }}</legend>
+      @for (categoria of categorie; track categoria) {
+        <app-campo [etichetta]="'recensioni.categorie.media_' + categoria | transloco">
+          <select [formControlName]="'voto_' + categoria">
+            <option [ngValue]="null">{{ 'recensione.senzaVoto' | transloco }}</option>
+            @for (voto of voti; track voto) {
+              <option [ngValue]="voto">{{ voto }}</option>
+            }
+          </select>
+        </app-campo>
+      }
+    </fieldset>
+
+    <app-campo
+      [etichetta]="'recensione.titoloRecensione' | transloco"
+      [aiuto]="'conferma.facoltativo' | transloco"
+      [errore]="errori.campo(modulo.controls.titolo)"
+    >
+      <input type="text" formControlName="titolo" [maxLength]="lunghezza.titolo" />
+    </app-campo>
+
+    <app-campo
+      [etichetta]="'recensione.commento' | transloco"
+      [aiuto]="'conferma.facoltativo' | transloco"
+      [errore]="errori.campo(modulo.controls.commento)"
+    >
+      <textarea formControlName="commento" rows="5" [maxLength]="lunghezza.commento"></textarea>
+    </app-campo>
+
+    <label class="anonima">
+      <input name="anonima" type="checkbox" formControlName="anonima" />
+      {{ 'recensione.anonima' | transloco }}
+    </label>
+
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'recensione.invia' | transloco }}
+    </button>
+  </form>
+}

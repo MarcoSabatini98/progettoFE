@@ -1,0 +1,40 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.recensioni.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.recensioni.titolo' | transloco }}</h1>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.recensioni.filtri.stato' | transloco">
+      <select formControlName="stato">
+        @for (stato of stati; track stato) {
+          <option [value]="stato">{{ 'gestionale.recensioni.stati.' + stato | transloco }}</option>
+        }
+        <option value="">{{ 'gestionale.recensioni.filtri.tutte' | transloco }}</option>
+      </select>
+    </app-campo>
+    <label class="spunta">
+      <input name="negative" type="checkbox" formControlName="negative" />
+      {{ 'gestionale.recensioni.filtri.negative' | transloco }}
+    </label>
+  </form>
+</header>
+
+@if (elenco.hasValue()) {
+  @let risultato = elenco.value();
+  <p class="conteggio" role="status">
+    {{ 'gestionale.recensioni.totale' | transloco: { totale: risultato.totale } }}
+  </p>
+  <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+    @for (recensione of risultato.elementi; track recensione.id) {
+      <li><app-riga-recensione [recensione]="recensione" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.recensioni.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="elenco.isLoading()"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
+  />
+} @else if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

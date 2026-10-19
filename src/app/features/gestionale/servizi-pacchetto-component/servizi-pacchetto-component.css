@@ -1,0 +1,29 @@
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+.servizi {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.servizi li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-2) var(--bb-spazio-3);
+}
+
+.quantita {
+  inline-size: 5rem;
+}

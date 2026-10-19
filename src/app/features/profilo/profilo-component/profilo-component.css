@@ -1,0 +1,34 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  width: min(100% - 2 * var(--bb-margine), 44rem);
+  margin-inline: auto;
+  padding-block: var(--bb-spazio-8) var(--bb-spazio-12);
+}
+
+:host(.incorporato) {
+  width: auto;
+  margin-inline: 0;
+  padding-block: 0;
+}
+
+.intestazione {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 6vw, 2.25rem);
+}
+
+.email {
+  color: var(--bb-testo-tenue);
+  overflow-wrap: anywhere;
+}
+
+.esito-errore {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-errore-tenue);
+  color: var(--bb-errore);
+}

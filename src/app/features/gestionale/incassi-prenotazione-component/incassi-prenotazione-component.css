@@ -1,0 +1,40 @@
+.movimenti {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.movimenti > li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--bb-spazio-3);
+  padding-block: var(--bb-spazio-2);
+  border-block-end: 1px solid var(--bb-linea);
+}
+
+.movimenti > li .quando,
+.tenue {
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+.cosa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--bb-spazio-2);
+}
+
+.stato {
+  font-weight: 600;
+}
+
+.importo {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.uscita .importo::before {
+  content: '−';
+}

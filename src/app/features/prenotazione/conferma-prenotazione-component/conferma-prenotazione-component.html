@@ -1,0 +1,295 @@
+@let soggiorno = scelta();
+
+<div class="conferma">
+  <div class="colonna-moduli">
+    <section class="scheda riassunto">
+      <div class="riassunto-testo">
+        <h2>{{ soggiorno.tipologia.nome }}</h2>
+        <p>
+          {{
+            'conferma.date'
+              | transloco
+                : {
+                    arrivo: (soggiorno.filtri.arrivo | data: 'giorno'),
+                    partenza: (soggiorno.filtri.partenza | data: 'giorno'),
+                  }
+          }}
+        </p>
+        <p class="tenue">
+          {{
+            'conferma.ospiti'
+              | transloco
+                : { adulti: soggiorno.filtri.adulti, bambini: soggiorno.filtri.bambini ?? 0 }
+          }}
+        </p>
+      </div>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="cambiaCamera.emit()">
+        <app-icona nome="arrow_back" />
+        {{ 'conferma.cambiaCamera' | transloco }}
+      </button>
+      <p class="blocco" role="status">
+        <app-icona nome="timer" />
+        {{ 'conferma.bloccata' | transloco: { ora: (soggiorno.blocco.scade_il | data: 'ora') } }}
+      </p>
+    </section>
+
+    <form [formGroup]="opzioni" (ngSubmit)="invia()" novalidate>
+      <section class="scheda">
+        <h2 class="titolo-scheda">{{ 'conferma.opzioni' | transloco }}</h2>
+
+        @if (codiceApplicato(); as codice) {
+          <div class="codice-applicato">
+            <app-icona nome="sell" />
+            <p>
+              {{
+                (codice.tipo_sconto === 'percentuale'
+                  ? 'conferma.codicePercentuale'
+                  : 'conferma.codiceImporto'
+                )
+                  | transloco
+                    : {
+                        codice: codice.codice,
+                        valore:
+                          codice.tipo_sconto === 'percentuale'
+                            ? codice.valore
+                            : (codice.valore | prezzo),
+                      }
+              }}
+              @if (codice.descrizione) {
+                <span class="tenue">{{ codice.descrizione }}</span>
+              }
+            </p>
+            <button class="pulsante pulsante-fantasma" type="button" (click)="togliCodice()">
+              {{ 'conferma.togliCodice' | transloco }}
+            </button>
+          </div>
+        } @else {
+          <div class="codice">
+            <app-campo
+              [etichetta]="'conferma.codiceSconto' | transloco"
+              [errore]="errori.campo(opzioni.controls.codice_sconto) || erroreCodice()"
+            >
+              <input
+                type="text"
+                formControlName="codice_sconto"
+                autocapitalize="characters"
+                autocomplete="off"
+                [maxLength]="lunghezza.codice"
+              />
+            </app-campo>
+            <button
+              class="pulsante pulsante-secondario"
+              type="button"
+              [disabled]="inVerifica()"
+              (click)="applicaCodice()"
+            >
+              {{ 'conferma.applica' | transloco }}
+            </button>
+          </div>
+        }
+
+        @if (pacchettiAdatti().length) {
+          <app-campo [etichetta]="'conferma.pacchetto' | transloco">
+            <select formControlName="pacchetto_id" (change)="ricalcola()">
+              <option [ngValue]="null">{{ 'conferma.nessunPacchetto' | transloco }}</option>
+              @for (pacchetto of pacchettiAdatti(); track pacchetto.id) {
+                <option [ngValue]="pacchetto.id">
+                  {{ pacchetto.nome }} · {{ pacchetto.prezzo | prezzo }}
+                </option>
+              }
+            </select>
+          </app-campo>
+        }
+
+        @if (extra.hasValue() && extra.value().length) {
+          <fieldset class="extra">
+            <legend>{{ 'conferma.extra' | transloco }}</legend>
+            @for (servizio of extra.value(); track servizio.id) {
+              <label class="casella">
+                <input
+                  name="servizi"
+                  #casella
+                  type="checkbox"
+                  [checked]="opzioni.controls.servizi.value.includes(servizio.id)"
+                  (change)="alternaExtra(servizio.id, casella.checked)"
+                />
+                <span>{{ servizio.nome }}</span>
+                <span class="tenue">
+                  {{ servizio.prezzo | prezzo }}
+                  {{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}
+                </span>
+              </label>
+            }
+          </fieldset>
+        }
+      </section>
+
+      @if (chiedeTitolare()) {
+        <section class="scheda" [formGroup]="titolare">
+          <h2 class="titolo-scheda">{{ 'conferma.titolare' | transloco }}</h2>
+          <p class="tenue">{{ 'conferma.titolareAiuto' | transloco }}</p>
+          <div class="campi-coppia">
+            <app-campo
+              [etichetta]="'conferma.nome' | transloco"
+              [errore]="errori.campo(titolare.controls.nome)"
+            >
+              <input
+                type="text"
+                formControlName="nome"
+                autocomplete="given-name"
+                [maxLength]="lunghezza.nome"
+                required
+              />
+            </app-campo>
+            <app-campo
+              [etichetta]="'conferma.cognome' | transloco"
+              [errore]="errori.campo(titolare.controls.cognome)"
+            >
+              <input
+                type="text"
+                formControlName="cognome"
+                autocomplete="family-name"
+                [maxLength]="lunghezza.cognome"
+                required
+              />
+            </app-campo>
+          </div>
+          <div class="campi-coppia">
+            <app-campo
+              [etichetta]="'conferma.email' | transloco"
+              [errore]="errori.campo(titolare.controls.email)"
+            >
+              <input
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                [required]="!staff()"
+              />
+            </app-campo>
+            <app-campo
+              [etichetta]="'conferma.telefono' | transloco"
+              [aiuto]="'conferma.facoltativo' | transloco"
+              [errore]="errori.campo(titolare.controls.telefono)"
+            >
+              <input
+                type="tel"
+                formControlName="telefono"
+                autocomplete="tel"
+                [maxLength]="lunghezza.telefono"
+              />
+            </app-campo>
+          </div>
+        </section>
+      }
+
+      <section class="scheda">
+        <h2 class="titolo-scheda">{{ 'conferma.arrivo' | transloco }}</h2>
+        <app-campo
+          [etichetta]="'conferma.oraArrivo' | transloco"
+          [aiuto]="'conferma.facoltativo' | transloco"
+        >
+          <input type="time" formControlName="ora_arrivo_prevista" />
+        </app-campo>
+        <app-campo
+          [etichetta]="'conferma.richieste' | transloco"
+          [aiuto]="'conferma.richiesteAiuto' | transloco"
+          [errore]="errori.campo(opzioni.controls.richieste_speciali)"
+        >
+          <textarea
+            formControlName="richieste_speciali"
+            rows="3"
+            [maxLength]="lunghezza.richieste"
+          ></textarea>
+        </app-campo>
+      </section>
+
+      @if (staff()) {
+        <section class="scheda" [formGroup]="gestione">
+          <h2 class="titolo-scheda">{{ 'gestionale.nuova.gestione' | transloco }}</h2>
+          <div class="campi-coppia">
+            <app-campo [etichetta]="'gestionale.campi.canale' | transloco">
+              <select formControlName="canale">
+                @for (canale of scelte.canali; track canale) {
+                  <option [ngValue]="canale">
+                    {{ 'gestionale.canali.' + canale | transloco }}
+                  </option>
+                }
+              </select>
+            </app-campo>
+            <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+              <select formControlName="stato">
+                @for (stato of scelte.stati; track stato) {
+                  <option [ngValue]="stato">{{ 'prenotazione.stati.' + stato | transloco }}</option>
+                }
+              </select>
+            </app-campo>
+          </div>
+          <div class="campi-coppia">
+            <app-campo
+              [etichetta]="'gestionale.campi.idEsterno' | transloco"
+              [aiuto]="'conferma.facoltativo' | transloco"
+              [errore]="errori.campo(gestione.controls.id_esterno)"
+            >
+              <input
+                type="text"
+                formControlName="id_esterno"
+                autocomplete="off"
+                [maxLength]="lunghezza.idEsterno"
+              />
+            </app-campo>
+            <app-campo
+              [etichetta]="'gestionale.campi.lingua' | transloco"
+              [aiuto]="'gestionale.nuova.linguaAiuto' | transloco"
+            >
+              <select formControlName="lingua">
+                @for (lingua of scelte.lingue; track lingua) {
+                  <option [ngValue]="lingua">{{ scelte.nomiLingue[lingua] }}</option>
+                }
+              </select>
+            </app-campo>
+          </div>
+          <app-campo
+            [etichetta]="'gestionale.campi.noteInterne' | transloco"
+            [aiuto]="'gestionale.campi.noteInterneAiuto' | transloco"
+            [errore]="errori.campo(gestione.controls.note_interne)"
+          >
+            <textarea
+              formControlName="note_interne"
+              rows="3"
+              [maxLength]="lunghezza.note"
+            ></textarea>
+          </app-campo>
+        </section>
+      }
+
+      @if (errore()) {
+        <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+      }
+
+      <button
+        class="pulsante pulsante-primario pulsante-intero"
+        type="submit"
+        [disabled]="inCorso() || ricalcolo.isLoading()"
+      >
+        {{ 'conferma.prenota' | transloco }}
+      </button>
+    </form>
+  </div>
+
+  <aside class="scheda conto" [attr.aria-busy]="ricalcolo.isLoading()">
+    <h2 class="titolo-scheda">{{ 'conferma.conto' | transloco }}</h2>
+    <app-riepilogo-prezzo [importi]="preventivo()" />
+    @if (ricalcolo.error(); as errore) {
+      <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+    }
+    @if (preventivo().piano; as piano) {
+      <p class="politica">
+        <app-icona [nome]="piano.rimborsabile ? 'event_available' : 'schedule'" />
+        {{
+          (piano.rimborsabile ? 'conferma.rimborsabile' : 'conferma.nonRimborsabile')
+            | transloco: { ore: piano.ore_cancellazione_gratuita }
+        }}
+      </p>
+    }
+  </aside>
+</div>

@@ -1,0 +1,9 @@
+.altre-domande {
+  justify-items: start;
+  background: var(--bb-brand-tenue);
+  border-color: transparent;
+}
+
+.altre-domande h2 {
+  font-size: 1.5rem;
+}

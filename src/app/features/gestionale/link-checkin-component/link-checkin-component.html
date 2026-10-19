@@ -1,0 +1,20 @@
+<h2 class="titolo-scheda">{{ 'gestionale.linkCheckin.titolo' | transloco }}</h2>
+<p class="tenue">{{ 'gestionale.linkCheckin.testo' | transloco }}</p>
+
+@if (url(); as link) {
+  <app-link-copiabile [url]="link" [etichetta]="'gestionale.linkCheckin.titolo' | transloco" />
+} @else {
+  <button
+    class="pulsante pulsante-secondario"
+    type="button"
+    [disabled]="inCorso()"
+    (click)="crea()"
+  >
+    <app-icona nome="link" />
+    {{ 'gestionale.linkCheckin.crea' | transloco }}
+  </button>
+}
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}

@@ -1,0 +1,16 @@
+@let voci = listino();
+@if (voci.errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+<div class="azioni">
+  <!-- Il pulsante invia il modulo che contiene il componente. -->
+  <button class="pulsante pulsante-primario" type="submit" [disabled]="voci.inCorso()">
+    <app-icona nome="save" />
+    {{ (voci.scelta() ? 'gestionale.listino.salva' : 'gestionale.listino.crea') | transloco }}
+  </button>
+  @if (voci.scelta()) {
+    <button class="pulsante pulsante-fantasma" type="button" (click)="voci.scegli(null)">
+      {{ 'gestionale.listino.annulla' | transloco }}
+    </button>
+  }
+</div>

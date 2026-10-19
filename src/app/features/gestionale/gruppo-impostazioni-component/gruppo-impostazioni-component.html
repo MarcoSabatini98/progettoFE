@@ -1,0 +1,83 @@
+@let controlli = modulo().controls;
+<h2 class="titolo-scheda">{{ 'gestionale.impostazioni.gruppi.' + gruppo() | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo()" (ngSubmit)="salva()" novalidate>
+  @for (voce of campi(); track voce.chiave) {
+    @let etichetta = 'gestionale.impostazioni.chiavi.' + voce.chiave | transloco;
+    @switch (voce.campo) {
+      @case ('spunta') {
+        <label class="spunta">
+          <input [name]="voce.chiave" type="checkbox" [formControlName]="voce.chiave" />
+          {{ etichetta }}
+        </label>
+      }
+      @case ('lingue') {
+        @let attive = lingueScelte(controlli[voce.chiave].value);
+        <fieldset class="modulo-scheda">
+          <legend>{{ etichetta }}</legend>
+          @for (lingua of lingue; track lingua) {
+            <label class="spunta">
+              <input
+                name="lingue"
+                #casella
+                type="checkbox"
+                [checked]="attive.includes(lingua)"
+                (change)="segnaLingua(voce.chiave, lingua, casella.checked)"
+              />
+              {{ nomiLingue[lingua] }}
+            </label>
+          }
+        </fieldset>
+      }
+      @case ('tema') {
+        <app-campo
+          [etichetta]="etichetta"
+          [aiuto]="'gestionale.impostazioni.temaAiuto' | transloco"
+        >
+          <select [formControlName]="voce.chiave">
+            @for (tema of temi; track tema) {
+              <option [value]="tema">{{ 'tema.' + tema | transloco }}</option>
+            }
+          </select>
+        </app-campo>
+      }
+      @case ('lingua') {
+        <app-campo [etichetta]="etichetta">
+          <select [formControlName]="voce.chiave">
+            @for (lingua of lingue; track lingua) {
+              <option [value]="lingua">{{ nomiLingue[lingua] }}</option>
+            }
+          </select>
+        </app-campo>
+      }
+      @case ('colore') {
+        <app-campo [etichetta]="etichetta">
+          <input type="color" [formControlName]="voce.chiave" />
+        </app-campo>
+      }
+      @case ('orario') {
+        <app-campo [etichetta]="etichetta">
+          <input type="time" [formControlName]="voce.chiave" />
+        </app-campo>
+      }
+      @case ('numero') {
+        <app-campo [etichetta]="etichetta">
+          <input type="number" [formControlName]="voce.chiave" />
+        </app-campo>
+      }
+      @default {
+        <app-campo [etichetta]="etichetta">
+          <input type="text" [formControlName]="voce.chiave" />
+        </app-campo>
+      }
+    }
+  }
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.impostazioni.salva' | transloco }}
+    </button>
+  </div>
+</form>

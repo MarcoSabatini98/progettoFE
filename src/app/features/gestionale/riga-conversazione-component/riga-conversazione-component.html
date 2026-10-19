@@ -1,0 +1,26 @@
+@let dati = conversazione();
+<a
+  class="collegamento"
+  [routerLink]="[percorso, dati.uuid]"
+  routerLinkActive="attiva"
+  ariaCurrentWhenActive="page"
+>
+  <span class="riga">
+    <strong class="nome">{{ nome() || ('gestionale.chat.senzaNome' | transloco) }}</strong>
+    <span class="tenue piccolo">{{ dati.ultimo_messaggio_il | data: 'ora' }}</span>
+  </span>
+  <span class="riga">
+    <span class="anteprima tenue piccolo">{{ dati.anteprima }}</span>
+    @if (dati.non_letti) {
+      <span class="conteggio">
+        {{ dati.non_letti }}
+        <span class="visivamente-nascosto">{{ 'gestionale.chat.nonLetti' | transloco }}</span>
+      </span>
+    }
+  </span>
+  @if (dati.tipo === 'assistenza' && !dati.assegnata_a) {
+    <span class="stato-prenotazione" data-stato="libera">
+      {{ 'gestionale.chat.filtri.libere' | transloco }}
+    </span>
+  }
+</a>

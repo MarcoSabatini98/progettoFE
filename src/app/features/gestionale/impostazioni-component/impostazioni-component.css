@@ -1,0 +1,11 @@
+/* Schede in colonne riempite dall'alto: sotto una scheda corta sale la successiva,
+   senza i vuoti di una griglia a righe. Sul telefono una colonna sola. */
+.schede {
+  columns: 2 26rem;
+  column-gap: var(--bb-spazio-6);
+}
+
+.schede > * {
+  break-inside: avoid;
+  margin-block-end: var(--bb-spazio-6);
+}

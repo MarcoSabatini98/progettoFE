@@ -1,0 +1,31 @@
+<form class="modulo-scheda" (submit)="$event.preventDefault(); salva()">
+  <p class="tenue">{{ 'gestionale.permessi.chat.aiuto' | transloco }}</p>
+  @for (coppia of coppie(); track chiave(coppia[0], coppia[1])) {
+    @let ruoloA = 'gestionale.ruoli.' + coppia[0] | transloco;
+    <label class="spunta">
+      <input
+        name="regole"
+        #casella
+        type="checkbox"
+        [checked]="scelte().has(chiave(coppia[0], coppia[1]))"
+        (change)="segna(coppia, casella.checked)"
+      />
+      @if (coppia[0] === coppia[1]) {
+        {{ 'gestionale.permessi.chat.colleghi' | transloco: { ruolo: ruoloA } }}
+      } @else {
+        {{
+          'gestionale.permessi.chat.coppia'
+            | transloco: { a: ruoloA, b: ('gestionale.ruoli.' + coppia[1] | transloco) }
+        }}
+      }
+    </label>
+  }
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.permessi.chat.salva' | transloco }}
+    </button>
+  </div>
+</form>

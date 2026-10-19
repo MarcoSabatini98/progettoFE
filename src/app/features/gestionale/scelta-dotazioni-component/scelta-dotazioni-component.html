@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>{{ 'gestionale.camere.dotazioni' | transloco }}</legend>
+  @if (dotazioni.hasValue()) {
+    <div class="caselle">
+      @for (dotazione of dotazioni.value(); track dotazione.id) {
+        <label class="spunta">
+          <input
+            name="dotazioni"
+            #spunta
+            type="checkbox"
+            [checked]="scelte().includes(dotazione.id)"
+            (change)="scegli(dotazione.id, spunta.checked)"
+          />
+          @if (dotazione.icona) {
+            <app-icona [nome]="dotazione.icona" />
+          }
+          {{ dotazione.nome }}
+        </label>
+      } @empty {
+        <p class="tenue">{{ 'gestionale.camere.nessunaDotazione' | transloco }}</p>
+      }
+    </div>
+  } @else if (dotazioni.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</fieldset>

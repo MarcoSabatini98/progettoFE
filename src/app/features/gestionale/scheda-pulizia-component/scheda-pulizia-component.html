@@ -1,0 +1,69 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.pulizie.tutte' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'gestionale.pulizie.tipi.' + dati.tipo | transloco }}</p>
+    <h1>{{ 'gestionale.camere.titoloCamera' | transloco: { numero: dati.camera?.numero } }}</h1>
+    <p class="introduzione">
+      {{ dati.data_prevista | data: 'giorno' }} ·
+      {{ 'gestionale.pulizie.priorita.' + dati.priorita | transloco }}
+    </p>
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.pulizie.stati.' + dati.stato | transloco }}
+    </span>
+  </header>
+
+  <dl class="dati">
+    <div>
+      <dt>{{ 'gestionale.pulizie.campi.addetto' | transloco }}</dt>
+      <dd>
+        @if (dati.addetto; as addetto) {
+          {{ addetto.nome }} {{ addetto.cognome }}
+        } @else {
+          {{ 'gestionale.pulizie.libera' | transloco }}
+        }
+      </dd>
+    </div>
+    @if (dati.prenotazione; as prenotazione) {
+      <div>
+        <dt>{{ 'gestionale.pulizie.prenotazione' | transloco }}</dt>
+        <dd>{{ prenotazione.codice }} · {{ prenotazione.data_partenza | data: 'giorno' }}</dd>
+      </div>
+    }
+    @if (gestore && minuti(dati); as durata) {
+      <div>
+        <dt>{{ 'gestionale.pulizie.tempo' | transloco }}</dt>
+        <dd>{{ 'gestionale.pulizie.minuti' | transloco: { minuti: durata } }}</dd>
+      </div>
+    }
+    @if (dati.verificatore; as verificatore) {
+      <div>
+        <dt>{{ 'gestionale.pulizie.verificataDa' | transloco }}</dt>
+        <dd>{{ verificatore.nome }} {{ verificatore.cognome }}</dd>
+      </div>
+    }
+  </dl>
+
+  <div class="griglia-prenotazione">
+    <app-lavoro-pulizia [attivita]="dati" (aggiornata)="scheda.set($event)" />
+    @if (gestore && dati.stato !== 'verificata') {
+      <app-dati-pulizia [attivita]="dati" (salvata)="scheda.reload()" />
+    }
+    @if (gestore && dati.stato === 'da_fare') {
+      <app-elimina
+        [titolo]="'gestionale.pulizie.elimina' | transloco"
+        [aiuto]="'gestionale.pulizie.eliminaAiuto' | transloco"
+        [conferma]="'gestionale.camere.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
+    }
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

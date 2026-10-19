@@ -1,0 +1,100 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.pacchetti">
+  <ng-template #riga let-pacchetto>
+    <strong>{{ pacchetto.nome }}</strong>
+    <span class="piccolo">
+      {{ pacchetto.prezzo | prezzo }}
+      @if (pacchetto.notti_min) {
+        · {{ 'gestionale.tariffe.notti' | transloco: { notti: pacchetto.notti_min } }}
+      }
+    </span>
+    <span class="piccolo tenue">
+      {{ pacchetto.tipologia?.nome ?? ('gestionale.tariffe.tutteLeTipologie' | transloco) }}
+      @if (!pacchetto.attivo) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta()
+          ? 'gestionale.tariffe.pacchetti.modifica'
+          : 'gestionale.tariffe.pacchetti.nuova'
+        ) | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.descrizione' | transloco"
+      [errore]="errori.campo(controlli.descrizione)"
+    >
+      <textarea formControlName="descrizione" rows="4" [maxLength]="limiti.descrizione"></textarea>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.prezzo' | transloco"
+        [errore]="errori.campo(controlli.prezzo)"
+      >
+        <input type="number" formControlName="prezzo" min="0" step="0.01" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.notti_min' | transloco"
+        [errore]="errori.campo(controlli.notti_min)"
+      >
+        <input type="number" formControlName="notti_min" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+    </div>
+    <app-campo [etichetta]="'gestionale.tariffe.campi.tipologia_id' | transloco">
+      <select formControlName="tipologia_id">
+        <option [ngValue]="null">{{ 'gestionale.tariffe.tutteLeTipologie' | transloco }}</option>
+        @for (tipologia of tipologie(); track tipologia.id) {
+          <option [ngValue]="tipologia.id">{{ tipologia.nome }}</option>
+        }
+      </select>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valido_dal' | transloco"
+        [aiuto]="'gestionale.tariffe.vuotoSenzaLimite' | transloco"
+      >
+        <input type="date" formControlName="valido_dal" />
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.tariffe.campi.valido_al' | transloco">
+        <input type="date" formControlName="valido_al" [min]="controlli.valido_dal.value" />
+      </app-campo>
+    </div>
+    <app-servizi-pacchetto [controllo]="controlli.servizi" />
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.ordine' | transloco"
+        [errore]="errori.campo(controlli.ordine)"
+      >
+        <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
+      </app-campo>
+      <label class="spunta">
+        <input name="attivo" type="checkbox" formControlName="attivo" />
+        {{ 'gestionale.tariffe.campi.attivo' | transloco }}
+      </label>
+    </div>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+  @if (listino.scelta(); as pacchetto) {
+    @if (gestisceFoto()) {
+      <app-galleria-media
+        entita="pacchetto"
+        [entitaId]="pacchetto.id"
+        [media]="media()"
+        [descrizione]="pacchetto.nome"
+        (cambiati)="listino.elenco.reload()"
+      />
+    }
+    <app-traduzioni entita="pacchetto" [entitaId]="pacchetto.id" />
+  }
+</app-listino>

@@ -1,0 +1,35 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.fatture.sdi.titolo' | transloco }}</h2>
+<p class="tenue">{{ 'gestionale.fatture.sdi.aiuto' | transloco }}</p>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+      <select formControlName="stato_sdi">
+        @for (stato of stati; track stato) {
+          <option [value]="stato">{{ 'gestionale.fatture.stati.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.fatture.sdi.id' | transloco"
+      [errore]="errori.campo(controlli.id_sdi)"
+    >
+      <input formControlName="id_sdi" [maxLength]="lunghezza.idSdi" />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.fatture.sdi.esito' | transloco"
+    [errore]="errori.campo(controlli.esito_sdi)"
+  >
+    <textarea formControlName="esito_sdi" rows="3" [maxLength]="lunghezza.esitoSdi"></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.fatture.sdi.salva' | transloco }}
+    </button>
+  </div>
+</form>

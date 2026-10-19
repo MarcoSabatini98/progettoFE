@@ -1,0 +1,83 @@
+@let controlli = modulo.controls;
+@let scelta = chiusura();
+<h2 class="titolo-scheda">
+  {{
+    (scelta ? 'gestionale.planning.modificaChiusura' : 'gestionale.planning.nuovaChiusura')
+      | transloco
+  }}
+</h2>
+<p class="tenue piccolo">{{ 'gestionale.planning.aiutoChiusura' | transloco }}</p>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <app-campo [etichetta]="'gestionale.planning.campi.camera' | transloco">
+    <select formControlName="camera_id">
+      <option [ngValue]="null">{{ 'gestionale.planning.struttura' | transloco }}</option>
+      @for (camera of camere(); track camera.id) {
+        <option [ngValue]="camera.id">{{ camera.numero }}</option>
+      }
+    </select>
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.planning.campi.dal' | transloco"
+      [errore]="errori.campo(controlli.data_inizio)"
+    >
+      <input type="date" formControlName="data_inizio" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.planning.campi.riapre' | transloco"
+      [errore]="errori.campo(controlli.data_fine)"
+    >
+      <input
+        type="date"
+        formControlName="data_fine"
+        required
+        [min]="controlli.data_inizio.value ? giornoDopo(controlli.data_inizio.value) : ''"
+      />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.planning.campi.motivo' | transloco"
+    [errore]="errori.campo(controlli.motivo)"
+  >
+    <input type="text" formControlName="motivo" [maxLength]="lunghezza" />
+  </app-campo>
+
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  @if (conflitti().length) {
+    <div class="esito esito-avviso" role="status">
+      <p>{{ 'gestionale.planning.conflitti' | transloco }}</p>
+      <ul>
+        @for (prenotazione of conflitti(); track prenotazione.id) {
+          <li>
+            <a [routerLink]="[scheda, prenotazione.id]">{{ prenotazione.codice }}</a>
+            {{ prenotazione.data_arrivo | data }} → {{ prenotazione.data_partenza | data }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      <app-icona [nome]="scelta ? 'save' : 'event_busy'" />
+      {{ (scelta ? 'gestionale.planning.salva' : 'gestionale.planning.chiudi') | transloco }}
+    </button>
+    @if (scelta) {
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="riapri(scelta.id)"
+      >
+        <app-icona nome="event_available" />
+        {{ 'gestionale.planning.riapri' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="annulla.emit()">
+        {{ 'portale.documenti.annulla' | transloco }}
+      </button>
+    }
+  </div>
+</form>

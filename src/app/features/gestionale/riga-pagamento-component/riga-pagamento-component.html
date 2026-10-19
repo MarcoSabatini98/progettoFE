@@ -1,0 +1,26 @@
+@let dati = pagamento();
+<a class="collegamento" [routerLink]="[scheda, dati.prenotazione_id]">
+  <span class="camera">
+    @if (dati.tipo === 'rimborso') {
+      −
+    }
+    {{ dati.importo | prezzo }}
+  </span>
+  <span class="cosa">
+    <strong>
+      {{ 'gestionale.tipiPagamento.' + dati.tipo | transloco }} ·
+      {{ 'gestionale.metodi.' + dati.metodo | transloco }}
+    </strong>
+    <span class="tenue piccolo">
+      {{ dati.pagato_il ?? dati.creato_il | data: 'ora' }}
+      @if (dati.prenotazione; as prenotazione) {
+        · {{ prenotazione.codice }}
+      }
+    </span>
+  </span>
+  <span class="etichette">
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.statiPagamento.' + dati.stato | transloco }}
+    </span>
+  </span>
+</a>

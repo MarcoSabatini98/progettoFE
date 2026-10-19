@@ -1,0 +1,27 @@
+@let dati = recensione();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">
+    <span class="visivamente-nascosto">{{ 'recensioni.voto' | transloco }}</span>
+    {{ dati.voto }}<app-icona nome="star-fill" />
+  </span>
+  <span class="cosa">
+    <strong>
+      {{
+        dati.titolo ||
+          (dati.commento | slice: 0 : anteprima) ||
+          ('gestionale.recensioni.senzaTesto' | transloco)
+      }}
+    </strong>
+    <span class="tenue piccolo">
+      {{ dati.ospite?.nome }} {{ dati.ospite?.cognome }} · {{ dati.creato_il | data: 'ora' }}
+      @if (dati.prenotazione; as prenotazione) {
+        · {{ prenotazione.codice }}
+      }
+    </span>
+  </span>
+  <span class="etichette">
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.recensioni.stati.' + dati.stato | transloco }}
+    </span>
+  </span>
+</a>

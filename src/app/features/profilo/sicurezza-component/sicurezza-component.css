@@ -1,0 +1,10 @@
+.sessioni {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  padding-block-start: var(--bb-spazio-4);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+h3 {
+  font-size: 1rem;
+}

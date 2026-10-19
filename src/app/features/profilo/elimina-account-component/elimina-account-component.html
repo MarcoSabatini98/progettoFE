@@ -1,0 +1,32 @@
+<h2>{{ 'eliminaAccount.titolo' | transloco }}</h2>
+<p class="descrizione">{{ 'eliminaAccount.descrizione' | transloco }}</p>
+
+@if (conferma()) {
+  <form [formGroup]="modulo" (ngSubmit)="elimina()" novalidate>
+    <app-campo
+      [etichetta]="'eliminaAccount.password' | transloco"
+      [errore]="errori.campo(modulo.controls.password)"
+    >
+      <input type="password" formControlName="password" autocomplete="current-password" required />
+    </app-campo>
+
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+
+    <div class="azioni">
+      <button class="pulsante pulsante-pericolo" type="submit" [disabled]="inCorso()">
+        {{ 'eliminaAccount.conferma' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="annulla()">
+        {{ 'eliminaAccount.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <div class="azioni">
+    <button class="pulsante pulsante-secondario" type="button" (click)="conferma.set(true)">
+      {{ 'eliminaAccount.elimina' | transloco }}
+    </button>
+  </div>
+}

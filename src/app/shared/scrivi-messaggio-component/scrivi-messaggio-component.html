@@ -1,0 +1,69 @@
+@if (rispondiA(); as originale) {
+  <div class="risposta piccolo">
+    <span>
+      <strong>{{ 'gestionale.chat.scrivi.rispondiA' | transloco }}</strong>
+      {{ originale.testo }}
+    </span>
+    <button
+      class="pulsante pulsante-icona"
+      type="button"
+      [attr.aria-label]="'gestionale.chat.scrivi.annullaRisposta' | transloco"
+      (click)="annullaRisposta.emit()"
+    >
+      <app-icona nome="close" />
+    </button>
+  </div>
+}
+@if (allegati().length) {
+  <ul class="allegati piccolo">
+    @for (file of allegati(); track file) {
+      <li>
+        {{ file.name }}
+        <button
+          class="pulsante pulsante-icona"
+          type="button"
+          [attr.aria-label]="'gestionale.chat.scrivi.togli' | transloco: { nome: file.name }"
+          (click)="togli(file)"
+        >
+          <app-icona nome="close" />
+        </button>
+      </li>
+    }
+  </ul>
+}
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}
+<form class="casella" [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
+  <label class="pulsante pulsante-icona allega">
+    <app-icona nome="attach_file" />
+    <span class="visivamente-nascosto">{{ 'gestionale.chat.scrivi.allega' | transloco }}</span>
+    <input
+      name="allegati"
+      #scelta
+      class="visivamente-nascosto"
+      type="file"
+      multiple
+      (change)="allega(scelta)"
+    />
+  </label>
+  <label class="visivamente-nascosto" for="scrivi-testo">
+    {{ 'gestionale.chat.scrivi.testo' | transloco }}
+  </label>
+  <textarea
+    id="scrivi-testo"
+    rows="1"
+    [formControl]="testo"
+    [maxLength]="testoMax"
+    [placeholder]="'gestionale.chat.scrivi.testo' | transloco"
+    (keydown)="tasto($event)"
+  ></textarea>
+  <button
+    class="pulsante pulsante-primario pulsante-icona"
+    type="submit"
+    [disabled]="inCorso()"
+    [attr.aria-label]="'gestionale.chat.scrivi.invia' | transloco"
+  >
+    <app-icona nome="send" />
+  </button>
+</form>

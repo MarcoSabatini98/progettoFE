@@ -1,0 +1,20 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.report.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.report.introduzione' | transloco }}</p>
+</header>
+
+<app-suggerimenti-prezzo />
+
+<section class="sezione" aria-labelledby="report-anno">
+  <div class="strumenti">
+    <h2 class="sezione-titolo" id="report-anno">
+      {{ 'gestionale.report.contiAnno' | transloco: { anno: anno() } }}
+    </h2>
+    <app-campo [etichetta]="'gestionale.report.anno' | transloco">
+      <input type="number" inputmode="numeric" [formControl]="campoAnno" />
+    </app-campo>
+  </div>
+  <app-incassi-anno [anno]="anno()" />
+  <app-tassa-soggiorno-anno [anno]="anno()" />
+</section>

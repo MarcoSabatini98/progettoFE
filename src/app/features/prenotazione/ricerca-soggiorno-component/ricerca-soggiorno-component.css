@@ -1,0 +1,48 @@
+.ricerca {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+.date {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.date legend,
+.campo-errore {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--bb-errore);
+  --icona-dimensione: 1rem;
+}
+
+.eta {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.eta legend {
+  margin-block-end: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+button {
+  justify-self: start;
+}
+
+@media (width < 30rem) {
+  button {
+    justify-self: stretch;
+  }
+}

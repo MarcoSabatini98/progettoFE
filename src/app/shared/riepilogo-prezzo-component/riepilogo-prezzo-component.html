@@ -1,0 +1,23 @@
+<dl class="riepilogo">
+  @for (voce of voci(); track voce.campo) {
+    <div class="riga" [class.sconto]="voce.sconto">
+      <dt>
+        {{
+          'riepilogoPrezzo.' + voce.campo
+            | transloco: { percentuale: importi().percentuale_fedelta }
+        }}
+      </dt>
+      <dd>{{ voce.sconto ? '−' : '' }}{{ voce.importo | prezzo }}</dd>
+    </div>
+  }
+  <div class="riga totale">
+    <dt>{{ 'riepilogoPrezzo.totale' | transloco }}</dt>
+    <dd>{{ importi().totale | prezzo }}</dd>
+  </div>
+  @if (acconto() > 0) {
+    <div class="riga acconto">
+      <dt>{{ 'riepilogoPrezzo.acconto' | transloco }}</dt>
+      <dd>{{ acconto() | prezzo }}</dd>
+    </div>
+  }
+</dl>

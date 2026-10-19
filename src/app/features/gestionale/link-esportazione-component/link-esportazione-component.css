@@ -1,0 +1,11 @@
+/* Una camera per riga: titolo, link e pulsante uno sotto l'altro. */
+.camera {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  padding-block: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.camera h3 {
+  margin: 0;
+}

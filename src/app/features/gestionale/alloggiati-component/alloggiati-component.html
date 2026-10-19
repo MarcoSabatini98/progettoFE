@@ -1,0 +1,69 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.alloggiati.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.alloggiati.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.alloggiati.aiuto' | transloco }}</p>
+</header>
+
+@if (daInviare.hasValue()) {
+  <ul class="elenco" [attr.aria-busy]="daInviare.isLoading()">
+    @for (soggiorno of daInviare.value(); track soggiorno.id) {
+      @let mostrato = aperto() === soggiorno.id;
+      <li class="scheda soggiorno">
+        <div class="intestazione">
+          <label class="spunta">
+            <input
+              name="soggiorni"
+              #spunta
+              type="checkbox"
+              [checked]="scelti().includes(soggiorno.id)"
+              (change)="scegli(soggiorno.id, spunta.checked)"
+            />
+            <strong>{{ soggiorno.codice }}</strong>
+          </label>
+          <span class="tenue">
+            {{ 'gestionale.alloggiati.arrivo' | transloco }} {{ soggiorno.data_arrivo | data }}
+          </span>
+          <a [routerLink]="[prenotazioni, soggiorno.id]">
+            {{ 'gestionale.alloggiati.prenotazione' | transloco }}
+          </a>
+          <button
+            class="pulsante pulsante-fantasma"
+            type="button"
+            [attr.aria-expanded]="mostrato"
+            (click)="apri(soggiorno.id)"
+          >
+            <app-icona [nome]="mostrato ? 'expand_less' : 'expand_more'" />
+            {{ 'gestionale.alloggiati.schedine' | transloco }}
+          </button>
+        </div>
+        @if (mostrato) {
+          <app-schedine-alloggiati
+            [prenotazioneId]="soggiorno.id"
+            (registrato)="daInviare.reload()"
+          />
+        }
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.alloggiati.nessuno' | transloco }}</li>
+    }
+  </ul>
+
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  @if (daInviare.value().length) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso() || !scelti().length"
+        (click)="scarica()"
+      >
+        <app-icona nome="download" />
+        {{ 'gestionale.alloggiati.scarica' | transloco: { numero: scelti().length } }}
+      </button>
+    </div>
+  }
+} @else if (daInviare.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

@@ -1,0 +1,40 @@
+import type { TIPI_EVENTO_SPECIALE } from '../../../core/services/sistema/sistema-costanti';
+
+export type TipoEventoSpeciale = (typeof TIPI_EVENTO_SPECIALE)[number];
+
+/** Evento che alza la domanda (fiera, festa): pesa sul prezzo suggerito. */
+export interface EventoSpecialeInterface {
+  id: number;
+  titolo: string;
+  tipo: TipoEventoSpeciale;
+  /** 'YYYY-MM-DD' */
+  data_inizio: string;
+  /** 'YYYY-MM-DD' */
+  data_fine: string;
+  /** Da 1 a 10. */
+  impatto: number;
+  note: string | null;
+  creato_il: string;
+  aggiornato_il: string;
+}
+
+/** Evento come lo vede il sito: titolo tradotto, senza note né impatto. */
+export type EventoPubblicoInterface = Pick<
+  EventoSpecialeInterface,
+  'id' | 'titolo' | 'tipo' | 'data_inizio' | 'data_fine'
+>;
+
+/** dal/al: 'YYYY-MM-DD', eventi che toccano il periodo. */
+export interface FiltriEventi {
+  tipo?: TipoEventoSpeciale;
+  dal?: string;
+  al?: string;
+}
+
+export type EventoSpecialeCreaPayload = Pick<
+  EventoSpecialeInterface,
+  'titolo' | 'data_inizio' | 'data_fine'
+> &
+  Partial<Pick<EventoSpecialeInterface, 'tipo' | 'impatto' | 'note'>>;
+
+export type EventoSpecialeAggiornaPayload = Partial<EventoSpecialeCreaPayload>;

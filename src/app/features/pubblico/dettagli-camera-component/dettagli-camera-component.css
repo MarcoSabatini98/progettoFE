@@ -1,0 +1,64 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-12);
+  align-content: start;
+  min-inline-size: 0;
+}
+
+.descrizione {
+  max-width: 44rem;
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+/* Icona grande in un tondo colorato: numeri della camera e dotazioni. */
+.tondo {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: 50%;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 1.5rem;
+}
+
+/* Un riquadro per numero: due per riga al telefono, poi quanti ne stanno. */
+.dettagli {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: var(--bb-spazio-4);
+  margin: 0;
+}
+
+.dettaglio {
+  display: grid;
+  justify-items: start;
+  gap: var(--bb-spazio-2);
+}
+
+dt {
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+}
+
+dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.dotazioni {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  gap: var(--bb-spazio-4) var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dotazioni li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+}

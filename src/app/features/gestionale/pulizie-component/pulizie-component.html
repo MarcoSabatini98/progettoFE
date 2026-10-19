@@ -1,0 +1,94 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.pulizie.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.pulizie.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <app-campo [etichetta]="'gestionale.oggi.giorno' | transloco">
+      <input #campo type="date" [value]="giorno()" (change)="cambiaGiorno(campo.value)" />
+    </app-campo>
+    @if (addetto) {
+      <label class="spunta">
+        <input
+          name="solo_mie"
+          #solo
+          type="checkbox"
+          [checked]="mie()"
+          (change)="mie.set(solo.checked)"
+        />
+        {{ 'gestionale.pulizie.soloMie' | transloco }}
+      </label>
+    }
+  </div>
+  @if (puoPrendere()) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-primario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="prendiProssima()"
+      >
+        <app-icona nome="cleaning_services" />
+        {{ 'gestionale.pulizie.prossima' | transloco }}
+      </button>
+    </div>
+  }
+  @if (gestore) {
+    <div class="azioni">
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="generaGiornata()"
+      >
+        <app-icona nome="playlist_add" />
+        {{ 'gestionale.pulizie.genera' | transloco }}
+      </button>
+      <button
+        class="pulsante pulsante-secondario"
+        type="button"
+        [disabled]="inCorso()"
+        (click)="assegna()"
+      >
+        <app-icona nome="group_add" />
+        {{ 'gestionale.pulizie.assegna' | transloco }}
+      </button>
+      <a class="pulsante pulsante-fantasma" [routerLink]="checklist">
+        <app-icona nome="checklist" />
+        {{ 'gestionale.pulizie.checklist' | transloco }}
+      </a>
+    </div>
+  }
+</header>
+
+@if (gestore) {
+  <div class="linguette" role="group" [attr.aria-label]="'gestionale.pulizie.vista' | transloco">
+    @for (scelta of viste; track scelta) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="vista() === scelta"
+        (click)="vista.set(scelta)"
+      >
+        {{ 'gestionale.pulizie.viste.' + scelta | transloco }}
+      </button>
+    }
+  </div>
+}
+
+@if (attivita.hasValue()) {
+  <p class="tenue piccolo">{{ 'gestionale.pulizie.aiutoTrascina' | transloco }}</p>
+  @let scelto = tabellone();
+  <app-tabellone-pulizie
+    [azione]="scelto.azione"
+    [colonne]="scelto.colonne"
+    [destinazioni]="scelto.destinazioni"
+    [tempi]="gestore"
+    [attr.aria-busy]="attivita.isLoading()"
+    (sposta)="sposta($event)"
+  />
+} @else if (attivita.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+@if (gestore) {
+  <app-nuova-pulizia [giorno]="giorno()" (creata)="attivita.reload()" />
+}

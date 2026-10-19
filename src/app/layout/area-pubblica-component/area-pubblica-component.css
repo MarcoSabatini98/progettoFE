@@ -1,0 +1,252 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.testata {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 40;
+  border-block-end: 1px solid var(--bb-linea);
+  background: color-mix(in oklch, var(--bb-sfondo) 96%, transparent);
+}
+
+/*
+ * Vetro smerigliato solo col mouse: da telefono ricalcolare la sfocatura
+ * a ogni passo dello scorrimento (sopra foto e video) fa andare la pagina a scatti.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .testata {
+    background: color-mix(in oklch, var(--bb-sfondo) 88%, transparent);
+    backdrop-filter: blur(12px);
+  }
+}
+
+.testata-interno,
+.piede-interno {
+  width: min(100% - 2 * var(--bb-margine), var(--bb-contenuto));
+  margin-inline: auto;
+}
+
+.testata-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bb-spazio-4);
+  min-height: var(--bb-testata);
+}
+
+.marchio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-width: 0;
+  color: var(--bb-testo);
+  text-decoration: none;
+}
+
+/* L'arco ricorrente dell'area pubblica, qui in piccolo come logo. */
+.marchio-arco {
+  display: grid;
+  place-items: end center;
+  flex-shrink: 0;
+  inline-size: 2.25rem;
+  block-size: 2.75rem;
+  padding-block-end: 0.35rem;
+  border-radius: 999px 999px 4px 4px;
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+  font-family: var(--bb-font-titoli);
+  font-size: 0.875rem;
+}
+
+/* Il logo caricato nelle impostazioni prende il posto dell'arco. */
+.marchio-logo {
+  flex-shrink: 0;
+  block-size: 2.75rem;
+  inline-size: auto;
+  max-inline-size: 8rem;
+  object-fit: contain;
+}
+
+.marchio-nome {
+  overflow: hidden;
+  font-family: var(--bb-font-titoli);
+  font-size: 1.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.testata .pulsante {
+  --icona-dimensione: 1.125rem;
+}
+
+/* Pulsanti della testata alti come quelli del gestionale: stessa barra nelle due aree. */
+.testata-azioni {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  --bb-controllo-altezza: 2.5rem;
+}
+
+/*
+ * Menu del sito: cassetto che entra da destra, a ogni larghezza.
+ * Aperto, la pagina sotto resta ferma dov'era (vedi base.css).
+ */
+.menu-sito {
+  inset: 0 0 0 auto;
+  inline-size: min(18rem, 85vw);
+  block-size: 100dvh;
+  max-block-size: none;
+  margin: 0;
+  padding: var(--bb-spazio-6) var(--bb-spazio-4)
+    calc(var(--bb-spazio-6) + env(safe-area-inset-bottom));
+  border: 0;
+  border-inline-start: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  translate: 100% 0;
+  transition:
+    translate var(--bb-durata) var(--bb-curva),
+    overlay var(--bb-durata) allow-discrete,
+    display var(--bb-durata) allow-discrete;
+}
+
+.menu-sito:popover-open {
+  translate: 0 0;
+
+  @starting-style {
+    translate: 100% 0;
+  }
+}
+
+.menu-sito::backdrop {
+  background: rgb(0 0 0 / 0);
+  transition:
+    background-color var(--bb-durata),
+    overlay var(--bb-durata) allow-discrete,
+    display var(--bb-durata) allow-discrete;
+}
+
+.menu-sito:popover-open::backdrop {
+  background: rgb(0 0 0 / 0.4);
+
+  @starting-style {
+    background: rgb(0 0 0 / 0);
+  }
+}
+
+.menu-sito ul {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.voce {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-height: 2.75rem;
+  padding-inline: var(--bb-spazio-3);
+  border-radius: var(--bb-raggio-piccolo);
+  color: var(--bb-testo-tenue);
+  font-weight: 500;
+  text-decoration: none;
+  --icona-dimensione: 1.25rem;
+}
+
+.voce:hover {
+  background: var(--bb-incavo);
+  color: var(--bb-testo);
+}
+
+.voce-attiva {
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+}
+
+.contenuto {
+  flex: 1;
+  outline: none;
+  /* Gli sfondi a tutta larghezza (copertina della home) non fanno scorrere di lato. */
+  overflow-x: clip;
+}
+
+.piede {
+  margin-block-start: var(--bb-spazio-12);
+  padding-block: var(--bb-spazio-8) calc(var(--bb-spazio-8) + env(safe-area-inset-bottom));
+  border-block-start: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+  font-size: 0.9375rem;
+}
+
+.piede-interno {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+.piede-struttura {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.piede-nome {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  font-family: var(--bb-font-titoli);
+  font-size: 1.25rem;
+}
+
+.piede-logo {
+  block-size: 3rem;
+  inline-size: auto;
+  max-inline-size: 9rem;
+  object-fit: contain;
+}
+
+.piede-riga {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+  --icona-dimensione: 1.125rem;
+}
+
+.piede-cin {
+  font-family: var(--bb-font-mono);
+  font-size: 0.8125rem;
+  color: var(--bb-testo-tenue);
+}
+
+.piede-legale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-4);
+  font-size: 0.875rem;
+}
+
+.piede-legale a {
+  color: var(--bb-testo-tenue);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.piede-preferenze {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+}
+
+@media (width >= 40rem) {
+  .piede-interno {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}

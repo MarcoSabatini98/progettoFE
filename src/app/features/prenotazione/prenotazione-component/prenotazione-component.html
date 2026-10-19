@@ -1,0 +1,41 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'prenotazione.occhiello' | transloco }}</p>
+  <h1>{{ 'prenotazione.titolo' | transloco: { codice: codice() } }}</h1>
+</header>
+
+@if (dati.hasValue()) {
+  @let prenotazione = dati.value().prenotazione;
+  @let pagamento = dati.value().pagamento;
+
+  <div class="griglia-prenotazione">
+    <app-dettagli-prenotazione [prenotazione]="prenotazione" />
+    <app-conto-prenotazione [importi]="prenotazione" [pagamento]="pagamento" />
+    <app-pagamento-prenotazione
+      class="larga"
+      [riepilogo]="pagamento"
+      [scadeIl]="prenotazione.scade_il"
+      [avvia]="avvia"
+    />
+    @if (prenotazione.stato === 'conclusa') {
+      <app-modulo-recensione class="larga" [invia]="recensisci" />
+    }
+  </div>
+} @else if (!dati.isLoading()) {
+  <section class="scheda accesso">
+    <p>{{ 'prenotazione.chiediEmail' | transloco }}</p>
+    <form [formGroup]="modulo" (ngSubmit)="apri()" novalidate>
+      <app-campo
+        [etichetta]="'prenotazione.email' | transloco"
+        [errore]="errori.campo(modulo.controls.email)"
+      >
+        <input type="email" formControlName="email" autocomplete="email" required />
+      </app-campo>
+      @if (dati.error(); as errore) {
+        <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+      }
+      <button class="pulsante pulsante-primario pulsante-intero" type="submit">
+        {{ 'prenotazione.apri' | transloco }}
+      </button>
+    </form>
+  </section>
+}

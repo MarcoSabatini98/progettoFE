@@ -1,0 +1,8 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+:host > .pulsante {
+  justify-self: start;
+}

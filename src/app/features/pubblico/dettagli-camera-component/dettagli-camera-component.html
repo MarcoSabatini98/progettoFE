@@ -1,0 +1,46 @@
+@if (descrizione(); as testo) {
+  <p class="testo-libero descrizione">{{ testo }}</p>
+}
+
+<dl class="dettagli">
+  <div class="scheda dettaglio">
+    <span class="tondo"><app-icona nome="group" /></span>
+    <dt>{{ 'tipologia.ospiti' | transloco }}</dt>
+    <dd>{{ 'camere.ospitiMax' | transloco: { numero: ospiti() } }}</dd>
+  </div>
+  @if (camera(); as scelta) {
+    <div class="scheda dettaglio">
+      <span class="tondo"><app-icona nome="stairs" /></span>
+      <dt>{{ 'tipologia.piano' | transloco }}</dt>
+      <dd>{{ scelta.piano }}</dd>
+    </div>
+  }
+  @if (tipologia().superficie_mq) {
+    <div class="scheda dettaglio">
+      <span class="tondo"><app-icona nome="square_foot" /></span>
+      <dt>{{ 'tipologia.superficie' | transloco }}</dt>
+      <dd>{{ 'camere.superficie' | transloco: { mq: tipologia().superficie_mq } }}</dd>
+    </div>
+  }
+  @if (tipologia().letti) {
+    <div class="scheda dettaglio">
+      <span class="tondo"><app-icona nome="bed" /></span>
+      <dt>{{ 'tipologia.letti' | transloco }}</dt>
+      <dd>{{ tipologia().letti }}</dd>
+    </div>
+  }
+</dl>
+
+@if (dotazioni().length) {
+  <section id="dotazioni" class="sezione">
+    <h2 class="sezione-titolo">{{ 'tipologia.dotazioni' | transloco }}</h2>
+    <ul class="dotazioni">
+      @for (dotazione of dotazioni(); track dotazione.id) {
+        <li>
+          <span class="tondo"><app-icona [nome]="dotazione.icona || iconaPredefinita" /></span>
+          {{ dotazione.nome }}
+        </li>
+      }
+    </ul>
+  </section>
+}

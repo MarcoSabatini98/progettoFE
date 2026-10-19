@@ -1,0 +1,66 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.utenti.dati' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  @if (cliente()) {
+    <p class="tenue piccolo">
+      {{ 'errori.DATI_CLIENTE_PROTETTI' | transloco }}
+      @if (utente().ospite_id; as ospite) {
+        <a [routerLink]="[ospiti, ospite]">{{ 'gestionale.utenti.schedaOspite' | transloco }}</a>
+      }
+    </p>
+  } @else {
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.utenti.campi.nome' | transloco"
+        [errore]="errori.campo(controlli.nome)"
+      >
+        <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.utenti.campi.cognome' | transloco"
+        [errore]="errori.campo(controlli.cognome)"
+      >
+        <input type="text" formControlName="cognome" [maxLength]="lunghezza.cognome" required />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.utenti.campi.telefono' | transloco"
+        [errore]="errori.campo(controlli.telefono)"
+      >
+        <input type="tel" formControlName="telefono" [maxLength]="lunghezza.telefono" />
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.campi.lingua' | transloco">
+        <select formControlName="lingua">
+          @for (lingua of lingue; track lingua) {
+            <option [value]="lingua">{{ nomiLingue[lingua] }}</option>
+          }
+        </select>
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.utenti.campi.ruolo' | transloco"
+      [aiuto]="'gestionale.utenti.ruoloAiuto' | transloco"
+    >
+      <select formControlName="ruolo">
+        @for (ruolo of ruoli(); track ruolo) {
+          <option [value]="ruolo">{{ 'gestionale.ruoli.' + ruolo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  }
+  <label class="spunta">
+    <input name="attivo" type="checkbox" formControlName="attivo" />
+    {{ 'gestionale.utenti.campi.attivo' | transloco }}
+  </label>
+  <p class="tenue piccolo">{{ 'gestionale.utenti.attivoAiuto' | transloco }}</p>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.utenti.salva' | transloco }}
+    </button>
+  </div>
+</form>

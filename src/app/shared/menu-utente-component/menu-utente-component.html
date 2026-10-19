@@ -1,0 +1,30 @@
+@if (auth.utente(); as utente) {
+  <button
+    type="button"
+    class="attivatore"
+    ngMenuTrigger
+    [menu]="menu"
+    [attr.aria-label]="'menu.utente.apri' | transloco: { nome: utente.nome }"
+  >
+    <span class="avatar" [style.--colore-avatar]="utente.colore_avatar">
+      {{ utente.nome + ' ' + utente.cognome | iniziali }}
+    </span>
+    <span class="nome">{{ utente.nome }}</span>
+    <app-icona nome="keyboard_arrow_down" />
+  </button>
+
+  <div ngMenu #menu="ngMenu" class="menu" (itemSelected)="scegli($event)">
+    <ng-template ngMenuContent>
+      @for (voce of voci(); track voce.percorso) {
+        <div ngMenuItem class="voce" [value]="voce.percorso">
+          <app-icona [nome]="voce.icona" />
+          {{ voce.etichetta | transloco }}
+        </div>
+      }
+      <div ngMenuItem class="voce" [value]="valoreEsci">
+        <app-icona nome="logout" />
+        {{ 'menu.utente.esci' | transloco }}
+      </div>
+    </ng-template>
+  </div>
+}

@@ -1,0 +1,38 @@
+<section class="scheda">
+  <header class="intestazione">
+    <h1>{{ 'accesso.titolo' | transloco }}</h1>
+    <p class="introduzione">{{ 'accesso.introduzione' | transloco }}</p>
+  </header>
+
+  <form [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
+    <app-campo
+      [etichetta]="'accesso.email' | transloco"
+      [errore]="errori.campo(modulo.controls.email)"
+    >
+      <input type="email" formControlName="email" autocomplete="username" required />
+    </app-campo>
+
+    <app-campo
+      [etichetta]="'accesso.password' | transloco"
+      [errore]="errori.campo(modulo.controls.password)"
+    >
+      <input type="password" formControlName="password" autocomplete="current-password" required />
+    </app-campo>
+
+    <a class="recupero" [routerLink]="percorsi.recuperoPassword">{{
+      'accesso.dimenticata' | transloco
+    }}</a>
+
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+
+    <button class="pulsante pulsante-primario pulsante-intero" type="submit" [disabled]="inCorso()">
+      {{ 'accesso.entra' | transloco }}
+    </button>
+  </form>
+
+  <a class="collegamento" [routerLink]="percorsi.registrazione">
+    {{ 'accesso.registrati' | transloco }}
+  </a>
+</section>

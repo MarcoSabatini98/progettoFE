@@ -1,0 +1,106 @@
+/*
+ * Token del design system. Ogni colore ha il valore chiaro e scuro in light-dark():
+ * decide color-scheme, quindi il tema di sistema funziona senza JavaScript e
+ * [data-tema] (impostato da TemaService) serve solo a forzare una scelta.
+ *
+ * Personalizzare una struttura = sovrascrivere questi token, mai i componenti.
+ *
+ * Punti di rottura mobile-first (i custom media CSS non sono ancora supportati):
+ *   40rem (640px)    tablet
+ *   58.75rem (940px) desktop
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Colore della struttura: il default è oliva, verrà letto dalle impostazioni. */
+  --bb-brand: #5e6b3a;
+  --bb-su-brand: #fff;
+
+  /* Stati. Ocra solo per valutazioni e VIP. */
+  --bb-ocra: light-dark(#a87522, #d9a650);
+  --bb-ok: light-dark(#3b7a4c, #79bd8b);
+  --bb-avviso: light-dark(#a36a14, #e0a94f);
+  --bb-errore: light-dark(#ae3f37, #e88178);
+  --bb-info: light-dark(#2b6684, #7db3d1);
+
+  --bb-font-titoli: 'Young Serif', Georgia, 'Times New Roman', serif;
+  --bb-font-pubblico: 'Figtree Variable', 'Segoe UI', system-ui, sans-serif;
+  --bb-font-gestionale: 'Geist Variable', 'Segoe UI', system-ui, sans-serif;
+  --bb-font-mono: 'Geist Mono Variable', ui-monospace, Consolas, monospace;
+
+  --bb-spazio-1: 0.25rem;
+  --bb-spazio-2: 0.5rem;
+  --bb-spazio-3: 0.75rem;
+  --bb-spazio-4: 1rem;
+  --bb-spazio-6: 1.5rem;
+  --bb-spazio-8: 2rem;
+  --bb-spazio-12: 3rem;
+
+  --bb-ombra: 0 18px 40px -24px light-dark(rgb(30 41 42 / 0.45), rgb(0 0 0 / 0.8));
+  --bb-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --bb-durata: 240ms;
+  --bb-contenuto: 77.5rem;
+  --bb-margine: clamp(1rem, 4vw, 2.5rem);
+  /* Altezza della testata del sito: la copertina della home riempie il resto. */
+  --bb-testata: 4rem;
+}
+
+[data-tema='chiaro'] {
+  color-scheme: light;
+}
+
+[data-tema='scuro'] {
+  color-scheme: dark;
+}
+
+/* Area pubblica e portale cliente: "Mediterraneo caldo". È anche il default. */
+:root,
+.area-pubblica {
+  --bb-sfondo: light-dark(#f2f1eb, #131816);
+  --bb-superficie: light-dark(#fbfaf6, #1b211e);
+  --bb-incavo: light-dark(#e7e4da, #252c28);
+  --bb-testo: light-dark(#1e292a, #ece8de);
+  --bb-testo-tenue: light-dark(#5c645f, #a4a99f);
+  --bb-linea: light-dark(#d9d5ca, #323a35);
+  --bb-font: var(--bb-font-pubblico);
+  --bb-raggio: 22px;
+  --bb-raggio-piccolo: 14px;
+  --bb-pulsante-raggio: 999px;
+  --bb-pulsante-spazio: 1.5rem;
+  --bb-pulsante-peso: 600;
+  --bb-controllo-altezza: 3.125rem;
+  --bb-controllo-testo: 0.9375rem;
+}
+
+/* Area gestionale dello staff: "Minimal preciso". */
+.area-gestionale {
+  --bb-sfondo: light-dark(#f4f4f1, #0f1110);
+  --bb-superficie: light-dark(#fff, #161917);
+  --bb-incavo: light-dark(#edede8, #1f2320);
+  --bb-testo: light-dark(#181b19, #e7e9e5);
+  --bb-testo-tenue: light-dark(#646a65, #959b95);
+  --bb-linea: light-dark(#e0e0da, #2a2f2b);
+  --bb-font: var(--bb-font-gestionale);
+  --bb-raggio: 8px;
+  --bb-raggio-piccolo: 6px;
+  --bb-pulsante-raggio: 6px;
+  --bb-pulsante-spazio: 0.75rem;
+  --bb-pulsante-peso: 500;
+  --bb-controllo-altezza: 2.5rem;
+  --bb-controllo-testo: 0.875rem;
+}
+
+/* Derivati: ridichiarati per area così seguono la superficie dell'area. */
+:root,
+.area-pubblica,
+.area-gestionale {
+  --bb-brand-testo: light-dark(var(--bb-brand), color-mix(in oklch, var(--bb-brand) 55%, #fff));
+  --bb-brand-tenue: color-mix(in oklch, var(--bb-brand-testo) 15%, var(--bb-superficie));
+  --bb-brand-bordo: color-mix(in oklch, var(--bb-brand-testo) 40%, var(--bb-superficie));
+  --bb-ocra-tenue: color-mix(in oklch, var(--bb-ocra) 18%, var(--bb-superficie));
+  --bb-ok-tenue: color-mix(in oklch, var(--bb-ok) 15%, var(--bb-superficie));
+  --bb-avviso-tenue: color-mix(in oklch, var(--bb-avviso) 16%, var(--bb-superficie));
+  --bb-errore-tenue: color-mix(in oklch, var(--bb-errore) 14%, var(--bb-superficie));
+  --bb-info-tenue: color-mix(in oklch, var(--bb-info) 15%, var(--bb-superficie));
+}

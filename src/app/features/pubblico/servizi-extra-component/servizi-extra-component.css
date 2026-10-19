@@ -1,0 +1,89 @@
+/* Senza extra il componente resta vuoto e non deve occupare spazio nella pagina. */
+:host {
+  display: block;
+}
+
+:host(:empty) {
+  display: none;
+}
+
+/* Extra: una colonna al telefono, poi due, tre da 64rem in su. */
+.griglia-extra {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .griglia-extra {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .griglia-extra {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.servizio {
+  gap: var(--bb-spazio-3);
+  transition:
+    transform var(--bb-durata) var(--bb-curva),
+    box-shadow var(--bb-durata) var(--bb-curva);
+}
+
+.servizio:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--bb-ombra);
+}
+
+.servizio-icona {
+  display: grid;
+  place-items: center;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  border-radius: 50%;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.servizio-descrizione {
+  color: var(--bb-testo-tenue);
+}
+
+.servizio-prezzo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--bb-spazio-2);
+  margin-block-start: auto;
+  padding-block-start: var(--bb-spazio-3);
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.servizio-prezzo strong {
+  color: var(--bb-brand-testo);
+  font-size: 1.25rem;
+}
+
+.servizio-prezzo span {
+  color: var(--bb-testo-tenue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servizio {
+    transition: none;
+  }
+
+  .servizio:hover {
+    transform: none;
+  }
+}

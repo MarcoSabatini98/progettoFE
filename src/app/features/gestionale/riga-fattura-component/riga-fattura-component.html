@@ -1,0 +1,27 @@
+@let dati = fattura();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">{{ dati.totale | prezzo }}</span>
+  <span class="cosa">
+    <strong>
+      @if (dati.numero) {
+        {{
+          'portale.fatture.' + dati.tipo_documento
+            | transloco: { numero: dati.sezionale + dati.numero, anno: dati.anno }
+        }}
+      } @else {
+        {{ 'gestionale.fatture.stati.bozza' | transloco }}
+      }
+    </strong>
+    <span class="tenue piccolo">
+      {{
+        dati.cliente_denominazione ?? (dati.cliente_cognome ?? '') + ' ' + (dati.cliente_nome ?? '')
+      }}
+      · {{ dati.data_emissione | data: 'giorno' }}
+    </span>
+  </span>
+  <span class="etichette">
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato_sdi">
+      {{ 'gestionale.fatture.stati.' + dati.stato_sdi | transloco }}
+    </span>
+  </span>
+</a>

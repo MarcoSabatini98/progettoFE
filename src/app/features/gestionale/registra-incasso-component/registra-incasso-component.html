@@ -1,0 +1,80 @@
+@if (aperto()) {
+  @let controlli = modulo.controls;
+  <form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="registra()" novalidate>
+    <h3>{{ 'gestionale.incassi.registra' | transloco }}</h3>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.campi.tipo' | transloco">
+        <select formControlName="tipo">
+          @for (tipo of scelte.tipi; track tipo) {
+            <option [ngValue]="tipo">{{ 'gestionale.tipiPagamento.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.campi.metodo' | transloco">
+        <select formControlName="metodo">
+          @for (metodo of scelte.metodi; track metodo) {
+            <option [ngValue]="metodo">{{ 'gestionale.metodi.' + metodo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.campi.importo' | transloco"
+        [errore]="errori.campo(controlli.importo)"
+      >
+        <input
+          type="number"
+          inputmode="decimal"
+          formControlName="importo"
+          [min]="importoMinimo"
+          [step]="importoMinimo"
+          required
+        />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.campi.documentoFiscale' | transloco"
+        [aiuto]="'conferma.facoltativo' | transloco"
+        [errore]="errori.campo(controlli.documento_fiscale)"
+      >
+        <input
+          type="text"
+          formControlName="documento_fiscale"
+          [maxlength]="lunghezza.documentoFiscale"
+        />
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.campi.riferimento' | transloco"
+      [aiuto]="'gestionale.incassi.riferimentoAiuto' | transloco"
+      [errore]="errori.campo(controlli.riferimento)"
+    >
+      <input type="text" formControlName="riferimento" [maxlength]="lunghezza.riferimento" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.campi.note' | transloco"
+      [aiuto]="'conferma.facoltativo' | transloco"
+      [errore]="errori.campo(controlli.note)"
+    >
+      <textarea formControlName="note" rows="2" [maxlength]="lunghezza.note"></textarea>
+    </app-campo>
+
+    @if (errore(); as testo) {
+      <p class="esito esito-errore" role="alert">{{ testo }}</p>
+    }
+    <div class="azioni">
+      <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+        <app-icona nome="check" />
+        {{ 'gestionale.incassi.conferma' | transloco }}
+      </button>
+      <button class="pulsante pulsante-fantasma" type="button" (click)="aperto.set(false)">
+        {{ 'gestionale.azioni.annulla' | transloco }}
+      </button>
+    </div>
+  </form>
+} @else {
+  <button class="pulsante pulsante-secondario" type="button" (click)="apri()">
+    <app-icona nome="payments" />
+    {{ 'gestionale.incassi.registra' | transloco }}
+  </button>
+}

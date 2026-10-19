@@ -1,0 +1,25 @@
+@if (auth.utente(); as utente) {
+  <header class="intestazione">
+    @if (!incorporato()) {
+      <h1>{{ 'profilo.titolo' | transloco }}</h1>
+    }
+    <p class="email">{{ utente.email }}</p>
+  </header>
+
+  @if (!utente.email_verificata) {
+    <app-verifica-email />
+  }
+}
+
+@if (profilo.hasValue()) {
+  <app-dati-personali [profilo]="profilo.value()" />
+  <app-preferenze-email [preferenze]="profilo.value()" />
+} @else if (profilo.error(); as errore) {
+  <p class="esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+<app-sicurezza />
+
+@if (cliente()) {
+  <app-elimina-account />
+}

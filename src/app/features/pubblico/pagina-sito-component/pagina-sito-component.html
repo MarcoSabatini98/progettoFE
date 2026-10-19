@@ -1,0 +1,12 @@
+<app-copertina
+  [foto]="copertina()"
+  [occhiello]="chiave() + '.occhiello' | transloco"
+  [titolo]="chiave() + '.titolo' | transloco"
+  [testo]="descrizione() || (chiave() + '.introduzione' | transloco)"
+  [scorri]="sezioni().length > 0"
+/>
+
+@if (pagina.hasValue() && !sezioni().length) {
+  <p class="stato-vuoto">{{ 'layout.paginaInArrivo' | transloco }}</p>
+}
+<app-sezioni [sezioni]="sezioni()" />

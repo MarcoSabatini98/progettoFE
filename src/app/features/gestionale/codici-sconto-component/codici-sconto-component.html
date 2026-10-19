@@ -1,0 +1,127 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.codici">
+  <ng-template #riga let-codice>
+    <strong>{{ codice.codice }}</strong>
+    <span class="piccolo">
+      −{{ codice.valore | variazione: codice.tipo_sconto }}
+      @if (codice.valido_al) {
+        · {{ 'gestionale.tariffe.finoAl' | transloco: { data: (codice.valido_al | data) } }}
+      }
+    </span>
+    <span class="piccolo tenue">
+      {{
+        (codice.utilizzi_max
+          ? 'gestionale.tariffe.codici.usatiSu'
+          : 'gestionale.tariffe.codici.usati'
+        ) | transloco: { usati: codice.utilizzi, massimo: codice.utilizzi_max }
+      }}
+      @if (!codice.attivo) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta()
+          ? 'gestionale.tariffe.codici.modifica'
+          : 'gestionale.tariffe.codici.nuova'
+        ) | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.codice' | transloco"
+      [aiuto]="'gestionale.tariffe.codici.codiceAiuto' | transloco"
+      [errore]="errori.campo(controlli.codice)"
+    >
+      <input
+        type="text"
+        formControlName="codice"
+        autocapitalize="characters"
+        autocomplete="off"
+        [maxLength]="limiti.codice"
+        (blur)="maiuscole()"
+        required
+      />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.descrizione' | transloco"
+      [errore]="errori.campo(controlli.descrizione)"
+    >
+      <input type="text" formControlName="descrizione" [maxLength]="limiti.descrizioneCodice" />
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.tariffe.campi.tipo_sconto' | transloco">
+        <select formControlName="tipo_sconto">
+          @for (tipo of tipi; track tipo) {
+            <option [value]="tipo">{{ 'gestionale.tariffe.tipi.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valore' | transloco"
+        [errore]="errori.campo(controlli.valore)"
+      >
+        <input
+          type="number"
+          formControlName="valore"
+          min="0.01"
+          [max]="controlli.tipo_sconto.value === 'percentuale' ? 100 : limiti.importo"
+          step="0.01"
+          required
+        />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valido_dal' | transloco"
+        [aiuto]="'gestionale.tariffe.vuotoSenzaLimite' | transloco"
+      >
+        <input type="date" formControlName="valido_dal" />
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.tariffe.campi.valido_al' | transloco">
+        <input type="date" formControlName="valido_al" [min]="controlli.valido_dal.value" />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.importo_minimo' | transloco"
+        [errore]="errori.campo(controlli.importo_minimo)"
+      >
+        <input type="number" formControlName="importo_minimo" min="0" step="0.01" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.notti_min' | transloco"
+        [errore]="errori.campo(controlli.notti_min)"
+      >
+        <input type="number" formControlName="notti_min" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.utilizzi_max' | transloco"
+        [aiuto]="'gestionale.tariffe.vuotoSenzaLimite' | transloco"
+        [errore]="errori.campo(controlli.utilizzi_max)"
+      >
+        <input type="number" formControlName="utilizzi_max" min="1" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.utilizzi_per_utente' | transloco"
+        [errore]="errori.campo(controlli.utilizzi_per_utente)"
+      >
+        <input
+          type="number"
+          formControlName="utilizzi_per_utente"
+          min="1"
+          [max]="limiti.utilizziPerUtente"
+        />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input name="attivo" type="checkbox" formControlName="attivo" />
+      {{ 'gestionale.tariffe.campi.attivo' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+</app-listino>

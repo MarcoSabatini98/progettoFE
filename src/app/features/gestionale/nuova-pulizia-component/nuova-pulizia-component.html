@@ -1,0 +1,58 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.pulizie.nuova' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="crea()" novalidate>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.pulizie.campi.camera' | transloco"
+      [errore]="errori.campo(controlli.camera_id)"
+    >
+      <select formControlName="camera_id" required>
+        @for (camera of elencoCamere.value() ?? []; track camera.id) {
+          <option [ngValue]="camera.id">{{ camera.numero }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.pulizie.campi.tipo' | transloco">
+      <select formControlName="tipo">
+        @for (tipo of tipi; track tipo) {
+          <option [value]="tipo">{{ 'gestionale.pulizie.tipi.' + tipo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.pulizie.campi.priorita' | transloco">
+      <select formControlName="priorita">
+        @for (livello of priorita; track livello) {
+          <option [value]="livello">
+            {{ 'gestionale.pulizie.priorita.' + livello | transloco }}
+          </option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.pulizie.campi.addetto' | transloco">
+      <select formControlName="assegnata_a">
+        <option [ngValue]="null">{{ 'gestionale.pulizie.nessuno' | transloco }}</option>
+        @for (addetto of addetti.value() ?? []; track addetto.id) {
+          <option [ngValue]="addetto.id">{{ addetto.nome }} {{ addetto.cognome }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'gestionale.pulizie.campi.note' | transloco"
+    [errore]="errori.campo(controlli.note)"
+  >
+    <textarea formControlName="note" rows="2" [maxLength]="lunghezza.note"></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      <app-icona nome="add" />
+      {{ 'gestionale.pulizie.crea' | transloco }}
+    </button>
+  </div>
+</form>

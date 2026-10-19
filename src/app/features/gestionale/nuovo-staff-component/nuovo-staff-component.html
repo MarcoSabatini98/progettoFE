@@ -1,0 +1,59 @@
+@let controlli = modulo.controls;
+<h2 class="titolo-scheda">{{ 'gestionale.utenti.nuovo.titolo' | transloco }}</h2>
+<p class="tenue piccolo">{{ 'gestionale.utenti.nuovo.aiuto' | transloco }}</p>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="crea()" novalidate>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.utenti.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.utenti.campi.cognome' | transloco"
+      [errore]="errori.campo(controlli.cognome)"
+    >
+      <input type="text" formControlName="cognome" [maxLength]="lunghezza.cognome" required />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'gestionale.utenti.campi.email' | transloco"
+      [errore]="errori.campo(controlli.email)"
+    >
+      <input type="email" formControlName="email" autocomplete="off" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.utenti.campi.telefono' | transloco"
+      [errore]="errori.campo(controlli.telefono)"
+    >
+      <input type="tel" formControlName="telefono" [maxLength]="lunghezza.telefono" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'gestionale.utenti.campi.ruolo' | transloco">
+      <select formControlName="ruolo">
+        @for (ruolo of ruoli; track ruolo) {
+          <option [value]="ruolo">{{ 'gestionale.ruoli.' + ruolo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.lingua' | transloco">
+      <select formControlName="lingua">
+        @for (lingua of lingue; track lingua) {
+          <option [value]="lingua">{{ nomiLingue[lingua] }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <app-nuova-password [gruppo]="controlli.password" />
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'gestionale.utenti.nuovo.crea' | transloco }}
+    </button>
+  </div>
+</form>

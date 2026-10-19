@@ -1,0 +1,34 @@
+<article class="scheda-tipologia">
+  <div class="foto">
+    @if (tipologia().media?.[0]; as foto) {
+      <img
+        [src]="foto.percorso | media"
+        [alt]="foto.testo_alternativo"
+        [attr.width]="foto.larghezza"
+        [attr.height]="foto.altezza"
+        loading="lazy"
+      />
+    }
+  </div>
+
+  <div class="testo">
+    <h3>
+      <a [routerLink]="[percorsoCamere, tipologia().slug]">{{ tipologia().nome }}</a>
+    </h3>
+    <ul class="dettagli">
+      <li>
+        <app-icona nome="group" />
+        {{ 'camere.ospitiMax' | transloco: { numero: tipologia().ospiti_max } }}
+      </li>
+      @if (tipologia().superficie_mq) {
+        <li>
+          <app-icona nome="square_foot" />
+          {{ 'camere.superficie' | transloco: { mq: tipologia().superficie_mq } }}
+        </li>
+      }
+    </ul>
+    <p class="prezzo">
+      {{ 'camere.prezzoDa' | transloco: { prezzo: (tipologia().prezzo_base | prezzo) } }}
+    </p>
+  </div>
+</article>

@@ -1,0 +1,46 @@
+/* Il titolo a metà altezza del campo accanto, non sulla riga del suo aiuto. */
+.strumenti > .sezione-titolo {
+  align-self: center;
+}
+
+.riga {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-3);
+}
+
+.percentuale {
+  font-variant-numeric: tabular-nums;
+}
+
+.percentuale[data-segno='su'] {
+  color: var(--bb-ok);
+}
+
+.percentuale[data-segno='giu'] {
+  color: var(--bb-errore);
+}
+
+.motivi {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  margin: 0;
+  padding-inline-start: var(--bb-spazio-4);
+  color: var(--bb-testo-tenue);
+}
+
+/* Trenta giorni da scorrere: schede fitte, anche su telefono. */
+.giorni {
+  gap: var(--bb-spazio-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  line-height: 1.35;
+}
+
+.giorni > .scheda {
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+}
+
+.giorni .dati {
+  gap: var(--bb-spazio-1);
+}

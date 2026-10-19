@@ -1,0 +1,62 @@
+<form class="ricerca" [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
+  @let erroreDate =
+    errori.campo(modulo.controls.arrivo) ||
+    errori.campo(modulo.controls.partenza) ||
+    errori.campo(modulo);
+  <fieldset class="date">
+    <legend>{{ 'prenota.calendario.titolo' | transloco }}</legend>
+    <app-calendario-soggiorno
+      [arrivo]="arrivo()"
+      [partenza]="partenza()"
+      [filtri]="occupazione()"
+      (scelta)="scegliDate($event)"
+    />
+    @if (erroreDate) {
+      <p class="campo-errore" role="alert">
+        <app-icona nome="error" />
+        {{ erroreDate }}
+      </p>
+    }
+  </fieldset>
+
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'prenota.adulti' | transloco"
+      [errore]="errori.campo(modulo.controls.adulti)"
+    >
+      <input type="number" formControlName="adulti" min="1" [max]="adultiMax()" required />
+    </app-campo>
+
+    <app-campo
+      [etichetta]="'prenota.bambini' | transloco"
+      [aiuto]="'prenota.bambiniAiuto' | transloco: { eta: limiti.etaBambini }"
+      [errore]="errori.campo(modulo.controls.bambini)"
+    >
+      <input type="number" formControlName="bambini" min="0" [max]="bambiniMax()" />
+    </app-campo>
+  </div>
+
+  @if (modulo.controls.eta_bambini.length) {
+    <fieldset class="eta" formArrayName="eta_bambini">
+      <legend>{{ 'prenota.etaBambini' | transloco }}</legend>
+      @for (controllo of modulo.controls.eta_bambini.controls; track $index) {
+        <app-campo
+          [etichetta]="'prenota.bambino' | transloco: { numero: $index + 1 }"
+          [errore]="errori.campo(controllo)"
+        >
+          <select [formControlName]="$index" required>
+            <option [ngValue]="null" disabled>{{ 'prenota.scegliEta' | transloco }}</option>
+            @for (eta of etaPossibili; track eta) {
+              <option [ngValue]="eta">{{ eta }}</option>
+            }
+          </select>
+        </app-campo>
+      }
+    </fieldset>
+  }
+
+  <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+    <app-icona nome="search" />
+    {{ 'prenota.cerca' | transloco }}
+  </button>
+</form>

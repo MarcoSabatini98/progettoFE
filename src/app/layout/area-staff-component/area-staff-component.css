@@ -1,0 +1,169 @@
+/*
+ * Mobile: barra in alto + menu a cassetto (popover).
+ * Desktop (≥ 58.75rem): barra in alto a tutta larghezza, menu fisso a sinistra.
+ */
+:host {
+  --larghezza-binario: 16rem;
+  --altezza-barra: 3.5rem;
+  /* Chi resta attaccato in alto (es. il conto della prenotazione) si ferma sotto la barra. */
+  --bb-testata: var(--altezza-barra);
+
+  display: grid;
+  grid-template-rows: var(--altezza-barra) 1fr;
+  min-height: 100dvh;
+}
+
+.barra {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding-inline: var(--bb-spazio-2) var(--bb-spazio-4);
+  border-block-end: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+}
+
+.marchio {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  min-width: 0;
+  color: var(--bb-testo);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.marchio-logo {
+  flex-shrink: 0;
+  block-size: 2rem;
+  inline-size: auto;
+  max-inline-size: 6rem;
+  object-fit: contain;
+}
+
+.marchio-nome {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.binario {
+  flex-direction: column;
+  gap: var(--bb-spazio-4);
+  inset: 0 auto 0 0;
+  inline-size: min(var(--larghezza-binario), 85vw);
+  block-size: 100dvh;
+  max-block-size: none;
+  margin: 0;
+  padding: var(--bb-spazio-4) var(--bb-spazio-3)
+    calc(var(--bb-spazio-4) + env(safe-area-inset-bottom));
+  border: 0;
+  border-inline-end: 1px solid var(--bb-linea);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  overflow-y: auto;
+}
+
+.binario:popover-open {
+  display: flex;
+}
+
+.binario::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.binario-voci {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  flex: 1;
+  align-content: start;
+}
+
+.gruppo-titolo {
+  padding: 0 var(--bb-spazio-3) var(--bb-spazio-1);
+  color: var(--bb-testo-tenue);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gruppo ul {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.voce {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-height: 2.5rem;
+  padding-inline: var(--bb-spazio-3);
+  border-radius: var(--bb-raggio-piccolo);
+  color: var(--bb-testo-tenue);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  --icona-dimensione: 1.125rem;
+}
+
+.voce:hover {
+  background: var(--bb-incavo);
+  color: var(--bb-testo);
+}
+
+.voce-attiva {
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+}
+
+.binario-preferenze {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-2);
+  padding: var(--bb-spazio-3) var(--bb-spazio-3) 0;
+  border-block-start: 1px solid var(--bb-linea);
+}
+
+.contenuto {
+  min-width: 0;
+  padding: var(--bb-spazio-4);
+  outline: none;
+  /* La pagina non scorre mai di lato: tabelle e grafici larghi scorrono dentro di sé. */
+  overflow-x: clip;
+}
+
+@media (width >= 58.75rem) {
+  :host {
+    grid-template-columns: var(--larghezza-binario) 1fr;
+  }
+
+  .barra {
+    grid-column: 1 / -1;
+    padding-inline-start: var(--bb-spazio-6);
+  }
+
+  .apri-menu {
+    display: none;
+  }
+
+  /* Da desktop il popover resta chiuso ma visibile, come colonna della griglia. */
+  .binario {
+    position: sticky;
+    inset-block-start: var(--altezza-barra);
+    display: flex;
+    inline-size: auto;
+    block-size: calc(100dvh - var(--altezza-barra));
+  }
+
+  .contenuto {
+    padding: var(--bb-spazio-8);
+  }
+}

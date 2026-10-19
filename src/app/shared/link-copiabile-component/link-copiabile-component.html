@@ -1,0 +1,8 @@
+<label class="link">
+  <span class="visivamente-nascosto">{{ etichetta() }}</span>
+  <input name="link" #campo type="url" readonly [value]="url()" (focus)="campo.select()" />
+</label>
+<button class="pulsante pulsante-secondario" type="button" (click)="copia()">
+  <app-icona [nome]="copiato() ? 'check' : 'content_copy'" />
+  {{ (copiato() ? 'gestionale.link.copiato' : 'gestionale.link.copia') | transloco }}
+</button>

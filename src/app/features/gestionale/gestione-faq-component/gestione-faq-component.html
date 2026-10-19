@@ -1,0 +1,74 @@
+@let controlli = modulo.controls;
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.faq.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.faq.titolo' | transloco }}</h1>
+</header>
+
+<app-listino [listino]="listino" chiave="gestionale.faq.elenco">
+  <ng-template #riga let-faq>
+    <strong>{{ faq.domanda }}</strong>
+    <span class="piccolo tenue">
+      {{ faq.categoria ?? ('gestionale.faq.senzaCategoria' | transloco) }} · {{ faq.ordine }}
+      @if (!faq.pubblicata) {
+        · {{ 'gestionale.faq.nascosta' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{ (listino.scelta() ? 'gestionale.faq.modifica' : 'gestionale.faq.nuova') | transloco }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.faq.campi.domanda' | transloco"
+      [errore]="errori.campo(controlli.domanda)"
+    >
+      <input type="text" formControlName="domanda" [maxLength]="limiti.domanda" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.faq.campi.risposta' | transloco"
+      [errore]="errori.campo(controlli.risposta)"
+    >
+      <textarea
+        formControlName="risposta"
+        rows="6"
+        [maxLength]="limiti.risposta"
+        required
+      ></textarea>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.faq.campi.categoria' | transloco"
+        [aiuto]="'gestionale.faq.categoriaAiuto' | transloco"
+        [errore]="errori.campo(controlli.categoria)"
+      >
+        <input
+          type="text"
+          formControlName="categoria"
+          list="categorie-faq"
+          [maxLength]="limiti.categoria"
+        />
+        <datalist id="categorie-faq">
+          @for (categoria of categorie(); track categoria) {
+            <option [value]="categoria"></option>
+          }
+        </datalist>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.faq.campi.ordine' | transloco"
+        [aiuto]="'gestionale.faq.ordineAiuto' | transloco"
+        [errore]="errori.campo(controlli.ordine)"
+      >
+        <input type="number" formControlName="ordine" min="0" [max]="limiti.ordine" />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input name="pubblicata" type="checkbox" formControlName="pubblicata" />
+      {{ 'gestionale.faq.campi.pubblicata' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+  @if (listino.scelta(); as faq) {
+    <app-traduzioni entita="faq" [entitaId]="faq.id" />
+  }
+</app-listino>

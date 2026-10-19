@@ -1,0 +1,52 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.utenti.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.utenti.introduzione' | transloco }}</p>
+  <form class="strumenti" role="search" [formGroup]="filtri" (submit)="$event.preventDefault()">
+    <app-campo [etichetta]="'gestionale.utenti.cerca' | transloco">
+      <input type="search" formControlName="cerca" />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.utenti.campi.ruolo' | transloco">
+      <select formControlName="ruolo">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        @for (ruolo of ruoli; track ruolo) {
+          <option [value]="ruolo">{{ 'gestionale.ruoli.' + ruolo | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.campi.stato' | transloco">
+      <select formControlName="attivo">
+        <option value="">{{ 'gestionale.elenco.tutti' | transloco }}</option>
+        <option value="true">{{ 'gestionale.utenti.attivi' | transloco }}</option>
+        <option value="false">{{ 'gestionale.utenti.disattivati' | transloco }}</option>
+      </select>
+    </app-campo>
+  </form>
+</header>
+
+<app-nuovo-staff />
+
+<section class="sezione" aria-labelledby="utenti-elenco">
+  <h2 class="sezione-titolo" id="utenti-elenco">{{ 'gestionale.utenti.account' | transloco }}</h2>
+  @if (elenco.hasValue()) {
+    @let risultato = elenco.value();
+    <p class="conteggio" role="status">
+      {{ 'gestionale.utenti.totale' | transloco: { totale: risultato.totale } }}
+    </p>
+    <ul class="elenco" [attr.aria-busy]="elenco.isLoading()">
+      @for (utente of risultato.elementi; track utente.id) {
+        <li><app-riga-utente [utente]="utente" /></li>
+      } @empty {
+        <li class="stato-vuoto">{{ 'gestionale.utenti.vuoto' | transloco }}</li>
+      }
+    </ul>
+    <app-paginazione
+      [risultato]="risultato"
+      [occupato]="elenco.isLoading()"
+      [(pagina)]="pagine.pagina"
+      [(perPagina)]="pagine.perPagina"
+    />
+  } @else if (elenco.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</section>

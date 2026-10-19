@@ -1,0 +1,69 @@
+<button
+  type="button"
+  class="pulsante pulsante-fantasma pulsante-icona attivatore"
+  popovertarget="notifiche"
+  [attr.aria-label]="'notifiche.apri' | transloco: { totale: nonLette() }"
+>
+  <app-icona nome="notifications" />
+  @if (nonLette() > 0) {
+    <span class="contatore" aria-hidden="true">{{ contatore() }}</span>
+  }
+</button>
+
+<section
+  id="notifiche"
+  #pannello
+  class="pannello"
+  popover
+  [attr.aria-label]="'notifiche.titolo' | transloco"
+>
+  <header class="pannello-intestazione">
+    <h2 class="titolo-scheda">{{ 'notifiche.titolo' | transloco }}</h2>
+    @if (nonLette() > 0) {
+      <button type="button" class="pulsante pulsante-fantasma" (click)="segnaTutte()">
+        <app-icona nome="done_all" />
+        {{ 'notifiche.segnaTutte' | transloco }}
+      </button>
+    }
+  </header>
+
+  @if (elenco.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+
+  <ul class="notifiche">
+    @for (voce of voci(); track voce.notifica.id) {
+      @let notifica = voce.notifica;
+      <li
+        class="notifica"
+        [class.non-letta]="!notifica.letta_il"
+        [attr.data-priorita]="notifica.priorita"
+      >
+        <button type="button" class="notifica-apri" (click)="apri(notifica, pannello)">
+          <app-icona class="notifica-icona" [nome]="icone[notifica.tipo]" />
+          <span class="notifica-corpo">
+            <span class="notifica-titolo">
+              {{ voce.chiave | transloco: voce.valori }}
+            </span>
+            @if (notifica.testo) {
+              <span class="notifica-testo tenue piccolo">{{ notifica.testo }}</span>
+            }
+            <time class="tenue piccolo" [attr.datetime]="notifica.creato_il">
+              {{ notifica.creato_il | data: 'ora' }}
+            </time>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="pulsante pulsante-fantasma pulsante-icona"
+          [attr.aria-label]="'notifiche.elimina' | transloco"
+          (click)="elimina(notifica)"
+        >
+          <app-icona nome="close" />
+        </button>
+      </li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'notifiche.nessuna' | transloco }}</li>
+    }
+  </ul>
+</section>

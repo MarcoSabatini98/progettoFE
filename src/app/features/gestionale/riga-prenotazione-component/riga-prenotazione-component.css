@@ -1,0 +1,39 @@
+.collegamento {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--bb-spazio-2) var(--bb-spazio-3);
+  color: inherit;
+  text-decoration: none;
+}
+
+.collegamento:hover strong {
+  color: var(--bb-brand-testo);
+}
+
+.camera {
+  min-width: 2.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.chi {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+.stato-prenotazione {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+@media (min-width: 48rem) {
+  .collegamento {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .stato-prenotazione {
+    grid-column: auto;
+  }
+}

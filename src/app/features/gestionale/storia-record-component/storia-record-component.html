@@ -1,0 +1,20 @@
+<h2 class="titolo-scheda">{{ 'gestionale.registro.storia' | transloco }}</h2>
+
+@if (storia.hasValue()) {
+  @let risultato = storia.value();
+  <ul class="elenco" [attr.aria-busy]="storia.isLoading()">
+    @for (voce of risultato.elementi; track voce.id) {
+      <li><app-riga-registro [voce]="voce" [collegato]="false" /></li>
+    } @empty {
+      <li class="stato-vuoto">{{ 'gestionale.registro.vuoto' | transloco }}</li>
+    }
+  </ul>
+  <app-paginazione
+    [risultato]="risultato"
+    [occupato]="storia.isLoading()"
+    [(pagina)]="pagine.pagina"
+    [(perPagina)]="pagine.perPagina"
+  />
+} @else if (storia.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

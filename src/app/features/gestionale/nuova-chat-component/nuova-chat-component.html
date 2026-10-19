@@ -1,0 +1,64 @@
+@let controlli = modulo.controls;
+<a class="indietro" [routerLink]="percorso">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.chat.titolo' | transloco }}
+</a>
+<h2 class="titolo-scheda">{{ 'gestionale.chat.nuova' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="apri()" novalidate>
+  <fieldset class="colleghi">
+    <legend>{{ 'gestionale.chat.nuovaChat.colleghi' | transloco }}</legend>
+    @if (colleghi.value(); as elenco) {
+      @for (collega of elenco; track collega.id) {
+        <label class="collega">
+          <input
+            name="partecipanti"
+            #spunta
+            type="checkbox"
+            [checked]="scelti().includes(collega.id)"
+            (change)="scegli(collega.id, spunta.checked)"
+          />
+          <span class="avatar-chat" aria-hidden="true">
+            {{ collega.nome + ' ' + collega.cognome | iniziali }}
+            <span class="presenza" [attr.data-presenza]="presenze.di(collega.id)"></span>
+          </span>
+          <span>
+            {{ collega.nome }} {{ collega.cognome }}
+            <span class="tenue piccolo">
+              {{ 'gestionale.ruoli.' + collega.ruolo | transloco }} ·
+              {{ 'gestionale.chat.presenze.' + presenze.di(collega.id) | transloco }}
+            </span>
+          </span>
+        </label>
+      } @empty {
+        <p class="stato-vuoto">{{ 'gestionale.chat.nuovaChat.nessunCollega' | transloco }}</p>
+      }
+    } @else if (colleghi.error(); as motivo) {
+      <p class="esito esito-errore" role="alert">{{ errori.messaggio(motivo) }}</p>
+    }
+  </fieldset>
+
+  @if (gruppo()) {
+    <app-campo
+      [etichetta]="'gestionale.chat.nuovaChat.nomeGruppo' | transloco"
+      [errore]="errori.campo(controlli.titolo)"
+    >
+      <input type="text" formControlName="titolo" [maxLength]="titoloMax" required />
+    </app-campo>
+  }
+  <app-campo
+    [etichetta]="'gestionale.chat.nuovaChat.messaggio' | transloco"
+    [errore]="errori.campo(controlli.testo)"
+  >
+    <textarea formControlName="testo" rows="3" [maxLength]="testoMax" required></textarea>
+  </app-campo>
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      <app-icona nome="send" />
+      {{ 'gestionale.chat.nuovaChat.apri' | transloco }}
+    </button>
+  </div>
+</form>

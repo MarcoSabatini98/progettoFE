@@ -1,0 +1,10 @@
+/* Tanto spazio tra i riquadri: la card sporge sotto la foto. */
+.riquadri {
+  display: grid;
+  gap: calc(2 * var(--bb-spazio-12));
+}
+
+/* Con due pulsanti, prenota va a sinistra e "altre info" resta in basso a destra. */
+.prenota {
+  margin-inline-end: auto;
+}

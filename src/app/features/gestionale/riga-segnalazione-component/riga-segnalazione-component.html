@@ -1,0 +1,34 @@
+@let dati = segnalazione();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">
+    @if (dati.camera; as camera) {
+      {{ camera.numero }}
+    } @else {
+      <app-icona nome="apartment" />
+    }
+  </span>
+  <span class="cosa">
+    <strong>{{ dati.titolo }}</strong>
+    <span class="tenue piccolo">
+      @if (!dati.camera) {
+        {{ 'gestionale.manutenzione.areaComune' | transloco }} ·
+      }
+      {{ dati.creato_il | data: 'ora' }} ·
+      @if (dati.incaricato; as incaricato) {
+        {{ incaricato.nome }} {{ incaricato.cognome }}
+      } @else {
+        {{ 'gestionale.manutenzione.libera' | transloco }}
+      }
+    </span>
+  </span>
+  <span class="etichette">
+    @if (evidente()) {
+      <span class="stato-prenotazione" [attr.data-stato]="dati.priorita">
+        {{ 'gestionale.pulizie.priorita.' + dati.priorita | transloco }}
+      </span>
+    }
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.manutenzione.stati.' + dati.stato | transloco }}
+    </span>
+  </span>
+</a>

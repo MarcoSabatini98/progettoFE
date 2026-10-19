@@ -1,0 +1,118 @@
+<section class="copertina copertina-schermo">
+  <!-- Sfondo decorativo a tutto schermo: il contenuto resta leggibile sopra il velo. -->
+  @if (sfondo(); as media) {
+    @if (video()) {
+      <video
+        #filmato
+        class="sfondo"
+        [muted]="true"
+        [autoplay]="!riduciMovimento"
+        [src]="media.percorso | media"
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+        (play)="inPausa.set(false)"
+        (pause)="inPausa.set(true)"
+      ></video>
+      <button
+        type="button"
+        class="pulsante pulsante-secondario pulsante-icona pausa"
+        [attr.aria-label]="(inPausa() ? 'home.video.riproduci' : 'home.video.pausa') | transloco"
+        (click)="alternaVideo()"
+      >
+        <app-icona [nome]="inPausa() ? 'play_arrow' : 'pause'" />
+      </button>
+    } @else {
+      <img class="sfondo" [src]="media.percorso | media" alt="" fetchpriority="high" />
+    }
+  }
+
+  <!-- L'arco è il logo della struttura; senza logo restano le iniziali del nome. -->
+  <div class="arco" [class.arco-logo]="logo()">
+    @if (logo(); as percorso) {
+      <img [src]="percorso | media" alt="" fetchpriority="high" />
+    } @else {
+      <span class="arco-iniziali" aria-hidden="true">{{ nome() | iniziali }}</span>
+    }
+  </div>
+  <div class="copertina-testo">
+    @if (comune()) {
+      <p class="luogo">
+        <app-icona nome="location_on" />
+        {{ comune() }}
+      </p>
+    }
+    <h1>{{ nome() }}</h1>
+    <p class="invito">{{ 'home.invito' | transloco }}</p>
+    <a class="pulsante pulsante-primario prenota" [routerLink]="percorsi.prenota">
+      <app-icona nome="event_available" />
+      {{ 'home.prenota' | transloco }}
+    </a>
+
+    @if (checkin() || checkout()) {
+      <dl class="orari">
+        @if (checkin()) {
+          <div>
+            <dt>{{ 'home.checkin' | transloco }}</dt>
+            <dd>{{ checkin() }}</dd>
+          </div>
+        }
+        @if (checkout()) {
+          <div>
+            <dt>{{ 'home.checkout' | transloco }}</dt>
+            <dd>{{ checkout() }}</dd>
+          </div>
+        }
+      </dl>
+    }
+  </div>
+  <app-scorri />
+</section>
+
+@if (fotoStruttura().length) {
+  <section class="sezione">
+    <h2 class="sezione-titolo">{{ 'home.struttura' | transloco }}</h2>
+    <app-galleria [media]="fotoStruttura()" [etichetta]="'home.struttura' | transloco" />
+  </section>
+}
+
+@if (elencoCamere().length) {
+  <section class="sezione camere">
+    <h2 class="sezione-titolo">{{ 'home.camere' | transloco }}</h2>
+    <app-carosello [elementi]="elencoCamere()" [etichetta]="'home.camere' | transloco">
+      <ng-template let-tipologia><app-scheda-tipologia [tipologia]="tipologia" /></ng-template>
+    </app-carosello>
+    <a class="pulsante pulsante-secondario tutte" [routerLink]="percorsi.camere">
+      {{ 'home.tutteCamere' | transloco }}
+    </a>
+  </section>
+}
+
+@if (anteprimaRecensioni().length) {
+  <section class="sezione recensioni">
+    <div class="recensioni-intestazione">
+      <h2 class="sezione-titolo">{{ 'home.recensioni' | transloco }}</h2>
+      @if (valutazioni.hasValue()) {
+        @let medie = valutazioni.value();
+        <p class="media">
+          <app-icona nome="star-fill" />
+          {{
+            'home.media'
+              | transloco: { media: (medie.media | voto), numero: medie.numero_recensioni }
+          }}
+        </p>
+      }
+    </div>
+    <ul class="griglia-schede">
+      @for (recensione of anteprimaRecensioni(); track recensione.id) {
+        <li><app-scheda-recensione [recensione]="recensione" /></li>
+      }
+    </ul>
+    <a class="pulsante pulsante-secondario tutte" [routerLink]="percorsi.recensioni">
+      {{ 'home.tutteRecensioni' | transloco }}
+    </a>
+  </section>
+}
+
+<app-sezioni [sezioni]="sezioni()" />

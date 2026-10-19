@@ -1,0 +1,2312 @@
+{
+  "lingua": {
+    "etichetta": "Idioma"
+  },
+  "tema": {
+    "etichetta": "Tema",
+    "sistema": "Automático",
+    "chiaro": "Claro",
+    "scuro": "Oscuro"
+  },
+  "layout": {
+    "saltaAlContenuto": "Ir al contenido",
+    "cin": "CIN",
+    "documentiLegali": "Documentos legales",
+    "paginaInArrivo": "Estamos preparando esta página: vuelve pronto.",
+    "scorri": "Sigue desplazándote"
+  },
+  "menu": {
+    "accedi": "Iniciar sesión",
+    "apri": "Abrir menú",
+    "staff": "Menú de gestión",
+    "utente": {
+      "apri": "Menú de {{ nome }}",
+      "sito": "Ir al sitio",
+      "gestionale": "Ir a la gestión",
+      "personale": "Mi área",
+      "esci": "Cerrar sesión",
+      "account": "Mi cuenta"
+    },
+    "gruppi": {
+      "oggi": "Hoy",
+      "soggiorni": "Estancias",
+      "struttura": "Alojamiento",
+      "cassa": "Caja",
+      "direzione": "Dirección"
+    },
+    "voci": {
+      "cruscotto": "Panel",
+      "pulizie": "Limpieza",
+      "chat": "Chat",
+      "manutenzione": "Mantenimiento",
+      "prenotazioni": "Reservas",
+      "planning": "Planning",
+      "ospiti": "Huéspedes",
+      "alloggiati": "Registro de huéspedes",
+      "camere": "Habitaciones",
+      "tariffe": "Tarifas",
+      "calendari": "Calendarios externos",
+      "contenuti": "Contenidos",
+      "faq": "FAQ",
+      "recensioni": "Reseñas",
+      "pagamenti": "Pagos",
+      "fatture": "Facturas",
+      "report": "Informes",
+      "utenti": "Usuarios",
+      "ruoli": "Roles y permisos",
+      "registro": "Registro de actividad",
+      "impostazioni": "Ajustes",
+      "oggi": "Hoy",
+      "servizi": "Servicios"
+    },
+    "sito": {
+      "aria": "Menú del sitio",
+      "camere": "Habitaciones",
+      "struttura": "El alojamiento",
+      "attivita": "Actividades",
+      "offerte": "Ofertas",
+      "recensioni": "Opiniones",
+      "faq": "Preguntas frecuentes",
+      "contatti": "Contacto"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Cerrar aviso"
+  },
+  "nonTrovata": {
+    "titolo": "Página no encontrada",
+    "testo": "Puede que el enlace sea incorrecto o que la página ya no exista.",
+    "home": "Volver al inicio"
+  },
+  "home": {
+    "invito": "Bienvenidos: reservad vuestra estancia directamente con nosotros.",
+    "checkin": "Check-in desde las",
+    "checkout": "Check-out hasta las",
+    "struttura": "El alojamiento",
+    "camere": "Nuestras habitaciones",
+    "tutteCamere": "Ver todas las habitaciones",
+    "recensioni": "Lo que dicen de nosotros",
+    "media": "{{ media }}/5 de {{ numero }} opiniones",
+    "tutteRecensioni": "Leer todas las opiniones",
+    "prenota": "Reserva tu estancia",
+    "video": {
+      "pausa": "Pausar el vídeo de fondo",
+      "riproduci": "Reproducir el vídeo de fondo"
+    }
+  },
+  "accesso": {
+    "titolo": "Iniciar sesión",
+    "introduzione": "Usa el correo y la contraseña de tu cuenta.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "dimenticata": "¿Has olvidado la contraseña?",
+    "entra": "Iniciar sesión",
+    "registrati": "¿No tienes cuenta? Regístrate"
+  },
+  "recupero": {
+    "titolo": "Recuperar la contraseña",
+    "introduzione": "Escribe el correo de tu cuenta: te enviaremos un enlace para elegir una nueva.",
+    "email": "Correo electrónico",
+    "invia": "Enviar enlace",
+    "inviata": "Si el correo está registrado, pronto recibirás un mensaje con el enlace. Revisa también el correo no deseado.",
+    "torna": "Volver a iniciar sesión"
+  },
+  "reimposta": {
+    "titolo": "Nueva contraseña",
+    "introduzione": "Elige la nueva contraseña de tu cuenta.",
+    "salva": "Guardar contraseña",
+    "fatto": "Contraseña actualizada: ya puedes iniciar sesión.",
+    "linkNonValido": "El enlace no es válido. Solicita uno nuevo.",
+    "nuovoLink": "Solicitar un nuevo enlace"
+  },
+  "disiscrizione": {
+    "titolo": "Darse de baja",
+    "inCorso": "Un momento…",
+    "fatto": "Hecho: ya no recibirás nuestras ofertas por email. Los emails sobre reservas y pagos seguirán llegando.",
+    "linkNonValido": "El enlace no es válido. Usa el que aparece al final del último email recibido.",
+    "profilo": "Cambia de opinión desde tu perfil"
+  },
+  "moduli": {
+    "required": "Campo obligatorio.",
+    "email": "Introduce un correo válido.",
+    "minlength": "Al menos {{ requiredLength }} caracteres.",
+    "maxlength": "Como máximo {{ requiredLength }} caracteres.",
+    "passwordDiverse": "Las contraseñas no coinciden.",
+    "pattern": "Formato no válido.",
+    "min": "El valor mínimo es {{ min }}.",
+    "max": "El valor máximo es {{ max }}.",
+    "partenzaPrimaArrivo": "La salida debe ser posterior a la llegada."
+  },
+  "errori": {
+    "generico": "Algo ha ido mal. Inténtalo de nuevo.",
+    "rete": "No se puede conectar con el servidor. Comprueba la conexión e inténtalo de nuevo.",
+    "CREDENZIALI_NON_VALIDE": "Correo o contraseña incorrectos.",
+    "ACCOUNT_DISATTIVATO": "Esta cuenta está desactivada.",
+    "EMAIL_GIA_REGISTRATA": "Este correo ya está registrado.",
+    "EMAIL_GIA_VERIFICATA": "El correo ya está verificado.",
+    "CODICE_ERRATO": "El código no es correcto. Tras demasiados intentos, solicita uno nuevo.",
+    "CODICE_SCADUTO": "El código ha caducado: solicita uno nuevo.",
+    "LINK_NON_VALIDO": "El enlace no es válido o ya se ha usado.",
+    "TOKEN_NON_VALIDO": "El enlace no es válido.",
+    "TOKEN_SCADUTO": "El enlace ha caducado: solicita uno nuevo.",
+    "SESSIONE_SCADUTA": "Tu sesión ha caducado: inicia sesión de nuevo.",
+    "SESSIONE_COMPROMESSA": "Por seguridad se ha cerrado la sesión: inicia sesión de nuevo.",
+    "NON_AUTENTICATO": "Inicia sesión para continuar.",
+    "PERMESSO_NEGATO": "No tienes permiso para esta operación.",
+    "TROPPE_RICHIESTE": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "DATI_NON_VALIDI": "Revisa los datos introducidos.",
+    "ERRORE_INTERNO": "Error del servidor. Inténtalo de nuevo en breve.",
+    "RISORSA_NON_TROVATA": "Elemento no encontrado.",
+    "PASSWORD_ATTUALE_ERRATA": "La contraseña actual no es correcta.",
+    "CONSENSI_OBBLIGATORI": "Para registrarte debes aceptar la privacidad y los términos.",
+    "PASSWORD_ERRATA": "La contraseña no es correcta.",
+    "PRENOTAZIONI_ATTIVE": "Tienes reservas en curso o futuras: cancélalas o espera al final de la estancia.",
+    "UTENTE_NON_TROVATO": "Cuenta no encontrada.",
+    "ARRIVO_NEL_PASSATO": "La fecha de llegada ya ha pasado.",
+    "DATE_NON_VALIDE": "Revisa las fechas: el final no puede ser anterior al inicio.",
+    "BLOCCO_DIVERSO": "La habitación reservada para ti no corresponde a esta estancia: repite la búsqueda.",
+    "BLOCCO_SCADUTO": "Se acabó el tiempo para completar la reserva: repite la búsqueda.",
+    "CAMERA_NON_DISPONIBILE": "La habitación ya no está disponible en estas fechas.",
+    "CODICE_SCONTO_NON_VALIDO": "El código de descuento no es válido o ha caducado.",
+    "CODICE_SCONTO_NON_APPLICABILE": "El código de descuento no es válido para esta estancia.",
+    "CODICE_SCONTO_NON_TROVATO": "El código de descuento no existe.",
+    "PACCHETTO_NON_APPLICABILE": "El paquete no es válido para esta estancia.",
+    "PACCHETTO_NON_TROVATO": "El paquete ya no está disponible.",
+    "SOGGIORNO_MINIMO": "Estas fechas requieren una estancia más larga.",
+    "TITOLARE_MANCANTE": "Indica los datos de quien reserva.",
+    "PRENOTAZIONE_NON_TROVATA": "No hay ninguna reserva con este código y correo.",
+    "STATO_NON_VALIDO": "No es posible en el estado actual de la reserva.",
+    "NULLA_DA_PAGARE": "No hay nada que pagar.",
+    "METODO_NON_VALIDO": "Método de pago no disponible.",
+    "METODO_NON_ATTIVO": "Método de pago no disponible.",
+    "PAGAMENTO_NON_RIUSCITO": "El pago no se ha completado. Inténtalo de nuevo.",
+    "PAGAMENTO_NON_TROVATO": "Pago no encontrado.",
+    "SERVIZIO_NON_DISPONIBILE": "Un servicio elegido ya no está disponible.",
+    "IMPORTO_SUPERIORE_AL_SALDO": "El importe supera lo pendiente de pago.",
+    "RECENSIONE_GIA_PRESENTE": "Ya has valorado esta estancia.",
+    "RECENSIONE_NON_CONSENTITA": "Solo se puede valorar una estancia finalizada.",
+    "PRENOTAZIONE_ALTRUI": "Esta reserva no es tuya.",
+    "LINK_CHECKIN_NON_VALIDO": "El enlace del check-in online no es válido o ha caducado.",
+    "PRENOTAZIONE_CHIUSA": "La reserva está cancelada.",
+    "TROPPI_OSPITI": "Has introducido más huéspedes de los reservados.",
+    "OSPITE_DUPLICATO": "El mismo huésped aparece dos veces.",
+    "SERVIZIO_NON_TROVATO": "Servicio no encontrado.",
+    "FILE_MANCANTE": "Archivo no disponible.",
+    "FORMATO_FILE_NON_VALIDO": "Formato no admitido: usa PDF, JPG, PNG o WebP.",
+    "FILE_TROPPO_GRANDE": "El archivo es demasiado grande.",
+    "ANAGRAFICA_MANCANTE": "Completa primero tus datos personales.",
+    "DOCUMENTO_NON_TROVATO": "Documento no encontrado.",
+    "NON_RIMBORSABILE": "Esta tarifa no es reembolsable.",
+    "SOGGIORNO_INIZIATO": "La estancia ya ha comenzado.",
+    "PAGAMENTO_NON_AVVIATO": "No se ha podido iniciar el pago.",
+    "ARRIVO_FUTURO": "Todavía no ha llegado el día de llegada.",
+    "CAMERA_NON_TROVATA": "Habitación no encontrada.",
+    "SALDO_APERTO": "Queda un saldo por cobrar.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Completa los datos de los huéspedes antes del envío.",
+    "DATI_CLIENTE_PROTETTI": "Los datos personales del cliente se modifican desde su ficha de huésped.",
+    "OSPITE_CON_SOGGIORNI": "El huésped tiene estancias registradas: sus datos deben conservarse.",
+    "OSPITE_NON_TROVATO": "Huésped no encontrado.",
+    "DATO_DUPLICATO": "El dato ya existe.",
+    "RISORSA_IN_USO": "No se puede eliminar: el dato se usa en otro lugar.",
+    "RIFERIMENTO_NON_VALIDO": "Un dato vinculado no existe.",
+    "CAMBIO_TIPOLOGIA_CON_PRENOTAZIONI": "La habitación tiene reservas: su tipo no se puede cambiar.",
+    "CAMERA_CON_PRENOTAZIONI": "La habitación tiene reservas: no se puede eliminar.",
+    "SLUG_GIA_USATO": "Ya existe un tipo con este nombre.",
+    "TIPOLOGIA_IN_USO": "Hay habitaciones de este tipo: no se puede eliminar.",
+    "TIPOLOGIA_NON_TROVATA": "Tipo de habitación no encontrado.",
+    "MEDIA_NON_TROVATO": "Foto no encontrada.",
+    "PULIZIA_NON_TROVATA": "Tarea de limpieza no encontrada.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Punto de la checklist no encontrado.",
+    "PULIZIA_CHIUSA": "La tarea ya ha sido revisada.",
+    "PULIZIA_INIZIATA": "La tarea ya ha empezado: no se puede eliminar.",
+    "TRANSIZIONE_NON_VALIDA": "Paso no posible en el estado actual de la tarea.",
+    "PULIZIA_ALTRUI": "La tarea está asignada a otra persona.",
+    "CHECKLIST_INCOMPLETA": "Completa todos los puntos de la checklist.",
+    "CONVERSAZIONE_NON_TROVATA": "Conversación no encontrada.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "No formas parte de esta conversación.",
+    "SOLO_CHAT_STAFF": "Solo es posible en los chats del equipo.",
+    "SOLO_CLIENTI": "Reservado a los clientes.",
+    "PARTECIPANTI_MANCANTI": "Elige al menos un compañero.",
+    "TITOLO_RISERVATO": "Este nombre está reservado a los grupos de equipo.",
+    "TITOLO_MANCANTE": "Un grupo necesita un nombre.",
+    "CHAT_NON_CONSENTITA": "Este usuario no puede participar en la conversación.",
+    "GRUPPO_DI_SQUADRA": "Los grupos de equipo siguen los roles y no se modifican.",
+    "SOLO_GRUPPI": "Solo es posible en los grupos.",
+    "MESSAGGIO_VUOTO": "Escribe un texto o adjunta un archivo.",
+    "MESSAGGIO_ALTRUI": "Solo puedes editar tus propios mensajes.",
+    "MESSAGGIO_NON_TROVATO": "Mensaje no encontrado.",
+    "ALLEGATO_NON_TROVATO": "Adjunto no encontrado.",
+    "OPERATORE_NON_VALIDO": "Este usuario no puede atender la asistencia.",
+    "STATO_PRESENZA_NON_VALIDO": "Estado no válido.",
+    "SEGNALAZIONE_NON_TROVATA": "Aviso no encontrado.",
+    "SEGNALAZIONE_CHIUSA": "El aviso está cerrado: reábrelo para modificarlo.",
+    "EMAIL_ACCESSO_CLIENTE": "Solo el cliente puede cambiar su correo de acceso.",
+    "OSPITE_CLIENTE": "La ficha de un cliente registrado se elimina junto con su cuenta.",
+    "PULIZIA_NON_RINVIABILE": "Solo se pueden aplazar las limpiezas no terminadas.",
+    "PULIZIA_IN_CORSO": "Termina primero la habitación que ya tienes.",
+    "NESSUNA_PULIZIA_LIBERA": "No hay habitaciones libres para limpiar.",
+    "CALENDARIO_DISATTIVATO": "El calendario está desactivado: actívalo para sincronizarlo.",
+    "SINCRONIZZAZIONE_FALLITA": "No se puede leer el calendario del portal: comprueba que el enlace iCal sea correcto y que el portal lo siga publicando.",
+    "GIA_PUBBLICATO": "El documento ya está publicado: crea una nueva versión.",
+    "LINGUA_NON_ATTIVA": "Este idioma no está activo en el sitio.",
+    "CAMPO_NON_TRADUCIBILE": "Este campo no se traduce.",
+    "NON_FATTURABILE": "La reserva aún no tiene nada que facturar.",
+    "FATTURA_NON_TROVATA": "Factura no encontrada.",
+    "FATTURA_NON_MODIFICABILE": "La factura ya está emitida: se corrige con una nota de crédito.",
+    "FATTURA_VUOTA": "La factura no tiene importes.",
+    "RIGHE_MANCANTI": "La factura debe tener al menos una línea.",
+    "NON_STORNABILE": "Solo se anula una factura emitida.",
+    "FATTURA_NON_EMESSA": "La factura aún no está emitida.",
+    "ULTIMO_ADMIN": "Debe quedar al menos un administrador activo.",
+    "AUTO_DECLASSAMENTO": "No puedes quitarte a ti mismo el rol de administrador.",
+    "AUTO_ELIMINAZIONE": "No puedes eliminar tu propia cuenta desde aquí.",
+    "RUOLO_NON_ASSEGNABILE": "Este rol no se puede asignar.",
+    "RUOLO_CLIENTE": "Una cuenta de cliente sigue siendo de cliente.",
+    "RUOLO_NON_MODIFICABILE": "El administrador siempre tiene todos los permisos.",
+    "RUOLO_NON_TROVATO": "Rol no encontrado.",
+    "PERMESSO_SCONOSCIUTO": "Uno de los permisos ya no existe: recarga la página.",
+    "RUOLO_NON_STAFF": "El chat interno es solo para el personal.",
+    "IMPOSTAZIONE_NON_VALIDA": "Uno de los valores no tiene el formato correcto.",
+    "IMPOSTAZIONE_SCONOSCIUTA": "Uno de los ajustes ya no existe: recarga la página."
+  },
+  "nuovaPassword": {
+    "password": "Nueva contraseña",
+    "aiuto": "Al menos {{ minima }} caracteres.",
+    "conferma": "Repite la contraseña"
+  },
+  "registrazione": {
+    "titolo": "Crea tu cuenta",
+    "introduzione": "Reserva más rápido y encuentra todas tus estancias en un solo lugar.",
+    "nome": "Nombre",
+    "cognome": "Apellidos",
+    "email": "Email",
+    "telefono": "Teléfono",
+    "facoltativo": "Opcional.",
+    "consensi": "Consentimientos",
+    "privacy": "He leído la política de privacidad",
+    "termini": "Acepto los términos y condiciones",
+    "leggi": "Leer",
+    "marketing": "Quiero recibir ofertas y novedades por email",
+    "crea": "Crear cuenta",
+    "haiAccount": "¿Ya tienes cuenta? Inicia sesión"
+  },
+  "documenti": {
+    "privacy": "Política de privacidad",
+    "termini": "Términos y condiciones",
+    "cookie": "Política de cookies",
+    "versione": "Versión {{ versione }}",
+    "nonDisponibile": "Documento no disponible",
+    "nonDisponibileTesto": "Este documento aún no se ha publicado."
+  },
+  "verifica": {
+    "titolo": "Verifica tu email",
+    "descrizione": "Te hemos enviado un código de {{ cifre }} cifras: introdúcelo aquí para confirmar tu dirección.",
+    "codice": "Código de verificación",
+    "conferma": "Verificar",
+    "nuovoCodice": "Enviar un código nuevo",
+    "inviato": "Código nuevo enviado: revisa tu correo.",
+    "fatta": "Email verificado."
+  },
+  "profilo": {
+    "titolo": "Tu cuenta",
+    "dati": "Datos personales",
+    "lingua": "Idioma",
+    "linguaAiuto": "Para el sitio y los emails que recibes.",
+    "salva": "Guardar",
+    "salvato": "Cambios guardados.",
+    "email": "Email",
+    "notifiche": "Recibir emails opcionales",
+    "notificheAiuto": "Resúmenes de mensajes y recordatorios. Las confirmaciones de reserva y pago se envían siempre.",
+    "offerte": "Recibir nuestras ofertas",
+    "offerteAiuto": "Descuentos y promociones, solo por email. Puedes darte de baja cuando quieras, también desde el enlace al final de cada email."
+  },
+  "sicurezza": {
+    "titolo": "Contraseña y accesos",
+    "attuale": "Contraseña actual",
+    "cambia": "Cambiar contraseña",
+    "cambiata": "Contraseña cambiada: inicia sesión con la nueva.",
+    "sessioni": "Dispositivos conectados",
+    "sessioniDescrizione": "Cierra la sesión en todos los dispositivos, incluido este.",
+    "esciOvunque": "Cerrar sesión en todas partes",
+    "uscito": "Has cerrado sesión en todos los dispositivos."
+  },
+  "eliminaAccount": {
+    "titolo": "Eliminar cuenta",
+    "descrizione": "Tu cuenta se cerrará. Las reservas pasadas se conservan en los registros del alojamiento, como exige la ley.",
+    "elimina": "Eliminar mi cuenta",
+    "password": "Confirma con tu contraseña",
+    "conferma": "Eliminar definitivamente",
+    "annulla": "Cancelar",
+    "fatto": "Cuenta eliminada."
+  },
+  "galleria": {
+    "precedente": "Foto anterior",
+    "successiva": "Foto siguiente"
+  },
+  "camere": {
+    "titolo": "Las habitaciones",
+    "introduzione": "Elige el alojamiento que mejor se adapte a tu viaje.",
+    "nessuna": "En este momento no hay habitaciones reservables en línea.",
+    "ospitiMax": "Hasta {{ numero }} huéspedes",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "Desde {{ prezzo }} por noche",
+    "extra": "Servicios adicionales",
+    "extraIntroduzione": "Para añadir a tu reserva cuando quieras.",
+    "calcolo": {
+      "a_soggiorno": "por estancia",
+      "a_notte": "por noche",
+      "a_persona": "por persona",
+      "a_persona_notte": "por persona y noche"
+    },
+    "extraOcchiello": "Bajo petición",
+    "guarda": "Ver las habitaciones"
+  },
+  "tipologia": {
+    "tutte": "Todas las habitaciones",
+    "ospiti": "Huéspedes",
+    "superficie": "Superficie",
+    "letti": "Camas",
+    "dotazioni": "En la habitación",
+    "nonTrovata": "Habitación no encontrada",
+    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible.",
+    "prenota": "Reservar",
+    "piano": "Planta",
+    "altreInfo": "Más info",
+    "nessunaCamera": "Ninguna habitación disponible"
+  },
+  "struttura": {
+    "occhiello": "Quiénes somos",
+    "titolo": "El alojamiento",
+    "introduzione": "Nuestros espacios, servicios e historia."
+  },
+  "attivita": {
+    "occhiello": "Alrededores",
+    "titolo": "Actividades",
+    "introduzione": "Qué hacer cerca, fiestas y eventos de la zona, información útil para llegar y actividades en el alojamiento.",
+    "eventi": {
+      "occhiello": "En la zona",
+      "titolo": "Qué pasa en la zona",
+      "introduzione": "Fiestas, ferias y eventos de los próximos meses: un motivo más para elegir tus fechas.",
+      "tipi": {
+        "festivita": "Fiesta",
+        "evento_locale": "Evento local",
+        "fiera": "Feria",
+        "altro": "Evento"
+      }
+    }
+  },
+  "offerte": {
+    "occhiello": "Para ti",
+    "titolo": "Ofertas",
+    "introduzione": "Promociones en estancias y paquetes con servicios incluidos.",
+    "nessuna": "En este momento no hay ofertas activas.",
+    "pacchetti": "Paquetes",
+    "promozioni": "Promociones",
+    "tipologia": "Habitación: {{ nome }}",
+    "nottiMin": "Noches mínimas: {{ numero }}",
+    "periodo": "Del {{ dal }} al {{ al }}",
+    "dal": "Desde el {{ dal }}",
+    "fino": "Hasta el {{ al }}",
+    "incluso": "Incluido",
+    "scontoPercentuale": "-{{ valore }} %",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Estancias del {{ dal }} al {{ al }}",
+    "prenota": "Reservar",
+    "ultimoGiorno": "Último día",
+    "ultimiGiorni": "Últimos {{ numero }} días"
+  },
+  "recensioni": {
+    "occhiello": "Experiencias de los huéspedes",
+    "titolo": "Opiniones",
+    "introduzione": "Lo que cuentan los huéspedes que se alojaron con nosotros.",
+    "riepilogo": "Valoración media",
+    "numero": "Opiniones: {{ numero }}",
+    "elenco": "Lista de opiniones",
+    "nessuna": "Todavía no hay opiniones.",
+    "altre": "Mostrar más opiniones",
+    "voto": "Puntuación:",
+    "anonima": "Huésped",
+    "risposta": "Respuesta de {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Limpieza",
+      "media_personale": "Personal",
+      "media_posizione": "Ubicación",
+      "media_comfort": "Comodidad",
+      "media_qualita_prezzo": "Calidad/precio"
+    }
+  },
+  "faq": {
+    "occhiello": "¿Necesitas ayuda?",
+    "titolo": "Preguntas frecuentes",
+    "nessuna": "Todavía no hay preguntas frecuentes.",
+    "altraDomanda": "¿No encontraste la respuesta?",
+    "scrivici": "Escríbenos: te responderemos lo antes posible.",
+    "contatti": "Contáctanos"
+  },
+  "contatti": {
+    "occhiello": "Estamos aquí",
+    "titolo": "Contacto",
+    "introduzione": "Para información y solicitudes, así puedes contactarnos.",
+    "indirizzo": "Dirección",
+    "mappa": "Abrir en mapas",
+    "nuovaScheda": "(se abre en una pestaña nueva)",
+    "email": "Correo electrónico",
+    "telefono": "Teléfono",
+    "orari": "Horarios",
+    "checkin": "Check-in desde las {{ orario }}",
+    "checkout": "Check-out hasta las {{ orario }}",
+    "chat": {
+      "titolo": "¿Tienes alguna pregunta?",
+      "testo": "En el chat encontrarás las preguntas frecuentes: échales un vistazo primero. Si no está la respuesta, escríbenos directamente en el chat y te responderemos.",
+      "faq": "Leer las preguntas frecuentes",
+      "scrivi": "Escríbenos en el chat"
+    }
+  },
+  "prenota": {
+    "occhiello": "Reserva directa",
+    "titolo": "Reservar",
+    "introduzione": "Elige fechas y huéspedes: te mostramos las habitaciones libres al mejor precio.",
+    "arrivo": "Llegada",
+    "partenza": "Salida",
+    "adulti": "Adultos",
+    "bambini": "Niños",
+    "bambiniAiuto": "Hasta {{ eta }} años",
+    "etaBambini": "Edad de los niños",
+    "bambino": "Niño {{ numero }}",
+    "scegliEta": "Edad",
+    "cerca": "Buscar habitaciones",
+    "risultati": "Habitaciones disponibles",
+    "camereLibere": "Habitaciones libres: {{ numero }}",
+    "totale": "{{ prezzo }} por {{ notti }} noches",
+    "acconto": "Depósito al reservar: {{ prezzo }}",
+    "scegli": "Elegir",
+    "nessunaCamera": "No hay habitaciones libres en estas fechas. Prueba con otras.",
+    "cameraScelta": "Estás reservando la habitación {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "Buscas una habitación {{ tipologia }}.",
+    "tutteLeCamere": "Mostrar todas las habitaciones",
+    "calendario": {
+      "titolo": "Fechas de la estancia",
+      "sceltaArrivo": "Elige el día de llegada.",
+      "sceltaPartenza": "Ahora elige el día de salida.",
+      "notti": "Noches: {{ numero }}",
+      "libero": "Disponible",
+      "occupato": "No disponible",
+      "precedente": "Mes anterior",
+      "successivo": "Mes siguiente"
+    }
+  },
+  "riepilogoPrezzo": {
+    "importo_soggiorno": "Estancia",
+    "sconto_promozione": "Promoción",
+    "sconto_codice": "Código de descuento",
+    "sconto_fedelta": "Descuento de fidelidad ({{ percentuale }} %)",
+    "importo_pacchetto": "Paquete",
+    "importo_servizi": "Servicios extra",
+    "tassa_soggiorno": "Tasa turística",
+    "totale": "Total",
+    "acconto": "Depósito a pagar"
+  },
+  "conferma": {
+    "date": "Del {{ arrivo }} al {{ partenza }}",
+    "ospiti": "Adultos: {{ adulti }} · Niños: {{ bambini }}",
+    "cambiaCamera": "Cambiar habitación",
+    "bloccata": "Te guardamos la habitación hasta las {{ ora }}.",
+    "opzioni": "Personaliza tu estancia",
+    "codiceSconto": "Código de descuento",
+    "applica": "Aplicar",
+    "codicePercentuale": "{{ codice }}: {{ valore }} % de descuento",
+    "codiceImporto": "{{ codice }}: {{ valore }} de descuento",
+    "togliCodice": "Quitar",
+    "pacchetto": "Paquete",
+    "nessunPacchetto": "Sin paquete",
+    "extra": "Servicios extra",
+    "titolare": "Quién reserva",
+    "titolareAiuto": "Usaremos estos datos para la confirmación y para contactarte.",
+    "nome": "Nombre",
+    "cognome": "Apellidos",
+    "email": "Correo electrónico",
+    "telefono": "Teléfono",
+    "facoltativo": "Opcional",
+    "arrivo": "Tu llegada",
+    "oraArrivo": "Hora de llegada prevista",
+    "richieste": "Peticiones especiales",
+    "richiesteAiuto": "Cuna, alergias, accesibilidad… Haremos lo posible.",
+    "prenota": "Confirmar la reserva",
+    "conto": "Tu cuenta",
+    "rimborsabile": "Cancelación gratuita hasta {{ ore }} horas antes de la llegada.",
+    "nonRimborsabile": "Tarifa no reembolsable."
+  },
+  "prenotazione": {
+    "occhiello": "Tu reserva",
+    "titolo": "Reserva {{ codice }}",
+    "chiediEmail": "Introduce el correo con el que reservaste para ver los detalles.",
+    "email": "Correo electrónico",
+    "apri": "Abrir la reserva",
+    "camera": "Habitación",
+    "arrivo": "Llegada",
+    "partenza": "Salida",
+    "ospiti": "Huéspedes",
+    "scade": "Completa el pago antes del {{ ora }}; si no, la reserva caduca.",
+    "pagato": "Ya pagado",
+    "saldo": "Pendiente",
+    "pagamento": {
+      "titolo": "Pago",
+      "quanto": "Cuánto pagas ahora",
+      "acconto": "Solo el depósito: {{ importo }}",
+      "accontoAiuto": "El resto lo pagas en el alojamiento, a la llegada.",
+      "tutto": "Todo ahora: {{ importo }}",
+      "tuttoAiuto": "A la llegada no tienes que pagar nada.",
+      "nullaOra": "Ahora no tienes que pagar nada: el saldo de {{ importo }} lo pagas en el alojamiento, a la llegada. Si lo prefieres, puedes pagarlo ya.",
+      "come": "Cómo pagas",
+      "paga": "Pagar {{ importo }}",
+      "sicuro": "Pago seguro: lo completas en la página protegida de Stripe o PayPal y los datos de tu tarjeta no pasan por nosotros.",
+      "bonificoEntro": "La transferencia debe llegarnos antes del {{ data }}, si no la reserva caduca: si tu banco lo permite, haz una transferencia inmediata.",
+      "resto": "El resto, {{ importo }}, lo pagas en el alojamiento a la llegada.",
+      "nessunMetodo": "El pago online no está disponible: contacta con el alojamiento para saber cómo pagar."
+    },
+    "metodi": {
+      "stripe": "Tarjeta",
+      "paypal": "PayPal",
+      "bonifico": "Transferencia bancaria"
+    },
+    "metodiAiuto": {
+      "stripe": "Crédito, débito o prepago. También Google Pay, Apple Pay y Klarna, si están disponibles.",
+      "paypal": "Con tu cuenta PayPal.",
+      "bonifico": "Desde tu banco, con los datos que te mostramos."
+    },
+    "importo": "Importe",
+    "iban": "IBAN",
+    "intestatario": "Titular",
+    "causale": "Concepto",
+    "tuttoPagato": "Todo pagado: ¡hasta pronto!",
+    "stati": {
+      "in_attesa": "Pendiente de pago",
+      "confermata": "Confirmada",
+      "in_soggiorno": "En estancia",
+      "conclusa": "Finalizada",
+      "cancellata": "Cancelada",
+      "no_show": "No presentado"
+    }
+  },
+  "esito": {
+    "torna": "Ir a la reserva {{ codice }}",
+    "in_corso": {
+      "titolo": "Registrando el pago…",
+      "testo": "Quédate en esta página unos segundos."
+    },
+    "ok": {
+      "titolo": "Pago recibido",
+      "testo": "¡Gracias! Te enviamos la confirmación por correo."
+    },
+    "annullato": {
+      "titolo": "Pago cancelado",
+      "testo": "No se te ha cobrado nada. Puedes volver a intentarlo desde la reserva."
+    },
+    "errore": {
+      "titolo": "Pago no realizado"
+    }
+  },
+  "recensione": {
+    "titolo": "¿Qué tal fue tu estancia?",
+    "voto": "Tu puntuación",
+    "stelle": "{{ voto }} de {{ massimo }}",
+    "dettagli": "¿Quieres contar más?",
+    "senzaVoto": "Sin puntuación",
+    "titoloRecensione": "Título",
+    "commento": "Cuéntanos tu estancia",
+    "anonima": "Publicar sin mi nombre",
+    "invia": "Enviar opinión",
+    "grazie": "¡Gracias! Tu opinión se publicará tras una revisión."
+  },
+  "portale": {
+    "occhiello": "Área personal",
+    "saluto": "Hola, {{ nome }}",
+    "mostraAltre": "Mostrar más",
+    "menu": {
+      "prenotazioni": "Reservas",
+      "fatture": "Facturas",
+      "fedelta": "Fidelidad",
+      "documenti": "Documentos",
+      "profilo": "Perfil"
+    },
+    "prenotazioni": {
+      "prossime": "Próximas estancias",
+      "passate": "Estancias pasadas",
+      "nessuna": "No tienes estancias previstas.",
+      "prenota": "Reservar una estancia",
+      "tutte": "Todas las reservas"
+    },
+    "extra": {
+      "titolo": "Servicios extra",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "Quitar {{ nome }}",
+      "nessuno": "Sin servicios extra.",
+      "servizio": "Añadir un servicio",
+      "scegli": "Elegir…",
+      "quantita": "Cantidad",
+      "aggiungi": "Añadir"
+    },
+    "cancella": {
+      "titolo": "Cancelar la reserva",
+      "testo": "Antes de confirmar te mostramos la posible penalización.",
+      "apri": "Quiero cancelar",
+      "penale": "Penalización",
+      "rimborso": "Reembolso",
+      "gratuita": "Cancelación gratuita hasta el {{ data }}.",
+      "motivo": "Motivo",
+      "conferma": "Confirmar la cancelación",
+      "annulla": "No cancelar"
+    },
+    "fatture": {
+      "titolo": "Facturas",
+      "TD01": "Factura {{ numero }}/{{ anno }}",
+      "TD04": "Nota de crédito {{ numero }}/{{ anno }}",
+      "scarica": "Descargar PDF",
+      "nessuna": "No hay facturas emitidas."
+    },
+    "fedelta": {
+      "titolo": "Programa de fidelidad",
+      "sconto": "Descuento del {{ sconto }} %",
+      "inizia": "Acumula puntos en cada estancia y desbloquea descuentos exclusivos.",
+      "punti": "{{ punti }} puntos",
+      "mancano": "Te faltan {{ punti }} puntos para el nivel {{ livello }}.",
+      "massimo": "Estás en el nivel más alto. ¡Gracias!",
+      "anno": "Tu {{ anno }}",
+      "guadagnati": "Puntos ganados",
+      "tolti": "Puntos restados",
+      "livelli": "Niveles",
+      "movimenti": "Movimientos de puntos",
+      "nessunMovimento": "Todavía no hay movimientos.",
+      "motivi": {
+        "soggiorno": "Estancia",
+        "bonus": "Bonificación",
+        "rettifica": "Ajuste",
+        "annullamento": "Cancelación"
+      }
+    },
+    "documenti": {
+      "titolo": "Documentos de identidad",
+      "testo": "Súbelos una vez: los usaremos para el check-in de tus estancias.",
+      "carica": "Subir un documento",
+      "formati": "PDF, JPG, PNG o WebP.",
+      "caricato": "Subido el {{ data }}",
+      "scarica": "Descargar",
+      "elimina": "Eliminar {{ nome }}",
+      "conferma": "Eliminar",
+      "annulla": "Cancelar",
+      "nessuno": "No has subido documentos."
+    },
+    "checkin": {
+      "occhiello": "Check-in online",
+      "titolo": "Quién se aloja",
+      "soggiorno": "Reserva {{ codice }}, del {{ arrivo }} al {{ partenza }}.",
+      "testo": "Introduce los datos de cada huésped: a la llegada no tendrás que hacer nada más. Los campos vacíos no cambian los datos ya registrados.",
+      "ospite": "Huésped {{ numero }}",
+      "documento": "Documento de quien encabeza el grupo, exigido por la ley para el registro.",
+      "invia": "Enviar los datos",
+      "fatto": "Datos recibidos el {{ data }}. Puedes corregirlos hasta la llegada.",
+      "mancano": "Datos ya registrados. Todavía faltan:",
+      "completo": "Datos ya registrados y completos: corrige solo lo que haya cambiado."
+    }
+  },
+  "carosello": {
+    "ruolo": "carrusel",
+    "slide": "{{ numero }} de {{ totale }}",
+    "precedente": "Anterior",
+    "successiva": "Siguiente"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Recepción",
+      "titolo": "El día",
+      "giorno": "Día",
+      "arrivi": "Llegadas",
+      "partenze": "Salidas",
+      "in_casa": "Alojados",
+      "vuoto": "Ninguna reserva."
+    },
+    "elenco": {
+      "occhiello": "Estancias",
+      "titolo": "Reservas",
+      "cerca": "Buscar por código, apellido o email",
+      "tutti": "Todos",
+      "dal": "Llegada desde",
+      "al": "Llegada hasta",
+      "ordine": "Orden",
+      "recenti": "Llegadas más lejanas primero",
+      "vicine": "Llegadas más cercanas primero",
+      "totale": "Reservas encontradas: {{ totale }}",
+      "nessuna": "Ninguna reserva con estos filtros.",
+      "pagine": "Páginas",
+      "righe": "Filas por página",
+      "precedente": "Anterior",
+      "successiva": "Siguiente",
+      "pagina": "Página {{ pagina }} de {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Gestión",
+      "titolo": "Nueva reserva",
+      "introduzione": "Reserva por teléfono, email o en el mostrador: elige fechas, huéspedes y habitación.",
+      "gestione": "Gestión",
+      "linguaAiuto": "Idioma de los emails enviados al huésped."
+    },
+    "scheda": {
+      "tutte": "Todas las reservas",
+      "creata": "Creada",
+      "cancellata": "Cancelada",
+      "motivo": "Motivo de la cancelación"
+    },
+    "campi": {
+      "canale": "Canal",
+      "stato": "Estado",
+      "idEsterno": "Id en el portal",
+      "lingua": "Idioma",
+      "noteInterne": "Notas internas",
+      "noteInterneAiuto": "Visibles solo para el personal.",
+      "camera": "Habitación",
+      "adulti": "Adultos",
+      "bambini": "Niños",
+      "oraArrivo": "Hora de llegada prevista",
+      "richieste": "Peticiones del huésped",
+      "tipo": "Tipo",
+      "metodo": "Método",
+      "importo": "Importe",
+      "documentoFiscale": "Número de recibo",
+      "riferimento": "Referencia",
+      "note": "Notas"
+    },
+    "canali": {
+      "diretto": "Web",
+      "telefono": "Teléfono",
+      "email": "Email",
+      "walk_in": "En el mostrador",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Otro portal"
+    },
+    "link": {
+      "copia": "Copiar",
+      "copiato": "Copiado"
+    },
+    "linkCheckin": {
+      "titolo": "Check-in online",
+      "testo": "El huésped introduce sus documentos antes de llegar.",
+      "crea": "Crear el enlace"
+    },
+    "linkPagamento": {
+      "titolo": "Enlace de pago",
+      "apri": "Crear un enlace de pago",
+      "crea": "Crear el enlace",
+      "importoAiuto": "Vacío: lo que se debe ahora.",
+      "inviaEmail": "Enviar el enlace por email al huésped",
+      "inviato": "Enlace enviado por email."
+    },
+    "cancella": {
+      "penale": "Penalización",
+      "penaleAiuto": "Vacío: la penalización prevista por la tarifa."
+    },
+    "azioni": {
+      "conferma": "Confirmar",
+      "checkIn": "Check-in",
+      "noShow": "No presentado",
+      "checkOut": "Check-out",
+      "annulla": "Cancelar",
+      "conferme": {
+        "noShow": "Confirmar no presentado",
+        "checkOut": "Cerrar de todos modos"
+      }
+    },
+    "modifica": {
+      "titolo": "Modificar",
+      "testo": "Cambia habitación, fechas, huéspedes o notas.",
+      "apri": "Modificar la reserva",
+      "ricalcolo": "Al cambiar habitación, fechas o huéspedes el precio se recalcula.",
+      "salva": "Guardar cambios"
+    },
+    "incassi": {
+      "titolo": "Cobros",
+      "nessuno": "Ningún movimiento.",
+      "registra": "Registrar un cobro",
+      "conferma": "Registrar",
+      "riferimentoAiuto": "P. ej. referencia de la transferencia o ticket del TPV.",
+      "ricevuta": "Recibo {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Anticipo",
+      "saldo": "Saldo",
+      "extra": "Extra",
+      "penale": "Penalización",
+      "rimborso": "Reembolso"
+    },
+    "metodi": {
+      "stripe": "Tarjeta",
+      "paypal": "PayPal",
+      "bonifico": "Transferencia",
+      "contanti": "Efectivo",
+      "pos": "TPV",
+      "ota": "Portal"
+    },
+    "statiPagamento": {
+      "in_attesa": "Pendiente",
+      "completato": "Completado",
+      "fallito": "Fallido",
+      "annullato": "Anulado"
+    },
+    "anagrafica": {
+      "titolo": "Datos personales",
+      "contatti": "Contacto",
+      "nascita": "Nacimiento y nacionalidad",
+      "documento": "Documento",
+      "residenza": "Residencia",
+      "tipoDocumento": "Solo para quien viaja solo o dirige el grupo.",
+      "paese": "Código de dos letras, p. ej. IT.",
+      "salva": "Guardar datos",
+      "salvata": "Datos guardados.",
+      "emailCliente": "Es el correo con el que el cliente accede: lo cambia desde su perfil."
+    },
+    "ospiti": {
+      "occhiello": "Gestión",
+      "titolo": "Huéspedes",
+      "cerca": "Buscar por nombre, apellido o correo",
+      "totale": "Huéspedes encontrados: {{ totale }}",
+      "nessuno": "No se han encontrado huéspedes.",
+      "nuovo": "Nuevo huésped",
+      "crea": "Crear y completar los datos"
+    },
+    "ospite": {
+      "tutti": "Todos los huéspedes",
+      "occhiello": "Huésped",
+      "mancano": "Falta para Alloggiati Web:",
+      "completa": "Datos completos para Alloggiati Web.",
+      "soggiorni": "Estancias",
+      "nessunSoggiorno": "Sin estancias.",
+      "elimina": "Eliminar huésped",
+      "eliminaAiuto": "Solo es posible si el huésped no tiene estancias registradas.",
+      "conferma": "Eliminar definitivamente"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Huéspedes de la estancia",
+      "daSalvare": "Sin guardar",
+      "mancano": "Faltan {{ numero }} datos",
+      "completo": "Datos completos",
+      "tipo": "Función en la ficha",
+      "esente": "Exento de la tasa turística",
+      "motivo": "Motivo de la exención",
+      "togli": "Quitar de la estancia",
+      "nessuno": "No hay huéspedes registrados.",
+      "chiusa": "Reserva cerrada: los huéspedes ya no se pueden cambiar.",
+      "piena": "Todas las plazas de la reserva están asignadas.",
+      "cerca": "Buscar un huésped ya registrado",
+      "aggiungiNuovo": "Añadir un huésped nuevo",
+      "salva": "Guardar huéspedes",
+      "salvati": "Huéspedes guardados."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Huésped individual",
+      "capofamiglia": "Cabeza de familia",
+      "capogruppo": "Jefe de grupo",
+      "familiare": "Familiar",
+      "membro_gruppo": "Miembro del grupo"
+    },
+    "esiti": {
+      "inviata": "Enviada",
+      "errore": "Rechazada por el portal",
+      "test": "Prueba"
+    },
+    "alloggiati": {
+      "occhiello": "Gestión",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Estancias de los últimos días aún por comunicar: descarga el archivo, súbelo al portal de la Policía del Estado y registra el resultado.",
+      "arrivo": "Llegada",
+      "prenotazione": "Abrir la reserva",
+      "schedine": "Fichas",
+      "nessuno": "No hay estancias por comunicar.",
+      "scarica": "Descargar el archivo ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Fichas listas para el envío.",
+      "incomplete": "A algunos huéspedes les faltan datos.",
+      "mancano": "Falta",
+      "nessuno": "No hay huéspedes registrados.",
+      "esito": "Resultado del portal",
+      "messaggio": "Mensaje del portal",
+      "registra": "Registrar el resultado",
+      "registrato": "Resultado registrado."
+    },
+    "camere": {
+      "occhiello": "Alojamiento",
+      "titolo": "Habitaciones",
+      "introduzione": "Los tipos se venden en la web; las habitaciones son las unidades reales que se asignan.",
+      "tipologie": "Tipos de habitación",
+      "camere": "Habitaciones",
+      "nuovaTipologia": "Nuevo tipo",
+      "creaTipologia": "Crear y completar",
+      "nuovaCamera": "Nueva habitación",
+      "creaCamera": "Crear y completar",
+      "nessunaTipologia": "Ningún tipo: crea uno para vender en la web.",
+      "nessunaCamera": "Ninguna habitación.",
+      "riassuntoTipologia": "Hasta {{ ospiti }} huéspedes · desde {{ prezzo }} por noche",
+      "riassuntoCamera": "{{ tipologia }} · planta {{ piano }}",
+      "titoloCamera": "Habitación {{ numero }}",
+      "tutte": "Todas las habitaciones",
+      "occhielloTipologia": "Tipo de habitación",
+      "occhielloCamera": "Habitación",
+      "vediSulSito": "Ver en la web",
+      "nonSulSito": "No visible en la web",
+      "datiTipologia": "Datos del tipo",
+      "datiCamera": "Datos de la habitación",
+      "campi": {
+        "nome": "Nombre",
+        "prezzo_base": "Precio base por noche",
+        "ospiti_max": "Huéspedes máximos",
+        "superficie_mq": "Superficie (m²)",
+        "letti": "Camas",
+        "descrizione": "Descripción",
+        "ordine": "Orden",
+        "attiva": "Visible en la web",
+        "numero": "Número",
+        "nomeCamera": "Nombre (opcional)",
+        "tipologia": "Tipo de habitación",
+        "stato": "Estado",
+        "piano": "Planta",
+        "note": "Notas internas"
+      },
+      "ordineAiuto": "En la web los números más bajos van primero.",
+      "tipologiaAiuto": "No se puede cambiar si la habitación tiene reservas.",
+      "ospitiAiuto": "Vacío: vale el del tipo.",
+      "stati": {
+        "attiva": "Activa",
+        "manutenzione": "En mantenimiento",
+        "fuori_servizio": "Fuera de servicio"
+      },
+      "dotazioni": "Equipamiento",
+      "nessunaDotazione": "Ningún equipamiento en el catálogo.",
+      "salva": "Guardar",
+      "salvata": "Cambios guardados.",
+      "eliminaTipologia": "Eliminar tipo",
+      "eliminaTipologiaAiuto": "Solo si ninguna habitación lo usa.",
+      "eliminaCamera": "Eliminar habitación",
+      "eliminaCameraAiuto": "Solo si la habitación no tiene reservas.",
+      "conferma": "Sí, eliminar",
+      "descrizioneAiuto": "Para la web. Vacía: se muestra la del tipo de habitación."
+    },
+    "foto": {
+      "titolo": "Fotos",
+      "aiuto": "JPEG, PNG o WebP. La primera es la portada en la web.",
+      "carica": "Subir fotos",
+      "copertina": "Portada",
+      "testoAlternativo": "Descripción para quien no ve la foto",
+      "prima": "Subir",
+      "dopo": "Bajar",
+      "conferma": "Sí, eliminar",
+      "elimina": "Eliminar foto",
+      "nessuna": "Ninguna foto."
+    },
+    "pulizie": {
+      "occhiello": "Pisos",
+      "titolo": "Limpieza",
+      "soloMie": "Solo las mías",
+      "genera": "Generar jornada",
+      "assegna": "Asignar al personal",
+      "checklist": "Checklist",
+      "generata": "Jornada lista: {{ riassetti }} repasos añadidos, {{ checklist_aggiunte }} checklists completadas.",
+      "assegnate": "{{ assegnate }} tareas asignadas, {{ non_assegnate }} todavía libres.",
+      "vuoto": "Ninguna tarea.",
+      "stati": {
+        "da_fare": "Pendientes",
+        "in_corso": "En curso",
+        "completata": "Por revisar",
+        "verificata": "Revisadas"
+      },
+      "tipi": {
+        "partenza": "Salida",
+        "riassetto": "Repaso",
+        "profonda": "Limpieza a fondo",
+        "ispezione": "Inspección"
+      },
+      "priorita": {
+        "bassa": "Baja",
+        "normale": "Normal",
+        "alta": "Alta",
+        "urgente": "Urgente"
+      },
+      "libera": "Sin asignar",
+      "vociFatte": "{{ fatte }}/{{ totale }} puntos",
+      "nuova": "Nueva tarea",
+      "crea": "Añadir a la jornada",
+      "nessuno": "Nadie",
+      "campi": {
+        "camera": "Habitación",
+        "tipo": "Tipo",
+        "priorita": "Prioridad",
+        "addetto": "Camarera/o de pisos",
+        "note": "Notas",
+        "giorno": "Día",
+        "voce": "Punto"
+      },
+      "lavoro": "Trabajo",
+      "iniziaPerSpuntare": "Empieza la limpieza para marcar los puntos.",
+      "senzaChecklist": "Ningún punto que marcar.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Empezar"
+        },
+        "in_corso": {
+          "completata": "Terminado",
+          "da_fare": "Volver a pendiente"
+        },
+        "completata": {
+          "verificata": "Revisada",
+          "in_corso": "Rehacer"
+        }
+      },
+      "salvaNote": "Guardar notas",
+      "pianificazione": "Planificación",
+      "salva": "Guardar",
+      "salvata": "Cambios guardados.",
+      "tutte": "Todas las tareas",
+      "prenotazione": "Reserva",
+      "verificataDa": "Revisada por",
+      "elimina": "Eliminar tarea",
+      "eliminaAiuto": "Solo es posible mientras nadie la haya empezado.",
+      "checklistIntroduzione": "Los puntos activos se copian en las nuevas tareas de su tipo.",
+      "tuttiTipi": "Todos los tipos",
+      "nessunaVoce": "Ningún punto.",
+      "nuovaVoce": "Nuevo punto",
+      "aggiungiVoce": "Añadir punto",
+      "eliminaVoce": "Eliminar {{ voce }}",
+      "vista": "Vista",
+      "viste": {
+        "stato": "Por estado",
+        "addetto": "Por empleado"
+      },
+      "aiutoTrascina": "Arrastra una habitación a otra columna (en el móvil, mantenla pulsada) o elige en el menú debajo de la habitación.",
+      "spostaIn": "Mover a…",
+      "assegnaA": "Asignar a…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Completadas",
+      "camera": "habitación {{ numero }}",
+      "prossima": "Siguiente habitación",
+      "presa": "Habitación {{ numero }}: te toca.",
+      "nonDisturbare": "No molestar",
+      "rinvii": {
+        "oggi": "Más tarde",
+        "domani": "Mañana"
+      },
+      "piano": "planta {{ piano }}",
+      "tempo": "Tiempo de limpieza",
+      "minuti": "{{ minuti }} min"
+    },
+    "cruscotto": {
+      "occhiello": "Dirección",
+      "titolo": "Panel",
+      "aggiorna": "Actualizar",
+      "percentuale": "{{ valore }} %",
+      "gruppi": {
+        "oggi": "Hoy",
+        "daFare": "Pendiente",
+        "mese": "Este mes"
+      },
+      "voci": {
+        "occupazione_oggi": "{{ in_casa }} de {{ camere }} habitaciones ocupadas",
+        "arrivi_oggi": "Llegadas",
+        "partenze_oggi": "Salidas",
+        "in_casa": "Reservas en casa",
+        "da_confermare": "Reservas por confirmar",
+        "manutenzioni_aperte": "Mantenimientos abiertos",
+        "recensioni_da_moderare": "Reseñas por moderar",
+        "incassato_mese": "Cobrado desde el día 1",
+        "prenotato_da_inizio_mese": "Vendido con llegada este mes"
+      },
+      "andamento": {
+        "titolo": "Evolución",
+        "periodo": "Período",
+        "report": "Descargar informe PDF",
+        "periodi": {
+          "settimana": "Esta semana",
+          "settimanaScorsa": "Semana pasada",
+          "mese": "Este mes",
+          "meseScorso": "Mes pasado",
+          "anno": "Este año"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Ocupación",
+          "ricavo_camere": "Ingresos por habitaciones",
+          "adr": "Precio medio por noche (ADR)",
+          "revpar": "Ingreso por habitación disponible (RevPAR)",
+          "notti_vendute": "Noches vendidas de {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} respecto al período anterior",
+        "senzaConfronto": "Sin datos del período anterior",
+        "grafici": {
+          "occupazione": "Ocupación",
+          "ricavi": "Ingresos por habitaciones",
+          "settimana": "Ocupación por día de la semana"
+        },
+        "tipologie": "Ingresos por tipo de habitación",
+        "camere": "Ingresos por habitación",
+        "camera": "Habitación {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} reservas · {{ notti }} noches",
+        "arrivati": "Estancias con llegada en el período.",
+        "canali": "Canales de venta",
+        "canaliNota": "Reservas creadas en el período.",
+        "campiCanale": {
+          "prenotazioni": "Reservas",
+          "cancellate": "Canceladas",
+          "no_show": "No-show",
+          "notti": "Noches vendidas",
+          "valore": "Valor vendido",
+          "durata_media": "Noches por reserva",
+          "anticipo_medio_giorni": "Días de antelación de media"
+        },
+        "vuoto": "No hay estancias en el período.",
+        "vuotoCanali": "No se han creado reservas en el período."
+      }
+    },
+    "chat": {
+      "occhiello": "Comunicación",
+      "titolo": "Chat",
+      "presenza": "Mi estado",
+      "presenze": {
+        "online": "En línea",
+        "occupato": "Ocupado",
+        "assente": "Ausente",
+        "offline": "Desconectado"
+      },
+      "nuova": "Nuevo chat",
+      "elenco": "Conversaciones",
+      "tipi": {
+        "staff": "Equipo",
+        "assistenza": "Asistencia"
+      },
+      "filtri": {
+        "stato": "Estado",
+        "assegnate": "Asignación",
+        "tutte": "Todas",
+        "mie": "Mías",
+        "libere": "Por tomar"
+      },
+      "stati": {
+        "aperta": "Abiertas",
+        "chiusa": "Cerradas"
+      },
+      "vuoto": "Ninguna conversación.",
+      "scegli": "Elige una conversación o abre una nueva.",
+      "senzaNome": "Conversación",
+      "nonLetti": "mensajes no leídos",
+      "nuovaChat": {
+        "colleghi": "Con quién",
+        "nessunCollega": "No hay compañeros disponibles.",
+        "nessunoScelto": "Elige al menos un compañero.",
+        "nomeGruppo": "Nombre del grupo",
+        "messaggio": "Primer mensaje",
+        "apri": "Abrir chat"
+      },
+      "messaggio": {
+        "modifica": "Editar",
+        "salva": "Guardar",
+        "modificato": "editado",
+        "conferma": "Confirmar eliminación",
+        "rispondi": "Responder",
+        "elimina": "Eliminar"
+      },
+      "scrivi": {
+        "rispondiA": "Respondiendo a:",
+        "annullaRisposta": "Cancelar respuesta",
+        "togli": "Quitar {{ nome }}",
+        "allega": "Adjuntar archivo",
+        "testo": "Escribe un mensaje",
+        "invia": "Enviar",
+        "troppiAllegati": "Como máximo {{ max }} adjuntos por mensaje."
+      },
+      "azioni": {
+        "prendi": "Tomar a cargo",
+        "rilascia": "Liberar",
+        "chiudi": "Cerrar",
+        "riapri": "Reabrir",
+        "rinomina": "Renombrar",
+        "aggiungi": "Añadir",
+        "collega": "Compañero a añadir",
+        "esci": "Salir del grupo",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Conversación tomada a cargo.",
+          "rilasciata": "Conversación liberada.",
+          "chiusa": "Conversación cerrada.",
+          "aperta": "Conversación reabierta.",
+          "rinominata": "Grupo renombrado.",
+          "aggiunto": "Compañero añadido.",
+          "uscito": "Has salido del grupo."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Mensajes anteriores",
+        "vuota": "Aún no hay mensajes.",
+        "scrive": "{{ nome }} está escribiendo…",
+        "chiusa": "Conversación cerrada: reábrela para escribir.",
+        "operatore": "Operador",
+        "libera": "por tomar",
+        "partecipanti": "Participantes"
+      }
+    },
+    "ruoli": {
+      "admin": "Administrador",
+      "receptionist": "Recepcionista",
+      "housekeeper_senior": "Gobernanta",
+      "housekeeper": "Camarera de pisos",
+      "cliente": "Cliente"
+    },
+    "manutenzione": {
+      "occhiello": "Averías",
+      "titolo": "Mantenimiento",
+      "filtri": {
+        "stato": "Estado",
+        "aperte": "Por resolver",
+        "tutte": "Todas",
+        "tuttePriorita": "Todas",
+        "mie": "Solo las mías"
+      },
+      "stati": {
+        "aperta": "Abierta",
+        "in_corso": "En curso",
+        "risolta": "Resuelta",
+        "annullata": "Anulada"
+      },
+      "totale": "{{ totale }} avisos",
+      "vuoto": "Ningún aviso.",
+      "areaComune": "Zona común",
+      "libera": "Sin asignar",
+      "nessuno": "Nadie",
+      "nuova": "Avisar de una avería",
+      "invia": "Enviar aviso",
+      "inviata": "Aviso enviado.",
+      "campi": {
+        "titolo": "Qué falla",
+        "camera": "Dónde",
+        "priorita": "Prioridad",
+        "descrizione": "Detalles",
+        "statoCamera": "Estado de la habitación",
+        "stato": "Estado",
+        "incaricato": "Se encarga",
+        "noteRisoluzione": "Notas de resolución"
+      },
+      "nonCambiare": "Dejar como está",
+      "statoCameraAiuto": "Fuera de servicio retira la habitación de la venta.",
+      "senzaDescrizione": "Sin detalles.",
+      "segnalataDa": "Avisada por",
+      "risoltaIl": "Resuelta el",
+      "gestione": "Gestión",
+      "salva": "Guardar",
+      "salvata": "Cambios guardados.",
+      "tutte": "Todos los avisos"
+    },
+    "planning": {
+      "occhiello": "Recepción",
+      "titolo": "Planning de habitaciones",
+      "dal": "Desde",
+      "durata": "Días mostrados",
+      "giorni": "{{ giorni }} días",
+      "precedente": "Periodo anterior",
+      "successivo": "Periodo siguiente",
+      "oggi": "Hoy",
+      "nuova": "Nueva reserva",
+      "legenda": "Leyenda",
+      "chiusa": "Cerrada",
+      "camera": "Habitación",
+      "struttura": "Todo el alojamiento",
+      "aiutoTrascina": "Arrastra una estancia a otra habitación u otros días (en el móvil, mantén pulsado). Solo se mueven las que aún no han empezado.",
+      "proposta": "¿Mover {{ codice }} a la habitación {{ camera }}, del {{ arrivo }} al {{ partenza }}? El precio se recalculará.",
+      "sposta": "Mover",
+      "spostata": "Reserva {{ codice }} movida.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "No hay habitaciones que mostrar.",
+      "nuovaChiusura": "Cerrar habitación o alojamiento",
+      "modificaChiusura": "Editar cierre",
+      "aiutoChiusura": "Los días cerrados no se pueden reservar. Las reservas existentes se mantienen: aparecen abajo.",
+      "campi": {
+        "camera": "Habitación",
+        "dal": "Cerrada desde",
+        "riapre": "Reabre el",
+        "motivo": "Motivo"
+      },
+      "conflitti": "Estas reservas caen en el cierre:",
+      "salva": "Guardar",
+      "chiudi": "Cerrar",
+      "riapri": "Reabrir"
+    },
+    "listino": {
+      "salva": "Guardar",
+      "crea": "Crear",
+      "annulla": "Cancelar",
+      "salvata": "Cambios guardados.",
+      "cerca": "Buscar",
+      "altre": "Mostrar el resto: {{ totale }}",
+      "archiviate": "Mostrar también desactivados y caducados: {{ totale }}",
+      "nessuna": "No se han encontrado elementos."
+    },
+    "tariffe": {
+      "occhiello": "Lista de precios",
+      "titolo": "Tarifas",
+      "sezioni": "Secciones de la lista",
+      "disattivato": "Desactivado",
+      "tutteLeTipologie": "Todos los tipos de habitación",
+      "vuotoSenzaLimite": "Vacío = sin límite.",
+      "rimborsabile": "Reembolsable",
+      "nonRimborsabile": "No reembolsable",
+      "finoAl": "hasta el {{ data }}",
+      "notti": "al menos {{ notti }} noches",
+      "tipi": {
+        "percentuale": "Porcentaje",
+        "importo": "Importe",
+        "prezzo_fisso": "Precio fijo"
+      },
+      "giorni": {
+        "1": "Lun",
+        "2": "Mar",
+        "4": "Mié",
+        "8": "Jue",
+        "16": "Vie",
+        "32": "Sáb",
+        "64": "Dom"
+      },
+      "campi": {
+        "nome": "Nombre",
+        "descrizione": "Descripción",
+        "tipo_variazione": "Tipo de variación",
+        "valore_variazione": "Variación",
+        "rimborsabile": "Reembolsable",
+        "ore_cancellazione_gratuita": "Cancelación gratuita hasta (horas antes)",
+        "penale_percentuale": "Penalización (%)",
+        "acconto_percentuale": "Anticipo (%)",
+        "predefinito": "Predeterminado",
+        "attivo": "Activo",
+        "attiva": "Activa",
+        "ordine": "Orden",
+        "tipologia_id": "Tipo de habitación",
+        "data_inizio": "Desde",
+        "data_fine": "Hasta",
+        "valore": "Valor",
+        "giorni_settimana": "Días de la semana",
+        "soggiorno_minimo": "Estancia mínima (noches)",
+        "priorita": "Prioridad",
+        "tipo_sconto": "Tipo de descuento",
+        "soggiorno_dal": "Estancias desde",
+        "soggiorno_al": "Estancias hasta",
+        "prenotabile_dal": "Reservable desde",
+        "prenotabile_al": "Reservable hasta",
+        "ospiti_min": "Huéspedes mínimos",
+        "ospiti_max": "Huéspedes máximos",
+        "notti_min": "Noches mínimas",
+        "codice": "Código",
+        "valido_dal": "Válido desde",
+        "valido_al": "Válido hasta",
+        "importo_minimo": "Importe mínimo",
+        "utilizzi_max": "Usos en total",
+        "utilizzi_per_utente": "Usos por cliente",
+        "prezzo": "Precio",
+        "valida_dal": "Válida desde",
+        "valida_al": "Válida hasta",
+        "importo_notte": "Importe por noche",
+        "notti_max": "Noches gravadas máximas",
+        "eta_esenzione": "Exentos menores de (años)"
+      },
+      "piani": {
+        "titolo": "Planes de tarifa",
+        "aiuto": "Variación sobre el precio del día y reglas de cancelación y anticipo. El predeterminado es el que se ofrece en la web.",
+        "nuova": "Nuevo plan",
+        "vuoto": "Ningún plan de tarifa.",
+        "modifica": "Editar plan",
+        "elimina": "Eliminar plan",
+        "eliminaAiuto": "Las reservas ya hechas mantienen sus reglas.",
+        "eliminaConferma": "¿Eliminar el plan?",
+        "variazioneAiuto": "Negativa para un descuento, positiva para un recargo."
+      },
+      "stagioni": {
+        "titolo": "Temporadas",
+        "aiuto": "Periodos con un precio distinto. Si dos se solapan, gana la de mayor prioridad.",
+        "nuova": "Nueva temporada",
+        "vuoto": "Ninguna temporada.",
+        "modifica": "Editar temporada",
+        "elimina": "Eliminar temporada",
+        "eliminaAiuto": "Los presupuestos la ignoran desde ya.",
+        "eliminaConferma": "¿Eliminar la temporada?",
+        "valoreAiuto": "Porcentaje o importe adicional (negativo para bajar); con precio fijo, el precio por noche.",
+        "prioritaAiuto": "La más alta gana a las otras temporadas del mismo día.",
+        "nessunGiorno": "Elige al menos un día."
+      },
+      "promozioni": {
+        "titolo": "Promociones",
+        "aiuto": "Descuentos aplicados solos a las estancias que cumplen las condiciones.",
+        "nuova": "Nueva promoción",
+        "vuoto": "Ninguna promoción.",
+        "modifica": "Editar promoción",
+        "elimina": "Eliminar promoción",
+        "eliminaAiuto": "Las reservas ya hechas mantienen el descuento.",
+        "eliminaConferma": "¿Eliminar la promoción?"
+      },
+      "codici": {
+        "titolo": "Códigos de descuento",
+        "aiuto": "Códigos para dar a los clientes, que los introducen al reservar.",
+        "nuova": "Nuevo código",
+        "vuoto": "Ningún código de descuento.",
+        "modifica": "Editar código",
+        "elimina": "Eliminar código",
+        "eliminaAiuto": "Quien ya lo usó mantiene el descuento.",
+        "eliminaConferma": "¿Eliminar el código?",
+        "codiceAiuto": "Mayúsculas, números, - y _.",
+        "usati": "usado {{ usati }} veces",
+        "usatiSu": "usado {{ usati }} de {{ massimo }} veces"
+      },
+      "pacchetti": {
+        "titolo": "Paquetes",
+        "aiuto": "Estancia y servicios a precio fijo, mostrados en la web con sus fotos.",
+        "nuova": "Nuevo paquete",
+        "vuoto": "Ningún paquete.",
+        "modifica": "Editar paquete",
+        "elimina": "Eliminar paquete",
+        "eliminaAiuto": "Desaparece de la web; las reservas ya hechas se mantienen.",
+        "eliminaConferma": "¿Eliminar el paquete?",
+        "servizi": "Servicios incluidos",
+        "quantita": "Cantidad de {{ servizio }}",
+        "nessunExtra": "Ningún servicio extra activo."
+      },
+      "tasse": {
+        "titolo": "Tasa turística",
+        "aiuto": "Impuesto municipal por huésped y noche. Un mes antes del final, sin uno siguiente, llega un aviso.",
+        "nuova": "Nuevo periodo",
+        "vuoto": "Ninguna tasa turística.",
+        "modifica": "Editar tasa",
+        "elimina": "Eliminar tasa",
+        "eliminaAiuto": "Las estancias del periodo dejan de incluirla.",
+        "eliminaConferma": "¿Eliminar la tasa?",
+        "aNotte": "{{ importo }} por huésped y noche",
+        "importoAiuto": "Por huésped y por noche.",
+        "esenzioneAiuto": "Vacío = sin exención por edad."
+      }
+    },
+    "calendari": {
+      "occhiello": "Portales",
+      "titolo": "Calendarios",
+      "sezioni": "Secciones de los calendarios",
+      "sezione": {
+        "importa": "Importar",
+        "esporta": "Exportar"
+      },
+      "campi": {
+        "camera": "Habitación",
+        "scegliCamera": "Elige la habitación",
+        "canale": "Portal",
+        "nome": "Nombre",
+        "url": "Enlace iCal del portal",
+        "attivo": "Activo"
+      },
+      "esterni": {
+        "titolo": "Calendarios de los portales",
+        "aiuto": "Cada 15 minutos las fechas reservadas en los portales se bloquean también aquí, habitación por habitación.",
+        "nuova": "Nuevo calendario",
+        "modifica": "Editar calendario",
+        "vuoto": "Ningún calendario conectado.",
+        "elimina": "Eliminar calendario",
+        "eliminaAiuto": "Las fechas bloqueadas por este calendario vuelven a quedar libres.",
+        "eliminaConferma": "Sí, eliminar",
+        "disattivato": "desactivado",
+        "maiSincronizzato": "Nunca sincronizado",
+        "esitoOk": "Leído",
+        "esitoErrore": "No leído",
+        "errori": "{{ errori }} errores seguidos",
+        "urlAiuto": "Lo encuentras en los ajustes del calendario del portal (exportación iCal).",
+        "attivoAiuto": "Desactivado, sus fechas bloqueadas quedan libres hasta que lo vuelvas a activar.",
+        "sincronizza": "Sincronizar ahora",
+        "sincronizzaAiuto": "Lee el calendario del portal enseguida, sin esperar a la próxima ronda.",
+        "dettaglio": "Motivo: {{ testo }}",
+        "sincronizzato": "Sincronizado: {{ eventi }} reservas leídas"
+      },
+      "esporta": {
+        "titolo": "Enlaces para los portales",
+        "aiuto": "Pega el enlace de cada habitación en el portal: así verá las fechas ya ocupadas aquí.",
+        "vuoto": "Ninguna habitación.",
+        "senzaLink": "Esta habitación aún no tiene enlace.",
+        "crea": "Crear enlace",
+        "nuovo": "Nuevo enlace",
+        "avviso": "El enlace actual deja de funcionar enseguida: tendrás que pegar el nuevo en cada portal.",
+        "conferma": "Sí, nuevo enlace"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Sitio",
+      "titolo": "Contenidos",
+      "sezioni": "Secciones de contenidos",
+      "sezione": {
+        "foto": "Fotos del sitio",
+        "pagine": "Páginas del sitio",
+        "documenti": "Documentos legales",
+        "eventi": "Eventos en la zona"
+      },
+      "foto": {
+        "struttura": {
+          "titolo": "Galería del alojamiento",
+          "aiuto": "JPEG, PNG o WebP. Zonas comunes, exteriores y alrededores."
+        }
+      },
+      "documenti": {
+        "titolo": "Documentos legales",
+        "aiuto": "Privacidad, términos y política de cookies. Un borrador se edita hasta que lo publicas.",
+        "nuova": "Nuevo documento",
+        "vuoto": "Ningún documento.",
+        "modifica": "Editar borrador",
+        "elimina": "Eliminar borrador",
+        "eliminaAiuto": "El borrador desaparece. Los documentos publicados se quedan.",
+        "eliminaConferma": "Sí, eliminar",
+        "tipi": {
+          "privacy": "Privacidad",
+          "termini": "Términos y condiciones",
+          "cookie": "Política de cookies"
+        },
+        "campi": {
+          "tipo": "Documento",
+          "lingua": "Idioma",
+          "versione": "Versión",
+          "contenuto": "Texto"
+        },
+        "versioneAiuto": "P. ej. 2026.1: distinta de las ya usadas para este documento e idioma.",
+        "bozza": "Borrador",
+        "pubblicatoIl": "Publicado el {{ data }}",
+        "pubblicatoAiuto": "Publicado: ya no se edita. Para cambiarlo, crea una nueva versión.",
+        "nuovaVersione": "Nueva versión",
+        "pubblica": "Publicar",
+        "pubblicaAiuto": "Desde entonces es la versión vigente en el sitio y ya no se edita.",
+        "pubblicaConferma": "Sí, publicar",
+        "pubblicato": "Documento publicado."
+      },
+      "eventi": {
+        "titolo": "Eventos en la zona",
+        "aiuto": "Ferias, fiestas y eventos que atraen gente a la zona. Alimentan el Informe: en sus fechas el precio sugerido sube, tanto más cuanto mayor es el impacto. La tarifa nunca cambia sola.",
+        "nuova": "Nuevo evento",
+        "vuoto": "Ningún evento.",
+        "modifica": "Editar evento",
+        "elimina": "Eliminar evento",
+        "eliminaAiuto": "Ya no influye en el precio sugerido.",
+        "eliminaConferma": "Sí, eliminar",
+        "tipi": {
+          "festivita": "Festivo",
+          "evento_locale": "Evento local",
+          "fiera": "Feria",
+          "altro": "Otro"
+        },
+        "campi": {
+          "titolo": "Título",
+          "tipo": "Tipo",
+          "data_inizio": "Desde",
+          "data_fine": "Hasta",
+          "impatto": "Impacto",
+          "note": "Notas"
+        },
+        "impatto": "impacto {{ impatto }}/10",
+        "impattoAiuto": "De 1 (algo más de gente) a 10 (completo): cuanto más alto, más sube el precio sugerido en esas fechas."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Traducciones",
+      "aiuto": "El texto italiano es el del formulario. Un campo vacío usa el italiano.",
+      "nessunaLingua": "El sitio está solo en italiano: activa otros idiomas en los ajustes.",
+      "salva": "Guardar traducciones",
+      "salvate": "Traducciones guardadas.",
+      "campi": {
+        "nome": "Nombre",
+        "descrizione": "Descripción",
+        "letti": "Camas",
+        "domanda": "Pregunta",
+        "risposta": "Respuesta",
+        "titolo": "Título",
+        "testo": "Texto"
+      }
+    },
+    "faq": {
+      "occhiello": "Sitio",
+      "titolo": "Preguntas frecuentes",
+      "elenco": {
+        "titolo": "Preguntas",
+        "aiuto": "Ordenadas por categoría y luego por número, como en el sitio.",
+        "nuova": "Nueva pregunta",
+        "vuoto": "No hay preguntas frecuentes.",
+        "elimina": "Eliminar pregunta",
+        "eliminaAiuto": "Desaparece del sitio junto con sus traducciones.",
+        "eliminaConferma": "Sí, eliminar"
+      },
+      "modifica": "Editar pregunta",
+      "nuova": "Nueva pregunta",
+      "campi": {
+        "domanda": "Pregunta",
+        "risposta": "Respuesta",
+        "categoria": "Categoría",
+        "ordine": "Orden",
+        "pubblicata": "Visible en el sitio"
+      },
+      "categoriaAiuto": "Agrupa las preguntas en el sitio (p. ej. Llegada, Desayuno).",
+      "ordineAiuto": "Los números más bajos van primero.",
+      "senzaCategoria": "Sin categoría",
+      "nascosta": "oculta"
+    },
+    "recensioni": {
+      "occhiello": "Huéspedes",
+      "titolo": "Reseñas",
+      "tutte": "Todas las reseñas",
+      "filtri": {
+        "stato": "Estado",
+        "tutte": "Todos los estados",
+        "negative": "Solo negativas"
+      },
+      "stati": {
+        "in_attesa": "Pendiente",
+        "pubblicata": "Publicada",
+        "rifiutata": "Rechazada"
+      },
+      "totale": "Reseñas: {{ totale }}",
+      "vuoto": "No hay reseñas con estos filtros.",
+      "senzaTesto": "Solo puntuación, sin comentario",
+      "senzaTitolo": "Reseña sin título",
+      "senzaCommento": "El huésped solo dejó la puntuación.",
+      "anonima": "Aparece en el sitio sin el nombre del huésped.",
+      "campi": {
+        "prenotazione": "Reserva",
+        "soggiorno": "Estancia",
+        "paese": "País",
+        "moderata": "Moderada",
+        "commento": "Comentario",
+        "risposta": "Respuesta del alojamiento"
+      },
+      "moderazione": "Moderación",
+      "moderazioneAiuto": {
+        "in_attesa": "Aún no está en el sitio: publícala o recházala.",
+        "pubblicata": "Visible en el sitio.",
+        "rifiutata": "No aparece en el sitio."
+      },
+      "rispostaAiuto": "Aparece en el sitio debajo de la reseña. Déjala vacía para quitarla.",
+      "azioni": {
+        "pubblicata": "Publicar",
+        "rifiutata": "Rechazar",
+        "rispondi": "Guardar respuesta"
+      },
+      "esiti": {
+        "pubblicata": "Reseña publicada.",
+        "rifiutata": "Reseña rechazada.",
+        "risposta": "Respuesta guardada.",
+        "rispostaTolta": "Respuesta quitada."
+      }
+    },
+    "pagamenti": {
+      "occhiello": "Caja",
+      "titolo": "Pagos",
+      "totale": "Movimientos: {{ totale }}",
+      "vuoto": "No hay movimientos con estos filtros."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Anular cobro",
+        "rimborsa": "Reembolsar"
+      },
+      "aiuto": {
+        "annulla": "Para un cobro registrado por error: no se devuelve dinero.",
+        "rimborsa": "Stripe y PayPal devuelven el dinero al huésped; efectivo, TPV y transferencia solo se registran."
+      },
+      "importo": "Importe a reembolsar",
+      "importoAiuto": "Vacío = todo el cobro.",
+      "forza": "Incluso más allá de lo pagado de más (p. ej. gesto comercial)",
+      "motivo": "Motivo",
+      "conferma": {
+        "annulla": "Anular cobro",
+        "rimborsa": "Confirmar reembolso"
+      },
+      "esiti": {
+        "annulla": "Cobro anulado.",
+        "rimborsa": "Reembolso registrado."
+      }
+    },
+    "servizi": {
+      "occhiello": "Alojamiento",
+      "titolo": "Servicios",
+      "elenco": {
+        "titolo": "Catálogo",
+        "aiuto": "Las dotaciones se marcan en las habitaciones, los extras se compran con la reserva.",
+        "nuova": "Nuevo servicio",
+        "vuoto": "Ningún servicio.",
+        "elimina": "Eliminar servicio",
+        "eliminaAiuto": "Desaparece de habitaciones, paquetes y web; las reservas ya hechas lo conservan.",
+        "eliminaConferma": "¿Eliminar el servicio?"
+      },
+      "nuovo": "Nuevo servicio",
+      "modifica": "Editar servicio",
+      "tipi": {
+        "dotazione": "Dotación",
+        "extra": "Extra"
+      },
+      "gruppi": {
+        "dotazione": "Equipamiento",
+        "extra": "Extras de pago"
+      },
+      "campi": {
+        "nome": "Nombre",
+        "tipo": "Tipo",
+        "descrizione": "Descripción",
+        "icona": "Icono",
+        "prezzo": "Precio",
+        "calcolo_prezzo": "El precio se aplica",
+        "aliquota_iva": "Tipo de IVA (%)",
+        "ordine": "Orden",
+        "attivo": "Activo"
+      },
+      "iconaAiuto": "Nombre de un icono Material Symbols, p. ej. wifi o local_parking.",
+      "aliquotaAiuto": "Vacío: se aplica el tipo predeterminado de los ajustes."
+    },
+    "fatture": {
+      "titolo": "Facturas",
+      "introduzione": "Los borradores se crean desde la ficha de la reserva.",
+      "cerca": "Buscar por destinatario, código fiscal o NIF-IVA",
+      "anno": "Año",
+      "totale": "Documentos encontrados: {{ totale }}",
+      "vuoto": "Ninguna factura con estos filtros.",
+      "tutte": "Todas las facturas",
+      "tipi": {
+        "TD01": "Factura",
+        "TD04": "Nota de crédito"
+      },
+      "stati": {
+        "bozza": "Borrador",
+        "da_inviare": "Por enviar",
+        "inviata": "Enviada",
+        "consegnata": "Entregada",
+        "mancata_consegna": "No entregada",
+        "scartata": "Rechazada por el SDI",
+        "accettata": "Aceptada",
+        "rifiutata": "Rehusada"
+      },
+      "prenotazione": "Reserva",
+      "origine": "Factura anulada",
+      "apri": "Abrir",
+      "imponibile": "Base imponible",
+      "imposta": "IVA",
+      "esente": "No sujeto",
+      "totaleDocumento": "Total",
+      "nessunaPrenotazione": "Ninguna factura para esta reserva.",
+      "altroIntestatario": "Facturar a otro (p. ej. una empresa)",
+      "creaBozza": "Crear borrador de factura",
+      "salvata": "Borrador guardado.",
+      "emessa": "Factura emitida y enviada al cliente.",
+      "intestatario": {
+        "titolo": "Destinatario",
+        "aiuto": "Particular: nombre, apellidos y código fiscal. Empresa: razón social y NIF-IVA.",
+        "denominazione": "Razón social",
+        "nome": "Nombre",
+        "cognome": "Apellidos",
+        "codice_fiscale": "Código fiscal",
+        "partita_iva": "NIF-IVA",
+        "indirizzo": "Dirección",
+        "cap": "Código postal",
+        "comune": "Municipio",
+        "provincia": "Provincia (sigla)",
+        "nazione": "País (sigla)",
+        "codice_destinatario": "Código de destinatario",
+        "codiceAiuto": "0000000 si llega por PEC o al buzón fiscal.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Líneas",
+        "aiuto": "Precios sin IVA; un precio negativo es un descuento.",
+        "descrizione": "Descripción",
+        "quantita": "Cantidad",
+        "prezzo": "Precio unitario",
+        "aliquota": "IVA (%)",
+        "natura": "Naturaleza IVA",
+        "naturaAiuto": "Solo con IVA 0, p. ej. N1 o N2.2.",
+        "togli": "Quitar línea",
+        "aggiungi": "Añadir línea"
+      },
+      "bozza": {
+        "titolo": "Editar borrador",
+        "salva": "Guardar borrador",
+        "emetti": "Emitir factura",
+        "emettiAiuto": "Asigna el número, genera XML y PDF y envía el PDF al cliente. Después ya no se modifica.",
+        "salvaPrima": "Guarda los cambios antes de emitir.",
+        "emettiConferma": "Sí, emitir"
+      },
+      "elimina": {
+        "titolo": "Eliminar borrador",
+        "aiuto": "El borrador no tiene número: eliminarlo no deja huecos en la numeración.",
+        "conferma": "Sí, eliminar"
+      },
+      "sdi": {
+        "titolo": "Sistema de Intercambio (SDI)",
+        "aiuto": "Registra aquí el estado de la transmisión y el recibo del SDI.",
+        "id": "Identificador SDI",
+        "esito": "Resultado SDI",
+        "salva": "Guardar resultado",
+        "salvato": "Resultado SDI guardado."
+      },
+      "file": {
+        "titolo": "Archivos",
+        "aiuto": "Regenéralos tras corregir los datos fiscales del alojamiento.",
+        "pdf": "Descargar PDF",
+        "xml": "Descargar XML",
+        "rigenera": "Regenerar archivos",
+        "rigenerati": "Archivos regenerados."
+      },
+      "nota": {
+        "titolo": "Nota de crédito",
+        "aiuto": "Anula toda la factura: la nota se emite al momento y se envía al cliente.",
+        "motivo": "Motivo",
+        "storna": "Anular con nota de crédito",
+        "conferma": "Sí, emitir la nota"
+      }
+    },
+    "report": {
+      "titolo": "Informes",
+      "introduzione": "Precios sugeridos para los próximos días y las cuentas del año: cobros y tasa turística.",
+      "contiAnno": "Cuentas de {{ anno }}",
+      "anno": "Año",
+      "mese": "Mes",
+      "totale": "Total",
+      "vuoto": "Ningún movimiento en {{ anno }}.",
+      "incassi": {
+        "titolo": "Cobros por método",
+        "nota": "Importes netos: reembolsos ya descontados."
+      },
+      "tassa": {
+        "titolo": "Tasa turística",
+        "nota": "Mes a mes, para la declaración al ayuntamiento.",
+        "prenotazioni": "Reservas",
+        "ospiti": "Huéspedes",
+        "notti": "Noches",
+        "tassa": "Tasa"
+      },
+      "suggerimenti": {
+        "titolo": "Precios sugeridos",
+        "introduzione": "Fechas de los próximos 30 días en las que conviene revisar el precio, según la ocupación y los eventos de la zona. Las sugerencias no modifican la tarifa: aplicarlas queda a tu criterio.",
+        "tipologia": "Tipo de habitación",
+        "aiutoTipologia": "Elige uno para ver el precio sugerido.",
+        "tutte": "Todos",
+        "occupazione": "Ya vendido",
+        "prezzo": "Precio sugerido",
+        "vuoto": "No hay precios que revisar en los próximos 30 días.",
+        "motivi": {
+          "occupazione_alta": "Ocupación superior al {{ valore }} %: demanda fuerte",
+          "occupazione_buona": "Ocupación superior al {{ valore }} %: buena demanda",
+          "occupazione_bassa": "Ocupación inferior al {{ valore }} %",
+          "ultimo_minuto": "Faltan menos de {{ valore }} días",
+          "evento": "Evento: {{ valore }}"
+        }
+      }
+    },
+    "utenti": {
+      "titolo": "Usuarios",
+      "introduzione": "Las cuentas del personal y de los clientes. El personal nuevo se crea aquí; los clientes se registran en la web.",
+      "cerca": "Buscar por nombre, apellido o email",
+      "attivi": "Activos",
+      "disattivati": "Desactivados",
+      "disattivato": "Desactivado",
+      "account": "Cuentas",
+      "totale": "Cuentas encontradas: {{ totale }}",
+      "vuoto": "No hay cuentas con estos filtros.",
+      "tutti": "Todos los usuarios",
+      "campi": {
+        "nome": "Nombre",
+        "cognome": "Apellido",
+        "email": "Email",
+        "telefono": "Teléfono",
+        "ruolo": "Rol",
+        "attivo": "Cuenta activa"
+      },
+      "nuovo": {
+        "titolo": "Nuevo miembro del personal",
+        "aiuto": "La cuenta queda activa enseguida: comunica tú la contraseña, podrá cambiarla desde su perfil.",
+        "crea": "Crear cuenta"
+      },
+      "dati": "Datos de la cuenta",
+      "schedaOspite": "Abrir la ficha del huésped",
+      "ruoloAiuto": "Al cambiar de rol se cierran sus sesiones abiertas.",
+      "attivoAiuto": "Una cuenta desactivada no puede entrar; sus sesiones abiertas se cierran.",
+      "salva": "Guardar",
+      "salvato": "Cuenta actualizada.",
+      "accessi": {
+        "titolo": "Accesos",
+        "creato": "Creada el",
+        "verificata": "Email verificado",
+        "ultimo": "Último acceso",
+        "no": "No",
+        "mai": "Nunca"
+      },
+      "elimina": {
+        "titolo": "Eliminar cuenta",
+        "aiuto": "Ya no podrá entrar. Reservas, facturas y datos personales se conservan por obligación legal.",
+        "conferma": "Sí, eliminar"
+      }
+    },
+    "permessi": {
+      "titolo": "Roles y permisos",
+      "introduzione": "Lo que puede hacer cada rol del personal y quién puede escribir a quién en el chat interno.",
+      "permessi": "Permisos",
+      "admin": "El administrador siempre tiene todos los permisos. Los cambios se aplican enseguida a quien tiene ese rol.",
+      "salva": "Guardar permisos",
+      "salvati": "Permisos guardados.",
+      "moduli": {
+        "camere": "Habitaciones",
+        "tariffe": "Tarifas y calendarios",
+        "prenotazioni": "Reservas",
+        "ospiti": "Huéspedes",
+        "pagamenti": "Pagos y facturas",
+        "pulizie": "Limpieza y mantenimiento",
+        "recensioni": "Reseñas",
+        "chat": "Atención al cliente",
+        "contenuti": "Contenidos del sitio",
+        "utenti": "Usuarios",
+        "impostazioni": "Ajustes",
+        "analytics": "Informes"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Gestionar habitaciones, tipos y servicios"
+        },
+        "tariffe": {
+          "gestisci": "Gestionar periodos, planes, promociones, códigos de descuento y tasa turística"
+        },
+        "calendari": {
+          "gestisci": "Gestionar fechas bloqueadas y calendarios externos"
+        },
+        "prenotazioni": {
+          "leggi": "Ver todas las reservas",
+          "gestisci": "Crear, modificar y cancelar reservas"
+        },
+        "checkin": {
+          "gestisci": "Registrar llegadas y salidas, datos y documentos de los huéspedes"
+        },
+        "ospiti": {
+          "gestisci": "Gestionar el registro de huéspedes"
+        },
+        "alloggiati": {
+          "invia": "Enviar las fichas a Alloggiati Web"
+        },
+        "pagamenti": {
+          "leggi": "Ver los pagos",
+          "registra": "Registrar cobros en el alojamiento y reembolsos"
+        },
+        "fatture": {
+          "gestisci": "Emitir facturas y notas de crédito"
+        },
+        "pulizie": {
+          "leggi": "Ver las limpiezas",
+          "esegui": "Actualizar las propias limpiezas",
+          "gestisci": "Asignar y revisar las limpiezas"
+        },
+        "manutenzione": {
+          "segnala": "Señalar averías y problemas",
+          "gestisci": "Gestionar los avisos de mantenimiento"
+        },
+        "recensioni": {
+          "modera": "Publicar, rechazar y responder a las reseñas"
+        },
+        "chat": {
+          "assistenza": "Responder a clientes y visitantes en el chat"
+        },
+        "faq": {
+          "gestisci": "Gestionar las FAQ"
+        },
+        "contenuti": {
+          "gestisci": "Gestionar imágenes, textos, traducciones y documentos legales"
+        },
+        "utenti": {
+          "gestisci": "Gestionar las cuentas del personal y de los clientes"
+        },
+        "impostazioni": {
+          "gestisci": "Modificar los ajustes del alojamiento"
+        },
+        "analytics": {
+          "leggi": "Ver estadísticas e informes"
+        }
+      },
+      "chat": {
+        "titolo": "Chat interno",
+        "aiuto": "Marca quién puede escribirse: la regla vale en los dos sentidos. Los compañeros del mismo rol hablan en el grupo de su equipo.",
+        "colleghi": "Entre {{ ruolo }}",
+        "coppia": "{{ a }} y {{ b }}",
+        "salva": "Guardar reglas",
+        "salvate": "Reglas del chat guardadas."
+      },
+      "ruolo": "Rol",
+      "ruoloAiuto": "Elige un rol: se marcan los permisos que ya tiene."
+    },
+    "registro": {
+      "titolo": "Registro de actividad",
+      "introduzione": "Quién creó, modificó o eliminó reservas, pagos y facturas, y cuándo. Los cambios más recientes están arriba.",
+      "tabella": "Qué",
+      "azione": "Acción",
+      "tabelle": {
+        "prenotazioni": "Reservas",
+        "pagamenti": "Pagos",
+        "fatture": "Facturas"
+      },
+      "azioni": {
+        "inserimento": "Creación",
+        "modifica": "Modificación",
+        "eliminazione": "Eliminación"
+      },
+      "record": {
+        "prenotazioni": "Reserva n.º {{id}}",
+        "pagamenti": "Pago n.º {{id}}",
+        "fatture": "Factura n.º {{id}}"
+      },
+      "sistema": "Sistema",
+      "totale": "{{totale}} cambios",
+      "vuoto": "Ningún cambio con estos filtros.",
+      "storia": "Historial de cambios",
+      "campi": {
+        "codice": "Código",
+        "stato": "Estado",
+        "camera_id": "Habitación (n.º)",
+        "ospite_id": "Huésped (n.º)",
+        "data_arrivo": "Llegada",
+        "data_partenza": "Salida",
+        "adulti": "Adultos",
+        "bambini": "Niños",
+        "totale": "Total",
+        "penale_applicata": "Penalización",
+        "prenotazione_id": "Reserva (n.º)",
+        "tipo": "Tipo",
+        "metodo": "Método",
+        "importo": "Importe",
+        "id_transazione": "Transacción",
+        "stato_sdi": "Estado SDI",
+        "numero": "Número"
+      }
+    },
+    "impostazioni": {
+      "titolo": "Ajustes",
+      "introduzione": "Datos del alojamiento, horarios, reglas y aspecto del sitio. Cada grupo se guarda por separado; el sitio se actualiza al momento.",
+      "salva": "Guardar",
+      "salvate": "Ajustes guardados",
+      "temaAiuto": "Quien visita el sitio siempre puede cambiarlo en su dispositivo.",
+      "logo": {
+        "titolo": "Logotipo",
+        "aiuto": "Aparece en el arco de inicio, en la cabecera, en el pie de página y como icono de la pestaña del navegador. Mejor un PNG cuadrado con fondo transparente. Se usa la primera imagen.",
+        "descrizione": "Logotipo del alojamiento"
+      },
+      "gruppi": {
+        "struttura": "Alojamiento",
+        "soggiorno": "Estancia",
+        "prenotazioni": "Reservas",
+        "fiscale": "Impuestos y pagos",
+        "fedelta": "Fidelidad",
+        "pulizie": "Limpieza",
+        "localizzazione": "Idiomas y zona horaria",
+        "chat": "Chat",
+        "aspetto": "Aspecto del sitio"
+      },
+      "chiavi": {
+        "struttura_nome": "Nombre",
+        "struttura_ragione_sociale": "Razón social",
+        "struttura_partita_iva": "NIF-IVA",
+        "struttura_codice_fiscale": "Código fiscal",
+        "struttura_regime_fiscale": "Régimen fiscal (p. ej. RF01)",
+        "struttura_indirizzo": "Dirección",
+        "struttura_cap": "Código postal",
+        "struttura_comune": "Municipio",
+        "struttura_provincia": "Provincia (sigla)",
+        "struttura_email": "Correo electrónico",
+        "struttura_telefono": "Teléfono",
+        "struttura_cin": "CIN",
+        "struttura_iban": "IBAN",
+        "struttura_intestatario_conto": "Titular de la cuenta",
+        "orario_checkin": "Check-in desde las",
+        "orario_checkout": "Check-out antes de las",
+        "prenotazioni_scadenza_ore": "Horas para pagar una reserva pendiente",
+        "blocco_checkout_minuti": "Minutos de bloqueo de la habitación tras el check-out",
+        "valuta": "Moneda (p. ej. EUR)",
+        "iva_soggiorno": "IVA de la estancia (%)",
+        "iva_servizi": "IVA de los servicios (%)",
+        "limite_contanti": "Límite de pagos en efectivo",
+        "fedelta_punti_per_notte": "Puntos de fidelidad por noche",
+        "pulizie_richiedi_ispezione": "Las habitaciones limpias deben inspeccionarse",
+        "pulizie_autoassegna": "Asignar la limpieza por turnos cada mañana",
+        "fuso_orario": "Zona horaria",
+        "lingua_predefinita": "Idioma predeterminado",
+        "lingue_attive": "Idiomas del sitio",
+        "chat_conservazione_giorni": "Días que se conservan los chats cerrados",
+        "chat_riepilogo_email_minuti": "Minutos entre dos correos de mensajes no leídos",
+        "aspetto_colore": "Color principal",
+        "aspetto_tema": "Tema predeterminado"
+      },
+      "sfondo": {
+        "home": {
+          "titolo": "Fondo de inicio · tema claro",
+          "aiuto": "Foto (JPEG, PNG o WebP) o vídeo (MP4 o WebM, hasta 50 MB) a pantalla completa detrás de la portada. Se usa el primero: mejor un vídeo corto, horizontal y sin sonido. Sin fondo oscuro, se usa también con el tema oscuro.",
+          "descrizione": "Fondo de inicio"
+        },
+        "home_scuro": {
+          "titolo": "Fondo de inicio · tema oscuro",
+          "aiuto": "Como el fondo claro, pero para quien usa el tema oscuro. Si falta, se usa el claro.",
+          "descrizione": "Fondo de inicio"
+        }
+      }
+    },
+    "pagine": {
+      "scegli": "Página que editar",
+      "nomi": {
+        "home": "Inicio",
+        "struttura": "El alojamiento",
+        "attivita": "Actividades",
+        "camere": "Habitaciones"
+      },
+      "homeAiuto": "Las secciones del inicio aparecen al final, después de las reseñas. Foto y textos de portada están en los ajustes.",
+      "descrizione": "Descripción",
+      "descrizioneAiuto": "Bajo el título, sobre la foto de portada. Vacía = se mantiene el texto predeterminado.",
+      "paragrafo": "Párrafo",
+      "paragrafoAiuto": "Bajo la portada, antes de los tipos de habitación. Vacío = no aparece.",
+      "descrizioneSalvata": "Descripción guardada.",
+      "foto": {
+        "titolo": "Foto de portada",
+        "aiuto": "JPEG, PNG o WebP. La primera llena la pantalla en la parte superior de la página."
+      },
+      "immagine": {
+        "titolo": "Imagen de la sección",
+        "aiuto": "JPEG, PNG o WebP. Se usa la primera; sin imagen el texto va centrado."
+      },
+      "sezioni": {
+        "titolo": "Secciones",
+        "aiuto": "Bloques imagen-texto: en el sitio se alternan a derecha e izquierda.",
+        "nuova": "Nueva sección",
+        "vuoto": "Ninguna sección.",
+        "elimina": "Eliminar sección",
+        "eliminaAiuto": "La sección desaparece del sitio junto con su imagen.",
+        "eliminaConferma": "Sí, eliminar"
+      },
+      "modifica": "Editar sección",
+      "nuova": "Nueva sección",
+      "campi": {
+        "titolo": "Título",
+        "testo": "Texto",
+        "ordine": "Orden",
+        "pubblicata": "Visible en el sitio"
+      },
+      "ordineAiuto": "Las secciones con el número más bajo van primero.",
+      "nascosta": "oculta"
+    }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "Nombre",
+      "cognome": "Apellidos",
+      "sesso": "Sexo",
+      "data_nascita": "Fecha de nacimiento",
+      "cittadinanza_codice": "Nacionalidad",
+      "stato_nascita_codice": "País de nacimiento",
+      "comune_nascita_codice": "Municipio de nacimiento",
+      "provincia_nascita": "Provincia de nacimiento",
+      "tipo_documento": "Tipo de documento",
+      "numero_documento": "Número del documento",
+      "luogo_rilascio_codice": "Lugar de expedición",
+      "scadenza_documento": "Fecha de caducidad del documento",
+      "email": "Correo electrónico",
+      "telefono": "Teléfono",
+      "lingua": "Idioma",
+      "codice_fiscale": "Código fiscal",
+      "indirizzo": "Dirección",
+      "cap": "Código postal",
+      "citta": "Ciudad",
+      "provincia": "Provincia",
+      "paese": "País",
+      "note": "Notas"
+    },
+    "sessi": {
+      "M": "Hombre",
+      "F": "Mujer"
+    },
+    "documenti": {
+      "IDENT": "Documento de identidad",
+      "IDELE": "Documento de identidad electrónico",
+      "PASOR": "Pasaporte",
+      "PATEN": "Permiso de conducir"
+    },
+    "scegli": "Elegir…",
+    "luogoRilascio": "Municipio italiano o país extranjero."
+  },
+  "notifiche": {
+    "apri": "Notificaciones, {{ totale }} sin leer",
+    "titolo": "Notificaciones",
+    "segnaTutte": "Marcar todas como leídas",
+    "nessuna": "Ninguna notificación",
+    "elimina": "Eliminar notificación",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web, estancias por enviar en 24 horas desde la llegada: {{ totale }}",
+      "overbooking": "Overbooking habitación {{ camera }} ({{ canale }}) del {{ inizio }} al {{ fine }}",
+      "calendario_non_sincronizzato": "El calendario {{ canale }} no se sincroniza",
+      "assistenza_richiesta": "Nueva solicitud de asistencia",
+      "assistenza_passata": "Te han pasado una conversación de asistencia",
+      "fatture_ferme_sdi": "Facturas detenidas en el SDI: {{ da_inviare }} por enviar, {{ scartate }} rechazadas",
+      "guasto_camera": "Avería habitación {{ camera }}: {{ titolo }}",
+      "guasto": "Avería: {{ titolo }}",
+      "guasto_assegnato": "Asignada a ti: {{ titolo }}",
+      "guasto_risolto": "Resuelta: {{ titolo }}",
+      "rimborsi_da_fare": "Reembolsos pendientes: {{ totale }}",
+      "partenze_saldo_aperto": "Salidas por cerrar: {{ totale }} con saldo abierto",
+      "pulizia_assegnata": "Limpieza asignada: habitación {{ camera }} el {{ data }}",
+      "camera_da_ispezionare": "Habitación {{ camera }} por inspeccionar",
+      "recensione_nuova": "Nueva reseña: {{ voto }}/5",
+      "tassa_in_scadenza": "Tasa turística: «{{ nome }}» termina el {{ data }} y no hay otra",
+      "prenotazione_ricevuta": "Reserva {{ codice }} recibida",
+      "prenotazione_confermata": "Reserva {{ codice }} confirmada",
+      "prenotazione_cancellata": "Reserva {{ codice }} cancelada",
+      "promemoria_checkin": "Llegada el {{ data }}: haz el check-in online",
+      "invito_recensione": "¿Qué tal tu estancia {{ codice }}? Deja una reseña",
+      "link_pagamento": "Pago pendiente para la reserva {{ codice }}",
+      "pagamento_ricevuto": "Pago de {{ importo }} recibido para {{ codice }}",
+      "rimborso_eseguito": "Reembolso de {{ importo }} realizado para {{ codice }}",
+      "fattura_emessa": "Factura {{ numero }} disponible",
+      "nuova_promozione": "Nueva oferta: {{ nome }}, estancias del {{ inizio }} al {{ fine }}"
+    }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Escríbenos",
+      "chiudi": "Cerrar el chat",
+      "titolo": "Asistencia",
+      "online": "Estamos en línea",
+      "offline": "Ahora no estamos en línea: te responderemos lo antes posible",
+      "introduzione": "¿Cómo podemos ayudarte?",
+      "nome": "Nombre (opcional)",
+      "email": "Email (opcional)",
+      "emailAiuto": "Para recibir la respuesta aunque cierres la página",
+      "messaggio": "Mensaje",
+      "invia": "Enviar",
+      "chiusa": "Conversación cerrada.",
+      "nuova": "Nueva conversación",
+      "nuovi": "Mensajes nuevos",
+      "leggiFaq": "Leer las preguntas frecuentes",
+      "tornaChat": "Volver al chat"
+    }
+  },
+  "camera": {
+    "numero": "Habitación {{ numero }}",
+    "piano": "Planta {{ piano }}",
+    "tornaA": "Todas las habitaciones {{ nome }}",
+    "foto": "Fotos de {{ nome }}",
+    "mostraFoto": "Mostrar la foto {{ numero }}",
+    "prenota": "Reservar esta habitación",
+    "altre": "Otras habitaciones",
+    "nonTrovata": "Habitación no encontrada",
+    "nonTrovataTesto": "Esta habitación no existe o ya no está disponible.",
+    "numeroNome": "Habitación {{ numero }} «{{ nome }}»",
+    "altreDotazioni": "+{{ numero }} más",
+    "altreDi": "Otras habitaciones {{ nome }}",
+    "soggiorno": {
+      "titolo": "Tu estancia",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "desde las {{ ora }}",
+      "entro": "antes de las {{ ora }}",
+      "tariffe": "Tarifas",
+      "tassa": "Tasa turística",
+      "tassaImporto": "{{ importo }} por persona y noche.",
+      "tassaNotti": "Se paga por las primeras {{ notti }} noches.",
+      "tassaEsenti": "Exentos los menores de {{ eta }} años."
+    }
+  }
+}

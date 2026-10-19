@@ -1,0 +1,42 @@
+@let dati = attivita();
+<a class="collegamento" [routerLink]="[scheda, dati.id]">
+  <span class="camera">{{ dati.camera?.numero }}</span>
+  <span class="cosa">
+    <strong>{{ 'gestionale.pulizie.tipi.' + dati.tipo | transloco }}</strong>
+    <span class="tenue piccolo">
+      @if (dati.camera?.piano !== undefined) {
+        {{ 'gestionale.pulizie.piano' | transloco: { piano: dati.camera?.piano } }} ·
+      }
+      @if (dati.addetto; as addetto) {
+        {{ addetto.nome }} {{ addetto.cognome }}
+      } @else {
+        {{ 'gestionale.pulizie.libera' | transloco }}
+      }
+      @if (dati.checklist?.length) {
+        ·
+        {{
+          'gestionale.pulizie.vociFatte'
+            | transloco: { fatte: fatte(), totale: dati.checklist?.length }
+        }}
+      }
+      @if (minuti(); as durata) {
+        · {{ 'gestionale.pulizie.minuti' | transloco: { minuti: durata } }}
+      }
+    </span>
+  </span>
+  <span class="etichette">
+    @if (rinviata()) {
+      <span class="stato-prenotazione" data-stato="rinviata">
+        {{ 'gestionale.pulizie.nonDisturbare' | transloco }}
+      </span>
+    }
+    @if (evidente()) {
+      <span class="stato-prenotazione" [attr.data-stato]="dati.priorita">
+        {{ 'gestionale.pulizie.priorita.' + dati.priorita | transloco }}
+      </span>
+    }
+    <span class="stato-prenotazione" [attr.data-stato]="dati.stato">
+      {{ 'gestionale.pulizie.stati.' + dati.stato | transloco }}
+    </span>
+  </span>
+</a>

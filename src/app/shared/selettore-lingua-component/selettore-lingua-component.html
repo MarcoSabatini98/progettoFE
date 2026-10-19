@@ -1,0 +1,13 @@
+@if (lingua.disponibili().length > 1) {
+  <label class="selettore-lingua">
+    <app-icona nome="language" />
+    <span class="visivamente-nascosto">{{ 'lingua.etichetta' | transloco }}</span>
+    <select name="lingua" (change)="scegli($event)">
+      @for (codice of lingua.disponibili(); track codice) {
+        <option [value]="codice" [selected]="codice === lingua.attiva()" [lang]="codice">
+          {{ nomi[codice] }}
+        </option>
+      }
+    </select>
+  </label>
+}

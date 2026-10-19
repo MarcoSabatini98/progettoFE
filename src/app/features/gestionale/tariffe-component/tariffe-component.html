@@ -1,0 +1,37 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.tariffe.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.tariffe.titolo' | transloco }}</h1>
+  <div class="linguette" role="group" [attr.aria-label]="'gestionale.tariffe.sezioni' | transloco">
+    @for (voce of sezioni; track voce) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [attr.aria-pressed]="sezione() === voce"
+        (click)="sezione.set(voce)"
+      >
+        {{ 'gestionale.tariffe.' + voce + '.titolo' | transloco }}
+      </button>
+    }
+  </div>
+</header>
+
+@switch (sezione()) {
+  @case ('piani') {
+    <app-piani-tariffari />
+  }
+  @case ('stagioni') {
+    <app-stagioni [tipologie]="tipologie()" />
+  }
+  @case ('promozioni') {
+    <app-promozioni [tipologie]="tipologie()" />
+  }
+  @case ('codici') {
+    <app-codici-sconto />
+  }
+  @case ('pacchetti') {
+    <app-pacchetti [tipologie]="tipologie()" />
+  }
+  @case ('tasse') {
+    <app-tasse-soggiorno />
+  }
+}

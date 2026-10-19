@@ -1,0 +1,86 @@
+<div class="calendario">
+  <p class="riepilogo" aria-live="polite">
+    <span>
+      {{ 'prenota.arrivo' | transloco }}
+      <strong>{{ (arrivo() | data: 'breve') || '—' }}</strong>
+    </span>
+    <span aria-hidden="true">·</span>
+    <span>
+      {{ 'prenota.partenza' | transloco }}
+      <strong>{{ (partenza() | data: 'breve') || '—' }}</strong>
+    </span>
+    @if (notti()) {
+      <span aria-hidden="true">·</span>
+      <span class="notti">{{ 'prenota.calendario.notti' | transloco: { numero: notti() } }}</span>
+    }
+  </p>
+  <p class="istruzione">
+    {{
+      (arrivo() && !partenza()
+        ? 'prenota.calendario.sceltaPartenza'
+        : 'prenota.calendario.sceltaArrivo'
+      ) | transloco
+    }}
+  </p>
+
+  <div class="mesi">
+    <button
+      class="freccia precedente"
+      type="button"
+      [disabled]="primoMese()"
+      [attr.aria-label]="'prenota.calendario.precedente' | transloco"
+      (click)="sposta(-1)"
+    >
+      <app-icona nome="chevron_left" />
+    </button>
+    <button
+      class="freccia successivo"
+      type="button"
+      [attr.aria-label]="'prenota.calendario.successivo' | transloco"
+      (click)="sposta(1)"
+    >
+      <app-icona nome="chevron_right" />
+    </button>
+
+    @for (mese of mesi(); track mese.inizio) {
+      <div class="mese">
+        <h3 class="mese-titolo">{{ mese.inizio | data: 'mese' }}</h3>
+        <div class="griglia">
+          @for (nome of settimana(); track $index) {
+            <span class="nome-giorno" aria-hidden="true">{{ nome }}</span>
+          }
+          @for (giorno of mese.giorni; track giorno.data) {
+            @let scelto = giorno.data === arrivo() || giorno.data === partenza();
+            <button
+              class="giorno"
+              type="button"
+              [style.grid-column-start]="$first ? mese.colonna : null"
+              [class.libero]="colorato() && giorno.attivo && !giorno.occupato"
+              [class.occupato]="giorno.occupato"
+              [class.in-soggiorno]="giorno.inSoggiorno"
+              [class.scelto]="scelto"
+              [disabled]="!giorno.attivo"
+              [attr.aria-pressed]="scelto"
+              [attr.aria-label]="
+                (giorno.data | data) +
+                (giorno.occupato ? ' · ' + ('prenota.calendario.occupato' | transloco) : '')
+              "
+              (click)="scegli(giorno.data)"
+            >
+              {{ giorno.numero }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (colorato()) {
+    <ul class="legenda">
+      <li><span class="campione libero"></span>{{ 'prenota.calendario.libero' | transloco }}</li>
+      <li>
+        <span class="campione occupato"></span>{{ 'prenota.calendario.occupato' | transloco }}
+      </li>
+    </ul>
+  }
+</div>

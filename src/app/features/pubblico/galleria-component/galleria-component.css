@@ -1,0 +1,47 @@
+:host {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+/* Relativa: è lei il riferimento di offsetLeft delle foto. Da telefono una foto per schermata. */
+.striscia {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  gap: var(--bb-spazio-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: var(--bb-raggio);
+}
+
+/* Tutte uguali, verticali comprese: il ritaglio tiene il centro della foto. */
+.striscia img {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--bb-raggio);
+  scroll-snap-align: start;
+}
+
+.comandi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bb-spazio-3);
+}
+
+@media (width >= 58.75rem) {
+  .striscia {
+    grid-auto-columns: calc((100% - 2 * var(--bb-spazio-3)) / 3);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .striscia {
+    scroll-behavior: smooth;
+  }
+}

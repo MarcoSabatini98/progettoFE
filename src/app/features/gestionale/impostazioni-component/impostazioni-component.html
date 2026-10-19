@@ -1,0 +1,38 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.impostazioni.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.impostazioni.introduzione' | transloco }}</p>
+</header>
+
+@if (elenco.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+<div class="schede" [attr.aria-busy]="elenco.isLoading()">
+  @for (gruppo of gruppi(); track gruppo.nome) {
+    <app-gruppo-impostazioni
+      [gruppo]="gruppo.nome"
+      [voci]="gruppo.voci"
+      (salvate)="aggiornaSito()"
+    />
+    @if (gruppo.nome === gruppoImmagini && puoImmagini) {
+      <app-galleria-media
+        entita="logo"
+        chiave="gestionale.impostazioni.logo"
+        [media]="logo.hasValue() ? logo.value() : []"
+        [descrizione]="'gestionale.impostazioni.logo.descrizione' | transloco"
+        (cambiati)="logoCambiato()"
+      />
+      @for (sfondo of sfondi; track sfondo.entita) {
+        @let chiave = 'gestionale.impostazioni.sfondo.' + sfondo.entita;
+        <app-galleria-media
+          [entita]="sfondo.entita"
+          [chiave]="chiave"
+          [conVideo]="true"
+          [media]="sfondo.media.hasValue() ? sfondo.media.value() : []"
+          [descrizione]="chiave + '.descrizione' | transloco"
+          (cambiati)="sfondo.media.reload()"
+        />
+      }
+    }
+  }
+</div>

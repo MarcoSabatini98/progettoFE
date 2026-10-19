@@ -1,0 +1,31 @@
+.righe {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.righe li {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  min-height: 2.75rem;
+  border-block-end: 1px solid var(--bb-linea);
+}
+
+.righe .nome {
+  flex: 1;
+}
+
+.nessuno {
+  color: var(--bb-testo-tenue);
+}
+
+form {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+form > .pulsante {
+  justify-self: start;
+}

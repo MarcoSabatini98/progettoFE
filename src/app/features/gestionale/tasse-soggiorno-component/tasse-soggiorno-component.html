@@ -1,0 +1,86 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.tasse">
+  <ng-template #riga let-tassa>
+    <strong>{{ tassa.nome }}</strong>
+    <span class="piccolo">
+      {{
+        'gestionale.tariffe.tasse.aNotte' | transloco: { importo: (tassa.importo_notte | prezzo) }
+      }}
+    </span>
+    <span class="piccolo tenue">
+      {{ tassa.valida_dal | data }} – {{ tassa.valida_al | data }}
+      @if (!tassa.attiva) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta() ? 'gestionale.tariffe.tasse.modifica' : 'gestionale.tariffe.tasse.nuova')
+          | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valida_dal' | transloco"
+        [errore]="errori.campo(controlli.valida_dal)"
+      >
+        <input type="date" formControlName="valida_dal" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valida_al' | transloco"
+        [errore]="errori.campo(controlli.valida_al)"
+      >
+        <input
+          type="date"
+          formControlName="valida_al"
+          [min]="controlli.valida_dal.value"
+          required
+        />
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.importo_notte' | transloco"
+      [aiuto]="'gestionale.tariffe.tasse.importoAiuto' | transloco"
+      [errore]="errori.campo(controlli.importo_notte)"
+    >
+      <input
+        type="number"
+        formControlName="importo_notte"
+        min="0"
+        [max]="limiti.importoTassa"
+        step="0.01"
+        required
+      />
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.notti_max' | transloco"
+        [aiuto]="'gestionale.tariffe.vuotoSenzaLimite' | transloco"
+        [errore]="errori.campo(controlli.notti_max)"
+      >
+        <input type="number" formControlName="notti_max" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.eta_esenzione' | transloco"
+        [aiuto]="'gestionale.tariffe.tasse.esenzioneAiuto' | transloco"
+        [errore]="errori.campo(controlli.eta_esenzione)"
+      >
+        <input type="number" formControlName="eta_esenzione" min="0" [max]="limiti.eta" />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input name="attiva" type="checkbox" formControlName="attiva" />
+      {{ 'gestionale.tariffe.campi.attiva' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+</app-listino>

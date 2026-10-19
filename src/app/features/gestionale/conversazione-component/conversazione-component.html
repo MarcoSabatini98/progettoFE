@@ -1,0 +1,87 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.chat.elenco' | transloco }}
+</a>
+
+@if (dettaglio.hasValue()) {
+  @let dati = dettaglio.value();
+  <header class="intestazione">
+    <h2>{{ nome() || ('gestionale.chat.senzaNome' | transloco) }}</h2>
+    @if (dati.tipo === 'staff') {
+      <ul
+        class="partecipanti piccolo"
+        [attr.aria-label]="'gestionale.chat.conversazione.partecipanti' | transloco"
+      >
+        @for (persona of dati.partecipanti; track persona.id) {
+          <li>
+            <span
+              class="presenza"
+              [attr.data-presenza]="presenze.di(persona.id)"
+              [attr.title]="'gestionale.chat.presenze.' + presenze.di(persona.id) | transloco"
+            ></span>
+            {{ persona.nome }} {{ persona.cognome }}
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="piccolo">
+        {{ 'gestionale.chat.conversazione.operatore' | transloco }}:
+        @if (dati.operatore; as operatore) {
+          {{ operatore.nome }} {{ operatore.cognome }}
+        } @else {
+          {{ 'gestionale.chat.conversazione.libera' | transloco }}
+        }
+      </p>
+    }
+    <app-azioni-conversazione [conversazione]="dati" (cambiata)="aggiorna($event)" />
+  </header>
+} @else if (dettaglio.error()) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(dettaglio.error()) }}</p>
+}
+
+<!-- column-reverse: la vista resta ancorata in fondo quando arrivano messaggi. -->
+<div class="messaggi" aria-live="polite">
+  <div class="flusso">
+    @if (!finiti() && messaggi().length) {
+      <button
+        class="pulsante pulsante-fantasma"
+        type="button"
+        [disabled]="caricando()"
+        (click)="caricaPrecedenti()"
+      >
+        {{ 'gestionale.chat.conversazione.precedenti' | transloco }}
+      </button>
+    }
+    @for (messaggio of messaggi(); track messaggio.id) {
+      <app-messaggio-chat
+        [messaggio]="messaggio"
+        [mio]="messaggio.mittente_utente_id === mioId()"
+        [citato]="messaggio.risposta_a_id ? perId().get(messaggio.risposta_a_id) : undefined"
+        (rispondi)="rispondiA.set($event)"
+        (modificato)="sostituisci($event)"
+        (eliminato)="togli($event)"
+      />
+    } @empty {
+      @if (storico.hasValue()) {
+        <p class="stato-vuoto">{{ 'gestionale.chat.conversazione.vuota' | transloco }}</p>
+      }
+    }
+  </div>
+</div>
+
+<p class="scrive piccolo">
+  @if (scrive(); as chi) {
+    {{ 'gestionale.chat.conversazione.scrive' | transloco: { nome: chi } }}
+  }
+</p>
+
+@if (dettaglio.value()?.stato === 'chiusa') {
+  <p class="esito">{{ 'gestionale.chat.conversazione.chiusa' | transloco }}</p>
+} @else {
+  <app-scrivi-messaggio
+    [uuid]="uuid()"
+    [rispondiA]="rispondiA()"
+    (inviato)="arrivato($event)"
+    (annullaRisposta)="rispondiA.set(null)"
+  />
+}

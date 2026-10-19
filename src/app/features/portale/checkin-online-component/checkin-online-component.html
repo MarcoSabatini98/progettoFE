@@ -1,0 +1,161 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'portale.checkin.occhiello' | transloco }}</p>
+  <h1>{{ 'portale.checkin.titolo' | transloco }}</h1>
+  @if (dati.hasValue()) {
+    <p class="introduzione">
+      {{
+        'portale.checkin.soggiorno'
+          | transloco
+            : {
+                codice: dati.value().codice,
+                arrivo: (dati.value().data_arrivo | data: 'giorno'),
+                partenza: (dati.value().data_partenza | data: 'giorno'),
+              }
+      }}
+    </p>
+  }
+</header>
+
+@if (!token()) {
+  <p class="stato-vuoto">{{ 'errori.LINK_CHECKIN_NON_VALIDO' | transloco }}</p>
+} @else if (dati.error()) {
+  <p class="stato-vuoto">{{ errori.messaggio(dati.error()) }}</p>
+} @else if (dati.hasValue()) {
+  @if (dati.value().checkin_online_il; as fatto) {
+    <p class="esito esito-ok" role="status">
+      {{ 'portale.checkin.fatto' | transloco: { data: (fatto | data: 'ora') } }}
+    </p>
+  }
+
+  <form class="sezione" [formGroup]="modulo" (ngSubmit)="invia()" novalidate>
+    <p>{{ 'portale.checkin.testo' | transloco }}</p>
+
+    <ng-container formArrayName="ospiti">
+      @for (riga of ospiti.controls; track riga; let indice = $index) {
+        @let giaRegistrato = registrato(indice);
+        <fieldset class="scheda ospite" [formGroupName]="indice">
+          <legend class="titolo-scheda">
+            {{ 'portale.checkin.ospite' | transloco: { numero: indice + 1 } }}
+          </legend>
+
+          @if (giaRegistrato) {
+            <div class="aiuto registrato">
+              @if (giaRegistrato.campi_mancanti.length) {
+                <p>{{ 'portale.checkin.mancano' | transloco }}</p>
+                <ul class="mancanti">
+                  @for (campo of giaRegistrato.campi_mancanti; track campo) {
+                    <li>{{ 'anagrafica.campi.' + campo | transloco }}</li>
+                  }
+                </ul>
+              } @else {
+                <p>{{ 'portale.checkin.completo' | transloco }}</p>
+              }
+            </div>
+          }
+
+          <div class="campi-coppia">
+            <app-campo
+              [etichetta]="'anagrafica.campi.nome' | transloco"
+              [errore]="errori.campo(riga.controls.nome)"
+            >
+              <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+            </app-campo>
+            <app-campo
+              [etichetta]="'anagrafica.campi.cognome' | transloco"
+              [errore]="errori.campo(riga.controls.cognome)"
+            >
+              <input
+                type="text"
+                formControlName="cognome"
+                [maxLength]="lunghezza.cognome"
+                required
+              />
+            </app-campo>
+          </div>
+
+          <div class="campi-coppia">
+            <app-campo [etichetta]="'anagrafica.campi.sesso' | transloco">
+              <select formControlName="sesso">
+                <option value="">{{ 'anagrafica.scegli' | transloco }}</option>
+                @for (sesso of sessi; track sesso) {
+                  <option [value]="sesso">
+                    {{ 'anagrafica.sessi.' + sesso | transloco }}
+                  </option>
+                }
+              </select>
+            </app-campo>
+            <app-campo [etichetta]="'anagrafica.campi.data_nascita' | transloco">
+              <input type="date" formControlName="data_nascita" />
+            </app-campo>
+          </div>
+
+          <div class="campi-coppia">
+            <app-cerca-luogo
+              tipo="stato"
+              [etichetta]="'anagrafica.campi.cittadinanza_codice' | transloco"
+              (scelto)="scegli(indice, 'cittadinanza_codice', $event)"
+            />
+            <app-cerca-luogo
+              tipo="stato"
+              [etichetta]="'anagrafica.campi.stato_nascita_codice' | transloco"
+              (scelto)="scegliStatoNascita(indice, $event)"
+            />
+          </div>
+
+          @if (natoInItalia(indice)) {
+            <app-cerca-luogo
+              tipo="comune"
+              [etichetta]="'anagrafica.campi.comune_nascita_codice' | transloco"
+              [inVigoreIl]="riga.value.data_nascita"
+              (scelto)="scegliComuneNascita(indice, $event)"
+            />
+          }
+
+          @if (conDocumento(indice)) {
+            <p class="aiuto">{{ 'portale.checkin.documento' | transloco }}</p>
+            <div class="campi-coppia">
+              <app-campo [etichetta]="'anagrafica.campi.tipo_documento' | transloco">
+                <select formControlName="tipo_documento">
+                  <option value="">{{ 'anagrafica.scegli' | transloco }}</option>
+                  @for (tipo of tipiDocumento; track tipo) {
+                    <option [value]="tipo">
+                      {{ 'anagrafica.documenti.' + tipo | transloco }}
+                    </option>
+                  }
+                </select>
+              </app-campo>
+              <app-campo
+                [etichetta]="'anagrafica.campi.numero_documento' | transloco"
+                [errore]="errori.campo(riga.controls.numero_documento)"
+              >
+                <input
+                  type="text"
+                  formControlName="numero_documento"
+                  [maxLength]="lunghezza.numeroDocumento"
+                />
+              </app-campo>
+            </div>
+            <div class="campi-coppia">
+              <app-cerca-luogo
+                [etichetta]="'anagrafica.campi.luogo_rilascio_codice' | transloco"
+                [aiuto]="'anagrafica.luogoRilascio' | transloco"
+                (scelto)="scegli(indice, 'luogo_rilascio_codice', $event)"
+              />
+              <app-campo [etichetta]="'anagrafica.campi.scadenza_documento' | transloco">
+                <input type="date" formControlName="scadenza_documento" />
+              </app-campo>
+            </div>
+          }
+        </fieldset>
+      }
+    </ng-container>
+
+    @if (errore()) {
+      <p class="esito esito-errore" role="alert">{{ errore() }}</p>
+    }
+
+    <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+      {{ 'portale.checkin.invia' | transloco }}
+    </button>
+  </form>
+}

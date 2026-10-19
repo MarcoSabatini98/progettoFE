@@ -1,0 +1,68 @@
+<h2 class="titolo-scheda">{{ 'portale.extra.titolo' | transloco }}</h2>
+
+<ul class="righe">
+  @for (riga of prenotazione().righe_servizi ?? []; track riga.servizio_id) {
+    @let nome = riga.servizio?.nome;
+    <li>
+      <app-icona [nome]="riga.servizio?.icona || 'add'" />
+      <span class="nome">
+        {{ 'portale.extra.riga' | transloco: { nome: nome, quantita: riga.quantita } }}
+      </span>
+      <span>{{ riga.totale | prezzo }}</span>
+      @if (modificabile()) {
+        <button
+          class="pulsante pulsante-fantasma pulsante-icona"
+          type="button"
+          [disabled]="inCorso()"
+          [attr.aria-label]="'portale.extra.rimuovi' | transloco: { nome: nome }"
+          (click)="rimuovi(riga.servizio_id)"
+        >
+          <app-icona nome="delete" />
+        </button>
+      }
+    </li>
+  } @empty {
+    <li class="nessuno">{{ 'portale.extra.nessuno' | transloco }}</li>
+  }
+</ul>
+
+@if (modificabile() && catalogo.hasValue() && catalogo.value().length) {
+  <form [formGroup]="modulo" (ngSubmit)="aggiungi()" novalidate>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'portale.extra.servizio' | transloco"
+        [errore]="errori.campo(modulo.controls.servizio_id)"
+      >
+        <select formControlName="servizio_id" required>
+          <option [ngValue]="null" disabled>{{ 'portale.extra.scegli' | transloco }}</option>
+          @for (servizio of catalogo.value(); track servizio.id) {
+            <option [ngValue]="servizio.id">
+              {{ servizio.nome }} · {{ servizio.prezzo | prezzo }}
+              {{ 'camere.calcolo.' + servizio.calcolo_prezzo | transloco }}
+            </option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'portale.extra.quantita' | transloco"
+        [errore]="errori.campo(modulo.controls.quantita)"
+      >
+        <input
+          type="number"
+          formControlName="quantita"
+          [min]="limiti.min"
+          [max]="limiti.max"
+          required
+        />
+      </app-campo>
+    </div>
+    <button class="pulsante pulsante-secondario" type="submit" [disabled]="inCorso()">
+      <app-icona nome="add" />
+      {{ 'portale.extra.aggiungi' | transloco }}
+    </button>
+  </form>
+}
+
+@if (errore(); as testo) {
+  <p class="esito esito-errore" role="alert">{{ testo }}</p>
+}

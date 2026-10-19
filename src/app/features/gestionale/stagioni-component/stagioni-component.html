@@ -1,0 +1,121 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.stagioni">
+  <ng-template #riga let-stagione>
+    <strong>{{ stagione.nome }}</strong>
+    <span class="piccolo">
+      {{ stagione.data_inizio | data }} – {{ stagione.data_fine | data }} ·
+      @if (stagione.tipo_variazione === 'prezzo_fisso') {
+        {{ 'gestionale.tariffe.tipi.prezzo_fisso' | transloco }}
+      }
+      {{ stagione.valore | variazione: stagione.tipo_variazione }}
+    </span>
+    <span class="piccolo tenue">
+      {{ stagione.tipologia?.nome ?? ('gestionale.tariffe.tutteLeTipologie' | transloco) }}
+      @if (!stagione.attivo) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta()
+          ? 'gestionale.tariffe.stagioni.modifica'
+          : 'gestionale.tariffe.stagioni.nuova'
+        ) | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.tariffe.campi.tipologia_id' | transloco">
+      <select formControlName="tipologia_id">
+        <option [ngValue]="null">{{ 'gestionale.tariffe.tutteLeTipologie' | transloco }}</option>
+        @for (tipologia of tipologie(); track tipologia.id) {
+          <option [ngValue]="tipologia.id">{{ tipologia.nome }}</option>
+        }
+      </select>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.data_inizio' | transloco"
+        [errore]="errori.campo(controlli.data_inizio)"
+      >
+        <input type="date" formControlName="data_inizio" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.data_fine' | transloco"
+        [errore]="errori.campo(controlli.data_fine)"
+      >
+        <input
+          type="date"
+          formControlName="data_fine"
+          [min]="controlli.data_inizio.value"
+          required
+        />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.tariffe.campi.tipo_variazione' | transloco">
+        <select formControlName="tipo_variazione">
+          @for (tipo of tipi; track tipo) {
+            <option [value]="tipo">{{ 'gestionale.tariffe.tipi.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valore' | transloco"
+        [aiuto]="'gestionale.tariffe.stagioni.valoreAiuto' | transloco"
+        [errore]="errori.campo(controlli.valore)"
+      >
+        <input type="number" formControlName="valore" step="0.01" required />
+      </app-campo>
+    </div>
+    <fieldset>
+      <legend>{{ 'gestionale.tariffe.campi.giorni_settimana' | transloco }}</legend>
+      <div class="giorni">
+        @for (bit of giorni; track bit) {
+          <label class="spunta">
+            <input
+              name="giorni_settimana"
+              #spunta
+              type="checkbox"
+              [checked]="haGiorno(bit)"
+              (change)="giorno(bit, spunta.checked)"
+            />
+            {{ 'gestionale.tariffe.giorni.' + bit | transloco }}
+          </label>
+        }
+      </div>
+      @if (controlli.giorni_settimana.invalid) {
+        <p class="esito esito-errore" role="alert">
+          {{ 'gestionale.tariffe.stagioni.nessunGiorno' | transloco }}
+        </p>
+      }
+    </fieldset>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.soggiorno_minimo' | transloco"
+        [errore]="errori.campo(controlli.soggiorno_minimo)"
+      >
+        <input type="number" formControlName="soggiorno_minimo" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.priorita' | transloco"
+        [aiuto]="'gestionale.tariffe.stagioni.prioritaAiuto' | transloco"
+        [errore]="errori.campo(controlli.priorita)"
+      >
+        <input type="number" formControlName="priorita" min="0" [max]="limiti.priorita" />
+      </app-campo>
+    </div>
+    <label class="spunta">
+      <input name="attivo" type="checkbox" formControlName="attivo" />
+      {{ 'gestionale.tariffe.campi.attivo' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+</app-listino>

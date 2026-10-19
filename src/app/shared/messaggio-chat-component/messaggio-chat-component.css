@@ -1,0 +1,88 @@
+:host {
+  display: flex;
+}
+
+:host(.mio) {
+  justify-content: flex-end;
+}
+
+.fumetto {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  max-inline-size: min(36rem, 85%);
+  padding: var(--bb-spazio-2) var(--bb-spazio-3);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+}
+
+:host(.mio) .fumetto {
+  border-color: transparent;
+  background: var(--bb-brand-tenue);
+}
+
+.di-sistema {
+  margin-inline: auto;
+  border-style: dashed;
+  color: var(--bb-testo-tenue);
+  font-style: italic;
+}
+
+.mittente {
+  margin: 0;
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.citazione {
+  margin: 0;
+  padding-inline-start: var(--bb-spazio-2);
+  border-inline-start: 3px solid var(--bb-linea);
+  color: var(--bb-testo-tenue);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.testo-libero {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.modifica {
+  display: grid;
+  gap: var(--bb-spazio-2);
+}
+
+.allegati {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.piede {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-1) var(--bb-spazio-2);
+  color: var(--bb-testo-tenue);
+}
+
+/* I comandi compaiono al passaggio o al focus, da tastiera sempre raggiungibili. */
+.comandi {
+  display: flex;
+  margin-inline-start: auto;
+}
+
+@media (hover: hover) {
+  .comandi {
+    opacity: 0;
+  }
+
+  .fumetto:hover .comandi,
+  .comandi:focus-within {
+    opacity: 1;
+  }
+}

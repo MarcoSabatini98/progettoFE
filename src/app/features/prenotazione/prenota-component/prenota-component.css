@@ -1,0 +1,100 @@
+app-ricerca-soggiorno {
+  display: block;
+}
+
+/* Camera o tipologia arrivate dal sito, con il link per vederle tutte. */
+.preferenza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bb-spazio-2) var(--bb-spazio-3);
+  margin: 0;
+}
+
+.preferenza app-icona {
+  color: var(--bb-brand-testo);
+}
+
+.preferenza a {
+  margin-inline-start: auto;
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.esito {
+  margin-block-start: var(--bb-spazio-4);
+}
+
+.risultati {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Foto sopra sul telefono, a sinistra da tablet in su. */
+.risultato {
+  display: grid;
+  gap: var(--bb-spazio-4);
+}
+
+@media (width >= 40rem) {
+  .risultato {
+    grid-template-columns: minmax(12rem, 2fr) 3fr;
+    align-items: center;
+  }
+}
+
+.foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 50% 50% var(--bb-raggio) var(--bb-raggio) / 38% 38% var(--bb-raggio)
+    var(--bb-raggio);
+  background: linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
+}
+
+.foto img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.testo {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  justify-items: start;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.dettagli {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-1) var(--bb-spazio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--bb-testo-tenue);
+  font-size: 0.9375rem;
+  --icona-dimensione: 1.125rem;
+}
+
+.dettagli li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+}
+
+.prezzo {
+  color: var(--bb-brand-testo);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.acconto,
+.non-prenotabile {
+  color: var(--bb-testo-tenue);
+}

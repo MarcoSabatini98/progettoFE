@@ -1,0 +1,16 @@
+@let esito = mostrato();
+
+<section class="scheda esito-pagamento" [attr.data-esito]="esito" role="status">
+  <app-icona class="icona-esito" [nome]="icona()" />
+  <h1>{{ 'esito.' + esito + '.titolo' | transloco }}</h1>
+  @if (esito === 'errore' && cattura.error(); as errore) {
+    <p>{{ errori.messaggio(errore) }}</p>
+  } @else {
+    <p>{{ 'esito.' + esito + '.testo' | transloco }}</p>
+  }
+  @if (esito !== 'in_corso') {
+    <a class="pulsante pulsante-primario" [routerLink]="percorsoPrenotazione()">
+      {{ 'esito.torna' | transloco: { codice: codice() } }}
+    </a>
+  }
+</section>

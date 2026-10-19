@@ -1,0 +1,134 @@
+@let controlli = modulo.controls;
+@let scelta = listino.scelta();
+<app-listino
+  [listino]="listino"
+  chiave="gestionale.contenuti.documenti"
+  [eliminabile]="!scelta?.pubblicato_il"
+>
+  <ng-template #riga let-documento>
+    <strong>
+      {{ 'gestionale.contenuti.documenti.tipi.' + documento.tipo | transloco }} ·
+      {{ documento.versione }}
+    </strong>
+    <!-- La riga non è tipizzata: documento.lingua è any. -->
+    <span class="piccolo">{{ $any(nomi)[documento.lingua] }}</span>
+    <span class="piccolo tenue">
+      @if (documento.pubblicato_il) {
+        {{
+          'gestionale.contenuti.documenti.pubblicatoIl'
+            | transloco: { data: documento.pubblicato_il | data }
+        }}
+      } @else {
+        {{ 'gestionale.contenuti.documenti.bozza' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  @if (scelta && scelta.pubblicato_il) {
+    <section class="scheda modulo-scheda pubblicato">
+      <h2 class="titolo-scheda">
+        {{ 'gestionale.contenuti.documenti.tipi.' + scelta.tipo | transloco }} ·
+        {{ scelta.versione }}
+      </h2>
+      <p class="tenue">{{ 'gestionale.contenuti.documenti.pubblicatoAiuto' | transloco }}</p>
+      <div class="testo">{{ scelta.contenuto }}</div>
+      <div class="azioni">
+        <button class="pulsante pulsante-primario" type="button" (click)="nuovaVersione(scelta)">
+          <app-icona nome="content_copy" />
+          {{ 'gestionale.contenuti.documenti.nuovaVersione' | transloco }}
+        </button>
+      </div>
+    </section>
+  } @else {
+    <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+      <h2 class="titolo-scheda">
+        {{
+          (scelta
+            ? 'gestionale.contenuti.documenti.modifica'
+            : 'gestionale.contenuti.documenti.nuova'
+          ) | transloco
+        }}
+      </h2>
+      @if (scelta) {
+        <!-- Tipo e lingua restano quelli della bozza: il backend non li cambia. -->
+        <p>
+          {{ 'gestionale.contenuti.documenti.tipi.' + scelta.tipo | transloco }} ·
+          {{ nomi[scelta.lingua] }}
+        </p>
+      } @else {
+        <div class="campi-coppia">
+          <app-campo [etichetta]="'gestionale.contenuti.documenti.campi.tipo' | transloco">
+            <select formControlName="tipo">
+              @for (tipo of tipi; track tipo) {
+                <option [value]="tipo">
+                  {{ 'gestionale.contenuti.documenti.tipi.' + tipo | transloco }}
+                </option>
+              }
+            </select>
+          </app-campo>
+          <app-campo [etichetta]="'gestionale.contenuti.documenti.campi.lingua' | transloco">
+            <select formControlName="lingua">
+              @for (codice of lingue(); track codice) {
+                <option [value]="codice">{{ nomi[codice] }}</option>
+              }
+            </select>
+          </app-campo>
+        </div>
+      }
+      <app-campo
+        [etichetta]="'gestionale.contenuti.documenti.campi.versione' | transloco"
+        [aiuto]="'gestionale.contenuti.documenti.versioneAiuto' | transloco"
+        [errore]="errori.campo(controlli.versione)"
+      >
+        <input type="text" formControlName="versione" [maxLength]="limiti.versione" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.contenuti.documenti.campi.contenuto' | transloco"
+        [errore]="errori.campo(controlli.contenuto)"
+      >
+        <textarea
+          formControlName="contenuto"
+          rows="16"
+          [maxLength]="limiti.contenuto"
+          required
+        ></textarea>
+      </app-campo>
+      <app-azioni-listino [listino]="listino" />
+    </form>
+
+    @if (scelta) {
+      <section class="scheda">
+        <h2 class="titolo-scheda">{{ 'gestionale.contenuti.documenti.pubblica' | transloco }}</h2>
+        <p>{{ 'gestionale.contenuti.documenti.pubblicaAiuto' | transloco }}</p>
+        <div class="azioni">
+          @if (daPubblicare() === scelta.id) {
+            <button
+              class="pulsante pulsante-primario"
+              type="button"
+              [disabled]="listino.inCorso()"
+              (click)="pubblica(scelta.id)"
+            >
+              {{ 'gestionale.contenuti.documenti.pubblicaConferma' | transloco }}
+            </button>
+            <button
+              class="pulsante pulsante-fantasma"
+              type="button"
+              (click)="daPubblicare.set(undefined)"
+            >
+              {{ 'gestionale.listino.annulla' | transloco }}
+            </button>
+          } @else {
+            <button
+              class="pulsante pulsante-secondario"
+              type="button"
+              (click)="daPubblicare.set(scelta.id)"
+            >
+              <app-icona nome="publish" />
+              {{ 'gestionale.contenuti.documenti.pubblica' | transloco }}
+            </button>
+          }
+        </div>
+      </section>
+    }
+  }
+</app-listino>

@@ -1,0 +1,161 @@
+/* Altezza e sfondo a tutto schermo vengono da .copertina-schermo (pagine.css). */
+.copertina {
+  align-content: start;
+  gap: var(--bb-spazio-6);
+  /* Sotto resta il posto per l'invito a scorrere e il pulsante di pausa. */
+  padding-block: var(--bb-spazio-4) calc(2 * var(--bb-spazio-12));
+}
+
+.pausa {
+  position: absolute;
+  inset-block-end: var(--bb-spazio-4);
+  inset-inline-end: 0;
+}
+
+/* L'arco dell'area pubblica: finestra mediterranea nel colore della struttura. */
+.arco {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  inline-size: min(55%, 12rem);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--bb-raggio) var(--bb-raggio);
+  background:
+    radial-gradient(circle at 50% 30%, var(--bb-ocra-tenue), transparent 60%),
+    linear-gradient(170deg, var(--bb-brand-tenue), var(--bb-brand));
+  box-shadow: var(--bb-ombra);
+  overflow: hidden;
+}
+
+.arco-iniziali {
+  color: var(--bb-su-brand);
+  font-family: var(--bb-font-titoli);
+  font-size: clamp(4rem, 18vw, 6rem);
+}
+
+/* Col logo l'arco cede il posto all'immagine, nelle stesse misure. */
+.arco-logo {
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.arco img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+
+/* Da telefono il logo prende solo l'altezza che gli serve: niente vuoti sopra e sotto. */
+.arco-logo {
+  aspect-ratio: auto;
+}
+
+.arco-logo img {
+  block-size: auto;
+  max-block-size: 28svh;
+}
+
+.copertina-testo {
+  display: grid;
+  gap: var(--bb-spazio-4);
+  align-content: center;
+}
+
+.luogo {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  color: var(--bb-brand-testo);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  --icona-dimensione: 1.125rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+}
+
+.invito {
+  max-width: 34rem;
+  color: var(--bb-testo-tenue);
+  font-size: 1.125rem;
+}
+
+.prenota {
+  justify-self: start;
+}
+
+.orari {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+  margin: var(--bb-spazio-2) 0 0;
+}
+
+.orari div {
+  padding: var(--bb-spazio-3) var(--bb-spazio-4);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio-piccolo);
+  background: var(--bb-superficie);
+}
+
+dt {
+  color: var(--bb-testo-tenue);
+  font-size: 0.8125rem;
+}
+
+dd {
+  margin: 0;
+  font-family: var(--bb-font-titoli);
+  font-size: 1.5rem;
+}
+
+@media (width >= 58.75rem) {
+  .copertina {
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    gap: var(--bb-spazio-8);
+    padding-block-start: var(--bb-spazio-8);
+  }
+
+  .arco {
+    order: 1;
+    inline-size: min(100%, 22rem);
+  }
+
+  .arco-logo {
+    aspect-ratio: 4 / 5;
+  }
+
+  .arco-logo img {
+    block-size: 100%;
+    max-block-size: none;
+  }
+}
+
+.tutte {
+  justify-self: center;
+}
+
+.recensioni-intestazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bb-spazio-2) var(--bb-spazio-6);
+}
+
+/* Ocra: riservato a voti e VIP. */
+.media {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  font-weight: 600;
+}
+
+.media app-icona {
+  color: var(--bb-ocra);
+}

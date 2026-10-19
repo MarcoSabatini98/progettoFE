@@ -1,0 +1,131 @@
+@let controlli = modulo.controls;
+<app-listino [listino]="listino" chiave="gestionale.tariffe.promozioni">
+  <ng-template #riga let-promozione>
+    <strong>{{ promozione.nome }}</strong>
+    <span class="piccolo">
+      −{{ promozione.valore | variazione: promozione.tipo_sconto }} ·
+      {{ promozione.soggiorno_dal | data }} – {{ promozione.soggiorno_al | data }}
+    </span>
+    <span class="piccolo tenue">
+      {{ promozione.tipologia?.nome ?? ('gestionale.tariffe.tutteLeTipologie' | transloco) }}
+      @if (!promozione.attiva) {
+        · {{ 'gestionale.tariffe.disattivato' | transloco }}
+      }
+    </span>
+  </ng-template>
+
+  <form class="scheda modulo-scheda" [formGroup]="modulo" (ngSubmit)="listino.salva()" novalidate>
+    <h2 class="titolo-scheda">
+      {{
+        (listino.scelta()
+          ? 'gestionale.tariffe.promozioni.modifica'
+          : 'gestionale.tariffe.promozioni.nuova'
+        ) | transloco
+      }}
+    </h2>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="limiti.nome" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.descrizione' | transloco"
+      [errore]="errori.campo(controlli.descrizione)"
+    >
+      <textarea formControlName="descrizione" rows="3" [maxLength]="limiti.descrizione"></textarea>
+    </app-campo>
+    <app-campo [etichetta]="'gestionale.tariffe.campi.tipologia_id' | transloco">
+      <select formControlName="tipologia_id">
+        <option [ngValue]="null">{{ 'gestionale.tariffe.tutteLeTipologie' | transloco }}</option>
+        @for (tipologia of tipologie(); track tipologia.id) {
+          <option [ngValue]="tipologia.id">{{ tipologia.nome }}</option>
+        }
+      </select>
+    </app-campo>
+    <div class="campi-coppia">
+      <app-campo [etichetta]="'gestionale.tariffe.campi.tipo_sconto' | transloco">
+        <select formControlName="tipo_sconto">
+          @for (tipo of tipi; track tipo) {
+            <option [value]="tipo">{{ 'gestionale.tariffe.tipi.' + tipo | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.valore' | transloco"
+        [errore]="errori.campo(controlli.valore)"
+      >
+        <input
+          type="number"
+          formControlName="valore"
+          min="0.01"
+          [max]="controlli.tipo_sconto.value === 'percentuale' ? 100 : limiti.importo"
+          step="0.01"
+          required
+        />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.soggiorno_dal' | transloco"
+        [errore]="errori.campo(controlli.soggiorno_dal)"
+      >
+        <input type="date" formControlName="soggiorno_dal" required />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.soggiorno_al' | transloco"
+        [errore]="errori.campo(controlli.soggiorno_al)"
+      >
+        <input
+          type="date"
+          formControlName="soggiorno_al"
+          [min]="controlli.soggiorno_dal.value"
+          required
+        />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.prenotabile_dal' | transloco"
+        [aiuto]="'gestionale.tariffe.vuotoSenzaLimite' | transloco"
+      >
+        <input type="date" formControlName="prenotabile_dal" />
+      </app-campo>
+      <app-campo [etichetta]="'gestionale.tariffe.campi.prenotabile_al' | transloco">
+        <input
+          type="date"
+          formControlName="prenotabile_al"
+          [min]="controlli.prenotabile_dal.value"
+        />
+      </app-campo>
+    </div>
+    <div class="campi-coppia">
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.ospiti_min' | transloco"
+        [errore]="errori.campo(controlli.ospiti_min)"
+      >
+        <input type="number" formControlName="ospiti_min" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+      <app-campo
+        [etichetta]="'gestionale.tariffe.campi.ospiti_max' | transloco"
+        [errore]="errori.campo(controlli.ospiti_max)"
+      >
+        <input type="number" formControlName="ospiti_max" min="1" [max]="limiti.piccolo" />
+      </app-campo>
+    </div>
+    <app-campo
+      [etichetta]="'gestionale.tariffe.campi.notti_min' | transloco"
+      [errore]="errori.campo(controlli.notti_min)"
+    >
+      <input type="number" formControlName="notti_min" min="1" [max]="limiti.piccolo" />
+    </app-campo>
+    <label class="spunta">
+      <input name="attiva" type="checkbox" formControlName="attiva" />
+      {{ 'gestionale.tariffe.campi.attiva' | transloco }}
+    </label>
+    <app-azioni-listino [listino]="listino" />
+  </form>
+  @if (listino.scelta(); as promozione) {
+    <app-traduzioni entita="promozione" [entitaId]="promozione.id" />
+  }
+</app-listino>

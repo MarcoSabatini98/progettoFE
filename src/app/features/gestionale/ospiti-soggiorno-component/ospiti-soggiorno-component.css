@@ -1,0 +1,40 @@
+.righe,
+.trovati {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.riga {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  padding-block-end: var(--bb-spazio-3);
+  border-block-end: 1px solid var(--bb-linea);
+}
+
+.chi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bb-spazio-1) var(--bb-spazio-3);
+}
+
+.tenue {
+  margin: 0;
+}
+
+.togli {
+  justify-self: end;
+}
+
+.nuovo {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.nuovo > .pulsante {
+  justify-self: start;
+}

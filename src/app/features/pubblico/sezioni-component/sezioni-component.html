@@ -1,0 +1,17 @@
+@for (sezione of sezioni(); track sezione.id) {
+  <article class="blocco">
+    @if (sezione.media?.[0]; as foto) {
+      <img
+        class="immagine"
+        appComparsa
+        [src]="foto.percorso | media"
+        [alt]="foto.testo_alternativo"
+        loading="lazy"
+      />
+    }
+    <div class="testo" appComparsa>
+      <h2 class="sezione-titolo">{{ sezione.titolo }}</h2>
+      <p>{{ sezione.testo }}</p>
+    </div>
+  </article>
+}

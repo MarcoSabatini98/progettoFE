@@ -1,0 +1,365 @@
+/*
+ * Impaginazione delle pagine del sito pubblico: colonna centrata, intestazione,
+ * sezioni e griglie di schede. Il componente la prende con host: { class: 'pagina' }.
+ */
+
+.pagina {
+  display: grid;
+  gap: var(--bb-spazio-12);
+  align-content: start;
+  width: min(100% - 2 * var(--bb-margine), var(--bb-contenuto));
+  margin: var(--bb-spazio-8) auto 0;
+}
+
+.pagina-intestazione {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  max-width: 44rem;
+}
+
+.pagina-intestazione h1 {
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}
+
+/* Riga piccola sopra i titoli, nel colore della struttura. */
+.occhiello {
+  color: var(--bb-brand-testo);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Testo secondario; con .piccolo per le righe di dettaglio. */
+.tenue {
+  color: var(--bb-testo-tenue);
+}
+
+.piccolo {
+  font-size: 0.875rem;
+}
+
+.introduzione {
+  color: var(--bb-testo-tenue);
+  font-size: 1.125rem;
+}
+
+/*
+ * Copertina a tutto schermo (home, struttura, attività, camere): riempie l'altezza visibile
+ * sotto la testata e lo .sfondo esce dalla colonna fino ai bordi della finestra
+ * (la pagina lo taglia di lato con overflow-x: clip in area-pubblica).
+ */
+.copertina-schermo {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-block-size: calc(100svh - var(--bb-testata));
+  margin-block-start: calc(-1 * var(--bb-spazio-8));
+}
+
+.copertina-schermo > .sfondo,
+.copertina-schermo:has(> .sfondo)::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: calc(50% - 50vw);
+  z-index: -1;
+}
+
+.copertina-schermo > .sfondo {
+  inline-size: 100vw;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+}
+
+/* Velo nel colore della pagina: testi e colori restano quelli di sempre. */
+.copertina-schermo:has(> .sfondo)::after {
+  content: '';
+  background: color-mix(in oklch, var(--bb-sfondo) 65%, transparent);
+}
+
+.sezione {
+  display: grid;
+  gap: var(--bb-spazio-6);
+}
+
+.sezione-titolo {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.griglia-schede {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--bb-spazio-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Filtri e comandi nell'intestazione di una pagina (giorno, solo le mie...). */
+.strumenti {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--bb-spazio-3);
+}
+
+/* Quanti elementi ha trovato una ricerca, sopra l'elenco. */
+.conteggio {
+  margin: 0;
+  color: var(--bb-testo-tenue);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Elenco di righe (prenotazioni, ospiti), una sotto l'altra. */
+.elenco {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Scheda intera cliccabile che porta al dettaglio di un elemento dell'elenco. */
+.scheda-link {
+  gap: var(--bb-spazio-1);
+  color: inherit;
+  text-decoration: none;
+}
+
+.scheda-link:hover strong {
+  color: var(--bb-brand-testo);
+}
+
+/* Messaggio "nessun elemento" al posto delle schede, su tutta la riga. */
+.griglia-schede > .stato-vuoto {
+  grid-column: 1 / -1;
+}
+
+.scheda {
+  display: grid;
+  align-content: start;
+  gap: var(--bb-spazio-3);
+  padding: var(--bb-spazio-6);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+}
+
+.titolo-scheda {
+  font-size: 1.25rem;
+}
+
+.stato-vuoto {
+  padding: var(--bb-spazio-8) var(--bb-spazio-6);
+  border: 1px dashed var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  color: var(--bb-testo-tenue);
+  text-align: center;
+}
+
+/* Link per tornare all'elenco da una scheda. */
+.indietro {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--bb-spazio-2);
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Testo semplice dal backend: gli a capo diventano paragrafi. */
+.testo-libero {
+  white-space: pre-line;
+  line-height: 1.7;
+}
+
+/* Coppie etichetta-valore su righe: etichetta a sinistra, valore a destra. */
+.dati {
+  display: grid;
+  gap: var(--bb-spazio-2);
+  margin: 0;
+}
+
+.dati > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bb-spazio-4);
+}
+
+.dati dt {
+  color: var(--bb-testo-tenue);
+}
+
+.dati dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: end;
+}
+
+/* Etichetta dello stato di una prenotazione, colorata per stato. */
+.stato-prenotazione {
+  justify-self: start;
+  padding: var(--bb-spazio-1) var(--bb-spazio-3);
+  border-radius: 999px;
+  background: var(--bb-brand-tenue);
+  color: var(--bb-brand-testo);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.stato-prenotazione[data-stato='cancellata'],
+.stato-prenotazione[data-stato='no_show'],
+.stato-prenotazione[data-stato='urgente'],
+.stato-prenotazione[data-stato='rifiutata'],
+.stato-prenotazione[data-stato='scartata'],
+.stato-prenotazione[data-stato='mancata_consegna'],
+.stato-prenotazione[data-stato='fallito'],
+.stato-prenotazione[data-stato='annullato'],
+.stato-prenotazione[data-stato='disattivato'],
+.stato-prenotazione[data-stato='eliminazione'] {
+  background: var(--bb-errore-tenue);
+  color: var(--bb-testo);
+}
+
+.stato-prenotazione[data-stato='confermata'],
+.stato-prenotazione[data-stato='in_soggiorno'],
+.stato-prenotazione[data-stato='verificata'],
+.stato-prenotazione[data-stato='risolta'],
+.stato-prenotazione[data-stato='pubblicata'],
+.stato-prenotazione[data-stato='completato'],
+.stato-prenotazione[data-stato='consegnata'],
+.stato-prenotazione[data-stato='accettata'],
+.stato-prenotazione[data-stato='inserimento'] {
+  background: var(--bb-ok-tenue);
+  color: var(--bb-testo);
+}
+
+/* Schede di una prenotazione: due colonne da desktop, le larghe su tutta la riga. */
+.griglia-prenotazione {
+  display: grid;
+  gap: var(--bb-spazio-6);
+  align-items: start;
+}
+
+/* Più schede impilate in una colonna della griglia. */
+.colonna {
+  display: grid;
+  align-content: start;
+  gap: var(--bb-spazio-6);
+}
+
+@media (width >= 58.75rem) {
+  .griglia-prenotazione {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .griglia-prenotazione > .larga {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Pallino della presenza dello staff in chat. */
+.presenza {
+  display: inline-block;
+  inline-size: 0.625rem;
+  block-size: 0.625rem;
+  border-radius: 50%;
+  background: var(--bb-linea);
+}
+
+.presenza[data-presenza='online'] {
+  background: var(--bb-ok);
+}
+
+.presenza[data-presenza='occupato'] {
+  background: var(--bb-errore);
+}
+
+.presenza[data-presenza='assente'] {
+  background: var(--bb-avviso);
+}
+
+/* Tessere dei numeri (cruscotto): piccole, due per riga anche sul telefono. */
+.tessere {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * La cifra si misura sulla tessera, non sulla finestra: su desktop le tessere
+ * restano strette e un importo lungo a 2rem usciva dal bordo.
+ */
+.tessera {
+  container-type: inline-size;
+  height: 100%;
+  gap: var(--bb-spazio-1);
+  padding: var(--bb-spazio-4);
+  overflow-wrap: anywhere;
+}
+
+.valore {
+  font-size: clamp(1rem, 14cqi, 2rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+/* Linguette (periodi, viste): sul telefono scorrono di lato invece di andare a capo. */
+.linguette {
+  display: flex;
+  gap: var(--bb-spazio-2);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.linguette button {
+  flex: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.linguette [aria-pressed='true'] {
+  color: var(--bb-brand-testo);
+  border-bottom-color: currentColor;
+}
+
+/* Tabelle di numeri (report): sul telefono scorrono di lato, la prima colonna resta ferma. */
+.tabella-scorrevole {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.tabella {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tabella th,
+.tabella td {
+  padding: var(--bb-spazio-2) var(--bb-spazio-3);
+  border-bottom: 1px solid var(--bb-linea);
+  text-align: end;
+}
+
+.tabella th:first-child {
+  position: sticky;
+  inset-inline-start: 0;
+  background: var(--bb-superficie);
+  text-align: start;
+}
+
+.tabella thead th {
+  color: var(--bb-testo-tenue);
+  font-weight: 600;
+}
+
+.tabella tfoot {
+  font-weight: 700;
+}

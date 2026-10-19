@@ -1,0 +1,77 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.cruscotto.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.cruscotto.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <button
+      class="pulsante pulsante-secondario"
+      type="button"
+      [disabled]="numeri.isLoading()"
+      (click)="numeri.reload()"
+    >
+      <app-icona nome="refresh" />
+      {{ 'gestionale.cruscotto.aggiorna' | transloco }}
+    </button>
+  </div>
+</header>
+
+@if (numeri.hasValue()) {
+  @let dati = numeri.value();
+  @for (gruppo of gruppi; track gruppo.titolo) {
+    <section class="sezione" [attr.aria-labelledby]="'cruscotto-' + gruppo.titolo">
+      <h2 class="sezione-titolo" [id]="'cruscotto-' + gruppo.titolo">
+        {{ 'gestionale.cruscotto.gruppi.' + gruppo.titolo | transloco }}
+      </h2>
+      <ul class="tessere">
+        @for (tessera of gruppo.tessere; track tessera.chiave) {
+          <li>
+            @if (apribile(tessera)) {
+              <a
+                class="scheda scheda-link tessera"
+                [routerLink]="tessera.percorso"
+                [queryParams]="tessera.filtri"
+              >
+                <ng-container
+                  *ngTemplateOutlet="
+                    contenuto;
+                    context: { $implicit: tessera, valore: dati[tessera.chiave] }
+                  "
+                />
+              </a>
+            } @else {
+              <div class="scheda tessera">
+                <ng-container
+                  *ngTemplateOutlet="
+                    contenuto;
+                    context: { $implicit: tessera, valore: dati[tessera.chiave] }
+                  "
+                />
+              </div>
+            }
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  <ng-template #contenuto let-tessera let-valore="valore">
+    <app-icona [nome]="tessera.icona" />
+    <strong class="valore">
+      @switch (tessera.formato) {
+        @case ('prezzo') {
+          {{ valore | prezzo }}
+        }
+        @case ('percentuale') {
+          {{ 'gestionale.cruscotto.percentuale' | transloco: { valore } }}
+        }
+        @default {
+          {{ valore }}
+        }
+      }
+    </strong>
+    <span>{{ 'gestionale.cruscotto.voci.' + tessera.chiave | transloco: dati }}</span>
+  </ng-template>
+} @else if (numeri.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}
+
+<app-andamento />

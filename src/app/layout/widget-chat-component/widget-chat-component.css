@@ -1,0 +1,98 @@
+/* Fisso in basso a destra: riquadro a tutta larghezza su mobile, a colonna da desktop. */
+:host {
+  position: fixed;
+  inset: auto var(--bb-spazio-3) calc(var(--bb-spazio-3) + env(safe-area-inset-bottom, 0px)) auto;
+  z-index: 30;
+  display: grid;
+  justify-items: end;
+  gap: var(--bb-spazio-2);
+}
+
+.lancia {
+  position: relative;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  border-radius: 999px;
+  box-shadow: var(--bb-ombra);
+}
+
+.nuovi {
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  border: 2px solid var(--bb-superficie);
+  border-radius: 999px;
+  background: var(--bb-errore);
+}
+
+.riquadro {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  inline-size: min(24rem, calc(100vw - 2 * var(--bb-spazio-3)));
+  max-block-size: calc(100dvh - 8rem);
+  padding: var(--bb-spazio-3);
+  border: 1px solid var(--bb-linea);
+  border-radius: var(--bb-raggio);
+  background: var(--bb-superficie);
+  color: var(--bb-testo);
+  box-shadow: var(--bb-ombra);
+  overflow-y: auto;
+}
+
+.intestazione {
+  display: grid;
+  gap: var(--bb-spazio-1);
+  padding-block-end: var(--bb-spazio-2);
+  border-bottom: 1px solid var(--bb-linea);
+}
+
+.intestazione h2,
+.intestazione p,
+.avvio p {
+  margin: 0;
+}
+
+/* Collegamento alle FAQ: testo sottolineato, non un pulsante pieno. */
+.scheda-faq {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--bb-spazio-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bb-brand-testo);
+  font: inherit;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  --icona-dimensione: 1rem;
+}
+
+.disponibile {
+  color: var(--bb-testo-tenue);
+}
+
+.disponibile.online {
+  color: var(--bb-ok);
+}
+
+.messaggi {
+  display: flex;
+  flex-direction: column-reverse;
+  max-block-size: 50dvh;
+  overflow-y: auto;
+}
+
+.flusso {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}
+
+.avvio {
+  display: grid;
+  gap: var(--bb-spazio-3);
+}

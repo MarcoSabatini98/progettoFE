@@ -1,0 +1,17 @@
+<h2>{{ 'profilo.email' | transloco }}</h2>
+
+@for (voce of voci; track voce.campo) {
+  <label class="interruttore">
+    <input
+      name="preferenze_email"
+      #casella
+      type="checkbox"
+      [checked]="salvate()[voce.campo]"
+      (change)="cambia(voce.campo, casella)"
+    />
+    <span>
+      {{ voce.etichetta | transloco }}
+      <span class="descrizione">{{ voce.aiuto | transloco }}</span>
+    </span>
+  </label>
+}

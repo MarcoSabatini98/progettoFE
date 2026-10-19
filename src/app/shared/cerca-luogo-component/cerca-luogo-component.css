@@ -1,0 +1,4 @@
+/* Trasparente alla griglia: il campo dentro si allinea a quelli accanto. */
+:host {
+  display: contents;
+}

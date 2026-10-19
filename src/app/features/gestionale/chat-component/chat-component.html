@@ -1,0 +1,91 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'gestionale.chat.occhiello' | transloco }}</p>
+  <h1>{{ 'gestionale.chat.titolo' | transloco }}</h1>
+  <div class="strumenti">
+    <app-campo [etichetta]="'gestionale.chat.presenza' | transloco">
+      <select #presenza [value]="presenze.mia()" (change)="cambiaPresenza(presenza.value)">
+        @for (stato of statiPresenza; track stato) {
+          <option [value]="stato">{{ 'gestionale.chat.presenze.' + stato | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+  </div>
+  <div class="azioni">
+    <a class="pulsante pulsante-primario" [routerLink]="nuova">
+      <app-icona nome="add_comment" />
+      {{ 'gestionale.chat.nuova' | transloco }}
+    </a>
+  </div>
+</header>
+
+<div class="chat">
+  <section class="conversazioni" aria-labelledby="chat-elenco">
+    <h2 class="visivamente-nascosto" id="chat-elenco">
+      {{ 'gestionale.chat.elenco' | transloco }}
+    </h2>
+    @if (assistenza) {
+      <div class="schede">
+        @for (scheda of tipi; track scheda) {
+          <button
+            class="pulsante pulsante-fantasma"
+            type="button"
+            [attr.aria-pressed]="tipo() === scheda"
+            (click)="tipo.set(scheda)"
+          >
+            {{ 'gestionale.chat.tipi.' + scheda | transloco }}
+            @if (contatori()[scheda]) {
+              <span class="conteggio">{{ contatori()[scheda] }}</span>
+            }
+          </button>
+        }
+      </div>
+    }
+    <div class="strumenti">
+      <app-campo [etichetta]="'gestionale.chat.filtri.stato' | transloco">
+        <select #filtroStato [value]="stato()" (change)="stato.set($any(filtroStato.value))">
+          @for (voce of statiConversazione; track voce) {
+            <option [value]="voce">{{ 'gestionale.chat.stati.' + voce | transloco }}</option>
+          }
+        </select>
+      </app-campo>
+      @if (tipo() === 'assistenza') {
+        <app-campo [etichetta]="'gestionale.chat.filtri.assegnate' | transloco">
+          <select
+            #filtroAssegnate
+            [value]="assegnate() ?? ''"
+            (change)="assegnate.set($any(filtroAssegnate.value) || undefined)"
+          >
+            <option value="">{{ 'gestionale.chat.filtri.tutte' | transloco }}</option>
+            <option value="mie">{{ 'gestionale.chat.filtri.mie' | transloco }}</option>
+            <option value="libere">{{ 'gestionale.chat.filtri.libere' | transloco }}</option>
+          </select>
+        </app-campo>
+      }
+    </div>
+
+    @if (conversazioni.value(); as risultato) {
+      <ul class="elenco" [attr.aria-busy]="conversazioni.isLoading()">
+        @for (conversazione of risultato.elementi; track conversazione.uuid) {
+          <li><app-riga-conversazione [conversazione]="conversazione" /></li>
+        } @empty {
+          <li class="stato-vuoto">{{ 'gestionale.chat.vuoto' | transloco }}</li>
+        }
+      </ul>
+      <app-paginazione
+        [risultato]="risultato"
+        [occupato]="conversazioni.isLoading()"
+        [(pagina)]="pagine.pagina"
+        [(perPagina)]="pagine.perPagina"
+      />
+    } @else if (conversazioni.error(); as errore) {
+      <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+    }
+  </section>
+
+  <div class="riquadro">
+    <router-outlet (activate)="aperta.set(true)" (deactivate)="aperta.set(false)" />
+    @if (!aperta()) {
+      <p class="stato-vuoto">{{ 'gestionale.chat.scegli' | transloco }}</p>
+    }
+  </div>
+</div>

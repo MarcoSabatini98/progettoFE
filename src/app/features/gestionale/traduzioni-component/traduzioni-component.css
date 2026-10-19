@@ -1,0 +1,10 @@
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: var(--bb-spazio-2);
+  font-weight: 600;
+}

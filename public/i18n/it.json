@@ -1,0 +1,2312 @@
+{
+  "lingua": {
+    "etichetta": "Lingua"
+  },
+  "tema": {
+    "etichetta": "Tema",
+    "sistema": "Automatico",
+    "chiaro": "Chiaro",
+    "scuro": "Scuro"
+  },
+  "layout": {
+    "saltaAlContenuto": "Vai al contenuto",
+    "cin": "CIN",
+    "documentiLegali": "Documenti legali",
+    "paginaInArrivo": "Stiamo preparando questa pagina: torna a trovarci presto.",
+    "scorri": "Continua a scorrere"
+  },
+  "menu": {
+    "accedi": "Accedi",
+    "apri": "Apri il menu",
+    "staff": "Menu del gestionale",
+    "utente": {
+      "apri": "Menu di {{ nome }}",
+      "sito": "Vai al sito",
+      "gestionale": "Vai al gestionale",
+      "personale": "Area personale",
+      "esci": "Esci",
+      "account": "Il mio account"
+    },
+    "gruppi": {
+      "oggi": "Oggi",
+      "soggiorni": "Soggiorni",
+      "struttura": "Struttura",
+      "cassa": "Cassa",
+      "direzione": "Direzione"
+    },
+    "voci": {
+      "cruscotto": "Cruscotto",
+      "pulizie": "Pulizie",
+      "chat": "Chat",
+      "manutenzione": "Manutenzione",
+      "prenotazioni": "Prenotazioni",
+      "planning": "Planning",
+      "ospiti": "Ospiti",
+      "alloggiati": "Alloggiati Web",
+      "camere": "Camere",
+      "tariffe": "Tariffe",
+      "calendari": "Calendari esterni",
+      "contenuti": "Contenuti",
+      "faq": "FAQ",
+      "recensioni": "Recensioni",
+      "pagamenti": "Pagamenti",
+      "fatture": "Fatture",
+      "report": "Report",
+      "utenti": "Utenti",
+      "ruoli": "Ruoli e permessi",
+      "registro": "Registro attività",
+      "impostazioni": "Impostazioni",
+      "oggi": "Oggi",
+      "servizi": "Servizi"
+    },
+    "sito": {
+      "aria": "Menu del sito",
+      "camere": "Camere",
+      "struttura": "Struttura",
+      "attivita": "Le attività",
+      "offerte": "Offerte",
+      "recensioni": "Recensioni",
+      "faq": "Domande frequenti",
+      "contatti": "Contatti"
+    }
+  },
+  "avvisi": {
+    "chiudi": "Chiudi avviso"
+  },
+  "nonTrovata": {
+    "titolo": "Pagina non trovata",
+    "testo": "Il link potrebbe essere sbagliato o la pagina non esiste più.",
+    "home": "Torna alla home"
+  },
+  "home": {
+    "invito": "Benvenuti: prenotate il vostro soggiorno direttamente con noi.",
+    "checkin": "Check-in dalle",
+    "checkout": "Check-out entro le",
+    "struttura": "La struttura",
+    "camere": "Le nostre camere",
+    "tutteCamere": "Vedi tutte le camere",
+    "recensioni": "Dicono di noi",
+    "media": "{{ media }}/5 su {{ numero }} recensioni",
+    "tutteRecensioni": "Leggi tutte le recensioni",
+    "prenota": "Prenota il tuo soggiorno",
+    "video": {
+      "pausa": "Metti in pausa il video di sfondo",
+      "riproduci": "Riproduci il video di sfondo"
+    }
+  },
+  "accesso": {
+    "titolo": "Accedi",
+    "introduzione": "Entra con l’email e la password del tuo account.",
+    "email": "Email",
+    "password": "Password",
+    "dimenticata": "Password dimenticata?",
+    "entra": "Accedi",
+    "registrati": "Non hai un account? Registrati"
+  },
+  "recupero": {
+    "titolo": "Recupera la password",
+    "introduzione": "Inserisci l’email del tuo account: ti invieremo un link per sceglierne una nuova.",
+    "email": "Email",
+    "invia": "Invia il link",
+    "inviata": "Se l’email è registrata, riceverai a breve un messaggio con il link. Controlla anche la posta indesiderata.",
+    "torna": "Torna all’accesso"
+  },
+  "reimposta": {
+    "titolo": "Nuova password",
+    "introduzione": "Scegli la nuova password del tuo account.",
+    "salva": "Salva la password",
+    "fatto": "Password aggiornata: ora puoi accedere.",
+    "linkNonValido": "Il link non è valido. Chiedine uno nuovo.",
+    "nuovoLink": "Chiedi un nuovo link"
+  },
+  "disiscrizione": {
+    "titolo": "Disiscrizione",
+    "inCorso": "Un momento…",
+    "fatto": "Fatto: non riceverai più le nostre offerte via email. Le email su prenotazioni e pagamenti continuano ad arrivare.",
+    "linkNonValido": "Il link non è valido. Usa quello in fondo all’ultima email ricevuta.",
+    "profilo": "Cambia idea dal tuo profilo"
+  },
+  "moduli": {
+    "required": "Campo obbligatorio.",
+    "email": "Inserisci un’email valida.",
+    "minlength": "Almeno {{ requiredLength }} caratteri.",
+    "maxlength": "Al massimo {{ requiredLength }} caratteri.",
+    "passwordDiverse": "Le password non coincidono.",
+    "pattern": "Formato non valido.",
+    "min": "Il valore minimo è {{ min }}.",
+    "max": "Il valore massimo è {{ max }}.",
+    "partenzaPrimaArrivo": "La partenza deve essere dopo l’arrivo."
+  },
+  "errori": {
+    "generico": "Qualcosa è andato storto. Riprova.",
+    "rete": "Nessuna connessione con il server. Controlla la rete e riprova.",
+    "CREDENZIALI_NON_VALIDE": "Email o password non corrette.",
+    "ACCOUNT_DISATTIVATO": "Questo account è disattivato.",
+    "EMAIL_GIA_REGISTRATA": "Questa email è già registrata.",
+    "EMAIL_GIA_VERIFICATA": "L’email è già verificata.",
+    "CODICE_ERRATO": "Il codice non è corretto. Dopo troppi tentativi chiedine uno nuovo.",
+    "CODICE_SCADUTO": "Il codice è scaduto: chiedine uno nuovo.",
+    "LINK_NON_VALIDO": "Il link non è valido o è già stato usato.",
+    "TOKEN_NON_VALIDO": "Il link non è valido.",
+    "TOKEN_SCADUTO": "Il link è scaduto: chiedine uno nuovo.",
+    "SESSIONE_SCADUTA": "La sessione è scaduta: accedi di nuovo.",
+    "SESSIONE_COMPROMESSA": "Per sicurezza la sessione è stata chiusa: accedi di nuovo.",
+    "NON_AUTENTICATO": "Accedi per continuare.",
+    "PERMESSO_NEGATO": "Non hai il permesso per questa operazione.",
+    "TROPPE_RICHIESTE": "Troppi tentativi. Attendi qualche minuto e riprova.",
+    "DATI_NON_VALIDI": "Controlla i dati inseriti.",
+    "ERRORE_INTERNO": "Errore del server. Riprova tra poco.",
+    "RISORSA_NON_TROVATA": "Elemento non trovato.",
+    "PASSWORD_ATTUALE_ERRATA": "La password attuale non è corretta.",
+    "CONSENSI_OBBLIGATORI": "Per registrarti devi accettare privacy e termini.",
+    "PASSWORD_ERRATA": "La password non è corretta.",
+    "PRENOTAZIONI_ATTIVE": "Hai prenotazioni in corso o future: annullale o attendi la fine del soggiorno.",
+    "UTENTE_NON_TROVATO": "Account non trovato.",
+    "ARRIVO_NEL_PASSATO": "La data di arrivo è già passata.",
+    "DATE_NON_VALIDE": "Controlla le date: la fine non può venire prima dell’inizio.",
+    "BLOCCO_DIVERSO": "La camera tenuta per te non corrisponde a questo soggiorno: ripeti la ricerca.",
+    "BLOCCO_SCADUTO": "Il tempo per completare la prenotazione è scaduto: ripeti la ricerca.",
+    "CAMERA_NON_DISPONIBILE": "La camera non è più disponibile per queste date.",
+    "CODICE_SCONTO_NON_VALIDO": "Il codice sconto non è valido o è scaduto.",
+    "CODICE_SCONTO_NON_APPLICABILE": "Il codice sconto non vale per questo soggiorno.",
+    "CODICE_SCONTO_NON_TROVATO": "Il codice sconto non esiste.",
+    "PACCHETTO_NON_APPLICABILE": "Il pacchetto non vale per questo soggiorno.",
+    "PACCHETTO_NON_TROVATO": "Il pacchetto non è più disponibile.",
+    "SOGGIORNO_MINIMO": "Per queste date serve un soggiorno più lungo.",
+    "TITOLARE_MANCANTE": "Indica i dati di chi prenota.",
+    "PRENOTAZIONE_NON_TROVATA": "Nessuna prenotazione con questo codice ed email.",
+    "STATO_NON_VALIDO": "Operazione non possibile nello stato attuale della prenotazione.",
+    "NULLA_DA_PAGARE": "Non c’è nulla da pagare.",
+    "METODO_NON_VALIDO": "Metodo di pagamento non disponibile.",
+    "METODO_NON_ATTIVO": "Metodo di pagamento non disponibile.",
+    "PAGAMENTO_NON_RIUSCITO": "Il pagamento non è andato a buon fine. Riprova.",
+    "PAGAMENTO_NON_TROVATO": "Pagamento non trovato.",
+    "SERVIZIO_NON_DISPONIBILE": "Un servizio scelto non è più disponibile.",
+    "IMPORTO_SUPERIORE_AL_SALDO": "L’importo supera quanto resta da pagare.",
+    "RECENSIONE_GIA_PRESENTE": "Hai già recensito questo soggiorno.",
+    "RECENSIONE_NON_CONSENTITA": "Si può recensire solo un soggiorno concluso.",
+    "PRENOTAZIONE_ALTRUI": "Questa prenotazione non è tua.",
+    "LINK_CHECKIN_NON_VALIDO": "Il link per il check-in online non è valido o è scaduto.",
+    "PRENOTAZIONE_CHIUSA": "La prenotazione è cancellata.",
+    "TROPPI_OSPITI": "Hai inserito più ospiti di quelli prenotati.",
+    "OSPITE_DUPLICATO": "Lo stesso ospite è inserito due volte.",
+    "SERVIZIO_NON_TROVATO": "Servizio non trovato.",
+    "FILE_MANCANTE": "File non disponibile.",
+    "FORMATO_FILE_NON_VALIDO": "Formato non ammesso: usa PDF, JPG, PNG o WebP.",
+    "FILE_TROPPO_GRANDE": "Il file è troppo grande.",
+    "ANAGRAFICA_MANCANTE": "Completa prima i tuoi dati personali.",
+    "DOCUMENTO_NON_TROVATO": "Documento non trovato.",
+    "NON_RIMBORSABILE": "La tariffa non è rimborsabile.",
+    "SOGGIORNO_INIZIATO": "Il soggiorno è già iniziato.",
+    "PAGAMENTO_NON_AVVIATO": "Non è stato possibile avviare il pagamento.",
+    "ARRIVO_FUTURO": "Il giorno di arrivo non è ancora arrivato.",
+    "CAMERA_NON_TROVATA": "Camera non trovata.",
+    "SALDO_APERTO": "Resta un saldo da incassare.",
+    "DATI_ALLOGGIATI_INCOMPLETI": "Completa i dati degli ospiti prima dell’invio.",
+    "DATI_CLIENTE_PROTETTI": "I dati personali del cliente si modificano dalla sua scheda ospite.",
+    "OSPITE_CON_SOGGIORNI": "L’ospite ha soggiorni registrati: i suoi dati vanno conservati.",
+    "OSPITE_NON_TROVATO": "Ospite non trovato.",
+    "DATO_DUPLICATO": "Il dato esiste già.",
+    "RISORSA_IN_USO": "Impossibile eliminare: il dato è usato altrove.",
+    "RIFERIMENTO_NON_VALIDO": "Un dato collegato non esiste.",
+    "CAMBIO_TIPOLOGIA_CON_PRENOTAZIONI": "La camera ha prenotazioni: la tipologia non si può cambiare.",
+    "CAMERA_CON_PRENOTAZIONI": "La camera ha prenotazioni: non si può eliminare.",
+    "SLUG_GIA_USATO": "Esiste già una tipologia con questo nome.",
+    "TIPOLOGIA_IN_USO": "Ci sono camere di questa tipologia: non si può eliminare.",
+    "TIPOLOGIA_NON_TROVATA": "Tipologia non trovata.",
+    "MEDIA_NON_TROVATO": "Foto non trovata.",
+    "PULIZIA_NON_TROVATA": "Attività di pulizia non trovata.",
+    "VOCE_CHECKLIST_NON_TROVATA": "Voce della checklist non trovata.",
+    "PULIZIA_CHIUSA": "L’attività è già stata verificata.",
+    "PULIZIA_INIZIATA": "L’attività è già iniziata: non si può eliminare.",
+    "TRANSIZIONE_NON_VALIDA": "Passaggio non possibile nello stato attuale dell’attività.",
+    "PULIZIA_ALTRUI": "L’attività è assegnata a un altro addetto.",
+    "CHECKLIST_INCOMPLETA": "Completa tutte le voci della checklist.",
+    "CONVERSAZIONE_NON_TROVATA": "Conversazione non trovata.",
+    "CONVERSAZIONE_NON_ACCESSIBILE": "Non fai parte di questa conversazione.",
+    "SOLO_CHAT_STAFF": "Operazione possibile solo nelle chat dello staff.",
+    "SOLO_CLIENTI": "Operazione riservata ai clienti.",
+    "PARTECIPANTI_MANCANTI": "Scegli almeno un collega.",
+    "TITOLO_RISERVATO": "Questo nome è riservato ai gruppi di squadra.",
+    "TITOLO_MANCANTE": "Un gruppo deve avere un nome.",
+    "CHAT_NON_CONSENTITA": "Questo utente non può partecipare alla conversazione.",
+    "GRUPPO_DI_SQUADRA": "I gruppi di squadra seguono i ruoli e non si modificano.",
+    "SOLO_GRUPPI": "Operazione possibile solo nei gruppi.",
+    "MESSAGGIO_VUOTO": "Scrivi un testo o allega un file.",
+    "MESSAGGIO_ALTRUI": "Puoi modificare solo i tuoi messaggi.",
+    "MESSAGGIO_NON_TROVATO": "Messaggio non trovato.",
+    "ALLEGATO_NON_TROVATO": "Allegato non trovato.",
+    "OPERATORE_NON_VALIDO": "Questo utente non può seguire l'assistenza.",
+    "STATO_PRESENZA_NON_VALIDO": "Stato di presenza non valido.",
+    "SEGNALAZIONE_NON_TROVATA": "Segnalazione non trovata.",
+    "SEGNALAZIONE_CHIUSA": "La segnalazione è chiusa: riaprila per modificarla.",
+    "EMAIL_ACCESSO_CLIENTE": "L'email di accesso la cambia solo il cliente.",
+    "OSPITE_CLIENTE": "L'anagrafica di un cliente registrato si elimina con il suo account.",
+    "PULIZIA_NON_RINVIABILE": "Si rinviano solo le pulizie non ancora finite.",
+    "PULIZIA_IN_CORSO": "Finisci prima la camera che hai già.",
+    "NESSUNA_PULIZIA_LIBERA": "Non ci sono camere libere da pulire.",
+    "CALENDARIO_DISATTIVATO": "Il calendario è disattivato: riattivalo per sincronizzarlo.",
+    "SINCRONIZZAZIONE_FALLITA": "Il calendario del portale non si legge: controlla che il link iCal sia giusto e che il portale lo pubblichi ancora.",
+    "GIA_PUBBLICATO": "Il documento è già pubblicato: crea una nuova versione.",
+    "LINGUA_NON_ATTIVA": "Questa lingua non è attiva sul sito.",
+    "CAMPO_NON_TRADUCIBILE": "Questo campo non si traduce.",
+    "NON_FATTURABILE": "La prenotazione non ha ancora nulla da fatturare.",
+    "FATTURA_NON_TROVATA": "Fattura non trovata.",
+    "FATTURA_NON_MODIFICABILE": "La fattura è già emessa: si corregge con una nota di credito.",
+    "FATTURA_VUOTA": "La fattura non ha importi.",
+    "RIGHE_MANCANTI": "La fattura deve avere almeno una riga.",
+    "NON_STORNABILE": "Si storna solo una fattura emessa.",
+    "FATTURA_NON_EMESSA": "La fattura non è ancora emessa.",
+    "ULTIMO_ADMIN": "Deve restare almeno un amministratore attivo.",
+    "AUTO_DECLASSAMENTO": "Non puoi togliere a te stesso il ruolo di amministratore.",
+    "AUTO_ELIMINAZIONE": "Non puoi eliminare il tuo account da qui.",
+    "RUOLO_NON_ASSEGNABILE": "Questo ruolo non si può assegnare.",
+    "RUOLO_CLIENTE": "Un account cliente resta cliente.",
+    "RUOLO_NON_MODIFICABILE": "L'amministratore ha sempre tutti i permessi.",
+    "RUOLO_NON_TROVATO": "Ruolo non trovato.",
+    "PERMESSO_SCONOSCIUTO": "Uno dei permessi non esiste più: ricarica la pagina.",
+    "RUOLO_NON_STAFF": "La chat interna è solo per lo staff.",
+    "IMPOSTAZIONE_NON_VALIDA": "Uno dei valori non è nel formato giusto.",
+    "IMPOSTAZIONE_SCONOSCIUTA": "Una delle impostazioni non esiste più: ricarica la pagina."
+  },
+  "nuovaPassword": {
+    "password": "Nuova password",
+    "aiuto": "Almeno {{ minima }} caratteri.",
+    "conferma": "Ripeti la password"
+  },
+  "registrazione": {
+    "titolo": "Crea il tuo account",
+    "introduzione": "Prenota più velocemente e ritrova i tuoi soggiorni in un unico posto.",
+    "nome": "Nome",
+    "cognome": "Cognome",
+    "email": "Email",
+    "telefono": "Telefono",
+    "facoltativo": "Facoltativo.",
+    "consensi": "Consensi",
+    "privacy": "Ho letto l’informativa sulla privacy",
+    "termini": "Accetto i termini e le condizioni",
+    "leggi": "Leggi",
+    "marketing": "Voglio ricevere offerte e novità via email",
+    "crea": "Crea account",
+    "haiAccount": "Hai già un account? Accedi"
+  },
+  "documenti": {
+    "privacy": "Informativa sulla privacy",
+    "termini": "Termini e condizioni",
+    "cookie": "Cookie policy",
+    "versione": "Versione {{ versione }}",
+    "nonDisponibile": "Documento non disponibile",
+    "nonDisponibileTesto": "Questo documento non è ancora stato pubblicato."
+  },
+  "verifica": {
+    "titolo": "Verifica la tua email",
+    "descrizione": "Ti abbiamo inviato un codice di {{ cifre }} cifre: inseriscilo qui per confermare l’indirizzo.",
+    "codice": "Codice di verifica",
+    "conferma": "Verifica",
+    "nuovoCodice": "Invia un nuovo codice",
+    "inviato": "Nuovo codice inviato: controlla la posta.",
+    "fatta": "Email verificata."
+  },
+  "profilo": {
+    "titolo": "Il tuo account",
+    "dati": "Dati personali",
+    "lingua": "Lingua",
+    "linguaAiuto": "Per il sito e per le email che ricevi.",
+    "salva": "Salva",
+    "salvato": "Modifiche salvate.",
+    "email": "Email",
+    "notifiche": "Ricevi email facoltative",
+    "notificheAiuto": "Riepiloghi dei messaggi e promemoria. Le conferme di prenotazione e pagamento arrivano sempre.",
+    "offerte": "Ricevi le nostre offerte",
+    "offerteAiuto": "Sconti e promozioni, solo via email. Ti disiscrivi quando vuoi, anche dal link in fondo a ogni email."
+  },
+  "sicurezza": {
+    "titolo": "Password e accessi",
+    "attuale": "Password attuale",
+    "cambia": "Cambia password",
+    "cambiata": "Password cambiata: accedi con quella nuova.",
+    "sessioni": "Dispositivi collegati",
+    "sessioniDescrizione": "Chiude l’accesso su tutti i dispositivi, compreso questo.",
+    "esciOvunque": "Esci da tutti i dispositivi",
+    "uscito": "Sei uscito da tutti i dispositivi."
+  },
+  "eliminaAccount": {
+    "titolo": "Elimina account",
+    "descrizione": "Il tuo account verrà chiuso. Le prenotazioni passate restano nei registri della struttura come previsto dalla legge.",
+    "elimina": "Elimina il mio account",
+    "password": "Conferma con la tua password",
+    "conferma": "Elimina definitivamente",
+    "annulla": "Annulla",
+    "fatto": "Account eliminato."
+  },
+  "galleria": {
+    "precedente": "Foto precedente",
+    "successiva": "Foto successiva"
+  },
+  "camere": {
+    "titolo": "Le camere",
+    "introduzione": "Scegli la sistemazione più adatta al tuo viaggio.",
+    "nessuna": "Al momento non ci sono camere prenotabili online.",
+    "ospitiMax": "Fino a {{ numero }} ospiti",
+    "superficie": "{{ mq }} m²",
+    "prezzoDa": "Da {{ prezzo }} a notte",
+    "extra": "Servizi extra",
+    "extraIntroduzione": "Da aggiungere alla prenotazione, quando vuoi.",
+    "calcolo": {
+      "a_soggiorno": "a soggiorno",
+      "a_notte": "a notte",
+      "a_persona": "a persona",
+      "a_persona_notte": "a persona a notte"
+    },
+    "extraOcchiello": "Su richiesta",
+    "guarda": "Guarda le camere"
+  },
+  "tipologia": {
+    "tutte": "Tutte le camere",
+    "ospiti": "Ospiti",
+    "superficie": "Superficie",
+    "letti": "Letti",
+    "dotazioni": "In camera",
+    "nonTrovata": "Camera non trovata",
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
+    "prenota": "Prenota",
+    "piano": "Piano",
+    "altreInfo": "Altre info",
+    "nessunaCamera": "Nessuna camera disponibile"
+  },
+  "struttura": {
+    "occhiello": "Chi siamo",
+    "titolo": "La struttura",
+    "introduzione": "Gli spazi, i servizi e la storia della nostra casa."
+  },
+  "attivita": {
+    "occhiello": "Dintorni",
+    "titolo": "Le attività",
+    "introduzione": "Cosa fare nei dintorni, feste ed eventi della zona, informazioni utili per arrivare e le attività in struttura.",
+    "eventi": {
+      "occhiello": "In zona",
+      "titolo": "Cosa succede in zona",
+      "introduzione": "Feste, fiere ed eventi dei prossimi mesi: un motivo in più per scegliere le date.",
+      "tipi": {
+        "festivita": "Festa",
+        "evento_locale": "Evento locale",
+        "fiera": "Fiera",
+        "altro": "Evento"
+      }
+    }
+  },
+  "offerte": {
+    "occhiello": "Per te",
+    "titolo": "Offerte",
+    "introduzione": "Promozioni sui soggiorni e pacchetti con servizi inclusi.",
+    "nessuna": "Al momento non ci sono offerte attive.",
+    "pacchetti": "Pacchetti",
+    "promozioni": "Promozioni",
+    "tipologia": "Camera: {{ nome }}",
+    "nottiMin": "Notti minime: {{ numero }}",
+    "periodo": "Dal {{ dal }} al {{ al }}",
+    "dal": "Dal {{ dal }}",
+    "fino": "Fino al {{ al }}",
+    "incluso": "Incluso",
+    "scontoPercentuale": "-{{ valore }}%",
+    "scontoImporto": "-{{ valore }}",
+    "soggiorni": "Soggiorni dal {{ dal }} al {{ al }}",
+    "prenota": "Prenota",
+    "ultimoGiorno": "Ultimo giorno",
+    "ultimiGiorni": "Ultimi {{ numero }} giorni"
+  },
+  "recensioni": {
+    "occhiello": "Esperienze degli ospiti",
+    "titolo": "Recensioni",
+    "introduzione": "Cosa raccontano gli ospiti che hanno soggiornato da noi.",
+    "riepilogo": "Valutazione media",
+    "numero": "Recensioni: {{ numero }}",
+    "elenco": "Elenco delle recensioni",
+    "nessuna": "Non ci sono ancora recensioni.",
+    "altre": "Mostra altre recensioni",
+    "voto": "Voto:",
+    "anonima": "Ospite",
+    "risposta": "Risposta di {{ nome }}",
+    "categorie": {
+      "media_pulizia": "Pulizia",
+      "media_personale": "Personale",
+      "media_posizione": "Posizione",
+      "media_comfort": "Comfort",
+      "media_qualita_prezzo": "Qualità/prezzo"
+    }
+  },
+  "faq": {
+    "occhiello": "Serve aiuto?",
+    "titolo": "Domande frequenti",
+    "nessuna": "Non ci sono ancora domande frequenti.",
+    "altraDomanda": "Non hai trovato la risposta?",
+    "scrivici": "Scrivici: ti rispondiamo il prima possibile.",
+    "contatti": "Contattaci"
+  },
+  "contatti": {
+    "occhiello": "Siamo qui",
+    "titolo": "Contatti",
+    "introduzione": "Per informazioni e richieste, ecco come raggiungerci.",
+    "indirizzo": "Indirizzo",
+    "mappa": "Apri nelle mappe",
+    "nuovaScheda": "(si apre in una nuova scheda)",
+    "email": "Email",
+    "telefono": "Telefono",
+    "orari": "Orari",
+    "checkin": "Check-in dalle {{ orario }}",
+    "checkout": "Check-out entro le {{ orario }}",
+    "chat": {
+      "titolo": "Hai una domanda?",
+      "testo": "Nella chat trovi le domande frequenti: dai prima un'occhiata lì. Se la risposta non c'è, scrivici direttamente in chat e ti rispondiamo noi.",
+      "faq": "Leggi le domande frequenti",
+      "scrivi": "Scrivici in chat"
+    }
+  },
+  "prenota": {
+    "occhiello": "Prenotazione diretta",
+    "titolo": "Prenota",
+    "introduzione": "Scegli le date e gli ospiti: ti mostriamo le camere libere con il prezzo migliore.",
+    "arrivo": "Arrivo",
+    "partenza": "Partenza",
+    "adulti": "Adulti",
+    "bambini": "Bambini",
+    "bambiniAiuto": "Fino a {{ eta }} anni",
+    "etaBambini": "Età dei bambini",
+    "bambino": "Bambino {{ numero }}",
+    "scegliEta": "Età",
+    "cerca": "Cerca camere",
+    "risultati": "Camere disponibili",
+    "camereLibere": "Camere libere: {{ numero }}",
+    "totale": "{{ prezzo }} per {{ notti }} notti",
+    "acconto": "Acconto alla prenotazione: {{ prezzo }}",
+    "scegli": "Scegli",
+    "nessunaCamera": "Nessuna camera libera per queste date. Prova a cambiarle.",
+    "cameraScelta": "Stai prenotando la camera {{ camera }} ({{ tipologia }}).",
+    "tipologiaScelta": "Stai cercando una camera {{ tipologia }}.",
+    "tutteLeCamere": "Mostra tutte le camere",
+    "calendario": {
+      "titolo": "Date del soggiorno",
+      "sceltaArrivo": "Scegli il giorno di arrivo.",
+      "sceltaPartenza": "Ora scegli il giorno di partenza.",
+      "notti": "Notti: {{ numero }}",
+      "libero": "Disponibile",
+      "occupato": "Non disponibile",
+      "precedente": "Mese precedente",
+      "successivo": "Mese successivo"
+    }
+  },
+  "riepilogoPrezzo": {
+    "importo_soggiorno": "Soggiorno",
+    "sconto_promozione": "Promozione",
+    "sconto_codice": "Codice sconto",
+    "sconto_fedelta": "Sconto fedeltà ({{ percentuale }}%)",
+    "importo_pacchetto": "Pacchetto",
+    "importo_servizi": "Servizi extra",
+    "tassa_soggiorno": "Tassa di soggiorno",
+    "totale": "Totale",
+    "acconto": "Acconto da versare"
+  },
+  "conferma": {
+    "date": "Dal {{ arrivo }} al {{ partenza }}",
+    "ospiti": "Adulti: {{ adulti }} · Bambini: {{ bambini }}",
+    "cambiaCamera": "Cambia camera",
+    "bloccata": "Teniamo la camera per te fino alle {{ ora }}.",
+    "opzioni": "Personalizza il soggiorno",
+    "codiceSconto": "Codice sconto",
+    "applica": "Applica",
+    "codicePercentuale": "{{ codice }}: sconto del {{ valore }}%",
+    "codiceImporto": "{{ codice }}: sconto di {{ valore }}",
+    "togliCodice": "Rimuovi",
+    "pacchetto": "Pacchetto",
+    "nessunPacchetto": "Nessun pacchetto",
+    "extra": "Servizi extra",
+    "titolare": "Chi prenota",
+    "titolareAiuto": "Useremo questi dati per la conferma e per contattarti.",
+    "nome": "Nome",
+    "cognome": "Cognome",
+    "email": "Email",
+    "telefono": "Telefono",
+    "facoltativo": "Facoltativo",
+    "arrivo": "Il tuo arrivo",
+    "oraArrivo": "Ora di arrivo prevista",
+    "richieste": "Richieste particolari",
+    "richiesteAiuto": "Culla, allergie, esigenze di accessibilità… Faremo il possibile.",
+    "prenota": "Conferma la prenotazione",
+    "conto": "Il tuo conto",
+    "rimborsabile": "Cancellazione gratuita fino a {{ ore }} ore prima dell’arrivo.",
+    "nonRimborsabile": "Tariffa non rimborsabile."
+  },
+  "prenotazione": {
+    "occhiello": "La tua prenotazione",
+    "titolo": "Prenotazione {{ codice }}",
+    "chiediEmail": "Inserisci l’email usata per prenotare per vedere i dettagli.",
+    "email": "Email",
+    "apri": "Apri la prenotazione",
+    "camera": "Camera",
+    "arrivo": "Arrivo",
+    "partenza": "Partenza",
+    "ospiti": "Ospiti",
+    "scade": "Completa il pagamento entro il {{ ora }}, altrimenti la prenotazione scade.",
+    "pagato": "Già pagato",
+    "saldo": "Da saldare",
+    "pagamento": {
+      "titolo": "Pagamento",
+      "quanto": "Quanto paghi ora",
+      "acconto": "Solo l'acconto: {{ importo }}",
+      "accontoAiuto": "Il resto lo paghi in struttura, all’arrivo.",
+      "tutto": "Tutto ora: {{ importo }}",
+      "tuttoAiuto": "All’arrivo non devi pagare nulla.",
+      "nullaOra": "Ora non devi pagare nulla: il saldo di {{ importo }} lo paghi in struttura, all’arrivo. Se preferisci, puoi pagarlo già adesso.",
+      "come": "Come paghi",
+      "paga": "Paga {{ importo }}",
+      "sicuro": "Pagamento sicuro: lo completi sulla pagina protetta di Stripe o PayPal e i dati della tua carta non passano da noi.",
+      "bonificoEntro": "Il bonifico deve arrivarci entro il {{ data }}, altrimenti la prenotazione scade: se la tua banca lo permette, fai un bonifico istantaneo.",
+      "resto": "Il resto, {{ importo }}, lo paghi in struttura all’arrivo.",
+      "nessunMetodo": "Il pagamento online non è disponibile: contatta la struttura per sapere come pagare."
+    },
+    "metodi": {
+      "stripe": "Carta",
+      "paypal": "PayPal",
+      "bonifico": "Bonifico bancario"
+    },
+    "metodiAiuto": {
+      "stripe": "Credito, debito o prepagata. Anche Google Pay, Apple Pay e Klarna, se disponibili.",
+      "paypal": "Con il tuo conto PayPal.",
+      "bonifico": "Dalla tua banca, con i dati che ti mostriamo."
+    },
+    "importo": "Importo",
+    "iban": "IBAN",
+    "intestatario": "Intestatario",
+    "causale": "Causale",
+    "tuttoPagato": "Tutto pagato: ci vediamo presto!",
+    "stati": {
+      "in_attesa": "In attesa di pagamento",
+      "confermata": "Confermata",
+      "in_soggiorno": "In soggiorno",
+      "conclusa": "Conclusa",
+      "cancellata": "Cancellata",
+      "no_show": "Mancato arrivo"
+    }
+  },
+  "esito": {
+    "torna": "Vai alla prenotazione {{ codice }}",
+    "in_corso": {
+      "titolo": "Stiamo registrando il pagamento…",
+      "testo": "Resta su questa pagina qualche secondo."
+    },
+    "ok": {
+      "titolo": "Pagamento ricevuto",
+      "testo": "Grazie! Ti mandiamo la conferma per email."
+    },
+    "annullato": {
+      "titolo": "Pagamento annullato",
+      "testo": "Non ti è stato addebitato nulla. Puoi riprovare dalla prenotazione."
+    },
+    "errore": {
+      "titolo": "Pagamento non riuscito"
+    }
+  },
+  "recensione": {
+    "titolo": "Com’è andato il soggiorno?",
+    "voto": "Il tuo voto",
+    "stelle": "{{ voto }} su {{ massimo }}",
+    "dettagli": "Vuoi dire di più?",
+    "senzaVoto": "Nessun voto",
+    "titoloRecensione": "Titolo",
+    "commento": "Racconta il soggiorno",
+    "anonima": "Pubblica senza il mio nome",
+    "invia": "Invia la recensione",
+    "grazie": "Grazie! La recensione sarà pubblicata dopo un controllo."
+  },
+  "portale": {
+    "occhiello": "Area personale",
+    "saluto": "Ciao {{ nome }}",
+    "mostraAltre": "Mostra altre",
+    "menu": {
+      "prenotazioni": "Prenotazioni",
+      "fatture": "Fatture",
+      "fedelta": "Fedeltà",
+      "documenti": "Documenti",
+      "profilo": "Profilo"
+    },
+    "prenotazioni": {
+      "prossime": "Prossimi soggiorni",
+      "passate": "Soggiorni passati",
+      "nessuna": "Nessun soggiorno in programma.",
+      "prenota": "Prenota un soggiorno",
+      "tutte": "Tutte le prenotazioni"
+    },
+    "extra": {
+      "titolo": "Servizi extra",
+      "riga": "{{ nome }} × {{ quantita }}",
+      "rimuovi": "Rimuovi {{ nome }}",
+      "nessuno": "Nessun servizio extra.",
+      "servizio": "Aggiungi un servizio",
+      "scegli": "Scegli…",
+      "quantita": "Quantità",
+      "aggiungi": "Aggiungi"
+    },
+    "cancella": {
+      "titolo": "Cancella la prenotazione",
+      "testo": "Prima di confermare ti mostriamo l’eventuale penale.",
+      "apri": "Voglio cancellare",
+      "penale": "Penale",
+      "rimborso": "Rimborso",
+      "gratuita": "Cancellazione gratuita fino al {{ data }}.",
+      "motivo": "Motivo",
+      "conferma": "Conferma la cancellazione",
+      "annulla": "Non cancellare"
+    },
+    "fatture": {
+      "titolo": "Fatture",
+      "TD01": "Fattura {{ numero }}/{{ anno }}",
+      "TD04": "Nota di credito {{ numero }}/{{ anno }}",
+      "scarica": "Scarica PDF",
+      "nessuna": "Nessuna fattura emessa."
+    },
+    "fedelta": {
+      "titolo": "Programma fedeltà",
+      "sconto": "Sconto {{ sconto }}%",
+      "inizia": "Accumula punti a ogni soggiorno e sblocca sconti riservati.",
+      "punti": "{{ punti }} punti",
+      "mancano": "Mancano {{ punti }} punti al livello {{ livello }}.",
+      "massimo": "Sei al livello più alto. Grazie!",
+      "anno": "Il tuo {{ anno }}",
+      "guadagnati": "Punti guadagnati",
+      "tolti": "Punti tolti",
+      "livelli": "Livelli",
+      "movimenti": "Movimenti dei punti",
+      "nessunMovimento": "Ancora nessun movimento.",
+      "motivi": {
+        "soggiorno": "Soggiorno",
+        "bonus": "Bonus",
+        "rettifica": "Rettifica",
+        "annullamento": "Annullamento"
+      }
+    },
+    "documenti": {
+      "titolo": "Documenti d’identità",
+      "testo": "Caricali una volta: li useremo per il check-in dei tuoi soggiorni.",
+      "carica": "Carica un documento",
+      "formati": "PDF, JPG, PNG o WebP.",
+      "caricato": "Caricato il {{ data }}",
+      "scarica": "Scarica",
+      "elimina": "Elimina {{ nome }}",
+      "conferma": "Elimina",
+      "annulla": "Annulla",
+      "nessuno": "Nessun documento caricato."
+    },
+    "checkin": {
+      "occhiello": "Check-in online",
+      "titolo": "Chi soggiorna",
+      "soggiorno": "Prenotazione {{ codice }}, dal {{ arrivo }} al {{ partenza }}.",
+      "testo": "Inserisci i dati di ogni ospite: all’arrivo non dovrai fare altro. I campi lasciati vuoti non cambiano quelli già registrati.",
+      "ospite": "Ospite {{ numero }}",
+      "documento": "Documento di chi guida il gruppo, richiesto dalla legge per la registrazione.",
+      "invia": "Invia i dati",
+      "fatto": "Dati ricevuti il {{ data }}. Puoi correggerli fino all’arrivo.",
+      "mancano": "Dati già registrati. Mancano ancora:",
+      "completo": "Dati già registrati e completi: correggi solo quello che è cambiato."
+    }
+  },
+  "carosello": {
+    "ruolo": "carosello",
+    "slide": "{{ numero }} di {{ totale }}",
+    "precedente": "Precedente",
+    "successiva": "Successiva"
+  },
+  "gestionale": {
+    "oggi": {
+      "occhiello": "Reception",
+      "titolo": "La giornata",
+      "giorno": "Giorno",
+      "arrivi": "Arrivi",
+      "partenze": "Partenze",
+      "in_casa": "In casa",
+      "vuoto": "Nessuna prenotazione."
+    },
+    "elenco": {
+      "occhiello": "Soggiorni",
+      "titolo": "Prenotazioni",
+      "cerca": "Cerca per codice, cognome o email",
+      "tutti": "Tutti",
+      "dal": "Arrivo dal",
+      "al": "Arrivo entro",
+      "ordine": "Ordine",
+      "recenti": "Arrivi più lontani prima",
+      "vicine": "Arrivi più vicini prima",
+      "totale": "Prenotazioni trovate: {{ totale }}",
+      "nessuna": "Nessuna prenotazione con questi filtri.",
+      "pagine": "Pagine",
+      "righe": "Righe per pagina",
+      "precedente": "Precedente",
+      "successiva": "Successiva",
+      "pagina": "Pagina {{ pagina }} di {{ pagine }}"
+    },
+    "nuova": {
+      "occhiello": "Gestionale",
+      "titolo": "Nuova prenotazione",
+      "introduzione": "Prenotazione al telefono, per email o al banco: scegli date, ospiti e camera.",
+      "gestione": "Gestione",
+      "linguaAiuto": "Lingua delle email inviate all’ospite."
+    },
+    "scheda": {
+      "tutte": "Tutte le prenotazioni",
+      "creata": "Creata",
+      "cancellata": "Cancellata",
+      "motivo": "Motivo della cancellazione"
+    },
+    "campi": {
+      "canale": "Canale",
+      "stato": "Stato",
+      "idEsterno": "Id sul portale",
+      "lingua": "Lingua",
+      "noteInterne": "Note interne",
+      "noteInterneAiuto": "Visibili solo allo staff.",
+      "camera": "Camera",
+      "adulti": "Adulti",
+      "bambini": "Bambini",
+      "oraArrivo": "Ora di arrivo prevista",
+      "richieste": "Richieste dell’ospite",
+      "tipo": "Tipo",
+      "metodo": "Metodo",
+      "importo": "Importo",
+      "documentoFiscale": "Numero ricevuta",
+      "riferimento": "Riferimento",
+      "note": "Note"
+    },
+    "canali": {
+      "diretto": "Sito",
+      "telefono": "Telefono",
+      "email": "Email",
+      "walk_in": "Al banco",
+      "booking_com": "Booking.com",
+      "airbnb": "Airbnb",
+      "expedia": "Expedia",
+      "altro": "Altro portale"
+    },
+    "link": {
+      "copia": "Copia",
+      "copiato": "Copiato"
+    },
+    "linkCheckin": {
+      "titolo": "Check-in online",
+      "testo": "L’ospite inserisce i dati dei documenti prima di arrivare.",
+      "crea": "Crea il link"
+    },
+    "linkPagamento": {
+      "titolo": "Link di pagamento",
+      "apri": "Crea un link di pagamento",
+      "crea": "Crea il link",
+      "importoAiuto": "Vuoto: quanto è dovuto ora.",
+      "inviaEmail": "Invia il link per email all’ospite",
+      "inviato": "Link inviato per email."
+    },
+    "cancella": {
+      "penale": "Penale",
+      "penaleAiuto": "Vuoto: la penale prevista dalla tariffa."
+    },
+    "azioni": {
+      "conferma": "Conferma",
+      "checkIn": "Check-in",
+      "noShow": "Mancato arrivo",
+      "checkOut": "Check-out",
+      "annulla": "Annulla",
+      "conferme": {
+        "noShow": "Conferma il mancato arrivo",
+        "checkOut": "Chiudi comunque"
+      }
+    },
+    "modifica": {
+      "titolo": "Modifica",
+      "testo": "Cambia camera, date, ospiti o note.",
+      "apri": "Modifica la prenotazione",
+      "ricalcolo": "Cambiando camera, date o ospiti il prezzo si ricalcola.",
+      "salva": "Salva le modifiche"
+    },
+    "incassi": {
+      "titolo": "Incassi",
+      "nessuno": "Nessun movimento.",
+      "registra": "Registra un incasso",
+      "conferma": "Registra",
+      "riferimentoAiuto": "Es. CRO del bonifico o scontrino del POS.",
+      "ricevuta": "Ricevuta {{ numero }}"
+    },
+    "tipiPagamento": {
+      "acconto": "Acconto",
+      "saldo": "Saldo",
+      "extra": "Extra",
+      "penale": "Penale",
+      "rimborso": "Rimborso"
+    },
+    "metodi": {
+      "stripe": "Carta",
+      "paypal": "PayPal",
+      "bonifico": "Bonifico",
+      "contanti": "Contanti",
+      "pos": "POS",
+      "ota": "Portale"
+    },
+    "statiPagamento": {
+      "in_attesa": "In attesa",
+      "completato": "Completato",
+      "fallito": "Fallito",
+      "annullato": "Annullato"
+    },
+    "anagrafica": {
+      "titolo": "Anagrafica",
+      "contatti": "Contatti",
+      "nascita": "Nascita e cittadinanza",
+      "documento": "Documento",
+      "residenza": "Residenza",
+      "tipoDocumento": "Serve solo a chi viaggia da solo o guida il gruppo.",
+      "paese": "Sigla di due lettere, es. IT.",
+      "salva": "Salva l’anagrafica",
+      "salvata": "Anagrafica salvata.",
+      "emailCliente": "È l'email con cui il cliente accede: la cambia lui dal suo profilo."
+    },
+    "ospiti": {
+      "occhiello": "Gestionale",
+      "titolo": "Ospiti",
+      "cerca": "Cerca per nome, cognome o email",
+      "totale": "Ospiti trovati: {{ totale }}",
+      "nessuno": "Nessun ospite trovato.",
+      "nuovo": "Nuovo ospite",
+      "crea": "Crea e completa i dati"
+    },
+    "ospite": {
+      "tutti": "Tutti gli ospiti",
+      "occhiello": "Ospite",
+      "mancano": "Per Alloggiati Web mancano:",
+      "completa": "Dati completi per Alloggiati Web.",
+      "soggiorni": "Soggiorni",
+      "nessunSoggiorno": "Nessun soggiorno.",
+      "elimina": "Elimina l’anagrafica",
+      "eliminaAiuto": "Possibile solo se l’ospite non ha soggiorni registrati.",
+      "conferma": "Elimina definitivamente"
+    },
+    "ospitiSoggiorno": {
+      "titolo": "Ospiti del soggiorno",
+      "daSalvare": "Da salvare",
+      "mancano": "Mancano {{ numero }} dati",
+      "completo": "Dati completi",
+      "tipo": "Ruolo nella schedina",
+      "esente": "Esente dalla tassa di soggiorno",
+      "motivo": "Motivo dell’esenzione",
+      "togli": "Togli dal soggiorno",
+      "nessuno": "Nessun ospite registrato.",
+      "chiusa": "Prenotazione chiusa: gli ospiti non si cambiano più.",
+      "piena": "Tutti i posti della prenotazione sono assegnati.",
+      "cerca": "Cerca un ospite già registrato",
+      "aggiungiNuovo": "Aggiungi un nuovo ospite",
+      "salva": "Salva gli ospiti",
+      "salvati": "Ospiti salvati."
+    },
+    "tipiAlloggiato": {
+      "ospite_singolo": "Ospite singolo",
+      "capofamiglia": "Capofamiglia",
+      "capogruppo": "Capogruppo",
+      "familiare": "Familiare",
+      "membro_gruppo": "Membro del gruppo"
+    },
+    "esiti": {
+      "inviata": "Inviata",
+      "errore": "Rifiutata dal portale",
+      "test": "Prova"
+    },
+    "alloggiati": {
+      "occhiello": "Gestionale",
+      "titolo": "Alloggiati Web",
+      "aiuto": "Soggiorni degli ultimi giorni ancora da comunicare: scarica il file, caricalo sul portale della Polizia di Stato e registra l’esito.",
+      "arrivo": "Arrivo",
+      "prenotazione": "Apri la prenotazione",
+      "schedine": "Schedine",
+      "nessuno": "Nessun soggiorno da comunicare.",
+      "scarica": "Scarica il file ({{ numero }})"
+    },
+    "schedine": {
+      "pronte": "Schedine pronte per l’invio.",
+      "incomplete": "Ad alcuni ospiti mancano dei dati.",
+      "mancano": "Mancano",
+      "nessuno": "Nessun ospite registrato.",
+      "esito": "Esito del portale",
+      "messaggio": "Messaggio del portale",
+      "registra": "Registra l’esito",
+      "registrato": "Esito registrato."
+    },
+    "camere": {
+      "occhiello": "Struttura",
+      "titolo": "Camere",
+      "introduzione": "Le tipologie sono quelle vendute sul sito, le camere sono le stanze vere da assegnare.",
+      "tipologie": "Tipologie",
+      "camere": "Camere",
+      "nuovaTipologia": "Nuova tipologia",
+      "creaTipologia": "Crea e completa i dati",
+      "nuovaCamera": "Nuova camera",
+      "creaCamera": "Crea e completa i dati",
+      "nessunaTipologia": "Nessuna tipologia: creane una per vendere sul sito.",
+      "nessunaCamera": "Nessuna camera.",
+      "riassuntoTipologia": "Fino a {{ ospiti }} ospiti · da {{ prezzo }} a notte",
+      "riassuntoCamera": "{{ tipologia }} · piano {{ piano }}",
+      "titoloCamera": "Camera {{ numero }}",
+      "tutte": "Tutte le camere",
+      "occhielloTipologia": "Tipologia",
+      "occhielloCamera": "Camera",
+      "vediSulSito": "Vedi sul sito",
+      "nonSulSito": "Non visibile sul sito",
+      "datiTipologia": "Dati della tipologia",
+      "datiCamera": "Dati della camera",
+      "campi": {
+        "nome": "Nome",
+        "prezzo_base": "Prezzo base a notte",
+        "ospiti_max": "Ospiti massimi",
+        "superficie_mq": "Superficie (m²)",
+        "letti": "Letti",
+        "descrizione": "Descrizione",
+        "ordine": "Ordine",
+        "attiva": "Visibile sul sito",
+        "numero": "Numero",
+        "nomeCamera": "Nome (facoltativo)",
+        "tipologia": "Tipologia",
+        "stato": "Stato",
+        "piano": "Piano",
+        "note": "Note interne"
+      },
+      "ordineAiuto": "Sul sito i numeri più bassi vengono prima.",
+      "tipologiaAiuto": "Non si cambia se la camera ha prenotazioni.",
+      "ospitiAiuto": "Vuoto: vale quello della tipologia.",
+      "stati": {
+        "attiva": "Attiva",
+        "manutenzione": "In manutenzione",
+        "fuori_servizio": "Fuori servizio"
+      },
+      "dotazioni": "Dotazioni",
+      "nessunaDotazione": "Nessuna dotazione nel catalogo.",
+      "salva": "Salva",
+      "salvata": "Modifiche salvate.",
+      "eliminaTipologia": "Elimina tipologia",
+      "eliminaTipologiaAiuto": "Possibile solo se nessuna camera la usa.",
+      "eliminaCamera": "Elimina camera",
+      "eliminaCameraAiuto": "Possibile solo se la camera non ha prenotazioni.",
+      "conferma": "Sì, elimina",
+      "descrizioneAiuto": "Per il sito. Vuota: si vede quella della tipologia."
+    },
+    "foto": {
+      "titolo": "Foto",
+      "aiuto": "JPEG, PNG o WebP. La prima è la copertina sul sito.",
+      "carica": "Carica foto",
+      "copertina": "Copertina",
+      "testoAlternativo": "Descrizione per chi non vede la foto",
+      "prima": "Sposta prima",
+      "dopo": "Sposta dopo",
+      "conferma": "Sì, elimina",
+      "elimina": "Elimina foto",
+      "nessuna": "Nessuna foto."
+    },
+    "pulizie": {
+      "occhiello": "Housekeeping",
+      "titolo": "Pulizie",
+      "soloMie": "Solo le mie",
+      "genera": "Genera giornata",
+      "assegna": "Assegna agli addetti",
+      "checklist": "Checklist",
+      "generata": "Giornata pronta: {{ riassetti }} riassetti aggiunti, {{ checklist_aggiunte }} checklist completate.",
+      "assegnate": "{{ assegnate }} attività assegnate, {{ non_assegnate }} ancora libere.",
+      "vuoto": "Nessuna attività.",
+      "stati": {
+        "da_fare": "Da fare",
+        "in_corso": "In corso",
+        "completata": "Da verificare",
+        "verificata": "Verificate"
+      },
+      "tipi": {
+        "partenza": "Partenza",
+        "riassetto": "Riassetto",
+        "profonda": "Pulizia profonda",
+        "ispezione": "Ispezione"
+      },
+      "priorita": {
+        "bassa": "Bassa",
+        "normale": "Normale",
+        "alta": "Alta",
+        "urgente": "Urgente"
+      },
+      "libera": "Da assegnare",
+      "vociFatte": "{{ fatte }}/{{ totale }} voci",
+      "nuova": "Nuova attività",
+      "crea": "Aggiungi alla giornata",
+      "nessuno": "Nessuno",
+      "campi": {
+        "camera": "Camera",
+        "tipo": "Tipo",
+        "priorita": "Priorità",
+        "addetto": "Addetto",
+        "note": "Note",
+        "giorno": "Giorno",
+        "voce": "Voce"
+      },
+      "lavoro": "Lavoro",
+      "iniziaPerSpuntare": "Inizia la pulizia per spuntare le voci.",
+      "senzaChecklist": "Nessuna voce da spuntare.",
+      "passaggi": {
+        "da_fare": {
+          "in_corso": "Inizia"
+        },
+        "in_corso": {
+          "completata": "Ho finito",
+          "da_fare": "Rimetti da fare"
+        },
+        "completata": {
+          "verificata": "Verificata",
+          "in_corso": "Da rifare"
+        }
+      },
+      "salvaNote": "Salva note",
+      "pianificazione": "Pianificazione",
+      "salva": "Salva",
+      "salvata": "Modifiche salvate.",
+      "tutte": "Tutte le pulizie",
+      "prenotazione": "Prenotazione",
+      "verificataDa": "Verificata da",
+      "elimina": "Elimina attività",
+      "eliminaAiuto": "Possibile solo finché nessuno l’ha iniziata.",
+      "checklistIntroduzione": "Le voci attive si copiano nelle nuove attività del loro tipo.",
+      "tuttiTipi": "Tutti i tipi",
+      "nessunaVoce": "Nessuna voce.",
+      "nuovaVoce": "Nuova voce",
+      "aggiungiVoce": "Aggiungi voce",
+      "eliminaVoce": "Elimina {{ voce }}",
+      "vista": "Vista",
+      "viste": {
+        "stato": "Per stato",
+        "addetto": "Per addetto"
+      },
+      "aiutoTrascina": "Trascina una camera in un’altra colonna (sul telefono tienila premuta), oppure scegli dal menu sotto la camera.",
+      "spostaIn": "Sposta in…",
+      "assegnaA": "Assegna a…",
+      "addetto": "{{ nome }} {{ cognome }}",
+      "completate": "Completate",
+      "camera": "camera {{ numero }}",
+      "prossima": "Prossima camera",
+      "presa": "Camera {{ numero }}: tocca a te.",
+      "nonDisturbare": "Non disturbare",
+      "rinvii": {
+        "oggi": "Più tardi",
+        "domani": "Domani"
+      },
+      "piano": "piano {{ piano }}",
+      "tempo": "Tempo di pulizia",
+      "minuti": "{{ minuti }} min"
+    },
+    "cruscotto": {
+      "occhiello": "Direzione",
+      "titolo": "Cruscotto",
+      "aggiorna": "Aggiorna",
+      "percentuale": "{{ valore }}%",
+      "gruppi": {
+        "oggi": "Oggi",
+        "daFare": "In attesa",
+        "mese": "Questo mese"
+      },
+      "voci": {
+        "occupazione_oggi": "Occupate {{ in_casa }} camere su {{ camere }}",
+        "arrivi_oggi": "Arrivi",
+        "partenze_oggi": "Partenze",
+        "in_casa": "Prenotazioni in casa",
+        "da_confermare": "Prenotazioni da confermare",
+        "manutenzioni_aperte": "Manutenzioni aperte",
+        "recensioni_da_moderare": "Recensioni da moderare",
+        "incassato_mese": "Incassato dal primo del mese",
+        "prenotato_da_inizio_mese": "Venduto con arrivo nel mese"
+      },
+      "andamento": {
+        "titolo": "Andamento",
+        "periodo": "Periodo",
+        "report": "Scarica report PDF",
+        "periodi": {
+          "settimana": "Questa settimana",
+          "settimanaScorsa": "Settimana scorsa",
+          "mese": "Questo mese",
+          "meseScorso": "Mese scorso",
+          "anno": "Quest'anno"
+        },
+        "indicatori": {
+          "occupazione_percentuale": "Occupazione",
+          "ricavo_camere": "Ricavo camere",
+          "adr": "Prezzo medio a notte (ADR)",
+          "revpar": "Ricavo per camera disponibile (RevPAR)",
+          "notti_vendute": "Notti vendute su {{ notti_disponibili }}"
+        },
+        "variazione": "{{ valore }} sul periodo prima",
+        "senzaConfronto": "Nessun dato nel periodo prima",
+        "grafici": {
+          "occupazione": "Occupazione",
+          "ricavi": "Ricavi camere",
+          "settimana": "Occupazione per giorno della settimana"
+        },
+        "tipologie": "Ricavi per tipologia",
+        "camere": "Ricavi per camera",
+        "camera": "Camera {{ numero }}",
+        "dettaglioRicavo": "{{ prenotazioni }} prenotazioni · {{ notti }} notti",
+        "arrivati": "Soggiorni con arrivo nel periodo.",
+        "canali": "Canali di vendita",
+        "canaliNota": "Prenotazioni create nel periodo.",
+        "campiCanale": {
+          "prenotazioni": "Prenotazioni",
+          "cancellate": "Cancellate",
+          "no_show": "No-show",
+          "notti": "Notti vendute",
+          "valore": "Valore venduto",
+          "durata_media": "Notti per prenotazione",
+          "anticipo_medio_giorni": "Giorni di anticipo in media"
+        },
+        "vuoto": "Nessun soggiorno nel periodo.",
+        "vuotoCanali": "Nessuna prenotazione creata nel periodo."
+      }
+    },
+    "chat": {
+      "occhiello": "Comunicazione",
+      "titolo": "Chat",
+      "presenza": "La mia presenza",
+      "presenze": {
+        "online": "Online",
+        "occupato": "Occupato",
+        "assente": "Assente",
+        "offline": "Offline"
+      },
+      "nuova": "Nuova chat",
+      "elenco": "Conversazioni",
+      "tipi": {
+        "staff": "Staff",
+        "assistenza": "Assistenza"
+      },
+      "filtri": {
+        "stato": "Stato",
+        "assegnate": "Assegnazione",
+        "tutte": "Tutte",
+        "mie": "Le mie",
+        "libere": "Da prendere"
+      },
+      "stati": {
+        "aperta": "Aperte",
+        "chiusa": "Chiuse"
+      },
+      "vuoto": "Nessuna conversazione.",
+      "scegli": "Scegli una conversazione o aprine una nuova.",
+      "senzaNome": "Conversazione",
+      "nonLetti": "messaggi non letti",
+      "nuovaChat": {
+        "colleghi": "Con chi",
+        "nessunCollega": "Nessun collega disponibile.",
+        "nessunoScelto": "Scegli almeno un collega.",
+        "nomeGruppo": "Nome del gruppo",
+        "messaggio": "Primo messaggio",
+        "apri": "Apri la chat"
+      },
+      "messaggio": {
+        "modifica": "Modifica",
+        "salva": "Salva",
+        "modificato": "modificato",
+        "conferma": "Conferma eliminazione",
+        "rispondi": "Rispondi",
+        "elimina": "Elimina"
+      },
+      "scrivi": {
+        "rispondiA": "Rispondi a:",
+        "annullaRisposta": "Annulla la risposta",
+        "togli": "Togli {{ nome }}",
+        "allega": "Allega file",
+        "testo": "Scrivi un messaggio",
+        "invia": "Invia",
+        "troppiAllegati": "Al massimo {{ max }} allegati per messaggio."
+      },
+      "azioni": {
+        "prendi": "Prendi in carico",
+        "rilascia": "Rilascia",
+        "chiudi": "Chiudi",
+        "riapri": "Riapri",
+        "rinomina": "Rinomina",
+        "aggiungi": "Aggiungi",
+        "collega": "Collega da aggiungere",
+        "esci": "Esci dal gruppo",
+        "pdf": "PDF",
+        "esiti": {
+          "presa": "Conversazione presa in carico.",
+          "rilasciata": "Conversazione rilasciata.",
+          "chiusa": "Conversazione chiusa.",
+          "aperta": "Conversazione riaperta.",
+          "rinominata": "Gruppo rinominato.",
+          "aggiunto": "Collega aggiunto.",
+          "uscito": "Sei uscito dal gruppo."
+        }
+      },
+      "conversazione": {
+        "precedenti": "Messaggi precedenti",
+        "vuota": "Ancora nessun messaggio.",
+        "scrive": "{{ nome }} sta scrivendo…",
+        "chiusa": "Conversazione chiusa: riaprila per scrivere.",
+        "operatore": "Operatore",
+        "libera": "da prendere",
+        "partecipanti": "Partecipanti"
+      }
+    },
+    "ruoli": {
+      "admin": "Amministratore",
+      "receptionist": "Receptionist",
+      "housekeeper_senior": "Governante",
+      "housekeeper": "Addetto pulizie",
+      "cliente": "Cliente"
+    },
+    "manutenzione": {
+      "occhiello": "Guasti",
+      "titolo": "Manutenzione",
+      "filtri": {
+        "stato": "Stato",
+        "aperte": "Da risolvere",
+        "tutte": "Tutte",
+        "tuttePriorita": "Tutte",
+        "mie": "Solo le mie"
+      },
+      "stati": {
+        "aperta": "Aperta",
+        "in_corso": "In corso",
+        "risolta": "Risolta",
+        "annullata": "Annullata"
+      },
+      "totale": "{{ totale }} segnalazioni",
+      "vuoto": "Nessuna segnalazione.",
+      "areaComune": "Area comune",
+      "libera": "Da prendere in carico",
+      "nessuno": "Nessuno",
+      "nuova": "Segnala un guasto",
+      "invia": "Invia segnalazione",
+      "inviata": "Segnalazione inviata.",
+      "campi": {
+        "titolo": "Cosa non va",
+        "camera": "Dove",
+        "priorita": "Priorità",
+        "descrizione": "Dettagli",
+        "statoCamera": "Stato della camera",
+        "stato": "Stato",
+        "incaricato": "Se ne occupa",
+        "noteRisoluzione": "Note di risoluzione"
+      },
+      "nonCambiare": "Lascia com’è",
+      "statoCameraAiuto": "Fuori servizio toglie la camera dalla vendita.",
+      "senzaDescrizione": "Nessun dettaglio.",
+      "segnalataDa": "Segnalata da",
+      "risoltaIl": "Risolta il",
+      "gestione": "Gestione",
+      "salva": "Salva",
+      "salvata": "Modifiche salvate.",
+      "tutte": "Tutte le segnalazioni"
+    },
+    "planning": {
+      "occhiello": "Reception",
+      "titolo": "Planning camere",
+      "dal": "Dal",
+      "durata": "Giorni mostrati",
+      "giorni": "{{ giorni }} giorni",
+      "precedente": "Periodo precedente",
+      "successivo": "Periodo successivo",
+      "oggi": "Oggi",
+      "nuova": "Nuova prenotazione",
+      "legenda": "Legenda",
+      "chiusa": "Chiusa",
+      "camera": "Camera",
+      "struttura": "Tutta la struttura",
+      "aiutoTrascina": "Trascina un soggiorno su un'altra camera o su altri giorni (sul telefono tieni premuto). Si spostano solo quelli non ancora cominciati.",
+      "proposta": "Spostare {{ codice }} in camera {{ camera }}, dal {{ arrivo }} al {{ partenza }}? Il prezzo verrà ricalcolato.",
+      "sposta": "Sposta",
+      "spostata": "Prenotazione {{ codice }} spostata.",
+      "soggiorno": "{{ codice }} {{ ospite }}: {{ arrivo }} – {{ partenza }}, {{ stato }}",
+      "vuoto": "Nessuna camera da mostrare.",
+      "nuovaChiusura": "Chiudi camera o struttura",
+      "modificaChiusura": "Modifica chiusura",
+      "aiutoChiusura": "Nei giorni chiusi non si prenota. Le prenotazioni già presenti restano: le trovi elencate qui sotto.",
+      "campi": {
+        "camera": "Camera",
+        "dal": "Chiusa dal",
+        "riapre": "Riapre il",
+        "motivo": "Motivo"
+      },
+      "conflitti": "Queste prenotazioni cadono nella chiusura:",
+      "salva": "Salva",
+      "chiudi": "Chiudi",
+      "riapri": "Riapri"
+    },
+    "listino": {
+      "salva": "Salva",
+      "crea": "Crea",
+      "annulla": "Annulla",
+      "salvata": "Modifiche salvate.",
+      "cerca": "Cerca",
+      "altre": "Mostra le altre: {{ totale }}",
+      "archiviate": "Mostra anche disattivate e scadute: {{ totale }}",
+      "nessuna": "Nessuna voce trovata."
+    },
+    "tariffe": {
+      "occhiello": "Listino",
+      "titolo": "Tariffe",
+      "sezioni": "Sezioni del listino",
+      "disattivato": "Disattivato",
+      "tutteLeTipologie": "Tutte le tipologie",
+      "vuotoSenzaLimite": "Vuoto = nessun limite.",
+      "rimborsabile": "Rimborsabile",
+      "nonRimborsabile": "Non rimborsabile",
+      "finoAl": "fino al {{ data }}",
+      "notti": "almeno {{ notti }} notti",
+      "tipi": {
+        "percentuale": "Percentuale",
+        "importo": "Importo",
+        "prezzo_fisso": "Prezzo fisso"
+      },
+      "giorni": {
+        "1": "Lun",
+        "2": "Mar",
+        "4": "Mer",
+        "8": "Gio",
+        "16": "Ven",
+        "32": "Sab",
+        "64": "Dom"
+      },
+      "campi": {
+        "nome": "Nome",
+        "descrizione": "Descrizione",
+        "tipo_variazione": "Tipo di variazione",
+        "valore_variazione": "Variazione",
+        "rimborsabile": "Rimborsabile",
+        "ore_cancellazione_gratuita": "Cancellazione gratuita fino a (ore prima)",
+        "penale_percentuale": "Penale (%)",
+        "acconto_percentuale": "Acconto (%)",
+        "predefinito": "Predefinito",
+        "attivo": "Attivo",
+        "attiva": "Attiva",
+        "ordine": "Ordine",
+        "tipologia_id": "Tipologia",
+        "data_inizio": "Dal",
+        "data_fine": "Al",
+        "valore": "Valore",
+        "giorni_settimana": "Giorni della settimana",
+        "soggiorno_minimo": "Soggiorno minimo (notti)",
+        "priorita": "Priorità",
+        "tipo_sconto": "Tipo di sconto",
+        "soggiorno_dal": "Soggiorni dal",
+        "soggiorno_al": "Soggiorni al",
+        "prenotabile_dal": "Prenotabile dal",
+        "prenotabile_al": "Prenotabile al",
+        "ospiti_min": "Ospiti minimi",
+        "ospiti_max": "Ospiti massimi",
+        "notti_min": "Notti minime",
+        "codice": "Codice",
+        "valido_dal": "Valido dal",
+        "valido_al": "Valido al",
+        "importo_minimo": "Importo minimo",
+        "utilizzi_max": "Utilizzi in tutto",
+        "utilizzi_per_utente": "Utilizzi per cliente",
+        "prezzo": "Prezzo",
+        "valida_dal": "Valida dal",
+        "valida_al": "Valida al",
+        "importo_notte": "Importo a notte",
+        "notti_max": "Notti massime tassate",
+        "eta_esenzione": "Esenti sotto i (anni)"
+      },
+      "piani": {
+        "titolo": "Piani tariffari",
+        "aiuto": "Variazione sul prezzo del giorno e regole di cancellazione e acconto. Il predefinito è quello proposto sul sito.",
+        "nuova": "Nuovo piano",
+        "vuoto": "Nessun piano tariffario.",
+        "modifica": "Modifica piano",
+        "elimina": "Elimina piano",
+        "eliminaAiuto": "Le prenotazioni già fatte tengono le loro regole.",
+        "eliminaConferma": "Eliminare il piano?",
+        "variazioneAiuto": "Negativa per uno sconto, positiva per un rincaro."
+      },
+      "stagioni": {
+        "titolo": "Stagioni",
+        "aiuto": "Periodi con prezzo diverso. Se due si sovrappongono vale quella con priorità più alta.",
+        "nuova": "Nuova stagione",
+        "vuoto": "Nessuna stagione.",
+        "modifica": "Modifica stagione",
+        "elimina": "Elimina stagione",
+        "eliminaAiuto": "I preventivi la ignorano da subito.",
+        "eliminaConferma": "Eliminare la stagione?",
+        "valoreAiuto": "Percentuale o importo in più (negativo per scendere); con prezzo fisso, il prezzo a notte.",
+        "prioritaAiuto": "Più alta vince sulle altre stagioni dello stesso giorno.",
+        "nessunGiorno": "Scegli almeno un giorno."
+      },
+      "promozioni": {
+        "titolo": "Promozioni",
+        "aiuto": "Sconti applicati da soli ai soggiorni che rientrano nelle condizioni.",
+        "nuova": "Nuova promozione",
+        "vuoto": "Nessuna promozione.",
+        "modifica": "Modifica promozione",
+        "elimina": "Elimina promozione",
+        "eliminaAiuto": "Le prenotazioni già fatte tengono lo sconto.",
+        "eliminaConferma": "Eliminare la promozione?"
+      },
+      "codici": {
+        "titolo": "Codici sconto",
+        "aiuto": "Codici da dare ai clienti, che li inseriscono quando prenotano.",
+        "nuova": "Nuovo codice",
+        "vuoto": "Nessun codice sconto.",
+        "modifica": "Modifica codice",
+        "elimina": "Elimina codice",
+        "eliminaAiuto": "Chi l’ha già usato tiene lo sconto.",
+        "eliminaConferma": "Eliminare il codice?",
+        "codiceAiuto": "Lettere maiuscole, numeri, - e _.",
+        "usati": "usato {{ usati }} volte",
+        "usatiSu": "usato {{ usati }} volte su {{ massimo }}"
+      },
+      "pacchetti": {
+        "titolo": "Pacchetti",
+        "aiuto": "Soggiorno e servizi a prezzo fisso, mostrati sul sito con le loro foto.",
+        "nuova": "Nuovo pacchetto",
+        "vuoto": "Nessun pacchetto.",
+        "modifica": "Modifica pacchetto",
+        "elimina": "Elimina pacchetto",
+        "eliminaAiuto": "Sparisce dal sito; le prenotazioni già fatte restano.",
+        "eliminaConferma": "Eliminare il pacchetto?",
+        "servizi": "Servizi inclusi",
+        "quantita": "Quantità di {{ servizio }}",
+        "nessunExtra": "Nessun servizio extra attivo."
+      },
+      "tasse": {
+        "titolo": "Tassa di soggiorno",
+        "aiuto": "Imposta del comune per ospite e per notte. Un mese prima della fine, senza una successiva, arriva un avviso.",
+        "nuova": "Nuovo periodo",
+        "vuoto": "Nessuna tassa di soggiorno.",
+        "modifica": "Modifica tassa",
+        "elimina": "Elimina tassa",
+        "eliminaAiuto": "I soggiorni nel periodo non la conteggiano più.",
+        "eliminaConferma": "Eliminare la tassa?",
+        "aNotte": "{{ importo }} a notte per ospite",
+        "importoAiuto": "Per ospite e per notte.",
+        "esenzioneAiuto": "Vuoto = nessuna esenzione per età."
+      }
+    },
+    "calendari": {
+      "occhiello": "Portali",
+      "titolo": "Calendari",
+      "sezioni": "Sezioni dei calendari",
+      "sezione": {
+        "importa": "Da importare",
+        "esporta": "Da esportare"
+      },
+      "campi": {
+        "camera": "Camera",
+        "scegliCamera": "Scegli la camera",
+        "canale": "Portale",
+        "nome": "Nome",
+        "url": "Link iCal del portale",
+        "attivo": "Attivo"
+      },
+      "esterni": {
+        "titolo": "Calendari dei portali",
+        "aiuto": "Ogni 15 minuti le date occupate sui portali si bloccano anche qui, camera per camera.",
+        "nuova": "Nuovo calendario",
+        "modifica": "Modifica calendario",
+        "vuoto": "Nessun calendario collegato.",
+        "elimina": "Elimina calendario",
+        "eliminaAiuto": "Le date bloccate da questo calendario tornano libere.",
+        "eliminaConferma": "Sì, elimina",
+        "disattivato": "disattivato",
+        "maiSincronizzato": "Mai sincronizzato",
+        "esitoOk": "Letto",
+        "esitoErrore": "Non letto",
+        "errori": "{{ errori }} errori di fila",
+        "urlAiuto": "Lo trovi nelle impostazioni del calendario sul portale (esportazione iCal).",
+        "attivoAiuto": "Disattivato, le sue date bloccate tornano libere finché non lo riattivi.",
+        "sincronizza": "Sincronizza ora",
+        "sincronizzaAiuto": "Legge subito il calendario del portale, senza aspettare il prossimo giro.",
+        "dettaglio": "Motivo: {{ testo }}",
+        "sincronizzato": "Sincronizzato: {{ eventi }} prenotazioni lette"
+      },
+      "esporta": {
+        "titolo": "Link per i portali",
+        "aiuto": "Copia il link di ogni camera nel portale: così vede le date già occupate qui.",
+        "vuoto": "Nessuna camera.",
+        "senzaLink": "Questa camera non ha ancora un link.",
+        "crea": "Crea link",
+        "nuovo": "Nuovo link",
+        "avviso": "Il link attuale smette subito di funzionare: dovrai incollare quello nuovo in ogni portale.",
+        "conferma": "Sì, nuovo link"
+      }
+    },
+    "contenuti": {
+      "occhiello": "Sito",
+      "titolo": "Contenuti",
+      "sezioni": "Sezioni dei contenuti",
+      "sezione": {
+        "foto": "Foto del sito",
+        "pagine": "Pagine del sito",
+        "documenti": "Documenti legali",
+        "eventi": "Eventi in zona"
+      },
+      "foto": {
+        "struttura": {
+          "titolo": "Galleria della struttura",
+          "aiuto": "JPEG, PNG o WebP. Spazi comuni, esterni e dintorni."
+        }
+      },
+      "documenti": {
+        "titolo": "Documenti legali",
+        "aiuto": "Privacy, termini e cookie policy. Una bozza si modifica finché non la pubblichi.",
+        "nuova": "Nuovo documento",
+        "vuoto": "Nessun documento.",
+        "modifica": "Modifica bozza",
+        "elimina": "Elimina bozza",
+        "eliminaAiuto": "La bozza sparisce. I documenti pubblicati restano.",
+        "eliminaConferma": "Sì, elimina",
+        "tipi": {
+          "privacy": "Privacy",
+          "termini": "Termini e condizioni",
+          "cookie": "Cookie policy"
+        },
+        "campi": {
+          "tipo": "Documento",
+          "lingua": "Lingua",
+          "versione": "Versione",
+          "contenuto": "Testo"
+        },
+        "versioneAiuto": "Es. 2026.1: diversa da quelle già usate per questo documento e lingua.",
+        "bozza": "Bozza",
+        "pubblicatoIl": "Pubblicato il {{ data }}",
+        "pubblicatoAiuto": "Pubblicato: non si modifica più. Per cambiarlo crea una nuova versione.",
+        "nuovaVersione": "Nuova versione",
+        "pubblica": "Pubblica",
+        "pubblicaAiuto": "Da quel momento è la versione in vigore sul sito e non si modifica più.",
+        "pubblicaConferma": "Sì, pubblica",
+        "pubblicato": "Documento pubblicato."
+      },
+      "eventi": {
+        "titolo": "Eventi in zona",
+        "aiuto": "Fiere, feste ed eventi che portano gente in zona. Servono al Report: nelle loro date il prezzo suggerito sale, tanto più quanto è alto l'impatto. Il listino non cambia da solo.",
+        "nuova": "Nuovo evento",
+        "vuoto": "Nessun evento.",
+        "modifica": "Modifica evento",
+        "elimina": "Elimina evento",
+        "eliminaAiuto": "Non pesa più sul prezzo suggerito.",
+        "eliminaConferma": "Sì, elimina",
+        "tipi": {
+          "festivita": "Festività",
+          "evento_locale": "Evento locale",
+          "fiera": "Fiera",
+          "altro": "Altro"
+        },
+        "campi": {
+          "titolo": "Titolo",
+          "tipo": "Tipo",
+          "data_inizio": "Dal",
+          "data_fine": "Al",
+          "impatto": "Impatto",
+          "note": "Note"
+        },
+        "impatto": "impatto {{ impatto }}/10",
+        "impattoAiuto": "Da 1 (poca gente in più) a 10 (tutto pieno): più è alto, più sale il prezzo suggerito in quelle date."
+      }
+    },
+    "traduzioni": {
+      "titolo": "Traduzioni",
+      "aiuto": "Il testo italiano è quello del modulo. Un campo vuoto usa l’italiano.",
+      "nessunaLingua": "Il sito è solo in italiano: attiva altre lingue nelle impostazioni.",
+      "salva": "Salva traduzioni",
+      "salvate": "Traduzioni salvate.",
+      "campi": {
+        "nome": "Nome",
+        "descrizione": "Descrizione",
+        "letti": "Letti",
+        "domanda": "Domanda",
+        "risposta": "Risposta",
+        "titolo": "Titolo",
+        "testo": "Testo"
+      }
+    },
+    "faq": {
+      "occhiello": "Sito",
+      "titolo": "Domande frequenti",
+      "elenco": {
+        "titolo": "Domande",
+        "aiuto": "In ordine di categoria e poi di numero, come sul sito.",
+        "nuova": "Nuova domanda",
+        "vuoto": "Nessuna domanda frequente.",
+        "elimina": "Elimina domanda",
+        "eliminaAiuto": "Sparisce dal sito insieme alle sue traduzioni.",
+        "eliminaConferma": "Sì, elimina"
+      },
+      "modifica": "Modifica domanda",
+      "nuova": "Nuova domanda",
+      "campi": {
+        "domanda": "Domanda",
+        "risposta": "Risposta",
+        "categoria": "Categoria",
+        "ordine": "Ordine",
+        "pubblicata": "Visibile sul sito"
+      },
+      "categoriaAiuto": "Raggruppa le domande sul sito (es. Arrivo, Colazione).",
+      "ordineAiuto": "I numeri più bassi vengono prima.",
+      "senzaCategoria": "Senza categoria",
+      "nascosta": "nascosta"
+    },
+    "recensioni": {
+      "occhiello": "Ospiti",
+      "titolo": "Recensioni",
+      "tutte": "Tutte le recensioni",
+      "filtri": {
+        "stato": "Stato",
+        "tutte": "Tutti gli stati",
+        "negative": "Solo negative"
+      },
+      "stati": {
+        "in_attesa": "In attesa",
+        "pubblicata": "Pubblicata",
+        "rifiutata": "Rifiutata"
+      },
+      "totale": "Recensioni: {{ totale }}",
+      "vuoto": "Nessuna recensione con questi filtri.",
+      "senzaTesto": "Solo voto, senza commento",
+      "senzaTitolo": "Recensione senza titolo",
+      "senzaCommento": "L'ospite ha lasciato solo il voto.",
+      "anonima": "Sul sito compare senza il nome dell'ospite.",
+      "campi": {
+        "prenotazione": "Prenotazione",
+        "soggiorno": "Soggiorno",
+        "paese": "Paese",
+        "moderata": "Moderata",
+        "commento": "Commento",
+        "risposta": "Risposta della struttura"
+      },
+      "moderazione": "Moderazione",
+      "moderazioneAiuto": {
+        "in_attesa": "Non è ancora sul sito: pubblicala o rifiutala.",
+        "pubblicata": "È visibile sul sito.",
+        "rifiutata": "Non compare sul sito."
+      },
+      "rispostaAiuto": "Compare sul sito sotto la recensione. Lasciala vuota per toglierla.",
+      "azioni": {
+        "pubblicata": "Pubblica",
+        "rifiutata": "Rifiuta",
+        "rispondi": "Salva risposta"
+      },
+      "esiti": {
+        "pubblicata": "Recensione pubblicata.",
+        "rifiutata": "Recensione rifiutata.",
+        "risposta": "Risposta salvata.",
+        "rispostaTolta": "Risposta tolta."
+      }
+    },
+    "pagamenti": {
+      "occhiello": "Cassa",
+      "titolo": "Pagamenti",
+      "totale": "Movimenti: {{ totale }}",
+      "vuoto": "Nessun movimento con questi filtri."
+    },
+    "rettifica": {
+      "titoli": {
+        "annulla": "Annulla incasso",
+        "rimborsa": "Rimborsa"
+      },
+      "aiuto": {
+        "annulla": "Per un incasso registrato per errore: non restituisce denaro.",
+        "rimborsa": "Stripe e PayPal restituiscono il denaro all'ospite; contanti, POS e bonifico si registrano soltanto."
+      },
+      "importo": "Importo da rimborsare",
+      "importoAiuto": "Vuoto = tutto l'incasso.",
+      "forza": "Anche oltre quanto pagato in più (es. gesto commerciale)",
+      "motivo": "Motivo",
+      "conferma": {
+        "annulla": "Annulla incasso",
+        "rimborsa": "Conferma rimborso"
+      },
+      "esiti": {
+        "annulla": "Incasso annullato.",
+        "rimborsa": "Rimborso registrato."
+      }
+    },
+    "servizi": {
+      "occhiello": "Struttura",
+      "titolo": "Servizi",
+      "elenco": {
+        "titolo": "Catalogo",
+        "aiuto": "Le dotazioni si spuntano nelle camere, gli extra si acquistano con la prenotazione.",
+        "nuova": "Nuovo servizio",
+        "vuoto": "Nessun servizio.",
+        "elimina": "Elimina servizio",
+        "eliminaAiuto": "Sparisce da camere, pacchetti e sito; le prenotazioni già fatte restano.",
+        "eliminaConferma": "Eliminare il servizio?"
+      },
+      "nuovo": "Nuovo servizio",
+      "modifica": "Modifica servizio",
+      "tipi": {
+        "dotazione": "Dotazione",
+        "extra": "Extra"
+      },
+      "gruppi": {
+        "dotazione": "Dotazioni",
+        "extra": "Extra a pagamento"
+      },
+      "campi": {
+        "nome": "Nome",
+        "tipo": "Tipo",
+        "descrizione": "Descrizione",
+        "icona": "Icona",
+        "prezzo": "Prezzo",
+        "calcolo_prezzo": "Il prezzo vale",
+        "aliquota_iva": "Aliquota IVA (%)",
+        "ordine": "Ordine",
+        "attivo": "Attivo"
+      },
+      "iconaAiuto": "Nome di un’icona Material Symbols, es. wifi o local_parking.",
+      "aliquotaAiuto": "Vuota: vale quella predefinita delle impostazioni."
+    },
+    "fatture": {
+      "titolo": "Fatture",
+      "introduzione": "Le bozze nascono dalla scheda della prenotazione.",
+      "cerca": "Cerca per intestatario, codice fiscale o partita IVA",
+      "anno": "Anno",
+      "totale": "Documenti trovati: {{ totale }}",
+      "vuoto": "Nessuna fattura con questi filtri.",
+      "tutte": "Tutte le fatture",
+      "tipi": {
+        "TD01": "Fattura",
+        "TD04": "Nota di credito"
+      },
+      "stati": {
+        "bozza": "Bozza",
+        "da_inviare": "Da inviare",
+        "inviata": "Inviata",
+        "consegnata": "Consegnata",
+        "mancata_consegna": "Mancata consegna",
+        "scartata": "Scartata",
+        "accettata": "Accettata",
+        "rifiutata": "Rifiutata"
+      },
+      "prenotazione": "Prenotazione",
+      "origine": "Fattura stornata",
+      "apri": "Apri",
+      "imponibile": "Imponibile",
+      "imposta": "IVA",
+      "esente": "Non imponibile",
+      "totaleDocumento": "Totale",
+      "nessunaPrenotazione": "Nessuna fattura per questa prenotazione.",
+      "altroIntestatario": "Intesta a un altro (es. un’azienda)",
+      "creaBozza": "Crea bozza di fattura",
+      "salvata": "Bozza salvata.",
+      "emessa": "Fattura emessa e inviata al cliente.",
+      "intestatario": {
+        "titolo": "Intestatario",
+        "aiuto": "Privato: nome, cognome e codice fiscale. Azienda: denominazione e partita IVA.",
+        "denominazione": "Denominazione",
+        "nome": "Nome",
+        "cognome": "Cognome",
+        "codice_fiscale": "Codice fiscale",
+        "partita_iva": "Partita IVA",
+        "indirizzo": "Indirizzo",
+        "cap": "CAP",
+        "comune": "Comune",
+        "provincia": "Provincia (sigla)",
+        "nazione": "Nazione (sigla)",
+        "codice_destinatario": "Codice destinatario",
+        "codiceAiuto": "0000000 se arriva per PEC o nel cassetto fiscale.",
+        "pec": "PEC"
+      },
+      "righe": {
+        "titolo": "Righe",
+        "aiuto": "Prezzi IVA esclusa; un prezzo negativo è uno sconto.",
+        "descrizione": "Descrizione",
+        "quantita": "Quantità",
+        "prezzo": "Prezzo unitario",
+        "aliquota": "IVA (%)",
+        "natura": "Natura IVA",
+        "naturaAiuto": "Solo con IVA 0, es. N1 o N2.2.",
+        "togli": "Togli riga",
+        "aggiungi": "Aggiungi riga"
+      },
+      "bozza": {
+        "titolo": "Modifica bozza",
+        "salva": "Salva bozza",
+        "emetti": "Emetti fattura",
+        "emettiAiuto": "Prende il numero, genera XML e PDF e manda il PDF al cliente. Poi non si modifica più.",
+        "salvaPrima": "Salva le modifiche prima di emettere.",
+        "emettiConferma": "Sì, emetti"
+      },
+      "elimina": {
+        "titolo": "Elimina bozza",
+        "aiuto": "La bozza non ha numero: eliminarla non lascia buchi nella numerazione.",
+        "conferma": "Sì, elimina"
+      },
+      "sdi": {
+        "titolo": "Sistema di Interscambio",
+        "aiuto": "Registra qui lo stato della trasmissione e la ricevuta dello SDI.",
+        "id": "Identificativo SDI",
+        "esito": "Esito SDI",
+        "salva": "Salva esito",
+        "salvato": "Esito SDI salvato."
+      },
+      "file": {
+        "titolo": "File",
+        "aiuto": "Rigenerali dopo aver corretto i dati fiscali della struttura.",
+        "pdf": "Scarica PDF",
+        "xml": "Scarica XML",
+        "rigenera": "Rigenera file",
+        "rigenerati": "File rigenerati."
+      },
+      "nota": {
+        "titolo": "Nota di credito",
+        "aiuto": "Storna tutta la fattura: la nota nasce già emessa e va al cliente.",
+        "motivo": "Motivo",
+        "storna": "Storna con nota di credito",
+        "conferma": "Sì, emetti la nota"
+      }
+    },
+    "report": {
+      "titolo": "Report",
+      "introduzione": "Prezzi suggeriti per i prossimi giorni e i conti dell'anno: incassi e imposta di soggiorno.",
+      "contiAnno": "Conti del {{ anno }}",
+      "anno": "Anno",
+      "mese": "Mese",
+      "totale": "Totale",
+      "vuoto": "Nessun movimento nel {{ anno }}.",
+      "incassi": {
+        "titolo": "Incassi per metodo",
+        "nota": "Importi netti: i rimborsi sono già sottratti."
+      },
+      "tassa": {
+        "titolo": "Imposta di soggiorno",
+        "nota": "Mese per mese, per la dichiarazione al Comune.",
+        "prenotazioni": "Prenotazioni",
+        "ospiti": "Ospiti",
+        "notti": "Notti",
+        "tassa": "Imposta"
+      },
+      "suggerimenti": {
+        "titolo": "Prezzi suggeriti",
+        "introduzione": "Date dei prossimi 30 giorni in cui il prezzo merita una revisione, in base all'occupazione e agli eventi in zona. I suggerimenti non modificano il listino: l'applicazione resta a tua discrezione.",
+        "tipologia": "Tipologia",
+        "aiutoTipologia": "Scegline una per vedere il prezzo suggerito.",
+        "tutte": "Tutte",
+        "occupazione": "Già venduto",
+        "prezzo": "Prezzo suggerito",
+        "vuoto": "Nei prossimi 30 giorni non ci sono prezzi da rivedere.",
+        "motivi": {
+          "occupazione_alta": "Occupazione oltre il {{ valore }}%: domanda forte",
+          "occupazione_buona": "Occupazione oltre il {{ valore }}%: buona domanda",
+          "occupazione_bassa": "Occupazione sotto il {{ valore }}%",
+          "ultimo_minuto": "Mancano meno di {{ valore }} giorni",
+          "evento": "Evento: {{ valore }}"
+        }
+      }
+    },
+    "utenti": {
+      "titolo": "Utenti",
+      "introduzione": "Gli account dello staff e dei clienti. Lo staff nuovo si crea da qui, i clienti si registrano dal sito.",
+      "cerca": "Cerca per nome, cognome o email",
+      "attivi": "Attivi",
+      "disattivati": "Disattivati",
+      "disattivato": "Disattivato",
+      "account": "Account",
+      "totale": "Account trovati: {{ totale }}",
+      "vuoto": "Nessun account con questi filtri.",
+      "tutti": "Tutti gli utenti",
+      "campi": {
+        "nome": "Nome",
+        "cognome": "Cognome",
+        "email": "Email",
+        "telefono": "Telefono",
+        "ruolo": "Ruolo",
+        "attivo": "Account attivo"
+      },
+      "nuovo": {
+        "titolo": "Nuovo membro dello staff",
+        "aiuto": "L'account è subito attivo: comunica tu la password, potrà cambiarla dal suo profilo.",
+        "crea": "Crea account"
+      },
+      "dati": "Dati dell'account",
+      "schedaOspite": "Apri la scheda ospite",
+      "ruoloAiuto": "Cambiando ruolo le sue sessioni aperte si chiudono.",
+      "attivoAiuto": "Un account disattivato non può accedere; le sue sessioni aperte si chiudono.",
+      "salva": "Salva",
+      "salvato": "Account aggiornato.",
+      "accessi": {
+        "titolo": "Accessi",
+        "creato": "Creato il",
+        "verificata": "Email verificata",
+        "ultimo": "Ultimo accesso",
+        "no": "No",
+        "mai": "Mai"
+      },
+      "elimina": {
+        "titolo": "Elimina account",
+        "aiuto": "Non potrà più accedere. Prenotazioni, fatture e anagrafica restano per gli obblighi di legge.",
+        "conferma": "Sì, elimina"
+      }
+    },
+    "permessi": {
+      "titolo": "Ruoli e permessi",
+      "introduzione": "Cosa può fare ogni ruolo dello staff e chi può scrivere a chi nella chat interna.",
+      "permessi": "Permessi",
+      "admin": "L'amministratore ha sempre tutti i permessi. Le modifiche valgono subito per chi ha quel ruolo.",
+      "salva": "Salva permessi",
+      "salvati": "Permessi salvati.",
+      "moduli": {
+        "camere": "Camere",
+        "tariffe": "Tariffe e calendari",
+        "prenotazioni": "Prenotazioni",
+        "ospiti": "Ospiti",
+        "pagamenti": "Pagamenti e fatture",
+        "pulizie": "Pulizie e manutenzione",
+        "recensioni": "Recensioni",
+        "chat": "Assistenza clienti",
+        "contenuti": "Contenuti del sito",
+        "utenti": "Utenti",
+        "impostazioni": "Impostazioni",
+        "analytics": "Report"
+      },
+      "voci": {
+        "camere": {
+          "gestisci": "Gestire camere, tipologie e servizi"
+        },
+        "tariffe": {
+          "gestisci": "Gestire periodi, piani, promozioni, codici sconto e tassa di soggiorno"
+        },
+        "calendari": {
+          "gestisci": "Gestire date bloccate e calendari esterni"
+        },
+        "prenotazioni": {
+          "leggi": "Vedere tutte le prenotazioni",
+          "gestisci": "Creare, modificare e cancellare prenotazioni"
+        },
+        "checkin": {
+          "gestisci": "Registrare arrivi e partenze, dati e documenti degli ospiti"
+        },
+        "ospiti": {
+          "gestisci": "Gestire l'anagrafica ospiti"
+        },
+        "alloggiati": {
+          "invia": "Inviare le schedine ad Alloggiati Web"
+        },
+        "pagamenti": {
+          "leggi": "Vedere i pagamenti",
+          "registra": "Registrare incassi in struttura e rimborsi"
+        },
+        "fatture": {
+          "gestisci": "Emettere fatture e note di credito"
+        },
+        "pulizie": {
+          "leggi": "Vedere le pulizie",
+          "esegui": "Aggiornare le proprie pulizie",
+          "gestisci": "Assegnare e verificare le pulizie"
+        },
+        "manutenzione": {
+          "segnala": "Segnalare guasti e problemi",
+          "gestisci": "Gestire le segnalazioni di manutenzione"
+        },
+        "recensioni": {
+          "modera": "Pubblicare, rifiutare e rispondere alle recensioni"
+        },
+        "chat": {
+          "assistenza": "Rispondere a clienti e visitatori in chat"
+        },
+        "faq": {
+          "gestisci": "Gestire le FAQ"
+        },
+        "contenuti": {
+          "gestisci": "Gestire immagini, testi, traduzioni e documenti legali"
+        },
+        "utenti": {
+          "gestisci": "Gestire gli account dello staff e dei clienti"
+        },
+        "impostazioni": {
+          "gestisci": "Modificare le impostazioni della struttura"
+        },
+        "analytics": {
+          "leggi": "Vedere statistiche e report"
+        }
+      },
+      "chat": {
+        "titolo": "Chat interna",
+        "aiuto": "Spunta chi può scriversi: la regola vale nei due sensi. I colleghi dello stesso ruolo si parlano nel gruppo della squadra.",
+        "colleghi": "Tra {{ ruolo }}",
+        "coppia": "{{ a }} e {{ b }}",
+        "salva": "Salva regole",
+        "salvate": "Regole della chat salvate."
+      },
+      "ruolo": "Ruolo",
+      "ruoloAiuto": "Scegli un ruolo: sono spuntati i permessi che ha già."
+    },
+    "registro": {
+      "titolo": "Registro attività",
+      "introduzione": "Chi ha creato, cambiato o eliminato prenotazioni, pagamenti e fatture, e quando. Le modifiche più recenti sono in cima.",
+      "tabella": "Cosa",
+      "azione": "Azione",
+      "tabelle": {
+        "prenotazioni": "Prenotazioni",
+        "pagamenti": "Pagamenti",
+        "fatture": "Fatture"
+      },
+      "azioni": {
+        "inserimento": "Creazione",
+        "modifica": "Modifica",
+        "eliminazione": "Eliminazione"
+      },
+      "record": {
+        "prenotazioni": "Prenotazione n. {{id}}",
+        "pagamenti": "Pagamento n. {{id}}",
+        "fatture": "Fattura n. {{id}}"
+      },
+      "sistema": "Sistema",
+      "totale": "{{totale}} modifiche",
+      "vuoto": "Nessuna modifica con questi filtri.",
+      "storia": "Storia delle modifiche",
+      "campi": {
+        "codice": "Codice",
+        "stato": "Stato",
+        "camera_id": "Camera (n.)",
+        "ospite_id": "Ospite (n.)",
+        "data_arrivo": "Arrivo",
+        "data_partenza": "Partenza",
+        "adulti": "Adulti",
+        "bambini": "Bambini",
+        "totale": "Totale",
+        "penale_applicata": "Penale",
+        "prenotazione_id": "Prenotazione (n.)",
+        "tipo": "Tipo",
+        "metodo": "Metodo",
+        "importo": "Importo",
+        "id_transazione": "Transazione",
+        "stato_sdi": "Stato SDI",
+        "numero": "Numero"
+      }
+    },
+    "impostazioni": {
+      "titolo": "Impostazioni",
+      "introduzione": "Dati della struttura, orari, regole e aspetto del sito. Ogni gruppo si salva per conto suo; il sito si aggiorna subito.",
+      "salva": "Salva",
+      "salvate": "Impostazioni salvate",
+      "temaAiuto": "Chi visita il sito può sempre cambiarlo sul suo dispositivo.",
+      "logo": {
+        "titolo": "Logo",
+        "aiuto": "Compare nell'arco della home, nella testata, nel piè di pagina e come icona della scheda del browser. Meglio un PNG quadrato con lo sfondo trasparente. Si usa la prima immagine.",
+        "descrizione": "Logo della struttura"
+      },
+      "gruppi": {
+        "struttura": "Struttura",
+        "soggiorno": "Soggiorno",
+        "prenotazioni": "Prenotazioni",
+        "fiscale": "Fisco e pagamenti",
+        "fedelta": "Fedeltà",
+        "pulizie": "Pulizie",
+        "localizzazione": "Lingue e fuso orario",
+        "chat": "Chat",
+        "aspetto": "Aspetto del sito"
+      },
+      "chiavi": {
+        "struttura_nome": "Nome",
+        "struttura_ragione_sociale": "Ragione sociale",
+        "struttura_partita_iva": "Partita IVA",
+        "struttura_codice_fiscale": "Codice fiscale",
+        "struttura_regime_fiscale": "Regime fiscale (es. RF01)",
+        "struttura_indirizzo": "Indirizzo",
+        "struttura_cap": "CAP",
+        "struttura_comune": "Comune",
+        "struttura_provincia": "Provincia (sigla)",
+        "struttura_email": "Email",
+        "struttura_telefono": "Telefono",
+        "struttura_cin": "CIN",
+        "struttura_iban": "IBAN",
+        "struttura_intestatario_conto": "Intestatario del conto",
+        "orario_checkin": "Check-in dalle",
+        "orario_checkout": "Check-out entro le",
+        "prenotazioni_scadenza_ore": "Ore per pagare una prenotazione in attesa",
+        "blocco_checkout_minuti": "Minuti di blocco della camera dopo il check-out",
+        "valuta": "Valuta (es. EUR)",
+        "iva_soggiorno": "IVA sul soggiorno (%)",
+        "iva_servizi": "IVA sui servizi (%)",
+        "limite_contanti": "Limite pagamenti in contanti",
+        "fedelta_punti_per_notte": "Punti fedeltà per notte",
+        "pulizie_richiedi_ispezione": "Le camere pulite vanno ispezionate",
+        "pulizie_autoassegna": "Assegna le pulizie a turno ogni mattina",
+        "fuso_orario": "Fuso orario",
+        "lingua_predefinita": "Lingua predefinita",
+        "lingue_attive": "Lingue del sito",
+        "chat_conservazione_giorni": "Giorni di conservazione delle chat chiuse",
+        "chat_riepilogo_email_minuti": "Minuti tra due email di messaggi non letti",
+        "aspetto_colore": "Colore principale",
+        "aspetto_tema": "Tema predefinito"
+      },
+      "sfondo": {
+        "home": {
+          "titolo": "Sfondo della home · tema chiaro",
+          "aiuto": "Foto (JPEG, PNG o WebP) o video (MP4 o WebM, fino a 50 MB) a tutto schermo dietro la copertina. Si usa il primo: meglio un video breve, in orizzontale e senza audio. Senza sfondo scuro vale anche col tema scuro.",
+          "descrizione": "Sfondo della home"
+        },
+        "home_scuro": {
+          "titolo": "Sfondo della home · tema scuro",
+          "aiuto": "Come lo sfondo chiaro, ma per chi usa il tema scuro. Se manca si usa quello chiaro.",
+          "descrizione": "Sfondo della home"
+        }
+      }
+    },
+    "pagine": {
+      "scegli": "Pagina da modificare",
+      "nomi": {
+        "home": "Home",
+        "struttura": "Struttura",
+        "attivita": "Attività",
+        "camere": "Camere"
+      },
+      "homeAiuto": "Le sezioni della home compaiono in fondo, dopo le recensioni. Foto e testi della copertina stanno nelle impostazioni.",
+      "descrizione": "Descrizione",
+      "descrizioneAiuto": "Sotto il titolo, sopra la foto di copertina. Vuota = resta il testo predefinito.",
+      "paragrafo": "Paragrafo",
+      "paragrafoAiuto": "Sotto la copertina, prima delle tipologie. Vuoto = non compare.",
+      "descrizioneSalvata": "Descrizione salvata.",
+      "foto": {
+        "titolo": "Foto di copertina",
+        "aiuto": "JPEG, PNG o WebP. La prima riempie lo schermo in cima alla pagina."
+      },
+      "immagine": {
+        "titolo": "Immagine della sezione",
+        "aiuto": "JPEG, PNG o WebP. Si usa la prima; senza immagine il testo va al centro."
+      },
+      "sezioni": {
+        "titolo": "Sezioni",
+        "aiuto": "Blocchi immagine-testo: sul sito si alternano a destra e a sinistra.",
+        "nuova": "Nuova sezione",
+        "vuoto": "Nessuna sezione.",
+        "elimina": "Elimina sezione",
+        "eliminaAiuto": "La sezione sparisce dal sito insieme alla sua immagine.",
+        "eliminaConferma": "Sì, elimina"
+      },
+      "modifica": "Modifica sezione",
+      "nuova": "Nuova sezione",
+      "campi": {
+        "titolo": "Titolo",
+        "testo": "Testo",
+        "ordine": "Ordine",
+        "pubblicata": "Visibile sul sito"
+      },
+      "ordineAiuto": "Le sezioni con il numero più basso vengono prima.",
+      "nascosta": "nascosta"
+    }
+  },
+  "anagrafica": {
+    "campi": {
+      "nome": "Nome",
+      "cognome": "Cognome",
+      "sesso": "Sesso",
+      "data_nascita": "Data di nascita",
+      "cittadinanza_codice": "Cittadinanza",
+      "stato_nascita_codice": "Stato di nascita",
+      "comune_nascita_codice": "Comune di nascita",
+      "provincia_nascita": "Provincia di nascita",
+      "tipo_documento": "Tipo di documento",
+      "numero_documento": "Numero del documento",
+      "luogo_rilascio_codice": "Luogo di rilascio",
+      "scadenza_documento": "Scadenza del documento",
+      "email": "Email",
+      "telefono": "Telefono",
+      "lingua": "Lingua",
+      "codice_fiscale": "Codice fiscale",
+      "indirizzo": "Indirizzo",
+      "cap": "CAP",
+      "citta": "Città",
+      "provincia": "Provincia",
+      "paese": "Paese",
+      "note": "Note"
+    },
+    "sessi": {
+      "M": "Maschio",
+      "F": "Femmina"
+    },
+    "documenti": {
+      "IDENT": "Carta d’identità",
+      "IDELE": "Carta d’identità elettronica",
+      "PASOR": "Passaporto",
+      "PATEN": "Patente di guida"
+    },
+    "scegli": "Scegli…",
+    "luogoRilascio": "Comune italiano o stato estero."
+  },
+  "notifiche": {
+    "apri": "Notifiche, {{ totale }} non lette",
+    "titolo": "Notifiche",
+    "segnaTutte": "Segna tutte come lette",
+    "nessuna": "Nessuna notifica",
+    "elimina": "Elimina notifica",
+    "codici": {
+      "alloggiati_da_inviare": "Alloggiati Web, soggiorni da inviare entro 24 ore dall'arrivo: {{ totale }}",
+      "overbooking": "Overbooking camera {{ camera }} ({{ canale }}) dal {{ inizio }} al {{ fine }}",
+      "calendario_non_sincronizzato": "Il calendario {{ canale }} non si sincronizza",
+      "assistenza_richiesta": "Nuova richiesta di assistenza",
+      "assistenza_passata": "Ti è stata passata una conversazione di assistenza",
+      "fatture_ferme_sdi": "Fatture ferme allo SDI: {{ da_inviare }} da inviare, {{ scartate }} scartate",
+      "guasto_camera": "Guasto camera {{ camera }}: {{ titolo }}",
+      "guasto": "Guasto: {{ titolo }}",
+      "guasto_assegnato": "Ti è stata assegnata: {{ titolo }}",
+      "guasto_risolto": "Risolta: {{ titolo }}",
+      "rimborsi_da_fare": "Rimborsi da fare: {{ totale }}",
+      "partenze_saldo_aperto": "Partenze da chiudere: {{ totale }} con saldo aperto",
+      "pulizia_assegnata": "Pulizia assegnata: camera {{ camera }} per il {{ data }}",
+      "camera_da_ispezionare": "Camera {{ camera }} da ispezionare",
+      "recensione_nuova": "Nuova recensione: {{ voto }}/5",
+      "tassa_in_scadenza": "Tassa di soggiorno: \"{{ nome }}\" finisce il {{ data }} e non ce n'è un'altra",
+      "prenotazione_ricevuta": "Prenotazione {{ codice }} ricevuta",
+      "prenotazione_confermata": "Prenotazione {{ codice }} confermata",
+      "prenotazione_cancellata": "Prenotazione {{ codice }} cancellata",
+      "promemoria_checkin": "Arrivo il {{ data }}: fai il check-in online",
+      "invito_recensione": "Com'è andato il soggiorno {{ codice }}? Lascia una recensione",
+      "link_pagamento": "Pagamento da completare per la prenotazione {{ codice }}",
+      "pagamento_ricevuto": "Pagamento di {{ importo }} ricevuto per {{ codice }}",
+      "rimborso_eseguito": "Rimborso di {{ importo }} eseguito per {{ codice }}",
+      "fattura_emessa": "Fattura {{ numero }} disponibile",
+      "nuova_promozione": "Nuova offerta: {{ nome }}, soggiorni dal {{ inizio }} al {{ fine }}"
+    }
+  },
+  "chat": {
+    "widget": {
+      "apri": "Scrivici",
+      "chiudi": "Chiudi la chat",
+      "titolo": "Assistenza",
+      "online": "Siamo online",
+      "offline": "Ora non siamo online: ti rispondiamo appena possibile",
+      "introduzione": "Come possiamo aiutarti?",
+      "nome": "Nome (facoltativo)",
+      "email": "Email (facoltativa)",
+      "emailAiuto": "Per avere la risposta anche se chiudi la pagina",
+      "messaggio": "Messaggio",
+      "invia": "Invia",
+      "chiusa": "Conversazione chiusa.",
+      "nuova": "Nuova conversazione",
+      "nuovi": "Nuovi messaggi",
+      "leggiFaq": "Leggi le domande frequenti",
+      "tornaChat": "Torna alla chat"
+    }
+  },
+  "camera": {
+    "numero": "Camera {{ numero }}",
+    "piano": "Piano {{ piano }}",
+    "tornaA": "Tutte le camere {{ nome }}",
+    "foto": "Foto di {{ nome }}",
+    "mostraFoto": "Mostra la foto {{ numero }}",
+    "prenota": "Prenota questa camera",
+    "altre": "Altre camere",
+    "nonTrovata": "Camera non trovata",
+    "nonTrovataTesto": "Questa camera non esiste o non è più disponibile.",
+    "numeroNome": "Camera {{ numero }} “{{ nome }}”",
+    "altreDotazioni": "+{{ numero }} altre",
+    "altreDi": "Altre camere {{ nome }}",
+    "soggiorno": {
+      "titolo": "Il soggiorno",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "dalle": "dalle {{ ora }}",
+      "entro": "entro le {{ ora }}",
+      "tariffe": "Tariffe",
+      "tassa": "Tassa di soggiorno",
+      "tassaImporto": "{{ importo }} a persona per notte.",
+      "tassaNotti": "Si paga per le prime {{ notti }} notti.",
+      "tassaEsenti": "Esenti i minori di {{ eta }} anni."
+    }
+  }
+}

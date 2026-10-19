@@ -1,0 +1,104 @@
+<h2 class="sezione-titolo">{{ 'portale.fedelta.titolo' | transloco }}</h2>
+
+@if (dati.hasValue()) {
+  @let situazione = dati.value().situazione;
+  <div class="griglia-prenotazione">
+    <section class="scheda livello" [style.--colore-livello]="situazione?.dettagli_livello?.colore">
+      @if (situazione?.livello_nome; as nome) {
+        <p class="badge">{{ nome }}</p>
+        <p>
+          {{ 'portale.fedelta.sconto' | transloco: { sconto: situazione?.sconto_percentuale } }}
+        </p>
+      } @else {
+        <p>{{ 'portale.fedelta.inizia' | transloco }}</p>
+      }
+      <p class="punti">{{ 'portale.fedelta.punti' | transloco: { punti: punti() } }}</p>
+      @if (prossimo(); as livello) {
+        <progress [value]="punti()" [max]="livello.punti_minimi"></progress>
+        <p>
+          {{
+            'portale.fedelta.mancano'
+              | transloco: { punti: livello.punti_minimi - punti(), livello: livello.nome }
+          }}
+        </p>
+      } @else if (situazione) {
+        <p>{{ 'portale.fedelta.massimo' | transloco }}</p>
+      }
+    </section>
+
+    <section class="scheda">
+      <h3 class="titolo-scheda">
+        {{ 'portale.fedelta.anno' | transloco: { anno: dati.value().statistiche.anno } }}
+      </h3>
+      <dl class="dati">
+        <div>
+          <dt>{{ 'portale.fedelta.guadagnati' | transloco }}</dt>
+          <dd>{{ dati.value().statistiche.punti_guadagnati }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'portale.fedelta.tolti' | transloco }}</dt>
+          <dd>{{ dati.value().statistiche.punti_tolti }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="scheda larga">
+      <h3 class="titolo-scheda">{{ 'portale.fedelta.livelli' | transloco }}</h3>
+      <ol class="scala">
+        @for (livello of dati.value().livelli; track livello.id) {
+          <li
+            [class.attuale]="livello.id === situazione?.livello_id"
+            [attr.aria-current]="livello.id === situazione?.livello_id ? 'true' : null"
+            [style.--colore-livello]="livello.colore"
+          >
+            <span class="nome">{{ livello.nome }}</span>
+            <span>{{ 'portale.fedelta.punti' | transloco: { punti: livello.punti_minimi } }}</span>
+            <span>
+              {{ 'portale.fedelta.sconto' | transloco: { sconto: livello.sconto_percentuale } }}
+            </span>
+          </li>
+        }
+      </ol>
+    </section>
+  </div>
+} @else if (dati.error()) {
+  <p class="stato-vuoto">{{ 'errori.generico' | transloco }}</p>
+}
+
+<h2 class="sezione-titolo">{{ 'portale.fedelta.movimenti' | transloco }}</h2>
+<ul class="movimenti">
+  @for (movimento of movimenti.mostrate(); track movimento.id) {
+    <li class="movimento">
+      <div>
+        <p>{{ 'portale.fedelta.motivi.' + movimento.motivo | transloco }}</p>
+        <p class="tenue">
+          {{ movimento.creato_il | data: 'giorno' }}
+          @if (movimento.prenotazione) {
+            · {{ movimento.prenotazione.codice }}
+          }
+          @if (movimento.note) {
+            · {{ movimento.note }}
+          }
+        </p>
+      </div>
+      <p class="variazione" [class.negativa]="movimento.punti < 0">
+        {{ movimento.punti > 0 ? '+' : '' }}{{ movimento.punti }}
+      </p>
+    </li>
+  } @empty {
+    @if (!movimenti.risorsa.isLoading()) {
+      <li class="stato-vuoto">{{ 'portale.fedelta.nessunMovimento' | transloco }}</li>
+    }
+  }
+</ul>
+
+@if (movimenti.altre()) {
+  <button
+    class="pulsante pulsante-secondario altre"
+    type="button"
+    [disabled]="movimenti.risorsa.isLoading()"
+    (click)="movimenti.mostraAltre()"
+  >
+    {{ 'portale.mostraAltre' | transloco }}
+  </button>
+}

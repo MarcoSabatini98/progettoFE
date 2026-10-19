@@ -1,0 +1,15 @@
+/* Paragrafo sotto la copertina, al centro, largo quasi come i riquadri. */
+.paragrafo {
+  max-inline-size: 60rem;
+  justify-self: center;
+  color: var(--bb-testo-tenue);
+  font-size: 1.125rem;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* Tanto spazio tra i riquadri: la card sporge sotto la foto. */
+.riquadri {
+  display: grid;
+  gap: calc(2 * var(--bb-spazio-12));
+}

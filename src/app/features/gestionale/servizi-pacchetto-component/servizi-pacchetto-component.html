@@ -1,0 +1,42 @@
+<fieldset>
+  <legend>{{ 'gestionale.tariffe.pacchetti.servizi' | transloco }}</legend>
+  @if (extra.hasValue()) {
+    <ul class="servizi">
+      @for (servizio of extra.value(); track servizio.id) {
+        @let inclusi = quantita(servizio.id);
+        <li>
+          <label class="spunta">
+            <input
+              name="servizi"
+              #spunta
+              type="checkbox"
+              [checked]="inclusi !== undefined"
+              (change)="scegli(servizio.id, spunta.checked)"
+            />
+            {{ servizio.nome }}
+            <span class="piccolo tenue">{{ servizio.prezzo | prezzo }}</span>
+          </label>
+          @if (inclusi !== undefined) {
+            <input
+              name="quantita"
+              #numero
+              class="quantita"
+              type="number"
+              min="1"
+              [max]="massimo"
+              [value]="inclusi"
+              [attr.aria-label]="
+                'gestionale.tariffe.pacchetti.quantita' | transloco: { servizio: servizio.nome }
+              "
+              (change)="cambiaQuantita(servizio.id, numero.valueAsNumber)"
+            />
+          }
+        </li>
+      } @empty {
+        <li class="tenue">{{ 'gestionale.tariffe.pacchetti.nessunExtra' | transloco }}</li>
+      }
+    </ul>
+  } @else if (extra.error(); as errore) {
+    <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+  }
+</fieldset>

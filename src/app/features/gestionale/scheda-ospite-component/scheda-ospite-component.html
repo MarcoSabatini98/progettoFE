@@ -1,0 +1,75 @@
+<a class="indietro" [routerLink]="elenco">
+  <app-icona nome="arrow_back" />
+  {{ 'gestionale.ospite.tutti' | transloco }}
+</a>
+
+@if (scheda.hasValue()) {
+  @let dati = scheda.value();
+
+  <header class="pagina-intestazione">
+    <p class="occhiello">{{ 'gestionale.ospite.occhiello' | transloco }}</p>
+    <h1>{{ dati.cognome }} {{ dati.nome }}</h1>
+  </header>
+
+  @if (dati.campi_mancanti.length) {
+    <section class="esito esito-errore" aria-labelledby="campi-mancanti">
+      <h2 id="campi-mancanti">{{ 'gestionale.ospite.mancano' | transloco }}</h2>
+      <ul class="mancanti">
+        @for (campo of dati.campi_mancanti; track campo) {
+          <li>{{ 'anagrafica.campi.' + campo | transloco }}</li>
+        }
+      </ul>
+    </section>
+  } @else {
+    <p class="esito esito-ok">{{ 'gestionale.ospite.completa' | transloco }}</p>
+  }
+
+  <div class="griglia-prenotazione">
+    <app-dati-ospite [ospite]="dati" (salvato)="scheda.set($event)" />
+
+    <div class="colonna">
+      <section class="scheda" aria-labelledby="documenti-ospite">
+        <h2 class="titolo-scheda" id="documenti-ospite">
+          {{ 'portale.documenti.titolo' | transloco }}
+        </h2>
+        <app-documenti-identita
+          [documenti]="dati.documenti ?? []"
+          [azioni]="azioni"
+          (cambiati)="scheda.reload()"
+        />
+      </section>
+
+      <section class="scheda" aria-labelledby="soggiorni-ospite">
+        <h2 class="titolo-scheda" id="soggiorni-ospite">
+          {{ 'gestionale.ospite.soggiorni' | transloco }}
+        </h2>
+        <ul class="soggiorni">
+          @for (soggiorno of dati.soggiorni; track soggiorno.id) {
+            <li>
+              <a [routerLink]="[prenotazioni, soggiorno.id]">{{ soggiorno.codice }}</a>
+              <span>
+                {{ soggiorno.data_arrivo | data: 'giorno' }} –
+                {{ soggiorno.data_partenza | data: 'giorno' }}
+              </span>
+              <span class="stato-prenotazione" [attr.data-stato]="soggiorno.stato">
+                {{ 'prenotazione.stati.' + soggiorno.stato | transloco }}
+              </span>
+            </li>
+          } @empty {
+            <li class="stato-vuoto">{{ 'gestionale.ospite.nessunSoggiorno' | transloco }}</li>
+          }
+        </ul>
+      </section>
+
+      <app-elimina
+        [titolo]="'gestionale.ospite.elimina' | transloco"
+        [aiuto]="'gestionale.ospite.eliminaAiuto' | transloco"
+        [conferma]="'gestionale.ospite.conferma' | transloco"
+        [richiesta]="elimina"
+        (eliminato)="tornaAllElenco()"
+      />
+    </div>
+  </div>
+} @else if (scheda.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

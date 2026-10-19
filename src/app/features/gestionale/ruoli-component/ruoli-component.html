@@ -1,0 +1,25 @@
+<header class="pagina-intestazione">
+  <p class="occhiello">{{ 'menu.gruppi.direzione' | transloco }}</p>
+  <h1>{{ 'gestionale.permessi.titolo' | transloco }}</h1>
+  <p class="introduzione">{{ 'gestionale.permessi.introduzione' | transloco }}</p>
+</header>
+
+@if (dati.hasValue()) {
+  @let valore = dati.value();
+  <section class="sezione" aria-labelledby="ruoli-permessi">
+    <h2 class="sezione-titolo" id="ruoli-permessi">
+      {{ 'gestionale.permessi.permessi' | transloco }}
+    </h2>
+    <p class="tenue">{{ 'gestionale.permessi.admin' | transloco }}</p>
+    <app-permessi-ruolo [ruoli]="modificabili()" [catalogo]="valore.matrice.permessi" />
+  </section>
+
+  <section class="sezione" aria-labelledby="ruoli-chat">
+    <h2 class="sezione-titolo" id="ruoli-chat">
+      {{ 'gestionale.permessi.chat.titolo' | transloco }}
+    </h2>
+    <app-regole-chat [ruoli]="staff()" [regole]="valore.regole" />
+  </section>
+} @else if (dati.error(); as errore) {
+  <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+}

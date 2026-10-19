@@ -1,0 +1,55 @@
+.contatto > app-icona {
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 2rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+address {
+  font-style: normal;
+}
+
+.contatto a {
+  overflow-wrap: anywhere;
+  color: var(--bb-brand-testo);
+  font-weight: 600;
+}
+
+.esterno {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bb-spazio-1);
+  --icona-dimensione: 1rem;
+}
+
+/* Invito alla chat: icona, testo e pulsanti in colonna, in riga se c'è spazio. */
+.invito-chat {
+  margin-top: var(--bb-spazio-8);
+  border-color: var(--bb-brand-bordo);
+  background: var(--bb-brand-tenue);
+}
+
+.invito-chat > app-icona {
+  color: var(--bb-brand-testo);
+  --icona-dimensione: 2.5rem;
+}
+
+.invito-testo p {
+  margin: var(--bb-spazio-2) 0 0;
+}
+
+.invito-azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bb-spazio-3);
+}
+
+@media (width >= 48rem) {
+  .invito-chat {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--bb-spazio-6);
+  }
+}

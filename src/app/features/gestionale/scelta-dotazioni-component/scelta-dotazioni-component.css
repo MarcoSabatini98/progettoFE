@@ -1,0 +1,16 @@
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: var(--bb-spazio-2);
+  font-weight: 600;
+}
+
+.caselle {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: 0 var(--bb-spazio-4);
+}

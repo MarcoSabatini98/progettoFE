@@ -1,0 +1,126 @@
+/*
+ * Pulsanti: classi sull'elemento nativo (<button> o <a>), niente componente.
+ * Forma e misure arrivano dai token dell'area (pubblica tonda, gestionale squadrata).
+ *
+ *   <button class="pulsante pulsante-primario">Prenota</button>
+ *   <a class="pulsante pulsante-secondario" routerLink="/camere">Camere</a>
+ */
+
+.pulsante {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bb-spazio-2);
+  min-height: var(--bb-controllo-altezza);
+  padding: 0 var(--bb-pulsante-spazio);
+  border: 1px solid transparent;
+  border-radius: var(--bb-pulsante-raggio);
+  font-size: var(--bb-controllo-testo);
+  font-weight: var(--bb-pulsante-peso);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 150ms var(--bb-curva),
+    background-color var(--bb-durata),
+    border-color var(--bb-durata),
+    color var(--bb-durata);
+}
+
+.pulsante:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.pulsante:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pulsante-primario {
+  background: var(--bb-brand);
+  color: var(--bb-su-brand);
+}
+
+.pulsante-primario:hover:not(:disabled) {
+  background: color-mix(in oklch, var(--bb-brand) 86%, #000);
+}
+
+.pulsante-secondario {
+  background: transparent;
+  border-color: var(--bb-brand-bordo);
+  color: var(--bb-brand-testo);
+}
+
+.pulsante-secondario:hover:not(:disabled) {
+  background: var(--bb-brand-tenue);
+}
+
+.pulsante-fantasma {
+  background: none;
+  color: var(--bb-testo-tenue);
+}
+
+.pulsante-fantasma:hover:not(:disabled) {
+  background: var(--bb-incavo);
+  color: var(--bb-testo);
+}
+
+.pulsante-pericolo {
+  background: none;
+  border-color: color-mix(in oklch, var(--bb-errore) 35%, var(--bb-superficie));
+  color: var(--bb-errore);
+}
+
+.pulsante-pericolo:hover:not(:disabled) {
+  background: var(--bb-errore-tenue);
+}
+
+/* Solo icona: quadrato, l'etichetta va in aria-label. */
+.pulsante-icona {
+  width: var(--bb-controllo-altezza);
+  padding: 0;
+  border-radius: var(--bb-raggio-piccolo);
+}
+
+.pulsante-intero {
+  width: 100%;
+}
+
+/* Puntini di caroselli e gallerie: area di tocco ampia, puntino piccolo al centro. */
+.puntini {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.puntino {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.puntino::before {
+  content: '';
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 999px;
+  background: var(--bb-linea);
+  transition: inline-size var(--bb-durata) var(--bb-curva);
+}
+
+.puntino[aria-current='true']::before {
+  inline-size: 1.25rem;
+  background: var(--bb-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .puntino::before {
+    transition: none;
+  }
+}

@@ -1,0 +1,47 @@
+@if (gestisce()) {
+  <section class="scheda" [attr.aria-label]="'gestionale.traduzioni.titolo' | transloco">
+    <h2 class="titolo-scheda">{{ 'gestionale.traduzioni.titolo' | transloco }}</h2>
+    @if (!lingue().length) {
+      <p class="tenue">{{ 'gestionale.traduzioni.nessunaLingua' | transloco }}</p>
+    } @else if (traduzioni.hasValue()) {
+      <p class="tenue piccolo">{{ 'gestionale.traduzioni.aiuto' | transloco }}</p>
+      <form class="modulo-scheda" [formGroup]="modulo()" (ngSubmit)="salva()" novalidate>
+        @for (codice of lingue(); track codice) {
+          <fieldset class="modulo-scheda" [formGroupName]="codice">
+            <legend>{{ nomi[codice] }}</legend>
+            @for (campo of campi(); track campo) {
+              <app-campo [etichetta]="'gestionale.traduzioni.campi.' + campo | transloco">
+                @if (lunghi.includes(campo)) {
+                  <textarea
+                    rows="4"
+                    [formControlName]="campo"
+                    [lang]="codice"
+                    [maxLength]="limite"
+                  ></textarea>
+                } @else {
+                  <input
+                    type="text"
+                    [formControlName]="campo"
+                    [lang]="codice"
+                    [maxLength]="limite"
+                  />
+                }
+              </app-campo>
+            }
+          </fieldset>
+        }
+        @if (errore(); as testo) {
+          <p class="esito esito-errore" role="alert">{{ testo }}</p>
+        }
+        <div class="azioni">
+          <button class="pulsante pulsante-primario" type="submit" [disabled]="inCorso()">
+            <app-icona nome="translate" />
+            {{ 'gestionale.traduzioni.salva' | transloco }}
+          </button>
+        </div>
+      </form>
+    } @else if (traduzioni.error(); as errore) {
+      <p class="esito esito-errore" role="alert">{{ errori.messaggio(errore) }}</p>
+    }
+  </section>
+}

@@ -1,0 +1,69 @@
+.riepilogo {
+  gap: var(--bb-spazio-6);
+}
+
+.media-valore {
+  font-family: var(--bb-font-titoli);
+  font-size: clamp(3rem, 12vw, 4.5rem);
+  line-height: 1;
+}
+
+.media-valore span {
+  color: var(--bb-testo-tenue);
+  font-size: 0.4em;
+}
+
+.media-numero {
+  color: var(--bb-testo-tenue);
+}
+
+.categorie {
+  display: grid;
+  gap: var(--bb-spazio-3);
+  margin: 0;
+}
+
+.categoria {
+  display: grid;
+  gap: var(--bb-spazio-1);
+}
+
+dt {
+  font-size: 0.9375rem;
+}
+
+dd {
+  display: flex;
+  align-items: center;
+  gap: var(--bb-spazio-3);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Ocra: riservato a voti e VIP. */
+.barra {
+  flex: 1;
+  block-size: 0.5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bb-ocra-tenue);
+}
+
+.barra span {
+  display: block;
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--bb-ocra);
+}
+
+.altre {
+  justify-self: center;
+}
+
+@media (width >= 40rem) {
+  .riepilogo {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--bb-spazio-12);
+  }
+}

@@ -1,0 +1,183 @@
+@let controlli = modulo.controls;
+@let dati = ospite();
+<h2 class="titolo-scheda">{{ 'gestionale.anagrafica.titolo' | transloco }}</h2>
+
+<form class="modulo-scheda" [formGroup]="modulo" (ngSubmit)="salva()" novalidate>
+  <h3>{{ 'gestionale.anagrafica.contatti' | transloco }}</h3>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'anagrafica.campi.nome' | transloco"
+      [errore]="errori.campo(controlli.nome)"
+    >
+      <input type="text" formControlName="nome" [maxLength]="lunghezza.nome" required />
+    </app-campo>
+    <app-campo
+      [etichetta]="'anagrafica.campi.cognome' | transloco"
+      [errore]="errori.campo(controlli.cognome)"
+    >
+      <input type="text" formControlName="cognome" [maxLength]="lunghezza.cognome" required />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'anagrafica.campi.email' | transloco"
+      [aiuto]="
+        ospite().cliente_registrato ? ('gestionale.anagrafica.emailCliente' | transloco) : ''
+      "
+      [errore]="errori.campo(controlli.email)"
+    >
+      <input
+        type="email"
+        formControlName="email"
+        [maxLength]="lunghezza.email"
+        [readOnly]="ospite().cliente_registrato"
+      />
+    </app-campo>
+    <app-campo
+      [etichetta]="'anagrafica.campi.telefono' | transloco"
+      [errore]="errori.campo(controlli.telefono)"
+    >
+      <input type="tel" formControlName="telefono" [maxLength]="lunghezza.telefono" />
+    </app-campo>
+  </div>
+  <app-campo [etichetta]="'anagrafica.campi.lingua' | transloco">
+    <select formControlName="lingua">
+      @for (lingua of lingue; track lingua) {
+        <option [value]="lingua">{{ nomiLingue[lingua] }}</option>
+      }
+    </select>
+  </app-campo>
+
+  <h3>{{ 'gestionale.anagrafica.nascita' | transloco }}</h3>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'anagrafica.campi.sesso' | transloco">
+      <select formControlName="sesso">
+        <option value="">{{ 'anagrafica.scegli' | transloco }}</option>
+        @for (sesso of sessi; track sesso) {
+          <option [value]="sesso">{{ 'anagrafica.sessi.' + sesso | transloco }}</option>
+        }
+      </select>
+    </app-campo>
+    <app-campo [etichetta]="'anagrafica.campi.data_nascita' | transloco">
+      <input type="date" formControlName="data_nascita" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-cerca-luogo
+      tipo="stato"
+      [etichetta]="'anagrafica.campi.cittadinanza_codice' | transloco"
+      [valore]="dati.cittadinanza?.descrizione ?? ''"
+      (scelto)="scegli('cittadinanza_codice', $event)"
+    />
+    <app-cerca-luogo
+      tipo="stato"
+      [etichetta]="'anagrafica.campi.stato_nascita_codice' | transloco"
+      [valore]="dati.stato_nascita?.descrizione ?? ''"
+      (scelto)="scegliStatoNascita($event)"
+    />
+  </div>
+  @if (natoInItalia()) {
+    <app-cerca-luogo
+      tipo="comune"
+      [etichetta]="'anagrafica.campi.comune_nascita_codice' | transloco"
+      [inVigoreIl]="modulo.controls.data_nascita.value"
+      [valore]="dati.comune_nascita?.descrizione ?? ''"
+      (scelto)="scegliComuneNascita($event)"
+    />
+  }
+
+  <h3>{{ 'gestionale.anagrafica.documento' | transloco }}</h3>
+  <div class="campi-coppia">
+    <app-campo
+      [etichetta]="'anagrafica.campi.tipo_documento' | transloco"
+      [aiuto]="'gestionale.anagrafica.tipoDocumento' | transloco"
+      [errore]="errori.campo(controlli.tipo_documento)"
+    >
+      <input
+        type="text"
+        list="tipi-documento"
+        formControlName="tipo_documento"
+        [maxLength]="lunghezza.tipoDocumento"
+      />
+    </app-campo>
+    <datalist id="tipi-documento">
+      @for (tipo of tipiDocumento; track tipo) {
+        <option [value]="tipo">{{ 'anagrafica.documenti.' + tipo | transloco }}</option>
+      }
+    </datalist>
+    <app-campo
+      [etichetta]="'anagrafica.campi.numero_documento' | transloco"
+      [errore]="errori.campo(controlli.numero_documento)"
+    >
+      <input
+        type="text"
+        formControlName="numero_documento"
+        [maxLength]="lunghezza.numeroDocumento"
+      />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-cerca-luogo
+      [etichetta]="'anagrafica.campi.luogo_rilascio_codice' | transloco"
+      [aiuto]="'anagrafica.luogoRilascio' | transloco"
+      [valore]="dati.luogo_rilascio?.descrizione ?? ''"
+      (scelto)="scegli('luogo_rilascio_codice', $event)"
+    />
+    <app-campo [etichetta]="'anagrafica.campi.scadenza_documento' | transloco">
+      <input type="date" formControlName="scadenza_documento" />
+    </app-campo>
+  </div>
+  <app-campo
+    [etichetta]="'anagrafica.campi.codice_fiscale' | transloco"
+    [errore]="errori.campo(controlli.codice_fiscale)"
+  >
+    <input type="text" formControlName="codice_fiscale" [maxLength]="lunghezza.codiceFiscale" />
+  </app-campo>
+
+  <h3>{{ 'gestionale.anagrafica.residenza' | transloco }}</h3>
+  <app-campo
+    [etichetta]="'anagrafica.campi.indirizzo' | transloco"
+    [errore]="errori.campo(controlli.indirizzo)"
+  >
+    <input type="text" formControlName="indirizzo" [maxLength]="lunghezza.indirizzo" />
+  </app-campo>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'anagrafica.campi.cap' | transloco">
+      <input type="text" formControlName="cap" [maxLength]="lunghezza.cap" />
+    </app-campo>
+    <app-campo [etichetta]="'anagrafica.campi.citta' | transloco">
+      <input type="text" formControlName="citta" [maxLength]="lunghezza.citta" />
+    </app-campo>
+  </div>
+  <div class="campi-coppia">
+    <app-campo [etichetta]="'anagrafica.campi.provincia' | transloco">
+      <input type="text" formControlName="provincia" [maxLength]="lunghezza.sigla" />
+    </app-campo>
+    <app-campo
+      [etichetta]="'anagrafica.campi.paese' | transloco"
+      [aiuto]="'gestionale.anagrafica.paese' | transloco"
+    >
+      <input type="text" formControlName="paese" [maxLength]="lunghezza.sigla" />
+    </app-campo>
+  </div>
+
+  <app-campo
+    [etichetta]="'anagrafica.campi.note' | transloco"
+    [errore]="errori.campo(controlli.note)"
+  >
+    <textarea formControlName="note" rows="3" [maxLength]="lunghezza.note"></textarea>
+  </app-campo>
+
+  @if (errore(); as testo) {
+    <p class="esito esito-errore" role="alert">{{ testo }}</p>
+  }
+  <div class="azioni">
+    <button
+      class="pulsante pulsante-primario"
+      type="submit"
+      [disabled]="inCorso() || modulo.pristine"
+    >
+      {{ 'gestionale.anagrafica.salva' | transloco }}
+    </button>
+  </div>
+</form>
