@@ -1,6 +1,6 @@
 # progettoFE
 
-**English** · [Italiano](README.it.md)
+**English** · [Italiano](README.it.md) · Backend API: [progettoBE](https://github.com/MarcoSabatini98/progettoBE)
 
 Web client of a white-label management platform for small hotels and B&Bs. One Angular app
 serves the property's public website with online booking, the guest portal and the staff
