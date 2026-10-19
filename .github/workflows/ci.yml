@@ -20,6 +20,8 @@ jobs:
 
       - name: Dipendenze
         run: npm ci
+        env:
+          HUSKY: 0
 
       - name: Licenze
         run: npm run licenze
