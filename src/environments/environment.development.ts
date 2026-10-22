@@ -7,4 +7,5 @@ export const environment = {
   apiUrl: `${backend}/api`,
   /** Immagini del sito: il backend le serve sotto /media, fuori dall'API. */
   mediaUrl: backend,
+  socketUrl: backend,
 };
