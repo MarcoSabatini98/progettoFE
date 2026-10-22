@@ -82,8 +82,8 @@ export class SocketService {
   }
 
   private apri(): Socket {
-    // Il socket sta sullo stesso server che serve /media.
-    const socket = this.io(environment.mediaUrl, {
+    // Il socket va diretto al backend (in produzione non passa dal proxy di Vercel).
+    const socket = this.io(environment.socketUrl, {
       auth: (consegna) => consegna({ token: this.auth.token() }),
       withCredentials: true,
     });

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/progettoFE/browser",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://hotel-le-querce-api.onrender.com/api/:path*"
+    },
+    {
+      "source": "/media/:path*",
+      "destination": "https://hotel-le-querce-api.onrender.com/media/:path*"
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
